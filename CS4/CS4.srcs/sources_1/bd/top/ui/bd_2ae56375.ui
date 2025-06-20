@@ -1,0 +1,105 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"0.638277",
+   "Default View_TopLeft":"921,387",
+   "ExpandedHierarchyInLayout":"",
+   "comment_0":"1. ROM with COE loading.",
+   "comment_1":"2. Threshold Reading 
+then storing in RAM",
+   "comment_2":"3. RAM with
+Image threshold pixels",
+   "comment_4":"4. Line Buffer for Kernal",
+   "comment_5":"5. Sobel Processing",
+   "comment_6":"6. Sobel Processing stored in seperate RAM",
+   "comment_7":"7. UART Streaming.",
+   "commentid":"comment_0|comment_1|comment_2|comment_4|comment_5|comment_6|comment_7|",
+   "font_comment_0":"13",
+   "font_comment_1":"13",
+   "font_comment_2":"13",
+   "font_comment_4":"11",
+   "font_comment_5":"11",
+   "font_comment_6":"10",
+   "font_comment_7":"14",
+   "guistr":"# # String gsaved with Nlview 7.5.8 2022-09-21 7111 VDI=41 GEI=38 GUI=JA:10.0
+#  -string -flagsOSRD
+preplace port port-id_sys_clock -pg 1 -lvl 0 -x -220 -y 720 -defaultsOSRD
+preplace port port-id_UART_TXD -pg 1 -lvl 10 -x 3260 -y 1220 -defaultsOSRD
+preplace port port-id_reset -pg 1 -lvl 0 -x -220 -y 640 -defaultsOSRD
+preplace inst clk_wiz_0 -pg 1 -lvl 1 -x 180 -y 710 -defaultsOSRD
+preplace inst blk_mem_gen_0 -pg 1 -lvl 3 -x 1030 -y 330 -defaultsOSRD
+preplace inst image_threshold_0 -pg 1 -lvl 5 -x 1720 -y 450 -defaultsOSRD
+preplace inst blk_mem_gen_1 -pg 1 -lvl 3 -x 1030 -y 730 -defaultsOSRD
+preplace inst rst_clk_wiz_0_100M -pg 1 -lvl 2 -x 650 -y 680 -defaultsOSRD
+preplace inst xlconstant_0 -pg 1 -lvl 2 -x 650 -y 480 -defaultsOSRD
+preplace inst sobel_processor_0 -pg 1 -lvl 7 -x 2400 -y 810 -defaultsOSRD
+preplace inst xlconstant_2 -pg 1 -lvl 6 -x 2120 -y 530 -defaultsOSRD
+preplace inst blk_mem_gen_2 -pg 1 -lvl 3 -x 1030 -y 1290 -defaultsOSRD
+preplace inst UART_TX_CTRL_0 -pg 1 -lvl 9 -x 3120 -y 1210 -defaultsOSRD
+preplace inst xlconstant_1 -pg 1 -lvl 7 -x 2400 -y 1330 -defaultsOSRD
+preplace inst uart_bram_loader_0 -pg 1 -lvl 8 -x 2800 -y 1220 -defaultsOSRD
+preplace inst ila_0 -pg 1 -lvl 4 -x 1360 -y 640 -defaultsOSRD
+preplace inst line_buffer_simple_0 -pg 1 -lvl 5 -x 1720 -y 1110 -defaultsOSRD
+preplace inst bram_reader_0 -pg 1 -lvl 4 -x 1360 -y 1350 -defaultsOSRD
+preplace netloc UART_TX_CTRL_0_READY 1 7 3 2630 1120 NJ 1120 3240
+preplace netloc UART_TX_CTRL_0_UART_TX 1 9 1 N 1220
+preplace netloc blk_mem_gen_0_douta 1 2 3 930 470 N 470 N
+preplace netloc blk_mem_gen_1_douta 1 2 2 930 900 1140J
+preplace netloc blk_mem_gen_1_doutb 1 2 3 870 970 1190J 1110 N
+preplace netloc blk_mem_gen_2_doutb 1 2 6 930 1450 1200J 1260 1510 1300 NJ 1300 2220 1260 NJ
+preplace netloc clk_wiz_0_clk_out1 1 1 8 480 780 850 520 1180 520 1560 620 N 620 2230 620 2620 1110 2980
+preplace netloc clk_wiz_0_locked 1 1 1 N 720
+preplace netloc image_threshold_0_ram_in_addr 1 2 4 930 230 N 230 N 230 1880
+preplace netloc image_threshold_0_ram_out_addr 1 2 4 900 940 NJ 940 N 940 1910
+preplace netloc image_threshold_0_ram_out_din 1 2 4 920 910 1170J 760 N 760 1890
+preplace netloc image_threshold_0_ram_out_en 1 2 4 890 950 N 950 N 950 1900
+preplace netloc image_threshold_0_ram_out_we 1 2 4 910 920 N 920 N 920 1880
+preplace netloc image_threshold_0_threshold_done 1 3 3 1210 1250 1560 1270 1920
+preplace netloc line_buffer_simple_0_addr_out 1 5 2 1940 740 N
+preplace netloc line_buffer_simple_0_bram_addr 1 2 3 880 960 1160 960 1540
+preplace netloc line_buffer_simple_0_buffer_ready 1 5 2 1930 720 N
+preplace netloc line_buffer_simple_0_p0 1 5 2 1950 780 N
+preplace netloc line_buffer_simple_0_p1 1 5 2 1960 800 N
+preplace netloc line_buffer_simple_0_p2 1 5 2 1970 820 N
+preplace netloc line_buffer_simple_0_p3 1 5 2 1980 840 N
+preplace netloc line_buffer_simple_0_p4 1 5 2 1990 860 N
+preplace netloc line_buffer_simple_0_p5 1 5 2 2000 920 2200
+preplace netloc line_buffer_simple_0_p6 1 5 2 2010 930 2210
+preplace netloc line_buffer_simple_0_p7 1 5 2 2020 950 2220
+preplace netloc line_buffer_simple_0_p8 1 5 2 2030 970 2240
+preplace netloc reset_2 1 0 4 90J 640 470J 790 820 930 1130
+preplace netloc rst_clk_wiz_0_100M_peripheral_reset 1 2 6 830 980 1150 1090 1550 910 N 910 2230 1200 N
+preplace netloc sobel_processor_0_addr_out 1 2 6 930 1130 1130 1240 1530 1310 N 1310 2200 1250 2560
+preplace netloc sobel_processor_0_done 1 7 1 2580 830n
+preplace netloc sobel_processor_0_result_pixel 1 2 6 920 1120 N 1120 1550 1280 2030 1240 N 1240 2570
+preplace netloc sys_clock_1 1 0 1 NJ 720
+preplace netloc uart_bram_loader_0_BRAM_ADDR 1 2 7 910 1110 1160J 1130 1520 1290 NJ 1290 2240 1270 2600J 1320 2970
+preplace netloc uart_bram_loader_0_UART_DATA 1 8 1 2970 1200n
+preplace netloc uart_bram_loader_0_UART_SEND 1 8 1 2990 1180n
+preplace netloc xlconstant_0_dout 1 2 3 860 450 NJ 450 N
+preplace netloc xlconstant_1_dout 1 2 6 920 1460 N 1460 N 1460 N 1460 N 1460 2560
+preplace netloc xlconstant_2_dout 1 6 1 2200 530n
+preplace cgraphic comment_2 place left 1326 528 textcolor 4 linecolor 3 linewidth 2
+preplace cgraphic comment_1 place top 1711 735 textcolor 4 linecolor 3 linewidth 2
+preplace cgraphic comment_0 place top 894 624 textcolor 4 linecolor 3 linewidth 2
+preplace cgraphic comment_7 place right -449 1042 textcolor 4 linecolor 3 linewidth 2
+preplace cgraphic comment_6 place bot 898 -554 textcolor 4 linecolor 3 linewidth 2
+preplace cgraphic comment_5 place right -1062 572 textcolor 4 linecolor 3 linewidth 2
+preplace cgraphic comment_4 place bot 1716 -767 textcolor 4 linecolor 3 linewidth 2
+levelinfo -pg 1 -220 180 650 1030 1360 1720 2120 2400 2800 3120 3260
+pagesize -pg 1 -db -bbox -sgen -350 -450 3390 1630
+"
+}
+{
+   """""""""""""""""""""""""""""""""""""""""""""""""da_board_cnt""""""""""""""""""""""""""""""""""""""""""""""""":"2",
+   """""""""""""""""""""""""""""""""""""""""""""""""da_clkrst_cnt""""""""""""""""""""""""""""""""""""""""""""""""":"3",
+   """"""""""""""da_clkrst_cnt"""""""""""""":"1"
+}
+{
+   "/comment_0":"comment_0",
+   "/comment_1":"comment_1",
+   "/comment_2":"comment_2",
+   "/comment_4":"comment_4",
+   "/comment_5":"comment_5",
+   "/comment_6":"comment_6",
+   "/comment_7":"comment_7"
+}

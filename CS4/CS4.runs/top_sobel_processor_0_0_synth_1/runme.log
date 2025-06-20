@@ -1,0 +1,251 @@
+
+*** Running vivado
+    with args -log top_sobel_processor_0_0.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source top_sobel_processor_0_0.tcl
+
+
+ECHO is off.
+ECHO is off.
+
+****** Vivado v2023.2 (64-bit)
+  **** SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+  **** IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+  **** SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source top_sobel_processor_0_0.tcl -notrace
+create_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 510.348 ; gain = 218.875
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'j:/Xilinx/Vivado/vivado-library-master'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'J:/Xilinx/Vivado/2023.2/data/ip'.
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: top_sobel_processor_0_0
+Command: synth_design -top top_sobel_processor_0_0 -part xc7a35tcpg236-1 -incremental_mode off -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 45960
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1365.910 ; gain = 441.012
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'top_sobel_processor_0_0' [c:/Users/Dev/Documents/vivado test/WYWM/Capstone Project/CS4/CS4.gen/sources_1/bd/top/ip/top_sobel_processor_0_0/synth/top_sobel_processor_0_0.vhd:78]
+INFO: [Synth 8-3491] module 'sobel_processor' declared at 'C:/Users/Dev/Documents/vivado test/WYWM/Capstone Project/CS4/CS4.srcs/sources_1/new/sobel_processor.vhd:5' bound to instance 'U0' of component 'sobel_processor' [c:/Users/Dev/Documents/vivado test/WYWM/Capstone Project/CS4/CS4.gen/sources_1/bd/top/ip/top_sobel_processor_0_0/synth/top_sobel_processor_0_0.vhd:117]
+INFO: [Synth 8-638] synthesizing module 'sobel_processor' [C:/Users/Dev/Documents/vivado test/WYWM/Capstone Project/CS4/CS4.srcs/sources_1/new/sobel_processor.vhd:25]
+INFO: [Synth 8-256] done synthesizing module 'sobel_processor' (0#1) [C:/Users/Dev/Documents/vivado test/WYWM/Capstone Project/CS4/CS4.srcs/sources_1/new/sobel_processor.vhd:25]
+INFO: [Synth 8-256] done synthesizing module 'top_sobel_processor_0_0' (0#1) [c:/Users/Dev/Documents/vivado test/WYWM/Capstone Project/CS4/CS4.gen/sources_1/bd/top/ip/top_sobel_processor_0_0/synth/top_sobel_processor_0_0.vhd:78]
+WARNING: [Synth 8-7129] Port p4[7] in module sobel_processor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port p4[6] in module sobel_processor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port p4[5] in module sobel_processor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port p4[4] in module sobel_processor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port p4[3] in module sobel_processor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port p4[2] in module sobel_processor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port p4[1] in module sobel_processor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port p4[0] in module sobel_processor is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1478.082 ; gain = 553.184
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1478.082 ; gain = 553.184
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1478.082 ; gain = 553.184
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1478.082 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1560.035 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+The system cannot find the path specified.
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.015 . Memory (MB): peak = 1560.035 ; gain = 0.000
+INFO: [Designutils 20-5008] Incremental synthesis strategy off
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1560.035 ; gain = 635.137
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35tcpg236-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1560.035 ; gain = 635.137
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1560.035 ; gain = 635.137
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1560.035 ; gain = 635.137
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   13 Bit       Adders := 1     
+	   7 Input   12 Bit       Adders := 2     
+	   2 Input   12 Bit       Adders := 2     
+	   2 Input   10 Bit       Adders := 2     
++---Registers : 
+	               10 Bit    Registers := 2     
+	                8 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input   12 Bit        Muxes := 2     
+	   3 Input    8 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-7129] Port p4[7] in module top_sobel_processor_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port p4[6] in module top_sobel_processor_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port p4[5] in module top_sobel_processor_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port p4[4] in module top_sobel_processor_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port p4[3] in module top_sobel_processor_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port p4[2] in module top_sobel_processor_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port p4[1] in module top_sobel_processor_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port p4[0] in module top_sobel_processor_0_0 is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1560.035 ; gain = 635.137
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 1560.035 ; gain = 635.137
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 1560.035 ; gain = 635.137
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 1560.035 ; gain = 635.137
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1560.035 ; gain = 635.137
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1560.035 ; gain = 635.137
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1560.035 ; gain = 635.137
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1560.035 ; gain = 635.137
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1560.035 ; gain = 635.137
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1560.035 ; gain = 635.137
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |CARRY4 |    26|
+|2     |LUT1   |     8|
+|3     |LUT2   |    55|
+|4     |LUT3   |    33|
+|5     |LUT4   |    27|
+|6     |LUT5   |    22|
+|7     |LUT6   |    25|
+|8     |FDCE   |    22|
++------+-------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1560.035 ; gain = 635.137
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 9 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:14 ; elapsed = 00:00:21 . Memory (MB): peak = 1560.035 ; gain = 553.184
+Synthesis Optimization Complete : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1560.035 ; gain = 635.137
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1560.035 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 26 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1560.035 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+The system cannot find the path specified.
+Synth Design complete | Checksum: 4797f7ab
+INFO: [Common 17-83] Releasing license: Synthesis
+24 Infos, 17 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:25 ; elapsed = 00:00:26 . Memory (MB): peak = 1560.035 ; gain = 1024.117
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1560.035 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Users/Dev/Documents/vivado test/WYWM/Capstone Project/CS4/CS4.runs/top_sobel_processor_0_0_synth_1/top_sobel_processor_0_0.dcp' has been generated.
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP top_sobel_processor_0_0, cache-ID = 8c7f42415b8a5d88
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1560.035 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Users/Dev/Documents/vivado test/WYWM/Capstone Project/CS4/CS4.runs/top_sobel_processor_0_0_synth_1/top_sobel_processor_0_0.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file top_sobel_processor_0_0_utilization_synth.rpt -pb top_sobel_processor_0_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Thu May 15 08:57:36 2025...

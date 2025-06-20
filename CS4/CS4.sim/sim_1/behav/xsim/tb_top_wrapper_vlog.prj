@@ -1,0 +1,16 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../CS4.gen/sources_1/bd/top/ipshared/c2c6" \
+"../../../../CS4.ip_user_files/bd/top/ip/top_clk_wiz_0_0/top_clk_wiz_0_0_clk_wiz.v" \
+"../../../../CS4.ip_user_files/bd/top/ip/top_clk_wiz_0_0/top_clk_wiz_0_0.v" \
+"../../../../CS4.ip_user_files/bd/top/ip/top_blk_mem_gen_0_0/sim/top_blk_mem_gen_0_0.v" \
+"../../../../CS4.ip_user_files/bd/top/ip/top_blk_mem_gen_1_0/sim/top_blk_mem_gen_1_0.v" \
+"../../../../CS4.ip_user_files/bd/top/ip/top_xlconstant_0_0/sim/top_xlconstant_0_0.v" \
+"../../../../CS4.ip_user_files/bd/top/ip/top_xlconstant_2_0/sim/top_xlconstant_2_0.v" \
+"../../../../CS4.ip_user_files/bd/top/ip/top_blk_mem_gen_2_0/sim/top_blk_mem_gen_2_0.v" \
+"../../../../CS4.ip_user_files/bd/top/ip/top_xlconstant_1_0/sim/top_xlconstant_1_0.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
