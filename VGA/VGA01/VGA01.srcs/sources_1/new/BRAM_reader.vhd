@@ -54,7 +54,7 @@ begin
  process(clk)
  begin
    if rising_edge(clk) then
-    if read_enable = 1 then
+    if read_enable = '1' then
         if unsigned(current_addr) < max_counter then
             current_addr <= std_logic_vector(unsigned(current_addr) + 1);
         else

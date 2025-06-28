@@ -66,14 +66,58 @@ architecture Behavioral of VGA_Output is
     constant hor_pulse_send : integer := 656; --(end of front porch,640px plus front porch mount).
     constant hor_pulse_end : integer := 752; -- end of pulse being sent
     
-
+    signal re_out : std_logic;
+    signal R_out : std_logic_vector (3 downto 0);
+    signal G_out : std_logic_vector (3 downto 0);
+    signal B_out : std_logic_vector (3 downto 0);
+    signal Hp_out : std_logic;
+    
+  
 begin
     
-    process(clk)
+    counter:process(clk)
     begin
         if rising_edge(clk) then
-            
+            if horiz_counter < horiz_max_range then
+                horiz_counter <= horiz_counter + 1;               
+            else
+                horiz_counter <= 0;
+            end if;
         end if;
-    end process
-
+    end process;
+    
+    read_data:process(clk)
+    begin
+        if rising_edge(clk) then
+            if horiz_counter < hor_pix then
+                re_out <= '1';
+                R_out <= bram_data(7 downto 4);
+                G_out <= bram_data(7 downto 4);
+                B_out <= bram_data(7 downto 4);
+            else
+                re_out <= '0';
+                R_out <= (others => '0');
+                G_out <= (others => '0');
+                B_out <= (others => '0');
+            end if;
+        end if;
+    end process;
+    
+    pulses:process(clk)
+    begin
+        if rising_edge(clk) then
+            if horiz_counter >= hor_pulse_send and horiz_counter <=hor_pulse_end then
+                Hp_out <= '0';
+            else
+                Hp_out <= '1';
+            end if;
+        end if;
+    end process;
+    
+    R <= R_out;
+    G <= G_out;
+    B <= B_out;
+    Hp <= Hp_out;
+    Re <= re_out;
+    
 end Behavioral;

@@ -56,6 +56,7 @@ USE ieee.numeric_std.ALL;
 ENTITY top_BRAM_reader_0_0 IS
   PORT (
     clk : IN STD_LOGIC;
+    read_enable : IN STD_LOGIC;
     read_start : IN STD_LOGIC;
     bram_read_addr : OUT STD_LOGIC_VECTOR(9 DOWNTO 0)
   );
@@ -71,6 +72,7 @@ ARCHITECTURE top_BRAM_reader_0_0_arch OF top_BRAM_reader_0_0 IS
     );
     PORT (
       clk : IN STD_LOGIC;
+      read_enable : IN STD_LOGIC;
       read_start : IN STD_LOGIC;
       bram_read_addr : OUT STD_LOGIC_VECTOR(9 DOWNTO 0)
     );
@@ -87,6 +89,7 @@ BEGIN
     )
     PORT MAP (
       clk => clk,
+      read_enable => read_enable,
       read_start => read_start,
       bram_read_addr => bram_read_addr
     );

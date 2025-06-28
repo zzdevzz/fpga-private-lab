@@ -46,51 +46,55 @@
 -- 
 -- DO NOT MODIFY THIS FILE.
 
--- IP VLNV: xilinx.com:module_ref:BRAM_reader:1.0
+-- IP VLNV: xilinx.com:module_ref:VGA_Output:1.0
 -- IP Revision: 1
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
 
-ENTITY top_BRAM_reader_0_0 IS
+ENTITY top_VGA_Output_0_0 IS
   PORT (
     clk : IN STD_LOGIC;
-    read_enable : IN STD_LOGIC;
-    read_start : IN STD_LOGIC;
-    bram_read_addr : OUT STD_LOGIC_VECTOR(9 DOWNTO 0)
+    bram_data : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+    R : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
+    G : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
+    B : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
+    HP : OUT STD_LOGIC;
+    VP : OUT STD_LOGIC;
+    Re : OUT STD_LOGIC
   );
-END top_BRAM_reader_0_0;
+END top_VGA_Output_0_0;
 
-ARCHITECTURE top_BRAM_reader_0_0_arch OF top_BRAM_reader_0_0 IS
+ARCHITECTURE top_VGA_Output_0_0_arch OF top_VGA_Output_0_0 IS
   ATTRIBUTE DowngradeIPIdentifiedWarnings : STRING;
-  ATTRIBUTE DowngradeIPIdentifiedWarnings OF top_BRAM_reader_0_0_arch: ARCHITECTURE IS "yes";
-  COMPONENT BRAM_reader IS
-    GENERIC (
-      image_width : INTEGER;
-      image_height : INTEGER
-    );
+  ATTRIBUTE DowngradeIPIdentifiedWarnings OF top_VGA_Output_0_0_arch: ARCHITECTURE IS "yes";
+  COMPONENT VGA_Output IS
     PORT (
       clk : IN STD_LOGIC;
-      read_enable : IN STD_LOGIC;
-      read_start : IN STD_LOGIC;
-      bram_read_addr : OUT STD_LOGIC_VECTOR(9 DOWNTO 0)
+      bram_data : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+      R : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
+      G : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
+      B : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
+      HP : OUT STD_LOGIC;
+      VP : OUT STD_LOGIC;
+      Re : OUT STD_LOGIC
     );
-  END COMPONENT BRAM_reader;
+  END COMPONENT VGA_Output;
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER OF clk: SIGNAL IS "XIL_INTERFACENAME clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF clk: SIGNAL IS "xilinx.com:signal:clock:1.0 clk CLK";
 BEGIN
-  U0 : BRAM_reader
-    GENERIC MAP (
-      image_width => 640,
-      image_height => 480
-    )
+  U0 : VGA_Output
     PORT MAP (
       clk => clk,
-      read_enable => read_enable,
-      read_start => read_start,
-      bram_read_addr => bram_read_addr
+      bram_data => bram_data,
+      R => R,
+      G => G,
+      B => B,
+      HP => HP,
+      VP => VP,
+      Re => Re
     );
-END top_BRAM_reader_0_0_arch;
+END top_VGA_Output_0_0_arch;
