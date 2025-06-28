@@ -36,8 +36,28 @@ entity tb_top_wrapper is
 end tb_top_wrapper;
 
 architecture Behavioral of tb_top_wrapper is
-
+    signal tb_clock : std_logic := '0';
+    signal tb_reset : std_logic := '0';
+    signal tb_read_start : std_logic := '0';
+    
+    component top_wrapper
+        port(
+            reset : in std_logic;
+            sys_clock : in std_logic
+        );
+    end component;
 begin
-
-
+    
+    DUT: top_wrapper
+    port map(
+        reset => tb_reset,
+        sys_clock => tb_clock
+    );
+    
+    process
+    begin
+        tb_clock <= '0';
+        wait for 5 us;
+        tb_clock <= '1';
+    end process;
 end Behavioral;

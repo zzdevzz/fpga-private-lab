@@ -1,0 +1,8 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "E:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.srcs/sources_1/new/BRAM_reader.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'BRAM_reader'
+INFO: [VRFC 10-163] Analyzing VHDL file "E:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.ip_user_files/bd/top/ip/top_BRAM_reader_0_0/sim/top_BRAM_reader_0_0.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'top_BRAM_reader_0_0'
+INFO: [VRFC 10-163] Analyzing VHDL file "E:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.ip_user_files/bd/top/sim/top.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'top'
+INFO: [VRFC 10-163] Analyzing VHDL file "E:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.gen/sources_1/bd/top/hdl/top_wrapper.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'top_wrapper'

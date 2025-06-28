@@ -12,7 +12,8 @@
     },
     "design_tree": {
       "clk_wiz_0": "",
-      "blk_mem_gen_0": ""
+      "blk_mem_gen_0": "",
+      "xlconstant_0": ""
     },
     "ports": {
       "sys_clock": {
@@ -95,6 +96,13 @@
             "value": "Stand_Alone"
           }
         }
+      },
+      "xlconstant_0": {
+        "vlnv": "xilinx.com:ip:xlconstant:1.1",
+        "ip_revision": "8",
+        "xci_name": "top_xlconstant_0_0",
+        "xci_path": "ip\\top_xlconstant_0_0\\top_xlconstant_0_0.xci",
+        "inst_hier_path": "xlconstant_0"
       }
     },
     "nets": {
@@ -114,6 +122,12 @@
         "ports": [
           "sys_clock",
           "clk_wiz_0/clk_in1"
+        ]
+      },
+      "xlconstant_0_dout": {
+        "ports": [
+          "xlconstant_0/dout",
+          "blk_mem_gen_0/ena"
         ]
       }
     }
