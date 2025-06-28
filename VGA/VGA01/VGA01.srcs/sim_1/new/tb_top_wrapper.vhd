@@ -45,7 +45,12 @@ architecture Behavioral of tb_top_wrapper is
     component top_wrapper
         port(
             reset : in std_logic;
-            sys_clock : in std_logic
+            sys_clock : in std_logic;
+            vgaRed : out std_logic_vector (3 downto 0);
+            vgaGreen : out std_logic_vector (3 downto 0);
+            vgaBlue : out std_logic_vector (3 downto 0);
+            HSync : out std_logic;
+            VSync : out std_logic
         );
     end component;
 begin
@@ -53,7 +58,12 @@ begin
     DUT: top_wrapper
     port map(
         reset => tb_reset,
-        sys_clock => tb_clock
+        sys_clock => tb_clock,
+        vgaRed => open,
+        vgaGreen =>  open,
+        vgaBlue => open,
+        HSync => open,
+        VSync => open
     );
     
      clk_gen : process

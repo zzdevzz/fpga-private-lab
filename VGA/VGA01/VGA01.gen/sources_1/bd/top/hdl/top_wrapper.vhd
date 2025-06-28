@@ -2,7 +2,7 @@
 --Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
---Date        : Sat Jun 28 16:41:25 2025
+--Date        : Sat Jun 28 18:17:44 2025
 --Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 --Command     : generate_target top_wrapper.bd
 --Design      : top_wrapper
@@ -14,8 +14,13 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity top_wrapper is
   port (
+    HSync : out STD_LOGIC;
+    VSync : out STD_LOGIC;
     reset : in STD_LOGIC;
-    sys_clock : in STD_LOGIC
+    sys_clock : in STD_LOGIC;
+    vgaBlue : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    vgaGreen : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    vgaRed : out STD_LOGIC_VECTOR ( 3 downto 0 )
   );
 end top_wrapper;
 
@@ -23,13 +28,23 @@ architecture STRUCTURE of top_wrapper is
   component top is
   port (
     sys_clock : in STD_LOGIC;
-    reset : in STD_LOGIC
+    reset : in STD_LOGIC;
+    vgaRed : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    vgaGreen : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    vgaBlue : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    HSync : out STD_LOGIC;
+    VSync : out STD_LOGIC
   );
   end component top;
 begin
 top_i: component top
      port map (
+      HSync => HSync,
+      VSync => VSync,
       reset => reset,
-      sys_clock => sys_clock
+      sys_clock => sys_clock,
+      vgaBlue(3 downto 0) => vgaBlue(3 downto 0),
+      vgaGreen(3 downto 0) => vgaGreen(3 downto 0),
+      vgaRed(3 downto 0) => vgaRed(3 downto 0)
     );
 end STRUCTURE;

@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x40BFD57AA4B5A002",
+      "boundary_crc": "0x79408D004A470E32",
       "device": "xc7a35tcpg236-1",
       "gen_directory": "../../../../VGA01.gen/sources_1/bd/top",
       "name": "top",
@@ -54,6 +54,27 @@
             "value": "ACTIVE_HIGH"
           }
         }
+      },
+      "vgaRed": {
+        "direction": "O",
+        "left": "3",
+        "right": "0"
+      },
+      "vgaGreen": {
+        "direction": "O",
+        "left": "3",
+        "right": "0"
+      },
+      "vgaBlue": {
+        "direction": "O",
+        "left": "3",
+        "right": "0"
+      },
+      "HSync": {
+        "direction": "O"
+      },
+      "VSync": {
+        "direction": "O"
       }
     },
     "components": {
@@ -190,17 +211,17 @@
             "left": "7",
             "right": "0"
           },
-          "R": {
+          "vgaRed": {
             "direction": "O",
             "left": "3",
             "right": "0"
           },
-          "G": {
+          "vgaGreen": {
             "direction": "O",
             "left": "3",
             "right": "0"
           },
-          "B": {
+          "vgaBlue": {
             "direction": "O",
             "left": "3",
             "right": "0"
@@ -224,10 +245,40 @@
           "blk_mem_gen_0/addra"
         ]
       },
+      "VGA_Output_0_B": {
+        "ports": [
+          "VGA_Output_0/vgaBlue",
+          "vgaBlue"
+        ]
+      },
+      "VGA_Output_0_G": {
+        "ports": [
+          "VGA_Output_0/vgaGreen",
+          "vgaGreen"
+        ]
+      },
+      "VGA_Output_0_HP": {
+        "ports": [
+          "VGA_Output_0/HP",
+          "HSync"
+        ]
+      },
+      "VGA_Output_0_R": {
+        "ports": [
+          "VGA_Output_0/vgaRed",
+          "vgaRed"
+        ]
+      },
       "VGA_Output_0_Re": {
         "ports": [
           "VGA_Output_0/Re",
           "BRAM_reader_0/read_enable"
+        ]
+      },
+      "VGA_Output_0_VP": {
+        "ports": [
+          "VGA_Output_0/VP",
+          "VSync"
         ]
       },
       "blk_mem_gen_0_douta": {

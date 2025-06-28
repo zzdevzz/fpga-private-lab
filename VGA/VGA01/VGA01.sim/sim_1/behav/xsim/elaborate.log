@@ -6,34 +6,4 @@ Using 2 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
 Completed static elaboration
-Starting simulation data flow analysis
-Completed simulation data flow analysis
-Time Resolution for simulation is 1ps
-Compiling package std.standard
-Compiling package std.textio
-Compiling package ieee.std_logic_1164
-Compiling package ieee.numeric_std
-Compiling package unisim.vcomponents
-Compiling package vl.vl_types
-Compiling module xil_defaultlib.glbl
-Compiling architecture behavioral of entity xil_defaultlib.BRAM_reader [bram_reader_default]
-Compiling architecture top_bram_reader_0_0_arch of entity xil_defaultlib.top_BRAM_reader_0_0 [top_bram_reader_0_0_default]
-Compiling architecture behavioral of entity xil_defaultlib.VGA_Output [vga_output_default]
-Compiling architecture top_vga_output_0_0_arch of entity xil_defaultlib.top_VGA_Output_0_0 [top_vga_output_0_0_default]
-Compiling module blk_mem_gen_v8_4_7.blk_mem_gen_v8_4_7_output_stage(...
-Compiling module blk_mem_gen_v8_4_7.blk_mem_gen_v8_4_7_output_stage(...
-Compiling module blk_mem_gen_v8_4_7.blk_mem_gen_v8_4_7_softecc_outpu...
-Compiling module blk_mem_gen_v8_4_7.blk_mem_gen_v8_4_7_mem_module(C_...
-Compiling module blk_mem_gen_v8_4_7.blk_mem_gen_v8_4_7(C_FAMILY="art...
-Compiling module xil_defaultlib.top_blk_mem_gen_0_0
-Compiling module unisims_ver.IBUF
-Compiling module unisims_ver.MMCME2_ADV(CLKFBOUT_MULT_F=10.0,...
-Compiling module unisims_ver.BUFG
-Compiling module xil_defaultlib.top_clk_wiz_0_0_clk_wiz
-Compiling module xil_defaultlib.top_clk_wiz_0_0
-Compiling module xlconstant_v1_1_8.xlconstant_v1_1_8_xlconstant(CON...
-Compiling module xil_defaultlib.top_xlconstant_0_0
-Compiling architecture structure of entity xil_defaultlib.top [top_default]
-Compiling architecture structure of entity xil_defaultlib.top_wrapper [top_wrapper_default]
-Compiling architecture behavioral of entity xil_defaultlib.tb_top_wrapper
-Built simulation snapshot tb_top_wrapper_behav
+INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel

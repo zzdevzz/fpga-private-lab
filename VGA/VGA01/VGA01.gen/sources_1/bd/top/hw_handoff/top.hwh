@@ -1,9 +1,19 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sat Jun 28 16:41:25 2025" VIVADOVERSION="2023.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sat Jun 28 18:17:44 2025" VIVADOVERSION="2023.2">
 
   <SYSTEMINFO ARCH="artix7" BOARD="digilentinc.com:basys3:part0:1.2" DEVICE="7a35t" NAME="top" PACKAGE="cpg236" SPEEDGRADE="-1"/>
 
   <EXTERNALPORTS>
+    <PORT DIR="O" NAME="HSync" SIGIS="undef" SIGNAME="VGA_Output_0_HP">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="VGA_Output_0" PORT="HP"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="VSync" SIGIS="undef" SIGNAME="VGA_Output_0_VP">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="VGA_Output_0" PORT="VP"/>
+      </CONNECTIONS>
+    </PORT>
     <PORT DIR="I" NAME="reset" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="External_Ports_reset">
       <CONNECTIONS>
         <CONNECTION INSTANCE="clk_wiz_0" PORT="reset"/>
@@ -12,6 +22,21 @@
     <PORT CLKFREQUENCY="100000000" DIR="I" NAME="sys_clock" SIGIS="clk" SIGNAME="External_Ports_sys_clock">
       <CONNECTIONS>
         <CONNECTION INSTANCE="clk_wiz_0" PORT="clk_in1"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="3" NAME="vgaBlue" RIGHT="0" SIGIS="undef" SIGNAME="VGA_Output_0_vgaBlue">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="VGA_Output_0" PORT="vgaBlue"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="3" NAME="vgaGreen" RIGHT="0" SIGIS="undef" SIGNAME="VGA_Output_0_vgaGreen">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="VGA_Output_0" PORT="vgaGreen"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="3" NAME="vgaRed" RIGHT="0" SIGIS="undef" SIGNAME="VGA_Output_0_vgaRed">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="VGA_Output_0" PORT="vgaRed"/>
       </CONNECTIONS>
     </PORT>
   </EXTERNALPORTS>
@@ -58,16 +83,21 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="O" LEFT="3" NAME="B" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="O" LEFT="3" NAME="G" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="O" NAME="HP" SIGIS="undef"/>
-        <PORT DIR="O" LEFT="3" NAME="R" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" NAME="HP" SIGIS="undef" SIGNAME="VGA_Output_0_HP">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="HSync"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="O" NAME="Re" SIGIS="undef" SIGNAME="VGA_Output_0_Re">
           <CONNECTIONS>
             <CONNECTION INSTANCE="BRAM_reader_0" PORT="read_enable"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="VP" SIGIS="undef"/>
+        <PORT DIR="O" NAME="VP" SIGIS="undef" SIGNAME="VGA_Output_0_VP">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="VSync"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="I" LEFT="7" NAME="bram_data" RIGHT="0" SIGIS="undef" SIGNAME="blk_mem_gen_0_douta">
           <CONNECTIONS>
             <CONNECTION INSTANCE="blk_mem_gen_0" PORT="douta"/>
@@ -76,6 +106,21 @@
         <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="clk_wiz_0_clk_out1">
           <CONNECTIONS>
             <CONNECTION INSTANCE="clk_wiz_0" PORT="clk_out1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="3" NAME="vgaBlue" RIGHT="0" SIGIS="undef" SIGNAME="VGA_Output_0_vgaBlue">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="vgaBlue"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="3" NAME="vgaGreen" RIGHT="0" SIGIS="undef" SIGNAME="VGA_Output_0_vgaGreen">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="vgaGreen"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="3" NAME="vgaRed" RIGHT="0" SIGIS="undef" SIGNAME="VGA_Output_0_vgaRed">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="vgaRed"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>

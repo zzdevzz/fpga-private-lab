@@ -33,7 +33,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>fdadab3e</spirit:value>
+            <spirit:value>b51a468c</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -46,7 +46,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>fdadab3e</spirit:value>
+            <spirit:value>b51a468c</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -91,7 +91,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>R</spirit:name>
+        <spirit:name>vgaRed</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
@@ -108,7 +108,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>G</spirit:name>
+        <spirit:name>vgaGreen</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
@@ -125,7 +125,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>B</spirit:name>
+        <spirit:name>vgaBlue</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
@@ -215,7 +215,7 @@
         <xilinx:designToolContext>IPI</xilinx:designToolContext>
       </xilinx:designToolContexts>
       <xilinx:coreRevision>1</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2025-06-28T15:40:26Z</xilinx:coreCreationDateTime>
+      <xilinx:coreCreationDateTime>2025-06-28T17:16:17Z</xilinx:coreCreationDateTime>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2023.2</xilinx:xilinxVersion>

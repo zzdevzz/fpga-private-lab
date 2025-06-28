@@ -39,9 +39,9 @@ entity VGA_Output is
   Port ( 
     clk : in std_logic;
     bram_data : in std_logic_vector(7 downto 0);
-    R : out std_logic_vector(3 downto 0); --RGB Colours only 4 bit in VGA.
-    G : out std_logic_vector(3 downto 0);
-    B : out std_logic_vector(3 downto 0);
+    vgaRed : out std_logic_vector(3 downto 0); --RGB Colours only 4 bit in VGA.
+    vgaGreen : out std_logic_vector(3 downto 0);
+    vgaBlue : out std_logic_vector(3 downto 0);
     HP : out std_logic; -- Horizontal Pulse
     VP : out std_logic; -- Vertical pulse
     Re : out std_logic -- Read enable (from BRAM)
@@ -60,17 +60,34 @@ architecture Behavioral of VGA_Output is
 
 --    pixels are only being drawn between 0 and 639
 --    pulse is only active(low) between the 96 cycles after front porch and before back porch
+
+    constant horiz_pix : integer := 32; --(640 minus 1 since 0 index) -- change this to image size
     constant horiz_max_range : integer := 799;
     signal horiz_counter : integer range 0 to horiz_max_range := 0;
-    constant hor_pix : integer := 640; --(640 minus 1 since 0 index)
-    constant hor_pulse_send : integer := 656; --(end of front porch,640px plus front porch mount).
-    constant hor_pulse_end : integer := 752; -- end of pulse being sent
+    constant horiz_pulse_send : integer := 656; --(end of front porch,640px plus front porch mount).
+    constant horiz_pulse_end : integer := 752; -- end of pulse being sent
+    
+--    Vertically
+--    first 480 pixels are the monitor drawing
+--    then 10 cycles are front porch (pixels are black or not reading from BRAM, and not sending pulse yet).
+--    then 2 cycles for the pulse (pulse is active) - pixels are actually empty / black here too.
+--    then 33 cycles for the back pulse (after pulse is sent, pixels are empty (black) before restarting or readng again).
+
+--    pixels are only being drawn between 0 and 479
+--    pulse is only active(low) between the 33 cycles after front porch and before back porch
+    
+    constant vert_pix : integer := 32; -- change this to image size
+    constant vert_max_range : integer := 525;
+    signal vert_counter : integer range 0 to vert_max_range := 0;
+    constant vert_pulse_send : integer := 490; --(end of front porch,640px plus front porch mount).
+    constant vert_pulse_end : integer := 492; -- end of pulse being sent
     
     signal re_out : std_logic;
     signal R_out : std_logic_vector (3 downto 0);
     signal G_out : std_logic_vector (3 downto 0);
     signal B_out : std_logic_vector (3 downto 0);
     signal Hp_out : std_logic;
+    signal Vp_out : std_logic;
     
   
 begin
@@ -82,6 +99,11 @@ begin
                 horiz_counter <= horiz_counter + 1;               
             else
                 horiz_counter <= 0;
+                vert_counter <= vert_counter + 1;  
+            end if;
+            
+            if vert_counter = vert_max_range then
+                vert_counter <= 0;
             end if;
         end if;
     end process;
@@ -89,7 +111,7 @@ begin
     read_data:process(clk)
     begin
         if rising_edge(clk) then
-            if horiz_counter < hor_pix then
+            if horiz_counter < horiz_pix then
                 re_out <= '1';
                 R_out <= bram_data(7 downto 4);
                 G_out <= bram_data(7 downto 4);
@@ -106,18 +128,26 @@ begin
     pulses:process(clk)
     begin
         if rising_edge(clk) then
-            if horiz_counter >= hor_pulse_send and horiz_counter <=hor_pulse_end then
+            if horiz_counter >= horiz_pulse_send and horiz_counter <=horiz_pulse_end then
                 Hp_out <= '0';
             else
                 Hp_out <= '1';
             end if;
+            
+            if vert_counter >= vert_pulse_send and vert_counter <=vert_pulse_end then
+                Vp_out <= '0';
+            else
+                Vp_out <= '1';
+            end if;
+                        
         end if;
     end process;
     
-    R <= R_out;
-    G <= G_out;
-    B <= B_out;
-    Hp <= Hp_out;
+    vgaRed <= R_out;
+    vgaGreen <= G_out;
+    vgaBlue <= B_out;
+    HP <= Hp_out;
+    VP <= Vp_out;
     Re <= re_out;
     
 end Behavioral;

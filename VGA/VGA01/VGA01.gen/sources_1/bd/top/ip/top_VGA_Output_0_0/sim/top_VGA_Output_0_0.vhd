@@ -57,9 +57,9 @@ ENTITY top_VGA_Output_0_0 IS
   PORT (
     clk : IN STD_LOGIC;
     bram_data : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
-    R : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
-    G : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
-    B : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
+    vgaRed : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
+    vgaGreen : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
+    vgaBlue : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
     HP : OUT STD_LOGIC;
     VP : OUT STD_LOGIC;
     Re : OUT STD_LOGIC
@@ -73,9 +73,9 @@ ARCHITECTURE top_VGA_Output_0_0_arch OF top_VGA_Output_0_0 IS
     PORT (
       clk : IN STD_LOGIC;
       bram_data : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
-      R : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
-      G : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
-      B : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
+      vgaRed : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
+      vgaGreen : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
+      vgaBlue : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
       HP : OUT STD_LOGIC;
       VP : OUT STD_LOGIC;
       Re : OUT STD_LOGIC
@@ -90,9 +90,9 @@ BEGIN
     PORT MAP (
       clk => clk,
       bram_data => bram_data,
-      R => R,
-      G => G,
-      B => B,
+      vgaRed => vgaRed,
+      vgaGreen => vgaGreen,
+      vgaBlue => vgaBlue,
       HP => HP,
       VP => VP,
       Re => Re
