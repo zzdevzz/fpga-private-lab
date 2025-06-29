@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date             : Sun Jun 29 02:55:08 2025
+| Date             : Sun Jun 29 03:06:11 2025
 | Host             : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 | Command          : report_power -file top_wrapper_power_routed.rpt -pb top_wrapper_power_summary_routed.pb -rpx top_wrapper_power_routed.rpx
 | Design           : top_wrapper
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.174        |
+| Total On-Chip Power (W)  | 0.173        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.102        |
+| Dynamic (W)              | 0.101        |
 | Device Static (W)        | 0.072        |
 | Effective TJA (C/W)      | 5.0          |
 | Max Ambient (C)          | 84.1         |
@@ -53,8 +53,8 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |    <0.001 |        5 |       --- |             --- |
-| Slice Logic    |    <0.001 |      100 |       --- |             --- |
-|   LUT as Logic |    <0.001 |       32 |     20800 |            0.15 |
+| Slice Logic    |    <0.001 |      101 |       --- |             --- |
+|   LUT as Logic |    <0.001 |       34 |     20800 |            0.16 |
 |   Register     |    <0.001 |       45 |     41600 |            0.11 |
 |   Others       |     0.000 |        7 |       --- |             --- |
 | Signals        |    <0.001 |       69 |       --- |             --- |
@@ -62,7 +62,7 @@ Table of Contents
 | PLL            |     0.100 |        1 |         5 |           20.00 |
 | I/O            |    <0.001 |       16 |       106 |           15.09 |
 | Static Power   |     0.072 |          |           |                 |
-| Total          |     0.174 |          |           |                 |
+| Total          |     0.173 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -143,7 +143,7 @@ Table of Contents
 +---------------+-----------+
 | Name          | Power (W) |
 +---------------+-----------+
-| top_wrapper   |     0.102 |
+| top_wrapper   |     0.101 |
 |   top_i       |     0.101 |
 |     clk_wiz_0 |     0.101 |
 |       inst    |     0.101 |

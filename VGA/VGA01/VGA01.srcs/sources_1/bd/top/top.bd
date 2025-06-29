@@ -354,8 +354,8 @@
         "ports": [
           "clk_wiz_0/clk_out25",
           "BRAM_reader_0/clk",
-          "VGA_Output_0/clk",
-          "blk_mem_gen_0/clka"
+          "blk_mem_gen_0/clka",
+          "VGA_Output_0/clk"
         ]
       },
       "reset_1": {

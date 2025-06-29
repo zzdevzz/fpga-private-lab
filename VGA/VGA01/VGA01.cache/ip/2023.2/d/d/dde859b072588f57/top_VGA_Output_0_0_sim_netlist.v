@@ -4,8 +4,8 @@
 // Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
 // Date        : Sun Jun 29 03:04:46 2025
 // Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim {e:/FPGA/VHDL/Lab
-//               Training/VGA/VGA01/VGA01.gen/sources_1/bd/top/ip/top_VGA_Output_0_0/top_VGA_Output_0_0_sim_netlist.v}
+// Command     : write_verilog -force -mode funcsim -rename_top decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix -prefix
+//               decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_ top_VGA_Output_0_0_sim_netlist.v
 // Design      : top_VGA_Output_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -13,47 +13,7 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CHECK_LICENSE_TYPE = "top_VGA_Output_0_0,VGA_Output,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* ip_definition_source = "module_ref" *) 
-(* x_core_info = "VGA_Output,Vivado 2023.2" *) 
-(* NotValidForBitStream *)
-module top_VGA_Output_0_0
-   (clk,
-    bram_data,
-    vgaRed,
-    vgaGreen,
-    vgaBlue,
-    Hsync,
-    Vsync,
-    Re);
-  (* x_interface_info = "xilinx.com:signal:clock:1.0 clk CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME clk, FREQ_HZ 25000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, INSERT_VIP 0" *) input clk;
-  input [7:0]bram_data;
-  output [3:0]vgaRed;
-  output [3:0]vgaGreen;
-  output [3:0]vgaBlue;
-  output Hsync;
-  output Vsync;
-  output Re;
-
-  wire Hsync;
-  wire Re;
-  wire Vsync;
-  wire [7:0]bram_data;
-  wire clk;
-  wire [3:0]vgaBlue;
-
-  assign vgaGreen[3:0] = vgaBlue;
-  assign vgaRed[3:0] = vgaBlue;
-  top_VGA_Output_0_0_VGA_Output U0
-       (.Hsync(Hsync),
-        .Re(Re),
-        .Vsync(Vsync),
-        .bram_data(bram_data[7:4]),
-        .clk(clk),
-        .vgaBlue(vgaBlue));
-endmodule
-
-(* ORIG_REF_NAME = "VGA_Output" *) 
-module top_VGA_Output_0_0_VGA_Output
+module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_VGA_Output
    (vgaBlue,
     Re,
     Hsync,
@@ -657,6 +617,45 @@ module top_VGA_Output_0_0_VGA_Output
         .D(\vert_counter[9]_i_2_n_0 ),
         .Q(vert_counter[9]),
         .R(1'b0));
+endmodule
+
+(* CHECK_LICENSE_TYPE = "top_VGA_Output_0_0,VGA_Output,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* ip_definition_source = "module_ref" *) 
+(* x_core_info = "VGA_Output,Vivado 2023.2" *) 
+(* NotValidForBitStream *)
+module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix
+   (clk,
+    bram_data,
+    vgaRed,
+    vgaGreen,
+    vgaBlue,
+    Hsync,
+    Vsync,
+    Re);
+  (* x_interface_info = "xilinx.com:signal:clock:1.0 clk CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME clk, FREQ_HZ 25000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, INSERT_VIP 0" *) input clk;
+  input [7:0]bram_data;
+  output [3:0]vgaRed;
+  output [3:0]vgaGreen;
+  output [3:0]vgaBlue;
+  output Hsync;
+  output Vsync;
+  output Re;
+
+  wire Hsync;
+  wire Re;
+  wire Vsync;
+  wire [7:0]bram_data;
+  wire clk;
+  wire [3:0]vgaBlue;
+
+  assign vgaGreen[3:0] = vgaBlue;
+  assign vgaRed[3:0] = vgaBlue;
+  decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_VGA_Output U0
+       (.Hsync(Hsync),
+        .Re(Re),
+        .Vsync(Vsync),
+        .bram_data(bram_data[7:4]),
+        .clk(clk),
+        .vgaBlue(vgaBlue));
 endmodule
 `ifndef GLBL
 `define GLBL

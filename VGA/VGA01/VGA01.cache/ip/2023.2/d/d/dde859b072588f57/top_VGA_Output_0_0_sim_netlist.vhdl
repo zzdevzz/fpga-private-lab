@@ -4,8 +4,8 @@
 -- Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
 -- Date        : Sun Jun 29 03:04:46 2025
 -- Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim {e:/FPGA/VHDL/Lab
---               Training/VGA/VGA01/VGA01.gen/sources_1/bd/top/ip/top_VGA_Output_0_0/top_VGA_Output_0_0_sim_netlist.vhdl}
+-- Command     : write_vhdl -force -mode funcsim -rename_top decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix -prefix
+--               decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_ top_VGA_Output_0_0_sim_netlist.vhdl
 -- Design      : top_VGA_Output_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -15,7 +15,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity top_VGA_Output_0_0_VGA_Output is
+entity decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_VGA_Output is
   port (
     vgaBlue : out STD_LOGIC_VECTOR ( 3 downto 0 );
     Re : out STD_LOGIC;
@@ -24,11 +24,9 @@ entity top_VGA_Output_0_0_VGA_Output is
     clk : in STD_LOGIC;
     bram_data : in STD_LOGIC_VECTOR ( 3 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of top_VGA_Output_0_0_VGA_Output : entity is "VGA_Output";
-end top_VGA_Output_0_0_VGA_Output;
+end decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_VGA_Output;
 
-architecture STRUCTURE of top_VGA_Output_0_0_VGA_Output is
+architecture STRUCTURE of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_VGA_Output is
   signal Hp_out_i_1_n_0 : STD_LOGIC;
   signal Hp_out_i_2_n_0 : STD_LOGIC;
   signal Hp_out_i_3_n_0 : STD_LOGIC;
@@ -808,7 +806,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity top_VGA_Output_0_0 is
+entity decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix is
   port (
     clk : in STD_LOGIC;
     bram_data : in STD_LOGIC_VECTOR ( 7 downto 0 );
@@ -820,18 +818,18 @@ entity top_VGA_Output_0_0 is
     Re : out STD_LOGIC
   );
   attribute NotValidForBitStream : boolean;
-  attribute NotValidForBitStream of top_VGA_Output_0_0 : entity is true;
+  attribute NotValidForBitStream of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix : entity is true;
   attribute CHECK_LICENSE_TYPE : string;
-  attribute CHECK_LICENSE_TYPE of top_VGA_Output_0_0 : entity is "top_VGA_Output_0_0,VGA_Output,{}";
+  attribute CHECK_LICENSE_TYPE of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix : entity is "top_VGA_Output_0_0,VGA_Output,{}";
   attribute downgradeipidentifiedwarnings : string;
-  attribute downgradeipidentifiedwarnings of top_VGA_Output_0_0 : entity is "yes";
+  attribute downgradeipidentifiedwarnings of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix : entity is "yes";
   attribute ip_definition_source : string;
-  attribute ip_definition_source of top_VGA_Output_0_0 : entity is "module_ref";
+  attribute ip_definition_source of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix : entity is "module_ref";
   attribute x_core_info : string;
-  attribute x_core_info of top_VGA_Output_0_0 : entity is "VGA_Output,Vivado 2023.2";
-end top_VGA_Output_0_0;
+  attribute x_core_info of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix : entity is "VGA_Output,Vivado 2023.2";
+end decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix;
 
-architecture STRUCTURE of top_VGA_Output_0_0 is
+architecture STRUCTURE of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix is
   signal \^vgablue\ : STD_LOGIC_VECTOR ( 3 downto 0 );
   attribute x_interface_info : string;
   attribute x_interface_info of clk : signal is "xilinx.com:signal:clock:1.0 clk CLK";
@@ -841,7 +839,7 @@ begin
   vgaBlue(3 downto 0) <= \^vgablue\(3 downto 0);
   vgaGreen(3 downto 0) <= \^vgablue\(3 downto 0);
   vgaRed(3 downto 0) <= \^vgablue\(3 downto 0);
-U0: entity work.top_VGA_Output_0_0_VGA_Output
+U0: entity work.decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_VGA_Output
      port map (
       Hsync => Hsync,
       Re => Re,

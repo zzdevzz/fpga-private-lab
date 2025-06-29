@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun Jun 29 02:53:05 2025" VIVADOVERSION="2023.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun Jun 29 03:04:08 2025" VIVADOVERSION="2023.2">
 
   <SYSTEMINFO ARCH="artix7" BOARD="digilentinc.com:basys3:part0:1.2" DEVICE="7a35t" NAME="top" PACKAGE="cpg236" SPEEDGRADE="-1"/>
 
@@ -908,8 +908,8 @@
         <PORT CLKFREQUENCY="25000000" DIR="O" NAME="clk_out25" SIGIS="clk" SIGNAME="clk_wiz_0_clk_out25">
           <CONNECTIONS>
             <CONNECTION INSTANCE="BRAM_reader_0" PORT="clk"/>
-            <CONNECTION INSTANCE="VGA_Output_0" PORT="clk"/>
             <CONNECTION INSTANCE="blk_mem_gen_0" PORT="clka"/>
+            <CONNECTION INSTANCE="VGA_Output_0" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="locked" SIGIS="undef"/>

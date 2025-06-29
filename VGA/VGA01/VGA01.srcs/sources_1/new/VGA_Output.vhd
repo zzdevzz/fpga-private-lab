@@ -111,7 +111,7 @@ begin
     read_data:process(clk)
     begin
         if rising_edge(clk) then
-            if horiz_counter < horiz_pix then
+            if horiz_counter < horiz_pix and vert_counter < vert_pix then
                 re_out <= '1';
                 R_out <= bram_data(7 downto 4);
                 G_out <= bram_data(7 downto 4);
