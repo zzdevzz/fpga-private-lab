@@ -3,8 +3,8 @@
 # SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Sun Jun 29 03:04:49 2025
-# Process ID: 13888
+# Start of session at: Sun Jun 29 22:30:47 2025
+# Process ID: 2276
 # Current directory: E:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.runs/synth_1
 # Command line: vivado.exe -log top_wrapper.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top_wrapper.tcl
 # Log file: E:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.runs/synth_1/top_wrapper.vds
@@ -12,7 +12,7 @@
 # Running On: DESKTOP-EFRMAI2, OS: Windows, CPU Frequency: 3700 MHz, CPU Physical cores: 24, Host memory: 34281 MB
 #-----------------------------------------------------------
 source top_wrapper.tcl -notrace
-create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 511.035 ; gain = 216.582
+create_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 512.641 ; gain = 219.172
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1700] Loaded user IP repository 'j:/Xilinx/Vivado/vivado-library-master'.
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'J:/Xilinx/Vivado/2023.2/data/ip'.
@@ -28,22 +28,22 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 39108
+INFO: [Synth 8-7075] Helper process launched with PID 37220
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1369.879 ; gain = 441.484
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1368.910 ; gain = 439.492
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'top_wrapper' [e:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.gen/sources_1/bd/top/hdl/top_wrapper.vhd:27]
 INFO: [Synth 8-3491] module 'top' declared at 'e:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.gen/sources_1/bd/top/synth/top.vhd:15' bound to instance 'top_i' of component 'top' [e:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.gen/sources_1/bd/top/hdl/top_wrapper.vhd:40]
 INFO: [Synth 8-638] synthesizing module 'top' [e:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.gen/sources_1/bd/top/synth/top.vhd:31]
-INFO: [Synth 8-3491] module 'top_BRAM_reader_0_0' declared at 'E:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.runs/synth_1/.Xil/Vivado-13888-DESKTOP-EFRMAI2/realtime/top_BRAM_reader_0_0_stub.vhdl:6' bound to instance 'BRAM_reader_0' of component 'top_BRAM_reader_0_0' [e:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.gen/sources_1/bd/top/synth/top.vhd:102]
-INFO: [Synth 8-638] synthesizing module 'top_BRAM_reader_0_0' [E:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.runs/synth_1/.Xil/Vivado-13888-DESKTOP-EFRMAI2/realtime/top_BRAM_reader_0_0_stub.vhdl:16]
-INFO: [Synth 8-3491] module 'top_VGA_Output_0_0' declared at 'E:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.runs/synth_1/.Xil/Vivado-13888-DESKTOP-EFRMAI2/realtime/top_VGA_Output_0_0_stub.vhdl:6' bound to instance 'VGA_Output_0' of component 'top_VGA_Output_0_0' [e:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.gen/sources_1/bd/top/synth/top.vhd:109]
-INFO: [Synth 8-638] synthesizing module 'top_VGA_Output_0_0' [E:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.runs/synth_1/.Xil/Vivado-13888-DESKTOP-EFRMAI2/realtime/top_VGA_Output_0_0_stub.vhdl:20]
-INFO: [Synth 8-3491] module 'top_blk_mem_gen_0_0' declared at 'E:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.runs/synth_1/.Xil/Vivado-13888-DESKTOP-EFRMAI2/realtime/top_blk_mem_gen_0_0_stub.vhdl:6' bound to instance 'blk_mem_gen_0' of component 'top_blk_mem_gen_0_0' [e:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.gen/sources_1/bd/top/synth/top.vhd:120]
-INFO: [Synth 8-638] synthesizing module 'top_blk_mem_gen_0_0' [E:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.runs/synth_1/.Xil/Vivado-13888-DESKTOP-EFRMAI2/realtime/top_blk_mem_gen_0_0_stub.vhdl:16]
-INFO: [Synth 8-3491] module 'top_clk_wiz_0_0' declared at 'E:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.runs/synth_1/.Xil/Vivado-13888-DESKTOP-EFRMAI2/realtime/top_clk_wiz_0_0_stub.vhdl:6' bound to instance 'clk_wiz_0' of component 'top_clk_wiz_0_0' [e:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.gen/sources_1/bd/top/synth/top.vhd:127]
-INFO: [Synth 8-638] synthesizing module 'top_clk_wiz_0_0' [E:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.runs/synth_1/.Xil/Vivado-13888-DESKTOP-EFRMAI2/realtime/top_clk_wiz_0_0_stub.vhdl:17]
-INFO: [Synth 8-3491] module 'top_xlconstant_0_0' declared at 'e:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.gen/sources_1/bd/top/ip/top_xlconstant_0_0/synth/top_xlconstant_0_0.v:53' bound to instance 'xlconstant_0' of component 'top_xlconstant_0_0' [e:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.gen/sources_1/bd/top/synth/top.vhd:135]
+INFO: [Synth 8-3491] module 'top_BRAM_reader_0_0' declared at 'E:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.runs/synth_1/.Xil/Vivado-2276-DESKTOP-EFRMAI2/realtime/top_BRAM_reader_0_0_stub.vhdl:6' bound to instance 'BRAM_reader_0' of component 'top_BRAM_reader_0_0' [e:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.gen/sources_1/bd/top/synth/top.vhd:104]
+INFO: [Synth 8-638] synthesizing module 'top_BRAM_reader_0_0' [E:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.runs/synth_1/.Xil/Vivado-2276-DESKTOP-EFRMAI2/realtime/top_BRAM_reader_0_0_stub.vhdl:16]
+INFO: [Synth 8-3491] module 'top_VGA_Output_0_0' declared at 'E:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.runs/synth_1/.Xil/Vivado-2276-DESKTOP-EFRMAI2/realtime/top_VGA_Output_0_0_stub.vhdl:6' bound to instance 'VGA_Output_0' of component 'top_VGA_Output_0_0' [e:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.gen/sources_1/bd/top/synth/top.vhd:111]
+INFO: [Synth 8-638] synthesizing module 'top_VGA_Output_0_0' [E:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.runs/synth_1/.Xil/Vivado-2276-DESKTOP-EFRMAI2/realtime/top_VGA_Output_0_0_stub.vhdl:21]
+INFO: [Synth 8-3491] module 'top_blk_mem_gen_0_0' declared at 'E:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.runs/synth_1/.Xil/Vivado-2276-DESKTOP-EFRMAI2/realtime/top_blk_mem_gen_0_0_stub.vhdl:6' bound to instance 'blk_mem_gen_0' of component 'top_blk_mem_gen_0_0' [e:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.gen/sources_1/bd/top/synth/top.vhd:123]
+INFO: [Synth 8-638] synthesizing module 'top_blk_mem_gen_0_0' [E:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.runs/synth_1/.Xil/Vivado-2276-DESKTOP-EFRMAI2/realtime/top_blk_mem_gen_0_0_stub.vhdl:16]
+INFO: [Synth 8-3491] module 'top_clk_wiz_0_0' declared at 'E:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.runs/synth_1/.Xil/Vivado-2276-DESKTOP-EFRMAI2/realtime/top_clk_wiz_0_0_stub.vhdl:6' bound to instance 'clk_wiz_0' of component 'top_clk_wiz_0_0' [e:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.gen/sources_1/bd/top/synth/top.vhd:130]
+INFO: [Synth 8-638] synthesizing module 'top_clk_wiz_0_0' [E:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.runs/synth_1/.Xil/Vivado-2276-DESKTOP-EFRMAI2/realtime/top_clk_wiz_0_0_stub.vhdl:17]
+INFO: [Synth 8-3491] module 'top_xlconstant_0_0' declared at 'e:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.gen/sources_1/bd/top/ip/top_xlconstant_0_0/synth/top_xlconstant_0_0.v:53' bound to instance 'xlconstant_0' of component 'top_xlconstant_0_0' [e:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.gen/sources_1/bd/top/synth/top.vhd:138]
 INFO: [Synth 8-6157] synthesizing module 'top_xlconstant_0_0' [e:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.gen/sources_1/bd/top/ip/top_xlconstant_0_0/synth/top_xlconstant_0_0.v:53]
 INFO: [Synth 8-6157] synthesizing module 'xlconstant_v1_1_8_xlconstant' [e:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.gen/sources_1/bd/top/ipshared/d390/hdl/xlconstant_v1_1_vl_rfs.v:68]
 INFO: [Synth 8-6155] done synthesizing module 'xlconstant_v1_1_8_xlconstant' (0#1) [e:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.gen/sources_1/bd/top/ipshared/d390/hdl/xlconstant_v1_1_vl_rfs.v:68]
@@ -51,18 +51,18 @@ INFO: [Synth 8-6155] done synthesizing module 'top_xlconstant_0_0' (0#1) [e:/FPG
 INFO: [Synth 8-256] done synthesizing module 'top' (0#1) [e:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.gen/sources_1/bd/top/synth/top.vhd:31]
 INFO: [Synth 8-256] done synthesizing module 'top_wrapper' (0#1) [e:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.gen/sources_1/bd/top/hdl/top_wrapper.vhd:27]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1480.617 ; gain = 552.223
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1479.691 ; gain = 550.273
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1480.617 ; gain = 552.223
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1479.691 ; gain = 550.273
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1480.617 ; gain = 552.223
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1479.691 ; gain = 550.273
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1480.617 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1479.691 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -83,22 +83,22 @@ Parsing XDC File [E:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.runs/synth_1/dont_to
 Finished Parsing XDC File [E:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.runs/synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1497.812 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1479.691 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1497.812 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1479.691 ; gain = 0.000
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1497.812 ; gain = 569.418
+Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1479.691 ; gain = 550.273
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1497.812 ; gain = 569.418
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1479.691 ; gain = 550.273
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -112,10 +112,10 @@ Applied set_property KEEP_HIERARCHY = SOFT for top_i/BRAM_reader_0. (constraint 
 Applied set_property KEEP_HIERARCHY = SOFT for top_i/xlconstant_0. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for top_i/VGA_Output_0. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1497.812 ; gain = 569.418
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1479.691 ; gain = 550.273
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1497.812 ; gain = 569.418
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1479.691 ; gain = 550.273
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -138,25 +138,25 @@ Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1497.812 ; gain = 569.418
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 1479.691 ; gain = 550.273
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1497.812 ; gain = 569.418
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1479.691 ; gain = 550.273
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1497.812 ; gain = 569.418
+Finished Timing Optimization : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1479.691 ; gain = 550.273
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1497.812 ; gain = 569.418
+Finished Technology Mapping : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1479.691 ; gain = 550.273
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -174,37 +174,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1497.812 ; gain = 569.418
+Finished IO Insertion : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1479.691 ; gain = 550.273
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1497.812 ; gain = 569.418
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1479.691 ; gain = 550.273
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1497.812 ; gain = 569.418
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1479.691 ; gain = 550.273
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1497.812 ; gain = 569.418
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1479.691 ; gain = 550.273
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1497.812 ; gain = 569.418
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1479.691 ; gain = 550.273
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1497.812 ; gain = 569.418
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1479.691 ; gain = 550.273
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -232,25 +232,25 @@ Report Cell Usage:
 |6     |OBUF                     |    14|
 +------+-------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1497.812 ; gain = 569.418
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1479.691 ; gain = 550.273
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:12 ; elapsed = 00:00:19 . Memory (MB): peak = 1497.812 ; gain = 552.223
-Synthesis Optimization Complete : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1497.812 ; gain = 569.418
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:13 ; elapsed = 00:00:19 . Memory (MB): peak = 1479.691 ; gain = 550.273
+Synthesis Optimization Complete : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1479.691 ; gain = 550.273
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1497.812 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1479.691 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1497.812 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1479.691 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Synth Design complete | Checksum: b19d4a89
+Synth Design complete | Checksum: dc670ed1
 INFO: [Common 17-83] Releasing license: Synthesis
 40 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 1497.812 ; gain = 961.441
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1497.812 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 1479.691 ; gain = 941.727
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1479.691 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'E:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.runs/synth_1/top_wrapper.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file top_wrapper_utilization_synth.rpt -pb top_wrapper_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Sun Jun 29 03:05:22 2025...
+INFO: [Common 17-206] Exiting Vivado at Sun Jun 29 22:31:20 2025...

@@ -2,7 +2,7 @@
 --Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
---Date        : Sun Jun 29 02:36:59 2025
+--Date        : Sun Jun 29 22:24:42 2025
 --Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 --Command     : generate_target top.bd
 --Design      : top
@@ -23,7 +23,7 @@ entity top is
     vgaRed : out STD_LOGIC_VECTOR ( 3 downto 0 )
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of top : entity is "top,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=top,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=5,numReposBlks=5,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=2,numPkgbdBlks=0,bdsource=USER,da_board_cnt=2,synth_mode=Hierarchical}";
+  attribute CORE_GENERATION_INFO of top : entity is "top,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=top,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=5,numReposBlks=5,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=2,numPkgbdBlks=0,bdsource=USER,da_board_cnt=2,da_clkrst_cnt=2,synth_mode=Hierarchical}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of top : entity is "top.hwdef";
 end top;
@@ -34,6 +34,7 @@ architecture STRUCTURE of top is
     reset : in STD_LOGIC;
     clk_in1 : in STD_LOGIC;
     clk_out1 : out STD_LOGIC;
+    clk_out25 : out STD_LOGIC;
     locked : out STD_LOGIC
   );
   end component top_clk_wiz_0_0;
@@ -67,21 +68,24 @@ architecture STRUCTURE of top is
     vgaBlue : out STD_LOGIC_VECTOR ( 3 downto 0 );
     Hsync : out STD_LOGIC;
     Vsync : out STD_LOGIC;
-    Re : out STD_LOGIC
+    Re : out STD_LOGIC;
+    bram_addr : out STD_LOGIC_VECTOR ( 9 downto 0 )
   );
   end component top_VGA_Output_0_0;
-  signal BRAM_reader_0_bram_read_addr : STD_LOGIC_VECTOR ( 9 downto 0 );
   signal VGA_Output_0_B : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal VGA_Output_0_G : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal VGA_Output_0_Hsync : STD_LOGIC;
   signal VGA_Output_0_R : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal VGA_Output_0_Re : STD_LOGIC;
   signal VGA_Output_0_Vsync : STD_LOGIC;
+  signal VGA_Output_0_bram_addr : STD_LOGIC_VECTOR ( 9 downto 0 );
   signal blk_mem_gen_0_douta : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal clk_wiz_0_clk_out1 : STD_LOGIC;
+  signal clk_wiz_0_clk_out25 : STD_LOGIC;
   signal reset_1 : STD_LOGIC;
   signal sys_clock_1 : STD_LOGIC;
   signal xlconstant_0_dout : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal NLW_BRAM_reader_0_bram_read_addr_UNCONNECTED : STD_LOGIC_VECTOR ( 9 downto 0 );
+  signal NLW_clk_wiz_0_clk_out1_UNCONNECTED : STD_LOGIC;
   signal NLW_clk_wiz_0_locked_UNCONNECTED : STD_LOGIC;
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of reset : signal is "xilinx.com:signal:reset:1.0 RST.RESET RST";
@@ -99,8 +103,8 @@ begin
   vgaRed(3 downto 0) <= VGA_Output_0_R(3 downto 0);
 BRAM_reader_0: component top_BRAM_reader_0_0
      port map (
-      bram_read_addr(9 downto 0) => BRAM_reader_0_bram_read_addr(9 downto 0),
-      clk => clk_wiz_0_clk_out1,
+      bram_read_addr(9 downto 0) => NLW_BRAM_reader_0_bram_read_addr_UNCONNECTED(9 downto 0),
+      clk => clk_wiz_0_clk_out25,
       read_enable => VGA_Output_0_Re,
       read_start => xlconstant_0_dout(0)
     );
@@ -109,23 +113,25 @@ VGA_Output_0: component top_VGA_Output_0_0
       Hsync => VGA_Output_0_Hsync,
       Re => VGA_Output_0_Re,
       Vsync => VGA_Output_0_Vsync,
+      bram_addr(9 downto 0) => VGA_Output_0_bram_addr(9 downto 0),
       bram_data(7 downto 0) => blk_mem_gen_0_douta(7 downto 0),
-      clk => clk_wiz_0_clk_out1,
+      clk => clk_wiz_0_clk_out25,
       vgaBlue(3 downto 0) => VGA_Output_0_B(3 downto 0),
       vgaGreen(3 downto 0) => VGA_Output_0_G(3 downto 0),
       vgaRed(3 downto 0) => VGA_Output_0_R(3 downto 0)
     );
 blk_mem_gen_0: component top_blk_mem_gen_0_0
      port map (
-      addra(9 downto 0) => BRAM_reader_0_bram_read_addr(9 downto 0),
-      clka => clk_wiz_0_clk_out1,
+      addra(9 downto 0) => VGA_Output_0_bram_addr(9 downto 0),
+      clka => clk_wiz_0_clk_out25,
       douta(7 downto 0) => blk_mem_gen_0_douta(7 downto 0),
       ena => xlconstant_0_dout(0)
     );
 clk_wiz_0: component top_clk_wiz_0_0
      port map (
       clk_in1 => sys_clock_1,
-      clk_out1 => clk_wiz_0_clk_out1,
+      clk_out1 => NLW_clk_wiz_0_clk_out1_UNCONNECTED,
+      clk_out25 => clk_wiz_0_clk_out25,
       locked => NLW_clk_wiz_0_locked_UNCONNECTED,
       reset => reset_1
     );

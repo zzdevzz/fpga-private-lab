@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date             : Sun Jun 29 03:06:11 2025
+| Date             : Sun Jun 29 22:32:09 2025
 | Host             : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 | Command          : report_power -file top_wrapper_power_routed.rpt -pb top_wrapper_power_summary_routed.pb -rpx top_wrapper_power_routed.rpx
 | Design           : top_wrapper
@@ -53,11 +53,12 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |    <0.001 |        5 |       --- |             --- |
-| Slice Logic    |    <0.001 |      101 |       --- |             --- |
-|   LUT as Logic |    <0.001 |       34 |     20800 |            0.16 |
-|   Register     |    <0.001 |       45 |     41600 |            0.11 |
-|   Others       |     0.000 |        7 |       --- |             --- |
-| Signals        |    <0.001 |       69 |       --- |             --- |
+| Slice Logic    |    <0.001 |       95 |       --- |             --- |
+|   LUT as Logic |    <0.001 |       32 |     20800 |            0.15 |
+|   Register     |    <0.001 |       44 |     41600 |            0.11 |
+|   CARRY4       |    <0.001 |        2 |      8150 |            0.02 |
+|   Others       |     0.000 |        6 |       --- |             --- |
+| Signals        |    <0.001 |       71 |       --- |             --- |
 | Block RAM      |    <0.001 |      0.5 |        50 |            1.00 |
 | PLL            |     0.100 |        1 |         5 |           20.00 |
 | I/O            |    <0.001 |       16 |       106 |           15.09 |

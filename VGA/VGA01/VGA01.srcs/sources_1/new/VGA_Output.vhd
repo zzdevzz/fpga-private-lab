@@ -21,6 +21,7 @@
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use ieee.numeric_std.all;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -44,7 +45,8 @@ entity VGA_Output is
     vgaBlue : out std_logic_vector(3 downto 0);
     Hsync : out std_logic; -- Horizontal Pulse
     Vsync : out std_logic; -- Vertical pulse
-    Re : out std_logic -- Read enable (from BRAM)
+    Re : out std_logic; -- Read enable (from BRAM)
+    bram_addr: out std_logic_vector(9 downto 0)
   );
   
 end VGA_Output;
@@ -88,6 +90,7 @@ architecture Behavioral of VGA_Output is
     signal B_out : std_logic_vector (3 downto 0);
     signal Hp_out : std_logic;
     signal Vp_out : std_logic := '0';
+    signal bram_addr_s : std_logic_vector (9 downto 0) := (others => '0');
     
   
 begin
@@ -96,7 +99,10 @@ begin
     begin
         if rising_edge(clk) then
             if horiz_counter < horiz_max_range then
-                horiz_counter <= horiz_counter + 1;               
+                horiz_counter <= horiz_counter + 1;
+                bram_addr_s <= std_logic_vector(
+                    to_unsigned( (vert_counter * horiz_pix ) + horiz_counter, 10)
+                );              
             else
                 horiz_counter <= 0;
                 vert_counter <= vert_counter + 1;  
@@ -149,5 +155,6 @@ begin
     Hsync <= Hp_out;
     Vsync <= Vp_out;
     Re <= re_out;
+    bram_addr <= bram_addr_s;
     
 end Behavioral;
