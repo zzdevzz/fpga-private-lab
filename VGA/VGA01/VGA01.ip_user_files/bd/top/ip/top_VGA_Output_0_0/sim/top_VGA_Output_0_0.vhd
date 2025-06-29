@@ -60,8 +60,8 @@ ENTITY top_VGA_Output_0_0 IS
     vgaRed : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
     vgaGreen : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
     vgaBlue : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
-    HP : OUT STD_LOGIC;
-    VP : OUT STD_LOGIC;
+    Hsync : OUT STD_LOGIC;
+    Vsync : OUT STD_LOGIC;
     Re : OUT STD_LOGIC
   );
 END top_VGA_Output_0_0;
@@ -76,8 +76,8 @@ ARCHITECTURE top_VGA_Output_0_0_arch OF top_VGA_Output_0_0 IS
       vgaRed : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
       vgaGreen : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
       vgaBlue : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
-      HP : OUT STD_LOGIC;
-      VP : OUT STD_LOGIC;
+      Hsync : OUT STD_LOGIC;
+      Vsync : OUT STD_LOGIC;
       Re : OUT STD_LOGIC
     );
   END COMPONENT VGA_Output;
@@ -93,8 +93,8 @@ BEGIN
       vgaRed => vgaRed,
       vgaGreen => vgaGreen,
       vgaBlue => vgaBlue,
-      HP => HP,
-      VP => VP,
+      Hsync => Hsync,
+      Vsync => Vsync,
       Re => Re
     );
 END top_VGA_Output_0_0_arch;

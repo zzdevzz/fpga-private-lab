@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x79408D004A470E32",
+      "boundary_crc": "0x5B65F74068627472",
       "device": "xc7a35tcpg236-1",
       "gen_directory": "../../../../VGA01.gen/sources_1/bd/top",
       "name": "top",
@@ -70,10 +70,10 @@
         "left": "3",
         "right": "0"
       },
-      "HSync": {
+      "Hsync": {
         "direction": "O"
       },
-      "VSync": {
+      "Vsync": {
         "direction": "O"
       }
     },
@@ -85,8 +85,71 @@
         "xci_path": "ip\\top_clk_wiz_0_0\\top_clk_wiz_0_0.xci",
         "inst_hier_path": "clk_wiz_0",
         "parameters": {
+          "CLKOUT1_DRIVES": {
+            "value": "BUFG"
+          },
+          "CLKOUT1_JITTER": {
+            "value": "137.681"
+          },
+          "CLKOUT1_PHASE_ERROR": {
+            "value": "105.461"
+          },
+          "CLKOUT2_DRIVES": {
+            "value": "BUFG"
+          },
+          "CLKOUT2_JITTER": {
+            "value": "183.467"
+          },
+          "CLKOUT2_PHASE_ERROR": {
+            "value": "105.461"
+          },
+          "CLKOUT2_REQUESTED_OUT_FREQ": {
+            "value": "25"
+          },
+          "CLKOUT2_USED": {
+            "value": "true"
+          },
+          "CLKOUT3_DRIVES": {
+            "value": "BUFG"
+          },
+          "CLKOUT4_DRIVES": {
+            "value": "BUFG"
+          },
+          "CLKOUT5_DRIVES": {
+            "value": "BUFG"
+          },
+          "CLKOUT6_DRIVES": {
+            "value": "BUFG"
+          },
+          "CLKOUT7_DRIVES": {
+            "value": "BUFG"
+          },
           "CLK_IN1_BOARD_INTERFACE": {
             "value": "sys_clock"
+          },
+          "CLK_OUT2_PORT": {
+            "value": "clk_out25"
+          },
+          "MMCM_BANDWIDTH": {
+            "value": "OPTIMIZED"
+          },
+          "MMCM_CLKFBOUT_MULT_F": {
+            "value": "9"
+          },
+          "MMCM_CLKOUT0_DIVIDE_F": {
+            "value": "9"
+          },
+          "MMCM_CLKOUT1_DIVIDE": {
+            "value": "36"
+          },
+          "MMCM_COMPENSATION": {
+            "value": "ZHOLD"
+          },
+          "NUM_OUT_CLKS": {
+            "value": "2"
+          },
+          "PRIMITIVE": {
+            "value": "PLL"
           },
           "RESET_BOARD_INTERFACE": {
             "value": "reset"
@@ -143,7 +206,7 @@
             "direction": "I",
             "parameters": {
               "FREQ_HZ": {
-                "value": "100000000",
+                "value": "25000000",
                 "value_src": "ip_prop"
               },
               "PHASE": {
@@ -193,7 +256,7 @@
             "direction": "I",
             "parameters": {
               "FREQ_HZ": {
-                "value": "100000000",
+                "value": "25000000",
                 "value_src": "ip_prop"
               },
               "PHASE": {
@@ -226,10 +289,10 @@
             "left": "3",
             "right": "0"
           },
-          "HP": {
+          "Hsync": {
             "direction": "O"
           },
-          "VP": {
+          "Vsync": {
             "direction": "O"
           },
           "Re": {
@@ -257,10 +320,10 @@
           "vgaGreen"
         ]
       },
-      "VGA_Output_0_HP": {
+      "VGA_Output_0_Hsync": {
         "ports": [
-          "VGA_Output_0/HP",
-          "HSync"
+          "VGA_Output_0/Hsync",
+          "Hsync"
         ]
       },
       "VGA_Output_0_R": {
@@ -275,10 +338,10 @@
           "BRAM_reader_0/read_enable"
         ]
       },
-      "VGA_Output_0_VP": {
+      "VGA_Output_0_Vsync": {
         "ports": [
-          "VGA_Output_0/VP",
-          "VSync"
+          "VGA_Output_0/Vsync",
+          "Vsync"
         ]
       },
       "blk_mem_gen_0_douta": {
@@ -287,12 +350,12 @@
           "VGA_Output_0/bram_data"
         ]
       },
-      "clk_wiz_0_clk_out1": {
+      "clk_wiz_0_clk_out25": {
         "ports": [
-          "clk_wiz_0/clk_out1",
-          "blk_mem_gen_0/clka",
+          "clk_wiz_0/clk_out25",
           "BRAM_reader_0/clk",
-          "VGA_Output_0/clk"
+          "VGA_Output_0/clk",
+          "blk_mem_gen_0/clka"
         ]
       },
       "reset_1": {

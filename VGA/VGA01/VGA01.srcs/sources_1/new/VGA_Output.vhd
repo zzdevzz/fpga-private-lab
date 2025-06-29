@@ -42,8 +42,8 @@ entity VGA_Output is
     vgaRed : out std_logic_vector(3 downto 0); --RGB Colours only 4 bit in VGA.
     vgaGreen : out std_logic_vector(3 downto 0);
     vgaBlue : out std_logic_vector(3 downto 0);
-    HP : out std_logic; -- Horizontal Pulse
-    VP : out std_logic; -- Vertical pulse
+    Hsync : out std_logic; -- Horizontal Pulse
+    Vsync : out std_logic; -- Vertical pulse
     Re : out std_logic -- Read enable (from BRAM)
   );
   
@@ -87,7 +87,7 @@ architecture Behavioral of VGA_Output is
     signal G_out : std_logic_vector (3 downto 0);
     signal B_out : std_logic_vector (3 downto 0);
     signal Hp_out : std_logic;
-    signal Vp_out : std_logic;
+    signal Vp_out : std_logic := '0';
     
   
 begin
@@ -146,8 +146,8 @@ begin
     vgaRed <= R_out;
     vgaGreen <= G_out;
     vgaBlue <= B_out;
-    HP <= Hp_out;
-    VP <= Vp_out;
+    Hsync <= Hp_out;
+    Vsync <= Vp_out;
     Re <= re_out;
     
 end Behavioral;

@@ -49,8 +49,8 @@ architecture Behavioral of tb_top_wrapper is
             vgaRed : out std_logic_vector (3 downto 0);
             vgaGreen : out std_logic_vector (3 downto 0);
             vgaBlue : out std_logic_vector (3 downto 0);
-            HSync : out std_logic;
-            VSync : out std_logic
+            Hsync : out std_logic;
+            Vsync : out std_logic
         );
     end component;
 begin
@@ -62,8 +62,8 @@ begin
         vgaRed => open,
         vgaGreen =>  open,
         vgaBlue => open,
-        HSync => open,
-        VSync => open
+        Hsync => open,
+        Vsync => open
     );
     
      clk_gen : process
