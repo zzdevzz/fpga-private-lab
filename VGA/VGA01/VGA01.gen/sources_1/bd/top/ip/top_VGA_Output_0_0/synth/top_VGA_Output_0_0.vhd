@@ -62,7 +62,8 @@ ENTITY top_VGA_Output_0_0 IS
     vgaBlue : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
     Hsync : OUT STD_LOGIC;
     Vsync : OUT STD_LOGIC;
-    Re : OUT STD_LOGIC
+    Re : OUT STD_LOGIC;
+    bram_addr : OUT STD_LOGIC_VECTOR(16 DOWNTO 0)
   );
 END top_VGA_Output_0_0;
 
@@ -78,7 +79,8 @@ ARCHITECTURE top_VGA_Output_0_0_arch OF top_VGA_Output_0_0 IS
       vgaBlue : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
       Hsync : OUT STD_LOGIC;
       Vsync : OUT STD_LOGIC;
-      Re : OUT STD_LOGIC
+      Re : OUT STD_LOGIC;
+      bram_addr : OUT STD_LOGIC_VECTOR(16 DOWNTO 0)
     );
   END COMPONENT VGA_Output;
   ATTRIBUTE X_CORE_INFO : STRING;
@@ -103,6 +105,7 @@ BEGIN
       vgaBlue => vgaBlue,
       Hsync => Hsync,
       Vsync => Vsync,
-      Re => Re
+      Re => Re,
+      bram_addr => bram_addr
     );
 END top_VGA_Output_0_0_arch;

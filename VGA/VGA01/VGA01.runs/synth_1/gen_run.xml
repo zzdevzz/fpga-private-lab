@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1751232606" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/top_wrapper.dcp">
+<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1751234007" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/top_wrapper.dcp">
   <File Type="PA-TCL" Name="top_wrapper.tcl"/>
   <File Type="RDS-PROPCONSTRS" Name="top_wrapper_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="top_wrapper_reports.tcl"/>
@@ -44,6 +44,12 @@
       </FileInfo>
     </File>
     <File Path="$PPRDIR/pepe_8b.coe">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/image/homer.coe">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>

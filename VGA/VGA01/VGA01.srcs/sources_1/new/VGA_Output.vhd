@@ -46,7 +46,7 @@ entity VGA_Output is
     Hsync : out std_logic; -- Horizontal Pulse
     Vsync : out std_logic; -- Vertical pulse
     Re : out std_logic; -- Read enable (from BRAM)
-    bram_addr: out std_logic_vector(9 downto 0)
+    bram_addr: out std_logic_vector(16 downto 0)
   );
   
 end VGA_Output;
@@ -63,7 +63,7 @@ architecture Behavioral of VGA_Output is
 --    pixels are only being drawn between 0 and 639
 --    pulse is only active(low) between the 96 cycles after front porch and before back porch
 
-    constant horiz_pix : integer := 32; --(640 minus 1 since 0 index) -- change this to image size
+    constant horiz_pix : integer := 300; --(640 minus 1 since 0 index) -- change this to image size
     constant horiz_max_range : integer := 799;
     signal horiz_counter : integer range 0 to horiz_max_range := 0;
     constant horiz_pulse_send : integer := 656; --(end of front porch,640px plus front porch mount).
@@ -78,7 +78,7 @@ architecture Behavioral of VGA_Output is
 --    pixels are only being drawn between 0 and 479
 --    pulse is only active(low) between the 33 cycles after front porch and before back porch
     
-    constant vert_pix : integer := 32; -- change this to image size
+    constant vert_pix : integer := 300; -- change this to image size
     constant vert_max_range : integer := 525;
     signal vert_counter : integer range 0 to vert_max_range := 0;
     constant vert_pulse_send : integer := 490; --(end of front porch,640px plus front porch mount).
@@ -90,7 +90,7 @@ architecture Behavioral of VGA_Output is
     signal B_out : std_logic_vector (3 downto 0);
     signal Hp_out : std_logic;
     signal Vp_out : std_logic := '0';
-    signal bram_addr_s : std_logic_vector (9 downto 0) := (others => '0');
+    signal bram_addr_s : std_logic_vector (16 downto 0) := (others => '0');
     
   
 begin
@@ -101,7 +101,7 @@ begin
             if horiz_counter < horiz_max_range then
                 horiz_counter <= horiz_counter + 1;
                 bram_addr_s <= std_logic_vector(
-                    to_unsigned( (vert_counter * horiz_pix ) + horiz_counter, 10)
+                    to_unsigned( (vert_counter * horiz_pix ) + horiz_counter, 17)
                 );              
             else
                 horiz_counter <= 0;

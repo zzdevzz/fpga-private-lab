@@ -70,6 +70,7 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param chipscope.maxJobs 6
 set_param xicom.use_bs_reader 1
 set_msg_config  -id {XSIM 43-3225}  -string {{ERROR: [XSIM 43-3225] Cannot find design unit xil_defaultlib.task_1_2_tb in library work located at xsim.dir/work.}}  -suppress 
 OPTRACE "Creating in-memory project" START { }
@@ -93,6 +94,7 @@ set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 add_files {{E:/FPGA/VHDL/Lab Training/VGA/VGA01/pepe_8b.coe}}
+add_files {{e:/FPGA/VHDL/Lab Training/VGA/VGA01/image/homer.coe}}
 read_vhdl -library xil_defaultlib {{e:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.gen/sources_1/bd/top/hdl/top_wrapper.vhd}}
 add_files {{E:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.srcs/sources_1/bd/top/top.bd}}
 set_property used_in_implementation false [get_files -all {{e:/FPGA/VHDL/Lab Training/VGA/VGA01/VGA01.gen/sources_1/bd/top/ip/top_clk_wiz_0_0/top_clk_wiz_0_0_board.xdc}}]

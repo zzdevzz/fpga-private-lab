@@ -2,7 +2,7 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-// Date        : Sun Jun 29 02:24:24 2025
+// Date        : Sun Jun 29 22:54:41 2025
 // Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub {e:/FPGA/VHDL/Lab
 //               Training/VGA/VGA01/VGA01.gen/sources_1/bd/top/ip/top_blk_mem_gen_0_0/top_blk_mem_gen_0_0_stub.v}
@@ -16,10 +16,10 @@
 // Please paste the declaration into a Verilog source file or add the file as an additional source.
 (* x_core_info = "blk_mem_gen_v8_4_7,Vivado 2023.2" *)
 module top_blk_mem_gen_0_0(clka, ena, addra, douta)
-/* synthesis syn_black_box black_box_pad_pin="ena,addra[9:0],douta[7:0]" */
+/* synthesis syn_black_box black_box_pad_pin="ena,addra[16:0],douta[7:0]" */
 /* synthesis syn_force_seq_prim="clka" */;
   input clka /* synthesis syn_isclock = 1 */;
   input ena;
-  input [9:0]addra;
+  input [16:0]addra;
   output [7:0]douta;
 endmodule

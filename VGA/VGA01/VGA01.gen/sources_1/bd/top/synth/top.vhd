@@ -2,7 +2,7 @@
 --Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
---Date        : Sun Jun 29 03:04:08 2025
+--Date        : Sun Jun 29 22:53:18 2025
 --Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 --Command     : generate_target top.bd
 --Design      : top
@@ -34,15 +34,15 @@ architecture STRUCTURE of top is
     reset : in STD_LOGIC;
     clk_in1 : in STD_LOGIC;
     clk_out1 : out STD_LOGIC;
-    locked : out STD_LOGIC;
-    clk_out25 : out STD_LOGIC
+    clk_out25 : out STD_LOGIC;
+    locked : out STD_LOGIC
   );
   end component top_clk_wiz_0_0;
   component top_blk_mem_gen_0_0 is
   port (
     clka : in STD_LOGIC;
     ena : in STD_LOGIC;
-    addra : in STD_LOGIC_VECTOR ( 9 downto 0 );
+    addra : in STD_LOGIC_VECTOR ( 16 downto 0 );
     douta : out STD_LOGIC_VECTOR ( 7 downto 0 )
   );
   end component top_blk_mem_gen_0_0;
@@ -68,21 +68,23 @@ architecture STRUCTURE of top is
     vgaBlue : out STD_LOGIC_VECTOR ( 3 downto 0 );
     Hsync : out STD_LOGIC;
     Vsync : out STD_LOGIC;
-    Re : out STD_LOGIC
+    Re : out STD_LOGIC;
+    bram_addr : out STD_LOGIC_VECTOR ( 16 downto 0 )
   );
   end component top_VGA_Output_0_0;
-  signal BRAM_reader_0_bram_read_addr : STD_LOGIC_VECTOR ( 9 downto 0 );
   signal VGA_Output_0_B : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal VGA_Output_0_G : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal VGA_Output_0_Hsync : STD_LOGIC;
   signal VGA_Output_0_R : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal VGA_Output_0_Re : STD_LOGIC;
   signal VGA_Output_0_Vsync : STD_LOGIC;
+  signal VGA_Output_0_bram_addr : STD_LOGIC_VECTOR ( 16 downto 0 );
   signal blk_mem_gen_0_douta : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal clk_wiz_0_clk_out25 : STD_LOGIC;
   signal reset_1 : STD_LOGIC;
   signal sys_clock_1 : STD_LOGIC;
   signal xlconstant_0_dout : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal NLW_BRAM_reader_0_bram_read_addr_UNCONNECTED : STD_LOGIC_VECTOR ( 9 downto 0 );
   signal NLW_clk_wiz_0_clk_out1_UNCONNECTED : STD_LOGIC;
   signal NLW_clk_wiz_0_locked_UNCONNECTED : STD_LOGIC;
   attribute X_INTERFACE_INFO : string;
@@ -101,7 +103,7 @@ begin
   vgaRed(3 downto 0) <= VGA_Output_0_R(3 downto 0);
 BRAM_reader_0: component top_BRAM_reader_0_0
      port map (
-      bram_read_addr(9 downto 0) => BRAM_reader_0_bram_read_addr(9 downto 0),
+      bram_read_addr(9 downto 0) => NLW_BRAM_reader_0_bram_read_addr_UNCONNECTED(9 downto 0),
       clk => clk_wiz_0_clk_out25,
       read_enable => VGA_Output_0_Re,
       read_start => xlconstant_0_dout(0)
@@ -111,6 +113,7 @@ VGA_Output_0: component top_VGA_Output_0_0
       Hsync => VGA_Output_0_Hsync,
       Re => VGA_Output_0_Re,
       Vsync => VGA_Output_0_Vsync,
+      bram_addr(16 downto 0) => VGA_Output_0_bram_addr(16 downto 0),
       bram_data(7 downto 0) => blk_mem_gen_0_douta(7 downto 0),
       clk => clk_wiz_0_clk_out25,
       vgaBlue(3 downto 0) => VGA_Output_0_B(3 downto 0),
@@ -119,7 +122,7 @@ VGA_Output_0: component top_VGA_Output_0_0
     );
 blk_mem_gen_0: component top_blk_mem_gen_0_0
      port map (
-      addra(9 downto 0) => BRAM_reader_0_bram_read_addr(9 downto 0),
+      addra(16 downto 0) => VGA_Output_0_bram_addr(16 downto 0),
       clka => clk_wiz_0_clk_out25,
       douta(7 downto 0) => blk_mem_gen_0_douta(7 downto 0),
       ena => xlconstant_0_dout(0)
