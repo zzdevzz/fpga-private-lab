@@ -43,14 +43,20 @@ entity I2C_camera is
     SDA: out std_logic;
     SCL: out std_logic;
     active: in std_logic;
-    camera_data: in std_logic_vector(7 downto 0);
+    camera_data_in: in std_logic_vector(7 downto 0);
+    camera_data_out: out_std_vector(7 downto 0);
+    led_data: out std_logic_vector(7 downto 0);
     camera_clock : in std_logic
   );
 end I2C_camera;
 
 architecture Behavioral of I2C_camera is
     
-    constant i2c_clock_counter : integer := 10;
+    constant i2c_clock_max : integer := 9;
+    signal i2c_scl_count : integer range 0 to i2c_clock_max ;
+    signal i2c_scl : std_logic := '1';
+    signal i2c_scl_clock_enable : std_logic:= '0';
+    signal i2c_sda : std_logic := '1';
     -- states needed: idle, start, send address, read or write, achnolwdge, data transfer, acknowledge, stop
     type state_type is (
       IDLE,           -- Waiting for command to start
@@ -62,6 +68,42 @@ architecture Behavioral of I2C_camera is
     );
     signal state : state_type := IDLE;
 begin
-
+    
+    
+    i2c_sla:process(clk)
+    begin
+        if rising_edge(clk) then
+            if i2c_scl_count < i2c_clock_max then
+                i2c_scl_count <= i2c_scl_count + 1;
+            end if;
+        else
+            i2c_scl_count <= 0;
+            i2c_scl <= not i2c_scl;
+        end if;
+    end process;
+    
+    state_machine:process(clk)
+    begin
+        if rising_edge(clk) then
+            case state is
+            when "IDLE" =>
+                i2c_sla <= '1';
+                i2c_sda <= '1';
+            when "START_CONDITION" => 
+                i2c_sda <= '0';
+                if i2c_sda = '0' then
+                    i2c_scl_clock_enable <= '1';
+                    i2c_scl <= '0';
+                end if;              
+            when "STOP_CONDITION" =>
+                if i2c_scl = '1' then
+                    i2c_sda <= '1';
+                    state <= "IDLE";
+                end if;
+             end case;
+        end if;
+    end process;
+    
+    led_data <= camera_data_out;
 
 end Behavioral;
