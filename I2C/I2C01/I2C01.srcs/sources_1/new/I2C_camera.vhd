@@ -44,7 +44,7 @@ entity I2C_camera is
     SCL: out std_logic;
     active: in std_logic;
     camera_data_in: in std_logic_vector(7 downto 0);
-    camera_data_out: out_std_vector(7 downto 0);
+    camera_data_out: out_std_logic_vector(7 downto 0);
     led_data: out std_logic_vector(7 downto 0);
     camera_clock : in std_logic
   );
@@ -94,6 +94,7 @@ begin
                 if i2c_sda = '0' then
                     i2c_scl_clock_enable <= '1';
                     i2c_scl <= '0';
+                    state <= "SEND_BYTE"; 
                 end if;              
             when "STOP_CONDITION" =>
                 if i2c_scl = '1' then
