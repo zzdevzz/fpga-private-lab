@@ -44,7 +44,7 @@ entity I2C_camera is
     SCL: out std_logic;
     active: in std_logic;
     camera_data_in: in std_logic_vector(7 downto 0);
-    camera_data_out: out_std_logic_vector(7 downto 0);
+    camera_data_out: out std_logic_vector(7 downto 0);
     led_data: out std_logic_vector(7 downto 0);
     camera_clock : in std_logic
   );
