@@ -40,6 +40,13 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 -- 0x42 for write, 0x43 for read.
 
+--// OV7670 init sequence (example)
+--{ 0x12, 0x80 },  // COM7 reset
+--{ 0x12, 0x04 },  // COM7 QVGA, RGB
+--{ 0x11, 0x01 },  // CLKRC prescaler
+--{ 0x6B, 0x4A },  // DBLV enable PLL
+--...
+
 entity I2C_camera is
   Port ( 
     clk: in std_logic;
