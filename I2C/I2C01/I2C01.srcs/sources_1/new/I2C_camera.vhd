@@ -22,6 +22,8 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
+-- good reference for project and camera: https://www.fpga4student.com/2018/08/basys-3-fpga-ov7670-camera.html
+
 --overview of i2c logic.
 -- 3 things needed, clock to drive device always on. SCL (serial clock line when trasnfferring). SDA - data transfering.
 -- if all good data will come back in time on data.
@@ -36,6 +38,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 -- If acknowledged, carry on sending data. After sending data we send an acklwedge, and check its okay.
 -- If okay, we stop sending data. We make SCL goes high first, then SDA high next cycle.
 
+-- 0x42 for write, 0x43 for read.
 
 entity I2C_camera is
   Port ( 
@@ -53,6 +56,9 @@ end I2C_camera;
 architecture Behavioral of I2C_camera is
     
     constant i2c_clock_max : integer := 9;
+    constant slave_write_addr: std_logic_vector(7 downto 0) := x"42";
+    constant slave_read_addr: std_logic_vector(7 downto 0) := x"43";
+    
     signal i2c_scl_count : integer range 0 to i2c_clock_max ;
     signal i2c_scl : std_logic := '1';
     signal i2c_scl_clock_enable : std_logic:= '0';
