@@ -13,7 +13,9 @@
       "clk_wiz_0": "",
       "blk_mem_gen_0": "",
       "xlconstant_0": "",
-      "VGA_Output_0": ""
+      "VGA_Output_0": "",
+      "I2C_master_0": "",
+      "I2C_camera_0": ""
     },
     "ports": {
       "sys_clock": {
@@ -243,6 +245,89 @@
             "right": "0"
           }
         }
+      },
+      "I2C_master_0": {
+        "vlnv": "xilinx.com:module_ref:I2C_master:1.0",
+        "ip_revision": "1",
+        "xci_name": "top_I2C_master_0_0",
+        "xci_path": "ip\\top_I2C_master_0_0\\top_I2C_master_0_0.xci",
+        "inst_hier_path": "I2C_master_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "I2C_master",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I"
+          },
+          "active": {
+            "direction": "I"
+          },
+          "i2c_data": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "i2c_active": {
+            "direction": "I"
+          },
+          "i2c_data_in": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "camera_clock": {
+            "type": "clk",
+            "direction": "I"
+          },
+          "SDA": {
+            "direction": "O"
+          },
+          "SCL": {
+            "direction": "O"
+          },
+          "i2c_data_out": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "led_data": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          }
+        }
+      },
+      "I2C_camera_0": {
+        "vlnv": "xilinx.com:module_ref:I2C_camera:1.0",
+        "ip_revision": "1",
+        "xci_name": "top_I2C_camera_0_0",
+        "xci_path": "ip\\top_I2C_camera_0_0\\top_I2C_camera_0_0.xci",
+        "inst_hier_path": "I2C_camera_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "I2C_camera",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "index": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "reg_addr": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "reg_data": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          }
+        }
       }
     },
     "nets": {
@@ -288,11 +373,18 @@
           "VGA_Output_0/bram_data"
         ]
       },
+      "clk_wiz_0_clk_out1": {
+        "ports": [
+          "clk_wiz_0/clk_out1",
+          "I2C_master_0/clk"
+        ]
+      },
       "clk_wiz_0_clk_out25": {
         "ports": [
           "clk_wiz_0/clk_out25",
           "blk_mem_gen_0/clka",
-          "VGA_Output_0/clk"
+          "VGA_Output_0/clk",
+          "I2C_master_0/camera_clock"
         ]
       },
       "reset_1": {
