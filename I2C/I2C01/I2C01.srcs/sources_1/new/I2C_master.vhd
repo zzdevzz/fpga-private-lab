@@ -147,13 +147,22 @@ begin
                     shift_reg_count <= shift_reg_count + 1;
                     i2c_sda <= shift_reg(7);   
                 else
-                    shift_reg_count <= 0;
+                    shift_reg_count <= 0;                
                     state <= READ_ACK;    
                 end if;
                 
-                
-                
-                
+            when READ_ACK =>
+                i2c_sda <= '1'; --released back so the slave can take control during acknowledgement.    
+                if byte_counter < 2 then
+                    byte_counter <= byte_counter + 1;
+                    state <= SEND_BYTE;
+                elsif byte_counter = 2 then
+                    byte_counter <= 0;
+                    if current_index < 3 then
+                        current_index <= current_index + 1;
+                    else
+                        state <= STOP_CONDITION;
+                end if;
                 -- HERE we want to send address first.
                 -- After we send address we want to wait for ackhlwoedgement in read acklwoedge state. 
             when NEXT_BYTE =>
