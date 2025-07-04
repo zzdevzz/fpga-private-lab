@@ -49,16 +49,18 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity I2C_master is
   Port ( 
-    clk: in std_logic;
-    active: in std_logic;
-    i2c_data: in std_logic_vector(7 downto 0);
-    i2c_active: in std_logic := '0';
-    i2c_data_in: in std_logic_vector(7 downto 0);
-    camera_clock : in std_logic;
-    SDA: out std_logic;
-    SCL: out std_logic;
-    i2c_data_out: out std_logic_vector(7 downto 0);
-    led_data: out std_logic_vector(7 downto 0)
+    clk: in std_logic; -- clock driving the module
+    slave_reg_addr: in std_logic_vector(7 downto 0); -- Where to send data on slave
+    slave_reg_data: in std_logic_vector(7 downto 0); -- What data to send to slave    
+      
+    SCL: out std_logic; --Clock line sent to camera
+    SDA: out std_logic; --Data line sent to camera (where addr and data is sent through bit)
+    
+    camera_clock : in std_logic; -- Clock from camera telling us when to sample data.
+    i2c_data_in: in std_logic_vector(7 downto 0); -- Pixels coming in from camera. 
+    
+    i2c_data_out: out std_logic_vector(7 downto 0); -- same as data coming in just so we can read it and connect it where we need too.
+    led_data: out std_logic_vector(7 downto 0) --display the camera data in led form on board
   );
 end I2C_master;
 
@@ -67,6 +69,13 @@ architecture Behavioral of I2C_master is
     constant i2c_clock_max : integer := 9;
     constant slave_write_addr: std_logic_vector(7 downto 0) := x"42";
     constant slave_read_addr: std_logic_vector(7 downto 0) := x"43";
+    constant MAX_INDEX : integer := 3; -- The number of indexs we'll loop through.
+    
+    signal active : std_logic := '0'; -- used to start transmition
+    signal current_index : integer range 0 to 3; -- current index of LUT
+    signal byte_counter : integer range 0 to 2; -- 0: slave addr, 1: reg addr, 2: reg data
+    signal shift_reg: std_logic_vector(7 downto 0); -- used to get the MSB and keep shifting as  temp logic.
+    signal shift_reg_count: integer range 0 to 7; --used to time how long shift reg is going on for.
     
     signal i2c_scl_count : integer range 0 to i2c_clock_max ;
     signal i2c_scl : std_logic := '1';
@@ -87,14 +96,18 @@ begin
     
     i2c_sla:process(clk)
     begin
-        if rising_edge(clk) then
-            if i2c_scl_count < i2c_clock_max then
-                i2c_scl_count <= i2c_scl_count + 1;
-            else
-                i2c_scl_count <= 0;
-                i2c_scl <= not i2c_scl;
-            end if;
+      if rising_edge(clk) then
+        if i2c_scl_clock_enable = '1' then
+          if i2c_scl_count < i2c_clock_max then
+            i2c_scl_count <= i2c_scl_count + 1;
+          else
+            i2c_scl_count <= 0;
+            i2c_scl <= not i2c_scl;
+          end if;
+        else
+          i2c_scl <= '1'; -- idle HIGH when not used
         end if;
+      end if;
     end process;
     
     state_machine:process(clk)
@@ -104,13 +117,38 @@ begin
             when IDLE =>
                 i2c_scl <= '1';
                 i2c_sda <= '1';
+                if active = '1' then
+                    current_index <= 0;
+                    state <= START_CONDITION;
+                end if;
             when START_CONDITION => 
                 i2c_sda <= '0';
-                if i2c_sda = '0' then
+                if i2c_sda = '0' then --only make i2c_scl low when sda is first, otherwise it will stop transferring.
                     i2c_scl_clock_enable <= '1';
                     i2c_scl <= '0';
                     state <= SEND_BYTE; 
-                end if;              
+                end if; 
+            when SEND_BYTE => 
+                if byte_counter = 0 then
+                    shift_reg <= slave_write_addr;
+                elsif byte_counter = 1 then
+                    shift_reg <= slave_reg_addr;
+                elsif byte_counter = 2 then
+                    shift_reg <= slave_reg_data;
+                else
+                    state <= IDLE;
+                end if;
+                
+                i2c_sda <= shift_reg(7); 
+                -- HERE we want to send address first.
+                -- After we send address we want to wait for ackhlwoedgement in read acklwoedge state. 
+            when NEXT_BYTE =>
+                if current_index < MAX_INDEX then
+                    current_index <= current_index + 1;
+                    state <= SEND_BYTE;
+                else
+                    state <= STOP_CONDITION;
+                end if;   
             when STOP_CONDITION =>
                 if i2c_scl = '1' then
                     i2c_sda <= '1';

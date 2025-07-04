@@ -262,31 +262,30 @@
             "type": "clk",
             "direction": "I"
           },
-          "active": {
+          "slave_reg_addr": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "slave_reg_data": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "SCL": {
+            "direction": "O"
+          },
+          "SDA": {
+            "direction": "O"
+          },
+          "camera_clock": {
+            "type": "clk",
             "direction": "I"
           },
           "i2c_data": {
             "direction": "I",
             "left": "7",
             "right": "0"
-          },
-          "i2c_active": {
-            "direction": "I"
-          },
-          "i2c_data_in": {
-            "direction": "I",
-            "left": "7",
-            "right": "0"
-          },
-          "camera_clock": {
-            "type": "clk",
-            "direction": "I"
-          },
-          "SDA": {
-            "direction": "O"
-          },
-          "SCL": {
-            "direction": "O"
           },
           "i2c_data_out": {
             "direction": "O",
@@ -331,6 +330,18 @@
       }
     },
     "nets": {
+      "I2C_camera_0_reg_addr": {
+        "ports": [
+          "I2C_camera_0/reg_addr",
+          "I2C_master_0/slave_reg_addr"
+        ]
+      },
+      "I2C_camera_0_reg_data": {
+        "ports": [
+          "I2C_camera_0/reg_data",
+          "I2C_master_0/slave_reg_data"
+        ]
+      },
       "VGA_Output_0_B": {
         "ports": [
           "VGA_Output_0/vgaBlue",

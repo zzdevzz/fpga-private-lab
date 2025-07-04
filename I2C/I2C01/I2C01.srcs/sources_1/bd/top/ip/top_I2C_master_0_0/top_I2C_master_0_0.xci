@@ -37,13 +37,12 @@
     "boundary": {
       "ports": {
         "clk": [ { "direction": "in" } ],
-        "active": [ { "direction": "in" } ],
-        "i2c_data": [ { "direction": "in", "size_left": "7", "size_right": "0" } ],
-        "i2c_active": [ { "direction": "in", "driver_value": "0x0" } ],
-        "i2c_data_in": [ { "direction": "in", "size_left": "7", "size_right": "0" } ],
-        "camera_clock": [ { "direction": "in" } ],
-        "SDA": [ { "direction": "out" } ],
+        "slave_reg_addr": [ { "direction": "in", "size_left": "7", "size_right": "0" } ],
+        "slave_reg_data": [ { "direction": "in", "size_left": "7", "size_right": "0" } ],
         "SCL": [ { "direction": "out" } ],
+        "SDA": [ { "direction": "out" } ],
+        "camera_clock": [ { "direction": "in" } ],
+        "i2c_data": [ { "direction": "in", "size_left": "7", "size_right": "0" } ],
         "i2c_data_out": [ { "direction": "out", "size_left": "7", "size_right": "0" } ],
         "led_data": [ { "direction": "out", "size_left": "7", "size_right": "0" } ]
       },
