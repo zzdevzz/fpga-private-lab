@@ -129,6 +129,8 @@ begin
                     state <= SEND_BYTE; 
                 end if; 
             when SEND_BYTE => 
+                
+                -- each current_index has 3  components, the slave index, the reg address, then the reg data we need to get in per frame.
                 if byte_counter = 0 then
                     shift_reg <= slave_write_addr;
                 elsif byte_counter = 1 then
@@ -139,7 +141,19 @@ begin
                     state <= IDLE;
                 end if;
                 
-                i2c_sda <= shift_reg(7); 
+                -- for each one we  need to make sure we send the data bit by bit so we need a shift register.
+                if shift_reg_count <= 7 then            
+                    shift_reg <= shift_reg(6 downto 0) & '0'; -- shift it left by 1, drop the MSB and pad it with 0 on the end.
+                    shift_reg_count <= shift_reg_count + 1;
+                    i2c_sda <= shift_reg(7);   
+                else
+                    shift_reg_count <= 0;
+                    state <= READ_ACK;    
+                end if;
+                
+                
+                
+                
                 -- HERE we want to send address first.
                 -- After we send address we want to wait for ackhlwoedgement in read acklwoedge state. 
             when NEXT_BYTE =>
