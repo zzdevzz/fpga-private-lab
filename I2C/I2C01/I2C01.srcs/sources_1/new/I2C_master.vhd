@@ -54,7 +54,7 @@ entity I2C_master is
     slave_reg_data: in std_logic_vector(7 downto 0); -- What data to send to slave    
       
     SCL: out std_logic; --Clock line sent to camera
-    SDA: out std_logic; --Data line sent to camera (where addr and data is sent through bit)
+    SDA: inout std_logic; --Data line sent to camera (where addr and data is sent through bit)
     
     camera_clock : in std_logic; -- Clock from camera telling us when to sample data.
     i2c_data_in: in std_logic_vector(7 downto 0); -- Pixels coming in from camera. 
@@ -76,6 +76,7 @@ architecture Behavioral of I2C_master is
     signal byte_counter : integer range 0 to 2; -- 0: slave addr, 1: reg addr, 2: reg data
     signal shift_reg: std_logic_vector(7 downto 0); -- used to get the MSB and keep shifting as  temp logic.
     signal shift_reg_count: integer range 0 to 7; --used to time how long shift reg is going on for.
+    signal sending_bits: std_logic := '0'; --tells us when to send bit, and when to send bytes
     
     signal i2c_scl_count : integer range 0 to i2c_clock_max ;
     signal i2c_scl : std_logic := '1';
@@ -83,6 +84,7 @@ architecture Behavioral of I2C_master is
     signal scl_rising_edge : std_logic := '0';
     
     signal i2c_scl_clock_enable : std_logic:= '0';
+    signal i2c_sda_drive : std_logic := '0'; --if we're driving say, otherwise this gets pulled to Z
     signal i2c_sda : std_logic := '1';
     -- states needed: idle, start, send address, read or write, achnolwdge, data transfer, acknowledge, stop
     type state_type is (
@@ -125,49 +127,58 @@ begin
         if rising_edge(clk) then
             case state is
             when IDLE =>
+                i2c_scl_clock_enable <= '0';
                 i2c_scl <= '1';
-                i2c_sda <= '1';
+                i2c_sda_drive <= '0';
                 if active = '1' then
                     current_index <= 0;
                     state <= START_CONDITION;
                 end if;
             when START_CONDITION => 
-                i2c_sda <= '0';
-                if i2c_sda = '0' then --only make i2c_scl low when sda is first, otherwise it will stop transferring.
+                i2c_sda_drive <= '1';
+                if i2c_sda_drive = '1'  then --only make i2c_scl low when sda is first, otherwise it will stop transferring.
                     i2c_scl_clock_enable <= '1';
                     i2c_scl <= '0';
                     state <= SEND_BYTE; 
                 end if; 
-            when SEND_BYTE => 
-                
+            when SEND_BYTE =>      
                 -- each current_index has 3  components, the slave index, the reg address, then the reg data we need to get in per frame.
-                if byte_counter = 0 then
-                    shift_reg <= slave_write_addr;
-                elsif byte_counter = 1 then
-                    shift_reg <= slave_reg_addr;
-                elsif byte_counter = 2 then
-                    shift_reg <= slave_reg_data;
-                else
-                    state <= IDLE;
+                if i2c_scl = '0' and sending_bits = '0' then --cant send things when scl is high, it can stop the clock.
+                    if byte_counter = 0 then
+                        shift_reg <= slave_write_addr;
+                        sending_bits <= '1';
+                    elsif byte_counter = 1 then
+                        shift_reg <= slave_reg_addr;
+                        sending_bits <= '1';
+                    elsif byte_counter = 2 then
+                        shift_reg <= slave_reg_data;
+                        sending_bits <= '1';
+                    else
+                        state <= IDLE;
+                    end if;
                 end if;
                 
+                -- UPDATE SEND_BYTE NEEDS TO SHIFT BITS ONLY ONCE WHEN LOW, AND SAMPLE ONLY ONCE WHEN HIGH.
                 -- for each one we  need to make sure we send the data bit by bit so we need a shift register.
-                if shift_reg_count <= 7 then            
-                    shift_reg <= shift_reg(6 downto 0) & '0'; -- shift it left by 1, drop the MSB and pad it with 0 on the end.
-                    shift_reg_count <= shift_reg_count + 1;
-                    i2c_sda <= shift_reg(7);   
-                else
-                    shift_reg_count <= 0;                
-                    state <= READ_ACK;    
+                if scl_rising_edge = '1' and sending_bits = '1' then
+                    if shift_reg_count <= 7 then            
+                        shift_reg <= shift_reg(6 downto 0) & '0'; -- shift it left by 1, drop the MSB and pad it with 0 on the end.
+                        shift_reg_count <= shift_reg_count + 1;
+                        i2c_sda_drive <= NOT shift_reg(7);   
+                    else
+                        shift_reg_count <= 0;   
+                        sending_bits <= '0';             
+                        state <= READ_ACK;    
+                    end if;
                 end if;
                 
             when READ_ACK =>
-                i2c_sda <= '1'; --released back so the slave can take control during acknowledgement.    
+                i2c_sda_drive <= '0'; --released back so the slave can take control during acknowledgement.    
                 if scl_rising_edge = '1' then
-                    if i2c_sda = '0' then
+                    if SDA = '0' then
                         state <= NEXT_BYTE;
                     else
-                        state <= IDLE;
+                        state <= IDLE; --handle NACK
                     end if;
                 end if;
                 -- HERE we want to send address first.
@@ -185,14 +196,18 @@ begin
                     end if;
                 end if;  
             when STOP_CONDITION =>
+                i2c_scl_clock_enable <= '0';
+                i2c_scl <= '1';
                 if i2c_scl = '1' then
-                    i2c_sda <= '1';
+                    i2c_sda_drive <= '0';
                     state <= IDLE;
                 end if;
              end case;
         end if;
     end process;
     
+    
+    SDA <= '0' when i2c_sda_drive = '1' else 'Z'; --when we want a 0, when drive sda, when we want a 1, we dont drive it.
     led_data <= i2c_data_in;
-
+    
 end Behavioral;
