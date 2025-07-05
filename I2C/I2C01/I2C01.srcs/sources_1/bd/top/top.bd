@@ -253,7 +253,7 @@
         "xci_path": "ip\\top_I2C_master_0_0\\top_I2C_master_0_0.xci",
         "inst_hier_path": "I2C_master_0",
         "reference_info": {
-          "ref_type": "hdl",
+          "ref_type": "unknown",
           "ref_name": "I2C_master",
           "boundary_crc": "0x0"
         },
@@ -415,6 +415,11 @@
           "xlconstant_0/dout",
           "blk_mem_gen_0/ena"
         ]
+      }
+    },
+    "comments": {
+      "/": {
+        "comment_0": "XCLK will use 25mhzclock"
       }
     }
   }

@@ -66,7 +66,7 @@ end I2C_master;
 
 architecture Behavioral of I2C_master is
     
-    constant i2c_clock_max : integer := 9;
+    constant i2c_clock_max : integer := 500;
     constant slave_write_addr: std_logic_vector(7 downto 0) := x"42";
     constant slave_read_addr: std_logic_vector(7 downto 0) := x"43";
     constant MAX_INDEX : integer := 3; -- The number of indexs we'll loop through.
@@ -79,6 +79,9 @@ architecture Behavioral of I2C_master is
     
     signal i2c_scl_count : integer range 0 to i2c_clock_max ;
     signal i2c_scl : std_logic := '1';
+    signal scl_reg : std_logic := '0';
+    signal scl_rising_edge : std_logic := '0';
+    
     signal i2c_scl_clock_enable : std_logic:= '0';
     signal i2c_sda : std_logic := '1';
     -- states needed: idle, start, send address, read or write, achnolwdge, data transfer, acknowledge, stop
@@ -106,6 +109,13 @@ begin
           end if;
         else
           i2c_scl <= '1'; -- idle HIGH when not used
+        end if;
+        
+        scl_reg <= i2c_scl;  -- store old SCL
+        if scl_reg = '0' and i2c_scl = '1' then
+          scl_rising_edge <= '1'; -- 1-cycle pulse
+        else
+          scl_rising_edge <= '0';
         end if;
       end if;
     end process;
@@ -153,6 +163,16 @@ begin
                 
             when READ_ACK =>
                 i2c_sda <= '1'; --released back so the slave can take control during acknowledgement.    
+                if scl_rising_edge = '1' then
+                    if i2c_sda = '0' then
+                        state <= NEXT_BYTE;
+                    else
+                        state <= IDLE;
+                    end if;
+                end if;
+                -- HERE we want to send address first.
+                -- After we send address we want to wait for ackhlwoedgement in read acklwoedge state. 
+            when NEXT_BYTE =>
                 if byte_counter < 2 then
                     byte_counter <= byte_counter + 1;
                     state <= SEND_BYTE;
@@ -162,16 +182,8 @@ begin
                         current_index <= current_index + 1;
                     else
                         state <= STOP_CONDITION;
-                end if;
-                -- HERE we want to send address first.
-                -- After we send address we want to wait for ackhlwoedgement in read acklwoedge state. 
-            when NEXT_BYTE =>
-                if current_index < MAX_INDEX then
-                    current_index <= current_index + 1;
-                    state <= SEND_BYTE;
-                else
-                    state <= STOP_CONDITION;
-                end if;   
+                    end if;
+                end if;  
             when STOP_CONDITION =>
                 if i2c_scl = '1' then
                     i2c_sda <= '1';
@@ -181,6 +193,6 @@ begin
         end if;
     end process;
     
-    led_data <= i2c_data;
+    led_data <= i2c_data_in;
 
 end Behavioral;
