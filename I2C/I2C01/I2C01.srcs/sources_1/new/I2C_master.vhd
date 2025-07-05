@@ -208,6 +208,7 @@ begin
     
     
     SDA <= '0' when i2c_sda_drive = '1' else 'Z'; --when we want a 0, when drive sda, when we want a 1, we dont drive it.
+    SCL <= i2c_scl;
     led_data <= i2c_data_in;
     
 end Behavioral;
