@@ -10,7 +10,7 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity BRAM_FIFO_Limit is
   generic (
-    DATA_AMOUNT : integer := 76800  -- Number of full pixels to store (QVGA = 320 x 240)
+    DATA_AMOUNT : integer := 76799  -- Number of full pixels to store (QVGA = 320 x 240)
   );
   port (
     clk        : in  std_logic;     -- System clock

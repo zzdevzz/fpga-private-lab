@@ -2,7 +2,7 @@
 --Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
---Date        : Wed Jul 16 00:35:11 2025
+--Date        : Wed Jul 16 17:16:35 2025
 --Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 --Command     : generate_target top.bd
 --Design      : top
@@ -37,7 +37,7 @@ use UNISIM.VCOMPONENTS.ALL;
     vgaRed : out STD_LOGIC_VECTOR ( 3 downto 0 )
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of top : entity is "top,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=top,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=13,numReposBlks=13,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=6,numPkgbdBlks=0,bdsource=USER,""""""""""""""""""""""""""""""""""""""""""""""""""da_board_cnt""""""""""""""""""""""""""""""""""""""""""""""""""=2,synth_mode=Hierarchical}";
+  attribute CORE_GENERATION_INFO of top : entity is "top,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=top,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=13,numReposBlks=13,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=6,numPkgbdBlks=0,bdsource=USER,""""""""""""""""""""""""""""""""""""""""""""""""""""da_board_cnt""""""""""""""""""""""""""""""""""""""""""""""""""""=2,synth_mode=Hierarchical}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of top : entity is "top.hwdef";
 end top;
@@ -358,7 +358,7 @@ blk_mem_gen_1: component top_blk_mem_gen_1_0
       douta(15 downto 0) => blk_mem_gen_1_douta(15 downto 0),
       doutb(15 downto 0) => blk_mem_gen_1_doutb(15 downto 0),
       ena => xlconstant_1_dout(0),
-      enb => xlconstant_1_dout(0),
+      enb => VGA_Output_Colour_0_Re,
       wea(0) => xlconstant_1_dout(0),
       web(0) => '0'
     );

@@ -91,7 +91,7 @@ ARCHITECTURE top_BRAM_FIFO_Limit_0_0_arch OF top_BRAM_FIFO_Limit_0_0 IS
 BEGIN
   U0 : BRAM_FIFO_Limit
     GENERIC MAP (
-      DATA_AMOUNT => 76800
+      DATA_AMOUNT => 76799
     )
     PORT MAP (
       clk => clk,

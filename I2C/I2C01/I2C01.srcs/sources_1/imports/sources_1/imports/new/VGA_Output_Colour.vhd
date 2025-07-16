@@ -65,7 +65,7 @@ architecture Behavioral of VGA_Output_Colour is
 --    pixels are only being drawn between 0 and 639
 --    pulse is only active(low) between the 96 cycles after front porch and before back porch
 
-    constant horiz_pix : integer := 640; --(640 minus 1 since 0 index) -- change this to image size
+    constant horiz_pix : integer := 319; --(640 minus 1 since 0 index) -- change this to image size
     constant horiz_max_range : integer := 799;
     signal horiz_counter : integer range 0 to horiz_max_range := 0;
     constant horiz_pulse_send : integer := 656; --(end of front porch,640px plus front porch mount).
@@ -80,7 +80,7 @@ architecture Behavioral of VGA_Output_Colour is
 --    pixels are only being drawn between 0 and 479
 --    pulse is only active(low) between the 33 cycles after front porch and before back porch
     
-    constant vert_pix : integer := 480; -- change this to image size
+    constant vert_pix : integer := 329; -- change this to image size
     constant vert_max_range : integer := 525;
     signal vert_counter : integer range 0 to vert_max_range := 0;
     constant vert_pulse_send : integer := 490; --(end of front porch,640px plus front porch mount).

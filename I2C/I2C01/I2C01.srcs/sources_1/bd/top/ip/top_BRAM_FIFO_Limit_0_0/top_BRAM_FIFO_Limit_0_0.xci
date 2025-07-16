@@ -8,11 +8,11 @@
     "gen_directory": "../../../../../../I2C01.gen/sources_1/bd/top/ip/top_BRAM_FIFO_Limit_0_0",
     "parameters": {
       "component_parameters": {
-        "DATA_AMOUNT": [ { "value": "76800", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "DATA_AMOUNT": [ { "value": "76799", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "Component_Name": [ { "value": "top_BRAM_FIFO_Limit_0_0", "resolve_type": "user", "usage": "all" } ]
       },
       "model_parameters": {
-        "DATA_AMOUNT": [ { "value": "76800", "resolve_type": "generated", "format": "long", "usage": "all" } ]
+        "DATA_AMOUNT": [ { "value": "76799", "resolve_type": "generated", "format": "long", "usage": "all" } ]
       },
       "project_parameters": {
         "ARCHITECTURE": [ { "value": "artix7" } ],

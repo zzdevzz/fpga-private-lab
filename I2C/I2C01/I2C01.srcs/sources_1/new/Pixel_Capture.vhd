@@ -50,7 +50,7 @@ end Pixel_Capture;
 
 architecture Behavioral of Pixel_Capture is
     
-    constant max_addr : integer := 2559; --(2650 pix, since 640 x 4 minus 1)
+    constant max_addr : integer := 76799; --(2650 pix, since 640 x 4 minus 1)
     signal current_pix: std_logic := '0';
     signal temp_reg : std_logic_vector(7 downto 0);
     signal full_pixel : std_logic_vector(15 downto 0);

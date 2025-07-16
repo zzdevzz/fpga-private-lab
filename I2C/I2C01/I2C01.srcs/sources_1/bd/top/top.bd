@@ -866,7 +866,8 @@
       "VGA_Output_Colour_0_Re": {
         "ports": [
           "VGA_Output_Colour_0/Re",
-          "RGB_ila/probe5"
+          "RGB_ila/probe5",
+          "blk_mem_gen_1/enb"
         ]
       },
       "VGA_Output_Colour_0_Vsync": {
@@ -932,9 +933,9 @@
           "blk_mem_gen_1/clkb",
           "RGB_ila/clk",
           "pixel_capture_ila/probe4",
-          "Pixel_Capture_0/clk",
+          "VGA_Output_Colour_0/clk",
           "BRAM_FIFO_Limit_0/clk",
-          "VGA_Output_Colour_0/clk"
+          "Pixel_Capture_0/clk"
         ]
       },
       "ov7670_data_1": {
@@ -987,8 +988,7 @@
         "ports": [
           "xlconstant_1/dout",
           "blk_mem_gen_1/ena",
-          "blk_mem_gen_1/wea",
-          "blk_mem_gen_1/enb"
+          "blk_mem_gen_1/wea"
         ]
       }
     },

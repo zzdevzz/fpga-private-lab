@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Jul 16 00:35:58 2025" VIVADOVERSION="2023.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Jul 16 17:17:45 2025" VIVADOVERSION="2023.2">
 
   <SYSTEMINFO ARCH="artix7" BOARD="digilentinc.com:basys3:part0:1.2" DEVICE="7a35t" NAME="top" PACKAGE="cpg236" SPEEDGRADE="-1"/>
 
@@ -107,7 +107,7 @@
     <MODULE COREREVISION="1" FULLNAME="/BRAM_FIFO_Limit_0" HWVERSION="1.0" INSTANCE="BRAM_FIFO_Limit_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="BRAM_FIFO_Limit" VLNV="xilinx.com:module_ref:BRAM_FIFO_Limit:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
-        <PARAMETER NAME="DATA_AMOUNT" VALUE="76800"/>
+        <PARAMETER NAME="DATA_AMOUNT" VALUE="76799"/>
         <PARAMETER NAME="Component_Name" VALUE="top_BRAM_FIFO_Limit_0_0"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
@@ -3588,6 +3588,7 @@
         <PORT DIR="O" NAME="Re" SIGIS="undef" SIGNAME="VGA_Output_Colour_0_Re">
           <CONNECTIONS>
             <CONNECTION INSTANCE="RGB_ila" PORT="probe5"/>
+            <CONNECTION INSTANCE="blk_mem_gen_1" PORT="enb"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="Vsync" SIGIS="undef" SIGNAME="VGA_Output_Colour_0_Vsync">
@@ -3833,9 +3834,9 @@
             <CONNECTION INSTANCE="xlconstant_1" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="enb" SIGIS="undef" SIGNAME="xlconstant_1_dout">
+        <PORT DIR="I" NAME="enb" SIGIS="undef" SIGNAME="VGA_Output_Colour_0_Re">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="xlconstant_1" PORT="dout"/>
+            <CONNECTION INSTANCE="VGA_Output_Colour_0" PORT="Re"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="0" NAME="wea" RIGHT="0" SIGIS="undef" SIGNAME="xlconstant_1_dout">
@@ -4480,9 +4481,9 @@
             <CONNECTION INSTANCE="blk_mem_gen_1" PORT="clkb"/>
             <CONNECTION INSTANCE="RGB_ila" PORT="clk"/>
             <CONNECTION INSTANCE="pixel_capture_ila" PORT="probe4"/>
-            <CONNECTION INSTANCE="Pixel_Capture_0" PORT="clk"/>
-            <CONNECTION INSTANCE="BRAM_FIFO_Limit_0" PORT="clk"/>
             <CONNECTION INSTANCE="VGA_Output_Colour_0" PORT="clk"/>
+            <CONNECTION INSTANCE="BRAM_FIFO_Limit_0" PORT="clk"/>
+            <CONNECTION INSTANCE="Pixel_Capture_0" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="locked" SIGIS="undef"/>
@@ -10881,7 +10882,6 @@
           <CONNECTIONS>
             <CONNECTION INSTANCE="blk_mem_gen_1" PORT="ena"/>
             <CONNECTION INSTANCE="blk_mem_gen_1" PORT="wea"/>
-            <CONNECTION INSTANCE="blk_mem_gen_1" PORT="enb"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
