@@ -1,0 +1,402 @@
+--Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+--Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+----------------------------------------------------------------------------------
+--Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
+--Date        : Wed Jul 16 00:35:56 2025
+--Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
+--Command     : generate_target top.bd
+--Design      : top
+--Purpose     : IP block netlist
+----------------------------------------------------------------------------------
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+library UNISIM;
+use UNISIM.VCOMPONENTS.ALL;
+-- XCLK will use 25mhzClock
+  -- Test Data from Camera
+  -- go back and look at what happens when we use CLK for clock edge on pixel capture
+  -- Module feeds the initial I2C module setup, and lets us get camera input setup.
+  entity top is
+  port (
+    Hsync : out STD_LOGIC;
+    LED : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    Vsync : out STD_LOGIC;
+    ov7670_SCL : out STD_LOGIC;
+    ov7670_SDA : inout STD_LOGIC;
+    ov7670_data : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    ov7670_href : in STD_LOGIC;
+    ov7670_pclk : in STD_LOGIC;
+    ov7670_pwdn : out STD_LOGIC;
+    ov7670_reset : out STD_LOGIC;
+    ov7670_vsync : in STD_LOGIC;
+    ov7670_xclk : out STD_LOGIC;
+    reset : in STD_LOGIC;
+    sys_clock : in STD_LOGIC;
+    vgaBlue : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    vgaGreen : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    vgaRed : out STD_LOGIC_VECTOR ( 3 downto 0 )
+  );
+  attribute CORE_GENERATION_INFO : string;
+  attribute CORE_GENERATION_INFO of top : entity is "top,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=top,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=13,numReposBlks=13,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=6,numPkgbdBlks=0,bdsource=USER,""""""""""""""""""""""""""""""""""""""""""""""""""da_board_cnt""""""""""""""""""""""""""""""""""""""""""""""""""=2,synth_mode=Hierarchical}";
+  attribute HW_HANDOFF : string;
+  attribute HW_HANDOFF of top : entity is "top.hwdef";
+end top;
+
+architecture STRUCTURE of top is
+  component top_clk_wiz_0_0 is
+  port (
+    reset : in STD_LOGIC;
+    clk_in1 : in STD_LOGIC;
+    clk_out1 : out STD_LOGIC;
+    clk_out25 : out STD_LOGIC;
+    locked : out STD_LOGIC
+  );
+  end component top_clk_wiz_0_0;
+  component top_I2C_camera_0_0 is
+  port (
+    index : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    reg_addr : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    reg_data : out STD_LOGIC_VECTOR ( 7 downto 0 )
+  );
+  end component top_I2C_camera_0_0;
+  component top_I2C_OV7670_MasterCon_0_0 is
+  port (
+    clk_100 : in STD_LOGIC;
+    slave_reg_addr : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    slave_reg_data : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    ov7670_SCL : out STD_LOGIC;
+    ov7670_SDA : inout STD_LOGIC;
+    ov7670_pclk : in STD_LOGIC;
+    ov7670_data : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    ov7670_vsync : in STD_LOGIC;
+    ov7670_href : in STD_LOGIC;
+    ov7670_pwdn : out STD_LOGIC;
+    ov7670_reset : out STD_LOGIC;
+    i2c_data_out : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    LED : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    i2c_data_read : out STD_LOGIC_VECTOR ( 1 downto 0 )
+  );
+  end component top_I2C_OV7670_MasterCon_0_0;
+  component top_VGA_Output_Colour_0_0 is
+  port (
+    clk : in STD_LOGIC;
+    bram_data : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    start_capture : in STD_LOGIC;
+    vgaRed : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    vgaGreen : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    vgaBlue : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    Hsync : out STD_LOGIC;
+    Vsync : out STD_LOGIC;
+    Re : out STD_LOGIC;
+    bram_addr : out STD_LOGIC_VECTOR ( 16 downto 0 )
+  );
+  end component top_VGA_Output_Colour_0_0;
+  component top_Pixel_Capture_0_0 is
+  port (
+    clk : in STD_LOGIC;
+    pixel_data_in : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    pclk : in STD_LOGIC;
+    start_capture : out STD_LOGIC;
+    bram_addr : out STD_LOGIC_VECTOR ( 16 downto 0 );
+    bram_data : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    bram_we : out STD_LOGIC;
+    href : in STD_LOGIC;
+    vsync : in STD_LOGIC;
+    current_i : out STD_LOGIC;
+    state_out : out STD_LOGIC_VECTOR ( 3 downto 0 )
+  );
+  end component top_Pixel_Capture_0_0;
+  component top_xlconstant_1_0 is
+  port (
+    dout : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component top_xlconstant_1_0;
+  component top_blk_mem_gen_1_0 is
+  port (
+    clka : in STD_LOGIC;
+    ena : in STD_LOGIC;
+    wea : in STD_LOGIC_VECTOR ( 0 to 0 );
+    addra : in STD_LOGIC_VECTOR ( 16 downto 0 );
+    dina : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    douta : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    clkb : in STD_LOGIC;
+    enb : in STD_LOGIC;
+    web : in STD_LOGIC_VECTOR ( 0 to 0 );
+    addrb : in STD_LOGIC_VECTOR ( 16 downto 0 );
+    dinb : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    doutb : out STD_LOGIC_VECTOR ( 15 downto 0 )
+  );
+  end component top_blk_mem_gen_1_0;
+  component top_xlconstant_0_0 is
+  port (
+    dout : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component top_xlconstant_0_0;
+  component top_ila_0_1 is
+  port (
+    clk : in STD_LOGIC;
+    probe0 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe1 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe2 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe3 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe4 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe5 : in STD_LOGIC_VECTOR ( 3 downto 0 )
+  );
+  end component top_ila_0_1;
+  component top_input_ila_0 is
+  port (
+    clk : in STD_LOGIC;
+    probe0 : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    probe1 : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    probe2 : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    probe3 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe4 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe5 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe6 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe7 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe8 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe9 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe10 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe11 : in STD_LOGIC_VECTOR ( 7 downto 0 )
+  );
+  end component top_input_ila_0;
+  component top_BRAM_FIFO_Limit_0_0 is
+  port (
+    clk : in STD_LOGIC;
+    current_pix : in STD_LOGIC;
+    start_capture : in STD_LOGIC;
+    bram_addr_in : in STD_LOGIC_VECTOR ( 16 downto 0 );
+    bram_data_in : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    bram_addr_out : out STD_LOGIC_VECTOR ( 16 downto 0 );
+    bram_data_out : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    read_ready : out STD_LOGIC
+  );
+  end component top_BRAM_FIFO_Limit_0_0;
+  component top_ila_0_2 is
+  port (
+    clk : in STD_LOGIC;
+    probe0 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe1 : in STD_LOGIC_VECTOR ( 16 downto 0 );
+    probe2 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe3 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe4 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe5 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe6 : in STD_LOGIC_VECTOR ( 3 downto 0 )
+  );
+  end component top_ila_0_2;
+  component top_OV7670_QVGA_SIM_0_0 is
+  port (
+    clk : in STD_LOGIC;
+    pclk : out STD_LOGIC;
+    vsync : out STD_LOGIC;
+    href : out STD_LOGIC;
+    data_out : out STD_LOGIC_VECTOR ( 7 downto 0 )
+  );
+  end component top_OV7670_QVGA_SIM_0_0;
+  signal BRAM_FIFO_Limit_0_bram_addr_out : STD_LOGIC_VECTOR ( 16 downto 0 );
+  signal BRAM_FIFO_Limit_0_bram_data_out : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal BRAM_FIFO_Limit_0_read_ready : STD_LOGIC;
+  signal I2C_OV7670_MasterCon_0_LED : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal I2C_OV7670_MasterCon_0_i2c_data_read : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal I2C_OV7670_MasterCon_0_ov7670_SCL : STD_LOGIC;
+  signal I2C_OV7670_MasterCon_0_ov7670_pwdn : STD_LOGIC;
+  signal I2C_OV7670_MasterCon_0_ov7670_reset : STD_LOGIC;
+  signal I2C_camera_0_reg_addr : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal I2C_camera_0_reg_data : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal Net : STD_LOGIC;
+  signal OV7670_QVGA_SIM_0_data_out : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal OV7670_QVGA_SIM_0_href : STD_LOGIC;
+  signal OV7670_QVGA_SIM_0_pclk : STD_LOGIC;
+  signal OV7670_QVGA_SIM_0_vsync : STD_LOGIC;
+  signal Pixel_Capture_0_bram_addr : STD_LOGIC_VECTOR ( 16 downto 0 );
+  signal Pixel_Capture_0_bram_data : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal Pixel_Capture_0_bram_we : STD_LOGIC;
+  signal Pixel_Capture_0_current_i : STD_LOGIC;
+  signal Pixel_Capture_0_start_capture : STD_LOGIC;
+  signal Pixel_Capture_0_state_out : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal VGA_Output_Colour_0_Hsync : STD_LOGIC;
+  signal VGA_Output_Colour_0_Re : STD_LOGIC;
+  signal VGA_Output_Colour_0_Vsync : STD_LOGIC;
+  signal VGA_Output_Colour_0_bram_addr : STD_LOGIC_VECTOR ( 16 downto 0 );
+  signal VGA_Output_Colour_0_vgaBlue : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal VGA_Output_Colour_0_vgaGreen : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal VGA_Output_Colour_0_vgaRed : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal blk_mem_gen_1_douta : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal blk_mem_gen_1_doutb : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal clk_wiz_0_clk_out1 : STD_LOGIC;
+  signal clk_wiz_0_clk_out25 : STD_LOGIC;
+  signal ov7670_data_1 : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal ov7670_href_1 : STD_LOGIC;
+  signal ov7670_pclk_1 : STD_LOGIC;
+  signal ov7670_vsync_1 : STD_LOGIC;
+  signal reset_1 : STD_LOGIC;
+  signal sys_clock_1 : STD_LOGIC;
+  signal xlconstant_1_dout : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal NLW_I2C_OV7670_MasterCon_0_i2c_data_out_UNCONNECTED : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal NLW_clk_wiz_0_locked_UNCONNECTED : STD_LOGIC;
+  signal NLW_xlconstant_0_dout_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
+  attribute X_INTERFACE_INFO : string;
+  attribute X_INTERFACE_INFO of ov7670_reset : signal is "xilinx.com:signal:reset:1.0 RST.OV7670_RESET RST";
+  attribute X_INTERFACE_PARAMETER : string;
+  attribute X_INTERFACE_PARAMETER of ov7670_reset : signal is "XIL_INTERFACENAME RST.OV7670_RESET, INSERT_VIP 0, POLARITY ACTIVE_LOW";
+  attribute X_INTERFACE_INFO of ov7670_xclk : signal is "xilinx.com:signal:clock:1.0 CLK.OV7670_XCLK CLK";
+  attribute X_INTERFACE_PARAMETER of ov7670_xclk : signal is "XIL_INTERFACENAME CLK.OV7670_XCLK, CLK_DOMAIN /clk_wiz_0_clk_out1, FREQ_HZ 25000000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.0";
+  attribute X_INTERFACE_INFO of reset : signal is "xilinx.com:signal:reset:1.0 RST.RESET RST";
+  attribute X_INTERFACE_PARAMETER of reset : signal is "XIL_INTERFACENAME RST.RESET, INSERT_VIP 0, POLARITY ACTIVE_HIGH";
+  attribute X_INTERFACE_INFO of sys_clock : signal is "xilinx.com:signal:clock:1.0 CLK.SYS_CLOCK CLK";
+  attribute X_INTERFACE_PARAMETER of sys_clock : signal is "XIL_INTERFACENAME CLK.SYS_CLOCK, CLK_DOMAIN top_sys_clock, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.0";
+begin
+  Hsync <= VGA_Output_Colour_0_Hsync;
+  LED(7 downto 0) <= I2C_OV7670_MasterCon_0_LED(7 downto 0);
+  Vsync <= VGA_Output_Colour_0_Vsync;
+  ov7670_SCL <= I2C_OV7670_MasterCon_0_ov7670_SCL;
+  ov7670_data_1(7 downto 0) <= ov7670_data(7 downto 0);
+  ov7670_href_1 <= ov7670_href;
+  ov7670_pclk_1 <= ov7670_pclk;
+  ov7670_pwdn <= I2C_OV7670_MasterCon_0_ov7670_pwdn;
+  ov7670_reset <= I2C_OV7670_MasterCon_0_ov7670_reset;
+  ov7670_vsync_1 <= ov7670_vsync;
+  ov7670_xclk <= clk_wiz_0_clk_out25;
+  reset_1 <= reset;
+  sys_clock_1 <= sys_clock;
+  vgaBlue(3 downto 0) <= VGA_Output_Colour_0_vgaBlue(3 downto 0);
+  vgaGreen(3 downto 0) <= VGA_Output_Colour_0_vgaGreen(3 downto 0);
+  vgaRed(3 downto 0) <= VGA_Output_Colour_0_vgaRed(3 downto 0);
+BRAM_FIFO_Limit_0: component top_BRAM_FIFO_Limit_0_0
+     port map (
+      bram_addr_in(16 downto 0) => Pixel_Capture_0_bram_addr(16 downto 0),
+      bram_addr_out(16 downto 0) => BRAM_FIFO_Limit_0_bram_addr_out(16 downto 0),
+      bram_data_in(15 downto 0) => Pixel_Capture_0_bram_data(15 downto 0),
+      bram_data_out(15 downto 0) => BRAM_FIFO_Limit_0_bram_data_out(15 downto 0),
+      clk => clk_wiz_0_clk_out25,
+      current_pix => Pixel_Capture_0_current_i,
+      read_ready => BRAM_FIFO_Limit_0_read_ready,
+      start_capture => Pixel_Capture_0_start_capture
+    );
+I2C_OV7670_MasterCon_0: component top_I2C_OV7670_MasterCon_0_0
+     port map (
+      LED(7 downto 0) => I2C_OV7670_MasterCon_0_LED(7 downto 0),
+      clk_100 => clk_wiz_0_clk_out1,
+      i2c_data_out(7 downto 0) => NLW_I2C_OV7670_MasterCon_0_i2c_data_out_UNCONNECTED(7 downto 0),
+      i2c_data_read(1 downto 0) => I2C_OV7670_MasterCon_0_i2c_data_read(1 downto 0),
+      ov7670_SCL => I2C_OV7670_MasterCon_0_ov7670_SCL,
+      ov7670_SDA => ov7670_SDA,
+      ov7670_data(7 downto 0) => ov7670_data_1(7 downto 0),
+      ov7670_href => ov7670_href_1,
+      ov7670_pclk => ov7670_pclk_1,
+      ov7670_pwdn => I2C_OV7670_MasterCon_0_ov7670_pwdn,
+      ov7670_reset => I2C_OV7670_MasterCon_0_ov7670_reset,
+      ov7670_vsync => ov7670_vsync_1,
+      slave_reg_addr(7 downto 0) => I2C_camera_0_reg_addr(7 downto 0),
+      slave_reg_data(7 downto 0) => I2C_camera_0_reg_data(7 downto 0)
+    );
+I2C_camera_0: component top_I2C_camera_0_0
+     port map (
+      index(1 downto 0) => I2C_OV7670_MasterCon_0_i2c_data_read(1 downto 0),
+      reg_addr(7 downto 0) => I2C_camera_0_reg_addr(7 downto 0),
+      reg_data(7 downto 0) => I2C_camera_0_reg_data(7 downto 0)
+    );
+OV7670_QVGA_SIM_0: component top_OV7670_QVGA_SIM_0_0
+     port map (
+      clk => clk_wiz_0_clk_out1,
+      data_out(7 downto 0) => OV7670_QVGA_SIM_0_data_out(7 downto 0),
+      href => OV7670_QVGA_SIM_0_href,
+      pclk => OV7670_QVGA_SIM_0_pclk,
+      vsync => OV7670_QVGA_SIM_0_vsync
+    );
+Pixel_Capture_0: component top_Pixel_Capture_0_0
+     port map (
+      bram_addr(16 downto 0) => Pixel_Capture_0_bram_addr(16 downto 0),
+      bram_data(15 downto 0) => Pixel_Capture_0_bram_data(15 downto 0),
+      bram_we => Pixel_Capture_0_bram_we,
+      clk => clk_wiz_0_clk_out25,
+      current_i => Pixel_Capture_0_current_i,
+      href => OV7670_QVGA_SIM_0_href,
+      pclk => OV7670_QVGA_SIM_0_pclk,
+      pixel_data_in(7 downto 0) => OV7670_QVGA_SIM_0_data_out(7 downto 0),
+      start_capture => Pixel_Capture_0_start_capture,
+      state_out(3 downto 0) => Pixel_Capture_0_state_out(3 downto 0),
+      vsync => OV7670_QVGA_SIM_0_vsync
+    );
+RGB_ila: component top_input_ila_0
+     port map (
+      clk => clk_wiz_0_clk_out25,
+      probe0(3 downto 0) => VGA_Output_Colour_0_vgaRed(3 downto 0),
+      probe1(3 downto 0) => VGA_Output_Colour_0_vgaGreen(3 downto 0),
+      probe10(15 downto 0) => blk_mem_gen_1_douta(15 downto 0),
+      probe11(7 downto 0) => ov7670_data_1(7 downto 0),
+      probe2(3 downto 0) => VGA_Output_Colour_0_vgaBlue(3 downto 0),
+      probe3(0) => VGA_Output_Colour_0_Hsync,
+      probe4(0) => VGA_Output_Colour_0_Vsync,
+      probe5(0) => VGA_Output_Colour_0_Re,
+      probe6(0) => ov7670_pclk_1,
+      probe7(0) => ov7670_vsync_1,
+      probe8(0) => ov7670_href_1,
+      probe9(0) => reset_1
+    );
+VGA_Output_Colour_0: component top_VGA_Output_Colour_0_0
+     port map (
+      Hsync => VGA_Output_Colour_0_Hsync,
+      Re => VGA_Output_Colour_0_Re,
+      Vsync => VGA_Output_Colour_0_Vsync,
+      bram_addr(16 downto 0) => VGA_Output_Colour_0_bram_addr(16 downto 0),
+      bram_data(15 downto 0) => blk_mem_gen_1_doutb(15 downto 0),
+      clk => clk_wiz_0_clk_out25,
+      start_capture => BRAM_FIFO_Limit_0_read_ready,
+      vgaBlue(3 downto 0) => VGA_Output_Colour_0_vgaBlue(3 downto 0),
+      vgaGreen(3 downto 0) => VGA_Output_Colour_0_vgaGreen(3 downto 0),
+      vgaRed(3 downto 0) => VGA_Output_Colour_0_vgaRed(3 downto 0)
+    );
+blk_mem_gen_1: component top_blk_mem_gen_1_0
+     port map (
+      addra(16 downto 0) => BRAM_FIFO_Limit_0_bram_addr_out(16 downto 0),
+      addrb(16 downto 0) => VGA_Output_Colour_0_bram_addr(16 downto 0),
+      clka => clk_wiz_0_clk_out25,
+      clkb => clk_wiz_0_clk_out25,
+      dina(15 downto 0) => BRAM_FIFO_Limit_0_bram_data_out(15 downto 0),
+      dinb(15 downto 0) => B"0000000000001000",
+      douta(15 downto 0) => blk_mem_gen_1_douta(15 downto 0),
+      doutb(15 downto 0) => blk_mem_gen_1_doutb(15 downto 0),
+      ena => xlconstant_1_dout(0),
+      enb => xlconstant_1_dout(0),
+      wea(0) => xlconstant_1_dout(0),
+      web(0) => '0'
+    );
+clk_wiz_0: component top_clk_wiz_0_0
+     port map (
+      clk_in1 => sys_clock_1,
+      clk_out1 => clk_wiz_0_clk_out1,
+      clk_out25 => clk_wiz_0_clk_out25,
+      locked => NLW_clk_wiz_0_locked_UNCONNECTED,
+      reset => reset_1
+    );
+input_ila: component top_ila_0_1
+     port map (
+      clk => clk_wiz_0_clk_out1,
+      probe0(0) => ov7670_pclk_1,
+      probe1(0) => ov7670_vsync_1,
+      probe2(0) => ov7670_href_1,
+      probe3(0) => reset_1,
+      probe4(7 downto 0) => ov7670_data_1(7 downto 0),
+      probe5(3 downto 0) => Pixel_Capture_0_state_out(3 downto 0)
+    );
+pixel_capture_ila: component top_ila_0_2
+     port map (
+      clk => clk_wiz_0_clk_out1,
+      probe0(0) => Pixel_Capture_0_start_capture,
+      probe1(16 downto 0) => Pixel_Capture_0_bram_addr(16 downto 0),
+      probe2(15 downto 0) => Pixel_Capture_0_bram_data(15 downto 0),
+      probe3(0) => Pixel_Capture_0_bram_we,
+      probe4(0) => clk_wiz_0_clk_out25,
+      probe5(0) => Pixel_Capture_0_current_i,
+      probe6(3 downto 0) => Pixel_Capture_0_state_out(3 downto 0)
+    );
+xlconstant_0: component top_xlconstant_0_0
+     port map (
+      dout(0) => NLW_xlconstant_0_dout_UNCONNECTED(0)
+    );
+xlconstant_1: component top_xlconstant_1_0
+     port map (
+      dout(0) => xlconstant_1_dout(0)
+    );
+end STRUCTURE;

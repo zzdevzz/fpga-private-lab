@@ -1,0 +1,234 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Fri Jul 11 09:40:11 2025
+# Process ID: 3200
+# Current directory: E:/FPGA/VHDL/Lab Training/VGA/VGA02/VGA02/VGA02.runs/impl_1
+# Command line: vivado.exe -log top_wrapper.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source top_wrapper.tcl -notrace
+# Log file: E:/FPGA/VHDL/Lab Training/VGA/VGA02/VGA02/VGA02.runs/impl_1/top_wrapper.vdi
+# Journal file: E:/FPGA/VHDL/Lab Training/VGA/VGA02/VGA02/VGA02.runs/impl_1\vivado.jou
+# Running On: DESKTOP-EFRMAI2, OS: Windows, CPU Frequency: 3700 MHz, CPU Physical cores: 24, Host memory: 34281 MB
+#-----------------------------------------------------------
+source top_wrapper.tcl -notrace
+create_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 511.855 ; gain = 218.336
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'j:/Xilinx/Vivado/vivado-library-master'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'J:/Xilinx/Vivado/2023.2/data/ip'.
+WARNING: [IP_Flow 19-4995] The host OS only allows 260 characters in a normal path. The IP cache path is more than 80 characters. If you experience issues with IP caching, please consider changing the IP cache to a location with a shorter path. Alternately consider using the OS subst command to map part of the path to a drive letter. 
+Current IP cache path is E:/FPGA/VHDL/Lab Training/VGA/VGA02/VGA02/VGA02.runs/impl_1/{E:/FPGA/VHDL/Lab Training/VGA/VGA02/VGA02/VGA02.cache/ip} 
+Command: link_design -top top_wrapper -part xc7a35tcpg236-1
+Design is defaulting to srcset: sources_1
+Design is defaulting to constrset: constrs_1
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: [Project 1-454] Reading design checkpoint 'e:/FPGA/VHDL/Lab Training/VGA/VGA02/VGA02/VGA02.gen/sources_1/bd/top/ip/top_VGA_Output_Colour_0_0/top_VGA_Output_Colour_0_0.dcp' for cell 'top_i/VGA_Output_Colour_0'
+INFO: [Project 1-454] Reading design checkpoint 'e:/FPGA/VHDL/Lab Training/VGA/VGA02/VGA02/VGA02.gen/sources_1/bd/top/ip/top_blk_mem_gen_0_1/top_blk_mem_gen_0_1.dcp' for cell 'top_i/blk_mem_gen_0'
+INFO: [Project 1-454] Reading design checkpoint 'e:/FPGA/VHDL/Lab Training/VGA/VGA02/VGA02/VGA02.gen/sources_1/bd/top/ip/top_clk_wiz_0_0/top_clk_wiz_0_0.dcp' for cell 'top_i/clk_wiz_0'
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 954.375 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 72 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2023.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Parsing XDC File [e:/FPGA/VHDL/Lab Training/VGA/VGA02/VGA02/VGA02.gen/sources_1/bd/top/ip/top_clk_wiz_0_0/top_clk_wiz_0_0_board.xdc] for cell 'top_i/clk_wiz_0/inst'
+Finished Parsing XDC File [e:/FPGA/VHDL/Lab Training/VGA/VGA02/VGA02/VGA02.gen/sources_1/bd/top/ip/top_clk_wiz_0_0/top_clk_wiz_0_0_board.xdc] for cell 'top_i/clk_wiz_0/inst'
+Parsing XDC File [e:/FPGA/VHDL/Lab Training/VGA/VGA02/VGA02/VGA02.gen/sources_1/bd/top/ip/top_clk_wiz_0_0/top_clk_wiz_0_0.xdc] for cell 'top_i/clk_wiz_0/inst'
+INFO: [Timing 38-35] Done setting XDC timing constraints. [e:/FPGA/VHDL/Lab Training/VGA/VGA02/VGA02/VGA02.gen/sources_1/bd/top/ip/top_clk_wiz_0_0/top_clk_wiz_0_0.xdc:54]
+INFO: [Timing 38-2] Deriving generated clocks [e:/FPGA/VHDL/Lab Training/VGA/VGA02/VGA02/VGA02.gen/sources_1/bd/top/ip/top_clk_wiz_0_0/top_clk_wiz_0_0.xdc:54]
+Finished Parsing XDC File [e:/FPGA/VHDL/Lab Training/VGA/VGA02/VGA02/VGA02.gen/sources_1/bd/top/ip/top_clk_wiz_0_0/top_clk_wiz_0_0.xdc] for cell 'top_i/clk_wiz_0/inst'
+Parsing XDC File [E:/FPGA/VHDL/Lab Training/VGA/VGA02/VGA02/VGA02.srcs/constrs_1/new/Basys-3-Master.xdc]
+Finished Parsing XDC File [E:/FPGA/VHDL/Lab Training/VGA/VGA02/VGA02/VGA02.srcs/constrs_1/new/Basys-3-Master.xdc]
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1616.688 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+15 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+link_design completed successfully
+link_design: Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1616.688 ; gain = 1078.891
+Command: opt_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7a35t'
+Running DRC as a precondition to command opt_design
+
+Starting DRC Task
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Project 1-461] DRC finished with 0 Errors
+INFO: [Project 1-462] Please refer to the DRC report (report_drc) for more information.
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.844 . Memory (MB): peak = 1616.688 ; gain = 0.000
+
+Starting Cache Timing Information Task
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Ending Cache Timing Information Task | Checksum: 1696bc664
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.057 . Memory (MB): peak = 1635.594 ; gain = 18.906
+
+Starting Logic Optimization Task
+
+Phase 1 Initialization
+
+Phase 1.1 Core Generation And Design Setup
+Phase 1.1 Core Generation And Design Setup | Checksum: 1696bc664
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1990.477 ; gain = 0.000
+
+Phase 1.2 Setup Constraints And Sort Netlist
+Phase 1.2 Setup Constraints And Sort Netlist | Checksum: 1696bc664
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1990.477 ; gain = 0.000
+Phase 1 Initialization | Checksum: 1696bc664
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1990.477 ; gain = 0.000
+
+Phase 2 Timer Update And Timing Data Collection
+
+Phase 2.1 Timer Update
+Phase 2.1 Timer Update | Checksum: 1696bc664
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.018 . Memory (MB): peak = 1990.477 ; gain = 0.000
+
+Phase 2.2 Timing Data Collection
+Phase 2.2 Timing Data Collection | Checksum: 1696bc664
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.029 . Memory (MB): peak = 1990.477 ; gain = 0.000
+Phase 2 Timer Update And Timing Data Collection | Checksum: 1696bc664
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.029 . Memory (MB): peak = 1990.477 ; gain = 0.000
+
+Phase 3 Retarget
+INFO: [Opt 31-138] Pushed 1 inverter(s) to 14 load pin(s).
+INFO: [Opt 31-49] Retargeted 0 cell(s).
+Phase 3 Retarget | Checksum: 25554b5cc
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.055 . Memory (MB): peak = 1990.477 ; gain = 0.000
+Retarget | Checksum: 25554b5cc
+INFO: [Opt 31-389] Phase Retarget created 25 cells and removed 26 cells
+INFO: [Opt 31-1021] In phase Retarget, 1 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
+
+Phase 4 Constant propagation
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Phase 4 Constant propagation | Checksum: 25554b5cc
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.058 . Memory (MB): peak = 1990.477 ; gain = 0.000
+Constant propagation | Checksum: 25554b5cc
+INFO: [Opt 31-389] Phase Constant propagation created 0 cells and removed 0 cells
+
+Phase 5 Sweep
+Phase 5 Sweep | Checksum: 1ce49588c
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.084 . Memory (MB): peak = 1990.477 ; gain = 0.000
+Sweep | Checksum: 1ce49588c
+INFO: [Opt 31-389] Phase Sweep created 0 cells and removed 35 cells
+
+Phase 6 BUFG optimization
+Phase 6 BUFG optimization | Checksum: 1ce49588c
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.118 . Memory (MB): peak = 1990.477 ; gain = 0.000
+BUFG optimization | Checksum: 1ce49588c
+INFO: [Opt 31-662] Phase BUFG optimization created 0 cells of which 0 are BUFGs and removed 0 cells.
+
+Phase 7 Shift Register Optimization
+INFO: [Opt 31-1064] SRL Remap converted 0 SRLs to 0 registers and converted 0 registers of register chains to 0 SRLs
+Phase 7 Shift Register Optimization | Checksum: 1ce49588c
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.120 . Memory (MB): peak = 1990.477 ; gain = 0.000
+Shift Register Optimization | Checksum: 1ce49588c
+INFO: [Opt 31-389] Phase Shift Register Optimization created 0 cells and removed 0 cells
+
+Phase 8 Post Processing Netlist
+Phase 8 Post Processing Netlist | Checksum: 1ce49588c
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.123 . Memory (MB): peak = 1990.477 ; gain = 0.000
+Post Processing Netlist | Checksum: 1ce49588c
+INFO: [Opt 31-389] Phase Post Processing Netlist created 0 cells and removed 0 cells
+
+Phase 9 Finalization
+
+Phase 9.1 Finalizing Design Cores and Updating Shapes
+Phase 9.1 Finalizing Design Cores and Updating Shapes | Checksum: 17a645d57
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.132 . Memory (MB): peak = 1990.477 ; gain = 0.000
+
+Phase 9.2 Verifying Netlist Connectivity
+
+Starting Connectivity Check Task
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1990.477 ; gain = 0.000
+Phase 9.2 Verifying Netlist Connectivity | Checksum: 17a645d57
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.133 . Memory (MB): peak = 1990.477 ; gain = 0.000
+Phase 9 Finalization | Checksum: 17a645d57
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.133 . Memory (MB): peak = 1990.477 ; gain = 0.000
+Opt_design Change Summary
+=========================
+
+
+-------------------------------------------------------------------------------------------------------------------------
+|  Phase                        |  #Cells created  |  #Cells Removed  |  #Constrained objects preventing optimizations  |
+-------------------------------------------------------------------------------------------------------------------------
+|  Retarget                     |              25  |              26  |                                              1  |
+|  Constant propagation         |               0  |               0  |                                              0  |
+|  Sweep                        |               0  |              35  |                                              0  |
+|  BUFG optimization            |               0  |               0  |                                              0  |
+|  Shift Register Optimization  |               0  |               0  |                                              0  |
+|  Post Processing Netlist      |               0  |               0  |                                              0  |
+-------------------------------------------------------------------------------------------------------------------------
+
+
+Ending Logic Optimization Task | Checksum: 17a645d57
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.134 . Memory (MB): peak = 1990.477 ; gain = 0.000
+INFO: [Constraints 18-11670] Building netlist checker database with flags, 0x8
+Done building netlist checker database: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1990.477 ; gain = 0.000
+
+Starting Power Optimization Task
+INFO: [Pwropt 34-132] Skipping clock gating for clocks with a period < 2.00 ns.
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Running Vector-less Activity Propagation...
+
+Finished Running Vector-less Activity Propagation
+INFO: [Pwropt 34-9] Applying IDT optimizations ...
+INFO: [Pwropt 34-10] Applying ODC optimizations ...
+
+
+Starting PowerOpt Patch Enables Task
+INFO: [Pwropt 34-162] WRITE_MODE attribute of 0 BRAM(s) out of a total of 35 has been updated to save power. Run report_power_opt to get a complete listing of the BRAMs updated.
+INFO: [Pwropt 34-201] Structural ODC has moved 0 WE to EN ports
+Number of BRAM Ports augmented: 4 newly gated: 26 Total Ports: 70
+Number of Flops added for Enable Generation: 1
+
+Ending PowerOpt Patch Enables Task | Checksum: 8f2ba089
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.125 . Memory (MB): peak = 2112.859 ; gain = 0.000
+Ending Power Optimization Task | Checksum: 8f2ba089
+
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2112.859 ; gain = 122.383
+
+Starting Final Cleanup Task
+
+Starting Logic Optimization Task
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Ending Logic Optimization Task | Checksum: 16dbee3aa
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.177 . Memory (MB): peak = 2112.859 ; gain = 0.000
+INFO: [Constraints 18-11670] Building netlist checker database with flags, 0x8
+Done building netlist checker database: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2112.859 ; gain = 0.000
+Ending Final Cleanup Task | Checksum: 16dbee3aa
+
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 2112.859 ; gain = 0.000
+
+Starting Netlist Obfuscation Task
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 2112.859 ; gain = 0.000
+Ending Netlist Obfuscation Task | Checksum: 16dbee3aa
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 2112.859 ; gain = 0.000
+INFO: [Common 17-83] Releasing license: Implementation
+41 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+opt_design completed successfully
+opt_design: Time (s): cpu = 00:00:10 ; elapsed = 00:00:09 . Memory (MB): peak = 2112.859 ; gain = 496.172
+INFO: [runtcl-4] Executing : report_drc -file top_wrapper_drc_opted.rpt -pb top_wrapper_drc_opted.pb -rpx top_wrapper_drc_opted.rpx
+Command: report_drc -file top_wrapper_drc_opted.rpt -pb top_wrapper_drc_opted.pb -rpx top_wrapper_drc_opted.rpx
+INFO: [IP_Flow 19-1839] IP Catalog is up to date.
+INFO: [DRC 23-27] Running DRC with 2 threads

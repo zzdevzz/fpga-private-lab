@@ -1,0 +1,22 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../CS4.srcs/sources_1/new/image_threshold.vhd" \
+"../../../../CS4.srcs/sources_1/new/sobel_processor.vhd" \
+"../../../../CS4.srcs/sources_1/new/UART_TX_CTRL.vhd" \
+"../../../../CS4.srcs/sources_1/new/uart_bram_loader.vhd" \
+"../../../../CS4.srcs/sources_1/new/line_buffer_simple.vhd" \
+"../../../../CS4.srcs/sources_1/new/bram_reader.vhd" \
+"../../../../CS4.ip_user_files/bd/top/ip/top_image_threshold_0_0/sim/top_image_threshold_0_0.vhd" \
+"../../../../CS4.ip_user_files/bd/top/ip/top_rst_clk_wiz_0_100M_0/sim/top_rst_clk_wiz_0_100M_0.vhd" \
+"../../../../CS4.ip_user_files/bd/top/ip/top_sobel_processor_0_0/sim/top_sobel_processor_0_0.vhd" \
+"../../../../CS4.ip_user_files/bd/top/ip/top_UART_TX_CTRL_0_0/sim/top_UART_TX_CTRL_0_0.vhd" \
+"../../../../CS4.ip_user_files/bd/top/ip/top_uart_bram_loader_0_1/sim/top_uart_bram_loader_0_1.vhd" \
+"../../../../CS4.ip_user_files/bd/top/ip/top_ila_0_0/sim/top_ila_0_0.vhd" \
+"../../../../CS4.ip_user_files/bd/top/ip/top_line_buffer_simple_0_0/sim/top_line_buffer_simple_0_0.vhd" \
+"../../../../CS4.ip_user_files/bd/top/ip/top_bram_reader_0_1/sim/top_bram_reader_0_1.vhd" \
+"../../../../CS4.ip_user_files/bd/top/sim/top.vhd" \
+"../../../../CS4.gen/sources_1/bd/top/hdl/top_wrapper.vhd" \
+"../../../../CS4.srcs/sim_1/new/tb_top_wrapper.vhd" \
+
+# Do not sort compile order
+nosort

@@ -1,0 +1,256 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0x0",
+      "device": "xc7a35tcpg236-1",
+      "gen_directory": "../../../../Pmod_SLI.gen/sources_1/bd/top",
+      "name": "top",
+      "rev_ctrl_bd_flag": "RevCtrlBdOff",
+      "synth_flow_mode": "Hierarchical",
+      "tool_version": "2023.2"
+    },
+    "design_tree": {
+      "clk_wiz_0": "",
+      "blk_mem_gen_0": "",
+      "PmodOLEDrgb_0": "",
+      "xlconstant_0": "",
+      "axi_quad_spi_0": ""
+    },
+    "interface_ports": {
+      "ja": {
+        "mode": "Master",
+        "vlnv_bus_definition": "digilentinc.com:interface:pmod:1.0",
+        "vlnv": "digilentinc.com:interface:pmod_rtl:1.0",
+        "port_maps": {
+          "PIN1_O": {
+            "physical_name": "ja_pin1_o",
+            "direction": "O"
+          },
+          "PIN7_I": {
+            "physical_name": "ja_pin7_i",
+            "direction": "I"
+          },
+          "PIN2_O": {
+            "physical_name": "ja_pin2_o",
+            "direction": "O"
+          },
+          "PIN8_I": {
+            "physical_name": "ja_pin8_i",
+            "direction": "I"
+          },
+          "PIN3_O": {
+            "physical_name": "ja_pin3_o",
+            "direction": "O"
+          },
+          "PIN9_I": {
+            "physical_name": "ja_pin9_i",
+            "direction": "I"
+          },
+          "PIN10_O": {
+            "physical_name": "ja_pin10_o",
+            "direction": "O"
+          },
+          "PIN4_O": {
+            "physical_name": "ja_pin4_o",
+            "direction": "O"
+          },
+          "PIN3_I": {
+            "physical_name": "ja_pin3_i",
+            "direction": "I"
+          },
+          "PIN4_I": {
+            "physical_name": "ja_pin4_i",
+            "direction": "I"
+          },
+          "PIN1_I": {
+            "physical_name": "ja_pin1_i",
+            "direction": "I"
+          },
+          "PIN2_I": {
+            "physical_name": "ja_pin2_i",
+            "direction": "I"
+          },
+          "PIN10_T": {
+            "physical_name": "ja_pin10_t",
+            "direction": "O"
+          },
+          "PIN8_T": {
+            "physical_name": "ja_pin8_t",
+            "direction": "O"
+          },
+          "PIN9_T": {
+            "physical_name": "ja_pin9_t",
+            "direction": "O"
+          },
+          "PIN4_T": {
+            "physical_name": "ja_pin4_t",
+            "direction": "O"
+          },
+          "PIN9_O": {
+            "physical_name": "ja_pin9_o",
+            "direction": "O"
+          },
+          "PIN10_I": {
+            "physical_name": "ja_pin10_i",
+            "direction": "I"
+          },
+          "PIN7_T": {
+            "physical_name": "ja_pin7_t",
+            "direction": "O"
+          },
+          "PIN1_T": {
+            "physical_name": "ja_pin1_t",
+            "direction": "O"
+          },
+          "PIN2_T": {
+            "physical_name": "ja_pin2_t",
+            "direction": "O"
+          },
+          "PIN7_O": {
+            "physical_name": "ja_pin7_o",
+            "direction": "O"
+          },
+          "PIN3_T": {
+            "physical_name": "ja_pin3_t",
+            "direction": "O"
+          },
+          "PIN8_O": {
+            "physical_name": "ja_pin8_o",
+            "direction": "O"
+          }
+        }
+      }
+    },
+    "ports": {
+      "sys_clock": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "FREQ_HZ": {
+            "value": "100000000"
+          },
+          "PHASE": {
+            "value": "0.0"
+          }
+        }
+      },
+      "reset": {
+        "type": "rst",
+        "direction": "I",
+        "parameters": {
+          "POLARITY": {
+            "value": "ACTIVE_HIGH"
+          }
+        }
+      }
+    },
+    "components": {
+      "clk_wiz_0": {
+        "vlnv": "xilinx.com:ip:clk_wiz:6.0",
+        "ip_revision": "13",
+        "xci_name": "top_clk_wiz_0_0",
+        "xci_path": "ip\\top_clk_wiz_0_0\\top_clk_wiz_0_0.xci",
+        "inst_hier_path": "clk_wiz_0",
+        "parameters": {
+          "CLK_IN1_BOARD_INTERFACE": {
+            "value": "sys_clock"
+          },
+          "RESET_BOARD_INTERFACE": {
+            "value": "reset"
+          },
+          "USE_BOARD_FLOW": {
+            "value": "true"
+          }
+        }
+      },
+      "blk_mem_gen_0": {
+        "vlnv": "xilinx.com:ip:blk_mem_gen:8.4",
+        "ip_revision": "7",
+        "xci_name": "top_blk_mem_gen_0_0",
+        "xci_path": "ip\\top_blk_mem_gen_0_0\\top_blk_mem_gen_0_0.xci",
+        "inst_hier_path": "blk_mem_gen_0",
+        "parameters": {
+          "Coe_File": {
+            "value": "../../../../../../../pepe_8b.coe"
+          },
+          "Enable_32bit_Address": {
+            "value": "true"
+          },
+          "Load_Init_File": {
+            "value": "true"
+          },
+          "Memory_Type": {
+            "value": "Single_Port_ROM"
+          },
+          "use_bram_block": {
+            "value": "Stand_Alone"
+          }
+        }
+      },
+      "PmodOLEDrgb_0": {
+        "vlnv": "digilentinc.com:IP:PmodOLEDrgb:1.0",
+        "ip_revision": "55",
+        "xci_name": "top_PmodOLEDrgb_0_0",
+        "xci_path": "ip\\top_PmodOLEDrgb_0_0\\top_PmodOLEDrgb_0_0.xci",
+        "inst_hier_path": "PmodOLEDrgb_0",
+        "parameters": {
+          "PMOD": {
+            "value": "ja"
+          },
+          "USE_BOARD_FLOW": {
+            "value": "true"
+          }
+        }
+      },
+      "xlconstant_0": {
+        "vlnv": "xilinx.com:ip:xlconstant:1.1",
+        "ip_revision": "8",
+        "xci_name": "top_xlconstant_0_0",
+        "xci_path": "ip\\top_xlconstant_0_0\\top_xlconstant_0_0.xci",
+        "inst_hier_path": "xlconstant_0"
+      },
+      "axi_quad_spi_0": {
+        "vlnv": "xilinx.com:ip:axi_quad_spi:3.2",
+        "ip_revision": "28",
+        "xci_name": "top_axi_quad_spi_0_1",
+        "xci_path": "ip\\top_axi_quad_spi_0_1\\top_axi_quad_spi_0_1.xci",
+        "inst_hier_path": "axi_quad_spi_0"
+      }
+    },
+    "interface_nets": {
+      "PmodOLEDrgb_0_PmodOLEDrgb_out": {
+        "interface_ports": [
+          "ja",
+          "PmodOLEDrgb_0/PmodOLEDrgb_out"
+        ]
+      }
+    },
+    "nets": {
+      "clk_wiz_0_clk_out1": {
+        "ports": [
+          "clk_wiz_0/clk_out1",
+          "PmodOLEDrgb_0/ext_spi_clk",
+          "blk_mem_gen_0/clka"
+        ]
+      },
+      "reset_1": {
+        "ports": [
+          "reset",
+          "clk_wiz_0/reset"
+        ]
+      },
+      "sys_clock_1": {
+        "ports": [
+          "sys_clock",
+          "clk_wiz_0/clk_in1"
+        ]
+      },
+      "xlconstant_0_dout": {
+        "ports": [
+          "xlconstant_0/dout",
+          "blk_mem_gen_0/ena"
+        ]
+      }
+    }
+  }
+}

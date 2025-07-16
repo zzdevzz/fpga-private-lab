@@ -1,0 +1,42 @@
+# Vivado project garbage
+*.jou
+*.log
+*.str
+*.pb
+*.wdb
+*.wcfg
+*.backup.jou
+*.backup.log
+*.lck
+
+# Vivado output folders
+.cache/
+.hw/
+.ip_user_files/
+.runs/
+.sim/
+.xsim/
+.Xil/
+.gen/
+impl/
+synth/
+
+# Vivado project files
+*.xpr
+*.xpr.user
+*.xsd
+*.xise
+*.dmp
+
+# Temporary files
+*~
+*.tmp
+*.bak
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Vitis / SDK workspace
+.sdk/

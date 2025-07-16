@@ -1,0 +1,14 @@
+0.7
+2020.2
+Oct 13 2023
+20:47:58
+E:/FPGA/VHDL/Lab Training/VGA/VGA02/VGA02/VGA02.gen/sources_1/bd/top/hdl/top_wrapper.vhd,1752157948,vhdl,,,,top_wrapper,,,,,,,,
+E:/FPGA/VHDL/Lab Training/VGA/VGA02/VGA02/VGA02.ip_user_files/bd/top/ip/top_VGA_Output_0_0/sim/top_VGA_Output_0_0.vhd,1752157120,vhdl,,,,top_vga_output_0_0,,,,,,,,
+E:/FPGA/VHDL/Lab Training/VGA/VGA02/VGA02/VGA02.ip_user_files/bd/top/ip/top_blk_mem_gen_0_1/sim/top_blk_mem_gen_0_1.v,1752157953,verilog,,,,top_blk_mem_gen_0_1,,,../../../../VGA02.gen/sources_1/bd/top/ipshared/c2c6,,,,,
+E:/FPGA/VHDL/Lab Training/VGA/VGA02/VGA02/VGA02.ip_user_files/bd/top/ip/top_clk_wiz_0_0/top_clk_wiz_0_0.v,1752005523,verilog,,E:/FPGA/VHDL/Lab Training/VGA/VGA02/VGA02/VGA02.ip_user_files/bd/top/ip/top_xlconstant_0_0/sim/top_xlconstant_0_0.v,,top_clk_wiz_0_0,,,../../../../VGA02.gen/sources_1/bd/top/ipshared/c2c6,,,,,
+E:/FPGA/VHDL/Lab Training/VGA/VGA02/VGA02/VGA02.ip_user_files/bd/top/ip/top_clk_wiz_0_0/top_clk_wiz_0_0_clk_wiz.v,1752005523,verilog,,E:/FPGA/VHDL/Lab Training/VGA/VGA02/VGA02/VGA02.ip_user_files/bd/top/ip/top_clk_wiz_0_0/top_clk_wiz_0_0.v,,top_clk_wiz_0_0_clk_wiz,,,../../../../VGA02.gen/sources_1/bd/top/ipshared/c2c6,,,,,
+E:/FPGA/VHDL/Lab Training/VGA/VGA02/VGA02/VGA02.ip_user_files/bd/top/ip/top_xlconstant_0_0/sim/top_xlconstant_0_0.v,1752005523,verilog,,E:/FPGA/VHDL/Lab Training/VGA/VGA02/VGA02/VGA02.ip_user_files/bd/top/ip/top_blk_mem_gen_0_1/sim/top_blk_mem_gen_0_1.v,,top_xlconstant_0_0,,,../../../../VGA02.gen/sources_1/bd/top/ipshared/c2c6,,,,,
+E:/FPGA/VHDL/Lab Training/VGA/VGA02/VGA02/VGA02.ip_user_files/bd/top/sim/top.vhd,1752157883,vhdl,,,,top,,,,,,,,
+E:/FPGA/VHDL/Lab Training/VGA/VGA02/VGA02/VGA02.sim/sim_1/behav/xsim/glbl.v,1697210495,verilog,,,,glbl,,,,,,,,
+E:/FPGA/VHDL/Lab Training/VGA/VGA02/VGA02/VGA02.srcs/sim_1/new/tb_top_wrapper.vhd,1752002496,vhdl,,,,tb_top_wrapper,,,,,,,,
+E:/FPGA/VHDL/Lab Training/VGA/VGA02/VGA02/VGA02.srcs/sources_1/new/VGA_Output.vhd,1752156779,vhdl,,,,vga_output,,,,,,,,

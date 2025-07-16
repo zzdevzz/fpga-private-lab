@@ -1,0 +1,36 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"0.896311",
+   "Default View_TopLeft":"-117,-108",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.5.8 2022-09-21 7111 VDI=41 GEI=38 GUI=JA:10.0
+#  -string -flagsOSRD
+preplace port port-id_sys_clock -pg 1 -lvl 0 -x 0 -y 120 -defaultsOSRD
+preplace port port-id_reset -pg 1 -lvl 0 -x 0 -y 100 -defaultsOSRD
+preplace port port-id_Hsync -pg 1 -lvl 4 -x 750 -y 120 -defaultsOSRD
+preplace port port-id_Vsync -pg 1 -lvl 4 -x 750 -y 140 -defaultsOSRD
+preplace portBus vgaRed -pg 1 -lvl 4 -x 750 -y 60 -defaultsOSRD
+preplace portBus vgaGreen -pg 1 -lvl 4 -x 750 -y 80 -defaultsOSRD
+preplace portBus vgaBlue -pg 1 -lvl 4 -x 750 -y 100 -defaultsOSRD
+preplace inst clk_wiz_0 -pg 1 -lvl 1 -x 120 -y 110 -defaultsOSRD
+preplace inst xlconstant_0 -pg 1 -lvl 2 -x 380 -y 320 -defaultsOSRD
+preplace inst blk_mem_gen_0 -pg 1 -lvl 3 -x 630 -y 240 -defaultsOSRD
+preplace inst VGA_Output_Colour_0 -pg 1 -lvl 2 -x 380 -y 120 -defaultsOSRD
+preplace netloc clk_wiz_0_clk_out25 1 1 2 220 240 N
+preplace netloc reset_1 1 0 1 NJ 100
+preplace netloc sys_clock_1 1 0 1 NJ 120
+preplace netloc xlconstant_0_dout 1 2 1 530J 280n
+preplace netloc blk_mem_gen_0_douta 1 1 2 230 260 NJ
+preplace netloc VGA_Output_Colour_0_bram_addr 1 2 1 530 180n
+preplace netloc VGA_Output_Colour_0_vgaRed 1 2 2 NJ 60 NJ
+preplace netloc VGA_Output_Colour_0_vgaGreen 1 2 2 NJ 80 NJ
+preplace netloc VGA_Output_Colour_0_vgaBlue 1 2 2 NJ 100 NJ
+preplace netloc VGA_Output_Colour_0_Hsync 1 2 2 NJ 120 NJ
+preplace netloc VGA_Output_Colour_0_Vsync 1 2 2 NJ 140 NJ
+levelinfo -pg 1 0 120 380 630 750
+pagesize -pg 1 -db -bbox -sgen -120 0 890 380
+"
+}
+{
+   "da_board_cnt":"2"
+}
