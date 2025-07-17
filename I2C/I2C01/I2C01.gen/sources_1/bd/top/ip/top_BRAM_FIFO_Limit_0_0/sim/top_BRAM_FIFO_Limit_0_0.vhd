@@ -62,7 +62,7 @@ ENTITY top_BRAM_FIFO_Limit_0_0 IS
     bram_data_in : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
     bram_addr_out : OUT STD_LOGIC_VECTOR(16 DOWNTO 0);
     bram_data_out : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
-    read_ready : OUT STD_LOGIC
+    bram_loaded : OUT STD_LOGIC
   );
 END top_BRAM_FIFO_Limit_0_0;
 
@@ -81,7 +81,7 @@ ARCHITECTURE top_BRAM_FIFO_Limit_0_0_arch OF top_BRAM_FIFO_Limit_0_0 IS
       bram_data_in : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
       bram_addr_out : OUT STD_LOGIC_VECTOR(16 DOWNTO 0);
       bram_data_out : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
-      read_ready : OUT STD_LOGIC
+      bram_loaded : OUT STD_LOGIC
     );
   END COMPONENT BRAM_FIFO_Limit;
   ATTRIBUTE X_INTERFACE_INFO : STRING;
@@ -101,6 +101,6 @@ BEGIN
       bram_data_in => bram_data_in,
       bram_addr_out => bram_addr_out,
       bram_data_out => bram_data_out,
-      read_ready => read_ready
+      bram_loaded => bram_loaded
     );
 END top_BRAM_FIFO_Limit_0_0_arch;

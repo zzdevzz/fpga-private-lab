@@ -14,16 +14,15 @@
       "clk_wiz_0": "",
       "I2C_camera_0": "",
       "I2C_OV7670_MasterCon_0": "",
-      "VGA_Output_Colour_0": "",
       "Pixel_Capture_0": "",
       "xlconstant_1": "",
       "blk_mem_gen_1": "",
-      "xlconstant_0": "",
       "input_ila": "",
-      "RGB_ila": "",
       "BRAM_FIFO_Limit_0": "",
       "pixel_capture_ila": "",
-      "OV7670_QVGA_SIM_0": ""
+      "OV7670_QVGA_SIM_0": "",
+      "VGA_OutputFrame_Colo_0": "",
+      "BRAM_reader_0": ""
     },
     "ports": {
       "sys_clock": {
@@ -347,75 +346,6 @@
           }
         }
       },
-      "VGA_Output_Colour_0": {
-        "vlnv": "xilinx.com:module_ref:VGA_Output_Colour:1.0",
-        "ip_revision": "1",
-        "xci_name": "top_VGA_Output_Colour_0_0",
-        "xci_path": "ip\\top_VGA_Output_Colour_0_0\\top_VGA_Output_Colour_0_0.xci",
-        "inst_hier_path": "VGA_Output_Colour_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "VGA_Output_Colour",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "clk": {
-            "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "FREQ_HZ": {
-                "value": "25000000",
-                "value_src": "ip_prop"
-              },
-              "PHASE": {
-                "value": "0.0",
-                "value_src": "ip_prop"
-              },
-              "CLK_DOMAIN": {
-                "value": "/clk_wiz_0_clk_out1",
-                "value_src": "ip_prop"
-              }
-            }
-          },
-          "bram_data": {
-            "direction": "I",
-            "left": "15",
-            "right": "0"
-          },
-          "start_capture": {
-            "direction": "I"
-          },
-          "vgaRed": {
-            "direction": "O",
-            "left": "3",
-            "right": "0"
-          },
-          "vgaGreen": {
-            "direction": "O",
-            "left": "3",
-            "right": "0"
-          },
-          "vgaBlue": {
-            "direction": "O",
-            "left": "3",
-            "right": "0"
-          },
-          "Hsync": {
-            "direction": "O"
-          },
-          "Vsync": {
-            "direction": "O"
-          },
-          "Re": {
-            "direction": "O"
-          },
-          "bram_addr": {
-            "direction": "O",
-            "left": "16",
-            "right": "0"
-          }
-        }
-      },
       "Pixel_Capture_0": {
         "vlnv": "xilinx.com:module_ref:Pixel_Capture:1.0",
         "ip_revision": "1",
@@ -514,18 +444,6 @@
           }
         }
       },
-      "xlconstant_0": {
-        "vlnv": "xilinx.com:ip:xlconstant:1.1",
-        "ip_revision": "8",
-        "xci_name": "top_xlconstant_0_0",
-        "xci_path": "ip\\top_xlconstant_0_0\\top_xlconstant_0_0.xci",
-        "inst_hier_path": "xlconstant_0",
-        "parameters": {
-          "CONST_VAL": {
-            "value": "0"
-          }
-        }
-      },
       "input_ila": {
         "vlnv": "xilinx.com:ip:ila:6.2",
         "ip_revision": "14",
@@ -534,7 +452,7 @@
         "inst_hier_path": "input_ila",
         "parameters": {
           "C_DATA_DEPTH": {
-            "value": "16384"
+            "value": "8192"
           },
           "C_MONITOR_TYPE": {
             "value": "Native"
@@ -547,45 +465,6 @@
           },
           "C_PROBE5_WIDTH": {
             "value": "4"
-          }
-        }
-      },
-      "RGB_ila": {
-        "vlnv": "xilinx.com:ip:ila:6.2",
-        "ip_revision": "14",
-        "xci_name": "top_input_ila_0",
-        "xci_path": "ip\\top_input_ila_0\\top_input_ila_0.xci",
-        "inst_hier_path": "RGB_ila",
-        "parameters": {
-          "C_DATA_DEPTH": {
-            "value": "16384"
-          },
-          "C_MONITOR_TYPE": {
-            "value": "Native"
-          },
-          "C_NUM_OF_PROBES": {
-            "value": "12"
-          },
-          "C_PROBE0_WIDTH": {
-            "value": "4"
-          },
-          "C_PROBE10_WIDTH": {
-            "value": "16"
-          },
-          "C_PROBE11_WIDTH": {
-            "value": "8"
-          },
-          "C_PROBE1_WIDTH": {
-            "value": "4"
-          },
-          "C_PROBE2_WIDTH": {
-            "value": "4"
-          },
-          "C_PROBE4_WIDTH": {
-            "value": "1"
-          },
-          "C_PROBE5_WIDTH": {
-            "value": "1"
           }
         }
       },
@@ -645,7 +524,7 @@
             "left": "15",
             "right": "0"
           },
-          "read_ready": {
+          "bram_loaded": {
             "direction": "O"
           }
         }
@@ -658,13 +537,13 @@
         "inst_hier_path": "pixel_capture_ila",
         "parameters": {
           "C_DATA_DEPTH": {
-            "value": "16384"
+            "value": "8192"
           },
           "C_MONITOR_TYPE": {
             "value": "Native"
           },
           "C_NUM_OF_PROBES": {
-            "value": "7"
+            "value": "3"
           },
           "C_PROBE1_WIDTH": {
             "value": "17"
@@ -673,7 +552,7 @@
             "value": "16"
           },
           "C_PROBE6_WIDTH": {
-            "value": "4"
+            "value": "1"
           }
         }
       },
@@ -722,6 +601,116 @@
             "right": "0"
           }
         }
+      },
+      "VGA_OutputFrame_Colo_0": {
+        "vlnv": "xilinx.com:module_ref:VGA_OutputFrame_Colour:1.0",
+        "ip_revision": "1",
+        "xci_name": "top_VGA_OutputFrame_Colo_0_0",
+        "xci_path": "ip\\top_VGA_OutputFrame_Colo_0_0\\top_VGA_OutputFrame_Colo_0_0.xci",
+        "inst_hier_path": "VGA_OutputFrame_Colo_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "VGA_OutputFrame_Colour",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "25000000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "/clk_wiz_0_clk_out1",
+                "value_src": "ip_prop"
+              }
+            }
+          },
+          "bram_data": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "vgaRed": {
+            "direction": "O",
+            "left": "3",
+            "right": "0"
+          },
+          "vgaGreen": {
+            "direction": "O",
+            "left": "3",
+            "right": "0"
+          },
+          "vgaBlue": {
+            "direction": "O",
+            "left": "3",
+            "right": "0"
+          },
+          "Hsync": {
+            "direction": "O"
+          },
+          "Vsync": {
+            "direction": "O"
+          },
+          "active_area": {
+            "direction": "O"
+          },
+          "new_frame": {
+            "direction": "O"
+          }
+        }
+      },
+      "BRAM_reader_0": {
+        "vlnv": "xilinx.com:module_ref:BRAM_reader:1.0",
+        "ip_revision": "1",
+        "xci_name": "top_BRAM_reader_0_0",
+        "xci_path": "ip\\top_BRAM_reader_0_0\\top_BRAM_reader_0_0.xci",
+        "inst_hier_path": "BRAM_reader_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "BRAM_reader",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "25000000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "/clk_wiz_0_clk_out1",
+                "value_src": "ip_prop"
+              }
+            }
+          },
+          "bram_loaded": {
+            "direction": "I"
+          },
+          "new_frame": {
+            "direction": "I"
+          },
+          "active_area": {
+            "direction": "I"
+          },
+          "bram_read_addr": {
+            "direction": "O",
+            "left": "16",
+            "right": "0"
+          }
+        }
       }
     },
     "nets": {
@@ -737,10 +726,16 @@
           "blk_mem_gen_1/dina"
         ]
       },
-      "BRAM_FIFO_Limit_0_read_ready": {
+      "BRAM_FIFO_Limit_0_bram_loaded": {
         "ports": [
-          "BRAM_FIFO_Limit_0/read_ready",
-          "VGA_Output_Colour_0/start_capture"
+          "BRAM_FIFO_Limit_0/bram_loaded",
+          "BRAM_reader_0/bram_loaded"
+        ]
+      },
+      "BRAM_reader_0_bram_read_addr": {
+        "ports": [
+          "BRAM_reader_0/bram_read_addr",
+          "blk_mem_gen_1/addrb"
         ]
       },
       "I2C_OV7670_MasterCon_0_LED": {
@@ -829,16 +824,9 @@
           "BRAM_FIFO_Limit_0/bram_data_in"
         ]
       },
-      "Pixel_Capture_0_bram_we": {
-        "ports": [
-          "Pixel_Capture_0/bram_we",
-          "pixel_capture_ila/probe3"
-        ]
-      },
       "Pixel_Capture_0_current_i": {
         "ports": [
           "Pixel_Capture_0/current_i",
-          "pixel_capture_ila/probe5",
           "BRAM_FIFO_Limit_0/current_pix"
         ]
       },
@@ -852,68 +840,55 @@
       "Pixel_Capture_0_state_out": {
         "ports": [
           "Pixel_Capture_0/state_out",
-          "input_ila/probe5",
-          "pixel_capture_ila/probe6"
+          "input_ila/probe5"
         ]
       },
-      "VGA_Output_Colour_0_Hsync": {
+      "VGA_OutputFrame_Colo_0_Hsync": {
         "ports": [
-          "VGA_Output_Colour_0/Hsync",
-          "Hsync",
-          "RGB_ila/probe3"
+          "VGA_OutputFrame_Colo_0/Hsync",
+          "Hsync"
         ]
       },
-      "VGA_Output_Colour_0_Re": {
+      "VGA_OutputFrame_Colo_0_Vsync": {
         "ports": [
-          "VGA_Output_Colour_0/Re",
-          "RGB_ila/probe5",
-          "blk_mem_gen_1/enb"
+          "VGA_OutputFrame_Colo_0/Vsync",
+          "Vsync"
         ]
       },
-      "VGA_Output_Colour_0_Vsync": {
+      "VGA_OutputFrame_Colo_0_active_area": {
         "ports": [
-          "VGA_Output_Colour_0/Vsync",
-          "Vsync",
-          "RGB_ila/probe4"
+          "VGA_OutputFrame_Colo_0/active_area",
+          "BRAM_reader_0/active_area"
         ]
       },
-      "VGA_Output_Colour_0_bram_addr": {
+      "VGA_OutputFrame_Colo_0_new_frame": {
         "ports": [
-          "VGA_Output_Colour_0/bram_addr",
-          "blk_mem_gen_1/addrb"
+          "VGA_OutputFrame_Colo_0/new_frame",
+          "BRAM_reader_0/new_frame"
         ]
       },
-      "VGA_Output_Colour_0_vgaBlue": {
+      "VGA_OutputFrame_Colo_0_vgaBlue": {
         "ports": [
-          "VGA_Output_Colour_0/vgaBlue",
-          "vgaBlue",
-          "RGB_ila/probe2"
+          "VGA_OutputFrame_Colo_0/vgaBlue",
+          "vgaBlue"
         ]
       },
-      "VGA_Output_Colour_0_vgaGreen": {
+      "VGA_OutputFrame_Colo_0_vgaGreen": {
         "ports": [
-          "VGA_Output_Colour_0/vgaGreen",
-          "vgaGreen",
-          "RGB_ila/probe1"
+          "VGA_OutputFrame_Colo_0/vgaGreen",
+          "vgaGreen"
         ]
       },
-      "VGA_Output_Colour_0_vgaRed": {
+      "VGA_OutputFrame_Colo_0_vgaRed": {
         "ports": [
-          "VGA_Output_Colour_0/vgaRed",
-          "vgaRed",
-          "RGB_ila/probe0"
-        ]
-      },
-      "blk_mem_gen_1_douta": {
-        "ports": [
-          "blk_mem_gen_1/douta",
-          "RGB_ila/probe10"
+          "VGA_OutputFrame_Colo_0/vgaRed",
+          "vgaRed"
         ]
       },
       "blk_mem_gen_1_doutb": {
         "ports": [
           "blk_mem_gen_1/doutb",
-          "VGA_Output_Colour_0/bram_data"
+          "VGA_OutputFrame_Colo_0/bram_data"
         ]
       },
       "clk_wiz_0_clk_out1": {
@@ -931,51 +906,45 @@
           "ov7670_xclk",
           "blk_mem_gen_1/clka",
           "blk_mem_gen_1/clkb",
-          "RGB_ila/clk",
-          "pixel_capture_ila/probe4",
-          "VGA_Output_Colour_0/clk",
+          "Pixel_Capture_0/clk",
           "BRAM_FIFO_Limit_0/clk",
-          "Pixel_Capture_0/clk"
+          "BRAM_reader_0/clk",
+          "VGA_OutputFrame_Colo_0/clk"
         ]
       },
       "ov7670_data_1": {
         "ports": [
           "ov7670_data",
           "I2C_OV7670_MasterCon_0/ov7670_data",
-          "input_ila/probe4",
-          "RGB_ila/probe11"
+          "input_ila/probe4"
         ]
       },
       "ov7670_href_1": {
         "ports": [
           "ov7670_href",
           "I2C_OV7670_MasterCon_0/ov7670_href",
-          "input_ila/probe2",
-          "RGB_ila/probe8"
+          "input_ila/probe2"
         ]
       },
       "ov7670_pclk_1": {
         "ports": [
           "ov7670_pclk",
           "I2C_OV7670_MasterCon_0/ov7670_pclk",
-          "input_ila/probe0",
-          "RGB_ila/probe6"
+          "input_ila/probe0"
         ]
       },
       "ov7670_vsync_1": {
         "ports": [
           "ov7670_vsync",
           "I2C_OV7670_MasterCon_0/ov7670_vsync",
-          "input_ila/probe1",
-          "RGB_ila/probe7"
+          "input_ila/probe1"
         ]
       },
       "reset_1": {
         "ports": [
           "reset",
           "clk_wiz_0/reset",
-          "input_ila/probe3",
-          "RGB_ila/probe9"
+          "input_ila/probe3"
         ]
       },
       "sys_clock_1": {
@@ -988,7 +957,8 @@
         "ports": [
           "xlconstant_1/dout",
           "blk_mem_gen_1/ena",
-          "blk_mem_gen_1/wea"
+          "blk_mem_gen_1/wea",
+          "blk_mem_gen_1/enb"
         ]
       }
     },
@@ -996,7 +966,7 @@
       "/": {
         "comment_0": "XCLK will use 25mhzClock",
         "comment_1": "Test Data from Camera\n",
-        "comment_2": "go back and look at what happens when we use CLK for clock edge on pixel capture",
+        "comment_2": "go back and look at what happens when we \nuse CLK for clock edge on pixel capture",
         "comment_3": "Module feeds the initial I2C module setup, and lets us get camera input setup."
       }
     }

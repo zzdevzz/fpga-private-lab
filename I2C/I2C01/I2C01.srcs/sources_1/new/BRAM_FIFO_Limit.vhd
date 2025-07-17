@@ -21,7 +21,7 @@ entity BRAM_FIFO_Limit is
 
     bram_addr_out : out std_logic_vector(16 downto 0);   -- Limited output
     bram_data_out : out std_logic_vector(15 downto 0);   -- Limited output
-    read_ready    : out std_logic                        -- Goes HIGH when frame is ready
+    bram_loaded    : out std_logic                        -- Goes HIGH when frame is ready
   );
 end BRAM_FIFO_Limit;
 
@@ -50,6 +50,7 @@ begin
   -- Outputs:
   bram_addr_out <= bram_addr_in when write_enable = '1' else (others => '0');
   bram_data_out <= bram_data_in when write_enable = '1' else (others => '0');
-  read_ready <= '1' when pixel_count >= DATA_AMOUNT else '0';
+  bram_loaded <= '1' when pixel_count >= DATA_AMOUNT else '0';
 
 end Behavioral;
+ 

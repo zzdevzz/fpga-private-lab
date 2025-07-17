@@ -49,7 +49,7 @@ entity Pixel_Capture is
 end Pixel_Capture;
 
 architecture Behavioral of Pixel_Capture is
-    
+
     constant max_addr : integer := 76799; --(2650 pix, since 640 x 4 minus 1)
     signal current_pix: std_logic := '0';
     signal temp_reg : std_logic_vector(7 downto 0);
@@ -58,6 +58,7 @@ architecture Behavioral of Pixel_Capture is
     signal bram_addr_s : integer range 0 to max_addr;
     signal state_type :  integer range 0 to 5 := 0;
     signal start_capture_flag: std_logic := '0';
+    signal plk_pulses_passed: integer := 0;
 
 -- go back and look at what happens when we use CLK for clock edge on pixel capture
 -- try understand this
@@ -66,6 +67,7 @@ begin
     begin
         if rising_edge(pclk) then
             if vsync = '0' and href = '1' then
+                plk_pulses_passed <= plk_pulses_passed + 1;
                 state_type <= 1;
                 if current_pix = '0' then
                     temp_reg <= pixel_data_in;
@@ -77,11 +79,11 @@ begin
                     current_pix <= '0';
                     bram_enable <= '1';
                     start_capture_flag <= '1';
-                    if bram_addr_s < max_addr then
+--                    if bram_addr_s < max_addr then
                         bram_addr_s <= bram_addr_s + 1;
-                    else
-                        bram_addr_s <= 0;
-                    end if;
+--                    else
+--                        bram_addr_s <= 0;
+--                    end if;
                     state_type <= 3;
                 end if;
             elsif vsync = '1' then
@@ -93,13 +95,14 @@ begin
             end if;
         end if;
     end process;
-    
+
     bram_we <= bram_enable;
     bram_data <= full_pixel;   
     bram_addr <= std_logic_vector(to_unsigned(bram_addr_s, 17));
     start_capture <= start_capture_flag;
     current_i <= current_pix;
     state_out <= std_logic_vector(to_unsigned(state_type, 4));
-    
-    
+
+
 end Behavioral;
+ 

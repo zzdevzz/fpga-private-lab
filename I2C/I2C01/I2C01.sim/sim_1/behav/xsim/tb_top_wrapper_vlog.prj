@@ -4,7 +4,6 @@ verilog xil_defaultlib  --include "../../../../I2C01.gen/sources_1/bd/top/ipshar
 "../../../../I2C01.ip_user_files/bd/top/ip/top_clk_wiz_0_0/top_clk_wiz_0_0.v" \
 "../../../../I2C01.ip_user_files/bd/top/ip/top_xlconstant_1_0/sim/top_xlconstant_1_0.v" \
 "../../../../I2C01.ip_user_files/bd/top/ip/top_blk_mem_gen_1_0/sim/top_blk_mem_gen_1_0.v" \
-"../../../../I2C01.ip_user_files/bd/top/ip/top_xlconstant_0_0/sim/top_xlconstant_0_0.v" \
 
 # compile glbl module
 verilog xil_defaultlib "glbl.v"
