@@ -2,7 +2,7 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-// Date        : Thu Jul 17 23:10:30 2025
+// Date        : Sat Jul 19 00:22:09 2025
 // Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim {e:/FPGA/VHDL/Lab
 //               Training/I2C/I2C01/I2C01.gen/sources_1/bd/top/ip/top_VGA_OutputFrame_Colo_0_0/top_VGA_OutputFrame_Colo_0_0_sim_netlist.v}
@@ -85,7 +85,6 @@ module top_VGA_OutputFrame_Colo_0_0_VGA_OutputFrame_Colour
   wire Hsync;
   wire \R_out[3]_i_1_n_0 ;
   wire \R_out[3]_i_2_n_0 ;
-  wire \R_out[3]_i_3_n_0 ;
   wire Vp_out_i_1_n_0;
   wire Vp_out_i_2_n_0;
   wire Vsync;
@@ -104,8 +103,8 @@ module top_VGA_OutputFrame_Colo_0_0_VGA_OutputFrame_Colour
   wire [9:1]p_0_in__0;
   wire re_out0;
   wire \vert_counter[0]_i_1_n_0 ;
-  wire \vert_counter[6]_i_2_n_0 ;
   wire \vert_counter[9]_i_2_n_0 ;
+  wire \vert_counter[9]_i_3_n_0 ;
   wire [9:0]vert_counter_reg;
   wire [3:0]vgaBlue;
   wire [3:0]vgaGreen;
@@ -179,7 +178,7 @@ module top_VGA_OutputFrame_Colo_0_0_VGA_OutputFrame_Colour
         .I4(horiz_counter_reg[4]),
         .I5(horiz_counter_reg[3]),
         .O(Hp_out_i_2_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
   LUT3 #(
     .INIT(8'h80)) 
     Hp_out_i_3
@@ -193,36 +192,25 @@ module top_VGA_OutputFrame_Colo_0_0_VGA_OutputFrame_Colour
         .D(Hp_out_i_1_n_0),
         .Q(Hsync),
         .R(1'b0));
-  LUT6 #(
-    .INIT(64'hEEFEEEFEFFFFEEFE)) 
+  LUT5 #(
+    .INIT(32'h8000FFFF)) 
     \R_out[3]_i_1 
-       (.I0(vert_counter_reg[9]),
-        .I1(horiz_counter_reg[9]),
-        .I2(vert_counter_reg[8]),
-        .I3(\R_out[3]_i_2_n_0 ),
-        .I4(horiz_counter_reg[8]),
-        .I5(\R_out[3]_i_3_n_0 ),
+       (.I0(vert_counter_reg[6]),
+        .I1(vert_counter_reg[4]),
+        .I2(vert_counter_reg[5]),
+        .I3(vert_counter_reg[7]),
+        .I4(\R_out[3]_i_2_n_0 ),
         .O(\R_out[3]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h0101010101111111)) 
+    .INIT(64'h0000000000000155)) 
     \R_out[3]_i_2 
-       (.I0(vert_counter_reg[7]),
-        .I1(vert_counter_reg[6]),
-        .I2(vert_counter_reg[5]),
-        .I3(vert_counter_reg[3]),
-        .I4(vert_counter_reg[2]),
-        .I5(vert_counter_reg[4]),
+       (.I0(horiz_counter_reg[9]),
+        .I1(horiz_counter_reg[7]),
+        .I2(horiz_counter_reg[6]),
+        .I3(horiz_counter_reg[8]),
+        .I4(vert_counter_reg[9]),
+        .I5(vert_counter_reg[8]),
         .O(\R_out[3]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h0101010101111111)) 
-    \R_out[3]_i_3 
-       (.I0(horiz_counter_reg[7]),
-        .I1(horiz_counter_reg[6]),
-        .I2(horiz_counter_reg[5]),
-        .I3(horiz_counter_reg[3]),
-        .I4(horiz_counter_reg[2]),
-        .I5(horiz_counter_reg[4]),
-        .O(\R_out[3]_i_3_n_0 ));
   FDRE \R_out_reg[0] 
        (.C(clk),
         .CE(1'b1),
@@ -257,14 +245,14 @@ module top_VGA_OutputFrame_Colo_0_0_VGA_OutputFrame_Colour
         .I4(vert_counter_reg[4]),
         .O(Vp_out_i_1_n_0));
   LUT6 #(
-    .INIT(64'hFFFFEFFFCFFFFFFF)) 
+    .INIT(64'hFFFFCFFFEFFFFFFF)) 
     Vp_out_i_2
        (.I0(vert_counter_reg[0]),
         .I1(vert_counter_reg[9]),
         .I2(vert_counter_reg[8]),
         .I3(vert_counter_reg[7]),
-        .I4(vert_counter_reg[1]),
-        .I5(vert_counter_reg[2]),
+        .I4(vert_counter_reg[2]),
+        .I5(vert_counter_reg[1]),
         .O(Vp_out_i_2_n_0));
   FDRE #(
     .INIT(1'b0)) 
@@ -274,20 +262,20 @@ module top_VGA_OutputFrame_Colo_0_0_VGA_OutputFrame_Colour
         .D(Vp_out_i_1_n_0),
         .Q(Vsync),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair7" *) 
+  (* SOFT_HLUTNM = "soft_lutpair8" *) 
   LUT1 #(
     .INIT(2'h1)) 
     \horiz_counter[0]_i_1 
        (.I0(horiz_counter_reg[0]),
         .O(\horiz_counter[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair7" *) 
+  (* SOFT_HLUTNM = "soft_lutpair8" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \horiz_counter[1]_i_1 
        (.I0(horiz_counter_reg[0]),
         .I1(horiz_counter_reg[1]),
         .O(p_0_in[1]));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT3 #(
     .INIT(8'h78)) 
     \horiz_counter[2]_i_1 
@@ -295,7 +283,7 @@ module top_VGA_OutputFrame_Colo_0_0_VGA_OutputFrame_Colour
         .I1(horiz_counter_reg[0]),
         .I2(horiz_counter_reg[2]),
         .O(p_0_in[2]));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \horiz_counter[3]_i_1 
@@ -308,23 +296,23 @@ module top_VGA_OutputFrame_Colo_0_0_VGA_OutputFrame_Colour
   LUT5 #(
     .INIT(32'h7FFF8000)) 
     \horiz_counter[4]_i_1 
-       (.I0(horiz_counter_reg[2]),
-        .I1(horiz_counter_reg[3]),
+       (.I0(horiz_counter_reg[3]),
+        .I1(horiz_counter_reg[1]),
         .I2(horiz_counter_reg[0]),
-        .I3(horiz_counter_reg[1]),
+        .I3(horiz_counter_reg[2]),
         .I4(horiz_counter_reg[4]),
         .O(p_0_in[4]));
   LUT6 #(
     .INIT(64'h7FFFFFFF80000000)) 
     \horiz_counter[5]_i_1 
        (.I0(horiz_counter_reg[4]),
-        .I1(horiz_counter_reg[1]),
+        .I1(horiz_counter_reg[2]),
         .I2(horiz_counter_reg[0]),
-        .I3(horiz_counter_reg[3]),
-        .I4(horiz_counter_reg[2]),
+        .I3(horiz_counter_reg[1]),
+        .I4(horiz_counter_reg[3]),
         .I5(horiz_counter_reg[5]),
         .O(p_0_in[5]));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
   LUT3 #(
     .INIT(8'hD2)) 
     \horiz_counter[6]_i_1 
@@ -465,21 +453,21 @@ module top_VGA_OutputFrame_Colo_0_0_VGA_OutputFrame_Colour
   LUT5 #(
     .INIT(32'h7FFFFFFF)) 
     new_frame_i_2
-       (.I0(horiz_counter_reg[2]),
-        .I1(horiz_counter_reg[3]),
+       (.I0(horiz_counter_reg[3]),
+        .I1(horiz_counter_reg[1]),
         .I2(horiz_counter_reg[0]),
-        .I3(horiz_counter_reg[1]),
+        .I3(horiz_counter_reg[2]),
         .I4(horiz_counter_reg[4]),
         .O(new_frame_i_2_n_0));
   LUT6 #(
-    .INIT(64'h0008000000000000)) 
+    .INIT(64'h0000000000800000)) 
     new_frame_i_3
        (.I0(horiz_counter_reg[8]),
         .I1(horiz_counter_reg[9]),
-        .I2(vert_counter_reg[0]),
+        .I2(vert_counter_reg[3]),
         .I3(vert_counter_reg[1]),
-        .I4(vert_counter_reg[3]),
-        .I5(vert_counter_reg[2]),
+        .I4(vert_counter_reg[2]),
+        .I5(vert_counter_reg[0]),
         .O(new_frame_i_3_n_0));
   LUT6 #(
     .INIT(64'h0000000100000000)) 
@@ -497,15 +485,15 @@ module top_VGA_OutputFrame_Colo_0_0_VGA_OutputFrame_Colour
         .D(new_frame0),
         .Q(new_frame),
         .R(1'b0));
-  LUT6 #(
-    .INIT(64'h000000000000B0BB)) 
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  LUT5 #(
+    .INIT(32'h2AAAAAAA)) 
     re_out_i_1
-       (.I0(\R_out[3]_i_3_n_0 ),
-        .I1(horiz_counter_reg[8]),
-        .I2(\R_out[3]_i_2_n_0 ),
-        .I3(vert_counter_reg[8]),
-        .I4(horiz_counter_reg[9]),
-        .I5(vert_counter_reg[9]),
+       (.I0(\R_out[3]_i_2_n_0 ),
+        .I1(vert_counter_reg[7]),
+        .I2(vert_counter_reg[5]),
+        .I3(vert_counter_reg[4]),
+        .I4(vert_counter_reg[6]),
         .O(re_out0));
   FDRE re_out_reg
        (.C(clk),
@@ -513,12 +501,13 @@ module top_VGA_OutputFrame_Colo_0_0_VGA_OutputFrame_Colour
         .D(re_out0),
         .Q(active_area),
         .R(1'b0));
+  (* SOFT_HLUTNM = "soft_lutpair9" *) 
   LUT1 #(
     .INIT(2'h1)) 
     \vert_counter[0]_i_1 
        (.I0(vert_counter_reg[0]),
         .O(\vert_counter[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  (* SOFT_HLUTNM = "soft_lutpair9" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \vert_counter[1]_i_1 
@@ -533,7 +522,7 @@ module top_VGA_OutputFrame_Colo_0_0_VGA_OutputFrame_Colour
         .I1(vert_counter_reg[0]),
         .I2(vert_counter_reg[2]),
         .O(p_0_in__0[2]));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \vert_counter[3]_i_1 
@@ -542,78 +531,81 @@ module top_VGA_OutputFrame_Colo_0_0_VGA_OutputFrame_Colour
         .I2(vert_counter_reg[1]),
         .I3(vert_counter_reg[3]),
         .O(p_0_in__0[3]));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT5 #(
     .INIT(32'h7FFF8000)) 
     \vert_counter[4]_i_1 
-       (.I0(vert_counter_reg[2]),
-        .I1(vert_counter_reg[3]),
+       (.I0(vert_counter_reg[3]),
+        .I1(vert_counter_reg[1]),
         .I2(vert_counter_reg[0]),
-        .I3(vert_counter_reg[1]),
+        .I3(vert_counter_reg[2]),
         .I4(vert_counter_reg[4]),
         .O(p_0_in__0[4]));
   LUT6 #(
     .INIT(64'h7FFFFFFF80000000)) 
     \vert_counter[5]_i_1 
        (.I0(vert_counter_reg[4]),
-        .I1(vert_counter_reg[1]),
-        .I2(vert_counter_reg[0]),
-        .I3(vert_counter_reg[3]),
-        .I4(vert_counter_reg[2]),
-        .I5(vert_counter_reg[5]),
-        .O(p_0_in__0[5]));
-  LUT6 #(
-    .INIT(64'hDFFFFFFF20000000)) 
-    \vert_counter[6]_i_1 
-       (.I0(vert_counter_reg[5]),
-        .I1(\vert_counter[6]_i_2_n_0 ),
+        .I1(vert_counter_reg[2]),
         .I2(vert_counter_reg[0]),
         .I3(vert_counter_reg[1]),
-        .I4(vert_counter_reg[4]),
-        .I5(vert_counter_reg[6]),
-        .O(p_0_in__0[6]));
-  LUT2 #(
-    .INIT(4'h7)) 
-    \vert_counter[6]_i_2 
-       (.I0(vert_counter_reg[2]),
-        .I1(vert_counter_reg[3]),
-        .O(\vert_counter[6]_i_2_n_0 ));
-  LUT3 #(
-    .INIT(8'hD2)) 
-    \vert_counter[7]_i_1 
-       (.I0(vert_counter_reg[6]),
-        .I1(\vert_counter[9]_i_2_n_0 ),
-        .I2(vert_counter_reg[7]),
-        .O(p_0_in__0[7]));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+        .I4(vert_counter_reg[3]),
+        .I5(vert_counter_reg[5]),
+        .O(p_0_in__0[5]));
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
   LUT4 #(
-    .INIT(16'hDF20)) 
-    \vert_counter[8]_i_1 
-       (.I0(vert_counter_reg[7]),
-        .I1(\vert_counter[9]_i_2_n_0 ),
-        .I2(vert_counter_reg[6]),
-        .I3(vert_counter_reg[8]),
-        .O(p_0_in__0[8]));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+    .INIT(16'hF708)) 
+    \vert_counter[6]_i_1 
+       (.I0(vert_counter_reg[4]),
+        .I1(vert_counter_reg[5]),
+        .I2(\vert_counter[9]_i_2_n_0 ),
+        .I3(vert_counter_reg[6]),
+        .O(p_0_in__0[6]));
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
   LUT5 #(
-    .INIT(32'hF7FF0800)) 
+    .INIT(32'hFF7F0080)) 
+    \vert_counter[7]_i_1 
+       (.I0(vert_counter_reg[5]),
+        .I1(vert_counter_reg[4]),
+        .I2(vert_counter_reg[6]),
+        .I3(\vert_counter[9]_i_2_n_0 ),
+        .I4(vert_counter_reg[7]),
+        .O(p_0_in__0[7]));
+  LUT6 #(
+    .INIT(64'hFFFF7FFF00008000)) 
+    \vert_counter[8]_i_1 
+       (.I0(vert_counter_reg[6]),
+        .I1(vert_counter_reg[4]),
+        .I2(vert_counter_reg[5]),
+        .I3(vert_counter_reg[7]),
+        .I4(\vert_counter[9]_i_2_n_0 ),
+        .I5(vert_counter_reg[8]),
+        .O(p_0_in__0[8]));
+  LUT4 #(
+    .INIT(16'hFD02)) 
     \vert_counter[9]_i_1 
        (.I0(vert_counter_reg[8]),
-        .I1(vert_counter_reg[6]),
-        .I2(\vert_counter[9]_i_2_n_0 ),
-        .I3(vert_counter_reg[7]),
-        .I4(vert_counter_reg[9]),
+        .I1(\vert_counter[9]_i_2_n_0 ),
+        .I2(\vert_counter[9]_i_3_n_0 ),
+        .I3(vert_counter_reg[9]),
         .O(p_0_in__0[9]));
-  LUT6 #(
-    .INIT(64'h7FFFFFFFFFFFFFFF)) 
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  LUT4 #(
+    .INIT(16'h7FFF)) 
     \vert_counter[9]_i_2 
-       (.I0(vert_counter_reg[4]),
-        .I1(vert_counter_reg[1]),
-        .I2(vert_counter_reg[0]),
+       (.I0(vert_counter_reg[2]),
+        .I1(vert_counter_reg[0]),
+        .I2(vert_counter_reg[1]),
         .I3(vert_counter_reg[3]),
-        .I4(vert_counter_reg[2]),
-        .I5(vert_counter_reg[5]),
         .O(\vert_counter[9]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  LUT4 #(
+    .INIT(16'h7FFF)) 
+    \vert_counter[9]_i_3 
+       (.I0(vert_counter_reg[6]),
+        .I1(vert_counter_reg[4]),
+        .I2(vert_counter_reg[5]),
+        .I3(vert_counter_reg[7]),
+        .O(\vert_counter[9]_i_3_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
     \vert_counter_reg[0] 

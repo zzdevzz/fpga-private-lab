@@ -130,9 +130,13 @@ set_property IOSTANDARD LVCMOS33 [get_ports {BTN[4]}]
 #Bank = 14, Pin name = ,					Sch name = BTNU
 set_property PACKAGE_PIN T18 [get_ports {BTN[0]}]
 set_property IOSTANDARD LVCMOS33 [get_ports {BTN[0]}]
-#Bank = 14, Pin name = ,	Sch name = BTNL
-set_property PACKAGE_PIN W19 [get_ports {BTN[1]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {BTN[1]}]
+##Bank = 14, Pin name = ,	Sch name = BTNL
+#set_property PACKAGE_PIN W19 [get_ports {BTN[1]}]
+#set_property IOSTANDARD LVCMOS33 [get_ports {BTN[1]}]
+
+set_property PACKAGE_PIN W19 [get_ports {BTNL}]
+set_property IOSTANDARD LVCMOS33 [get_ports {BTNL}]
+
 #Bank = 14, Pin name = ,							Sch name = BTNR
 set_property PACKAGE_PIN T17 [get_ports {BTN[2]}]
 set_property IOSTANDARD LVCMOS33 [get_ports {BTN[2]}]

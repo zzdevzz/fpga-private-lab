@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Thu Jul 17 23:33:08 2025
+| Date         : Sat Jul 19 00:22:47 2025
 | Host         : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 | Command      : report_utilization -file top_wrapper_utilization_synth.rpt -pb top_wrapper_utilization_synth.pb
 | Design       : top_wrapper
@@ -92,7 +92,7 @@ Warning! LUT value is adjusted to account for LUT combining.
 +-----------------------------+------+-------+------------+-----------+-------+
 |          Site Type          | Used | Fixed | Prohibited | Available | Util% |
 +-----------------------------+------+-------+------------+-----------+-------+
-| Bonded IOB                  |   38 |     0 |          0 |       106 | 35.85 |
+| Bonded IOB                  |   39 |     0 |          0 |       106 | 36.79 |
 | Bonded IPADs                |    0 |     0 |          0 |        10 |  0.00 |
 | Bonded OPADs                |    0 |     0 |          0 |         4 |  0.00 |
 | PHY_CONTROL                 |    0 |     0 |          0 |         5 |  0.00 |
@@ -152,7 +152,7 @@ Warning! LUT value is adjusted to account for LUT combining.
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
 | OBUF     |   26 |                  IO |
-| IBUF     |   12 |                  IO |
+| IBUF     |   13 |                  IO |
 +----------+------+---------------------+
 
 
@@ -164,6 +164,7 @@ Warning! LUT value is adjusted to account for LUT combining.
 +------------------------------+------+
 | top_ila_0_2                  |    1 |
 | top_ila_0_1                  |    1 |
+| top_debouncer_0_0            |    1 |
 | top_clk_wiz_0_0              |    1 |
 | top_blk_mem_gen_1_0          |    1 |
 | top_VGA_OutputFrame_Colo_0_0 |    1 |

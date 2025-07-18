@@ -44,6 +44,7 @@ entity Pixel_Capture is
     href: in std_logic;
     vsync: in std_logic;
     current_i: out std_logic;
+    capture_frame : in std_logic;
     state_out: out std_logic_vector(3 downto 0)
    );
 end Pixel_Capture;
@@ -59,14 +60,51 @@ architecture Behavioral of Pixel_Capture is
     signal state_type :  integer range 0 to 5 := 0;
     signal start_capture_flag: std_logic := '0';
     signal plk_pulses_passed: integer := 0;
+    
+--    signal vsync_waiting : std_logic := '0';
+    signal vsync_current: std_logic := vsync;
+    signal vsync_previous: std_logic;
+    signal start_capture_frame: std_logic := '0';
+--    signal capture_frame_current : std_logic := capture_frame;
+--    signal capture_frame_previous : std_logic := capture_frame;
+
+    signal capturing : std_logic := '0';
 
 -- go back and look at what happens when we use CLK for clock edge on pixel capture
 -- try understand this
 begin
+
+    capture: process(pclk)
+    begin
+        if rising_edge(pclk) then
+--            vsync_current <= vsync;
+--            vsync_previous <= vsync_current;
+            
+            
+            --ABOVE is wrong and need to figure out why regarding clocking timings.
+            vsync_previous <= vsync_current; 
+            vsync_current  <= vsync;
+
+            
+            if capture_frame = '1' then
+                start_capture_frame <= '1';
+            end if;
+            
+            if vsync_current = '0' and vsync_previous = '1' and start_capture_frame = '1' then
+                -- this means its the start of a new frame and we want to start capturinng a signal.
+                capturing <= '1';
+                start_capture_frame <= '0';
+            elsif capturing = '1' and vsync = '1' then
+                capturing <= '0';
+            end if;
+        end if;
+    end process;
+    
     process(pclk)
     begin
         if rising_edge(pclk) then
-            if vsync = '0' and href = '1' then
+            if vsync = '0' and href = '1' and capturing = '1' then
+                --start or new frame, and we want to capture to put things in BRAM,
                 plk_pulses_passed <= plk_pulses_passed + 1;
                 state_type <= 1;
                 if current_pix = '0' then

@@ -42,4 +42,7 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==top_VGA_Out
 # IP: bd/top/ip/top_BRAM_reader_0_0/top_BRAM_reader_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==top_BRAM_reader_0_0 || ORIG_REF_NAME==top_BRAM_reader_0_0} -quiet] -quiet
 
+# IP: bd/top/ip/top_debouncer_0_0/top_debouncer_0_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==top_debouncer_0_0 || ORIG_REF_NAME==top_debouncer_0_0} -quiet] -quiet
+
 # XDC: e:/FPGA/VHDL/Lab Training/I2C/I2C01/I2C01.gen/sources_1/bd/top/top_ooc.xdc

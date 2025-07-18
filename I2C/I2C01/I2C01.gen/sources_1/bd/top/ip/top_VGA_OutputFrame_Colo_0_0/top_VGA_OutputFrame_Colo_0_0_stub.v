@@ -2,7 +2,7 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-// Date        : Thu Jul 17 23:10:30 2025
+// Date        : Sat Jul 19 00:22:09 2025
 // Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub {e:/FPGA/VHDL/Lab
 //               Training/I2C/I2C01/I2C01.gen/sources_1/bd/top/ip/top_VGA_OutputFrame_Colo_0_0/top_VGA_OutputFrame_Colo_0_0_stub.v}

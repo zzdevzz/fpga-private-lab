@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x41B1E0D5E7915688",
+      "boundary_crc": "0xA5B343A99107A60",
       "device": "xc7a35tcpg236-1",
       "gen_directory": "../../../../I2C01.gen/sources_1/bd/top",
       "name": "top",
@@ -22,7 +22,15 @@
       "pixel_capture_ila": "",
       "OV7670_QVGA_SIM_0": "",
       "VGA_OutputFrame_Colo_0": "",
-      "BRAM_reader_0": ""
+      "BRAM_reader_0": "",
+      "debouncer_0": ""
+    },
+    "interface_ports": {
+      "push_buttons_4bits": {
+        "mode": "Master",
+        "vlnv_bus_definition": "xilinx.com:interface:gpio:1.0",
+        "vlnv": "xilinx.com:interface:gpio_rtl:1.0"
+      }
     },
     "ports": {
       "sys_clock": {
@@ -149,6 +157,9 @@
         "direction": "I"
       },
       "ov7670_vsync": {
+        "direction": "I"
+      },
+      "BTNL": {
         "direction": "I"
       }
     },
@@ -408,6 +419,9 @@
           },
           "current_i": {
             "direction": "O"
+          },
+          "capture_frame": {
+            "direction": "I"
           },
           "state_out": {
             "direction": "O",
@@ -711,6 +725,44 @@
             "right": "0"
           }
         }
+      },
+      "debouncer_0": {
+        "vlnv": "xilinx.com:module_ref:debouncer:1.0",
+        "ip_revision": "1",
+        "xci_name": "top_debouncer_0_0",
+        "xci_path": "ip\\top_debouncer_0_0\\top_debouncer_0_0.xci",
+        "inst_hier_path": "debouncer_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "debouncer",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "25000000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "/clk_wiz_0_clk_out1",
+                "value_src": "ip_prop"
+              }
+            }
+          },
+          "switch": {
+            "direction": "I"
+          },
+          "switch_debounced": {
+            "direction": "O"
+          }
+        }
       }
     },
     "nets": {
@@ -784,30 +836,6 @@
         "ports": [
           "ov7670_SDA",
           "I2C_OV7670_MasterCon_0/ov7670_SDA"
-        ]
-      },
-      "OV7670_QVGA_SIM_0_data_out": {
-        "ports": [
-          "OV7670_QVGA_SIM_0/data_out",
-          "Pixel_Capture_0/pixel_data_in"
-        ]
-      },
-      "OV7670_QVGA_SIM_0_href": {
-        "ports": [
-          "OV7670_QVGA_SIM_0/href",
-          "Pixel_Capture_0/href"
-        ]
-      },
-      "OV7670_QVGA_SIM_0_pclk": {
-        "ports": [
-          "OV7670_QVGA_SIM_0/pclk",
-          "Pixel_Capture_0/pclk"
-        ]
-      },
-      "OV7670_QVGA_SIM_0_vsync": {
-        "ports": [
-          "OV7670_QVGA_SIM_0/vsync",
-          "Pixel_Capture_0/vsync"
         ]
       },
       "Pixel_Capture_0_bram_addr": {
@@ -891,6 +919,12 @@
           "VGA_OutputFrame_Colo_0/bram_data"
         ]
       },
+      "btnl_1": {
+        "ports": [
+          "BTNL",
+          "debouncer_0/switch"
+        ]
+      },
       "clk_wiz_0_clk_out1": {
         "ports": [
           "clk_wiz_0/clk_out1",
@@ -906,38 +940,49 @@
           "ov7670_xclk",
           "blk_mem_gen_1/clka",
           "blk_mem_gen_1/clkb",
-          "Pixel_Capture_0/clk",
           "BRAM_FIFO_Limit_0/clk",
           "BRAM_reader_0/clk",
+          "Pixel_Capture_0/clk",
+          "debouncer_0/clk",
           "VGA_OutputFrame_Colo_0/clk"
+        ]
+      },
+      "debouncer_0_switch_debounced": {
+        "ports": [
+          "debouncer_0/switch_debounced",
+          "Pixel_Capture_0/capture_frame"
         ]
       },
       "ov7670_data_1": {
         "ports": [
           "ov7670_data",
           "I2C_OV7670_MasterCon_0/ov7670_data",
-          "input_ila/probe4"
+          "input_ila/probe4",
+          "Pixel_Capture_0/pixel_data_in"
         ]
       },
       "ov7670_href_1": {
         "ports": [
           "ov7670_href",
           "I2C_OV7670_MasterCon_0/ov7670_href",
-          "input_ila/probe2"
+          "input_ila/probe2",
+          "Pixel_Capture_0/href"
         ]
       },
       "ov7670_pclk_1": {
         "ports": [
           "ov7670_pclk",
           "I2C_OV7670_MasterCon_0/ov7670_pclk",
-          "input_ila/probe0"
+          "input_ila/probe0",
+          "Pixel_Capture_0/pclk"
         ]
       },
       "ov7670_vsync_1": {
         "ports": [
           "ov7670_vsync",
           "I2C_OV7670_MasterCon_0/ov7670_vsync",
-          "input_ila/probe1"
+          "input_ila/probe1",
+          "Pixel_Capture_0/vsync"
         ]
       },
       "reset_1": {

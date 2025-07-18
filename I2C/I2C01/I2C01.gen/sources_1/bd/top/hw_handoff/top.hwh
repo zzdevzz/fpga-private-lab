@@ -1,9 +1,14 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Jul 17 23:31:08 2025" VIVADOVERSION="2023.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sat Jul 19 00:21:30 2025" VIVADOVERSION="2023.2">
 
   <SYSTEMINFO ARCH="artix7" BOARD="digilentinc.com:basys3:part0:1.2" DEVICE="7a35t" NAME="top" PACKAGE="cpg236" SPEEDGRADE="-1"/>
 
   <EXTERNALPORTS>
+    <PORT DIR="I" NAME="BTNL" SIGIS="undef" SIGNAME="External_Ports_BTNL">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="debouncer_0" PORT="switch"/>
+      </CONNECTIONS>
+    </PORT>
     <PORT DIR="O" NAME="Hsync" SIGIS="undef" SIGNAME="VGA_OutputFrame_Colo_0_Hsync">
       <CONNECTIONS>
         <CONNECTION INSTANCE="VGA_OutputFrame_Colo_0" PORT="Hsync"/>
@@ -33,18 +38,21 @@
       <CONNECTIONS>
         <CONNECTION INSTANCE="I2C_OV7670_MasterCon_0" PORT="ov7670_data"/>
         <CONNECTION INSTANCE="input_ila" PORT="probe4"/>
+        <CONNECTION INSTANCE="Pixel_Capture_0" PORT="pixel_data_in"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" NAME="ov7670_href" SIGIS="undef" SIGNAME="External_Ports_ov7670_href">
       <CONNECTIONS>
         <CONNECTION INSTANCE="I2C_OV7670_MasterCon_0" PORT="ov7670_href"/>
         <CONNECTION INSTANCE="input_ila" PORT="probe2"/>
+        <CONNECTION INSTANCE="Pixel_Capture_0" PORT="href"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" NAME="ov7670_pclk" SIGIS="undef" SIGNAME="External_Ports_ov7670_pclk">
       <CONNECTIONS>
         <CONNECTION INSTANCE="I2C_OV7670_MasterCon_0" PORT="ov7670_pclk"/>
         <CONNECTION INSTANCE="input_ila" PORT="probe0"/>
+        <CONNECTION INSTANCE="Pixel_Capture_0" PORT="pclk"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="O" NAME="ov7670_pwdn" SIGIS="undef" SIGNAME="I2C_OV7670_MasterCon_0_ov7670_pwdn">
@@ -61,6 +69,7 @@
       <CONNECTIONS>
         <CONNECTION INSTANCE="I2C_OV7670_MasterCon_0" PORT="ov7670_vsync"/>
         <CONNECTION INSTANCE="input_ila" PORT="probe1"/>
+        <CONNECTION INSTANCE="Pixel_Capture_0" PORT="vsync"/>
       </CONNECTIONS>
     </PORT>
     <PORT CLKFREQUENCY="25000000" DIR="O" NAME="ov7670_xclk" SIGIS="clk" SIGNAME="clk_wiz_0_clk_out25">
@@ -96,7 +105,11 @@
     </PORT>
   </EXTERNALPORTS>
 
-  <EXTERNALINTERFACES/>
+  <EXTERNALINTERFACES>
+    <BUSINTERFACE BUSNAME="__NOC__" NAME="push_buttons_4bits" TYPE="INITIATOR">
+      <PORTMAPS/>
+    </BUSINTERFACE>
+  </EXTERNALINTERFACES>
 
   <MODULES>
     <MODULE COREREVISION="1" FULLNAME="/BRAM_FIFO_Limit_0" HWVERSION="1.0" INSTANCE="BRAM_FIFO_Limit_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="BRAM_FIFO_Limit" VLNV="xilinx.com:module_ref:BRAM_FIFO_Limit:1.0">
@@ -303,26 +316,10 @@
             <CONNECTION INSTANCE="clk_wiz_0" PORT="clk_out1"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="7" NAME="data_out" RIGHT="0" SIGIS="undef" SIGNAME="OV7670_QVGA_SIM_0_data_out">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="Pixel_Capture_0" PORT="pixel_data_in"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="href" SIGIS="undef" SIGNAME="OV7670_QVGA_SIM_0_href">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="Pixel_Capture_0" PORT="href"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="pclk" SIGIS="undef" SIGNAME="OV7670_QVGA_SIM_0_pclk">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="Pixel_Capture_0" PORT="pclk"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="vsync" SIGIS="undef" SIGNAME="OV7670_QVGA_SIM_0_vsync">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="Pixel_Capture_0" PORT="vsync"/>
-          </CONNECTIONS>
-        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="data_out" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" NAME="href" SIGIS="undef"/>
+        <PORT DIR="O" NAME="pclk" SIGIS="undef"/>
+        <PORT DIR="O" NAME="vsync" SIGIS="undef"/>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
@@ -346,6 +343,11 @@
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="bram_we" SIGIS="undef"/>
+        <PORT DIR="I" NAME="capture_frame" SIGIS="undef" SIGNAME="debouncer_0_switch_debounced">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="debouncer_0" PORT="switch_debounced"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT CLKFREQUENCY="25000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="clk_wiz_0_clk_out25">
           <CONNECTIONS>
             <CONNECTION INSTANCE="clk_wiz_0" PORT="clk_out25"/>
@@ -356,19 +358,19 @@
             <CONNECTION INSTANCE="BRAM_FIFO_Limit_0" PORT="current_pix"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="href" SIGIS="undef" SIGNAME="OV7670_QVGA_SIM_0_href">
+        <PORT DIR="I" NAME="href" SIGIS="undef" SIGNAME="External_Ports_ov7670_href">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="OV7670_QVGA_SIM_0" PORT="href"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="ov7670_href"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="pclk" SIGIS="undef" SIGNAME="OV7670_QVGA_SIM_0_pclk">
+        <PORT DIR="I" NAME="pclk" SIGIS="undef" SIGNAME="External_Ports_ov7670_pclk">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="OV7670_QVGA_SIM_0" PORT="pclk"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="ov7670_pclk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="7" NAME="pixel_data_in" RIGHT="0" SIGIS="undef" SIGNAME="OV7670_QVGA_SIM_0_data_out">
+        <PORT DIR="I" LEFT="7" NAME="pixel_data_in" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_ov7670_data">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="OV7670_QVGA_SIM_0" PORT="data_out"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="ov7670_data"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="start_capture" SIGIS="undef" SIGNAME="Pixel_Capture_0_start_capture">
@@ -382,9 +384,9 @@
             <CONNECTION INSTANCE="input_ila" PORT="probe5"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="vsync" SIGIS="undef" SIGNAME="OV7670_QVGA_SIM_0_vsync">
+        <PORT DIR="I" NAME="vsync" SIGIS="undef" SIGNAME="External_Ports_ov7670_vsync">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="OV7670_QVGA_SIM_0" PORT="vsync"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="ov7670_vsync"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -1282,9 +1284,10 @@
             <CONNECTION INSTANCE="External_Ports" PORT="ov7670_xclk"/>
             <CONNECTION INSTANCE="blk_mem_gen_1" PORT="clka"/>
             <CONNECTION INSTANCE="blk_mem_gen_1" PORT="clkb"/>
-            <CONNECTION INSTANCE="Pixel_Capture_0" PORT="clk"/>
             <CONNECTION INSTANCE="BRAM_FIFO_Limit_0" PORT="clk"/>
             <CONNECTION INSTANCE="BRAM_reader_0" PORT="clk"/>
+            <CONNECTION INSTANCE="Pixel_Capture_0" PORT="clk"/>
+            <CONNECTION INSTANCE="debouncer_0" PORT="clk"/>
             <CONNECTION INSTANCE="VGA_OutputFrame_Colo_0" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
@@ -1292,6 +1295,32 @@
         <PORT DIR="I" NAME="reset" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="External_Ports_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="reset"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/debouncer_0" HWVERSION="1.0" INSTANCE="debouncer_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="debouncer" VLNV="xilinx.com:module_ref:debouncer:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="timeout_cycles" VALUE="1000000"/>
+        <PARAMETER NAME="Component_Name" VALUE="top_debouncer_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="25000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="clk_wiz_0_clk_out25">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="clk_wiz_0" PORT="clk_out25"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="switch" SIGIS="undef" SIGNAME="External_Ports_BTNL">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="BTNL"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="switch_debounced" SIGIS="undef" SIGNAME="debouncer_0_switch_debounced">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Pixel_Capture_0" PORT="capture_frame"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>

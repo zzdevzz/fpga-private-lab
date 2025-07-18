@@ -2,7 +2,7 @@
 -- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
--- Date        : Thu Jul 17 23:10:30 2025
+-- Date        : Sat Jul 19 00:22:09 2025
 -- Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim {e:/FPGA/VHDL/Lab
 --               Training/I2C/I2C01/I2C01.gen/sources_1/bd/top/ip/top_VGA_OutputFrame_Colo_0_0/top_VGA_OutputFrame_Colo_0_0_sim_netlist.vhdl}
@@ -37,7 +37,6 @@ architecture STRUCTURE of top_VGA_OutputFrame_Colo_0_0_VGA_OutputFrame_Colour is
   signal Hp_out_i_3_n_0 : STD_LOGIC;
   signal \R_out[3]_i_1_n_0\ : STD_LOGIC;
   signal \R_out[3]_i_2_n_0\ : STD_LOGIC;
-  signal \R_out[3]_i_3_n_0\ : STD_LOGIC;
   signal Vp_out_i_1_n_0 : STD_LOGIC;
   signal Vp_out_i_2_n_0 : STD_LOGIC;
   signal \horiz_counter[0]_i_1_n_0\ : STD_LOGIC;
@@ -51,26 +50,30 @@ architecture STRUCTURE of top_VGA_OutputFrame_Colo_0_0_VGA_OutputFrame_Colour is
   signal \p_0_in__0\ : STD_LOGIC_VECTOR ( 9 downto 1 );
   signal re_out0 : STD_LOGIC;
   signal \vert_counter[0]_i_1_n_0\ : STD_LOGIC;
-  signal \vert_counter[6]_i_2_n_0\ : STD_LOGIC;
   signal \vert_counter[9]_i_2_n_0\ : STD_LOGIC;
+  signal \vert_counter[9]_i_3_n_0\ : STD_LOGIC;
   signal vert_counter_reg : STD_LOGIC_VECTOR ( 9 downto 0 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of Hp_out_i_3 : label is "soft_lutpair5";
-  attribute SOFT_HLUTNM of \horiz_counter[0]_i_1\ : label is "soft_lutpair7";
-  attribute SOFT_HLUTNM of \horiz_counter[1]_i_1\ : label is "soft_lutpair7";
-  attribute SOFT_HLUTNM of \horiz_counter[2]_i_1\ : label is "soft_lutpair4";
-  attribute SOFT_HLUTNM of \horiz_counter[3]_i_1\ : label is "soft_lutpair4";
+  attribute SOFT_HLUTNM of Hp_out_i_3 : label is "soft_lutpair7";
+  attribute SOFT_HLUTNM of \horiz_counter[0]_i_1\ : label is "soft_lutpair8";
+  attribute SOFT_HLUTNM of \horiz_counter[1]_i_1\ : label is "soft_lutpair8";
+  attribute SOFT_HLUTNM of \horiz_counter[2]_i_1\ : label is "soft_lutpair5";
+  attribute SOFT_HLUTNM of \horiz_counter[3]_i_1\ : label is "soft_lutpair5";
   attribute SOFT_HLUTNM of \horiz_counter[4]_i_1\ : label is "soft_lutpair0";
-  attribute SOFT_HLUTNM of \horiz_counter[6]_i_1\ : label is "soft_lutpair5";
+  attribute SOFT_HLUTNM of \horiz_counter[6]_i_1\ : label is "soft_lutpair7";
   attribute SOFT_HLUTNM of \horiz_counter[7]_i_1\ : label is "soft_lutpair1";
   attribute SOFT_HLUTNM of \horiz_counter[8]_i_1\ : label is "soft_lutpair1";
   attribute SOFT_HLUTNM of new_frame_i_2 : label is "soft_lutpair0";
-  attribute SOFT_HLUTNM of \vert_counter[1]_i_1\ : label is "soft_lutpair6";
+  attribute SOFT_HLUTNM of re_out_i_1 : label is "soft_lutpair3";
+  attribute SOFT_HLUTNM of \vert_counter[0]_i_1\ : label is "soft_lutpair9";
+  attribute SOFT_HLUTNM of \vert_counter[1]_i_1\ : label is "soft_lutpair9";
   attribute SOFT_HLUTNM of \vert_counter[2]_i_1\ : label is "soft_lutpair6";
-  attribute SOFT_HLUTNM of \vert_counter[3]_i_1\ : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of \vert_counter[4]_i_1\ : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of \vert_counter[8]_i_1\ : label is "soft_lutpair3";
-  attribute SOFT_HLUTNM of \vert_counter[9]_i_1\ : label is "soft_lutpair3";
+  attribute SOFT_HLUTNM of \vert_counter[3]_i_1\ : label is "soft_lutpair4";
+  attribute SOFT_HLUTNM of \vert_counter[4]_i_1\ : label is "soft_lutpair4";
+  attribute SOFT_HLUTNM of \vert_counter[6]_i_1\ : label is "soft_lutpair2";
+  attribute SOFT_HLUTNM of \vert_counter[7]_i_1\ : label is "soft_lutpair2";
+  attribute SOFT_HLUTNM of \vert_counter[9]_i_2\ : label is "soft_lutpair6";
+  attribute SOFT_HLUTNM of \vert_counter[9]_i_3\ : label is "soft_lutpair3";
 begin
 \B_out_reg[0]\: unisim.vcomponents.FDRE
      port map (
@@ -180,44 +183,30 @@ Hp_out_reg: unisim.vcomponents.FDRE
       Q => Hsync,
       R => '0'
     );
-\R_out[3]_i_1\: unisim.vcomponents.LUT6
+\R_out[3]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"EEFEEEFEFFFFEEFE"
+      INIT => X"8000FFFF"
     )
         port map (
-      I0 => vert_counter_reg(9),
-      I1 => horiz_counter_reg(9),
-      I2 => vert_counter_reg(8),
-      I3 => \R_out[3]_i_2_n_0\,
-      I4 => horiz_counter_reg(8),
-      I5 => \R_out[3]_i_3_n_0\,
+      I0 => vert_counter_reg(6),
+      I1 => vert_counter_reg(4),
+      I2 => vert_counter_reg(5),
+      I3 => vert_counter_reg(7),
+      I4 => \R_out[3]_i_2_n_0\,
       O => \R_out[3]_i_1_n_0\
     );
 \R_out[3]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0101010101111111"
+      INIT => X"0000000000000155"
     )
         port map (
-      I0 => vert_counter_reg(7),
-      I1 => vert_counter_reg(6),
-      I2 => vert_counter_reg(5),
-      I3 => vert_counter_reg(3),
-      I4 => vert_counter_reg(2),
-      I5 => vert_counter_reg(4),
+      I0 => horiz_counter_reg(9),
+      I1 => horiz_counter_reg(7),
+      I2 => horiz_counter_reg(6),
+      I3 => horiz_counter_reg(8),
+      I4 => vert_counter_reg(9),
+      I5 => vert_counter_reg(8),
       O => \R_out[3]_i_2_n_0\
-    );
-\R_out[3]_i_3\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0101010101111111"
-    )
-        port map (
-      I0 => horiz_counter_reg(7),
-      I1 => horiz_counter_reg(6),
-      I2 => horiz_counter_reg(5),
-      I3 => horiz_counter_reg(3),
-      I4 => horiz_counter_reg(2),
-      I5 => horiz_counter_reg(4),
-      O => \R_out[3]_i_3_n_0\
     );
 \R_out_reg[0]\: unisim.vcomponents.FDRE
      port map (
@@ -265,15 +254,15 @@ Vp_out_i_1: unisim.vcomponents.LUT5
     );
 Vp_out_i_2: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFFEFFFCFFFFFFF"
+      INIT => X"FFFFCFFFEFFFFFFF"
     )
         port map (
       I0 => vert_counter_reg(0),
       I1 => vert_counter_reg(9),
       I2 => vert_counter_reg(8),
       I3 => vert_counter_reg(7),
-      I4 => vert_counter_reg(1),
-      I5 => vert_counter_reg(2),
+      I4 => vert_counter_reg(2),
+      I5 => vert_counter_reg(1),
       O => Vp_out_i_2_n_0
     );
 Vp_out_reg: unisim.vcomponents.FDRE
@@ -330,10 +319,10 @@ Vp_out_reg: unisim.vcomponents.FDRE
       INIT => X"7FFF8000"
     )
         port map (
-      I0 => horiz_counter_reg(2),
-      I1 => horiz_counter_reg(3),
+      I0 => horiz_counter_reg(3),
+      I1 => horiz_counter_reg(1),
       I2 => horiz_counter_reg(0),
-      I3 => horiz_counter_reg(1),
+      I3 => horiz_counter_reg(2),
       I4 => horiz_counter_reg(4),
       O => p_0_in(4)
     );
@@ -343,10 +332,10 @@ Vp_out_reg: unisim.vcomponents.FDRE
     )
         port map (
       I0 => horiz_counter_reg(4),
-      I1 => horiz_counter_reg(1),
+      I1 => horiz_counter_reg(2),
       I2 => horiz_counter_reg(0),
-      I3 => horiz_counter_reg(3),
-      I4 => horiz_counter_reg(2),
+      I3 => horiz_counter_reg(1),
+      I4 => horiz_counter_reg(3),
       I5 => horiz_counter_reg(5),
       O => p_0_in(5)
     );
@@ -537,24 +526,24 @@ new_frame_i_2: unisim.vcomponents.LUT5
       INIT => X"7FFFFFFF"
     )
         port map (
-      I0 => horiz_counter_reg(2),
-      I1 => horiz_counter_reg(3),
+      I0 => horiz_counter_reg(3),
+      I1 => horiz_counter_reg(1),
       I2 => horiz_counter_reg(0),
-      I3 => horiz_counter_reg(1),
+      I3 => horiz_counter_reg(2),
       I4 => horiz_counter_reg(4),
       O => new_frame_i_2_n_0
     );
 new_frame_i_3: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0008000000000000"
+      INIT => X"0000000000800000"
     )
         port map (
       I0 => horiz_counter_reg(8),
       I1 => horiz_counter_reg(9),
-      I2 => vert_counter_reg(0),
+      I2 => vert_counter_reg(3),
       I3 => vert_counter_reg(1),
-      I4 => vert_counter_reg(3),
-      I5 => vert_counter_reg(2),
+      I4 => vert_counter_reg(2),
+      I5 => vert_counter_reg(0),
       O => new_frame_i_3_n_0
     );
 new_frame_i_4: unisim.vcomponents.LUT6
@@ -578,17 +567,16 @@ new_frame_reg: unisim.vcomponents.FDRE
       Q => new_frame,
       R => '0'
     );
-re_out_i_1: unisim.vcomponents.LUT6
+re_out_i_1: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"000000000000B0BB"
+      INIT => X"2AAAAAAA"
     )
         port map (
-      I0 => \R_out[3]_i_3_n_0\,
-      I1 => horiz_counter_reg(8),
-      I2 => \R_out[3]_i_2_n_0\,
-      I3 => vert_counter_reg(8),
-      I4 => horiz_counter_reg(9),
-      I5 => vert_counter_reg(9),
+      I0 => \R_out[3]_i_2_n_0\,
+      I1 => vert_counter_reg(7),
+      I2 => vert_counter_reg(5),
+      I3 => vert_counter_reg(4),
+      I4 => vert_counter_reg(6),
       O => re_out0
     );
 re_out_reg: unisim.vcomponents.FDRE
@@ -642,10 +630,10 @@ re_out_reg: unisim.vcomponents.FDRE
       INIT => X"7FFF8000"
     )
         port map (
-      I0 => vert_counter_reg(2),
-      I1 => vert_counter_reg(3),
+      I0 => vert_counter_reg(3),
+      I1 => vert_counter_reg(1),
       I2 => vert_counter_reg(0),
-      I3 => vert_counter_reg(1),
+      I3 => vert_counter_reg(2),
       I4 => vert_counter_reg(4),
       O => \p_0_in__0\(4)
     );
@@ -655,80 +643,81 @@ re_out_reg: unisim.vcomponents.FDRE
     )
         port map (
       I0 => vert_counter_reg(4),
-      I1 => vert_counter_reg(1),
+      I1 => vert_counter_reg(2),
       I2 => vert_counter_reg(0),
-      I3 => vert_counter_reg(3),
-      I4 => vert_counter_reg(2),
+      I3 => vert_counter_reg(1),
+      I4 => vert_counter_reg(3),
       I5 => vert_counter_reg(5),
       O => \p_0_in__0\(5)
     );
-\vert_counter[6]_i_1\: unisim.vcomponents.LUT6
+\vert_counter[6]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"DFFFFFFF20000000"
-    )
-        port map (
-      I0 => vert_counter_reg(5),
-      I1 => \vert_counter[6]_i_2_n_0\,
-      I2 => vert_counter_reg(0),
-      I3 => vert_counter_reg(1),
-      I4 => vert_counter_reg(4),
-      I5 => vert_counter_reg(6),
-      O => \p_0_in__0\(6)
-    );
-\vert_counter[6]_i_2\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"7"
-    )
-        port map (
-      I0 => vert_counter_reg(2),
-      I1 => vert_counter_reg(3),
-      O => \vert_counter[6]_i_2_n_0\
-    );
-\vert_counter[7]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"D2"
-    )
-        port map (
-      I0 => vert_counter_reg(6),
-      I1 => \vert_counter[9]_i_2_n_0\,
-      I2 => vert_counter_reg(7),
-      O => \p_0_in__0\(7)
-    );
-\vert_counter[8]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"DF20"
-    )
-        port map (
-      I0 => vert_counter_reg(7),
-      I1 => \vert_counter[9]_i_2_n_0\,
-      I2 => vert_counter_reg(6),
-      I3 => vert_counter_reg(8),
-      O => \p_0_in__0\(8)
-    );
-\vert_counter[9]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"F7FF0800"
-    )
-        port map (
-      I0 => vert_counter_reg(8),
-      I1 => vert_counter_reg(6),
-      I2 => \vert_counter[9]_i_2_n_0\,
-      I3 => vert_counter_reg(7),
-      I4 => vert_counter_reg(9),
-      O => \p_0_in__0\(9)
-    );
-\vert_counter[9]_i_2\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"7FFFFFFFFFFFFFFF"
+      INIT => X"F708"
     )
         port map (
       I0 => vert_counter_reg(4),
-      I1 => vert_counter_reg(1),
-      I2 => vert_counter_reg(0),
+      I1 => vert_counter_reg(5),
+      I2 => \vert_counter[9]_i_2_n_0\,
+      I3 => vert_counter_reg(6),
+      O => \p_0_in__0\(6)
+    );
+\vert_counter[7]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"FF7F0080"
+    )
+        port map (
+      I0 => vert_counter_reg(5),
+      I1 => vert_counter_reg(4),
+      I2 => vert_counter_reg(6),
+      I3 => \vert_counter[9]_i_2_n_0\,
+      I4 => vert_counter_reg(7),
+      O => \p_0_in__0\(7)
+    );
+\vert_counter[8]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFFF7FFF00008000"
+    )
+        port map (
+      I0 => vert_counter_reg(6),
+      I1 => vert_counter_reg(4),
+      I2 => vert_counter_reg(5),
+      I3 => vert_counter_reg(7),
+      I4 => \vert_counter[9]_i_2_n_0\,
+      I5 => vert_counter_reg(8),
+      O => \p_0_in__0\(8)
+    );
+\vert_counter[9]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FD02"
+    )
+        port map (
+      I0 => vert_counter_reg(8),
+      I1 => \vert_counter[9]_i_2_n_0\,
+      I2 => \vert_counter[9]_i_3_n_0\,
+      I3 => vert_counter_reg(9),
+      O => \p_0_in__0\(9)
+    );
+\vert_counter[9]_i_2\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"7FFF"
+    )
+        port map (
+      I0 => vert_counter_reg(2),
+      I1 => vert_counter_reg(0),
+      I2 => vert_counter_reg(1),
       I3 => vert_counter_reg(3),
-      I4 => vert_counter_reg(2),
-      I5 => vert_counter_reg(5),
       O => \vert_counter[9]_i_2_n_0\
+    );
+\vert_counter[9]_i_3\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"7FFF"
+    )
+        port map (
+      I0 => vert_counter_reg(6),
+      I1 => vert_counter_reg(4),
+      I2 => vert_counter_reg(5),
+      I3 => vert_counter_reg(7),
+      O => \vert_counter[9]_i_3_n_0\
     );
 \vert_counter_reg[0]\: unisim.vcomponents.FDRE
     generic map(

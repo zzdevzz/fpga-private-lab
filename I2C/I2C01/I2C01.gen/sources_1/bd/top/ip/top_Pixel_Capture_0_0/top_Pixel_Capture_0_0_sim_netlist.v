@@ -2,10 +2,10 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-// Date        : Thu Jul 17 22:01:50 2025
+// Date        : Fri Jul 18 23:50:44 2025
 // Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim -rename_top top_Pixel_Capture_0_0 -prefix
-//               top_Pixel_Capture_0_0_ top_Pixel_Capture_0_0_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim {e:/FPGA/VHDL/Lab
+//               Training/I2C/I2C01/I2C01.gen/sources_1/bd/top/ip/top_Pixel_Capture_0_0/top_Pixel_Capture_0_0_sim_netlist.v}
 // Design      : top_Pixel_Capture_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -13,6 +13,67 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
+(* CHECK_LICENSE_TYPE = "top_Pixel_Capture_0_0,Pixel_Capture,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* ip_definition_source = "module_ref" *) 
+(* x_core_info = "Pixel_Capture,Vivado 2023.2" *) 
+(* NotValidForBitStream *)
+module top_Pixel_Capture_0_0
+   (clk,
+    pixel_data_in,
+    pclk,
+    start_capture,
+    bram_addr,
+    bram_data,
+    bram_we,
+    href,
+    vsync,
+    current_i,
+    capture_frame,
+    state_out);
+  (* x_interface_info = "xilinx.com:signal:clock:1.0 clk CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME clk, FREQ_HZ 25000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, INSERT_VIP 0" *) input clk;
+  input [7:0]pixel_data_in;
+  input pclk;
+  output start_capture;
+  output [16:0]bram_addr;
+  output [15:0]bram_data;
+  output bram_we;
+  input href;
+  input vsync;
+  output current_i;
+  input capture_frame;
+  output [3:0]state_out;
+
+  wire \<const0> ;
+  wire [16:0]bram_addr;
+  wire [15:0]bram_data;
+  wire bram_we;
+  wire capture_frame;
+  wire current_i;
+  wire href;
+  wire pclk;
+  wire [7:0]pixel_data_in;
+  wire start_capture;
+  wire [2:0]\^state_out ;
+  wire vsync;
+
+  assign state_out[3] = \<const0> ;
+  assign state_out[2:0] = \^state_out [2:0];
+  GND GND
+       (.G(\<const0> ));
+  top_Pixel_Capture_0_0_Pixel_Capture U0
+       (.bram_addr(bram_addr),
+        .bram_data(bram_data),
+        .bram_we(bram_we),
+        .capture_frame(capture_frame),
+        .current_pix_reg_0(current_i),
+        .href(href),
+        .pclk(pclk),
+        .pixel_data_in(pixel_data_in),
+        .start_capture(start_capture),
+        .state_out(\^state_out ),
+        .vsync(vsync));
+endmodule
+
+(* ORIG_REF_NAME = "Pixel_Capture" *) 
 module top_Pixel_Capture_0_0_Pixel_Capture
    (current_pix_reg_0,
     bram_data,
@@ -22,8 +83,9 @@ module top_Pixel_Capture_0_0_Pixel_Capture
     bram_we,
     vsync,
     href,
+    pclk,
     pixel_data_in,
-    pclk);
+    capture_frame);
   output current_pix_reg_0;
   output [15:0]bram_data;
   output [2:0]state_out;
@@ -32,8 +94,9 @@ module top_Pixel_Capture_0_0_Pixel_Capture
   output bram_we;
   input vsync;
   input href;
-  input [7:0]pixel_data_in;
   input pclk;
+  input [7:0]pixel_data_in;
+  input capture_frame;
 
   wire [16:0]bram_addr;
   wire \bram_addr_s[3]_i_2_n_0 ;
@@ -73,6 +136,9 @@ module top_Pixel_Capture_0_0_Pixel_Capture
   wire [15:0]bram_data;
   wire bram_enable_i_1_n_0;
   wire bram_we;
+  wire capture_frame;
+  wire capturing;
+  wire capturing_i_1_n_0;
   wire current_pix_i_1_n_0;
   wire current_pix_reg_0;
   wire full_pixel;
@@ -82,29 +148,35 @@ module top_Pixel_Capture_0_0_Pixel_Capture
   wire [7:0]pixel_data_in;
   wire start_capture;
   wire start_capture_flag_i_1_n_0;
+  wire start_capture_frame;
+  wire start_capture_frame_i_1_n_0;
   wire [2:0]state_out;
   wire [0:0]state_type;
-  wire state_type1;
+  wire state_type1__0;
   wire [7:0]temp_reg;
   wire \temp_reg[7]_i_1_n_0 ;
   wire vsync;
+  wire vsync_current;
+  wire vsync_previous;
   wire [3:0]\NLW_bram_addr_s_reg[16]_i_2_CO_UNCONNECTED ;
   wire [3:1]\NLW_bram_addr_s_reg[16]_i_2_O_UNCONNECTED ;
 
   (* SOFT_HLUTNM = "soft_lutpair0" *) 
-  LUT3 #(
-    .INIT(8'h0B)) 
+  LUT4 #(
+    .INIT(16'h00BF)) 
     \__4/i_ 
        (.I0(current_pix_reg_0),
         .I1(href),
-        .I2(vsync),
+        .I2(capturing),
+        .I3(vsync),
         .O(state_type));
-  LUT3 #(
-    .INIT(8'h40)) 
+  LUT4 #(
+    .INIT(16'h4000)) 
     \bram_addr_s[16]_i_1 
        (.I0(vsync),
-        .I1(href),
-        .I2(current_pix_reg_0),
+        .I1(capturing),
+        .I2(href),
+        .I3(current_pix_reg_0),
         .O(full_pixel));
   LUT1 #(
     .INIT(2'h1)) 
@@ -288,13 +360,14 @@ module top_Pixel_Capture_0_0_Pixel_Capture
         .Q(bram_addr[9]),
         .R(vsync));
   (* SOFT_HLUTNM = "soft_lutpair1" *) 
-  LUT4 #(
-    .INIT(16'hFB08)) 
+  LUT5 #(
+    .INIT(32'hFFBF0080)) 
     bram_enable_i_1
        (.I0(current_pix_reg_0),
         .I1(href),
-        .I2(vsync),
-        .I3(bram_we),
+        .I2(capturing),
+        .I3(vsync),
+        .I4(bram_we),
         .O(bram_enable_i_1_n_0));
   FDRE #(
     .INIT(1'b0)) 
@@ -304,13 +377,31 @@ module top_Pixel_Capture_0_0_Pixel_Capture
         .D(bram_enable_i_1_n_0),
         .Q(bram_we),
         .R(1'b0));
+  LUT5 #(
+    .INIT(32'h2F222222)) 
+    capturing_i_1
+       (.I0(capturing),
+        .I1(vsync),
+        .I2(vsync_current),
+        .I3(start_capture_frame),
+        .I4(vsync_previous),
+        .O(capturing_i_1_n_0));
+  FDRE #(
+    .INIT(1'b0)) 
+    capturing_reg
+       (.C(pclk),
+        .CE(1'b1),
+        .D(capturing_i_1_n_0),
+        .Q(capturing),
+        .R(1'b0));
   (* SOFT_HLUTNM = "soft_lutpair1" *) 
-  LUT3 #(
-    .INIT(8'h06)) 
+  LUT4 #(
+    .INIT(16'h006A)) 
     current_pix_i_1
        (.I0(current_pix_reg_0),
         .I1(href),
-        .I2(vsync),
+        .I2(capturing),
+        .I3(vsync),
         .O(current_pix_i_1_n_0));
   FDRE #(
     .INIT(1'b0)) 
@@ -417,13 +508,14 @@ module top_Pixel_Capture_0_0_Pixel_Capture
         .Q(bram_data[9]),
         .R(1'b0));
   (* SOFT_HLUTNM = "soft_lutpair0" *) 
-  LUT4 #(
-    .INIT(16'hAAEA)) 
+  LUT5 #(
+    .INIT(32'hAAAAEAAA)) 
     start_capture_flag_i_1
        (.I0(start_capture),
         .I1(current_pix_reg_0),
         .I2(href),
-        .I3(vsync),
+        .I3(capturing),
+        .I4(vsync),
         .O(start_capture_flag_i_1_n_0));
   FDRE #(
     .INIT(1'b0)) 
@@ -433,19 +525,37 @@ module top_Pixel_Capture_0_0_Pixel_Capture
         .D(start_capture_flag_i_1_n_0),
         .Q(start_capture),
         .R(1'b0));
+  LUT4 #(
+    .INIT(16'hCAFA)) 
+    start_capture_frame_i_1
+       (.I0(capture_frame),
+        .I1(vsync_current),
+        .I2(start_capture_frame),
+        .I3(vsync_previous),
+        .O(start_capture_frame_i_1_n_0));
+  FDRE #(
+    .INIT(1'b0)) 
+    start_capture_frame_reg
+       (.C(pclk),
+        .CE(1'b1),
+        .D(start_capture_frame_i_1_n_0),
+        .Q(start_capture_frame),
+        .R(1'b0));
   (* SOFT_HLUTNM = "soft_lutpair2" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \state_type[1]_i_1 
+  LUT3 #(
+    .INIT(8'h08)) 
+    state_type1
        (.I0(href),
-        .I1(vsync),
-        .O(state_type1));
+        .I1(capturing),
+        .I2(vsync),
+        .O(state_type1__0));
   (* SOFT_HLUTNM = "soft_lutpair2" *) 
-  LUT2 #(
-    .INIT(4'hB)) 
+  LUT3 #(
+    .INIT(8'hBF)) 
     \state_type[2]_i_1 
        (.I0(vsync),
-        .I1(href),
+        .I1(capturing),
+        .I2(href),
         .O(p_1_in));
   FDRE #(
     .INIT(1'b0)) 
@@ -460,7 +570,7 @@ module top_Pixel_Capture_0_0_Pixel_Capture
     \state_type_reg[1] 
        (.C(pclk),
         .CE(1'b1),
-        .D(state_type1),
+        .D(state_type1__0),
         .Q(state_out[1]),
         .R(1'b0));
   FDRE #(
@@ -471,12 +581,13 @@ module top_Pixel_Capture_0_0_Pixel_Capture
         .D(p_1_in),
         .Q(state_out[2]),
         .R(1'b0));
-  LUT3 #(
-    .INIT(8'h04)) 
+  LUT4 #(
+    .INIT(16'h0040)) 
     \temp_reg[7]_i_1 
        (.I0(vsync),
-        .I1(href),
-        .I2(current_pix_reg_0),
+        .I1(capturing),
+        .I2(href),
+        .I3(current_pix_reg_0),
         .O(\temp_reg[7]_i_1_n_0 ));
   FDRE \temp_reg_reg[0] 
        (.C(pclk),
@@ -526,62 +637,18 @@ module top_Pixel_Capture_0_0_Pixel_Capture
         .D(pixel_data_in[7]),
         .Q(temp_reg[7]),
         .R(1'b0));
-endmodule
-
-(* CHECK_LICENSE_TYPE = "top_Pixel_Capture_0_0,Pixel_Capture,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* ip_definition_source = "module_ref" *) 
-(* x_core_info = "Pixel_Capture,Vivado 2023.2" *) 
-(* NotValidForBitStream *)
-module top_Pixel_Capture_0_0
-   (clk,
-    pixel_data_in,
-    pclk,
-    start_capture,
-    bram_addr,
-    bram_data,
-    bram_we,
-    href,
-    vsync,
-    current_i,
-    state_out);
-  (* x_interface_info = "xilinx.com:signal:clock:1.0 clk CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME clk, FREQ_HZ 25000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, INSERT_VIP 0" *) input clk;
-  input [7:0]pixel_data_in;
-  input pclk;
-  output start_capture;
-  output [16:0]bram_addr;
-  output [15:0]bram_data;
-  output bram_we;
-  input href;
-  input vsync;
-  output current_i;
-  output [3:0]state_out;
-
-  wire \<const0> ;
-  wire [16:0]bram_addr;
-  wire [15:0]bram_data;
-  wire bram_we;
-  wire current_i;
-  wire href;
-  wire pclk;
-  wire [7:0]pixel_data_in;
-  wire start_capture;
-  wire [2:0]\^state_out ;
-  wire vsync;
-
-  assign state_out[3] = \<const0> ;
-  assign state_out[2:0] = \^state_out [2:0];
-  GND GND
-       (.G(\<const0> ));
-  top_Pixel_Capture_0_0_Pixel_Capture U0
-       (.bram_addr(bram_addr),
-        .bram_data(bram_data),
-        .bram_we(bram_we),
-        .current_pix_reg_0(current_i),
-        .href(href),
-        .pclk(pclk),
-        .pixel_data_in(pixel_data_in),
-        .start_capture(start_capture),
-        .state_out(\^state_out ),
-        .vsync(vsync));
+  FDRE vsync_current_reg
+       (.C(pclk),
+        .CE(1'b1),
+        .D(vsync),
+        .Q(vsync_current),
+        .R(1'b0));
+  FDRE vsync_previous_reg
+       (.C(pclk),
+        .CE(1'b1),
+        .D(vsync_current),
+        .Q(vsync_previous),
+        .R(1'b0));
 endmodule
 `ifndef GLBL
 `define GLBL
