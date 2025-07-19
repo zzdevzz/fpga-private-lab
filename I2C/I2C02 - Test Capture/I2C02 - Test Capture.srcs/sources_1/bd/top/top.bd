@@ -1,0 +1,633 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0x946C4F7E61AF6989",
+      "device": "xc7a35tcpg236-1",
+      "gen_directory": "../../../../I2C02 - Test Capture.gen/sources_1/bd/top",
+      "name": "top",
+      "rev_ctrl_bd_flag": "RevCtrlBdOff",
+      "synth_flow_mode": "Hierarchical",
+      "tool_version": "2023.2",
+      "validated": "true"
+    },
+    "design_tree": {
+      "clk_wiz_0": "",
+      "I2C_camera_0": "",
+      "I2C_OV7670_MasterCon_0": "",
+      "Pixel_Capture_0": "",
+      "debouncer_0": "",
+      "ila_0": ""
+    },
+    "ports": {
+      "ov7670_pclk": {
+        "direction": "I"
+      },
+      "ov7670_data": {
+        "direction": "I",
+        "left": "7",
+        "right": "0"
+      },
+      "ov7670_vsync": {
+        "direction": "I"
+      },
+      "ov7670_href": {
+        "direction": "I"
+      },
+      "ov7670_SCL": {
+        "direction": "O"
+      },
+      "ov7670_SDA": {
+        "direction": "IO"
+      },
+      "ov7670_pwdn": {
+        "direction": "O"
+      },
+      "ov7670_reset": {
+        "type": "rst",
+        "direction": "O",
+        "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "POLARITY": {
+            "value": "ACTIVE_LOW",
+            "value_src": "default"
+          }
+        }
+      },
+      "LED": {
+        "direction": "O",
+        "left": "7",
+        "right": "0"
+      },
+      "sys_clock": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "top_sys_clock",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0"
+          }
+        }
+      },
+      "reset": {
+        "type": "rst",
+        "direction": "I",
+        "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "POLARITY": {
+            "value": "ACTIVE_HIGH"
+          }
+        }
+      },
+      "BTNL": {
+        "direction": "I"
+      },
+      "ov7670_xclk": {
+        "type": "clk",
+        "direction": "O",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "/clk_wiz_0_clk_out1",
+            "value_src": "ip_prop"
+          },
+          "FREQ_HZ": {
+            "value": "25000000",
+            "value_src": "ip_prop"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "ip_prop"
+          }
+        }
+      }
+    },
+    "components": {
+      "clk_wiz_0": {
+        "vlnv": "xilinx.com:ip:clk_wiz:6.0",
+        "ip_revision": "13",
+        "xci_name": "top_clk_wiz_0_0",
+        "xci_path": "ip\\top_clk_wiz_0_0\\top_clk_wiz_0_0.xci",
+        "inst_hier_path": "clk_wiz_0",
+        "parameters": {
+          "CLKOUT1_DRIVES": {
+            "value": "BUFG"
+          },
+          "CLKOUT1_JITTER": {
+            "value": "137.681"
+          },
+          "CLKOUT1_PHASE_ERROR": {
+            "value": "105.461"
+          },
+          "CLKOUT2_DRIVES": {
+            "value": "BUFG"
+          },
+          "CLKOUT2_JITTER": {
+            "value": "183.467"
+          },
+          "CLKOUT2_PHASE_ERROR": {
+            "value": "105.461"
+          },
+          "CLKOUT2_REQUESTED_OUT_FREQ": {
+            "value": "25"
+          },
+          "CLKOUT2_USED": {
+            "value": "true"
+          },
+          "CLKOUT3_DRIVES": {
+            "value": "BUFG"
+          },
+          "CLKOUT4_DRIVES": {
+            "value": "BUFG"
+          },
+          "CLKOUT5_DRIVES": {
+            "value": "BUFG"
+          },
+          "CLKOUT6_DRIVES": {
+            "value": "BUFG"
+          },
+          "CLKOUT7_DRIVES": {
+            "value": "BUFG"
+          },
+          "CLK_IN1_BOARD_INTERFACE": {
+            "value": "sys_clock"
+          },
+          "CLK_OUT1_PORT": {
+            "value": "clk_out100"
+          },
+          "CLK_OUT2_PORT": {
+            "value": "clk_out25"
+          },
+          "MMCM_BANDWIDTH": {
+            "value": "OPTIMIZED"
+          },
+          "MMCM_CLKFBOUT_MULT_F": {
+            "value": "9"
+          },
+          "MMCM_CLKOUT0_DIVIDE_F": {
+            "value": "9"
+          },
+          "MMCM_CLKOUT1_DIVIDE": {
+            "value": "36"
+          },
+          "MMCM_COMPENSATION": {
+            "value": "ZHOLD"
+          },
+          "NUM_OUT_CLKS": {
+            "value": "2"
+          },
+          "PRIMITIVE": {
+            "value": "PLL"
+          },
+          "RESET_BOARD_INTERFACE": {
+            "value": "reset"
+          },
+          "USE_BOARD_FLOW": {
+            "value": "true"
+          }
+        }
+      },
+      "I2C_camera_0": {
+        "vlnv": "xilinx.com:module_ref:I2C_camera:1.0",
+        "ip_revision": "1",
+        "xci_name": "top_I2C_camera_0_0",
+        "xci_path": "ip\\top_I2C_camera_0_0\\top_I2C_camera_0_0.xci",
+        "inst_hier_path": "I2C_camera_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "I2C_camera",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "index": {
+            "direction": "I",
+            "left": "1",
+            "right": "0"
+          },
+          "reg_addr": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "reg_data": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          }
+        }
+      },
+      "I2C_OV7670_MasterCon_0": {
+        "vlnv": "xilinx.com:module_ref:I2C_OV7670_MasterController:1.0",
+        "ip_revision": "1",
+        "xci_name": "top_I2C_OV7670_MasterCon_0_0",
+        "xci_path": "ip\\top_I2C_OV7670_MasterCon_0_0\\top_I2C_OV7670_MasterCon_0_0.xci",
+        "inst_hier_path": "I2C_OV7670_MasterCon_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "I2C_OV7670_MasterController",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk_100": {
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "100000000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "/clk_wiz_0_clk_out1",
+                "value_src": "ip_prop"
+              }
+            }
+          },
+          "slave_reg_addr": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "slave_reg_data": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "ov7670_SCL": {
+            "direction": "O"
+          },
+          "ov7670_SDA": {
+            "direction": "IO"
+          },
+          "ov7670_pclk": {
+            "direction": "I"
+          },
+          "ov7670_data": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "ov7670_vsync": {
+            "direction": "I"
+          },
+          "ov7670_href": {
+            "direction": "I"
+          },
+          "ov7670_pwdn": {
+            "direction": "O"
+          },
+          "ov7670_reset": {
+            "type": "rst",
+            "direction": "O"
+          },
+          "i2c_data_out": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "LED": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "i2c_data_read": {
+            "direction": "O",
+            "left": "1",
+            "right": "0"
+          }
+        }
+      },
+      "Pixel_Capture_0": {
+        "vlnv": "xilinx.com:module_ref:Pixel_Capture:1.0",
+        "ip_revision": "1",
+        "xci_name": "top_Pixel_Capture_0_0",
+        "xci_path": "ip\\top_Pixel_Capture_0_0\\top_Pixel_Capture_0_0.xci",
+        "inst_hier_path": "Pixel_Capture_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "Pixel_Capture",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "25000000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "/clk_wiz_0_clk_out1",
+                "value_src": "ip_prop"
+              }
+            }
+          },
+          "pixel_data_in": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "pclk": {
+            "direction": "I"
+          },
+          "start_capture": {
+            "direction": "O"
+          },
+          "bram_addr": {
+            "direction": "O",
+            "left": "16",
+            "right": "0"
+          },
+          "bram_data": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "bram_we": {
+            "direction": "O"
+          },
+          "href": {
+            "direction": "I"
+          },
+          "vsync": {
+            "direction": "I"
+          },
+          "current_i": {
+            "direction": "O"
+          },
+          "capture_frame": {
+            "direction": "I"
+          },
+          "capturing_o": {
+            "direction": "O"
+          },
+          "state_out": {
+            "direction": "O",
+            "left": "3",
+            "right": "0"
+          }
+        }
+      },
+      "debouncer_0": {
+        "vlnv": "xilinx.com:module_ref:debouncer:1.0",
+        "ip_revision": "1",
+        "xci_name": "top_debouncer_0_0",
+        "xci_path": "ip\\top_debouncer_0_0\\top_debouncer_0_0.xci",
+        "inst_hier_path": "debouncer_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "debouncer",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "100000000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "/clk_wiz_0_clk_out1",
+                "value_src": "ip_prop"
+              }
+            }
+          },
+          "switch": {
+            "direction": "I"
+          },
+          "switch_debounced": {
+            "direction": "O"
+          }
+        }
+      },
+      "ila_0": {
+        "vlnv": "xilinx.com:ip:ila:6.2",
+        "ip_revision": "14",
+        "xci_name": "top_ila_0_0",
+        "xci_path": "ip\\top_ila_0_0\\top_ila_0_0.xci",
+        "inst_hier_path": "ila_0",
+        "parameters": {
+          "C_DATA_DEPTH": {
+            "value": "16384"
+          },
+          "C_MONITOR_TYPE": {
+            "value": "Native"
+          },
+          "C_NUM_OF_PROBES": {
+            "value": "12"
+          },
+          "C_PROBE2_WIDTH": {
+            "value": "8"
+          },
+          "C_PROBE3_WIDTH": {
+            "value": "16"
+          },
+          "C_PROBE4_WIDTH": {
+            "value": "17"
+          },
+          "C_PROBE7_WIDTH": {
+            "value": "4"
+          }
+        }
+      }
+    },
+    "nets": {
+      "BTNL_1": {
+        "ports": [
+          "BTNL",
+          "debouncer_0/switch"
+        ]
+      },
+      "I2C_OV7670_MasterCon_0_LED": {
+        "ports": [
+          "I2C_OV7670_MasterCon_0/LED",
+          "LED"
+        ]
+      },
+      "I2C_OV7670_MasterCon_0_i2c_data_read": {
+        "ports": [
+          "I2C_OV7670_MasterCon_0/i2c_data_read",
+          "I2C_camera_0/index"
+        ]
+      },
+      "I2C_OV7670_MasterCon_0_ov7670_SCL": {
+        "ports": [
+          "I2C_OV7670_MasterCon_0/ov7670_SCL",
+          "ov7670_SCL",
+          "ila_0/probe8"
+        ]
+      },
+      "I2C_OV7670_MasterCon_0_ov7670_pwdn": {
+        "ports": [
+          "I2C_OV7670_MasterCon_0/ov7670_pwdn",
+          "ov7670_pwdn"
+        ]
+      },
+      "I2C_OV7670_MasterCon_0_ov7670_reset": {
+        "ports": [
+          "I2C_OV7670_MasterCon_0/ov7670_reset",
+          "ov7670_reset"
+        ]
+      },
+      "I2C_camera_0_reg_addr": {
+        "ports": [
+          "I2C_camera_0/reg_addr",
+          "I2C_OV7670_MasterCon_0/slave_reg_addr"
+        ]
+      },
+      "I2C_camera_0_reg_data": {
+        "ports": [
+          "I2C_camera_0/reg_data",
+          "I2C_OV7670_MasterCon_0/slave_reg_data"
+        ]
+      },
+      "Net": {
+        "ports": [
+          "ov7670_SDA",
+          "I2C_OV7670_MasterCon_0/ov7670_SDA"
+        ]
+      },
+      "Pixel_Capture_0_bram_addr": {
+        "ports": [
+          "Pixel_Capture_0/bram_addr",
+          "ila_0/probe4"
+        ]
+      },
+      "Pixel_Capture_0_bram_data": {
+        "ports": [
+          "Pixel_Capture_0/bram_data",
+          "ila_0/probe3"
+        ]
+      },
+      "Pixel_Capture_0_capturing_o": {
+        "ports": [
+          "Pixel_Capture_0/capturing_o",
+          "ila_0/probe11"
+        ]
+      },
+      "Pixel_Capture_0_current_i": {
+        "ports": [
+          "Pixel_Capture_0/current_i",
+          "ila_0/probe9"
+        ]
+      },
+      "Pixel_Capture_0_start_capture": {
+        "ports": [
+          "Pixel_Capture_0/start_capture",
+          "ila_0/probe5"
+        ]
+      },
+      "Pixel_Capture_0_state_out": {
+        "ports": [
+          "Pixel_Capture_0/state_out",
+          "ila_0/probe10"
+        ]
+      },
+      "clk_wiz_0_clk_out25": {
+        "ports": [
+          "clk_wiz_0/clk_out25",
+          "ov7670_xclk",
+          "Pixel_Capture_0/clk"
+        ]
+      },
+      "clk_wiz_0_clk_out100": {
+        "ports": [
+          "clk_wiz_0/clk_out100",
+          "I2C_OV7670_MasterCon_0/clk_100",
+          "debouncer_0/clk",
+          "ila_0/clk"
+        ]
+      },
+      "debouncer_0_switch_debounced": {
+        "ports": [
+          "debouncer_0/switch_debounced",
+          "ila_0/probe0",
+          "Pixel_Capture_0/capture_frame"
+        ]
+      },
+      "ov7670_data_1": {
+        "ports": [
+          "ov7670_data",
+          "I2C_OV7670_MasterCon_0/ov7670_data",
+          "ila_0/probe2",
+          "Pixel_Capture_0/pixel_data_in"
+        ]
+      },
+      "ov7670_href_1": {
+        "ports": [
+          "ov7670_href",
+          "I2C_OV7670_MasterCon_0/ov7670_href",
+          "ila_0/probe7",
+          "Pixel_Capture_0/href"
+        ]
+      },
+      "ov7670_pclk_1": {
+        "ports": [
+          "ov7670_pclk",
+          "I2C_OV7670_MasterCon_0/ov7670_pclk",
+          "ila_0/probe1",
+          "Pixel_Capture_0/pclk"
+        ]
+      },
+      "ov7670_vsync_1": {
+        "ports": [
+          "ov7670_vsync",
+          "I2C_OV7670_MasterCon_0/ov7670_vsync",
+          "ila_0/probe6",
+          "Pixel_Capture_0/vsync"
+        ]
+      },
+      "reset_1": {
+        "ports": [
+          "reset",
+          "clk_wiz_0/reset"
+        ]
+      },
+      "sys_clock_1": {
+        "ports": [
+          "sys_clock",
+          "clk_wiz_0/clk_in1"
+        ]
+      }
+    }
+  }
+}

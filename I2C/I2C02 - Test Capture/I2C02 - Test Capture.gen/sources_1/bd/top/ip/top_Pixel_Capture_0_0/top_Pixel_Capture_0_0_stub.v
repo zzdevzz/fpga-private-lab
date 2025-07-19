@@ -1,0 +1,35 @@
+// Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+// Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+// --------------------------------------------------------------------------------
+// Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
+// Date        : Sat Jul 19 20:49:52 2025
+// Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
+// Command     : write_verilog -force -mode synth_stub {e:/FPGA/VHDL/Lab Training/I2C/I2C02 - Test Capture/I2C02 - Test
+//               Capture.gen/sources_1/bd/top/ip/top_Pixel_Capture_0_0/top_Pixel_Capture_0_0_stub.v}
+// Design      : top_Pixel_Capture_0_0
+// Purpose     : Stub declaration of top-level module interface
+// Device      : xc7a35tcpg236-1
+// --------------------------------------------------------------------------------
+
+// This empty module with port declaration file causes synthesis tools to infer a black box for IP.
+// The synthesis directives are for Synopsys Synplify support to prevent IO buffer insertion.
+// Please paste the declaration into a Verilog source file or add the file as an additional source.
+(* x_core_info = "Pixel_Capture,Vivado 2023.2" *)
+module top_Pixel_Capture_0_0(clk, pixel_data_in, pclk, start_capture, 
+  bram_addr, bram_data, bram_we, href, vsync, current_i, capture_frame, capturing_o, state_out)
+/* synthesis syn_black_box black_box_pad_pin="clk,pixel_data_in[7:0],start_capture,bram_addr[16:0],bram_data[15:0],bram_we,href,vsync,current_i,capture_frame,capturing_o,state_out[3:0]" */
+/* synthesis syn_force_seq_prim="pclk" */;
+  input clk;
+  input [7:0]pixel_data_in;
+  input pclk /* synthesis syn_isclock = 1 */;
+  output start_capture;
+  output [16:0]bram_addr;
+  output [15:0]bram_data;
+  output bram_we;
+  input href;
+  input vsync;
+  output current_i;
+  input capture_frame;
+  output capturing_o;
+  output [3:0]state_out;
+endmodule
