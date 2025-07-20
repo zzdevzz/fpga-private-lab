@@ -2,7 +2,7 @@
 -- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
--- Date        : Sat Jul 19 17:54:56 2025
+-- Date        : Sun Jul 20 17:36:14 2025
 -- Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim {e:/FPGA/VHDL/Lab Training/I2C/I2C02 - Test Capture/I2C02 - Test
 --               Capture.gen/sources_1/bd/top/ip/top_I2C_OV7670_MasterCon_0_0/top_I2C_OV7670_MasterCon_0_0_sim_netlist.vhdl}
@@ -28,6 +28,7 @@ entity top_I2C_OV7670_MasterCon_0_0 is
     ov7670_href : in STD_LOGIC;
     ov7670_pwdn : out STD_LOGIC;
     ov7670_reset : out STD_LOGIC;
+    state_debug : out STD_LOGIC_VECTOR ( 2 downto 0 );
     i2c_data_out : out STD_LOGIC_VECTOR ( 7 downto 0 );
     LED : out STD_LOGIC_VECTOR ( 7 downto 0 );
     i2c_data_read : out STD_LOGIC_VECTOR ( 1 downto 0 )
@@ -68,6 +69,9 @@ begin
   ov7670_SCL <= \<const1>\;
   ov7670_pwdn <= \<const0>\;
   ov7670_reset <= \<const1>\;
+  state_debug(2) <= \<const0>\;
+  state_debug(1) <= \<const0>\;
+  state_debug(0) <= \<const0>\;
 GND: unisim.vcomponents.GND
      port map (
       G => \<const0>\

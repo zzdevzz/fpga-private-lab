@@ -1,0 +1,35 @@
+// Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+// Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+// --------------------------------------------------------------------------------
+// Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
+// Date        : Sun Jul 20 17:36:14 2025
+// Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
+// Command     : write_verilog -force -mode synth_stub -rename_top decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix -prefix
+//               decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_ top_I2C_OV7670_Controller_0_0_stub.v
+// Design      : top_I2C_OV7670_Controller_0_0
+// Purpose     : Stub declaration of top-level module interface
+// Device      : xc7a35tcpg236-1
+// --------------------------------------------------------------------------------
+
+// This empty module with port declaration file causes synthesis tools to infer a black box for IP.
+// The synthesis directives are for Synopsys Synplify support to prevent IO buffer insertion.
+// Please paste the declaration into a Verilog source file or add the file as an additional source.
+(* x_core_info = "I2C_OV7670_Controller,Vivado 2023.2" *)
+module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix(clk_100, slave_reg_addr, slave_reg_data, 
+  ov7670_SCL, ov7670_SDA, sda_out_debug, sda_in_debug, sda_oe_debug, ov7670_pwdn, ov7670_reset, 
+  i2c_data_read, state_debug)
+/* synthesis syn_black_box black_box_pad_pin="slave_reg_addr[7:0],slave_reg_data[7:0],ov7670_SCL,ov7670_SDA,sda_out_debug,sda_in_debug,sda_oe_debug,ov7670_pwdn,ov7670_reset,i2c_data_read[1:0],state_debug[2:0]" */
+/* synthesis syn_force_seq_prim="clk_100" */;
+  input clk_100 /* synthesis syn_isclock = 1 */;
+  input [7:0]slave_reg_addr;
+  input [7:0]slave_reg_data;
+  output ov7670_SCL;
+  inout ov7670_SDA;
+  output sda_out_debug;
+  output sda_in_debug;
+  output sda_oe_debug;
+  output ov7670_pwdn;
+  output ov7670_reset;
+  output [1:0]i2c_data_read;
+  output [2:0]state_debug;
+endmodule

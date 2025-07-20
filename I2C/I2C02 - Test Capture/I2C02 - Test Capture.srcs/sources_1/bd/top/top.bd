@@ -16,7 +16,8 @@
       "I2C_OV7670_MasterCon_0": "",
       "Pixel_Capture_0": "",
       "debouncer_0": "",
-      "ila_0": ""
+      "ila_0": "",
+      "I2C_OV7670_Controller_0": ""
     },
     "ports": {
       "ov7670_pclk": {
@@ -308,6 +309,11 @@
             "type": "rst",
             "direction": "O"
           },
+          "state_debug": {
+            "direction": "O",
+            "left": "2",
+            "right": "0"
+          },
           "i2c_data_out": {
             "direction": "O",
             "left": "7",
@@ -453,7 +459,10 @@
             "value": "Native"
           },
           "C_NUM_OF_PROBES": {
-            "value": "12"
+            "value": "16"
+          },
+          "C_PROBE12_WIDTH": {
+            "value": "3"
           },
           "C_PROBE2_WIDTH": {
             "value": "8"
@@ -465,7 +474,80 @@
             "value": "17"
           },
           "C_PROBE7_WIDTH": {
-            "value": "4"
+            "value": "1"
+          }
+        }
+      },
+      "I2C_OV7670_Controller_0": {
+        "vlnv": "xilinx.com:module_ref:I2C_OV7670_Controller:1.0",
+        "ip_revision": "1",
+        "xci_name": "top_I2C_OV7670_Controller_0_0",
+        "xci_path": "ip\\top_I2C_OV7670_Controller_0_0\\top_I2C_OV7670_Controller_0_0.xci",
+        "inst_hier_path": "I2C_OV7670_Controller_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "I2C_OV7670_Controller",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk_100": {
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "100000000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "/clk_wiz_0_clk_out1",
+                "value_src": "ip_prop"
+              }
+            }
+          },
+          "slave_reg_addr": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "slave_reg_data": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "ov7670_SCL": {
+            "direction": "O"
+          },
+          "ov7670_SDA": {
+            "direction": "IO"
+          },
+          "sda_out_debug": {
+            "direction": "O"
+          },
+          "sda_in_debug": {
+            "direction": "O"
+          },
+          "sda_oe_debug": {
+            "direction": "O"
+          },
+          "ov7670_pwdn": {
+            "direction": "O"
+          },
+          "ov7670_reset": {
+            "type": "rst",
+            "direction": "O"
+          },
+          "i2c_data_read": {
+            "direction": "O",
+            "left": "1",
+            "right": "0"
+          },
+          "state_debug": {
+            "direction": "O",
+            "left": "2",
+            "right": "0"
           }
         }
       }
@@ -477,53 +559,73 @@
           "debouncer_0/switch"
         ]
       },
-      "I2C_OV7670_MasterCon_0_LED": {
+      "I2C_OV7670_Controller_0_i2c_data_read": {
         "ports": [
-          "I2C_OV7670_MasterCon_0/LED",
-          "LED"
+          "I2C_OV7670_Controller_0/i2c_data_read",
+          "I2C_camera_0/index"
         ]
       },
-      "I2C_OV7670_MasterCon_0_i2c_data_read": {
+      "I2C_OV7670_Controller_0_ov7670_pwdn": {
         "ports": [
-          "I2C_OV7670_MasterCon_0/i2c_data_read",
-          "I2C_camera_0/index"
+          "I2C_OV7670_Controller_0/ov7670_pwdn",
+          "ov7670_pwdn"
+        ]
+      },
+      "I2C_OV7670_Controller_0_sda_in_debug": {
+        "ports": [
+          "I2C_OV7670_Controller_0/sda_in_debug",
+          "ila_0/probe14"
+        ]
+      },
+      "I2C_OV7670_Controller_0_sda_oe_debug": {
+        "ports": [
+          "I2C_OV7670_Controller_0/sda_oe_debug",
+          "ila_0/probe15"
+        ]
+      },
+      "I2C_OV7670_Controller_0_sda_out_debug": {
+        "ports": [
+          "I2C_OV7670_Controller_0/sda_out_debug",
+          "ila_0/probe13"
+        ]
+      },
+      "I2C_OV7670_Controller_0_state_debug": {
+        "ports": [
+          "I2C_OV7670_Controller_0/state_debug",
+          "ila_0/probe12"
         ]
       },
       "I2C_OV7670_MasterCon_0_ov7670_SCL": {
         "ports": [
-          "I2C_OV7670_MasterCon_0/ov7670_SCL",
+          "I2C_OV7670_Controller_0/ov7670_SCL",
           "ov7670_SCL",
           "ila_0/probe8"
         ]
       },
-      "I2C_OV7670_MasterCon_0_ov7670_pwdn": {
-        "ports": [
-          "I2C_OV7670_MasterCon_0/ov7670_pwdn",
-          "ov7670_pwdn"
-        ]
-      },
       "I2C_OV7670_MasterCon_0_ov7670_reset": {
         "ports": [
-          "I2C_OV7670_MasterCon_0/ov7670_reset",
+          "I2C_OV7670_Controller_0/ov7670_reset",
           "ov7670_reset"
         ]
       },
       "I2C_camera_0_reg_addr": {
         "ports": [
           "I2C_camera_0/reg_addr",
-          "I2C_OV7670_MasterCon_0/slave_reg_addr"
+          "I2C_OV7670_MasterCon_0/slave_reg_addr",
+          "I2C_OV7670_Controller_0/slave_reg_addr"
         ]
       },
       "I2C_camera_0_reg_data": {
         "ports": [
           "I2C_camera_0/reg_data",
-          "I2C_OV7670_MasterCon_0/slave_reg_data"
+          "I2C_OV7670_MasterCon_0/slave_reg_data",
+          "I2C_OV7670_Controller_0/slave_reg_data"
         ]
       },
       "Net": {
         "ports": [
           "ov7670_SDA",
-          "I2C_OV7670_MasterCon_0/ov7670_SDA"
+          "I2C_OV7670_Controller_0/ov7670_SDA"
         ]
       },
       "Pixel_Capture_0_bram_addr": {
@@ -572,9 +674,10 @@
       "clk_wiz_0_clk_out100": {
         "ports": [
           "clk_wiz_0/clk_out100",
-          "I2C_OV7670_MasterCon_0/clk_100",
           "debouncer_0/clk",
-          "ila_0/clk"
+          "ila_0/clk",
+          "I2C_OV7670_MasterCon_0/clk_100",
+          "I2C_OV7670_Controller_0/clk_100"
         ]
       },
       "debouncer_0_switch_debounced": {
@@ -587,33 +690,34 @@
       "ov7670_data_1": {
         "ports": [
           "ov7670_data",
-          "I2C_OV7670_MasterCon_0/ov7670_data",
           "ila_0/probe2",
-          "Pixel_Capture_0/pixel_data_in"
+          "Pixel_Capture_0/pixel_data_in",
+          "I2C_OV7670_MasterCon_0/ov7670_data",
+          "LED"
         ]
       },
       "ov7670_href_1": {
         "ports": [
           "ov7670_href",
-          "I2C_OV7670_MasterCon_0/ov7670_href",
           "ila_0/probe7",
-          "Pixel_Capture_0/href"
+          "Pixel_Capture_0/href",
+          "I2C_OV7670_MasterCon_0/ov7670_href"
         ]
       },
       "ov7670_pclk_1": {
         "ports": [
           "ov7670_pclk",
-          "I2C_OV7670_MasterCon_0/ov7670_pclk",
           "ila_0/probe1",
-          "Pixel_Capture_0/pclk"
+          "Pixel_Capture_0/pclk",
+          "I2C_OV7670_MasterCon_0/ov7670_pclk"
         ]
       },
       "ov7670_vsync_1": {
         "ports": [
           "ov7670_vsync",
-          "I2C_OV7670_MasterCon_0/ov7670_vsync",
           "ila_0/probe6",
-          "Pixel_Capture_0/vsync"
+          "Pixel_Capture_0/vsync",
+          "I2C_OV7670_MasterCon_0/ov7670_vsync"
         ]
       },
       "reset_1": {

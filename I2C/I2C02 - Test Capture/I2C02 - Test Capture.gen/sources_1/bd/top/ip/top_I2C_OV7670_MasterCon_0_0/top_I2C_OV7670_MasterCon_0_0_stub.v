@@ -2,7 +2,7 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-// Date        : Sat Jul 19 17:54:56 2025
+// Date        : Sun Jul 20 17:36:14 2025
 // Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub {e:/FPGA/VHDL/Lab Training/I2C/I2C02 - Test Capture/I2C02 - Test
 //               Capture.gen/sources_1/bd/top/ip/top_I2C_OV7670_MasterCon_0_0/top_I2C_OV7670_MasterCon_0_0_stub.v}
@@ -17,8 +17,8 @@
 (* x_core_info = "I2C_OV7670_MasterController,Vivado 2023.2" *)
 module top_I2C_OV7670_MasterCon_0_0(clk_100, slave_reg_addr, slave_reg_data, 
   ov7670_SCL, ov7670_SDA, ov7670_pclk, ov7670_data, ov7670_vsync, ov7670_href, ov7670_pwdn, 
-  ov7670_reset, i2c_data_out, LED, i2c_data_read)
-/* synthesis syn_black_box black_box_pad_pin="clk_100,slave_reg_addr[7:0],slave_reg_data[7:0],ov7670_SCL,ov7670_SDA,ov7670_pclk,ov7670_data[7:0],ov7670_vsync,ov7670_href,ov7670_pwdn,ov7670_reset,i2c_data_out[7:0],LED[7:0],i2c_data_read[1:0]" */;
+  ov7670_reset, state_debug, i2c_data_out, LED, i2c_data_read)
+/* synthesis syn_black_box black_box_pad_pin="clk_100,slave_reg_addr[7:0],slave_reg_data[7:0],ov7670_SCL,ov7670_SDA,ov7670_pclk,ov7670_data[7:0],ov7670_vsync,ov7670_href,ov7670_pwdn,ov7670_reset,state_debug[2:0],i2c_data_out[7:0],LED[7:0],i2c_data_read[1:0]" */;
   input clk_100;
   input [7:0]slave_reg_addr;
   input [7:0]slave_reg_data;
@@ -30,6 +30,7 @@ module top_I2C_OV7670_MasterCon_0_0(clk_100, slave_reg_addr, slave_reg_data,
   input ov7670_href;
   output ov7670_pwdn;
   output ov7670_reset;
+  output [2:0]state_debug;
   output [7:0]i2c_data_out;
   output [7:0]LED;
   output [1:0]i2c_data_read;

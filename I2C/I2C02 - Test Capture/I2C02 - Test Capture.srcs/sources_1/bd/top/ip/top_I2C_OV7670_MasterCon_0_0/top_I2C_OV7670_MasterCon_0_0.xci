@@ -47,6 +47,7 @@
         "ov7670_href": [ { "direction": "in" } ],
         "ov7670_pwdn": [ { "direction": "out", "driver_value": "0x0" } ],
         "ov7670_reset": [ { "direction": "out", "driver_value": "0x1" } ],
+        "state_debug": [ { "direction": "out", "size_left": "2", "size_right": "0" } ],
         "i2c_data_out": [ { "direction": "out", "size_left": "7", "size_right": "0" } ],
         "LED": [ { "direction": "out", "size_left": "7", "size_right": "0" } ],
         "i2c_data_read": [ { "direction": "out", "size_left": "1", "size_right": "0" } ]

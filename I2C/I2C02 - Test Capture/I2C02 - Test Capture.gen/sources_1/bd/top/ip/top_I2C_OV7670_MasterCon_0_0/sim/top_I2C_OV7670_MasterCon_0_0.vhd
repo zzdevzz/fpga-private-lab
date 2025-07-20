@@ -66,6 +66,7 @@ ENTITY top_I2C_OV7670_MasterCon_0_0 IS
     ov7670_href : IN STD_LOGIC;
     ov7670_pwdn : OUT STD_LOGIC;
     ov7670_reset : OUT STD_LOGIC;
+    state_debug : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
     i2c_data_out : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
     LED : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
     i2c_data_read : OUT STD_LOGIC_VECTOR(1 DOWNTO 0)
@@ -88,6 +89,7 @@ ARCHITECTURE top_I2C_OV7670_MasterCon_0_0_arch OF top_I2C_OV7670_MasterCon_0_0 I
       ov7670_href : IN STD_LOGIC;
       ov7670_pwdn : OUT STD_LOGIC;
       ov7670_reset : OUT STD_LOGIC;
+      state_debug : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
       i2c_data_out : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
       LED : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
       i2c_data_read : OUT STD_LOGIC_VECTOR(1 DOWNTO 0)
@@ -111,6 +113,7 @@ BEGIN
       ov7670_href => ov7670_href,
       ov7670_pwdn => ov7670_pwdn,
       ov7670_reset => ov7670_reset,
+      state_debug => state_debug,
       i2c_data_out => i2c_data_out,
       LED => LED,
       i2c_data_read => i2c_data_read

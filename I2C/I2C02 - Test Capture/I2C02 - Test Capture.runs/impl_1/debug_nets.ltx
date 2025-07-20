@@ -271,57 +271,9 @@
                                 "id": 7,
                                 "type": "DATA_TRIGGER",
                                 "direction": "IN",
-                                "isVector": true,
+                                "isVector": false,
                                 "leftIndex": 0,
                                 "rightIndex": 0,
-                                "portIndex": 7,
-                                "nets": [
-                                    {
-                                        "name": "top_i/ov7670_href_1_1",
-                                        "isBus": false
-                                    }
-                                ]
-                            },
-                            {
-                                "name": "probe7",
-                                "id": 8,
-                                "type": "DATA_TRIGGER",
-                                "direction": "IN",
-                                "isVector": true,
-                                "leftIndex": 1,
-                                "rightIndex": 1,
-                                "portIndex": 7,
-                                "nets": [
-                                    {
-                                        "name": "top_i/ov7670_href_1_2",
-                                        "isBus": false
-                                    }
-                                ]
-                            },
-                            {
-                                "name": "probe7",
-                                "id": 9,
-                                "type": "DATA_TRIGGER",
-                                "direction": "IN",
-                                "isVector": true,
-                                "leftIndex": 2,
-                                "rightIndex": 2,
-                                "portIndex": 7,
-                                "nets": [
-                                    {
-                                        "name": "top_i/ov7670_href_1_3",
-                                        "isBus": false
-                                    }
-                                ]
-                            },
-                            {
-                                "name": "probe7",
-                                "id": 10,
-                                "type": "DATA_TRIGGER",
-                                "direction": "IN",
-                                "isVector": true,
-                                "leftIndex": 3,
-                                "rightIndex": 3,
                                 "portIndex": 7,
                                 "nets": [
                                     {
@@ -332,7 +284,7 @@
                             },
                             {
                                 "name": "probe8",
-                                "id": 11,
+                                "id": 8,
                                 "type": "DATA_TRIGGER",
                                 "direction": "IN",
                                 "isVector": false,
@@ -348,7 +300,7 @@
                             },
                             {
                                 "name": "probe9",
-                                "id": 12,
+                                "id": 9,
                                 "type": "DATA_TRIGGER",
                                 "direction": "IN",
                                 "isVector": false,
@@ -364,7 +316,7 @@
                             },
                             {
                                 "name": "probe10",
-                                "id": 13,
+                                "id": 10,
                                 "type": "DATA_TRIGGER",
                                 "direction": "IN",
                                 "isVector": true,
@@ -394,7 +346,7 @@
                             },
                             {
                                 "name": "probe11",
-                                "id": 14,
+                                "id": 11,
                                 "type": "DATA_TRIGGER",
                                 "direction": "IN",
                                 "isVector": false,
@@ -405,6 +357,155 @@
                                     {
                                         "name": "top_i/Pixel_Capture_0_capturing_o",
                                         "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe12",
+                                "id": 12,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": true,
+                                "leftIndex": 0,
+                                "rightIndex": 2,
+                                "portIndex": 12,
+                                "nets": [
+                                    {
+                                        "name": "top_i/I2C_OV7670_Controller_0_state_debug",
+                                        "isBus": true,
+                                        "subnets": [
+                                            {
+                                                "name": "top_i/I2C_OV7670_Controller_0_state_debug[2]"
+                                            },
+                                            {
+                                                "name": "top_i/I2C_OV7670_Controller_0_state_debug[1]",
+                                                "parentNetId": 54
+                                            },
+                                            {
+                                                "name": "top_i/I2C_OV7670_Controller_0_state_debug[0]",
+                                                "parentNetId": 55
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe13",
+                                "id": 13,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 13,
+                                "nets": [
+                                    {
+                                        "name": "top_i/I2C_OV7670_Controller_0_sda_out_debug",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe14",
+                                "id": 14,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 14,
+                                "nets": [
+                                    {
+                                        "name": "top_i/I2C_OV7670_Controller_0_sda_in_debug",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe15",
+                                "id": 15,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 15,
+                                "nets": [
+                                    {
+                                        "name": "top_i/I2C_OV7670_Controller_0_sda_oe_debug",
+                                        "isBus": false
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "parent_nets": [
+                    {
+                        "id": 54,
+                        "name": "top_i/I2C_OV7670_Controller_0/U0/FSM_onehot_state_reg[2]_0",
+                        "state_reg": [
+                            {
+                                "name": "top_i/I2C_OV7670_Controller_0/U0/FSM_onehot_state_reg[2]",
+                                "states": [
+                                    {
+                                        "name": "read_ack",
+                                        "val": "011"
+                                    },
+                                    {
+                                        "name": "idle",
+                                        "val": "001"
+                                    },
+                                    {
+                                        "name": "next_byte",
+                                        "val": "100"
+                                    },
+                                    {
+                                        "name": "send_byte",
+                                        "val": "100"
+                                    },
+                                    {
+                                        "name": "stop_condition",
+                                        "val": "101"
+                                    },
+                                    {
+                                        "name": "start_condition",
+                                        "val": "010"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": 55,
+                        "name": "top_i/I2C_OV7670_Controller_0/U0/FSM_onehot_state_reg[1]_0",
+                        "state_reg": [
+                            {
+                                "name": "top_i/I2C_OV7670_Controller_0/U0/FSM_onehot_state_reg[1]",
+                                "states": [
+                                    {
+                                        "name": "read_ack",
+                                        "val": "011"
+                                    },
+                                    {
+                                        "name": "idle",
+                                        "val": "001"
+                                    },
+                                    {
+                                        "name": "next_byte",
+                                        "val": "100"
+                                    },
+                                    {
+                                        "name": "send_byte",
+                                        "val": "100"
+                                    },
+                                    {
+                                        "name": "stop_condition",
+                                        "val": "101"
+                                    },
+                                    {
+                                        "name": "start_condition",
+                                        "val": "010"
                                     }
                                 ]
                             }

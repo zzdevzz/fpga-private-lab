@@ -66,6 +66,8 @@ entity I2C_OV7670_MasterController is
     ov7670_pwdn : out std_logic := '0'; --power down, 1 is off, 0 is on.label
     ov7670_reset : out std_logic := '1'; -- active low, 0 is reset.
     
+    state_debug: out std_logic_vector(2 downto 0);
+    
     i2c_data_out: out std_logic_vector(7 downto 0); -- same as data coming in just so we can read it and connect it where we need too.
     LED: out std_logic_vector(7 downto 0); --display the camera data in led form on board
     i2c_data_read: out std_logic_vector(1 downto 0) --data to sample from LUT
@@ -220,5 +222,6 @@ begin
     ov7670_SCL <= i2c_scl;
     LED <= ov7670_data;
     i2c_data_read <= std_logic_vector(to_unsigned(current_index, 2));
+    state_debug <= std_logic_vector(to_unsigned(state_type'pos(state), 3));
         
 end Behavioral;

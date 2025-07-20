@@ -2,7 +2,7 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-// Date        : Sat Jul 19 17:54:56 2025
+// Date        : Sun Jul 20 17:36:14 2025
 // Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim {e:/FPGA/VHDL/Lab Training/I2C/I2C02 - Test Capture/I2C02 - Test
 //               Capture.gen/sources_1/bd/top/ip/top_I2C_OV7670_MasterCon_0_0/top_I2C_OV7670_MasterCon_0_0_sim_netlist.v}
@@ -28,6 +28,7 @@ module top_I2C_OV7670_MasterCon_0_0
     ov7670_href,
     ov7670_pwdn,
     ov7670_reset,
+    state_debug,
     i2c_data_out,
     LED,
     i2c_data_read);
@@ -42,6 +43,7 @@ module top_I2C_OV7670_MasterCon_0_0
   input ov7670_href;
   output ov7670_pwdn;
   (* x_interface_info = "xilinx.com:signal:reset:1.0 ov7670_reset RST" *) (* x_interface_parameter = "XIL_INTERFACENAME ov7670_reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) output ov7670_reset;
+  output [2:0]state_debug;
   output [7:0]i2c_data_out;
   output [7:0]LED;
   output [1:0]i2c_data_read;
@@ -64,6 +66,9 @@ module top_I2C_OV7670_MasterCon_0_0
   assign ov7670_SCL = \<const1> ;
   assign ov7670_pwdn = \<const0> ;
   assign ov7670_reset = \<const1> ;
+  assign state_debug[2] = \<const0> ;
+  assign state_debug[1] = \<const0> ;
+  assign state_debug[0] = \<const0> ;
   GND GND
        (.G(\<const0> ));
   VCC VCC
