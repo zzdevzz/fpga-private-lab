@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<Runs Version="1" Minor="0">
+	<Run Id="top_BRAM_FIFO_Limit_0_0_synth_1" LaunchDir="E:/FPGA/VHDL/Lab Training/I2C/I2C02 - Default Settings/I2C02 - Default Settings.runs/top_BRAM_FIFO_Limit_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="top_BRAM_reader_0_0_synth_1" LaunchDir="E:/FPGA/VHDL/Lab Training/I2C/I2C02 - Default Settings/I2C02 - Default Settings.runs/top_BRAM_reader_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="top_debouncer_0_0_synth_1" LaunchDir="E:/FPGA/VHDL/Lab Training/I2C/I2C02 - Default Settings/I2C02 - Default Settings.runs/top_debouncer_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="top_clk_wiz_0_0_synth_1" LaunchDir="E:/FPGA/VHDL/Lab Training/I2C/I2C02 - Default Settings/I2C02 - Default Settings.runs/top_clk_wiz_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="top_Pixel_Capture_0_0_synth_1" LaunchDir="E:/FPGA/VHDL/Lab Training/I2C/I2C02 - Default Settings/I2C02 - Default Settings.runs/top_Pixel_Capture_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="top_blk_mem_gen_0_0_synth_1" LaunchDir="E:/FPGA/VHDL/Lab Training/I2C/I2C02 - Default Settings/I2C02 - Default Settings.runs/top_blk_mem_gen_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="top_OutputFrame_Colour_0_0_synth_1" LaunchDir="E:/FPGA/VHDL/Lab Training/I2C/I2C02 - Default Settings/I2C02 - Default Settings.runs/top_OutputFrame_Colour_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="synth_1" LaunchDir="E:/FPGA/VHDL/Lab Training/I2C/I2C02 - Default Settings/I2C02 - Default Settings.runs/synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado">
+		<Parent Id="top_BRAM_FIFO_Limit_0_0_synth_1"/>
+		<Parent Id="top_BRAM_reader_0_0_synth_1"/>
+		<Parent Id="top_debouncer_0_0_synth_1"/>
+		<Parent Id="top_clk_wiz_0_0_synth_1"/>
+		<Parent Id="top_Pixel_Capture_0_0_synth_1"/>
+		<Parent Id="top_blk_mem_gen_0_0_synth_1"/>
+		<Parent Id="top_OutputFrame_Colour_0_0_synth_1"/>
+	</Run>
+	<Run Id="impl_1" LaunchDir="E:/FPGA/VHDL/Lab Training/I2C/I2C02 - Default Settings/I2C02 - Default Settings.runs/impl_1" FlowId="Vivado_Implementation" FromStepId="init_design" ToStepId="write_bitstream">
+		<Parent Id="synth_1"/>
+		<Parent Id="top_BRAM_FIFO_Limit_0_0_synth_1"/>
+		<Parent Id="top_BRAM_reader_0_0_synth_1"/>
+		<Parent Id="top_debouncer_0_0_synth_1"/>
+		<Parent Id="top_clk_wiz_0_0_synth_1"/>
+		<Parent Id="top_Pixel_Capture_0_0_synth_1"/>
+		<Parent Id="top_blk_mem_gen_0_0_synth_1"/>
+		<Parent Id="top_OutputFrame_Colour_0_0_synth_1"/>
+	</Run>
+	<Parameters>
+		<Parameter Name="runs.monitorLSFJobs" Val="true" Type="bool"/>
+		<Parameter Name="runs.enableClusterConf" Val="true" Type="bool"/>
+		<Parameter Name="general.shortenLongPath" Val="true" Type="bool"/>
+	</Parameters>
+	<ProductInfo Name="vivado"/>
+</Runs>
+
