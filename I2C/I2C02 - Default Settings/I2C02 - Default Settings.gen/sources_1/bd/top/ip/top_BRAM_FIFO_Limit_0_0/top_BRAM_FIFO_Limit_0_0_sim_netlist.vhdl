@@ -2,7 +2,7 @@
 -- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
--- Date        : Mon Jul 21 10:21:55 2025
+-- Date        : Tue Jul 22 21:16:29 2025
 -- Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim {e:/FPGA/VHDL/Lab Training/I2C/I2C02 - Default Settings/I2C02 - Default
 --               Settings.gen/sources_1/bd/top/ip/top_BRAM_FIFO_Limit_0_0/top_BRAM_FIFO_Limit_0_0_sim_netlist.vhdl}
@@ -31,42 +31,44 @@ entity top_BRAM_FIFO_Limit_0_0_BRAM_FIFO_Limit is
 end top_BRAM_FIFO_Limit_0_0_BRAM_FIFO_Limit;
 
 architecture STRUCTURE of top_BRAM_FIFO_Limit_0_0_BRAM_FIFO_Limit is
+  signal \^bram_loaded\ : STD_LOGIC;
+  signal p_1_in : STD_LOGIC;
   signal pixel_count : STD_LOGIC;
-  signal \pixel_count0_carry__0_i_1_n_0\ : STD_LOGIC;
-  signal \pixel_count0_carry__0_i_2_n_0\ : STD_LOGIC;
-  signal \pixel_count0_carry__0_i_3_n_0\ : STD_LOGIC;
-  signal \pixel_count0_carry__0_i_4_n_0\ : STD_LOGIC;
-  signal \pixel_count0_carry__0_i_5_n_0\ : STD_LOGIC;
-  signal \pixel_count0_carry__0_i_6_n_0\ : STD_LOGIC;
-  signal \pixel_count0_carry__0_i_7_n_0\ : STD_LOGIC;
-  signal \pixel_count0_carry__0_n_0\ : STD_LOGIC;
-  signal \pixel_count0_carry__0_n_1\ : STD_LOGIC;
-  signal \pixel_count0_carry__0_n_2\ : STD_LOGIC;
-  signal \pixel_count0_carry__0_n_3\ : STD_LOGIC;
-  signal \pixel_count0_carry__1_i_1_n_0\ : STD_LOGIC;
-  signal \pixel_count0_carry__1_n_3\ : STD_LOGIC;
-  signal pixel_count0_carry_i_1_n_0 : STD_LOGIC;
-  signal pixel_count0_carry_i_2_n_0 : STD_LOGIC;
-  signal pixel_count0_carry_i_3_n_0 : STD_LOGIC;
-  signal pixel_count0_carry_i_4_n_0 : STD_LOGIC;
-  signal pixel_count0_carry_i_5_n_0 : STD_LOGIC;
-  signal pixel_count0_carry_i_6_n_0 : STD_LOGIC;
-  signal pixel_count0_carry_i_7_n_0 : STD_LOGIC;
-  signal pixel_count0_carry_i_8_n_0 : STD_LOGIC;
-  signal pixel_count0_carry_n_0 : STD_LOGIC;
-  signal pixel_count0_carry_n_1 : STD_LOGIC;
-  signal pixel_count0_carry_n_2 : STD_LOGIC;
-  signal pixel_count0_carry_n_3 : STD_LOGIC;
-  signal \pixel_count[0]_i_3_n_0\ : STD_LOGIC;
+  signal \pixel_count1_carry__0_i_1_n_0\ : STD_LOGIC;
+  signal \pixel_count1_carry__0_i_2_n_0\ : STD_LOGIC;
+  signal \pixel_count1_carry__0_i_3_n_0\ : STD_LOGIC;
+  signal \pixel_count1_carry__0_i_4_n_0\ : STD_LOGIC;
+  signal \pixel_count1_carry__0_i_5_n_0\ : STD_LOGIC;
+  signal \pixel_count1_carry__0_i_6_n_0\ : STD_LOGIC;
+  signal \pixel_count1_carry__0_i_7_n_0\ : STD_LOGIC;
+  signal \pixel_count1_carry__0_n_0\ : STD_LOGIC;
+  signal \pixel_count1_carry__0_n_1\ : STD_LOGIC;
+  signal \pixel_count1_carry__0_n_2\ : STD_LOGIC;
+  signal \pixel_count1_carry__0_n_3\ : STD_LOGIC;
+  signal \pixel_count1_carry__1_i_1_n_0\ : STD_LOGIC;
+  signal pixel_count1_carry_i_1_n_0 : STD_LOGIC;
+  signal pixel_count1_carry_i_2_n_0 : STD_LOGIC;
+  signal pixel_count1_carry_i_3_n_0 : STD_LOGIC;
+  signal pixel_count1_carry_i_4_n_0 : STD_LOGIC;
+  signal pixel_count1_carry_i_5_n_0 : STD_LOGIC;
+  signal pixel_count1_carry_i_6_n_0 : STD_LOGIC;
+  signal pixel_count1_carry_i_7_n_0 : STD_LOGIC;
+  signal pixel_count1_carry_i_8_n_0 : STD_LOGIC;
+  signal pixel_count1_carry_n_0 : STD_LOGIC;
+  signal pixel_count1_carry_n_1 : STD_LOGIC;
+  signal pixel_count1_carry_n_2 : STD_LOGIC;
+  signal pixel_count1_carry_n_3 : STD_LOGIC;
+  signal \pixel_count[0]_i_2_n_0\ : STD_LOGIC;
+  signal \pixel_count[0]_i_4_n_0\ : STD_LOGIC;
   signal pixel_count_reg : STD_LOGIC_VECTOR ( 16 downto 0 );
-  signal \pixel_count_reg[0]_i_2_n_0\ : STD_LOGIC;
-  signal \pixel_count_reg[0]_i_2_n_1\ : STD_LOGIC;
-  signal \pixel_count_reg[0]_i_2_n_2\ : STD_LOGIC;
-  signal \pixel_count_reg[0]_i_2_n_3\ : STD_LOGIC;
-  signal \pixel_count_reg[0]_i_2_n_4\ : STD_LOGIC;
-  signal \pixel_count_reg[0]_i_2_n_5\ : STD_LOGIC;
-  signal \pixel_count_reg[0]_i_2_n_6\ : STD_LOGIC;
-  signal \pixel_count_reg[0]_i_2_n_7\ : STD_LOGIC;
+  signal \pixel_count_reg[0]_i_3_n_0\ : STD_LOGIC;
+  signal \pixel_count_reg[0]_i_3_n_1\ : STD_LOGIC;
+  signal \pixel_count_reg[0]_i_3_n_2\ : STD_LOGIC;
+  signal \pixel_count_reg[0]_i_3_n_3\ : STD_LOGIC;
+  signal \pixel_count_reg[0]_i_3_n_4\ : STD_LOGIC;
+  signal \pixel_count_reg[0]_i_3_n_5\ : STD_LOGIC;
+  signal \pixel_count_reg[0]_i_3_n_6\ : STD_LOGIC;
+  signal \pixel_count_reg[0]_i_3_n_7\ : STD_LOGIC;
   signal \pixel_count_reg[12]_i_1_n_0\ : STD_LOGIC;
   signal \pixel_count_reg[12]_i_1_n_1\ : STD_LOGIC;
   signal \pixel_count_reg[12]_i_1_n_2\ : STD_LOGIC;
@@ -94,58 +96,55 @@ architecture STRUCTURE of top_BRAM_FIFO_Limit_0_0_BRAM_FIFO_Limit is
   signal \pixel_count_reg[8]_i_1_n_7\ : STD_LOGIC;
   signal write_enable : STD_LOGIC;
   signal write_enable_i_1_n_0 : STD_LOGIC;
-  signal NLW_pixel_count0_carry_O_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal \NLW_pixel_count0_carry__0_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal \NLW_pixel_count0_carry__1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 1 );
-  signal \NLW_pixel_count0_carry__1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal NLW_pixel_count1_carry_O_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal \NLW_pixel_count1_carry__0_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal \NLW_pixel_count1_carry__1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 1 );
+  signal \NLW_pixel_count1_carry__1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal \NLW_pixel_count_reg[16]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal \NLW_pixel_count_reg[16]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 1 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \bram_addr_out[0]_INST_0\ : label is "soft_lutpair1";
-  attribute SOFT_HLUTNM of \bram_addr_out[10]_INST_0\ : label is "soft_lutpair6";
+  attribute SOFT_HLUTNM of \bram_addr_out[0]_INST_0\ : label is "soft_lutpair0";
+  attribute SOFT_HLUTNM of \bram_addr_out[10]_INST_0\ : label is "soft_lutpair5";
   attribute SOFT_HLUTNM of \bram_addr_out[11]_INST_0\ : label is "soft_lutpair6";
-  attribute SOFT_HLUTNM of \bram_addr_out[12]_INST_0\ : label is "soft_lutpair7";
+  attribute SOFT_HLUTNM of \bram_addr_out[12]_INST_0\ : label is "soft_lutpair6";
   attribute SOFT_HLUTNM of \bram_addr_out[13]_INST_0\ : label is "soft_lutpair7";
-  attribute SOFT_HLUTNM of \bram_addr_out[14]_INST_0\ : label is "soft_lutpair8";
+  attribute SOFT_HLUTNM of \bram_addr_out[14]_INST_0\ : label is "soft_lutpair7";
   attribute SOFT_HLUTNM of \bram_addr_out[15]_INST_0\ : label is "soft_lutpair8";
-  attribute SOFT_HLUTNM of \bram_addr_out[16]_INST_0\ : label is "soft_lutpair9";
+  attribute SOFT_HLUTNM of \bram_addr_out[16]_INST_0\ : label is "soft_lutpair8";
   attribute SOFT_HLUTNM of \bram_addr_out[1]_INST_0\ : label is "soft_lutpair1";
-  attribute SOFT_HLUTNM of \bram_addr_out[2]_INST_0\ : label is "soft_lutpair2";
+  attribute SOFT_HLUTNM of \bram_addr_out[2]_INST_0\ : label is "soft_lutpair1";
   attribute SOFT_HLUTNM of \bram_addr_out[3]_INST_0\ : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of \bram_addr_out[4]_INST_0\ : label is "soft_lutpair3";
+  attribute SOFT_HLUTNM of \bram_addr_out[4]_INST_0\ : label is "soft_lutpair2";
   attribute SOFT_HLUTNM of \bram_addr_out[5]_INST_0\ : label is "soft_lutpair3";
-  attribute SOFT_HLUTNM of \bram_addr_out[6]_INST_0\ : label is "soft_lutpair4";
+  attribute SOFT_HLUTNM of \bram_addr_out[6]_INST_0\ : label is "soft_lutpair3";
   attribute SOFT_HLUTNM of \bram_addr_out[7]_INST_0\ : label is "soft_lutpair4";
-  attribute SOFT_HLUTNM of \bram_addr_out[8]_INST_0\ : label is "soft_lutpair5";
+  attribute SOFT_HLUTNM of \bram_addr_out[8]_INST_0\ : label is "soft_lutpair4";
   attribute SOFT_HLUTNM of \bram_addr_out[9]_INST_0\ : label is "soft_lutpair5";
   attribute SOFT_HLUTNM of \bram_data_out[0]_INST_0\ : label is "soft_lutpair9";
   attribute SOFT_HLUTNM of \bram_data_out[10]_INST_0\ : label is "soft_lutpair14";
-  attribute SOFT_HLUTNM of \bram_data_out[11]_INST_0\ : label is "soft_lutpair15";
+  attribute SOFT_HLUTNM of \bram_data_out[11]_INST_0\ : label is "soft_lutpair14";
   attribute SOFT_HLUTNM of \bram_data_out[12]_INST_0\ : label is "soft_lutpair15";
-  attribute SOFT_HLUTNM of \bram_data_out[13]_INST_0\ : label is "soft_lutpair16";
+  attribute SOFT_HLUTNM of \bram_data_out[13]_INST_0\ : label is "soft_lutpair15";
   attribute SOFT_HLUTNM of \bram_data_out[14]_INST_0\ : label is "soft_lutpair16";
-  attribute SOFT_HLUTNM of \bram_data_out[1]_INST_0\ : label is "soft_lutpair10";
+  attribute SOFT_HLUTNM of \bram_data_out[15]_INST_0\ : label is "soft_lutpair16";
+  attribute SOFT_HLUTNM of \bram_data_out[1]_INST_0\ : label is "soft_lutpair9";
   attribute SOFT_HLUTNM of \bram_data_out[2]_INST_0\ : label is "soft_lutpair10";
-  attribute SOFT_HLUTNM of \bram_data_out[3]_INST_0\ : label is "soft_lutpair11";
+  attribute SOFT_HLUTNM of \bram_data_out[3]_INST_0\ : label is "soft_lutpair10";
   attribute SOFT_HLUTNM of \bram_data_out[4]_INST_0\ : label is "soft_lutpair11";
-  attribute SOFT_HLUTNM of \bram_data_out[5]_INST_0\ : label is "soft_lutpair12";
+  attribute SOFT_HLUTNM of \bram_data_out[5]_INST_0\ : label is "soft_lutpair11";
   attribute SOFT_HLUTNM of \bram_data_out[6]_INST_0\ : label is "soft_lutpair12";
-  attribute SOFT_HLUTNM of \bram_data_out[7]_INST_0\ : label is "soft_lutpair13";
+  attribute SOFT_HLUTNM of \bram_data_out[7]_INST_0\ : label is "soft_lutpair12";
   attribute SOFT_HLUTNM of \bram_data_out[8]_INST_0\ : label is "soft_lutpair13";
-  attribute SOFT_HLUTNM of \bram_data_out[9]_INST_0\ : label is "soft_lutpair14";
-  attribute SOFT_HLUTNM of bram_loaded_INST_0 : label is "soft_lutpair0";
-  attribute COMPARATOR_THRESHOLD : integer;
-  attribute COMPARATOR_THRESHOLD of pixel_count0_carry : label is 11;
-  attribute COMPARATOR_THRESHOLD of \pixel_count0_carry__0\ : label is 11;
-  attribute COMPARATOR_THRESHOLD of \pixel_count0_carry__1\ : label is 11;
+  attribute SOFT_HLUTNM of \bram_data_out[9]_INST_0\ : label is "soft_lutpair13";
   attribute ADDER_THRESHOLD : integer;
-  attribute ADDER_THRESHOLD of \pixel_count_reg[0]_i_2\ : label is 11;
+  attribute ADDER_THRESHOLD of \pixel_count_reg[0]_i_3\ : label is 11;
   attribute ADDER_THRESHOLD of \pixel_count_reg[12]_i_1\ : label is 11;
   attribute ADDER_THRESHOLD of \pixel_count_reg[16]_i_1\ : label is 11;
   attribute ADDER_THRESHOLD of \pixel_count_reg[4]_i_1\ : label is 11;
   attribute ADDER_THRESHOLD of \pixel_count_reg[8]_i_1\ : label is 11;
   attribute SOFT_HLUTNM of write_enable_i_1 : label is "soft_lutpair0";
 begin
+  bram_loaded <= \^bram_loaded\;
 \bram_addr_out[0]_INST_0\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"8"
@@ -443,202 +442,196 @@ begin
       I1 => bram_data_in(9),
       O => bram_data_out(9)
     );
-bram_loaded_INST_0: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => \pixel_count0_carry__1_n_3\,
-      O => bram_loaded
-    );
-pixel_count0_carry: unisim.vcomponents.CARRY4
+pixel_count1_carry: unisim.vcomponents.CARRY4
      port map (
       CI => '0',
-      CO(3) => pixel_count0_carry_n_0,
-      CO(2) => pixel_count0_carry_n_1,
-      CO(1) => pixel_count0_carry_n_2,
-      CO(0) => pixel_count0_carry_n_3,
+      CO(3) => pixel_count1_carry_n_0,
+      CO(2) => pixel_count1_carry_n_1,
+      CO(1) => pixel_count1_carry_n_2,
+      CO(0) => pixel_count1_carry_n_3,
       CYINIT => '0',
-      DI(3) => pixel_count0_carry_i_1_n_0,
-      DI(2) => pixel_count0_carry_i_2_n_0,
-      DI(1) => pixel_count0_carry_i_3_n_0,
-      DI(0) => pixel_count0_carry_i_4_n_0,
-      O(3 downto 0) => NLW_pixel_count0_carry_O_UNCONNECTED(3 downto 0),
-      S(3) => pixel_count0_carry_i_5_n_0,
-      S(2) => pixel_count0_carry_i_6_n_0,
-      S(1) => pixel_count0_carry_i_7_n_0,
-      S(0) => pixel_count0_carry_i_8_n_0
+      DI(3) => pixel_count1_carry_i_1_n_0,
+      DI(2) => pixel_count1_carry_i_2_n_0,
+      DI(1) => pixel_count1_carry_i_3_n_0,
+      DI(0) => pixel_count1_carry_i_4_n_0,
+      O(3 downto 0) => NLW_pixel_count1_carry_O_UNCONNECTED(3 downto 0),
+      S(3) => pixel_count1_carry_i_5_n_0,
+      S(2) => pixel_count1_carry_i_6_n_0,
+      S(1) => pixel_count1_carry_i_7_n_0,
+      S(0) => pixel_count1_carry_i_8_n_0
     );
-\pixel_count0_carry__0\: unisim.vcomponents.CARRY4
+\pixel_count1_carry__0\: unisim.vcomponents.CARRY4
      port map (
-      CI => pixel_count0_carry_n_0,
-      CO(3) => \pixel_count0_carry__0_n_0\,
-      CO(2) => \pixel_count0_carry__0_n_1\,
-      CO(1) => \pixel_count0_carry__0_n_2\,
-      CO(0) => \pixel_count0_carry__0_n_3\,
+      CI => pixel_count1_carry_n_0,
+      CO(3) => \pixel_count1_carry__0_n_0\,
+      CO(2) => \pixel_count1_carry__0_n_1\,
+      CO(1) => \pixel_count1_carry__0_n_2\,
+      CO(0) => \pixel_count1_carry__0_n_3\,
       CYINIT => '0',
       DI(3) => '0',
-      DI(2) => \pixel_count0_carry__0_i_1_n_0\,
-      DI(1) => \pixel_count0_carry__0_i_2_n_0\,
-      DI(0) => \pixel_count0_carry__0_i_3_n_0\,
-      O(3 downto 0) => \NLW_pixel_count0_carry__0_O_UNCONNECTED\(3 downto 0),
-      S(3) => \pixel_count0_carry__0_i_4_n_0\,
-      S(2) => \pixel_count0_carry__0_i_5_n_0\,
-      S(1) => \pixel_count0_carry__0_i_6_n_0\,
-      S(0) => \pixel_count0_carry__0_i_7_n_0\
+      DI(2) => \pixel_count1_carry__0_i_1_n_0\,
+      DI(1) => \pixel_count1_carry__0_i_2_n_0\,
+      DI(0) => \pixel_count1_carry__0_i_3_n_0\,
+      O(3 downto 0) => \NLW_pixel_count1_carry__0_O_UNCONNECTED\(3 downto 0),
+      S(3) => \pixel_count1_carry__0_i_4_n_0\,
+      S(2) => \pixel_count1_carry__0_i_5_n_0\,
+      S(1) => \pixel_count1_carry__0_i_6_n_0\,
+      S(0) => \pixel_count1_carry__0_i_7_n_0\
     );
-\pixel_count0_carry__0_i_1\: unisim.vcomponents.LUT1
+\pixel_count1_carry__0_i_1\: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
     )
         port map (
       I0 => pixel_count_reg(13),
-      O => \pixel_count0_carry__0_i_1_n_0\
+      O => \pixel_count1_carry__0_i_1_n_0\
     );
-\pixel_count0_carry__0_i_2\: unisim.vcomponents.LUT1
+\pixel_count1_carry__0_i_2\: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
     )
         port map (
       I0 => pixel_count_reg(11),
-      O => \pixel_count0_carry__0_i_2_n_0\
+      O => \pixel_count1_carry__0_i_2_n_0\
     );
-\pixel_count0_carry__0_i_3\: unisim.vcomponents.LUT2
+\pixel_count1_carry__0_i_3\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"7"
     )
         port map (
       I0 => pixel_count_reg(8),
       I1 => pixel_count_reg(9),
-      O => \pixel_count0_carry__0_i_3_n_0\
+      O => \pixel_count1_carry__0_i_3_n_0\
     );
-\pixel_count0_carry__0_i_4\: unisim.vcomponents.LUT2
+\pixel_count1_carry__0_i_4\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"1"
     )
         port map (
       I0 => pixel_count_reg(14),
       I1 => pixel_count_reg(15),
-      O => \pixel_count0_carry__0_i_4_n_0\
+      O => \pixel_count1_carry__0_i_4_n_0\
     );
-\pixel_count0_carry__0_i_5\: unisim.vcomponents.LUT2
+\pixel_count1_carry__0_i_5\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"2"
     )
         port map (
       I0 => pixel_count_reg(13),
       I1 => pixel_count_reg(12),
-      O => \pixel_count0_carry__0_i_5_n_0\
+      O => \pixel_count1_carry__0_i_5_n_0\
     );
-\pixel_count0_carry__0_i_6\: unisim.vcomponents.LUT2
+\pixel_count1_carry__0_i_6\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"2"
     )
         port map (
       I0 => pixel_count_reg(11),
       I1 => pixel_count_reg(10),
-      O => \pixel_count0_carry__0_i_6_n_0\
+      O => \pixel_count1_carry__0_i_6_n_0\
     );
-\pixel_count0_carry__0_i_7\: unisim.vcomponents.LUT2
+\pixel_count1_carry__0_i_7\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"8"
     )
         port map (
       I0 => pixel_count_reg(8),
       I1 => pixel_count_reg(9),
-      O => \pixel_count0_carry__0_i_7_n_0\
+      O => \pixel_count1_carry__0_i_7_n_0\
     );
-\pixel_count0_carry__1\: unisim.vcomponents.CARRY4
+\pixel_count1_carry__1\: unisim.vcomponents.CARRY4
      port map (
-      CI => \pixel_count0_carry__0_n_0\,
-      CO(3 downto 1) => \NLW_pixel_count0_carry__1_CO_UNCONNECTED\(3 downto 1),
-      CO(0) => \pixel_count0_carry__1_n_3\,
+      CI => \pixel_count1_carry__0_n_0\,
+      CO(3 downto 1) => \NLW_pixel_count1_carry__1_CO_UNCONNECTED\(3 downto 1),
+      CO(0) => p_1_in,
       CYINIT => '0',
       DI(3 downto 1) => B"000",
-      DI(0) => \pixel_count0_carry__1_i_1_n_0\,
-      O(3 downto 0) => \NLW_pixel_count0_carry__1_O_UNCONNECTED\(3 downto 0),
-      S(3 downto 1) => B"000",
+      DI(0) => \pixel_count1_carry__1_i_1_n_0\,
+      O(3 downto 2) => \NLW_pixel_count1_carry__1_O_UNCONNECTED\(3 downto 2),
+      O(1) => \^bram_loaded\,
+      O(0) => \NLW_pixel_count1_carry__1_O_UNCONNECTED\(0),
+      S(3 downto 1) => B"001",
       S(0) => pixel_count_reg(16)
     );
-\pixel_count0_carry__1_i_1\: unisim.vcomponents.LUT1
+\pixel_count1_carry__1_i_1\: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
     )
         port map (
       I0 => pixel_count_reg(16),
-      O => \pixel_count0_carry__1_i_1_n_0\
+      O => \pixel_count1_carry__1_i_1_n_0\
     );
-pixel_count0_carry_i_1: unisim.vcomponents.LUT2
+pixel_count1_carry_i_1: unisim.vcomponents.LUT2
     generic map(
       INIT => X"7"
     )
         port map (
       I0 => pixel_count_reg(6),
       I1 => pixel_count_reg(7),
-      O => pixel_count0_carry_i_1_n_0
+      O => pixel_count1_carry_i_1_n_0
     );
-pixel_count0_carry_i_2: unisim.vcomponents.LUT2
+pixel_count1_carry_i_2: unisim.vcomponents.LUT2
     generic map(
       INIT => X"7"
     )
         port map (
       I0 => pixel_count_reg(4),
       I1 => pixel_count_reg(5),
-      O => pixel_count0_carry_i_2_n_0
+      O => pixel_count1_carry_i_2_n_0
     );
-pixel_count0_carry_i_3: unisim.vcomponents.LUT2
+pixel_count1_carry_i_3: unisim.vcomponents.LUT2
     generic map(
       INIT => X"7"
     )
         port map (
       I0 => pixel_count_reg(2),
       I1 => pixel_count_reg(3),
-      O => pixel_count0_carry_i_3_n_0
+      O => pixel_count1_carry_i_3_n_0
     );
-pixel_count0_carry_i_4: unisim.vcomponents.LUT2
+pixel_count1_carry_i_4: unisim.vcomponents.LUT2
     generic map(
       INIT => X"7"
     )
         port map (
       I0 => pixel_count_reg(0),
       I1 => pixel_count_reg(1),
-      O => pixel_count0_carry_i_4_n_0
+      O => pixel_count1_carry_i_4_n_0
     );
-pixel_count0_carry_i_5: unisim.vcomponents.LUT2
+pixel_count1_carry_i_5: unisim.vcomponents.LUT2
     generic map(
       INIT => X"8"
     )
         port map (
       I0 => pixel_count_reg(6),
       I1 => pixel_count_reg(7),
-      O => pixel_count0_carry_i_5_n_0
+      O => pixel_count1_carry_i_5_n_0
     );
-pixel_count0_carry_i_6: unisim.vcomponents.LUT2
+pixel_count1_carry_i_6: unisim.vcomponents.LUT2
     generic map(
       INIT => X"8"
     )
         port map (
       I0 => pixel_count_reg(4),
       I1 => pixel_count_reg(5),
-      O => pixel_count0_carry_i_6_n_0
+      O => pixel_count1_carry_i_6_n_0
     );
-pixel_count0_carry_i_7: unisim.vcomponents.LUT2
+pixel_count1_carry_i_7: unisim.vcomponents.LUT2
     generic map(
       INIT => X"8"
     )
         port map (
       I0 => pixel_count_reg(2),
       I1 => pixel_count_reg(3),
-      O => pixel_count0_carry_i_7_n_0
+      O => pixel_count1_carry_i_7_n_0
     );
-pixel_count0_carry_i_8: unisim.vcomponents.LUT2
+pixel_count1_carry_i_8: unisim.vcomponents.LUT2
     generic map(
       INIT => X"8"
     )
         port map (
       I0 => pixel_count_reg(0),
       I1 => pixel_count_reg(1),
-      O => pixel_count0_carry_i_8_n_0
+      O => pixel_count1_carry_i_8_n_0
     );
 \pixel_count[0]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -647,16 +640,25 @@ pixel_count0_carry_i_8: unisim.vcomponents.LUT2
         port map (
       I0 => current_pix,
       I1 => start_capture,
-      I2 => \pixel_count0_carry__1_n_3\,
+      I2 => \^bram_loaded\,
       O => pixel_count
     );
-\pixel_count[0]_i_3\: unisim.vcomponents.LUT1
+\pixel_count[0]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"8"
+    )
+        port map (
+      I0 => start_capture,
+      I1 => current_pix,
+      O => \pixel_count[0]_i_2_n_0\
+    );
+\pixel_count[0]_i_4\: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
     )
         port map (
       I0 => pixel_count_reg(0),
-      O => \pixel_count[0]_i_3_n_0\
+      O => \pixel_count[0]_i_4_n_0\
     );
 \pixel_count_reg[0]\: unisim.vcomponents.FDRE
     generic map(
@@ -664,26 +666,26 @@ pixel_count0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       C => clk,
-      CE => pixel_count,
-      D => \pixel_count_reg[0]_i_2_n_7\,
+      CE => \pixel_count[0]_i_2_n_0\,
+      D => \pixel_count_reg[0]_i_3_n_7\,
       Q => pixel_count_reg(0),
-      R => '0'
+      R => pixel_count
     );
-\pixel_count_reg[0]_i_2\: unisim.vcomponents.CARRY4
+\pixel_count_reg[0]_i_3\: unisim.vcomponents.CARRY4
      port map (
       CI => '0',
-      CO(3) => \pixel_count_reg[0]_i_2_n_0\,
-      CO(2) => \pixel_count_reg[0]_i_2_n_1\,
-      CO(1) => \pixel_count_reg[0]_i_2_n_2\,
-      CO(0) => \pixel_count_reg[0]_i_2_n_3\,
+      CO(3) => \pixel_count_reg[0]_i_3_n_0\,
+      CO(2) => \pixel_count_reg[0]_i_3_n_1\,
+      CO(1) => \pixel_count_reg[0]_i_3_n_2\,
+      CO(0) => \pixel_count_reg[0]_i_3_n_3\,
       CYINIT => '0',
       DI(3 downto 0) => B"0001",
-      O(3) => \pixel_count_reg[0]_i_2_n_4\,
-      O(2) => \pixel_count_reg[0]_i_2_n_5\,
-      O(1) => \pixel_count_reg[0]_i_2_n_6\,
-      O(0) => \pixel_count_reg[0]_i_2_n_7\,
+      O(3) => \pixel_count_reg[0]_i_3_n_4\,
+      O(2) => \pixel_count_reg[0]_i_3_n_5\,
+      O(1) => \pixel_count_reg[0]_i_3_n_6\,
+      O(0) => \pixel_count_reg[0]_i_3_n_7\,
       S(3 downto 1) => pixel_count_reg(3 downto 1),
-      S(0) => \pixel_count[0]_i_3_n_0\
+      S(0) => \pixel_count[0]_i_4_n_0\
     );
 \pixel_count_reg[10]\: unisim.vcomponents.FDRE
     generic map(
@@ -691,10 +693,10 @@ pixel_count0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       C => clk,
-      CE => pixel_count,
+      CE => \pixel_count[0]_i_2_n_0\,
       D => \pixel_count_reg[8]_i_1_n_5\,
       Q => pixel_count_reg(10),
-      R => '0'
+      R => pixel_count
     );
 \pixel_count_reg[11]\: unisim.vcomponents.FDRE
     generic map(
@@ -702,10 +704,10 @@ pixel_count0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       C => clk,
-      CE => pixel_count,
+      CE => \pixel_count[0]_i_2_n_0\,
       D => \pixel_count_reg[8]_i_1_n_4\,
       Q => pixel_count_reg(11),
-      R => '0'
+      R => pixel_count
     );
 \pixel_count_reg[12]\: unisim.vcomponents.FDRE
     generic map(
@@ -713,10 +715,10 @@ pixel_count0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       C => clk,
-      CE => pixel_count,
+      CE => \pixel_count[0]_i_2_n_0\,
       D => \pixel_count_reg[12]_i_1_n_7\,
       Q => pixel_count_reg(12),
-      R => '0'
+      R => pixel_count
     );
 \pixel_count_reg[12]_i_1\: unisim.vcomponents.CARRY4
      port map (
@@ -739,10 +741,10 @@ pixel_count0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       C => clk,
-      CE => pixel_count,
+      CE => \pixel_count[0]_i_2_n_0\,
       D => \pixel_count_reg[12]_i_1_n_6\,
       Q => pixel_count_reg(13),
-      R => '0'
+      R => pixel_count
     );
 \pixel_count_reg[14]\: unisim.vcomponents.FDRE
     generic map(
@@ -750,10 +752,10 @@ pixel_count0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       C => clk,
-      CE => pixel_count,
+      CE => \pixel_count[0]_i_2_n_0\,
       D => \pixel_count_reg[12]_i_1_n_5\,
       Q => pixel_count_reg(14),
-      R => '0'
+      R => pixel_count
     );
 \pixel_count_reg[15]\: unisim.vcomponents.FDRE
     generic map(
@@ -761,10 +763,10 @@ pixel_count0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       C => clk,
-      CE => pixel_count,
+      CE => \pixel_count[0]_i_2_n_0\,
       D => \pixel_count_reg[12]_i_1_n_4\,
       Q => pixel_count_reg(15),
-      R => '0'
+      R => pixel_count
     );
 \pixel_count_reg[16]\: unisim.vcomponents.FDRE
     generic map(
@@ -772,10 +774,10 @@ pixel_count0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       C => clk,
-      CE => pixel_count,
+      CE => \pixel_count[0]_i_2_n_0\,
       D => \pixel_count_reg[16]_i_1_n_7\,
       Q => pixel_count_reg(16),
-      R => '0'
+      R => pixel_count
     );
 \pixel_count_reg[16]_i_1\: unisim.vcomponents.CARRY4
      port map (
@@ -794,10 +796,10 @@ pixel_count0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       C => clk,
-      CE => pixel_count,
-      D => \pixel_count_reg[0]_i_2_n_6\,
+      CE => \pixel_count[0]_i_2_n_0\,
+      D => \pixel_count_reg[0]_i_3_n_6\,
       Q => pixel_count_reg(1),
-      R => '0'
+      R => pixel_count
     );
 \pixel_count_reg[2]\: unisim.vcomponents.FDRE
     generic map(
@@ -805,10 +807,10 @@ pixel_count0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       C => clk,
-      CE => pixel_count,
-      D => \pixel_count_reg[0]_i_2_n_5\,
+      CE => \pixel_count[0]_i_2_n_0\,
+      D => \pixel_count_reg[0]_i_3_n_5\,
       Q => pixel_count_reg(2),
-      R => '0'
+      R => pixel_count
     );
 \pixel_count_reg[3]\: unisim.vcomponents.FDRE
     generic map(
@@ -816,10 +818,10 @@ pixel_count0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       C => clk,
-      CE => pixel_count,
-      D => \pixel_count_reg[0]_i_2_n_4\,
+      CE => \pixel_count[0]_i_2_n_0\,
+      D => \pixel_count_reg[0]_i_3_n_4\,
       Q => pixel_count_reg(3),
-      R => '0'
+      R => pixel_count
     );
 \pixel_count_reg[4]\: unisim.vcomponents.FDRE
     generic map(
@@ -827,14 +829,14 @@ pixel_count0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       C => clk,
-      CE => pixel_count,
+      CE => \pixel_count[0]_i_2_n_0\,
       D => \pixel_count_reg[4]_i_1_n_7\,
       Q => pixel_count_reg(4),
-      R => '0'
+      R => pixel_count
     );
 \pixel_count_reg[4]_i_1\: unisim.vcomponents.CARRY4
      port map (
-      CI => \pixel_count_reg[0]_i_2_n_0\,
+      CI => \pixel_count_reg[0]_i_3_n_0\,
       CO(3) => \pixel_count_reg[4]_i_1_n_0\,
       CO(2) => \pixel_count_reg[4]_i_1_n_1\,
       CO(1) => \pixel_count_reg[4]_i_1_n_2\,
@@ -853,10 +855,10 @@ pixel_count0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       C => clk,
-      CE => pixel_count,
+      CE => \pixel_count[0]_i_2_n_0\,
       D => \pixel_count_reg[4]_i_1_n_6\,
       Q => pixel_count_reg(5),
-      R => '0'
+      R => pixel_count
     );
 \pixel_count_reg[6]\: unisim.vcomponents.FDRE
     generic map(
@@ -864,10 +866,10 @@ pixel_count0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       C => clk,
-      CE => pixel_count,
+      CE => \pixel_count[0]_i_2_n_0\,
       D => \pixel_count_reg[4]_i_1_n_5\,
       Q => pixel_count_reg(6),
-      R => '0'
+      R => pixel_count
     );
 \pixel_count_reg[7]\: unisim.vcomponents.FDRE
     generic map(
@@ -875,10 +877,10 @@ pixel_count0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       C => clk,
-      CE => pixel_count,
+      CE => \pixel_count[0]_i_2_n_0\,
       D => \pixel_count_reg[4]_i_1_n_4\,
       Q => pixel_count_reg(7),
-      R => '0'
+      R => pixel_count
     );
 \pixel_count_reg[8]\: unisim.vcomponents.FDRE
     generic map(
@@ -886,10 +888,10 @@ pixel_count0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       C => clk,
-      CE => pixel_count,
+      CE => \pixel_count[0]_i_2_n_0\,
       D => \pixel_count_reg[8]_i_1_n_7\,
       Q => pixel_count_reg(8),
-      R => '0'
+      R => pixel_count
     );
 \pixel_count_reg[8]_i_1\: unisim.vcomponents.CARRY4
      port map (
@@ -912,17 +914,17 @@ pixel_count0_carry_i_8: unisim.vcomponents.LUT2
     )
         port map (
       C => clk,
-      CE => pixel_count,
+      CE => \pixel_count[0]_i_2_n_0\,
       D => \pixel_count_reg[8]_i_1_n_6\,
       Q => pixel_count_reg(9),
-      R => '0'
+      R => pixel_count
     );
 write_enable_i_1: unisim.vcomponents.LUT4
     generic map(
       INIT => X"BF80"
     )
         port map (
-      I0 => \pixel_count0_carry__1_n_3\,
+      I0 => p_1_in,
       I1 => start_capture,
       I2 => current_pix,
       I3 => write_enable,

@@ -2,7 +2,7 @@
 --Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
---Date        : Mon Jul 21 10:47:32 2025
+--Date        : Tue Jul 22 22:41:51 2025
 --Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 --Command     : generate_target top.bd
 --Design      : top
@@ -36,7 +36,7 @@ entity top is
     vgaRed : out STD_LOGIC_VECTOR ( 3 downto 0 )
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of top : entity is "top,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=top,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=11,numReposBlks=11,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=7,numPkgbdBlks=0,bdsource=USER,da_board_cnt=2,synth_mode=Hierarchical}";
+  attribute CORE_GENERATION_INFO of top : entity is "top,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=top,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=12,numReposBlks=12,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=7,numPkgbdBlks=0,bdsource=USER,da_board_cnt=2,synth_mode=Hierarchical}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of top : entity is "top.hwdef";
 end top;
@@ -47,8 +47,8 @@ architecture STRUCTURE of top is
     reset : in STD_LOGIC;
     clk_in1 : in STD_LOGIC;
     clk_out1 : out STD_LOGIC;
-    locked : out STD_LOGIC;
-    clk_out25 : out STD_LOGIC
+    clk_out25 : out STD_LOGIC;
+    locked : out STD_LOGIC
   );
   end component top_clk_wiz_0_0;
   component top_xlconstant_0_0 is
@@ -161,6 +161,19 @@ architecture STRUCTURE of top is
     reg_data : out STD_LOGIC_VECTOR ( 7 downto 0 )
   );
   end component top_I2C_camera_0_0;
+  component top_ila_0_0 is
+  port (
+    clk : in STD_LOGIC;
+    probe0 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe1 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe2 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe3 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe4 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe5 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe6 : in STD_LOGIC_VECTOR ( 16 downto 0 );
+    probe7 : in STD_LOGIC_VECTOR ( 15 downto 0 )
+  );
+  end component top_ila_0_0;
   signal BRAM_FIFO_Limit_0_bram_addr_out : STD_LOGIC_VECTOR ( 16 downto 0 );
   signal BRAM_FIFO_Limit_0_bram_data_out : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal BRAM_FIFO_Limit_0_bram_loaded : STD_LOGIC;
@@ -333,6 +346,18 @@ debouncer_0: component top_debouncer_0_0
       clk => clk_wiz_0_clk_out25,
       switch => BTNL_1,
       switch_debounced => debouncer_0_switch_debounced
+    );
+ila_0: component top_ila_0_0
+     port map (
+      clk => clk_wiz_0_clk_out1,
+      probe0(0) => clk_wiz_0_clk_out25,
+      probe1(0) => ov7670_pclk_1,
+      probe2(0) => ov7670_href_1,
+      probe3(0) => ov7670_vsync_1,
+      probe4(0) => Pixel_Capture_0_start_capture,
+      probe5(0) => BRAM_FIFO_Limit_0_bram_loaded,
+      probe6(16 downto 0) => BRAM_FIFO_Limit_0_bram_addr_out(16 downto 0),
+      probe7(15 downto 0) => BRAM_FIFO_Limit_0_bram_data_out(15 downto 0)
     );
 xlconstant_0: component top_xlconstant_0_0
      port map (

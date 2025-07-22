@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1753091256">
+<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1753220515">
   <File Type="ROUTE-PWR" Name="top_wrapper_power_routed.rpt"/>
   <File Type="PA-TCL" Name="top_wrapper.tcl"/>
   <File Type="ROUTE-PWR-SUM" Name="top_wrapper_power_summary_routed.pb"/>
@@ -141,6 +141,20 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PSRCDIR/sources_1/new/BRAM_Clear.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/BRAM_FIFO_LIMIT_CLEAR.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
       <Option Name="TopModule" Val="top_wrapper"/>
@@ -174,9 +188,7 @@
     </Config>
   </FileSet>
   <Strategy Version="1" Minor="2">
-    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023">
-      <Desc>Default settings for Implementation.</Desc>
-    </StratHandle>
+    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023"/>
     <Step Id="init_design"/>
     <Step Id="opt_design"/>
     <Step Id="power_opt_design"/>
@@ -187,13 +199,14 @@
     <Step Id="post_route_phys_opt_design"/>
     <Step Id="write_bitstream"/>
   </Strategy>
-  <BlockFileSet Type="BlockSrcs" Name="top_OutputFrame_Colour_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="top_BRAM_FIFO_Limit_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="top_clk_wiz_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="top_ila_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="top_I2C_camera_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="top_BRAM_reader_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="top_I2C_OV7670_MasterCon_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="top_debouncer_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="top_Pixel_Capture_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="top_clk_wiz_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="top_BRAM_FIFO_Limit_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="top_OutputFrame_Colour_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="top_blk_mem_gen_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="top_Pixel_Capture_0_0"/>
 </GenRun>

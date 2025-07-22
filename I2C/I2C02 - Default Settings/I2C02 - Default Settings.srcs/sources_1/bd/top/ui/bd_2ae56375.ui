@@ -1,7 +1,7 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"0.608134",
-   "Default View_TopLeft":"551,-926",
+   "Default View_ScaleFactor":"0.710082",
+   "Default View_TopLeft":"725,-1108",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.5.8 2022-09-21 7111 VDI=41 GEI=38 GUI=JA:10.0
 #  -string -flagsOSRD
@@ -11,69 +11,70 @@ preplace port port-id_ov7670_pclk -pg 1 -lvl 0 -x -150 -y -300 -defaultsOSRD
 preplace port port-id_ov7670_href -pg 1 -lvl 0 -x -150 -y -280 -defaultsOSRD
 preplace port port-id_ov7670_vsync -pg 1 -lvl 0 -x -150 -y -260 -defaultsOSRD
 preplace port port-id_BTNL -pg 1 -lvl 0 -x -150 -y -470 -defaultsOSRD
-preplace port port-id_Hsync -pg 1 -lvl 8 -x 2310 -y -460 -defaultsOSRD
-preplace port port-id_Vsync -pg 1 -lvl 8 -x 2310 -y -430 -defaultsOSRD
+preplace port port-id_Hsync -pg 1 -lvl 8 -x 2570 -y -460 -defaultsOSRD
+preplace port port-id_Vsync -pg 1 -lvl 8 -x 2570 -y -430 -defaultsOSRD
 preplace port port-id_Switch0 -pg 1 -lvl 0 -x -150 -y -450 -defaultsOSRD
 preplace port port-id_Switch1 -pg 1 -lvl 0 -x -150 -y -420 -defaultsOSRD
-preplace port port-id_ov7670_xclk -pg 1 -lvl 8 -x 2310 -y -120 -defaultsOSRD
-preplace port port-id_ov7670_SCL -pg 1 -lvl 8 -x 2310 -y -780 -defaultsOSRD
-preplace port port-id_ov7670_SDA -pg 1 -lvl 8 -x 2310 -y -760 -defaultsOSRD
-preplace port port-id_ov7670_pwdn -pg 1 -lvl 8 -x 2310 -y -740 -defaultsOSRD
-preplace port port-id_ov7670_reset -pg 1 -lvl 8 -x 2310 -y -720 -defaultsOSRD
+preplace port port-id_ov7670_xclk -pg 1 -lvl 8 -x 2570 -y -120 -defaultsOSRD
+preplace port port-id_ov7670_SCL -pg 1 -lvl 8 -x 2570 -y -780 -defaultsOSRD
+preplace port port-id_ov7670_SDA -pg 1 -lvl 8 -x 2570 -y -760 -defaultsOSRD
+preplace port port-id_ov7670_pwdn -pg 1 -lvl 8 -x 2570 -y -740 -defaultsOSRD
+preplace port port-id_ov7670_reset -pg 1 -lvl 8 -x 2570 -y -720 -defaultsOSRD
 preplace portBus ov7670_data -pg 1 -lvl 0 -x -150 -y -320 -defaultsOSRD
-preplace portBus LED -pg 1 -lvl 8 -x 2310 -y -330 -defaultsOSRD
-preplace portBus vgaRed -pg 1 -lvl 8 -x 2310 -y -520 -defaultsOSRD
-preplace portBus vgaGreen -pg 1 -lvl 8 -x 2310 -y -500 -defaultsOSRD
-preplace portBus vgaBlue -pg 1 -lvl 8 -x 2310 -y -480 -defaultsOSRD
-preplace inst clk_wiz_0 -pg 1 -lvl 2 -x 310 -y -140 -defaultsOSRD
-preplace inst xlconstant_0 -pg 1 -lvl 1 -x 70 -y -300 -defaultsOSRD
-preplace inst Pixel_Capture_0 -pg 1 -lvl 4 -x 1020 -y -290 -defaultsOSRD
-preplace inst debouncer_0 -pg 1 -lvl 3 -x 640 -y -320 -defaultsOSRD
-preplace inst BRAM_FIFO_Limit_0 -pg 1 -lvl 5 -x 1380 -y -370 -defaultsOSRD
-preplace inst BRAM_reader_0 -pg 1 -lvl 6 -x 1770 -y -560 -defaultsOSRD
-preplace inst blk_mem_gen_0 -pg 1 -lvl 6 -x 1770 -y -250 -defaultsOSRD
-preplace inst xlconstant_1 -pg 1 -lvl 5 -x 1380 -y -220 -defaultsOSRD
-preplace inst OutputFrame_Colour_0 -pg 1 -lvl 7 -x 2100 -y -460 -defaultsOSRD
-preplace inst I2C_OV7670_MasterCon_0 -pg 1 -lvl 3 -x 640 -y -720 -defaultsOSRD
-preplace inst I2C_camera_0 -pg 1 -lvl 1 -x 70 -y -690 -defaultsOSRD
-preplace netloc sys_clock_1 1 0 2 NJ -130 N
-preplace netloc reset_1 1 0 2 NJ -150 N
-preplace netloc clk_wiz_0_clk_out25 1 2 6 450 -220 810 -400 1180 -480 1580 -470 1940 -580 2280
-preplace netloc ov7670_data_1 1 0 8 -130J -240 NJ -240 430 -210 860 -70 N -70 N -70 N -70 2290
-preplace netloc ov7670_pclk_1 1 0 4 -110J -370 NJ -370 420 -230 840
-preplace netloc ov7670_href_1 1 0 4 -120J -380 NJ -380 470 -240 820
-preplace netloc ov7670_vsync_1 1 0 4 -100J -360 NJ -360 460 -250 850
-preplace netloc debouncer_0_switch_debounced 1 3 1 830 -320n
-preplace netloc BTNL_1 1 0 3 NJ -470 NJ -470 440
-preplace netloc Pixel_Capture_0_start_capture 1 4 1 1180 -370n
-preplace netloc Pixel_Capture_0_current_i 1 4 1 1190 -390n
-preplace netloc Pixel_Capture_0_bram_addr 1 4 1 1200 -350n
-preplace netloc Pixel_Capture_0_bram_data 1 4 1 1210 -330n
-preplace netloc BRAM_FIFO_Limit_0_bram_loaded 1 5 1 1560 -570n
-preplace netloc BRAM_FIFO_Limit_0_bram_addr_out 1 5 1 1570 -390n
-preplace netloc BRAM_FIFO_Limit_0_bram_data_out 1 5 1 1550 -370n
-preplace netloc xlconstant_1_dout 1 5 1 1590 -290n
-preplace netloc BRAM_reader_0_bram_read_addr 1 5 2 1610 -440 1930
-preplace netloc blk_mem_gen_0_doutb 1 5 2 1600 -460 1950
-preplace netloc OutputFrame_Colour_0_Hsync 1 7 1 N -460
-preplace netloc OutputFrame_Colour_0_Vsync 1 7 1 2270 -440n
-preplace netloc OutputFrame_Colour_0_vgaRed 1 7 1 N -520
-preplace netloc OutputFrame_Colour_0_vgaGreen 1 7 1 N -500
-preplace netloc OutputFrame_Colour_0_vgaBlue 1 7 1 N -480
-preplace netloc OutputFrame_Colour_0_new_frame 1 5 3 1610 -650 NJ -650 2260
-preplace netloc OutputFrame_Colour_0_active_area 1 5 3 1590 -660 NJ -660 2250
-preplace netloc Switch0_1 1 0 7 -100J -490 NJ -490 NJ -490 NJ -490 NJ -490 1590J -450 N
-preplace netloc Switch1_1 1 0 7 NJ -420 NJ -420 450J -470 NJ -470 NJ -470 1550J -430 N
-preplace netloc clk_wiz_0_clk_out1 1 2 1 410 -780n
+preplace portBus LED -pg 1 -lvl 8 -x 2570 -y -330 -defaultsOSRD
+preplace portBus vgaRed -pg 1 -lvl 8 -x 2570 -y -520 -defaultsOSRD
+preplace portBus vgaGreen -pg 1 -lvl 8 -x 2570 -y -500 -defaultsOSRD
+preplace portBus vgaBlue -pg 1 -lvl 8 -x 2570 -y -480 -defaultsOSRD
+preplace inst clk_wiz_0 -pg 1 -lvl 2 -x 480 -y -140 -defaultsOSRD
+preplace inst xlconstant_0 -pg 1 -lvl 1 -x 240 -y -300 -defaultsOSRD
+preplace inst Pixel_Capture_0 -pg 1 -lvl 4 -x 1190 -y -290 -defaultsOSRD
+preplace inst debouncer_0 -pg 1 -lvl 3 -x 810 -y -320 -defaultsOSRD
+preplace inst BRAM_FIFO_Limit_0 -pg 1 -lvl 5 -x 1590 -y -370 -defaultsOSRD
+preplace inst BRAM_reader_0 -pg 1 -lvl 6 -x 2030 -y -560 -defaultsOSRD
+preplace inst blk_mem_gen_0 -pg 1 -lvl 6 -x 2030 -y -250 -defaultsOSRD
+preplace inst xlconstant_1 -pg 1 -lvl 5 -x 1590 -y -220 -defaultsOSRD
+preplace inst OutputFrame_Colour_0 -pg 1 -lvl 7 -x 2390 -y -460 -defaultsOSRD
+preplace inst I2C_OV7670_MasterCon_0 -pg 1 -lvl 3 -x 810 -y -720 -defaultsOSRD
+preplace inst I2C_camera_0 -pg 1 -lvl 1 -x 240 -y -690 -defaultsOSRD
+preplace inst ila_0 -pg 1 -lvl 5 -x 1590 -y -940 -defaultsOSRD
+preplace netloc BRAM_FIFO_Limit_0_bram_addr_out 1 4 2 1400 -490 1770
+preplace netloc BRAM_FIFO_Limit_0_bram_data_out 1 4 2 1410 -560 1800
+preplace netloc BRAM_FIFO_Limit_0_bram_loaded 1 4 2 1420 -570 1760
+preplace netloc BRAM_reader_0_bram_read_addr 1 5 2 1850 -650 2190
+preplace netloc BTNL_1 1 0 3 NJ -470 NJ -470 620
+preplace netloc I2C_OV7670_MasterCon_0_i2c_data_read 1 0 4 110 -600 NJ -600 NJ -600 980
 preplace netloc I2C_OV7670_MasterCon_0_ov7670_SCL 1 3 5 N -780 N -780 N -780 NJ -780 N
-preplace netloc Net 1 3 5 N -760 N -760 N -760 N -760 NJ
 preplace netloc I2C_OV7670_MasterCon_0_ov7670_pwdn 1 3 5 N -740 N -740 N -740 N -740 NJ
 preplace netloc I2C_OV7670_MasterCon_0_ov7670_reset 1 3 5 N -720 N -720 N -720 NJ -720 N
-preplace netloc I2C_camera_0_reg_addr 1 1 2 200 -760 NJ
-preplace netloc I2C_camera_0_reg_data 1 1 2 210 -740 NJ
-preplace netloc I2C_OV7670_MasterCon_0_i2c_data_read 1 0 4 -60 -840 NJ -840 NJ -840 810
-levelinfo -pg 1 -150 70 310 640 1020 1380 1770 2100 2310
-pagesize -pg 1 -db -bbox -sgen -310 -910 2450 140
+preplace netloc I2C_camera_0_reg_addr 1 1 2 370 -760 NJ
+preplace netloc I2C_camera_0_reg_data 1 1 2 380 -740 NJ
+preplace netloc Net 1 3 5 N -760 N -760 N -760 N -760 NJ
+preplace netloc OutputFrame_Colour_0_Hsync 1 7 1 N -460
+preplace netloc OutputFrame_Colour_0_Vsync 1 7 1 2550 -440n
+preplace netloc OutputFrame_Colour_0_active_area 1 5 3 1870 -430 2210J -340 2550
+preplace netloc OutputFrame_Colour_0_new_frame 1 5 3 1860 -420 2190J -330 2540
+preplace netloc OutputFrame_Colour_0_vgaBlue 1 7 1 N -480
+preplace netloc OutputFrame_Colour_0_vgaGreen 1 7 1 N -500
+preplace netloc OutputFrame_Colour_0_vgaRed 1 7 1 N -520
+preplace netloc Pixel_Capture_0_bram_addr 1 4 1 1400 -350n
+preplace netloc Pixel_Capture_0_bram_data 1 4 1 1420 -330n
+preplace netloc Pixel_Capture_0_current_i 1 4 1 1410 -390n
+preplace netloc Pixel_Capture_0_start_capture 1 4 1 1390 -920n
+preplace netloc Switch0_1 1 0 7 NJ -450 NJ -450 640J -470 NJ -470 NJ -470 1780J -460 2240
+preplace netloc Switch1_1 1 0 7 -100J -480 NJ -480 NJ -480 NJ -480 NJ -480 1790J -450 2230
+preplace netloc blk_mem_gen_0_doutb 1 5 2 1840 -470 N
+preplace netloc clk_wiz_0_clk_out1 1 2 3 610 -1020 N -1020 N
+preplace netloc clk_wiz_0_clk_out25 1 2 6 640 -250 1020 -400 1380 -580 1820 -410 2220 -120 N
+preplace netloc debouncer_0_switch_debounced 1 3 1 980 -320n
+preplace netloc ov7670_data_1 1 0 8 -110J -490 NJ -490 620 -490 1030 -500 N -500 1810 -440 2200 -320 2550
+preplace netloc ov7670_href_1 1 0 5 -120J -510 NJ -510 640 -510 1000 -960 N
+preplace netloc ov7670_pclk_1 1 0 5 -130J -770 NJ -770 640 -840 990 -980 N
+preplace netloc ov7670_vsync_1 1 0 5 -90J -500 NJ -500 630 -500 1010 -940 N
+preplace netloc reset_1 1 0 2 NJ -150 N
+preplace netloc sys_clock_1 1 0 2 NJ -130 N
+preplace netloc xlconstant_1_dout 1 5 1 1830 -270n
+levelinfo -pg 1 -150 240 480 810 1190 1590 2030 2390 2570
+pagesize -pg 1 -db -bbox -sgen -320 -1170 2710 140
 "
 }
 {

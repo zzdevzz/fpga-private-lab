@@ -43,6 +43,7 @@ begin
           write_enable <= '1';
         else
           write_enable <= '0';
+          pixel_count <= 0;
         end if;
       end if;
     end if;

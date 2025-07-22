@@ -2,7 +2,7 @@
 -- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
--- Date        : Mon Jul 21 10:21:55 2025
+-- Date        : Tue Jul 22 21:41:33 2025
 -- Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim {e:/FPGA/VHDL/Lab Training/I2C/I2C02 - Default Settings/I2C02 - Default
 --               Settings.gen/sources_1/bd/top/ip/top_Pixel_Capture_0_0/top_Pixel_Capture_0_0_sim_netlist.vhdl}
@@ -594,7 +594,7 @@ current_pix_reg: unisim.vcomponents.FDRE
     );
 start_capture_flag_i_1: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"AAAAEAAA"
+      INIT => X"0000EAAA"
     )
         port map (
       I0 => \^start_capture\,

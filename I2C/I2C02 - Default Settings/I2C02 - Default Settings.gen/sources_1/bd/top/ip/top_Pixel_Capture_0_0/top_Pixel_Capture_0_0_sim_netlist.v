@@ -2,7 +2,7 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-// Date        : Mon Jul 21 10:21:55 2025
+// Date        : Tue Jul 22 21:41:33 2025
 // Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim {e:/FPGA/VHDL/Lab Training/I2C/I2C02 - Default Settings/I2C02 -
 //               Default Settings.gen/sources_1/bd/top/ip/top_Pixel_Capture_0_0/top_Pixel_Capture_0_0_sim_netlist.v}
@@ -509,7 +509,7 @@ module top_Pixel_Capture_0_0_Pixel_Capture
         .R(1'b0));
   (* SOFT_HLUTNM = "soft_lutpair0" *) 
   LUT5 #(
-    .INIT(32'hAAAAEAAA)) 
+    .INIT(32'h0000EAAA)) 
     start_capture_flag_i_1
        (.I0(start_capture),
         .I1(current_pix_reg_0),

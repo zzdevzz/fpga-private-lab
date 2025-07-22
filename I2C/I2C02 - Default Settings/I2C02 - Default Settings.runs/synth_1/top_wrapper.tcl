@@ -100,6 +100,10 @@ set_property used_in_implementation false [get_files -all {{e:/FPGA/VHDL/Lab Tra
 set_property used_in_implementation false [get_files -all {{e:/FPGA/VHDL/Lab Training/I2C/I2C02 - Default Settings/I2C02 - Default Settings.gen/sources_1/bd/top/ip/top_clk_wiz_0_0/top_clk_wiz_0_0.xdc}}]
 set_property used_in_implementation false [get_files -all {{e:/FPGA/VHDL/Lab Training/I2C/I2C02 - Default Settings/I2C02 - Default Settings.gen/sources_1/bd/top/ip/top_clk_wiz_0_0/top_clk_wiz_0_0_ooc.xdc}}]
 set_property used_in_implementation false [get_files -all {{e:/FPGA/VHDL/Lab Training/I2C/I2C02 - Default Settings/I2C02 - Default Settings.gen/sources_1/bd/top/ip/top_blk_mem_gen_0_0/top_blk_mem_gen_0_0_ooc.xdc}}]
+set_property used_in_synthesis false [get_files -all {{e:/FPGA/VHDL/Lab Training/I2C/I2C02 - Default Settings/I2C02 - Default Settings.gen/sources_1/bd/top/ip/top_ila_0_0/ila_v6_2/constraints/ila_impl.xdc}}]
+set_property used_in_implementation false [get_files -all {{e:/FPGA/VHDL/Lab Training/I2C/I2C02 - Default Settings/I2C02 - Default Settings.gen/sources_1/bd/top/ip/top_ila_0_0/ila_v6_2/constraints/ila_impl.xdc}}]
+set_property used_in_implementation false [get_files -all {{e:/FPGA/VHDL/Lab Training/I2C/I2C02 - Default Settings/I2C02 - Default Settings.gen/sources_1/bd/top/ip/top_ila_0_0/ila_v6_2/constraints/ila.xdc}}]
+set_property used_in_implementation false [get_files -all {{e:/FPGA/VHDL/Lab Training/I2C/I2C02 - Default Settings/I2C02 - Default Settings.gen/sources_1/bd/top/ip/top_ila_0_0/top_ila_0_0_ooc.xdc}}]
 set_property used_in_implementation false [get_files -all {{e:/FPGA/VHDL/Lab Training/I2C/I2C02 - Default Settings/I2C02 - Default Settings.gen/sources_1/bd/top/top_ooc.xdc}}]
 
 OPTRACE "Adding files" END { }

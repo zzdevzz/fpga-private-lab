@@ -87,14 +87,14 @@ begin
 
             
             if capture_frame = '1' then
-                start_capture_frame <= '1';
+                start_capture_frame <= '1'; --button trigger gives it a start signal.
             end if;
             
-            if vsync_current = '0' and vsync_previous = '1' and start_capture_frame = '1' then
+            if vsync_current = '0' and vsync_previous = '1' and start_capture_frame = '1' then --when on falling edge and a start signal we start capturing.
                 -- this means its the start of a new frame and we want to start capturinng a signal.
                 capturing <= '1';
                 start_capture_frame <= '0';
-            elsif capturing = '1' and vsync = '1' then
+            elsif capturing = '1' and vsync = '1' then -- stop capturing at beginning of vsync pulse (end of frame).
                 capturing <= '0';
             end if;
         end if;
@@ -128,6 +128,7 @@ begin
                 bram_addr_s <= 0;      -- Start BRAM writes from beginning of frame.
                 current_pix <= '0';    -- Reset the byte-pair state machine.
                 state_type <= 4;
+                start_capture_flag <= '0'; --end of vsync, stop filling frame.
             else
                state_type <= 5;     
             end if;

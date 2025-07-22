@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Mon Jul 21 10:21:55 2025
+| Date         : Tue Jul 22 21:16:29 2025
 | Host         : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 | Command      : report_utilization -file top_BRAM_FIFO_Limit_0_0_utilization_synth.rpt -pb top_BRAM_FIFO_Limit_0_0_utilization_synth.pb
 | Design       : top_BRAM_FIFO_Limit_0_0
@@ -151,10 +151,10 @@ Warning! LUT value is adjusted to account for LUT combining.
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| LUT2     |   46 |                 LUT |
+| LUT2     |   47 |                 LUT |
 | FDRE     |   18 |        Flop & Latch |
 | CARRY4   |    8 |          CarryLogic |
-| LUT1     |    5 |                 LUT |
+| LUT1     |    4 |                 LUT |
 | LUT4     |    1 |                 LUT |
 | LUT3     |    1 |                 LUT |
 +----------+------+---------------------+
