@@ -2,7 +2,7 @@
 --Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
---Date        : Tue Jul 22 22:41:51 2025
+--Date        : Wed Jul 23 15:46:17 2025
 --Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 --Command     : generate_target top.bd
 --Design      : top
@@ -36,7 +36,7 @@ entity top is
     vgaRed : out STD_LOGIC_VECTOR ( 3 downto 0 )
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of top : entity is "top,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=top,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=12,numReposBlks=12,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=7,numPkgbdBlks=0,bdsource=USER,da_board_cnt=2,synth_mode=Hierarchical}";
+  attribute CORE_GENERATION_INFO of top : entity is "top,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=top,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=13,numReposBlks=13,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=8,numPkgbdBlks=0,bdsource=USER,da_board_cnt=2,synth_mode=Hierarchical}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of top : entity is "top.hwdef";
 end top;
@@ -136,24 +136,6 @@ architecture STRUCTURE of top is
     new_frame : out STD_LOGIC
   );
   end component top_OutputFrame_Colour_0_0;
-  component top_I2C_OV7670_MasterCon_0_0 is
-  port (
-    clk_100 : in STD_LOGIC;
-    slave_reg_addr : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    slave_reg_data : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    ov7670_SCL : out STD_LOGIC;
-    ov7670_SDA : inout STD_LOGIC;
-    ov7670_pclk : in STD_LOGIC;
-    ov7670_data : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    ov7670_vsync : in STD_LOGIC;
-    ov7670_href : in STD_LOGIC;
-    ov7670_pwdn : out STD_LOGIC;
-    ov7670_reset : out STD_LOGIC;
-    i2c_data_out : out STD_LOGIC_VECTOR ( 7 downto 0 );
-    LED : out STD_LOGIC_VECTOR ( 7 downto 0 );
-    i2c_data_read : out STD_LOGIC_VECTOR ( 1 downto 0 )
-  );
-  end component top_I2C_OV7670_MasterCon_0_0;
   component top_I2C_camera_0_0 is
   port (
     index : in STD_LOGIC_VECTOR ( 1 downto 0 );
@@ -161,7 +143,7 @@ architecture STRUCTURE of top is
     reg_data : out STD_LOGIC_VECTOR ( 7 downto 0 )
   );
   end component top_I2C_camera_0_0;
-  component top_ila_0_0 is
+  component top_ila_0_1 is
   port (
     clk : in STD_LOGIC;
     probe0 : in STD_LOGIC_VECTOR ( 0 to 0 );
@@ -170,19 +152,48 @@ architecture STRUCTURE of top is
     probe3 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe4 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe5 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe6 : in STD_LOGIC_VECTOR ( 16 downto 0 );
-    probe7 : in STD_LOGIC_VECTOR ( 15 downto 0 )
+    probe6 : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    probe7 : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    probe8 : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  end component top_ila_0_0;
+  end component top_ila_0_1;
+  component top_I2C_OV7670_Master_0_0 is
+  port (
+    clk_100 : in STD_LOGIC;
+    reset : in STD_LOGIC;
+    slave_reg_addr : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    slave_reg_data : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    ov7670_SCL : out STD_LOGIC;
+    ov7670_SDA : inout STD_LOGIC;
+    sda_out_debug : out STD_LOGIC;
+    sda_in_debug : out STD_LOGIC;
+    sda_oe_debug : out STD_LOGIC;
+    ov7670_pwdn : out STD_LOGIC;
+    ov7670_reset : out STD_LOGIC;
+    i2c_data_read : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    state_debug : out STD_LOGIC_VECTOR ( 2 downto 0 )
+  );
+  end component top_I2C_OV7670_Master_0_0;
+  component top_debouncer_0_1 is
+  port (
+    clk : in STD_LOGIC;
+    switch : in STD_LOGIC;
+    switch_debounced : out STD_LOGIC
+  );
+  end component top_debouncer_0_1;
   signal BRAM_FIFO_Limit_0_bram_addr_out : STD_LOGIC_VECTOR ( 16 downto 0 );
   signal BRAM_FIFO_Limit_0_bram_data_out : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal BRAM_FIFO_Limit_0_bram_loaded : STD_LOGIC;
   signal BRAM_reader_0_bram_read_addr : STD_LOGIC_VECTOR ( 16 downto 0 );
   signal BTNL_1 : STD_LOGIC;
-  signal I2C_OV7670_MasterCon_0_i2c_data_read : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal I2C_OV7670_MasterCon_0_ov7670_SCL : STD_LOGIC;
-  signal I2C_OV7670_MasterCon_0_ov7670_pwdn : STD_LOGIC;
-  signal I2C_OV7670_MasterCon_0_ov7670_reset : STD_LOGIC;
+  signal I2C_OV7670_Master_0_i2c_data_read : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal I2C_OV7670_Master_0_ov7670_SCL : STD_LOGIC;
+  signal I2C_OV7670_Master_0_ov7670_pwdn : STD_LOGIC;
+  signal I2C_OV7670_Master_0_ov7670_reset : STD_LOGIC;
+  signal I2C_OV7670_Master_0_sda_in_debug : STD_LOGIC;
+  signal I2C_OV7670_Master_0_sda_oe_debug : STD_LOGIC;
+  signal I2C_OV7670_Master_0_sda_out_debug : STD_LOGIC;
+  signal I2C_OV7670_Master_0_state_debug : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal I2C_camera_0_reg_addr : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal I2C_camera_0_reg_data : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal Net : STD_LOGIC;
@@ -203,6 +214,7 @@ architecture STRUCTURE of top is
   signal clk_wiz_0_clk_out1 : STD_LOGIC;
   signal clk_wiz_0_clk_out25 : STD_LOGIC;
   signal debouncer_0_switch_debounced : STD_LOGIC;
+  signal debouncer_1_switch_debounced : STD_LOGIC;
   signal ov7670_data_1 : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal ov7670_href_1 : STD_LOGIC;
   signal ov7670_pclk_1 : STD_LOGIC;
@@ -210,8 +222,6 @@ architecture STRUCTURE of top is
   signal reset_1 : STD_LOGIC;
   signal sys_clock_1 : STD_LOGIC;
   signal xlconstant_1_dout : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal NLW_I2C_OV7670_MasterCon_0_LED_UNCONNECTED : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal NLW_I2C_OV7670_MasterCon_0_i2c_data_out_UNCONNECTED : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal NLW_Pixel_Capture_0_bram_we_UNCONNECTED : STD_LOGIC;
   signal NLW_Pixel_Capture_0_state_out_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal NLW_blk_mem_gen_0_douta_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -234,12 +244,12 @@ begin
   Switch0_1 <= Switch0;
   Switch1_1 <= Switch1;
   Vsync <= OutputFrame_Colour_0_Vsync;
-  ov7670_SCL <= I2C_OV7670_MasterCon_0_ov7670_SCL;
+  ov7670_SCL <= I2C_OV7670_Master_0_ov7670_SCL;
   ov7670_data_1(7 downto 0) <= ov7670_data(7 downto 0);
   ov7670_href_1 <= ov7670_href;
   ov7670_pclk_1 <= ov7670_pclk;
-  ov7670_pwdn <= I2C_OV7670_MasterCon_0_ov7670_pwdn;
-  ov7670_reset <= I2C_OV7670_MasterCon_0_ov7670_reset;
+  ov7670_pwdn <= I2C_OV7670_Master_0_ov7670_pwdn;
+  ov7670_reset <= I2C_OV7670_Master_0_ov7670_reset;
   ov7670_vsync_1 <= ov7670_vsync;
   ov7670_xclk <= clk_wiz_0_clk_out25;
   reset_1 <= reset;
@@ -266,26 +276,25 @@ BRAM_reader_0: component top_BRAM_reader_0_0
       clk => clk_wiz_0_clk_out25,
       new_frame => OutputFrame_Colour_0_new_frame
     );
-I2C_OV7670_MasterCon_0: component top_I2C_OV7670_MasterCon_0_0
+I2C_OV7670_Master_0: component top_I2C_OV7670_Master_0_0
      port map (
-      LED(7 downto 0) => NLW_I2C_OV7670_MasterCon_0_LED_UNCONNECTED(7 downto 0),
       clk_100 => clk_wiz_0_clk_out1,
-      i2c_data_out(7 downto 0) => NLW_I2C_OV7670_MasterCon_0_i2c_data_out_UNCONNECTED(7 downto 0),
-      i2c_data_read(1 downto 0) => I2C_OV7670_MasterCon_0_i2c_data_read(1 downto 0),
-      ov7670_SCL => I2C_OV7670_MasterCon_0_ov7670_SCL,
+      i2c_data_read(1 downto 0) => I2C_OV7670_Master_0_i2c_data_read(1 downto 0),
+      ov7670_SCL => I2C_OV7670_Master_0_ov7670_SCL,
       ov7670_SDA => ov7670_SDA,
-      ov7670_data(7 downto 0) => ov7670_data_1(7 downto 0),
-      ov7670_href => ov7670_href_1,
-      ov7670_pclk => ov7670_pclk_1,
-      ov7670_pwdn => I2C_OV7670_MasterCon_0_ov7670_pwdn,
-      ov7670_reset => I2C_OV7670_MasterCon_0_ov7670_reset,
-      ov7670_vsync => ov7670_vsync_1,
+      ov7670_pwdn => I2C_OV7670_Master_0_ov7670_pwdn,
+      ov7670_reset => I2C_OV7670_Master_0_ov7670_reset,
+      reset => debouncer_1_switch_debounced,
+      sda_in_debug => I2C_OV7670_Master_0_sda_in_debug,
+      sda_oe_debug => I2C_OV7670_Master_0_sda_oe_debug,
+      sda_out_debug => I2C_OV7670_Master_0_sda_out_debug,
       slave_reg_addr(7 downto 0) => I2C_camera_0_reg_addr(7 downto 0),
-      slave_reg_data(7 downto 0) => I2C_camera_0_reg_data(7 downto 0)
+      slave_reg_data(7 downto 0) => I2C_camera_0_reg_data(7 downto 0),
+      state_debug(2 downto 0) => I2C_OV7670_Master_0_state_debug(2 downto 0)
     );
 I2C_camera_0: component top_I2C_camera_0_0
      port map (
-      index(1 downto 0) => I2C_OV7670_MasterCon_0_i2c_data_read(1 downto 0),
+      index(1 downto 0) => I2C_OV7670_Master_0_i2c_data_read(1 downto 0),
       reg_addr(7 downto 0) => I2C_camera_0_reg_addr(7 downto 0),
       reg_data(7 downto 0) => I2C_camera_0_reg_data(7 downto 0)
     );
@@ -347,17 +356,24 @@ debouncer_0: component top_debouncer_0_0
       switch => BTNL_1,
       switch_debounced => debouncer_0_switch_debounced
     );
-ila_0: component top_ila_0_0
+debouncer_1: component top_debouncer_0_1
+     port map (
+      clk => clk_wiz_0_clk_out25,
+      switch => reset_1,
+      switch_debounced => debouncer_1_switch_debounced
+    );
+ila_1: component top_ila_0_1
      port map (
       clk => clk_wiz_0_clk_out1,
-      probe0(0) => clk_wiz_0_clk_out25,
-      probe1(0) => ov7670_pclk_1,
-      probe2(0) => ov7670_href_1,
-      probe3(0) => ov7670_vsync_1,
-      probe4(0) => Pixel_Capture_0_start_capture,
-      probe5(0) => BRAM_FIFO_Limit_0_bram_loaded,
-      probe6(16 downto 0) => BRAM_FIFO_Limit_0_bram_addr_out(16 downto 0),
-      probe7(15 downto 0) => BRAM_FIFO_Limit_0_bram_data_out(15 downto 0)
+      probe0(0) => I2C_OV7670_Master_0_ov7670_SCL,
+      probe1(0) => I2C_OV7670_Master_0_sda_out_debug,
+      probe2(0) => I2C_OV7670_Master_0_sda_in_debug,
+      probe3(0) => I2C_OV7670_Master_0_sda_oe_debug,
+      probe4(0) => I2C_OV7670_Master_0_ov7670_pwdn,
+      probe5(0) => I2C_OV7670_Master_0_ov7670_reset,
+      probe6(1 downto 0) => I2C_OV7670_Master_0_i2c_data_read(1 downto 0),
+      probe7(2 downto 0) => I2C_OV7670_Master_0_state_debug(2 downto 0),
+      probe8(0) => debouncer_0_switch_debounced
     );
 xlconstant_0: component top_xlconstant_0_0
      port map (

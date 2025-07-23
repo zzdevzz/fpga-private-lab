@@ -15,7 +15,7 @@
                     },
                     {
                         "type": "ILA_V3",
-                        "name": "top_i/ila_0",
+                        "name": "top_i/ila_1",
                         "spec": "labtools_ila_v6",
                         "ipName": "ila",
                         "core_location": {
@@ -23,7 +23,7 @@
                             "slave_index": 0,
                             "bscan_switch_index": 0
                         },
-                        "uuid": "09DB4B930B7E50F49B3898D946757F3C",
+                        "uuid": "F178A93F611050278EDC7404612E6827",
                         "pins": [
                             {
                                 "name": "probe0",
@@ -36,7 +36,7 @@
                                 "portIndex": 0,
                                 "nets": [
                                     {
-                                        "name": "top_i/clk_wiz_0_clk_out25",
+                                        "name": "top_i/I2C_OV7670_Master_0_ov7670_SCL",
                                         "isBus": false
                                     }
                                 ]
@@ -52,7 +52,7 @@
                                 "portIndex": 1,
                                 "nets": [
                                     {
-                                        "name": "top_i/ov7670_pclk_1",
+                                        "name": "top_i/I2C_OV7670_Master_0_sda_out_debug",
                                         "isBus": false
                                     }
                                 ]
@@ -68,7 +68,7 @@
                                 "portIndex": 2,
                                 "nets": [
                                     {
-                                        "name": "top_i/ov7670_href_1",
+                                        "name": "top_i/I2C_OV7670_Master_0_sda_in_debug",
                                         "isBus": false
                                     }
                                 ]
@@ -84,7 +84,7 @@
                                 "portIndex": 3,
                                 "nets": [
                                     {
-                                        "name": "top_i/ov7670_vsync_1",
+                                        "name": "top_i/I2C_OV7670_Master_0_sda_oe_debug",
                                         "isBus": false
                                     }
                                 ]
@@ -100,7 +100,7 @@
                                 "portIndex": 4,
                                 "nets": [
                                     {
-                                        "name": "top_i/Pixel_Capture_0_start_capture",
+                                        "name": "top_i/I2C_OV7670_Master_0_ov7670_pwdn",
                                         "isBus": false
                                     }
                                 ]
@@ -116,7 +116,7 @@
                                 "portIndex": 5,
                                 "nets": [
                                     {
-                                        "name": "top_i/BRAM_FIFO_Limit_0_bram_loaded",
+                                        "name": "top_i/I2C_OV7670_Master_0_ov7670_reset",
                                         "isBus": false
                                     }
                                 ]
@@ -128,63 +128,18 @@
                                 "direction": "IN",
                                 "isVector": true,
                                 "leftIndex": 0,
-                                "rightIndex": 16,
+                                "rightIndex": 1,
                                 "portIndex": 6,
                                 "nets": [
                                     {
-                                        "name": "top_i/BRAM_FIFO_Limit_0_bram_addr_out",
+                                        "name": "top_i/I2C_OV7670_Master_0_i2c_data_read",
                                         "isBus": true,
                                         "subnets": [
                                             {
-                                                "name": "top_i/BRAM_FIFO_Limit_0_bram_addr_out[16]"
+                                                "name": "top_i/I2C_OV7670_Master_0_i2c_data_read[1]"
                                             },
                                             {
-                                                "name": "top_i/BRAM_FIFO_Limit_0_bram_addr_out[15]"
-                                            },
-                                            {
-                                                "name": "top_i/BRAM_FIFO_Limit_0_bram_addr_out[14]"
-                                            },
-                                            {
-                                                "name": "top_i/BRAM_FIFO_Limit_0_bram_addr_out[13]"
-                                            },
-                                            {
-                                                "name": "top_i/BRAM_FIFO_Limit_0_bram_addr_out[12]"
-                                            },
-                                            {
-                                                "name": "top_i/BRAM_FIFO_Limit_0_bram_addr_out[11]"
-                                            },
-                                            {
-                                                "name": "top_i/BRAM_FIFO_Limit_0_bram_addr_out[10]"
-                                            },
-                                            {
-                                                "name": "top_i/BRAM_FIFO_Limit_0_bram_addr_out[9]"
-                                            },
-                                            {
-                                                "name": "top_i/BRAM_FIFO_Limit_0_bram_addr_out[8]"
-                                            },
-                                            {
-                                                "name": "top_i/BRAM_FIFO_Limit_0_bram_addr_out[7]"
-                                            },
-                                            {
-                                                "name": "top_i/BRAM_FIFO_Limit_0_bram_addr_out[6]"
-                                            },
-                                            {
-                                                "name": "top_i/BRAM_FIFO_Limit_0_bram_addr_out[5]"
-                                            },
-                                            {
-                                                "name": "top_i/BRAM_FIFO_Limit_0_bram_addr_out[4]"
-                                            },
-                                            {
-                                                "name": "top_i/BRAM_FIFO_Limit_0_bram_addr_out[3]"
-                                            },
-                                            {
-                                                "name": "top_i/BRAM_FIFO_Limit_0_bram_addr_out[2]"
-                                            },
-                                            {
-                                                "name": "top_i/BRAM_FIFO_Limit_0_bram_addr_out[1]"
-                                            },
-                                            {
-                                                "name": "top_i/BRAM_FIFO_Limit_0_bram_addr_out[0]"
+                                                "name": "top_i/I2C_OV7670_Master_0_i2c_data_read[0]"
                                             }
                                         ]
                                     }
@@ -197,62 +152,97 @@
                                 "direction": "IN",
                                 "isVector": true,
                                 "leftIndex": 0,
-                                "rightIndex": 15,
+                                "rightIndex": 2,
                                 "portIndex": 7,
                                 "nets": [
                                     {
-                                        "name": "top_i/BRAM_FIFO_Limit_0_bram_data_out",
+                                        "name": "top_i/I2C_OV7670_Master_0_state_debug",
                                         "isBus": true,
                                         "subnets": [
                                             {
-                                                "name": "top_i/BRAM_FIFO_Limit_0_bram_data_out[15]"
+                                                "name": "top_i/I2C_OV7670_Master_0_state_debug[2]"
                                             },
                                             {
-                                                "name": "top_i/BRAM_FIFO_Limit_0_bram_data_out[14]"
+                                                "name": "top_i/I2C_OV7670_Master_0_state_debug[1]",
+                                                "parentNetId": 6
                                             },
                                             {
-                                                "name": "top_i/BRAM_FIFO_Limit_0_bram_data_out[13]"
-                                            },
-                                            {
-                                                "name": "top_i/BRAM_FIFO_Limit_0_bram_data_out[12]"
-                                            },
-                                            {
-                                                "name": "top_i/BRAM_FIFO_Limit_0_bram_data_out[11]"
-                                            },
-                                            {
-                                                "name": "top_i/BRAM_FIFO_Limit_0_bram_data_out[10]"
-                                            },
-                                            {
-                                                "name": "top_i/BRAM_FIFO_Limit_0_bram_data_out[9]"
-                                            },
-                                            {
-                                                "name": "top_i/BRAM_FIFO_Limit_0_bram_data_out[8]"
-                                            },
-                                            {
-                                                "name": "top_i/BRAM_FIFO_Limit_0_bram_data_out[7]"
-                                            },
-                                            {
-                                                "name": "top_i/BRAM_FIFO_Limit_0_bram_data_out[6]"
-                                            },
-                                            {
-                                                "name": "top_i/BRAM_FIFO_Limit_0_bram_data_out[5]"
-                                            },
-                                            {
-                                                "name": "top_i/BRAM_FIFO_Limit_0_bram_data_out[4]"
-                                            },
-                                            {
-                                                "name": "top_i/BRAM_FIFO_Limit_0_bram_data_out[3]"
-                                            },
-                                            {
-                                                "name": "top_i/BRAM_FIFO_Limit_0_bram_data_out[2]"
-                                            },
-                                            {
-                                                "name": "top_i/BRAM_FIFO_Limit_0_bram_data_out[1]"
-                                            },
-                                            {
-                                                "name": "top_i/BRAM_FIFO_Limit_0_bram_data_out[0]"
+                                                "name": "top_i/I2C_OV7670_Master_0_state_debug[0]",
+                                                "parentNetId": 7
                                             }
                                         ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "parent_nets": [
+                    {
+                        "id": 6,
+                        "name": "top_i/I2C_OV7670_Master_0/U0/FSM_onehot_state_reg[2]_0",
+                        "state_reg": [
+                            {
+                                "name": "top_i/I2C_OV7670_Master_0/U0/FSM_onehot_state_reg[2]",
+                                "states": [
+                                    {
+                                        "name": "read_ack",
+                                        "val": "011"
+                                    },
+                                    {
+                                        "name": "idle",
+                                        "val": "001"
+                                    },
+                                    {
+                                        "name": "next_byte",
+                                        "val": "100"
+                                    },
+                                    {
+                                        "name": "send_byte",
+                                        "val": "100"
+                                    },
+                                    {
+                                        "name": "stop_condition",
+                                        "val": "101"
+                                    },
+                                    {
+                                        "name": "start_condition",
+                                        "val": "010"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": 7,
+                        "name": "top_i/I2C_OV7670_Master_0/U0/FSM_onehot_state_reg[1]_0",
+                        "state_reg": [
+                            {
+                                "name": "top_i/I2C_OV7670_Master_0/U0/FSM_onehot_state_reg[1]",
+                                "states": [
+                                    {
+                                        "name": "read_ack",
+                                        "val": "011"
+                                    },
+                                    {
+                                        "name": "idle",
+                                        "val": "001"
+                                    },
+                                    {
+                                        "name": "next_byte",
+                                        "val": "100"
+                                    },
+                                    {
+                                        "name": "send_byte",
+                                        "val": "100"
+                                    },
+                                    {
+                                        "name": "stop_condition",
+                                        "val": "101"
+                                    },
+                                    {
+                                        "name": "start_condition",
+                                        "val": "010"
                                     }
                                 ]
                             }
