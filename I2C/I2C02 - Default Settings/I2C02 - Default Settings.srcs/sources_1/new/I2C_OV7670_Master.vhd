@@ -80,7 +80,6 @@ begin
         if reset = '1' then
             counter <= 0;
             start_setup <= '0';
-            sending <= '0';
         end if;
         
         if counter = reset_counter then
@@ -127,6 +126,7 @@ begin
     if rising_edge(clk_100) then
       case state is
         when IDLE =>
+          sending <= '0';
           scl_en <= '0';
           sda_oe <= '0';
           if sending = '0' and start_setup = '1' then

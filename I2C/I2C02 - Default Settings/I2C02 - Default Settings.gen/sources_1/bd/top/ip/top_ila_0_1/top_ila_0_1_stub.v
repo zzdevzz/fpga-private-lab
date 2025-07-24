@@ -2,7 +2,7 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-// Date        : Wed Jul 23 00:17:53 2025
+// Date        : Thu Jul 24 23:08:36 2025
 // Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub {e:/FPGA/VHDL/Lab Training/I2C/I2C02 - Default Settings/I2C02 -
 //               Default Settings.gen/sources_1/bd/top/ip/top_ila_0_1/top_ila_0_1_stub.v}
@@ -16,8 +16,8 @@
 // Please paste the declaration into a Verilog source file or add the file as an additional source.
 (* x_core_info = "ila,Vivado 2023.2" *)
 module top_ila_0_1(clk, probe0, probe1, probe2, probe3, probe4, probe5, 
-  probe6, probe7)
-/* synthesis syn_black_box black_box_pad_pin="probe0[0:0],probe1[0:0],probe2[0:0],probe3[0:0],probe4[0:0],probe5[0:0],probe6[1:0],probe7[2:0]" */
+  probe6, probe7, probe8)
+/* synthesis syn_black_box black_box_pad_pin="probe0[0:0],probe1[0:0],probe2[0:0],probe3[0:0],probe4[0:0],probe5[0:0],probe6[1:0],probe7[2:0],probe8[0:0]" */
 /* synthesis syn_force_seq_prim="clk" */;
   input clk /* synthesis syn_isclock = 1 */;
   input [0:0]probe0;
@@ -28,4 +28,5 @@ module top_ila_0_1(clk, probe0, probe1, probe2, probe3, probe4, probe5,
   input [0:0]probe5;
   input [1:0]probe6;
   input [2:0]probe7;
+  input [0:0]probe8;
 endmodule

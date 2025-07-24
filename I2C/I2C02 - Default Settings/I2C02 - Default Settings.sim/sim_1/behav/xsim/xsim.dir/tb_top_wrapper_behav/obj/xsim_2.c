@@ -459,8 +459,8 @@ const int NumRelocateId= 399;
 void relocate(char *dp)
 {
 	iki_relocate(dp, "xsim.dir/tb_top_wrapper_behav/xsim.reloc",  (void **)funcTab, 399);
-	iki_vhdl_file_variable_register(dp + 907704);
-	iki_vhdl_file_variable_register(dp + 907760);
+	iki_vhdl_file_variable_register(dp + 907624);
+	iki_vhdl_file_variable_register(dp + 907680);
 
 
 	/*Populate the transaction function pointer field in the whole net structure */
@@ -477,29 +477,29 @@ void wrapper_func_0(char *dp)
 
 {
 
-	iki_vlog_schedule_transaction_signal_fast_vhdl_value_time_0(dp + 918544, dp + 940392, 0, 16, 0, 16, 17, 1);
+	iki_vlog_schedule_transaction_signal_fast_vhdl_value_time_0(dp + 918464, dp + 940280, 0, 16, 0, 16, 17, 1);
 
-	iki_vlog_schedule_transaction_signal_fast_vhdl_value_time_0(dp + 918680, dp + 940728, 0, 16, 0, 16, 17, 1);
+	iki_vlog_schedule_transaction_signal_fast_vhdl_value_time_0(dp + 918600, dp + 940616, 0, 16, 0, 16, 17, 1);
 
-	iki_vlog_schedule_transaction_signal_fast_vhdl_value_time_0(dp + 920072, dp + 940224, 0, 0, 0, 0, 1, 1);
+	iki_vlog_schedule_transaction_signal_fast_vhdl_value_time_0(dp + 919992, dp + 940112, 0, 0, 0, 0, 1, 1);
 
-	iki_vlog_schedule_transaction_signal_fast_vhdl_value_time_0(dp + 920072, dp + 940560, 0, 0, 0, 0, 1, 1);
+	iki_vlog_schedule_transaction_signal_fast_vhdl_value_time_0(dp + 919992, dp + 940448, 0, 0, 0, 0, 1, 1);
 
-	iki_vlog_schedule_transaction_signal_fast_vhdl_value_time_0(dp + 918584, dp + 940448, 0, 15, 0, 15, 16, 1);
+	iki_vlog_schedule_transaction_signal_fast_vhdl_value_time_0(dp + 918504, dp + 940336, 0, 15, 0, 15, 16, 1);
 
-	iki_vlog_schedule_transaction_signal_fast_vhdl_value_time_0(dp + 920832, dp + 940784, 0, 15, 0, 15, 16, 1);
+	iki_vlog_schedule_transaction_signal_fast_vhdl_value_time_0(dp + 920752, dp + 940672, 0, 15, 0, 15, 16, 1);
 
-	iki_vlog_schedule_transaction_signal_fast_vhdl_value_time_0(dp + 920560, dp + 940280, 0, 0, 0, 0, 1, 1);
+	iki_vlog_schedule_transaction_signal_fast_vhdl_value_time_0(dp + 920480, dp + 940168, 0, 0, 0, 0, 1, 1);
 
-	iki_vlog_schedule_transaction_signal_fast_vhdl_value_time_0(dp + 920560, dp + 940616, 0, 0, 0, 0, 1, 1);
+	iki_vlog_schedule_transaction_signal_fast_vhdl_value_time_0(dp + 920480, dp + 940504, 0, 0, 0, 0, 1, 1);
 
-	iki_vlog_schedule_transaction_signal_fast_vhdl_value_time_0(dp + 920560, dp + 940336, 0, 0, 0, 0, 1, 1);
+	iki_vlog_schedule_transaction_signal_fast_vhdl_value_time_0(dp + 920480, dp + 940224, 0, 0, 0, 0, 1, 1);
 
-	iki_vlog_schedule_transaction_signal_fast_vhdl_value_time_0(dp + 920872, dp + 940672, 0, 0, 0, 0, 1, 1);
+	iki_vlog_schedule_transaction_signal_fast_vhdl_value_time_0(dp + 920792, dp + 940560, 0, 0, 0, 0, 1, 1);
 
-	iki_vlog_schedule_transaction_signal_fast_vhdl_value_time_0(dp + 920504, dp + 991664, 0, 0, 0, 0, 1, 1);
+	iki_vlog_schedule_transaction_signal_fast_vhdl_value_time_0(dp + 920424, dp + 991552, 0, 0, 0, 0, 1, 1);
 
-	iki_vlog_schedule_transaction_signal_fast_vhdl_value_time_0(dp + 920448, dp + 991552, 0, 0, 0, 0, 1, 1);
+	iki_vlog_schedule_transaction_signal_fast_vhdl_value_time_0(dp + 920368, dp + 991440, 0, 0, 0, 0, 1, 1);
 
 }
 

@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0xE0EBE73215A5339C",
+      "boundary_crc": "0x75920A1F7984A24D",
       "device": "xc7a35tcpg236-1",
       "gen_directory": "../../../../I2C02 - Default Settings.gen/sources_1/bd/top",
       "name": "top",
@@ -23,7 +23,10 @@
       "I2C_camera_0": "",
       "ila_1": "",
       "I2C_OV7670_Master_0": "",
-      "debouncer_1": ""
+      "debouncer_1": "",
+      "i2c_master_digi_0": "",
+      "ov7670_config_0": "",
+      "util_vector_logic_0": ""
     },
     "ports": {
       "sys_clock": {
@@ -138,9 +141,6 @@
           }
         }
       },
-      "ov7670_SCL": {
-        "direction": "O"
-      },
       "ov7670_SDA": {
         "direction": "IO"
       },
@@ -160,6 +160,9 @@
             "value_src": "default"
           }
         }
+      },
+      "ov7670_SCL": {
+        "direction": "IO"
       }
     },
     "components": {
@@ -746,7 +749,166 @@
             }
           },
           "switch_debounced": {
+            "direction": "O",
+            "parameters": {
+              "PortType": {
+                "value": "undef",
+                "value_src": "ip_prop"
+              },
+              "PortType.PROP_SRC": {
+                "value": "false",
+                "value_src": "ip_prop"
+              }
+            }
+          }
+        }
+      },
+      "i2c_master_digi_0": {
+        "vlnv": "xilinx.com:module_ref:i2c_master_digi:1.0",
+        "ip_revision": "1",
+        "xci_name": "top_i2c_master_digi_0_0",
+        "xci_path": "ip\\top_i2c_master_digi_0_0\\top_i2c_master_digi_0_0.xci",
+        "inst_hier_path": "i2c_master_digi_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "i2c_master_digi",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "100000000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "/clk_wiz_0_clk_out1",
+                "value_src": "ip_prop"
+              }
+            }
+          },
+          "reset_n": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "ena": {
+            "direction": "I"
+          },
+          "addr": {
+            "direction": "I",
+            "left": "6",
+            "right": "0"
+          },
+          "rw": {
+            "direction": "I"
+          },
+          "data_wr": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "busy": {
             "direction": "O"
+          },
+          "data_rd": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "ack_error": {
+            "direction": "O"
+          },
+          "sda": {
+            "direction": "IO"
+          },
+          "scl": {
+            "direction": "IO"
+          }
+        }
+      },
+      "ov7670_config_0": {
+        "vlnv": "xilinx.com:module_ref:ov7670_config:1.0",
+        "ip_revision": "1",
+        "xci_name": "top_ov7670_config_0_0",
+        "xci_path": "ip\\top_ov7670_config_0_0\\top_ov7670_config_0_0.xci",
+        "inst_hier_path": "ov7670_config_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "ov7670_config",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "reset",
+                "value_src": "constant"
+              },
+              "FREQ_HZ": {
+                "value": "100000000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "/clk_wiz_0_clk_out1",
+                "value_src": "ip_prop"
+              }
+            }
+          },
+          "reset": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "busy": {
+            "direction": "I"
+          },
+          "ack_error": {
+            "direction": "I"
+          },
+          "ena": {
+            "direction": "O"
+          },
+          "addr": {
+            "direction": "O",
+            "left": "6",
+            "right": "0"
+          },
+          "data_wr": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "rw": {
+            "direction": "O"
+          },
+          "done": {
+            "direction": "O"
+          }
+        }
+      },
+      "util_vector_logic_0": {
+        "vlnv": "xilinx.com:ip:util_vector_logic:2.0",
+        "ip_revision": "3",
+        "xci_name": "top_util_vector_logic_0_0",
+        "xci_path": "ip\\top_util_vector_logic_0_0\\top_util_vector_logic_0_0.xci",
+        "inst_hier_path": "util_vector_logic_0",
+        "parameters": {
+          "C_OPERATION": {
+            "value": "not"
+          },
+          "C_SIZE": {
+            "value": "1"
           }
         }
       }
@@ -789,13 +951,6 @@
           "ila_1/probe6"
         ]
       },
-      "I2C_OV7670_Master_0_ov7670_SCL": {
-        "ports": [
-          "I2C_OV7670_Master_0/ov7670_SCL",
-          "ov7670_SCL",
-          "ila_1/probe0"
-        ]
-      },
       "I2C_OV7670_Master_0_ov7670_pwdn": {
         "ports": [
           "I2C_OV7670_Master_0/ov7670_pwdn",
@@ -822,12 +977,6 @@
           "ila_1/probe3"
         ]
       },
-      "I2C_OV7670_Master_0_sda_out_debug": {
-        "ports": [
-          "I2C_OV7670_Master_0/sda_out_debug",
-          "ila_1/probe1"
-        ]
-      },
       "I2C_OV7670_Master_0_state_debug": {
         "ports": [
           "I2C_OV7670_Master_0/state_debug",
@@ -849,7 +998,13 @@
       "Net": {
         "ports": [
           "ov7670_SDA",
-          "I2C_OV7670_Master_0/ov7670_SDA"
+          "i2c_master_digi_0/sda"
+        ]
+      },
+      "Net1": {
+        "ports": [
+          "ov7670_SCL",
+          "i2c_master_digi_0/scl"
         ]
       },
       "OutputFrame_Colour_0_Hsync": {
@@ -940,7 +1095,9 @@
         "ports": [
           "clk_wiz_0/clk_out1",
           "ila_1/clk",
-          "I2C_OV7670_Master_0/clk_100"
+          "I2C_OV7670_Master_0/clk_100",
+          "i2c_master_digi_0/clk",
+          "ov7670_config_0/clk"
         ]
       },
       "clk_wiz_0_clk_out25": {
@@ -967,7 +1124,47 @@
       "debouncer_1_switch_debounced": {
         "ports": [
           "debouncer_1/switch_debounced",
-          "I2C_OV7670_Master_0/reset"
+          "I2C_OV7670_Master_0/reset",
+          "ov7670_config_0/reset",
+          "util_vector_logic_0/Op1"
+        ]
+      },
+      "i2c_master_digi_0_ack_error": {
+        "ports": [
+          "i2c_master_digi_0/ack_error",
+          "ov7670_config_0/ack_error",
+          "ila_1/probe0"
+        ]
+      },
+      "i2c_master_digi_0_busy": {
+        "ports": [
+          "i2c_master_digi_0/busy",
+          "ov7670_config_0/busy",
+          "ila_1/probe1"
+        ]
+      },
+      "ov7670_config_0_addr": {
+        "ports": [
+          "ov7670_config_0/addr",
+          "i2c_master_digi_0/addr"
+        ]
+      },
+      "ov7670_config_0_data_wr": {
+        "ports": [
+          "ov7670_config_0/data_wr",
+          "i2c_master_digi_0/data_wr"
+        ]
+      },
+      "ov7670_config_0_ena": {
+        "ports": [
+          "ov7670_config_0/ena",
+          "i2c_master_digi_0/ena"
+        ]
+      },
+      "ov7670_config_0_rw": {
+        "ports": [
+          "ov7670_config_0/rw",
+          "i2c_master_digi_0/rw"
         ]
       },
       "ov7670_data_1": {
@@ -1006,6 +1203,12 @@
         "ports": [
           "sys_clock",
           "clk_wiz_0/clk_in1"
+        ]
+      },
+      "util_vector_logic_0_Res": {
+        "ports": [
+          "util_vector_logic_0/Res",
+          "i2c_master_digi_0/reset_n"
         ]
       },
       "xlconstant_1_dout": {

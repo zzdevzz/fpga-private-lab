@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Wed Jul 23 13:49:03 2025
+| Date         : Thu Jul 24 23:43:24 2025
 | Host         : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 | Command      : report_utilization -file top_wrapper_utilization_synth.rpt -pb top_wrapper_utilization_synth.pb
 | Design       : top_wrapper
@@ -92,7 +92,7 @@ Warning! LUT value is adjusted to account for LUT combining.
 +-----------------------------+------+-------+------------+-----------+-------+
 |          Site Type          | Used | Fixed | Prohibited | Available | Util% |
 +-----------------------------+------+-------+------------+-----------+-------+
-| Bonded IOB                  |   41 |     0 |          0 |       106 | 38.68 |
+| Bonded IOB                  |   40 |     0 |          0 |       106 | 37.74 |
 | Bonded IPADs                |    0 |     0 |          0 |        10 |  0.00 |
 | Bonded OPADs                |    0 |     0 |          0 |         4 |  0.00 |
 | PHY_CONTROL                 |    0 |     0 |          0 |         5 |  0.00 |
@@ -151,7 +151,7 @@ Warning! LUT value is adjusted to account for LUT combining.
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| OBUF     |   26 |                  IO |
+| OBUF     |   25 |                  IO |
 | IBUF     |   15 |                  IO |
 +----------+------+---------------------+
 
@@ -162,7 +162,11 @@ Warning! LUT value is adjusted to account for LUT combining.
 +----------------------------+------+
 |          Ref Name          | Used |
 +----------------------------+------+
+| top_util_vector_logic_0_0  |    1 |
+| top_ov7670_config_0_0      |    1 |
 | top_ila_0_1                |    1 |
+| top_i2c_master_digi_0_0    |    1 |
+| top_debouncer_0_1          |    1 |
 | top_debouncer_0_0          |    1 |
 | top_clk_wiz_0_0            |    1 |
 | top_blk_mem_gen_0_0        |    1 |

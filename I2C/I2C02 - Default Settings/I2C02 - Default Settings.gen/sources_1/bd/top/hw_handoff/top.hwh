@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Jul 23 15:46:18 2025" VIVADOVERSION="2023.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Jul 24 23:42:07 2025" VIVADOVERSION="2023.2">
 
   <SYSTEMINFO ARCH="artix7" BOARD="digilentinc.com:basys3:part0:1.2" DEVICE="7a35t" NAME="top" PACKAGE="cpg236" SPEEDGRADE="-1"/>
 
@@ -34,14 +34,14 @@
         <CONNECTION INSTANCE="OutputFrame_Colour_0" PORT="Vsync"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" NAME="ov7670_SCL" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_ov7670_SCL">
+    <PORT DIR="IO" NAME="ov7670_SCL" SIGIS="undef" SIGNAME="External_Ports_ov7670_SCL">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="I2C_OV7670_Master_0" PORT="ov7670_SCL"/>
+        <CONNECTION INSTANCE="i2c_master_digi_0" PORT="scl"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="IO" NAME="ov7670_SDA" SIGIS="undef" SIGNAME="External_Ports_ov7670_SDA">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="I2C_OV7670_Master_0" PORT="ov7670_SDA"/>
+        <CONNECTION INSTANCE="i2c_master_digi_0" PORT="sda"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" LEFT="7" NAME="ov7670_data" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_ov7670_data">
@@ -217,17 +217,8 @@
             <CONNECTION INSTANCE="ila_1" PORT="probe6"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="ov7670_SCL" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_ov7670_SCL">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="ov7670_SCL"/>
-            <CONNECTION INSTANCE="ila_1" PORT="probe0"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="IO" NAME="ov7670_SDA" SIGIS="undef" SIGNAME="External_Ports_ov7670_SDA">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="ov7670_SDA"/>
-          </CONNECTIONS>
-        </PORT>
+        <PORT DIR="O" NAME="ov7670_SCL" SIGIS="undef"/>
+        <PORT DIR="IO" NAME="ov7670_SDA" SIGIS="undef"/>
         <PORT DIR="O" NAME="ov7670_pwdn" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_ov7670_pwdn">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="ov7670_pwdn"/>
@@ -255,11 +246,7 @@
             <CONNECTION INSTANCE="ila_1" PORT="probe3"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="sda_out_debug" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_sda_out_debug">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ila_1" PORT="probe1"/>
-          </CONNECTIONS>
-        </PORT>
+        <PORT DIR="O" NAME="sda_out_debug" SIGIS="undef"/>
         <PORT DIR="I" LEFT="7" NAME="slave_reg_addr" RIGHT="0" SIGIS="undef" SIGNAME="I2C_camera_0_reg_addr">
           <CONNECTIONS>
             <CONNECTION INSTANCE="I2C_camera_0" PORT="reg_addr"/>
@@ -595,12 +582,12 @@
             <CONNECTION INSTANCE="BRAM_reader_0" PORT="bram_read_addr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="clka" SIGIS="clk" SIGNAME="clk_wiz_0_clk_out25">
+        <PORT CLKFREQUENCY="25000000" DIR="I" NAME="clka" SIGIS="clk" SIGNAME="clk_wiz_0_clk_out25">
           <CONNECTIONS>
             <CONNECTION INSTANCE="clk_wiz_0" PORT="clk_out25"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="clk_wiz_0_clk_out25">
+        <PORT CLKFREQUENCY="25000000" DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="clk_wiz_0_clk_out25">
           <CONNECTIONS>
             <CONNECTION INSTANCE="clk_wiz_0" PORT="clk_out25"/>
           </CONNECTIONS>
@@ -1258,6 +1245,8 @@
           <CONNECTIONS>
             <CONNECTION INSTANCE="ila_1" PORT="clk"/>
             <CONNECTION INSTANCE="I2C_OV7670_Master_0" PORT="clk_100"/>
+            <CONNECTION INSTANCE="i2c_master_digi_0" PORT="clk"/>
+            <CONNECTION INSTANCE="ov7670_config_0" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="25000000" DIR="O" NAME="clk_out25" SIGIS="clk" SIGNAME="clk_wiz_0_clk_out25">
@@ -1330,6 +1319,73 @@
         <PORT DIR="O" NAME="switch_debounced" SIGIS="undef" SIGNAME="debouncer_1_switch_debounced">
           <CONNECTIONS>
             <CONNECTION INSTANCE="I2C_OV7670_Master_0" PORT="reset"/>
+            <CONNECTION INSTANCE="ov7670_config_0" PORT="reset"/>
+            <CONNECTION INSTANCE="util_vector_logic_0" PORT="Op1"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/i2c_master_digi_0" HWVERSION="1.0" INSTANCE="i2c_master_digi_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="i2c_master_digi" VLNV="xilinx.com:module_ref:i2c_master_digi:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="bus_clk" VALUE="100000"/>
+        <PARAMETER NAME="input_clk" VALUE="100000000"/>
+        <PARAMETER NAME="Component_Name" VALUE="top_i2c_master_digi_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="O" NAME="ack_error" SIGIS="undef" SIGNAME="i2c_master_digi_0_ack_error">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ov7670_config_0" PORT="ack_error"/>
+            <CONNECTION INSTANCE="ila_1" PORT="probe0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="6" NAME="addr" RIGHT="0" SIGIS="undef" SIGNAME="ov7670_config_0_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ov7670_config_0" PORT="addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="busy" SIGIS="undef" SIGNAME="i2c_master_digi_0_busy">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ov7670_config_0" PORT="busy"/>
+            <CONNECTION INSTANCE="ila_1" PORT="probe1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="clk_wiz_0_clk_out1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="clk_wiz_0" PORT="clk_out1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="data_rd" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="I" LEFT="7" NAME="data_wr" RIGHT="0" SIGIS="undef" SIGNAME="ov7670_config_0_data_wr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ov7670_config_0" PORT="data_wr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="ena" SIGIS="undef" SIGNAME="ov7670_config_0_ena">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ov7670_config_0" PORT="ena"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="reset_n" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="util_vector_logic_0_Res">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="util_vector_logic_0" PORT="Res"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="rw" SIGIS="undef" SIGNAME="ov7670_config_0_rw">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ov7670_config_0" PORT="rw"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="IO" NAME="scl" SIGIS="undef" SIGNAME="External_Ports_ov7670_SCL">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="ov7670_SCL"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="IO" NAME="sda" SIGIS="undef" SIGNAME="External_Ports_ov7670_SDA">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="ov7670_SDA"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -4480,14 +4536,14 @@
             <CONNECTION INSTANCE="clk_wiz_0" PORT="clk_out1"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="probe0" RIGHT="0" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_ov7670_SCL">
+        <PORT DIR="I" LEFT="0" NAME="probe0" RIGHT="0" SIGIS="undef" SIGNAME="i2c_master_digi_0_ack_error">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="I2C_OV7670_Master_0" PORT="ov7670_SCL"/>
+            <CONNECTION INSTANCE="i2c_master_digi_0" PORT="ack_error"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="probe1" RIGHT="0" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_sda_out_debug">
+        <PORT DIR="I" LEFT="0" NAME="probe1" RIGHT="0" SIGIS="undef" SIGNAME="i2c_master_digi_0_busy">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="I2C_OV7670_Master_0" PORT="sda_out_debug"/>
+            <CONNECTION INSTANCE="i2c_master_digi_0" PORT="busy"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="0" NAME="probe2" RIGHT="0" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_sda_in_debug">
@@ -4505,7 +4561,7 @@
             <CONNECTION INSTANCE="I2C_OV7670_Master_0" PORT="ov7670_pwdn"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="probe5" RIGHT="0" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_ov7670_reset">
+        <PORT DIR="I" LEFT="0" NAME="probe5" POLARITY="ACTIVE_LOW" RIGHT="0" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_ov7670_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="I2C_OV7670_Master_0" PORT="ov7670_reset"/>
           </CONNECTIONS>
@@ -4523,6 +4579,80 @@
         <PORT DIR="I" LEFT="0" NAME="probe8" RIGHT="0" SIGIS="undef" SIGNAME="debouncer_0_switch_debounced">
           <CONNECTIONS>
             <CONNECTION INSTANCE="debouncer_0" PORT="switch_debounced"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/ov7670_config_0" HWVERSION="1.0" INSTANCE="ov7670_config_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="ov7670_config" VLNV="xilinx.com:module_ref:ov7670_config:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="top_ov7670_config_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" NAME="ack_error" SIGIS="undef" SIGNAME="i2c_master_digi_0_ack_error">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="i2c_master_digi_0" PORT="ack_error"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="6" NAME="addr" RIGHT="0" SIGIS="undef" SIGNAME="ov7670_config_0_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="i2c_master_digi_0" PORT="addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="busy" SIGIS="undef" SIGNAME="i2c_master_digi_0_busy">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="i2c_master_digi_0" PORT="busy"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="clk_wiz_0_clk_out1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="clk_wiz_0" PORT="clk_out1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="data_wr" RIGHT="0" SIGIS="undef" SIGNAME="ov7670_config_0_data_wr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="i2c_master_digi_0" PORT="data_wr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="done" SIGIS="undef"/>
+        <PORT DIR="O" NAME="ena" SIGIS="undef" SIGNAME="ov7670_config_0_ena">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="i2c_master_digi_0" PORT="ena"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="debouncer_1_switch_debounced">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="debouncer_1" PORT="switch_debounced"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="rw" SIGIS="undef" SIGNAME="ov7670_config_0_rw">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="i2c_master_digi_0" PORT="rw"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="3" FULLNAME="/util_vector_logic_0" HWVERSION="2.0" INSTANCE="util_vector_logic_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="util_vector_logic" VLNV="xilinx.com:ip:util_vector_logic:2.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="C_OPERATION" VALUE="not"/>
+        <PARAMETER NAME="C_SIZE" VALUE="1"/>
+        <PARAMETER NAME="Component_Name" VALUE="top_util_vector_logic_0_0"/>
+        <PARAMETER NAME="LOGO_FILE" VALUE="data/sym_notgate.png"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="0" NAME="Op1" RIGHT="0" SIGIS="undef" SIGNAME="debouncer_1_switch_debounced">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="debouncer_1" PORT="switch_debounced"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Res" RIGHT="0" SIGIS="undef" SIGNAME="util_vector_logic_0_Res">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="i2c_master_digi_0" PORT="reset_n"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>

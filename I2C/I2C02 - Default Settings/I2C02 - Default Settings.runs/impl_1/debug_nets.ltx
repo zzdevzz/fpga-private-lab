@@ -36,7 +36,7 @@
                                 "portIndex": 0,
                                 "nets": [
                                     {
-                                        "name": "top_i/I2C_OV7670_Master_0_ov7670_SCL",
+                                        "name": "top_i/i2c_master_digi_0_ack_error",
                                         "isBus": false
                                     }
                                 ]
@@ -52,7 +52,7 @@
                                 "portIndex": 1,
                                 "nets": [
                                     {
-                                        "name": "top_i/I2C_OV7670_Master_0_sda_out_debug",
+                                        "name": "top_i/i2c_master_digi_0_busy",
                                         "isBus": false
                                     }
                                 ]
@@ -171,6 +171,22 @@
                                                 "parentNetId": 7
                                             }
                                         ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe8",
+                                "id": 8,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 8,
+                                "nets": [
+                                    {
+                                        "name": "top_i/debouncer_0_switch_debounced",
+                                        "isBus": false
                                     }
                                 ]
                             }

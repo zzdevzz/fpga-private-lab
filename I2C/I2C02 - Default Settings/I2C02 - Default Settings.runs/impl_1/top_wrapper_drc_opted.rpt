@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Wed Jul 23 13:50:56 2025
+| Date         : Thu Jul 24 23:45:09 2025
 | Host         : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 | Command      : report_drc -file top_wrapper_drc_opted.rpt -pb top_wrapper_drc_opted.pb -rpx top_wrapper_drc_opted.rpx
 | Design       : top_wrapper
@@ -24,12 +24,12 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max violations: <unlimited>
-             Violations found: 2
+             Violations found: 3
 +---------+----------+---------------------------------+------------+
 | Rule    | Severity | Description                     | Violations |
 +---------+----------+---------------------------------+------------+
 | PLCK-12 | Warning  | Clock Placer Checks             | 1          |
-| RPBF-3  | Warning  | IO port buffering is incomplete | 1          |
+| RPBF-3  | Warning  | IO port buffering is incomplete | 2          |
 +---------+----------+---------------------------------+------------+
 
 2. REPORT DETAILS
@@ -46,6 +46,11 @@ Resolution: Poor placement of an IO pin and a BUFG has resulted in the router us
 Related violations: <none>
 
 RPBF-3#1 Warning
+IO port buffering is incomplete  
+Device port ov7670_SCL expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#2 Warning
 IO port buffering is incomplete  
 Device port ov7670_SDA expects both input and output buffering but the buffers are incomplete.
 Related violations: <none>

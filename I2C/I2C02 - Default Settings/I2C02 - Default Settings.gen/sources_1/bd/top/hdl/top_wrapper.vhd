@@ -2,7 +2,7 @@
 --Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
---Date        : Wed Jul 23 15:46:17 2025
+--Date        : Thu Jul 24 23:42:06 2025
 --Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 --Command     : generate_target top_wrapper.bd
 --Design      : top_wrapper
@@ -20,7 +20,7 @@ entity top_wrapper is
     Switch0 : in STD_LOGIC;
     Switch1 : in STD_LOGIC;
     Vsync : out STD_LOGIC;
-    ov7670_SCL : out STD_LOGIC;
+    ov7670_SCL : inout STD_LOGIC;
     ov7670_SDA : inout STD_LOGIC;
     ov7670_data : in STD_LOGIC_VECTOR ( 7 downto 0 );
     ov7670_href : in STD_LOGIC;
@@ -56,10 +56,10 @@ architecture STRUCTURE of top_wrapper is
     Switch0 : in STD_LOGIC;
     Switch1 : in STD_LOGIC;
     ov7670_xclk : out STD_LOGIC;
-    ov7670_SCL : out STD_LOGIC;
     ov7670_SDA : inout STD_LOGIC;
     ov7670_pwdn : out STD_LOGIC;
-    ov7670_reset : out STD_LOGIC
+    ov7670_reset : out STD_LOGIC;
+    ov7670_SCL : inout STD_LOGIC
   );
   end component top;
 begin

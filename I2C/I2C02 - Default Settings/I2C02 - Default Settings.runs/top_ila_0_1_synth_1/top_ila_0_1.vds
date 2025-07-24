@@ -3,8 +3,8 @@
 # SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Wed Jul 23 00:16:38 2025
-# Process ID: 26076
+# Start of session at: Thu Jul 24 23:07:20 2025
+# Process ID: 43056
 # Current directory: E:/FPGA/VHDL/Lab Training/I2C/I2C02 - Default Settings/I2C02 - Default Settings.runs/top_ila_0_1_synth_1
 # Command line: vivado.exe -log top_ila_0_1.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top_ila_0_1.tcl
 # Log file: E:/FPGA/VHDL/Lab Training/I2C/I2C02 - Default Settings/I2C02 - Default Settings.runs/top_ila_0_1_synth_1/top_ila_0_1.vds
@@ -12,7 +12,7 @@
 # Running On: DESKTOP-EFRMAI2, OS: Windows, CPU Frequency: 3700 MHz, CPU Physical cores: 24, Host memory: 34281 MB
 #-----------------------------------------------------------
 source top_ila_0_1.tcl -notrace
-create_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 510.902 ; gain = 216.449
+create_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 512.227 ; gain = 217.672
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1700] Loaded user IP repository 'j:/Xilinx/Vivado/vivado-library-master'.
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'J:/Xilinx/Vivado/2023.2/data/ip'.
@@ -27,9 +27,9 @@ INFO: [Device 21-403] Loading part xc7a35tcpg236-1
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
 WARNING: [Common 17-1361] You have specified a new message control rule that is equivalent to an existing rule with attributes ' -id {17-179}  -suppress '. The existing rule will be replaced.
-INFO: [Synth 8-7075] Helper process launched with PID 19748
+INFO: [Synth 8-7075] Helper process launched with PID 12252
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1389.461 ; gain = 438.965
+Starting RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1390.004 ; gain = 438.605
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [e:/FPGA/VHDL/Lab Training/I2C/I2C02 - Default Settings/I2C02 - Default Settings.gen/sources_1/bd/top/ipshared/ae90/hdl/verilog/xsdbm_v3_0_0_bs_core_ext.vh:30]
 INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [e:/FPGA/VHDL/Lab Training/I2C/I2C02 - Default Settings/I2C02 - Default Settings.gen/sources_1/bd/top/ipshared/ae90/hdl/verilog/xsdbm_v3_0_0_bs_core_ext.vh:32]
@@ -132,7 +132,7 @@ INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 
 INFO: [Synth 8-11241] undeclared symbol 'tms_int', assumed default net type 'wire' [e:/FPGA/VHDL/Lab Training/I2C/I2C02 - Default Settings/I2C02 - Default Settings.gen/sources_1/bd/top/ipshared/ae90/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:275]
 INFO: [Synth 8-11241] undeclared symbol 'runtest_int', assumed default net type 'wire' [e:/FPGA/VHDL/Lab Training/I2C/I2C02 - Default Settings/I2C02 - Default Settings.gen/sources_1/bd/top/ipshared/ae90/hdl/verilog/xsdbm_v3_0_0_bs_core_vec.vh:277]
 INFO: [Common 17-14] Message 'Synth 8-11241' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
-INFO: [Synth 8-638] synthesizing module 'top_ila_0_1' [e:/FPGA/VHDL/Lab Training/I2C/I2C02 - Default Settings/I2C02 - Default Settings.gen/sources_1/bd/top/ip/top_ila_0_1/synth/top_ila_0_1.vhd:69]
+INFO: [Synth 8-638] synthesizing module 'top_ila_0_1' [e:/FPGA/VHDL/Lab Training/I2C/I2C02 - Default Settings/I2C02 - Default Settings.gen/sources_1/bd/top/ip/top_ila_0_1/synth/top_ila_0_1.vhd:70]
 	Parameter C_XLNX_HW_PROBE_INFO bound to: DEFAULT - type: string 
 	Parameter C_XDEVICEFAMILY bound to: artix7 - type: string 
 	Parameter C_CORE_TYPE bound to: 1 - type: integer 
@@ -141,7 +141,7 @@ INFO: [Synth 8-638] synthesizing module 'top_ila_0_1' [e:/FPGA/VHDL/Lab Training
 	Parameter C_CAPTURE_TYPE bound to: 0 - type: integer 
 	Parameter C_MU_TYPE bound to: 0 - type: integer 
 	Parameter C_TC_TYPE bound to: 0 - type: integer 
-	Parameter C_NUM_OF_PROBES bound to: 8 - type: integer 
+	Parameter C_NUM_OF_PROBES bound to: 9 - type: integer 
 	Parameter C_DATA_DEPTH bound to: 16384 - type: integer 
 	Parameter C_MAJOR_VERSION bound to: 2023 - type: integer 
 	Parameter C_MINOR_VERSION bound to: 2 - type: integer 
@@ -2219,7 +2219,7 @@ INFO: [Synth 8-638] synthesizing module 'top_ila_0_1' [e:/FPGA/VHDL/Lab Training
 	Parameter C_PROBE5_TYPE bound to: 0 - type: integer 
 	Parameter C_PROBE6_TYPE bound to: 0 - type: integer 
 	Parameter C_PROBE7_TYPE bound to: 0 - type: integer 
-	Parameter C_PROBE8_TYPE bound to: 1 - type: integer 
+	Parameter C_PROBE8_TYPE bound to: 0 - type: integer 
 	Parameter C_PROBE9_TYPE bound to: 1 - type: integer 
 	Parameter C_PROBE10_TYPE bound to: 1 - type: integer 
 	Parameter C_PROBE11_TYPE bound to: 1 - type: integer 
@@ -3235,7 +3235,7 @@ INFO: [Synth 8-638] synthesizing module 'top_ila_0_1' [e:/FPGA/VHDL/Lab Training
 	Parameter C_PROBE1021_TYPE bound to: 1 - type: integer 
 	Parameter C_PROBE1022_TYPE bound to: 1 - type: integer 
 	Parameter C_PROBE1023_TYPE bound to: 1 - type: integer 
-INFO: [Synth 8-3491] module 'ila_v6_2_14_ila' declared at 'e:/FPGA/VHDL/Lab Training/I2C/I2C02 - Default Settings/I2C02 - Default Settings.gen/sources_1/bd/top/ipshared/0e59/hdl/ila_v6_2_syn_rfs.v:6191' bound to instance 'U0' of component 'ila_v6_2_14_ila' [e:/FPGA/VHDL/Lab Training/I2C/I2C02 - Default Settings/I2C02 - Default Settings.gen/sources_1/bd/top/ip/top_ila_0_1/synth/top_ila_0_1.vhd:4254]
+INFO: [Synth 8-3491] module 'ila_v6_2_14_ila' declared at 'e:/FPGA/VHDL/Lab Training/I2C/I2C02 - Default Settings/I2C02 - Default Settings.gen/sources_1/bd/top/ipshared/0e59/hdl/ila_v6_2_syn_rfs.v:6191' bound to instance 'U0' of component 'ila_v6_2_14_ila' [e:/FPGA/VHDL/Lab Training/I2C/I2C02 - Default Settings/I2C02 - Default Settings.gen/sources_1/bd/top/ip/top_ila_0_1/synth/top_ila_0_1.vhd:4255]
 INFO: [Synth 8-6157] synthesizing module 'CFGLUT5' [J:/Xilinx/Vivado/2023.2/scripts/rt/data/unisim_comp.v:2403]
 INFO: [Synth 8-6155] done synthesizing module 'CFGLUT5' (0#1) [J:/Xilinx/Vivado/2023.2/scripts/rt/data/unisim_comp.v:2403]
 INFO: [Synth 8-6157] synthesizing module 'CARRY4' [J:/Xilinx/Vivado/2023.2/scripts/rt/data/unisim_comp.v:2366]
@@ -3248,10 +3248,11 @@ INFO: [Synth 8-6157] synthesizing module 'SRLC16E' [J:/Xilinx/Vivado/2023.2/scri
 INFO: [Synth 8-6155] done synthesizing module 'SRLC16E' (0#1) [J:/Xilinx/Vivado/2023.2/scripts/rt/data/unisim_comp.v:133826]
 INFO: [Synth 8-6157] synthesizing module 'FDRE' [J:/Xilinx/Vivado/2023.2/scripts/rt/data/unisim_comp.v:41005]
 INFO: [Synth 8-6155] done synthesizing module 'FDRE' (0#1) [J:/Xilinx/Vivado/2023.2/scripts/rt/data/unisim_comp.v:41005]
-INFO: [Synth 8-256] done synthesizing module 'top_ila_0_1' (0#1) [e:/FPGA/VHDL/Lab Training/I2C/I2C02 - Default Settings/I2C02 - Default Settings.gen/sources_1/bd/top/ip/top_ila_0_1/synth/top_ila_0_1.vhd:69]
-WARNING: [Synth 8-3848] Net sl_iport0 in module/entity top_ila_0_1 does not have driver. [e:/FPGA/VHDL/Lab Training/I2C/I2C02 - Default Settings/I2C02 - Default Settings.gen/sources_1/bd/top/ip/top_ila_0_1/synth/top_ila_0_1.vhd:4251]
+INFO: [Synth 8-256] done synthesizing module 'top_ila_0_1' (0#1) [e:/FPGA/VHDL/Lab Training/I2C/I2C02 - Default Settings/I2C02 - Default Settings.gen/sources_1/bd/top/ip/top_ila_0_1/synth/top_ila_0_1.vhd:70]
+WARNING: [Synth 8-3848] Net sl_iport0 in module/entity top_ila_0_1 does not have driver. [e:/FPGA/VHDL/Lab Training/I2C/I2C02 - Default Settings/I2C02 - Default Settings.gen/sources_1/bd/top/ip/top_ila_0_1/synth/top_ila_0_1.vhd:4252]
 WARNING: [Synth 8-7129] Port SEL_I[0] in module ltlib_v1_0_1_generic_mux is either unconnected or has no load
 WARNING: [Synth 8-7129] Port CLKB in module blk_mem_gen_v8_4_7_blk_mem_output_block is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[12] in module blk_mem_gen_v8_4_7_blk_mem_output_block is either unconnected or has no load
 WARNING: [Synth 8-7129] Port DOUTA_I[11] in module blk_mem_gen_v8_4_7_blk_mem_output_block is either unconnected or has no load
 WARNING: [Synth 8-7129] Port DOUTA_I[10] in module blk_mem_gen_v8_4_7_blk_mem_output_block is either unconnected or has no load
 WARNING: [Synth 8-7129] Port DOUTA_I[9] in module blk_mem_gen_v8_4_7_blk_mem_output_block is either unconnected or has no load
@@ -3349,23 +3350,22 @@ WARNING: [Synth 8-7129] Port SBITERR in module blk_mem_gen_v8_4_7_blk_mem_gen_pr
 WARNING: [Synth 8-7129] Port DBITERR in module blk_mem_gen_v8_4_7_blk_mem_gen_prim_wrapper__parameterized2 is either unconnected or has no load
 WARNING: [Synth 8-7129] Port SSRA in module blk_mem_gen_v8_4_7_blk_mem_gen_prim_wrapper__parameterized2 is either unconnected or has no load
 WARNING: [Synth 8-7129] Port REGCEA in module blk_mem_gen_v8_4_7_blk_mem_gen_prim_wrapper__parameterized2 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port SSRB in module blk_mem_gen_v8_4_7_blk_mem_gen_prim_wrapper__parameterized2 is either unconnected or has no load
 INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:30 ; elapsed = 00:00:33 . Memory (MB): peak = 1928.160 ; gain = 977.664
+Finished RTL Elaboration : Time (s): cpu = 00:00:30 ; elapsed = 00:00:32 . Memory (MB): peak = 1925.590 ; gain = 974.191
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:31 ; elapsed = 00:00:33 . Memory (MB): peak = 1928.160 ; gain = 977.664
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:30 ; elapsed = 00:00:32 . Memory (MB): peak = 1925.590 ; gain = 974.191
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:31 ; elapsed = 00:00:33 . Memory (MB): peak = 1928.160 ; gain = 977.664
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:30 ; elapsed = 00:00:32 . Memory (MB): peak = 1925.590 ; gain = 974.191
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.091 . Memory (MB): peak = 1928.160 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 105 Unisim elements for replacement
-INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.094 . Memory (MB): peak = 1925.590 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 117 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -3378,30 +3378,30 @@ Parsing XDC File [E:/FPGA/VHDL/Lab Training/I2C/I2C02 - Default Settings/I2C02 -
 Finished Parsing XDC File [E:/FPGA/VHDL/Lab Training/I2C/I2C02 - Default Settings/I2C02 - Default Settings.runs/top_ila_0_1_synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1928.160 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1925.590 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 72 instances were transformed.
-  CFGLUT5 => CFGLUT5 (SRL16E, SRLC32E): 60 instances
-  CFGLUT5 => SRLC32E: 12 instances
+  A total of 81 instances were transformed.
+  CFGLUT5 => CFGLUT5 (SRL16E, SRLC32E): 68 instances
+  CFGLUT5 => SRLC32E: 13 instances
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.119 . Memory (MB): peak = 1928.160 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.125 . Memory (MB): peak = 1925.590 ; gain = 0.000
 INFO: [Designutils 20-5008] Incremental synthesis strategy off
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:38 ; elapsed = 00:00:40 . Memory (MB): peak = 1928.160 ; gain = 977.664
+Finished Constraint Validation : Time (s): cpu = 00:00:38 ; elapsed = 00:00:40 . Memory (MB): peak = 1925.590 ; gain = 974.191
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:38 ; elapsed = 00:00:40 . Memory (MB): peak = 1928.160 ; gain = 977.664
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:38 ; elapsed = 00:00:40 . Memory (MB): peak = 1925.590 ; gain = 974.191
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 Applied set_property KEEP_HIERARCHY = SOFT for U0. (constraint file  {E:/FPGA/VHDL/Lab Training/I2C/I2C02 - Default Settings/I2C02 - Default Settings.runs/top_ila_0_1_synth_1/dont_touch.xdc}, line 9).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:38 ; elapsed = 00:00:40 . Memory (MB): peak = 1928.160 ; gain = 977.664
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:38 ; elapsed = 00:00:41 . Memory (MB): peak = 1925.590 ; gain = 974.191
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_3_reg_p2s'
 INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_3_reg_p2s__parameterized0'
@@ -3413,6 +3413,7 @@ INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in modul
 INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_3_reg_p2s__parameterized6'
 INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_3_reg_p2s__parameterized7'
 INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_3_reg_p2s__parameterized8'
+INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_3_reg_p2s__parameterized9'
 INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'ltlib_v1_0_1_generic_memrd'
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
@@ -3518,6 +3519,16 @@ INFO: [Synth 8-3898] No Re-encoding of one hot register 'current_state_reg' in m
                    State |                     New Encoding |                Previous Encoding 
 ---------------------------------------------------------------------------------------------------
 *
+                    IDLE |                             0001 |                             0001
+                     REG |                             0010 |                             0010
+                     P2S |                             0100 |                             0100
+                     S2P |                             1000 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3898] No Re-encoding of one hot register 'current_state_reg' in module 'xsdbs_v1_0_3_reg_p2s__parameterized9'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
               RESET_ADDR |                          0000001 |                          0000001
             REQUEST_READ |                          0000010 |                          0000010
            WAIT_READ_ACK |                          0000100 |                          0000100
@@ -3527,7 +3538,7 @@ INFO: [Synth 8-3898] No Re-encoding of one hot register 'current_state_reg' in m
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3898] No Re-encoding of one hot register 'current_state_reg' in module 'ltlib_v1_0_1_generic_memrd'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:40 ; elapsed = 00:00:42 . Memory (MB): peak = 1928.160 ; gain = 977.664
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:40 ; elapsed = 00:00:42 . Memory (MB): peak = 1925.590 ; gain = 974.191
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -3549,25 +3560,25 @@ Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:47 ; elapsed = 00:00:49 . Memory (MB): peak = 1928.160 ; gain = 977.664
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:47 ; elapsed = 00:00:50 . Memory (MB): peak = 1925.590 ; gain = 974.191
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:52 ; elapsed = 00:00:54 . Memory (MB): peak = 1928.160 ; gain = 977.664
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:52 ; elapsed = 00:00:55 . Memory (MB): peak = 1925.590 ; gain = 974.191
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:52 ; elapsed = 00:00:54 . Memory (MB): peak = 1928.160 ; gain = 977.664
+Finished Timing Optimization : Time (s): cpu = 00:00:52 ; elapsed = 00:00:55 . Memory (MB): peak = 1925.590 ; gain = 974.191
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:53 ; elapsed = 00:00:55 . Memory (MB): peak = 1928.160 ; gain = 977.664
+Finished Technology Mapping : Time (s): cpu = 00:00:53 ; elapsed = 00:00:55 . Memory (MB): peak = 1925.590 ; gain = 974.191
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -3623,37 +3634,37 @@ INFO: [Synth 8-3295] tying undriven pin U0:sl_iport0[2] to constant 0
 INFO: [Synth 8-3295] tying undriven pin U0:sl_iport0[1] to constant 0
 INFO: [Synth 8-3295] tying undriven pin U0:sl_iport0[0] to constant 0
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:56 ; elapsed = 00:00:59 . Memory (MB): peak = 1928.160 ; gain = 977.664
+Finished IO Insertion : Time (s): cpu = 00:00:56 ; elapsed = 00:00:59 . Memory (MB): peak = 1925.590 ; gain = 974.191
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:56 ; elapsed = 00:00:59 . Memory (MB): peak = 1928.160 ; gain = 977.664
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:56 ; elapsed = 00:00:59 . Memory (MB): peak = 1925.590 ; gain = 974.191
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:56 ; elapsed = 00:00:59 . Memory (MB): peak = 1928.160 ; gain = 977.664
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:56 ; elapsed = 00:00:59 . Memory (MB): peak = 1925.590 ; gain = 974.191
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:56 ; elapsed = 00:00:59 . Memory (MB): peak = 1928.160 ; gain = 977.664
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:56 ; elapsed = 00:00:59 . Memory (MB): peak = 1925.590 ; gain = 974.191
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:56 ; elapsed = 00:00:59 . Memory (MB): peak = 1928.160 ; gain = 977.664
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:56 ; elapsed = 00:00:59 . Memory (MB): peak = 1925.590 ; gain = 974.191
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:56 ; elapsed = 00:00:59 . Memory (MB): peak = 1928.160 ; gain = 977.664
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:56 ; elapsed = 00:00:59 . Memory (MB): peak = 1925.590 ; gain = 974.191
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -3669,51 +3680,50 @@ Report Cell Usage:
 +------+---------+------+
 |      |Cell     |Count |
 +------+---------+------+
-|1     |CARRY4   |    39|
-|2     |CFGLUT5  |    72|
-|3     |LUT1     |    34|
-|4     |LUT2     |    39|
-|5     |LUT3     |   114|
-|6     |LUT4     |   143|
-|7     |LUT5     |    82|
-|8     |LUT6     |   518|
-|9     |MUXF7    |    19|
-|10    |RAMB18E1 |     1|
-|11    |RAMB36E1 |     5|
-|13    |SRL16E   |    15|
-|14    |SRLC16E  |     2|
-|15    |SRLC32E  |    17|
-|16    |FDRE     |  1469|
-|17    |FDSE     |    10|
+|1     |CARRY4   |    42|
+|2     |CFGLUT5  |    81|
+|3     |LUT1     |    35|
+|4     |LUT2     |    42|
+|5     |LUT3     |   119|
+|6     |LUT4     |   149|
+|7     |LUT5     |    99|
+|8     |LUT6     |   542|
+|9     |MUXF7    |     4|
+|10    |RAMB36E1 |     6|
+|12    |SRL16E   |    16|
+|13    |SRLC16E  |     2|
+|14    |SRLC32E  |    17|
+|15    |FDRE     |  1521|
+|16    |FDSE     |    10|
 +------+---------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:56 ; elapsed = 00:00:59 . Memory (MB): peak = 1928.160 ; gain = 977.664
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:56 ; elapsed = 00:00:59 . Memory (MB): peak = 1925.590 ; gain = 974.191
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 2859 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:23 ; elapsed = 00:00:56 . Memory (MB): peak = 1928.160 ; gain = 977.664
-Synthesis Optimization Complete : Time (s): cpu = 00:00:57 ; elapsed = 00:00:59 . Memory (MB): peak = 1928.160 ; gain = 977.664
+Synthesis finished with 0 errors, 0 critical warnings and 2922 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:23 ; elapsed = 00:00:56 . Memory (MB): peak = 1925.590 ; gain = 974.191
+Synthesis Optimization Complete : Time (s): cpu = 00:00:57 ; elapsed = 00:00:59 . Memory (MB): peak = 1925.590 ; gain = 974.191
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.039 . Memory (MB): peak = 1928.160 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 136 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.040 . Memory (MB): peak = 1925.590 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 133 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1928.160 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1925.590 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 72 instances were transformed.
-  CFGLUT5 => CFGLUT5 (SRL16E, SRLC32E): 60 instances
-  CFGLUT5 => SRLC32E: 12 instances
+  A total of 81 instances were transformed.
+  CFGLUT5 => CFGLUT5 (SRL16E, SRLC32E): 68 instances
+  CFGLUT5 => SRLC32E: 13 instances
 
-Synth Design complete | Checksum: 1d0638fe
+Synth Design complete | Checksum: 729a1451
 INFO: [Common 17-83] Releasing license: Synthesis
-198 Infos, 104 Warnings, 0 Critical Warnings and 0 Errors encountered.
+200 Infos, 104 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:01 ; elapsed = 00:01:03 . Memory (MB): peak = 1928.160 ; gain = 1364.102
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1928.160 ; gain = 0.000
+synth_design: Time (s): cpu = 00:01:01 ; elapsed = 00:01:04 . Memory (MB): peak = 1925.590 ; gain = 1360.176
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1925.590 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'E:/FPGA/VHDL/Lab Training/I2C/I2C02 - Default Settings/I2C02 - Default Settings.runs/top_ila_0_1_synth_1/top_ila_0_1.dcp' has been generated.
-INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP top_ila_0_1, cache-ID = 14bbe1523498398e
-INFO: [Coretcl 2-1174] Renamed 151 cell refs.
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1928.160 ; gain = 0.000
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP top_ila_0_1, cache-ID = 04e40577b46d55c0
+INFO: [Coretcl 2-1174] Renamed 157 cell refs.
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1925.590 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'E:/FPGA/VHDL/Lab Training/I2C/I2C02 - Default Settings/I2C02 - Default Settings.runs/top_ila_0_1_synth_1/top_ila_0_1.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file top_ila_0_1_utilization_synth.rpt -pb top_ila_0_1_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Wed Jul 23 00:17:55 2025...
+INFO: [Common 17-206] Exiting Vivado at Thu Jul 24 23:08:38 2025...

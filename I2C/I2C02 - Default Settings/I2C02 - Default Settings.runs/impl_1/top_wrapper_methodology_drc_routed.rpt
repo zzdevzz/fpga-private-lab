@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Wed Jul 23 13:51:29 2025
+| Date         : Thu Jul 24 23:45:41 2025
 | Host         : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 | Command      : report_methodology -file top_wrapper_methodology_drc_routed.rpt -pb top_wrapper_methodology_drc_routed.pb -rpx top_wrapper_methodology_drc_routed.rpx
 | Design       : top_wrapper
@@ -23,12 +23,13 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 51
+             Violations found: 53
 +-----------+------------------+----------------------------------+------------+
 | Rule      | Severity         | Description                      | Violations |
 +-----------+------------------+----------------------------------+------------+
 | TIMING-17 | Critical Warning | Non-clocked sequential cell      | 44         |
-| HPDR-1    | Warning          | Port pin direction inconsistency | 1          |
+| HPDR-1    | Warning          | Port pin direction inconsistency | 2          |
+| HPDR-2    | Warning          | Port pin INOUT inconsistency     | 1          |
 | LUTAR-1   | Warning          | LUT drives async reset alert     | 4          |
 | TIMING-18 | Warning          | Missing input or output delay    | 2          |
 +-----------+------------------+----------------------------------+------------+
@@ -257,7 +258,17 @@ Related violations: <none>
 
 HPDR-1#1 Warning
 Port pin direction inconsistency  
+Hierarchical port(pin) ov7670_SCL direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (ov7670_SCL) connected to this Port, but both were not found.
+Related violations: <none>
+
+HPDR-1#2 Warning
+Port pin direction inconsistency  
 Hierarchical port(pin) ov7670_SDA direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (ov7670_SDA) connected to this Port, but both were not found.
+Related violations: <none>
+
+HPDR-2#1 Warning
+Port pin INOUT inconsistency  
+Hierarchical port(pin) top_i/ov7670_SDA direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (ov7670_SDA_OBUF) connected to this hierarchical pin/port, but both were not found.
 Related violations: <none>
 
 LUTAR-1#1 Warning
@@ -290,7 +301,7 @@ Related violations: <none>
 
 TIMING-18#1 Warning
 Missing input or output delay  
-An output delay is missing on ov7670_SCL relative to the rising and/or falling clock edge(s) of sys_clock.
+An output delay is missing on ov7670_SDA relative to the rising and/or falling clock edge(s) of sys_clock.
 Related violations: <none>
 
 TIMING-18#2 Warning

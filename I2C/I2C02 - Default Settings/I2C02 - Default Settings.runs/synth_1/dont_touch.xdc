@@ -42,4 +42,16 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==top_ila_0_1
 # IP: bd/top/ip/top_I2C_OV7670_Master_0_0/top_I2C_OV7670_Master_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==top_I2C_OV7670_Master_0_0 || ORIG_REF_NAME==top_I2C_OV7670_Master_0_0} -quiet] -quiet
 
+# IP: bd/top/ip/top_debouncer_0_1/top_debouncer_0_1.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==top_debouncer_0_1 || ORIG_REF_NAME==top_debouncer_0_1} -quiet] -quiet
+
+# IP: bd/top/ip/top_i2c_master_digi_0_0/top_i2c_master_digi_0_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==top_i2c_master_digi_0_0 || ORIG_REF_NAME==top_i2c_master_digi_0_0} -quiet] -quiet
+
+# IP: bd/top/ip/top_ov7670_config_0_0/top_ov7670_config_0_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==top_ov7670_config_0_0 || ORIG_REF_NAME==top_ov7670_config_0_0} -quiet] -quiet
+
+# IP: bd/top/ip/top_util_vector_logic_0_0/top_util_vector_logic_0_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==top_util_vector_logic_0_0 || ORIG_REF_NAME==top_util_vector_logic_0_0} -quiet] -quiet
+
 # XDC: e:/FPGA/VHDL/Lab Training/I2C/I2C02 - Default Settings/I2C02 - Default Settings.gen/sources_1/bd/top/top_ooc.xdc

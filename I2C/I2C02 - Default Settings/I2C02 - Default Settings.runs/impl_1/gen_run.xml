@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1753274865">
+<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1753396930">
   <File Type="ROUTE-PWR" Name="top_wrapper_power_routed.rpt"/>
   <File Type="PA-TCL" Name="top_wrapper.tcl"/>
   <File Type="ROUTE-PWR-SUM" Name="top_wrapper_power_summary_routed.pb"/>
@@ -128,6 +128,18 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PSRCDIR/sources_1/new/i2c_master_digi.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/ov7670_config.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PSRCDIR/sources_1/bd/top/top.bd">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -221,6 +233,9 @@
   <BlockFileSet Type="BlockSrcs" Name="top_OutputFrame_Colour_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="top_blk_mem_gen_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="top_Pixel_Capture_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="top_util_vector_logic_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="top_i2c_master_digi_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="top_ila_0_1"/>
   <BlockFileSet Type="BlockSrcs" Name="top_I2C_OV7670_Master_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="top_ov7670_config_0_0"/>
 </GenRun>

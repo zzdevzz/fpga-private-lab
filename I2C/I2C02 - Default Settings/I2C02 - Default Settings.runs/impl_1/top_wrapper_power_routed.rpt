@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date             : Wed Jul 23 13:51:30 2025
+| Date             : Thu Jul 24 23:45:42 2025
 | Host             : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 | Command          : report_power -file top_wrapper_power_routed.rpt -pb top_wrapper_power_summary_routed.pb -rpx top_wrapper_power_routed.rpx
 | Design           : top_wrapper
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.205        |
+| Total On-Chip Power (W)  | 0.206        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.131        |
+| Dynamic (W)              | 0.132        |
 | Device Static (W)        | 0.074        |
 | Effective TJA (C/W)      | 5.0          |
 | Max Ambient (C)          | 84.0         |
@@ -53,21 +53,21 @@ Table of Contents
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
 | Clocks                   |     0.011 |        7 |       --- |             --- |
-| Slice Logic              |     0.001 |     4766 |       --- |             --- |
-|   LUT as Logic           |    <0.001 |     1415 |     20800 |            6.80 |
-|   Register               |    <0.001 |     2344 |     41600 |            5.63 |
-|   CARRY4                 |    <0.001 |       75 |      8150 |            0.92 |
+| Slice Logic              |     0.001 |     5003 |       --- |             --- |
+|   LUT as Logic           |     0.001 |     1521 |     20800 |            7.31 |
+|   Register               |    <0.001 |     2430 |     41600 |            5.84 |
+|   CARRY4                 |    <0.001 |       77 |      8150 |            0.94 |
 |   BUFG                   |    <0.001 |        1 |        32 |            3.13 |
 |   LUT as Distributed RAM |    <0.001 |       24 |      9600 |            0.25 |
-|   F7/F8 Muxes            |    <0.001 |       35 |     32600 |            0.11 |
-|   LUT as Shift Register  |    <0.001 |      102 |      9600 |            1.06 |
-|   Others                 |     0.000 |      385 |       --- |             --- |
-| Signals                  |     0.002 |     3550 |       --- |             --- |
-| Block RAM                |     0.008 |       34 |        50 |           68.00 |
+|   LUT as Shift Register  |    <0.001 |      112 |      9600 |            1.17 |
+|   F7/F8 Muxes            |    <0.001 |       22 |     32600 |            0.07 |
+|   Others                 |     0.000 |      404 |       --- |             --- |
+| Signals                  |     0.002 |     3734 |       --- |             --- |
+| Block RAM                |     0.007 |     34.5 |        50 |           69.00 |
 | PLL                      |     0.100 |        1 |         5 |           20.00 |
-| I/O                      |     0.009 |       43 |       106 |           40.57 |
+| I/O                      |     0.010 |       43 |       106 |           40.57 |
 | Static Power             |     0.074 |          |           |                 |
-| Total                    |     0.205 |          |           |                 |
+| Total                    |     0.206 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -150,7 +150,7 @@ Table of Contents
 +--------------------------+-----------+
 | Name                     | Power (W) |
 +--------------------------+-----------+
-| top_wrapper              |     0.131 |
+| top_wrapper              |     0.132 |
 |   dbg_hub                |     0.003 |
 |     inst                 |     0.003 |
 |       BSCANID.u_xsdbm_id |     0.003 |
@@ -159,8 +159,8 @@ Table of Contents
 |       U0                 |     0.005 |
 |     clk_wiz_0            |     0.101 |
 |       inst               |     0.101 |
-|     ila_1                |     0.012 |
-|       U0                 |     0.012 |
+|     ila_1                |     0.011 |
+|       U0                 |     0.011 |
 +--------------------------+-----------+
 
 
