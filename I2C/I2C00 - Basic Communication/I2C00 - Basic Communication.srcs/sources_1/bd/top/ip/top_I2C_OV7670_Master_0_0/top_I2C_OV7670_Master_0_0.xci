@@ -1,0 +1,81 @@
+{
+  "schema": "xilinx.com:schema:json_instance:1.0",
+  "ip_inst": {
+    "xci_name": "top_I2C_OV7670_Master_0_0",
+    "cell_name": "I2C_OV7670_Master_0",
+    "component_reference": "xilinx.com:module_ref:I2C_OV7670_Master:1.0",
+    "ip_revision": "1",
+    "gen_directory": "../../../../../../I2C00 - Basic Communication.gen/sources_1/bd/top/ip/top_I2C_OV7670_Master_0_0",
+    "parameters": {
+      "component_parameters": {
+        "Component_Name": [ { "value": "top_I2C_OV7670_Master_0_0", "resolve_type": "user", "usage": "all" } ]
+      },
+      "project_parameters": {
+        "ARCHITECTURE": [ { "value": "artix7" } ],
+        "BASE_BOARD_PART": [ { "value": "digilentinc.com:basys3:part0:1.2" } ],
+        "BOARD_CONNECTIONS": [ { "value": "" } ],
+        "DEVICE": [ { "value": "xc7a35t" } ],
+        "PACKAGE": [ { "value": "cpg236" } ],
+        "PREFHDL": [ { "value": "VHDL" } ],
+        "SILICON_REVISION": [ { "value": "" } ],
+        "SIMULATOR_LANGUAGE": [ { "value": "MIXED" } ],
+        "SPEEDGRADE": [ { "value": "-1" } ],
+        "STATIC_POWER": [ { "value": "" } ],
+        "TEMPERATURE_GRADE": [ { "value": "" } ]
+      },
+      "runtime_parameters": {
+        "IPCONTEXT": [ { "value": "IP_Integrator" } ],
+        "IPREVISION": [ { "value": "1" } ],
+        "MANAGED": [ { "value": "TRUE" } ],
+        "OUTPUTDIR": [ { "value": "../../../../../../I2C00 - Basic Communication.gen/sources_1/bd/top/ip/top_I2C_OV7670_Master_0_0" } ],
+        "SELECTEDSIMMODEL": [ { "value": "" } ],
+        "SHAREDDIR": [ { "value": "../../ipshared" } ],
+        "SWVERSION": [ { "value": "2023.2" } ],
+        "SYNTHESISFLOW": [ { "value": "OOC_HIERARCHICAL" } ]
+      }
+    },
+    "boundary": {
+      "ports": {
+        "clk_100": [ { "direction": "in" } ],
+        "reset": [ { "direction": "in" } ],
+        "slave_reg_addr": [ { "direction": "in", "size_left": "7", "size_right": "0" } ],
+        "slave_reg_data": [ { "direction": "in", "size_left": "7", "size_right": "0" } ],
+        "ov7670_SCL": [ { "direction": "out" } ],
+        "ov7670_SDA": [ { "direction": "inout" } ],
+        "sda_out_debug": [ { "direction": "out" } ],
+        "sda_in_debug": [ { "direction": "out" } ],
+        "sda_oe_debug": [ { "direction": "out" } ],
+        "i2c_data_read": [ { "direction": "out", "size_left": "1", "size_right": "0" } ],
+        "state_debug": [ { "direction": "out", "size_left": "2", "size_right": "0" } ],
+        "ov7670_pwdn": [ { "direction": "out", "driver_value": "0x0" } ],
+        "ov7670_reset": [ { "direction": "out" } ]
+      },
+      "interfaces": {
+        "ov7670_reset": {
+          "vlnv": "xilinx.com:signal:reset:1.0",
+          "abstraction_type": "xilinx.com:signal:reset_rtl:1.0",
+          "mode": "master",
+          "parameters": {
+            "POLARITY": [ { "value": "ACTIVE_LOW", "value_permission": "bd_and_user", "resolve_type": "generated", "is_ips_inferred": true, "is_static_object": false } ],
+            "INSERT_VIP": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "simulation.rtl", "is_ips_inferred": true, "is_static_object": false } ]
+          },
+          "port_maps": {
+            "RST": [ { "physical_name": "ov7670_reset" } ]
+          }
+        },
+        "reset": {
+          "vlnv": "xilinx.com:signal:reset:1.0",
+          "abstraction_type": "xilinx.com:signal:reset_rtl:1.0",
+          "mode": "slave",
+          "parameters": {
+            "POLARITY": [ { "value": "ACTIVE_LOW", "value_permission": "bd_and_user", "resolve_type": "generated", "is_ips_inferred": true, "is_static_object": false } ],
+            "INSERT_VIP": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "simulation.rtl", "is_ips_inferred": true, "is_static_object": false } ]
+          },
+          "port_maps": {
+            "RST": [ { "physical_name": "reset" } ]
+          }
+        }
+      }
+    }
+  }
+}
