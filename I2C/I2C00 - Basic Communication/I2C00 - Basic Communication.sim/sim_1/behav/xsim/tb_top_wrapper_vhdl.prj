@@ -2,12 +2,13 @@
 vhdl xil_defaultlib  \
 "../../../../I2C00 - Basic Communication.srcs/sources_1/new/debouncer.vhd" \
 "../../../../I2C00 - Basic Communication.srcs/sources_1/new/I2C_OV7670_Master.vhd" \
-"../../../../I2C00 - Basic Communication.srcs/sources_1/new/i2c_ov7670_slave_sim.vhd" \
+"../../../../I2C00 - Basic Communication.srcs/sources_1/new/I2C_OV7670_config.vhd" \
 "../../../../I2C00 - Basic Communication.ip_user_files/bd/top/ip/top_debouncer_0_0/sim/top_debouncer_0_0.vhd" \
-"../../../../I2C00 - Basic Communication.ip_user_files/bd/top/ip/top_I2C_camera_0_0/sim/top_I2C_camera_0_0.vhd" \
 "../../../../I2C00 - Basic Communication.ip_user_files/bd/top/ip/top_I2C_OV7670_Master_0_0/sim/top_I2C_OV7670_Master_0_0.vhd" \
-"../../../../I2C00 - Basic Communication.ip_user_files/bd/top/ip/top_i2c_ov7670_slave_sim_0_0/sim/top_i2c_ov7670_slave_sim_0_0.vhd" \
+"../../../../I2C00 - Basic Communication.ip_user_files/bd/top/ip/top_ila_0_0/sim/top_ila_0_0.vhd" \
 "../../../../I2C00 - Basic Communication.ip_user_files/bd/top/sim/top.vhd" \
+"../../../../I2C00 - Basic Communication.ip_user_files/bd/top/ip/top_I2C_OV7670_config_0_0/sim/top_I2C_OV7670_config_0_0.vhd" \
+"../../../../I2C00 - Basic Communication.srcs/sources_1/new/i2c_ov7670_slave_sim.vhd" \
 "../../../../I2C00 - Basic Communication.gen/sources_1/bd/top/hdl/top_wrapper.vhd" \
 "../../../../I2C00 - Basic Communication.srcs/sim_1/new/tb_top_wrapper.vhd" \
 

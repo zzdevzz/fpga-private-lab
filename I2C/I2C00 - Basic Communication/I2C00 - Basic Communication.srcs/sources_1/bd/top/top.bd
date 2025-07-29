@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x3B57D97C455677A2",
+      "boundary_crc": "0x77563DA1142E477B",
       "device": "xc7a35tcpg236-1",
       "gen_directory": "../../../../I2C00 - Basic Communication.gen/sources_1/bd/top",
       "name": "top",
@@ -13,9 +13,9 @@
     "design_tree": {
       "clk_wiz_0": "",
       "debouncer_0": "",
-      "I2C_camera_0": "",
       "I2C_OV7670_Master_0": "",
-      "i2c_ov7670_slave_sim_0": ""
+      "ila_0": "",
+      "I2C_OV7670_config_0": ""
     },
     "ports": {
       "sys_clock": {
@@ -57,6 +57,12 @@
       },
       "BTNL": {
         "direction": "I"
+      },
+      "ov7670_SCL": {
+        "direction": "O"
+      },
+      "ov7670_SDA": {
+        "direction": "IO"
       }
     },
     "components": {
@@ -179,35 +185,6 @@
           }
         }
       },
-      "I2C_camera_0": {
-        "vlnv": "xilinx.com:module_ref:I2C_camera:1.0",
-        "ip_revision": "1",
-        "xci_name": "top_I2C_camera_0_0",
-        "xci_path": "ip\\top_I2C_camera_0_0\\top_I2C_camera_0_0.xci",
-        "inst_hier_path": "I2C_camera_0",
-        "reference_info": {
-          "ref_type": "unknown",
-          "ref_name": "I2C_camera",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "index": {
-            "direction": "I",
-            "left": "1",
-            "right": "0"
-          },
-          "reg_addr": {
-            "direction": "O",
-            "left": "7",
-            "right": "0"
-          },
-          "reg_data": {
-            "direction": "O",
-            "left": "7",
-            "right": "0"
-          }
-        }
-      },
       "I2C_OV7670_Master_0": {
         "vlnv": "xilinx.com:module_ref:I2C_OV7670_Master:1.0",
         "ip_revision": "1",
@@ -266,6 +243,21 @@
           "sda_oe_debug": {
             "direction": "O"
           },
+          "shift_reg_debug": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "byte_counter_debug": {
+            "direction": "O",
+            "left": "1",
+            "right": "0"
+          },
+          "bit_counter_debug": {
+            "direction": "O",
+            "left": "3",
+            "right": "0"
+          },
           "i2c_data_read": {
             "direction": "O",
             "left": "1",
@@ -285,23 +277,65 @@
           }
         }
       },
-      "i2c_ov7670_slave_sim_0": {
-        "vlnv": "xilinx.com:module_ref:i2c_ov7670_slave_sim:1.0",
+      "ila_0": {
+        "vlnv": "xilinx.com:ip:ila:6.2",
+        "ip_revision": "14",
+        "xci_name": "top_ila_0_0",
+        "xci_path": "ip\\top_ila_0_0\\top_ila_0_0.xci",
+        "inst_hier_path": "ila_0",
+        "parameters": {
+          "C_DATA_DEPTH": {
+            "value": "16384"
+          },
+          "C_MONITOR_TYPE": {
+            "value": "Native"
+          },
+          "C_NUM_OF_PROBES": {
+            "value": "9"
+          },
+          "C_PROBE4_WIDTH": {
+            "value": "3"
+          },
+          "C_PROBE5_WIDTH": {
+            "value": "1"
+          },
+          "C_PROBE6_WIDTH": {
+            "value": "8"
+          },
+          "C_PROBE7_WIDTH": {
+            "value": "2"
+          },
+          "C_PROBE8_WIDTH": {
+            "value": "4"
+          }
+        }
+      },
+      "I2C_OV7670_config_0": {
+        "vlnv": "xilinx.com:module_ref:I2C_OV7670_config:1.0",
         "ip_revision": "1",
-        "xci_name": "top_i2c_ov7670_slave_sim_0_0",
-        "xci_path": "ip\\top_i2c_ov7670_slave_sim_0_0\\top_i2c_ov7670_slave_sim_0_0.xci",
-        "inst_hier_path": "i2c_ov7670_slave_sim_0",
+        "xci_name": "top_I2C_OV7670_config_0_0",
+        "xci_path": "ip\\top_I2C_OV7670_config_0_0\\top_I2C_OV7670_config_0_0.xci",
+        "inst_hier_path": "I2C_OV7670_config_0",
         "reference_info": {
           "ref_type": "hdl",
-          "ref_name": "i2c_ov7670_slave_sim",
+          "ref_name": "I2C_OV7670_config",
           "boundary_crc": "0x0"
         },
         "ports": {
-          "scl": {
-            "direction": "I"
+          "index": {
+            "direction": "I",
+            "left": "1",
+            "right": "0"
           },
-          "sda": {
-            "direction": "IO"
+          "reg_addr": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "reg_data": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
           }
         }
       }
@@ -313,33 +347,76 @@
           "debouncer_0/switch"
         ]
       },
+      "I2C_OV7670_Master_0_bit_counter_debug": {
+        "ports": [
+          "I2C_OV7670_Master_0/bit_counter_debug",
+          "ila_0/probe8"
+        ]
+      },
+      "I2C_OV7670_Master_0_byte_counter_debug": {
+        "ports": [
+          "I2C_OV7670_Master_0/byte_counter_debug",
+          "ila_0/probe7"
+        ]
+      },
       "I2C_OV7670_Master_0_i2c_data_read": {
         "ports": [
           "I2C_OV7670_Master_0/i2c_data_read",
-          "I2C_camera_0/index"
+          "I2C_OV7670_config_0/index"
         ]
       },
       "I2C_OV7670_Master_0_ov7670_SCL": {
         "ports": [
           "I2C_OV7670_Master_0/ov7670_SCL",
-          "i2c_ov7670_slave_sim_0/scl"
+          "ov7670_SCL",
+          "ila_0/probe5"
         ]
       },
-      "I2C_camera_0_reg_addr": {
+      "I2C_OV7670_Master_0_sda_in_debug": {
         "ports": [
-          "I2C_camera_0/reg_addr",
+          "I2C_OV7670_Master_0/sda_in_debug",
+          "ila_0/probe1"
+        ]
+      },
+      "I2C_OV7670_Master_0_sda_oe_debug": {
+        "ports": [
+          "I2C_OV7670_Master_0/sda_oe_debug",
+          "ila_0/probe2"
+        ]
+      },
+      "I2C_OV7670_Master_0_sda_out_debug": {
+        "ports": [
+          "I2C_OV7670_Master_0/sda_out_debug",
+          "ila_0/probe0"
+        ]
+      },
+      "I2C_OV7670_Master_0_shift_reg_debug": {
+        "ports": [
+          "I2C_OV7670_Master_0/shift_reg_debug",
+          "ila_0/probe6"
+        ]
+      },
+      "I2C_OV7670_Master_0_state_debug": {
+        "ports": [
+          "I2C_OV7670_Master_0/state_debug",
+          "ila_0/probe4"
+        ]
+      },
+      "I2C_OV7670_config_0_reg_addr": {
+        "ports": [
+          "I2C_OV7670_config_0/reg_addr",
           "I2C_OV7670_Master_0/slave_reg_addr"
         ]
       },
-      "I2C_camera_0_reg_data": {
+      "I2C_OV7670_config_0_reg_data": {
         "ports": [
-          "I2C_camera_0/reg_data",
+          "I2C_OV7670_config_0/reg_data",
           "I2C_OV7670_Master_0/slave_reg_data"
         ]
       },
       "Net": {
         "ports": [
-          "i2c_ov7670_slave_sim_0/sda",
+          "ov7670_SDA",
           "I2C_OV7670_Master_0/ov7670_SDA"
         ]
       },
@@ -347,12 +424,14 @@
         "ports": [
           "clk_wiz_0/clk_out100",
           "debouncer_0/clk",
+          "ila_0/clk",
           "I2C_OV7670_Master_0/clk_100"
         ]
       },
       "debouncer_0_switch_debounced": {
         "ports": [
           "debouncer_0/switch_debounced",
+          "ila_0/probe3",
           "I2C_OV7670_Master_0/reset"
         ]
       },

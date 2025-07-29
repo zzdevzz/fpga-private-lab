@@ -5,7 +5,7 @@ entity tb_top_wrapper is
 end tb_top_wrapper;
 
 architecture Behavioral of tb_top_wrapper is
-    
+
     signal tb_BTNL: std_logic := '0';
     signal tb_clock     : std_logic := '0';
     signal tb_reset     : std_logic := '0';
@@ -37,15 +37,15 @@ architecture Behavioral of tb_top_wrapper is
         port (
             BTNL : in STD_LOGIC;
             reset           : in STD_LOGIC;
-            sys_clock       : in STD_LOGIC
-            
+            sys_clock       : in STD_LOGIC;
+
 --            switch0 : in std_logic;
 --            switch1 : in std_logic;
 --            Hsync           : out STD_LOGIC;
 --            LED             : out STD_LOGIC_VECTOR (7 downto 0);
 --            Vsync           : out STD_LOGIC;
---            ov7670_SCL      : out STD_LOGIC;
---            ov7670_SDA      : inout STD_LOGIC;
+            ov7670_SCL      : out STD_LOGIC;
+            ov7670_SDA      : inout STD_LOGIC
 --            ov7670_data     : in STD_LOGIC_VECTOR (7 downto 0);
 --            ov7670_href     : in STD_LOGIC;
 --            ov7670_pclk     : in STD_LOGIC;
@@ -53,11 +53,18 @@ architecture Behavioral of tb_top_wrapper is
 --            ov7670_reset    : out STD_LOGIC;
 --            ov7670_vsync    : in STD_LOGIC;
 --            ov7670_xclk     : out STD_LOGIC;
-            
+
 --            vgaBlue         : out STD_LOGIC_VECTOR (3 downto 0);
 --            vgaGreen        : out STD_LOGIC_VECTOR (3 downto 0);
 --            vgaRed          : out STD_LOGIC_VECTOR (3 downto 0)
         );
+    end component;
+
+    component i2c_ov7670_slave_sim
+        Port (
+        scl     : in  std_logic;
+        sda     : inout std_logic
+    );
     end component;
 
 begin
@@ -66,15 +73,15 @@ begin
     port map (
         BTNL => tb_BTNL,
         reset           => tb_reset,
-        sys_clock       => tb_clock
-        
+        sys_clock       => tb_clock,
+
 --        switch0 => tb_switch0,
 --        switch1 => tb_switch1,
 --        Hsync           => tb_Hsync,
 --        LED             => tb_LED,
 --        Vsync           => tb_Vsync,
---        ov7670_SCL      => tb_ov7670_SCL,
---        ov7670_SDA      => tb_ov7670_SDA,
+        ov7670_SCL      => tb_ov7670_SCL,
+        ov7670_SDA      => tb_ov7670_SDA
 --        ov7670_data     => tb_ov7670_data,
 --        ov7670_href     => tb_ov7670_href,
 --        ov7670_pclk     => tb_ov7670_pclk,
@@ -85,6 +92,14 @@ begin
 --        vgaBlue         => tb_vgaBlue,
 --        vgaGreen        => tb_vgaGreen,
 --        vgaRed          => tb_vgaRed
+    );
+
+     slave: i2c_ov7670_slave_sim
+    port map (
+
+        SCL      => tb_ov7670_SCL,
+        SDA      => tb_ov7670_SDA
+
     );
 
     -- System clock driver
@@ -108,16 +123,16 @@ begin
             wait for 20 ns;
         end loop;
     end process;
-    
+
     stim_proc : process
     begin
-        wait for 10 ms;
+        wait for 500 us;
         tb_BTNL <= '1';
-        wait for 1 ms;
+        wait for 50 us;
         tb_BTNL <= '0';
         wait;
     end process;
-    
+
     reset_proc : process
     begin
         wait for 20 ms;
@@ -126,7 +141,7 @@ begin
         tb_reset <= '0';
         wait; -- ends the process
     end process;
-    
+
 
     -- Example href and vsync toggles could be added here too.
 
