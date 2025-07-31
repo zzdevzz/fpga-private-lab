@@ -58,7 +58,7 @@ entity I2C_OV7670_Master is
 
     i2c_data_read: out std_logic_vector(1 downto 0);  -- index to feed external LUT
     state_debug: out std_logic_vector(2 downto 0);
-
+    simple_state_debug: out std_logic_vector(3 downto 0); 
     --0V7670 Specific
     ov7670_pwdn : out std_logic := '0';
     ov7670_reset : out std_logic
@@ -75,8 +75,9 @@ architecture Behavioral of I2C_OV7670_Master is
 
   -- used to debug SDA whether its in out stage and each value, ILA cant pick up inout pins.
   signal sda_out : std_logic := '1';
-  signal sda_oe  : std_logic := '0';
-  signal sda_in  : std_logic;
+  signal sda_in  : std_logic; 
+  signal sda_oe  : std_logic := '0'; --output enabled
+
 
   signal scl     : std_logic := '1';
   signal scl_en  : std_logic := '0'; -- decides if clock is enabled/running.
@@ -88,7 +89,7 @@ architecture Behavioral of I2C_OV7670_Master is
 
   signal shift_reg_full : std_logic_vector(7 downto 0) := (others => '0'); --before we started dropping bits for transmitting.
   signal shift_reg    : std_logic_vector(7 downto 0) := (others => '0');
-  signal bit_counter  : integer range 0 to 7 := 0;
+  signal bit_counter  : integer range 0 to 8 := 0;
 
   signal sending      : std_logic := '0';
 
@@ -104,26 +105,25 @@ architecture Behavioral of I2C_OV7670_Master is
   signal current_reset: std_logic := '0';
   signal prev_reset: std_logic := '0';
 
-  signal temp_debug : integer range 0 to 5 := 0;
-  
+  signal temp_debug : integer range 0 to 10 := 0;
 
 begin
 
   -- Output drivers
-  ov7670_SDA <= '0' when (sda_oe = '1' and sda_out = '0') else 'Z'; --unless we pull it low actively, it's Z which defaults to 1.
+  ov7670_SDA <= '0' when (sda_oe = '1' and sda_out = '0') else 'Z'; --unless we pull it low actively, it's Z which defaults to '1' value.
   ov7670_SCL <= scl;
 
   -- Debug
   sda_in_debug <= sda_in;
   sda_out_debug <= sda_out;
   sda_oe_debug <= sda_oe;
-  
-  
+
+
   shift_reg_debug <= shift_reg;
   byte_counter_debug <= std_logic_vector(TO_UNSIGNED(byte_counter,2));
   bit_counter_debug <= std_logic_vector(TO_UNSIGNED(bit_counter,4));
-    
-    
+
+
   -- Read SDA line
   sda_in <= ov7670_SDA;
 
@@ -136,7 +136,7 @@ begin
   init_setup: process(clk_100)
   begin
     if rising_edge(clk_100) then
-    
+
         --used to get falling edge of reset trigger release.
         prev_reset <= current_reset;
         current_reset <= reset;
@@ -204,15 +204,17 @@ begin
           if start_setup = '1' then
             state <= START_CONDITION;
             byte_counter <= 0;
---          elsif sending = '1' then
---            state <= START_CONDITION;
+            simple_state_debug <= "0001";
           end if;
+          simple_state_debug <= "0000";
+          temp_debug <= 0;
 
         when START_CONDITION =>
           sda_oe <= '1'; 
           sda_out <= '0';
           scl_en <= '1';
           state <= SEND_BYTE;
+          simple_state_debug <= "0010";
 
         when SEND_BYTE =>
           if scl = '0' then -- can only change data when low.
@@ -224,31 +226,34 @@ begin
               shift_reg_full <= slave_reg_data;
             end if;
           end if;
+           simple_state_debug <= "0011";
 
           --check if the shift_reg is changing every clock cycle, vs SCL cycle.
           if scl_rise = '1' then
-      temp_debug <= 1;
-      if bit_counter < 1 then
-        sda_out <= shift_reg_full(7);
-        shift_reg <= shift_reg_full(6 downto 0) & '0';
-        bit_counter <= bit_counter + 1; --increasing  by 1 every cycle.
-        temp_debug <= 3;
+            temp_debug <= 1;
+            if bit_counter < 1 then
+                sda_out <= shift_reg_full(7);
+                shift_reg <= shift_reg_full(6 downto 0) & '0';
+                bit_counter <= bit_counter + 1; --increasing  by 1 every cycle.
+                temp_debug <= 2;
             elsif bit_counter <= 7 then
-              sda_out <= shift_reg(7);
-              shift_reg <= shift_reg(6 downto 0) & '0'; --shifting down every 1 ccycle, not every SCL cycle. 
-              bit_counter <= bit_counter + 1; --increasing  by 1 every cycle.
-        temp_debug <= 3;
-            else
+                sda_out <= shift_reg(7);
+                shift_reg <= shift_reg(6 downto 0) & '0'; --shifting down every 1 ccycle, not every SCL cycle. 
+                bit_counter <= bit_counter + 1; --increasing  by 1 every cycle.
+                temp_debug <= 3;
+            else --this is the 9th bit, used for acknowledgement.
               bit_counter <= 0;
               sda_oe <= '0'; -- release SDA to read ACK
               state <= READ_ACK;
-        temp_debug <= 4;
+              temp_debug <= 4;
+              simple_state_debug <= "0100";
             end if;
           end if;
 
         when READ_ACK =>
+          simple_state_debug <= "0101";
           if scl_rise = '1' then
-            if sda_in = '0' then
+            if sda_in = '0' then --active low
               state <= NEXT_BYTE;
             else
               state <= IDLE; -- NACK handling
@@ -257,6 +262,7 @@ begin
           end if;
 
         when NEXT_BYTE =>
+          simple_state_debug <= "0110";
           if byte_counter < 2 then
             byte_counter <= byte_counter + 1;
             sda_oe <= '1';
@@ -272,6 +278,7 @@ begin
           end if;
 
         when STOP_CONDITION =>
+          simple_state_debug <= "0111";
           scl_en <= '0';
           sda_oe <= '0';
           sending <= '0';

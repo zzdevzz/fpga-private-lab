@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x77563DA1142E477B",
+      "boundary_crc": "0xAB04F53EFA343DD8",
       "device": "xc7a35tcpg236-1",
       "gen_directory": "../../../../I2C00 - Basic Communication.gen/sources_1/bd/top",
       "name": "top",
@@ -63,6 +63,49 @@
       },
       "ov7670_SDA": {
         "direction": "IO"
+      },
+      "ov7670_pwdn": {
+        "direction": "O"
+      },
+      "ov7670_reset": {
+        "type": "rst",
+        "direction": "O",
+        "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "POLARITY": {
+            "value": "ACTIVE_LOW",
+            "value_src": "default"
+          }
+        }
+      },
+      "ov7670_xclk": {
+        "type": "clk",
+        "direction": "O",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "/clk_wiz_0_clk_out1",
+            "value_src": "ip_prop"
+          },
+          "FREQ_HZ": {
+            "value": "25000000",
+            "value_src": "ip_prop"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "ip_prop"
+          }
+        }
       }
     },
     "components": {
@@ -86,10 +129,13 @@
             "value": "BUFG"
           },
           "CLKOUT2_JITTER": {
-            "value": "137.681"
+            "value": "183.467"
           },
           "CLKOUT2_PHASE_ERROR": {
             "value": "105.461"
+          },
+          "CLKOUT2_REQUESTED_OUT_FREQ": {
+            "value": "25"
           },
           "CLKOUT2_USED": {
             "value": "true"
@@ -128,7 +174,7 @@
             "value": "9"
           },
           "MMCM_CLKOUT1_DIVIDE": {
-            "value": "9"
+            "value": "36"
           },
           "MMCM_COMPENSATION": {
             "value": "ZHOLD"
@@ -268,6 +314,11 @@
             "left": "2",
             "right": "0"
           },
+          "simple_state_debug": {
+            "direction": "O",
+            "left": "3",
+            "right": "0"
+          },
           "ov7670_pwdn": {
             "direction": "O"
           },
@@ -294,19 +345,19 @@
             "value": "9"
           },
           "C_PROBE4_WIDTH": {
-            "value": "3"
+            "value": "8"
           },
           "C_PROBE5_WIDTH": {
-            "value": "1"
+            "value": "2"
           },
           "C_PROBE6_WIDTH": {
-            "value": "8"
+            "value": "4"
           },
           "C_PROBE7_WIDTH": {
             "value": "2"
           },
           "C_PROBE8_WIDTH": {
-            "value": "4"
+            "value": "3"
           }
         }
       },
@@ -350,56 +401,69 @@
       "I2C_OV7670_Master_0_bit_counter_debug": {
         "ports": [
           "I2C_OV7670_Master_0/bit_counter_debug",
-          "ila_0/probe8"
+          "ila_0/probe6"
         ]
       },
       "I2C_OV7670_Master_0_byte_counter_debug": {
         "ports": [
           "I2C_OV7670_Master_0/byte_counter_debug",
-          "ila_0/probe7"
+          "ila_0/probe5"
         ]
       },
       "I2C_OV7670_Master_0_i2c_data_read": {
         "ports": [
           "I2C_OV7670_Master_0/i2c_data_read",
-          "I2C_OV7670_config_0/index"
+          "I2C_OV7670_config_0/index",
+          "ila_0/probe7"
         ]
       },
       "I2C_OV7670_Master_0_ov7670_SCL": {
         "ports": [
           "I2C_OV7670_Master_0/ov7670_SCL",
           "ov7670_SCL",
-          "ila_0/probe5"
+          "ila_0/probe0"
+        ]
+      },
+      "I2C_OV7670_Master_0_ov7670_pwdn": {
+        "ports": [
+          "I2C_OV7670_Master_0/ov7670_pwdn",
+          "ov7670_pwdn"
+        ]
+      },
+      "I2C_OV7670_Master_0_ov7670_reset": {
+        "ports": [
+          "I2C_OV7670_Master_0/ov7670_reset",
+          "ov7670_reset"
         ]
       },
       "I2C_OV7670_Master_0_sda_in_debug": {
         "ports": [
           "I2C_OV7670_Master_0/sda_in_debug",
-          "ila_0/probe1"
+          "ila_0/probe2"
         ]
       },
       "I2C_OV7670_Master_0_sda_oe_debug": {
         "ports": [
           "I2C_OV7670_Master_0/sda_oe_debug",
-          "ila_0/probe2"
+          "ila_0/probe3"
         ]
       },
       "I2C_OV7670_Master_0_sda_out_debug": {
         "ports": [
           "I2C_OV7670_Master_0/sda_out_debug",
-          "ila_0/probe0"
+          "ila_0/probe1"
         ]
       },
       "I2C_OV7670_Master_0_shift_reg_debug": {
         "ports": [
           "I2C_OV7670_Master_0/shift_reg_debug",
-          "ila_0/probe6"
+          "ila_0/probe4"
         ]
       },
       "I2C_OV7670_Master_0_state_debug": {
         "ports": [
           "I2C_OV7670_Master_0/state_debug",
-          "ila_0/probe4"
+          "ila_0/probe8"
         ]
       },
       "I2C_OV7670_config_0_reg_addr": {
@@ -420,6 +484,12 @@
           "I2C_OV7670_Master_0/ov7670_SDA"
         ]
       },
+      "clk_wiz_0_clk_out25": {
+        "ports": [
+          "clk_wiz_0/clk_out25",
+          "ov7670_xclk"
+        ]
+      },
       "clk_wiz_0_clk_out100": {
         "ports": [
           "clk_wiz_0/clk_out100",
@@ -431,7 +501,6 @@
       "debouncer_0_switch_debounced": {
         "ports": [
           "debouncer_0/switch_debounced",
-          "ila_0/probe3",
           "I2C_OV7670_Master_0/reset"
         ]
       },

@@ -4,15 +4,48 @@
 // Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
 // Date        : Tue Jul 29 20:33:56 2025
 // Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim {e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 -
-//               Basic
-//               Communication.gen/sources_1/bd/top/ip/top_I2C_OV7670_config_0_0/top_I2C_OV7670_config_0_0_sim_netlist.v}
+// Command     : write_verilog -force -mode funcsim -rename_top top_I2C_OV7670_config_0_0 -prefix
+//               top_I2C_OV7670_config_0_0_ top_I2C_OV7670_config_0_0_sim_netlist.v
 // Design      : top_I2C_OV7670_config_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
 // Device      : xc7a35tcpg236-1
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
+
+module top_I2C_OV7670_config_0_0_I2C_OV7670_config
+   (reg_data,
+    reg_addr,
+    index);
+  output [1:0]reg_data;
+  output [0:0]reg_addr;
+  input [1:0]index;
+
+  wire [1:0]index;
+  wire [0:0]reg_addr;
+  wire [1:0]reg_data;
+
+  LUT2 #(
+    .INIT(4'hB)) 
+    \reg_addr[1]_INST_0 
+       (.I0(index[0]),
+        .I1(index[1]),
+        .O(reg_addr));
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  LUT2 #(
+    .INIT(4'h2)) 
+    \reg_data[0]_INST_0 
+       (.I0(index[1]),
+        .I1(index[0]),
+        .O(reg_data[0]));
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  LUT2 #(
+    .INIT(4'h1)) 
+    \reg_data[7]_INST_0 
+       (.I0(index[1]),
+        .I1(index[0]),
+        .O(reg_data[1]));
+endmodule
 
 (* CHECK_LICENSE_TYPE = "top_I2C_OV7670_config_0_0,I2C_OV7670_config,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* ip_definition_source = "module_ref" *) 
 (* x_core_info = "I2C_OV7670_config,Vivado 2023.2" *) 
@@ -63,41 +96,6 @@ module top_I2C_OV7670_config_0_0
        (.I0(index[0]),
         .I1(index[1]),
         .O(\^reg_data [1]));
-endmodule
-
-(* ORIG_REF_NAME = "I2C_OV7670_config" *) 
-module top_I2C_OV7670_config_0_0_I2C_OV7670_config
-   (reg_data,
-    reg_addr,
-    index);
-  output [1:0]reg_data;
-  output [0:0]reg_addr;
-  input [1:0]index;
-
-  wire [1:0]index;
-  wire [0:0]reg_addr;
-  wire [1:0]reg_data;
-
-  LUT2 #(
-    .INIT(4'hB)) 
-    \reg_addr[1]_INST_0 
-       (.I0(index[0]),
-        .I1(index[1]),
-        .O(reg_addr));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \reg_data[0]_INST_0 
-       (.I0(index[1]),
-        .I1(index[0]),
-        .O(reg_data[0]));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
-  LUT2 #(
-    .INIT(4'h1)) 
-    \reg_data[7]_INST_0 
-       (.I0(index[1]),
-        .I1(index[0]),
-        .O(reg_data[1]));
 endmodule
 `ifndef GLBL
 `define GLBL

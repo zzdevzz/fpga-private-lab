@@ -2,7 +2,7 @@
 --Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
---Date        : Tue Jul 29 20:49:55 2025
+--Date        : Thu Jul 31 16:28:50 2025
 --Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 --Command     : generate_target top.bd
 --Design      : top
@@ -17,6 +17,9 @@ entity top is
     BTNL : in STD_LOGIC;
     ov7670_SCL : out STD_LOGIC;
     ov7670_SDA : inout STD_LOGIC;
+    ov7670_pwdn : out STD_LOGIC;
+    ov7670_reset : out STD_LOGIC;
+    ov7670_xclk : out STD_LOGIC;
     reset : in STD_LOGIC;
     sys_clock : in STD_LOGIC
   );
@@ -54,8 +57,12 @@ architecture STRUCTURE of top is
     sda_out_debug : out STD_LOGIC;
     sda_in_debug : out STD_LOGIC;
     sda_oe_debug : out STD_LOGIC;
+    shift_reg_debug : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    byte_counter_debug : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    bit_counter_debug : out STD_LOGIC_VECTOR ( 3 downto 0 );
     i2c_data_read : out STD_LOGIC_VECTOR ( 1 downto 0 );
     state_debug : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    simple_state_debug : out STD_LOGIC_VECTOR ( 3 downto 0 );
     ov7670_pwdn : out STD_LOGIC;
     ov7670_reset : out STD_LOGIC
   );
@@ -66,7 +73,12 @@ architecture STRUCTURE of top is
     probe0 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe1 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe2 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe3 : in STD_LOGIC_VECTOR ( 0 to 0 )
+    probe3 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe4 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe5 : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    probe6 : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    probe7 : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    probe8 : in STD_LOGIC_VECTOR ( 2 downto 0 )
   );
   end component top_ila_0_0;
   component top_I2C_OV7670_config_0_0 is
@@ -77,49 +89,64 @@ architecture STRUCTURE of top is
   );
   end component top_I2C_OV7670_config_0_0;
   signal BTNL_1 : STD_LOGIC;
+  signal I2C_OV7670_Master_0_bit_counter_debug : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal I2C_OV7670_Master_0_byte_counter_debug : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal I2C_OV7670_Master_0_i2c_data_read : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal I2C_OV7670_Master_0_ov7670_SCL : STD_LOGIC;
+  signal I2C_OV7670_Master_0_ov7670_pwdn : STD_LOGIC;
+  signal I2C_OV7670_Master_0_ov7670_reset : STD_LOGIC;
   signal I2C_OV7670_Master_0_sda_in_debug : STD_LOGIC;
   signal I2C_OV7670_Master_0_sda_oe_debug : STD_LOGIC;
   signal I2C_OV7670_Master_0_sda_out_debug : STD_LOGIC;
+  signal I2C_OV7670_Master_0_shift_reg_debug : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal I2C_OV7670_Master_0_state_debug : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal I2C_OV7670_config_0_reg_addr : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal I2C_OV7670_config_0_reg_data : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal Net : STD_LOGIC;
   signal clk_wiz_0_clk_out100 : STD_LOGIC;
+  signal clk_wiz_0_clk_out25 : STD_LOGIC;
   signal debouncer_0_switch_debounced : STD_LOGIC;
   signal reset_1 : STD_LOGIC;
   signal sys_clock_1 : STD_LOGIC;
-  signal NLW_I2C_OV7670_Master_0_ov7670_pwdn_UNCONNECTED : STD_LOGIC;
-  signal NLW_I2C_OV7670_Master_0_ov7670_reset_UNCONNECTED : STD_LOGIC;
-  signal NLW_I2C_OV7670_Master_0_state_debug_UNCONNECTED : STD_LOGIC_VECTOR ( 2 downto 0 );
-  signal NLW_clk_wiz_0_clk_out25_UNCONNECTED : STD_LOGIC;
+  signal NLW_I2C_OV7670_Master_0_simple_state_debug_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal NLW_clk_wiz_0_locked_UNCONNECTED : STD_LOGIC;
   attribute X_INTERFACE_INFO : string;
-  attribute X_INTERFACE_INFO of reset : signal is "xilinx.com:signal:reset:1.0 RST.RESET RST";
+  attribute X_INTERFACE_INFO of ov7670_reset : signal is "xilinx.com:signal:reset:1.0 RST.OV7670_RESET RST";
   attribute X_INTERFACE_PARAMETER : string;
+  attribute X_INTERFACE_PARAMETER of ov7670_reset : signal is "XIL_INTERFACENAME RST.OV7670_RESET, INSERT_VIP 0, POLARITY ACTIVE_LOW";
+  attribute X_INTERFACE_INFO of ov7670_xclk : signal is "xilinx.com:signal:clock:1.0 CLK.OV7670_XCLK CLK";
+  attribute X_INTERFACE_PARAMETER of ov7670_xclk : signal is "XIL_INTERFACENAME CLK.OV7670_XCLK, CLK_DOMAIN /clk_wiz_0_clk_out1, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.0";
+  attribute X_INTERFACE_INFO of reset : signal is "xilinx.com:signal:reset:1.0 RST.RESET RST";
   attribute X_INTERFACE_PARAMETER of reset : signal is "XIL_INTERFACENAME RST.RESET, INSERT_VIP 0, POLARITY ACTIVE_HIGH";
   attribute X_INTERFACE_INFO of sys_clock : signal is "xilinx.com:signal:clock:1.0 CLK.SYS_CLOCK CLK";
   attribute X_INTERFACE_PARAMETER of sys_clock : signal is "XIL_INTERFACENAME CLK.SYS_CLOCK, CLK_DOMAIN top_sys_clock, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.0";
 begin
   BTNL_1 <= BTNL;
   ov7670_SCL <= I2C_OV7670_Master_0_ov7670_SCL;
+  ov7670_pwdn <= I2C_OV7670_Master_0_ov7670_pwdn;
+  ov7670_reset <= I2C_OV7670_Master_0_ov7670_reset;
+  ov7670_xclk <= clk_wiz_0_clk_out25;
   reset_1 <= reset;
   sys_clock_1 <= sys_clock;
 I2C_OV7670_Master_0: component top_I2C_OV7670_Master_0_0
      port map (
+      bit_counter_debug(3 downto 0) => I2C_OV7670_Master_0_bit_counter_debug(3 downto 0),
+      byte_counter_debug(1 downto 0) => I2C_OV7670_Master_0_byte_counter_debug(1 downto 0),
       clk_100 => clk_wiz_0_clk_out100,
       i2c_data_read(1 downto 0) => I2C_OV7670_Master_0_i2c_data_read(1 downto 0),
       ov7670_SCL => I2C_OV7670_Master_0_ov7670_SCL,
       ov7670_SDA => ov7670_SDA,
-      ov7670_pwdn => NLW_I2C_OV7670_Master_0_ov7670_pwdn_UNCONNECTED,
-      ov7670_reset => NLW_I2C_OV7670_Master_0_ov7670_reset_UNCONNECTED,
+      ov7670_pwdn => I2C_OV7670_Master_0_ov7670_pwdn,
+      ov7670_reset => I2C_OV7670_Master_0_ov7670_reset,
       reset => debouncer_0_switch_debounced,
       sda_in_debug => I2C_OV7670_Master_0_sda_in_debug,
       sda_oe_debug => I2C_OV7670_Master_0_sda_oe_debug,
       sda_out_debug => I2C_OV7670_Master_0_sda_out_debug,
+      shift_reg_debug(7 downto 0) => I2C_OV7670_Master_0_shift_reg_debug(7 downto 0),
+      simple_state_debug(3 downto 0) => NLW_I2C_OV7670_Master_0_simple_state_debug_UNCONNECTED(3 downto 0),
       slave_reg_addr(7 downto 0) => I2C_OV7670_config_0_reg_addr(7 downto 0),
       slave_reg_data(7 downto 0) => I2C_OV7670_config_0_reg_data(7 downto 0),
-      state_debug(2 downto 0) => NLW_I2C_OV7670_Master_0_state_debug_UNCONNECTED(2 downto 0)
+      state_debug(2 downto 0) => I2C_OV7670_Master_0_state_debug(2 downto 0)
     );
 I2C_OV7670_config_0: component top_I2C_OV7670_config_0_0
      port map (
@@ -131,7 +158,7 @@ clk_wiz_0: component top_clk_wiz_0_0
      port map (
       clk_in1 => sys_clock_1,
       clk_out100 => clk_wiz_0_clk_out100,
-      clk_out25 => NLW_clk_wiz_0_clk_out25_UNCONNECTED,
+      clk_out25 => clk_wiz_0_clk_out25,
       locked => NLW_clk_wiz_0_locked_UNCONNECTED,
       reset => reset_1
     );
@@ -144,9 +171,14 @@ debouncer_0: component top_debouncer_0_0
 ila_0: component top_ila_0_0
      port map (
       clk => clk_wiz_0_clk_out100,
-      probe0(0) => I2C_OV7670_Master_0_sda_out_debug,
-      probe1(0) => I2C_OV7670_Master_0_sda_in_debug,
-      probe2(0) => I2C_OV7670_Master_0_sda_oe_debug,
-      probe3(0) => debouncer_0_switch_debounced
+      probe0(0) => I2C_OV7670_Master_0_ov7670_SCL,
+      probe1(0) => I2C_OV7670_Master_0_sda_out_debug,
+      probe2(0) => I2C_OV7670_Master_0_sda_in_debug,
+      probe3(0) => I2C_OV7670_Master_0_sda_oe_debug,
+      probe4(7 downto 0) => I2C_OV7670_Master_0_shift_reg_debug(7 downto 0),
+      probe5(1 downto 0) => I2C_OV7670_Master_0_byte_counter_debug(1 downto 0),
+      probe6(3 downto 0) => I2C_OV7670_Master_0_bit_counter_debug(3 downto 0),
+      probe7(1 downto 0) => I2C_OV7670_Master_0_i2c_data_read(1 downto 0),
+      probe8(2 downto 0) => I2C_OV7670_Master_0_state_debug(2 downto 0)
     );
 end STRUCTURE;

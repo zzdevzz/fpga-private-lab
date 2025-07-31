@@ -48,7 +48,7 @@ begin
                     if shift_reg(7 downto 1) = OV7670_ADDR then
                         sda_out <= '0';  -- ACK
                     else
-                        sda_out <= '1';  -- NACK
+                        sda_out <= 'Z';  -- NACK
                     end if;
                     state <= DATA;
 

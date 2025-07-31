@@ -45,14 +45,14 @@ architecture Behavioral of tb_top_wrapper is
 --            LED             : out STD_LOGIC_VECTOR (7 downto 0);
 --            Vsync           : out STD_LOGIC;
             ov7670_SCL      : out STD_LOGIC;
-            ov7670_SDA      : inout STD_LOGIC
+            ov7670_SDA      : inout STD_LOGIC;
 --            ov7670_data     : in STD_LOGIC_VECTOR (7 downto 0);
 --            ov7670_href     : in STD_LOGIC;
 --            ov7670_pclk     : in STD_LOGIC;
---            ov7670_pwdn     : out STD_LOGIC;
---            ov7670_reset    : out STD_LOGIC;
+            ov7670_pwdn     : out STD_LOGIC;
+            ov7670_reset    : out STD_LOGIC;
 --            ov7670_vsync    : in STD_LOGIC;
---            ov7670_xclk     : out STD_LOGIC;
+            ov7670_xclk     : out STD_LOGIC
 
 --            vgaBlue         : out STD_LOGIC_VECTOR (3 downto 0);
 --            vgaGreen        : out STD_LOGIC_VECTOR (3 downto 0);
@@ -81,26 +81,26 @@ begin
 --        LED             => tb_LED,
 --        Vsync           => tb_Vsync,
         ov7670_SCL      => tb_ov7670_SCL,
-        ov7670_SDA      => tb_ov7670_SDA
+        ov7670_SDA      => tb_ov7670_SDA,
 --        ov7670_data     => tb_ov7670_data,
 --        ov7670_href     => tb_ov7670_href,
 --        ov7670_pclk     => tb_ov7670_pclk,
---        ov7670_pwdn     => tb_ov7670_pwdn,
---        ov7670_reset    => tb_ov7670_reset,
+        ov7670_pwdn     => tb_ov7670_pwdn,
+        ov7670_reset    => tb_ov7670_reset,
 --        ov7670_vsync    => tb_ov7670_vsync,
---        ov7670_xclk     => tb_ov7670_xclk,
+        ov7670_xclk     => tb_ov7670_xclk
 --        vgaBlue         => tb_vgaBlue,
 --        vgaGreen        => tb_vgaGreen,
 --        vgaRed          => tb_vgaRed
     );
 
-     slave: i2c_ov7670_slave_sim
-    port map (
+--     slave: i2c_ov7670_slave_sim
+--    port map (
 
-        SCL      => tb_ov7670_SCL,
-        SDA      => tb_ov7670_SDA
+--        SCL      => tb_ov7670_SCL,
+--        SDA      => tb_ov7670_SDA
 
-    );
+--    );
 
     -- System clock driver
     clk_gen : process

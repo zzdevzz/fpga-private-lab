@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1753825995" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/top_wrapper.dcp">
+<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1753979781" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/top_wrapper.dcp">
   <File Type="PA-TCL" Name="top_wrapper.tcl"/>
   <File Type="RDS-PROPCONSTRS" Name="top_wrapper_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="top_wrapper_reports.tcl"/>
@@ -71,6 +71,7 @@
       </FileInfo>
     </File>
     <Config>
+      <Option Name="TargetConstrsFile" Val="$PSRCDIR/constrs_1/new/Basys3_Master_OV7670.xdc"/>
       <Option Name="ConstrsType" Val="XDC"/>
     </Config>
   </FileSet>
@@ -92,9 +93,6 @@
     <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023"/>
     <Step Id="synth_design"/>
   </Strategy>
-  <BlockFileSet Type="BlockSrcs" Name="top_ila_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="top_clk_wiz_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="top_debouncer_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="top_I2C_OV7670_Master_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="top_I2C_OV7670_config_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="top_clk_wiz_0_0"/>
 </GenRun>
