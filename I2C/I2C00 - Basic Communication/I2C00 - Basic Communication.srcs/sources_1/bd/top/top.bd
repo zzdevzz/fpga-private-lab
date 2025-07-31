@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0xAB04F53EFA343DD8",
+      "boundary_crc": "0xB3E5040F58E16C91",
       "device": "xc7a35tcpg236-1",
       "gen_directory": "../../../../I2C00 - Basic Communication.gen/sources_1/bd/top",
       "name": "top",
@@ -61,9 +61,6 @@
       "ov7670_SCL": {
         "direction": "O"
       },
-      "ov7670_SDA": {
-        "direction": "IO"
-      },
       "ov7670_pwdn": {
         "direction": "O"
       },
@@ -106,6 +103,18 @@
             "value_src": "ip_prop"
           }
         }
+      },
+      "sda_out_debug_0": {
+        "direction": "O"
+      },
+      "ov7670_SDA": {
+        "direction": "IO"
+      },
+      "sda_in_debug": {
+        "direction": "O"
+      },
+      "sda_oe_debug": {
+        "direction": "O"
       }
     },
     "components": {
@@ -439,18 +448,21 @@
       "I2C_OV7670_Master_0_sda_in_debug": {
         "ports": [
           "I2C_OV7670_Master_0/sda_in_debug",
-          "ila_0/probe2"
+          "ila_0/probe2",
+          "sda_in_debug"
         ]
       },
       "I2C_OV7670_Master_0_sda_oe_debug": {
         "ports": [
           "I2C_OV7670_Master_0/sda_oe_debug",
-          "ila_0/probe3"
+          "ila_0/probe3",
+          "sda_oe_debug"
         ]
       },
       "I2C_OV7670_Master_0_sda_out_debug": {
         "ports": [
           "I2C_OV7670_Master_0/sda_out_debug",
+          "sda_out_debug_0",
           "ila_0/probe1"
         ]
       },

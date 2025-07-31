@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Jul 31 17:36:19 2025" VIVADOVERSION="2023.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Jul 31 19:00:14 2025" VIVADOVERSION="2023.2">
 
   <SYSTEMINFO ARCH="artix7" BOARD="digilentinc.com:basys3:part0:1.2" DEVICE="7a35t" NAME="top" PACKAGE="cpg236" SPEEDGRADE="-1"/>
 
@@ -37,6 +37,21 @@
     <PORT DIR="I" NAME="reset" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="External_Ports_reset">
       <CONNECTIONS>
         <CONNECTION INSTANCE="clk_wiz_0" PORT="reset"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="sda_in_debug" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_sda_in_debug">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="I2C_OV7670_Master_0" PORT="sda_in_debug"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="sda_oe_debug" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_sda_oe_debug">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="I2C_OV7670_Master_0" PORT="sda_oe_debug"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="sda_out_debug_0" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_sda_out_debug">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="I2C_OV7670_Master_0" PORT="sda_out_debug"/>
       </CONNECTIONS>
     </PORT>
     <PORT CLKFREQUENCY="100000000" DIR="I" NAME="sys_clock" SIGIS="clk" SIGNAME="External_Ports_sys_clock">
@@ -106,15 +121,18 @@
         <PORT DIR="O" NAME="sda_in_debug" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_sda_in_debug">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ila_0" PORT="probe2"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="sda_in_debug"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="sda_oe_debug" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_sda_oe_debug">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ila_0" PORT="probe3"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="sda_oe_debug"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="sda_out_debug" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_sda_out_debug">
           <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="sda_out_debug_0"/>
             <CONNECTION INSTANCE="ila_0" PORT="probe1"/>
           </CONNECTIONS>
         </PORT>

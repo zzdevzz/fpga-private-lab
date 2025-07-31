@@ -2,7 +2,7 @@
 --Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
---Date        : Thu Jul 31 17:36:19 2025
+--Date        : Thu Jul 31 19:00:14 2025
 --Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 --Command     : generate_target top.bd
 --Design      : top
@@ -21,6 +21,9 @@ entity top is
     ov7670_reset : out STD_LOGIC;
     ov7670_xclk : out STD_LOGIC;
     reset : in STD_LOGIC;
+    sda_in_debug : out STD_LOGIC;
+    sda_oe_debug : out STD_LOGIC;
+    sda_out_debug_0 : out STD_LOGIC;
     sys_clock : in STD_LOGIC
   );
   attribute CORE_GENERATION_INFO : string;
@@ -127,6 +130,9 @@ begin
   ov7670_reset <= I2C_OV7670_Master_0_ov7670_reset;
   ov7670_xclk <= clk_wiz_0_clk_out25;
   reset_1 <= reset;
+  sda_in_debug <= I2C_OV7670_Master_0_sda_in_debug;
+  sda_oe_debug <= I2C_OV7670_Master_0_sda_oe_debug;
+  sda_out_debug_0 <= I2C_OV7670_Master_0_sda_out_debug;
   sys_clock_1 <= sys_clock;
 I2C_OV7670_Master_0: component top_I2C_OV7670_Master_0_0
      port map (

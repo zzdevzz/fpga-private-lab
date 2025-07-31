@@ -3,8 +3,8 @@
 # SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Thu Jul 31 17:36:59 2025
-# Process ID: 4788
+# Start of session at: Thu Jul 31 19:00:28 2025
+# Process ID: 32116
 # Current directory: E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.runs/synth_1
 # Command line: vivado.exe -log top_wrapper.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top_wrapper.tcl
 # Log file: E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.runs/synth_1/top_wrapper.vds
@@ -29,39 +29,39 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 26536
+INFO: [Synth 8-7075] Helper process launched with PID 42888
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1389.742 ; gain = 439.797
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1390.059 ; gain = 440.000
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-638] synthesizing module 'top_wrapper' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/hdl/top_wrapper.vhd:28]
-INFO: [Synth 8-3491] module 'top' declared at 'e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/synth/top.vhd:15' bound to instance 'top_i' of component 'top' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/hdl/top_wrapper.vhd:42]
-INFO: [Synth 8-638] synthesizing module 'top' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/synth/top.vhd:32]
-INFO: [Synth 8-3491] module 'top_I2C_OV7670_Master_0_0' declared at 'E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.runs/synth_1/.Xil/Vivado-4788-DESKTOP-EFRMAI2/realtime/top_I2C_OV7670_Master_0_0_stub.vhdl:6' bound to instance 'I2C_OV7670_Master_0' of component 'top_I2C_OV7670_Master_0_0' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/synth/top.vhd:131]
-INFO: [Synth 8-638] synthesizing module 'top_I2C_OV7670_Master_0_0' [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.runs/synth_1/.Xil/Vivado-4788-DESKTOP-EFRMAI2/realtime/top_I2C_OV7670_Master_0_0_stub.vhdl:29]
-INFO: [Synth 8-3491] module 'top_I2C_OV7670_config_0_0' declared at 'E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.runs/synth_1/.Xil/Vivado-4788-DESKTOP-EFRMAI2/realtime/top_I2C_OV7670_config_0_0_stub.vhdl:6' bound to instance 'I2C_OV7670_config_0' of component 'top_I2C_OV7670_config_0_0' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/synth/top.vhd:151]
-INFO: [Synth 8-638] synthesizing module 'top_I2C_OV7670_config_0_0' [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.runs/synth_1/.Xil/Vivado-4788-DESKTOP-EFRMAI2/realtime/top_I2C_OV7670_config_0_0_stub.vhdl:15]
-INFO: [Synth 8-3491] module 'top_clk_wiz_0_0' declared at 'E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.runs/synth_1/.Xil/Vivado-4788-DESKTOP-EFRMAI2/realtime/top_clk_wiz_0_0_stub.vhdl:6' bound to instance 'clk_wiz_0' of component 'top_clk_wiz_0_0' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/synth/top.vhd:157]
-INFO: [Synth 8-638] synthesizing module 'top_clk_wiz_0_0' [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.runs/synth_1/.Xil/Vivado-4788-DESKTOP-EFRMAI2/realtime/top_clk_wiz_0_0_stub.vhdl:17]
-INFO: [Synth 8-3491] module 'top_debouncer_0_0' declared at 'E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.runs/synth_1/.Xil/Vivado-4788-DESKTOP-EFRMAI2/realtime/top_debouncer_0_0_stub.vhdl:6' bound to instance 'debouncer_0' of component 'top_debouncer_0_0' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/synth/top.vhd:165]
-INFO: [Synth 8-638] synthesizing module 'top_debouncer_0_0' [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.runs/synth_1/.Xil/Vivado-4788-DESKTOP-EFRMAI2/realtime/top_debouncer_0_0_stub.vhdl:15]
-INFO: [Synth 8-3491] module 'top_ila_0_0' declared at 'E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.runs/synth_1/.Xil/Vivado-4788-DESKTOP-EFRMAI2/realtime/top_ila_0_0_stub.vhdl:6' bound to instance 'ila_0' of component 'top_ila_0_0' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/synth/top.vhd:171]
-INFO: [Synth 8-638] synthesizing module 'top_ila_0_0' [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.runs/synth_1/.Xil/Vivado-4788-DESKTOP-EFRMAI2/realtime/top_ila_0_0_stub.vhdl:22]
-INFO: [Synth 8-256] done synthesizing module 'top' (0#1) [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/synth/top.vhd:32]
-INFO: [Synth 8-256] done synthesizing module 'top_wrapper' (0#1) [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/hdl/top_wrapper.vhd:28]
-INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'top_i'. This will prevent further optimization [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/hdl/top_wrapper.vhd:42]
+INFO: [Synth 8-638] synthesizing module 'top_wrapper' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/hdl/top_wrapper.vhd:31]
+INFO: [Synth 8-3491] module 'top' declared at 'e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/synth/top.vhd:15' bound to instance 'top_i' of component 'top' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/hdl/top_wrapper.vhd:48]
+INFO: [Synth 8-638] synthesizing module 'top' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/synth/top.vhd:35]
+INFO: [Synth 8-3491] module 'top_I2C_OV7670_Master_0_0' declared at 'E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.runs/synth_1/.Xil/Vivado-32116-DESKTOP-EFRMAI2/realtime/top_I2C_OV7670_Master_0_0_stub.vhdl:6' bound to instance 'I2C_OV7670_Master_0' of component 'top_I2C_OV7670_Master_0_0' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/synth/top.vhd:137]
+INFO: [Synth 8-638] synthesizing module 'top_I2C_OV7670_Master_0_0' [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.runs/synth_1/.Xil/Vivado-32116-DESKTOP-EFRMAI2/realtime/top_I2C_OV7670_Master_0_0_stub.vhdl:29]
+INFO: [Synth 8-3491] module 'top_I2C_OV7670_config_0_0' declared at 'E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.runs/synth_1/.Xil/Vivado-32116-DESKTOP-EFRMAI2/realtime/top_I2C_OV7670_config_0_0_stub.vhdl:6' bound to instance 'I2C_OV7670_config_0' of component 'top_I2C_OV7670_config_0_0' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/synth/top.vhd:157]
+INFO: [Synth 8-638] synthesizing module 'top_I2C_OV7670_config_0_0' [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.runs/synth_1/.Xil/Vivado-32116-DESKTOP-EFRMAI2/realtime/top_I2C_OV7670_config_0_0_stub.vhdl:15]
+INFO: [Synth 8-3491] module 'top_clk_wiz_0_0' declared at 'E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.runs/synth_1/.Xil/Vivado-32116-DESKTOP-EFRMAI2/realtime/top_clk_wiz_0_0_stub.vhdl:6' bound to instance 'clk_wiz_0' of component 'top_clk_wiz_0_0' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/synth/top.vhd:163]
+INFO: [Synth 8-638] synthesizing module 'top_clk_wiz_0_0' [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.runs/synth_1/.Xil/Vivado-32116-DESKTOP-EFRMAI2/realtime/top_clk_wiz_0_0_stub.vhdl:17]
+INFO: [Synth 8-3491] module 'top_debouncer_0_0' declared at 'E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.runs/synth_1/.Xil/Vivado-32116-DESKTOP-EFRMAI2/realtime/top_debouncer_0_0_stub.vhdl:6' bound to instance 'debouncer_0' of component 'top_debouncer_0_0' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/synth/top.vhd:171]
+INFO: [Synth 8-638] synthesizing module 'top_debouncer_0_0' [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.runs/synth_1/.Xil/Vivado-32116-DESKTOP-EFRMAI2/realtime/top_debouncer_0_0_stub.vhdl:15]
+INFO: [Synth 8-3491] module 'top_ila_0_0' declared at 'E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.runs/synth_1/.Xil/Vivado-32116-DESKTOP-EFRMAI2/realtime/top_ila_0_0_stub.vhdl:6' bound to instance 'ila_0' of component 'top_ila_0_0' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/synth/top.vhd:177]
+INFO: [Synth 8-638] synthesizing module 'top_ila_0_0' [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.runs/synth_1/.Xil/Vivado-32116-DESKTOP-EFRMAI2/realtime/top_ila_0_0_stub.vhdl:22]
+INFO: [Synth 8-256] done synthesizing module 'top' (0#1) [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/synth/top.vhd:35]
+INFO: [Synth 8-256] done synthesizing module 'top_wrapper' (0#1) [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/hdl/top_wrapper.vhd:31]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'top_i'. This will prevent further optimization [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/hdl/top_wrapper.vhd:48]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1500.969 ; gain = 551.023
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1501.500 ; gain = 551.441
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1500.969 ; gain = 551.023
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1501.500 ; gain = 551.441
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1500.969 ; gain = 551.023
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1501.500 ; gain = 551.441
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1500.969 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1501.500 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -187,22 +187,22 @@ Parsing XDC File [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C0
 Finished Parsing XDC File [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.runs/synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1516.309 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1518.734 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1516.309 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1518.734 ; gain = 0.000
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1516.309 ; gain = 566.363
+Finished Constraint Validation : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1518.734 ; gain = 568.676
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1516.309 ; gain = 566.363
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1518.734 ; gain = 568.676
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -216,10 +216,10 @@ Applied set_property KEEP_HIERARCHY = SOFT for top_i/I2C_OV7670_Master_0. (const
 Applied set_property KEEP_HIERARCHY = SOFT for top_i/ila_0. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for top_i/I2C_OV7670_config_0. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1516.309 ; gain = 566.363
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1518.734 ; gain = 568.676
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1516.309 ; gain = 566.363
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1518.734 ; gain = 568.676
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -242,25 +242,25 @@ Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 1516.309 ; gain = 566.363
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 1518.734 ; gain = 568.676
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1516.309 ; gain = 566.363
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1518.734 ; gain = 568.676
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1516.309 ; gain = 566.363
+Finished Timing Optimization : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1518.734 ; gain = 568.676
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1516.309 ; gain = 566.363
+Finished Technology Mapping : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1518.734 ; gain = 568.676
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -278,37 +278,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1516.309 ; gain = 566.363
+Finished IO Insertion : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1518.734 ; gain = 568.676
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1516.309 ; gain = 566.363
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1518.734 ; gain = 568.676
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1516.309 ; gain = 566.363
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1518.734 ; gain = 568.676
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1516.309 ; gain = 566.363
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1518.734 ; gain = 568.676
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1516.309 ; gain = 566.363
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1518.734 ; gain = 568.676
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1516.309 ; gain = 566.363
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1518.734 ; gain = 568.676
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -335,29 +335,29 @@ Report Cell Usage:
 |4     |top_debouncer_0_0_bbox         |     1|
 |5     |top_ila_0_0_bbox               |     1|
 |6     |IBUF                           |     2|
-|7     |OBUF                           |     4|
+|7     |OBUF                           |     7|
 +------+-------------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1516.309 ; gain = 566.363
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1518.734 ; gain = 568.676
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:13 ; elapsed = 00:00:19 . Memory (MB): peak = 1516.309 ; gain = 551.023
-Synthesis Optimization Complete : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1516.309 ; gain = 566.363
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:13 ; elapsed = 00:00:19 . Memory (MB): peak = 1518.734 ; gain = 551.441
+Synthesis Optimization Complete : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1518.734 ; gain = 568.676
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1516.309 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1518.734 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1516.309 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1518.734 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Synth Design complete | Checksum: ad874b84
+Synth Design complete | Checksum: a35c7782
 INFO: [Common 17-83] Releasing license: Synthesis
 39 Infos, 104 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
 INFO: [Common 17-600] The following parameters have non-default value.
 tcl.statsThreshold
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1516.309 ; gain = 0.000
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1518.734 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.runs/synth_1/top_wrapper.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file top_wrapper_utilization_synth.rpt -pb top_wrapper_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Thu Jul 31 17:37:33 2025...
+INFO: [Common 17-206] Exiting Vivado at Thu Jul 31 19:01:02 2025...
