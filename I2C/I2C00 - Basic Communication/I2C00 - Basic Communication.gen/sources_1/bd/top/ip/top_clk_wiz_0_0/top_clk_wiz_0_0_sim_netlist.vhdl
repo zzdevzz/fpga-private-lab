@@ -4,8 +4,8 @@
 -- Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
 -- Date        : Thu Jul 31 17:36:57 2025
 -- Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim {e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic
---               Communication.gen/sources_1/bd/top/ip/top_clk_wiz_0_0/top_clk_wiz_0_0_sim_netlist.vhdl}
+-- Command     : write_vhdl -force -mode funcsim -rename_top top_clk_wiz_0_0 -prefix
+--               top_clk_wiz_0_0_ top_clk_wiz_0_0_sim_netlist.vhdl
 -- Design      : top_clk_wiz_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -15,7 +15,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity top_clk_wiz_0_0_clk_wiz is
+entity top_clk_wiz_0_0_top_clk_wiz_0_0_clk_wiz is
   port (
     clk_out100 : out STD_LOGIC;
     clk_out25 : out STD_LOGIC;
@@ -23,9 +23,9 @@ entity top_clk_wiz_0_0_clk_wiz is
     locked : out STD_LOGIC;
     clk_in1 : in STD_LOGIC
   );
-end top_clk_wiz_0_0_clk_wiz;
+end top_clk_wiz_0_0_top_clk_wiz_0_0_clk_wiz;
 
-architecture STRUCTURE of top_clk_wiz_0_0_clk_wiz is
+architecture STRUCTURE of top_clk_wiz_0_0_top_clk_wiz_0_0_clk_wiz is
   signal clk_in1_top_clk_wiz_0_0 : STD_LOGIC;
   signal clk_out100_top_clk_wiz_0_0 : STD_LOGIC;
   signal clk_out25_top_clk_wiz_0_0 : STD_LOGIC;
@@ -149,7 +149,7 @@ end top_clk_wiz_0_0;
 
 architecture STRUCTURE of top_clk_wiz_0_0 is
 begin
-inst: entity work.top_clk_wiz_0_0_clk_wiz
+inst: entity work.top_clk_wiz_0_0_top_clk_wiz_0_0_clk_wiz
      port map (
       clk_in1 => clk_in1,
       clk_out100 => clk_out100,

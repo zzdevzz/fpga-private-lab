@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Thu Jul 31 19:03:16 2025
+| Date         : Fri Aug  1 17:04:31 2025
 | Host         : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 | Command      : report_methodology -file top_wrapper_methodology_drc_routed.rpt -pb top_wrapper_methodology_drc_routed.pb -rpx top_wrapper_methodology_drc_routed.rpx
 | Design       : top_wrapper
@@ -23,22 +23,16 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 10
-+-----------+----------+----------------------------------+------------+
-| Rule      | Severity | Description                      | Violations |
-+-----------+----------+----------------------------------+------------+
-| HPDR-1    | Warning  | Port pin direction inconsistency | 1          |
-| LUTAR-1   | Warning  | LUT drives async reset alert     | 4          |
-| TIMING-18 | Warning  | Missing input or output delay    | 5          |
-+-----------+----------+----------------------------------+------------+
+             Violations found: 8
++-----------+----------+-------------------------------+------------+
+| Rule      | Severity | Description                   | Violations |
++-----------+----------+-------------------------------+------------+
+| LUTAR-1   | Warning  | LUT drives async reset alert  | 4          |
+| TIMING-18 | Warning  | Missing input or output delay | 4          |
++-----------+----------+-------------------------------+------------+
 
 2. REPORT DETAILS
 -----------------
-HPDR-1#1 Warning
-Port pin direction inconsistency  
-Hierarchical port(pin) ov7670_SDA direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (ov7670_SDA) connected to this Port, but both were not found.
-Related violations: <none>
-
 LUTAR-1#1 Warning
 LUT drives async reset alert  
 LUT cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_RD/U_RD_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_rdfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.gwrrd_rst_sync_stage[2].rrst_inst/ngwrdrst.grst.g7serrst.rd_rst_reg[2]_i_1, with 2 or more inputs, drives asynchronous preset/clear pin(s) dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_RD/U_RD_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_rdfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.rd_rst_reg_reg[0]/PRE,
@@ -79,17 +73,12 @@ Related violations: <none>
 
 TIMING-18#3 Warning
 Missing input or output delay  
-An output delay is missing on ov7670_reset relative to the rising and/or falling clock edge(s) of sys_clock.
+An output delay is missing on ov7670_SDA relative to the rising and/or falling clock edge(s) of sys_clock.
 Related violations: <none>
 
 TIMING-18#4 Warning
 Missing input or output delay  
-An output delay is missing on sda_oe_debug relative to the rising and/or falling clock edge(s) of sys_clock.
-Related violations: <none>
-
-TIMING-18#5 Warning
-Missing input or output delay  
-An output delay is missing on sda_out_debug_0 relative to the rising and/or falling clock edge(s) of sys_clock.
+An output delay is missing on ov7670_reset relative to the rising and/or falling clock edge(s) of sys_clock.
 Related violations: <none>
 
 

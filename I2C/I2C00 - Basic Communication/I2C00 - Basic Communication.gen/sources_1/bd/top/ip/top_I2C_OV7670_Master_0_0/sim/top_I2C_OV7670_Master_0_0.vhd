@@ -60,10 +60,9 @@ ENTITY top_I2C_OV7670_Master_0_0 IS
     slave_reg_addr : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
     slave_reg_data : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
     ov7670_SCL : OUT STD_LOGIC;
-    ov7670_SDA : INOUT STD_LOGIC;
-    sda_out_debug : OUT STD_LOGIC;
-    sda_in_debug : OUT STD_LOGIC;
-    sda_oe_debug : OUT STD_LOGIC;
+    sda_out : OUT STD_LOGIC;
+    sda_in : IN STD_LOGIC;
+    sda_oe : OUT STD_LOGIC;
     shift_reg_debug : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
     byte_counter_debug : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
     bit_counter_debug : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
@@ -85,10 +84,9 @@ ARCHITECTURE top_I2C_OV7670_Master_0_0_arch OF top_I2C_OV7670_Master_0_0 IS
       slave_reg_addr : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
       slave_reg_data : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
       ov7670_SCL : OUT STD_LOGIC;
-      ov7670_SDA : INOUT STD_LOGIC;
-      sda_out_debug : OUT STD_LOGIC;
-      sda_in_debug : OUT STD_LOGIC;
-      sda_oe_debug : OUT STD_LOGIC;
+      sda_out : OUT STD_LOGIC;
+      sda_in : IN STD_LOGIC;
+      sda_oe : OUT STD_LOGIC;
       shift_reg_debug : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
       byte_counter_debug : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
       bit_counter_debug : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
@@ -113,10 +111,9 @@ BEGIN
       slave_reg_addr => slave_reg_addr,
       slave_reg_data => slave_reg_data,
       ov7670_SCL => ov7670_SCL,
-      ov7670_SDA => ov7670_SDA,
-      sda_out_debug => sda_out_debug,
-      sda_in_debug => sda_in_debug,
-      sda_oe_debug => sda_oe_debug,
+      sda_out => sda_out,
+      sda_in => sda_in,
+      sda_oe => sda_oe,
       shift_reg_debug => shift_reg_debug,
       byte_counter_debug => byte_counter_debug,
       bit_counter_debug => bit_counter_debug,

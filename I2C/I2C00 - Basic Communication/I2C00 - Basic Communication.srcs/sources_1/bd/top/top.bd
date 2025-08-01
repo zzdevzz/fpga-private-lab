@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0xB3E5040F58E16C91",
+      "boundary_crc": "0x696D25A6C16D20FB",
       "device": "xc7a35tcpg236-1",
       "gen_directory": "../../../../I2C00 - Basic Communication.gen/sources_1/bd/top",
       "name": "top",
@@ -104,16 +104,13 @@
           }
         }
       },
-      "sda_out_debug_0": {
+      "sda_in": {
+        "direction": "I"
+      },
+      "sda_out": {
         "direction": "O"
       },
-      "ov7670_SDA": {
-        "direction": "IO"
-      },
-      "sda_in_debug": {
-        "direction": "O"
-      },
-      "sda_oe_debug": {
+      "sda_oe": {
         "direction": "O"
       }
     },
@@ -286,16 +283,13 @@
           "ov7670_SCL": {
             "direction": "O"
           },
-          "ov7670_SDA": {
-            "direction": "IO"
-          },
-          "sda_out_debug": {
+          "sda_out": {
             "direction": "O"
           },
-          "sda_in_debug": {
-            "direction": "O"
+          "sda_in": {
+            "direction": "I"
           },
-          "sda_oe_debug": {
+          "sda_oe": {
             "direction": "O"
           },
           "shift_reg_debug": {
@@ -445,24 +439,17 @@
           "ov7670_reset"
         ]
       },
-      "I2C_OV7670_Master_0_sda_in_debug": {
+      "I2C_OV7670_Master_0_sda_oe": {
         "ports": [
-          "I2C_OV7670_Master_0/sda_in_debug",
-          "ila_0/probe2",
-          "sda_in_debug"
+          "I2C_OV7670_Master_0/sda_oe",
+          "sda_oe",
+          "ila_0/probe2"
         ]
       },
-      "I2C_OV7670_Master_0_sda_oe_debug": {
+      "I2C_OV7670_Master_0_sda_out": {
         "ports": [
-          "I2C_OV7670_Master_0/sda_oe_debug",
-          "ila_0/probe3",
-          "sda_oe_debug"
-        ]
-      },
-      "I2C_OV7670_Master_0_sda_out_debug": {
-        "ports": [
-          "I2C_OV7670_Master_0/sda_out_debug",
-          "sda_out_debug_0",
+          "I2C_OV7670_Master_0/sda_out",
+          "sda_out",
           "ila_0/probe1"
         ]
       },
@@ -490,12 +477,6 @@
           "I2C_OV7670_Master_0/slave_reg_data"
         ]
       },
-      "Net": {
-        "ports": [
-          "ov7670_SDA",
-          "I2C_OV7670_Master_0/ov7670_SDA"
-        ]
-      },
       "clk_wiz_0_clk_out25": {
         "ports": [
           "clk_wiz_0/clk_out25",
@@ -520,6 +501,13 @@
         "ports": [
           "reset",
           "clk_wiz_0/reset"
+        ]
+      },
+      "sda_in_1": {
+        "ports": [
+          "sda_in",
+          "I2C_OV7670_Master_0/sda_in",
+          "ila_0/probe3"
         ]
       },
       "sys_clock_1": {

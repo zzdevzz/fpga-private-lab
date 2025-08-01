@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1753984825" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/top_wrapper.dcp">
+<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1754064099" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/top_wrapper.dcp">
   <File Type="PA-TCL" Name="top_wrapper.tcl"/>
   <File Type="RDS-PROPCONSTRS" Name="top_wrapper_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="top_wrapper_reports.tcl"/>
@@ -49,6 +49,13 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PSRCDIR/sources_1/new/IOBUF.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PSRCDIR/sources_1/new/host.vhd">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
@@ -89,6 +96,8 @@
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedInSteps" Val="synth_1"/>
+        <Attr Name="UsedInSteps" Val="synth_1_copy_1"/>
+        <Attr Name="UsedInSteps" Val="synth_1_copy_2"/>
         <Attr Name="AutoDcp" Val="1"/>
       </FileInfo>
     </File>
@@ -101,5 +110,4 @@
     <Step Id="synth_design"/>
   </Strategy>
   <BlockFileSet Type="BlockSrcs" Name="top_I2C_OV7670_Master_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="top_clk_wiz_0_0"/>
 </GenRun>

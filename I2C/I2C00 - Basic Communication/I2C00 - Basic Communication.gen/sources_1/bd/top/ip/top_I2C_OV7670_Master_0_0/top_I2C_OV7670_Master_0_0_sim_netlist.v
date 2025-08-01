@@ -2,7 +2,7 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-// Date        : Thu Jul 31 17:10:25 2025
+// Date        : Fri Aug  1 16:39:38 2025
 // Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim {e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 -
 //               Basic
@@ -23,10 +23,9 @@ module top_I2C_OV7670_Master_0_0
     slave_reg_addr,
     slave_reg_data,
     ov7670_SCL,
-    ov7670_SDA,
-    sda_out_debug,
-    sda_in_debug,
-    sda_oe_debug,
+    sda_out,
+    sda_in,
+    sda_oe,
     shift_reg_debug,
     byte_counter_debug,
     bit_counter_debug,
@@ -40,10 +39,9 @@ module top_I2C_OV7670_Master_0_0
   input [7:0]slave_reg_addr;
   input [7:0]slave_reg_data;
   output ov7670_SCL;
-  inout ov7670_SDA;
-  output sda_out_debug;
-  output sda_in_debug;
-  output sda_oe_debug;
+  output sda_out;
+  input sda_in;
+  output sda_oe;
   output [7:0]shift_reg_debug;
   output [1:0]byte_counter_debug;
   output [3:0]bit_counter_debug;
@@ -59,11 +57,11 @@ module top_I2C_OV7670_Master_0_0
   wire clk_100;
   wire [1:0]i2c_data_read;
   wire ov7670_SCL;
-  wire ov7670_SDA;
   wire ov7670_reset;
   wire reset;
-  wire sda_oe_debug;
-  wire sda_out_debug;
+  wire sda_in;
+  wire sda_oe;
+  wire sda_out;
   wire [7:1]\^shift_reg_debug ;
   wire [2:0]\^simple_state_debug ;
   wire [7:0]slave_reg_addr;
@@ -71,7 +69,6 @@ module top_I2C_OV7670_Master_0_0
   wire [2:0]state_debug;
 
   assign ov7670_pwdn = \<const0> ;
-  assign sda_in_debug = ov7670_SDA;
   assign shift_reg_debug[7:1] = \^shift_reg_debug [7:1];
   assign shift_reg_debug[0] = \<const0> ;
   assign simple_state_debug[3] = \<const0> ;
@@ -85,12 +82,12 @@ module top_I2C_OV7670_Master_0_0
         .clk_100(clk_100),
         .\current_index_reg[0]_0 (i2c_data_read[0]),
         .\current_index_reg[1]_0 (i2c_data_read[1]),
-        .ov7670_SDA(ov7670_SDA),
         .ov7670_reset(ov7670_reset),
         .reset(reset),
         .scl_reg_0(ov7670_SCL),
-        .sda_oe_debug(sda_oe_debug),
-        .sda_out_debug(sda_out_debug),
+        .sda_in(sda_in),
+        .sda_oe(sda_oe),
+        .sda_out(sda_out),
         .shift_reg_debug(\^shift_reg_debug ),
         .simple_state_debug(\^simple_state_debug ),
         .slave_reg_addr(slave_reg_addr),
@@ -109,11 +106,11 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
     \current_index_reg[1]_0 ,
     shift_reg_debug,
     simple_state_debug,
-    sda_oe_debug,
-    sda_out_debug,
+    sda_out,
+    sda_oe,
     ov7670_reset,
-    ov7670_SDA,
     reset,
+    sda_in,
     clk_100,
     slave_reg_data,
     slave_reg_addr);
@@ -126,11 +123,11 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
   output \current_index_reg[1]_0 ;
   output [6:0]shift_reg_debug;
   output [2:0]simple_state_debug;
-  output sda_oe_debug;
-  output sda_out_debug;
+  output sda_out;
+  output sda_oe;
   output ov7670_reset;
-  inout ov7670_SDA;
   input reset;
+  input sda_in;
   input clk_100;
   input [7:0]slave_reg_data;
   input [7:0]slave_reg_addr;
@@ -152,8 +149,6 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
   wire \current_index_reg[0]_0 ;
   wire \current_index_reg[1]_0 ;
   wire current_reset;
-  wire ov7670_SDA;
-  wire ov7670_SDA_reg0;
   wire ov7670_reset;
   wire ov7670_reset_s_i_1_n_0;
   wire ov7670_reset_s_i_2_n_0;
@@ -199,11 +194,12 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
   wire scl_reg_0;
   wire scl_rise;
   wire scl_rise0;
+  wire sda_in;
+  wire sda_oe;
   wire sda_oe1_out;
-  wire sda_oe_debug;
   wire sda_oe_i_1_n_0;
+  wire sda_out;
   wire sda_out2_out;
-  wire sda_out_debug;
   wire sda_out_i_1_n_0;
   wire sda_out_i_2_n_0;
   wire shift_reg;
@@ -293,10 +289,10 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
         .I4(state[1]),
         .O(\FSM_sequential_state[1]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h0F00FFFF4F400000)) 
+    .INIT(64'h0F00FFFF2F200000)) 
     \FSM_sequential_state[2]_i_1 
-       (.I0(ov7670_SDA),
-        .I1(state[1]),
+       (.I0(state[1]),
+        .I1(sda_in),
         .I2(state[0]),
         .I3(\FSM_sequential_state[2]_i_2_n_0 ),
         .I4(\FSM_sequential_state[2]_i_3_n_0 ),
@@ -502,22 +498,6 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
         .D(reset),
         .Q(current_reset),
         .R(1'b0));
-  LUT6 #(
-    .INIT(64'hFFFFF888F888F888)) 
-    ov7670_SDA_INST_0
-       (.I0(1'b0),
-        .I1(ov7670_SDA_reg0),
-        .I2(1'b0),
-        .I3(1'b0),
-        .I4(1'b0),
-        .I5(1'b0),
-        .O(ov7670_SDA));
-  LUT2 #(
-    .INIT(4'h2)) 
-    ov7670_SDA_INST_0_i_1
-       (.I0(sda_oe_debug),
-        .I1(sda_out_debug),
-        .O(ov7670_SDA_reg0));
   LUT6 #(
     .INIT(64'h0000000000010000)) 
     ov7670_reset_s_i_1
@@ -891,7 +871,7 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
         .I2(state[0]),
         .I3(\byte_counter_reg[1]_0 ),
         .I4(state[1]),
-        .I5(sda_oe_debug),
+        .I5(sda_oe),
         .O(sda_oe_i_1_n_0));
   (* SOFT_HLUTNM = "soft_lutpair11" *) 
   LUT2 #(
@@ -900,13 +880,11 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
        (.I0(scl_rise),
         .I1(bit_counter_debug[3]),
         .O(sda_oe1_out));
-  FDRE #(
-    .INIT(1'b0)) 
-    sda_oe_reg
+  FDRE sda_oe_reg
        (.C(clk_100),
         .CE(1'b1),
         .D(sda_oe_i_1_n_0),
-        .Q(sda_oe_debug),
+        .Q(sda_oe),
         .R(1'b0));
   LUT6 #(
     .INIT(64'hFFCCEFFF00002000)) 
@@ -916,7 +894,7 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
         .I2(sda_out2_out),
         .I3(state[1]),
         .I4(state[0]),
-        .I5(sda_out_debug),
+        .I5(sda_out),
         .O(sda_out_i_1_n_0));
   LUT6 #(
     .INIT(64'hFFFFFFFE00000002)) 
@@ -935,13 +913,11 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
        (.I0(scl_rise),
         .I1(bit_counter_debug[3]),
         .O(sda_out2_out));
-  FDRE #(
-    .INIT(1'b1)) 
-    sda_out_reg
+  FDRE sda_out_reg
        (.C(clk_100),
         .CE(1'b1),
         .D(sda_out_i_1_n_0),
-        .Q(sda_out_debug),
+        .Q(sda_out),
         .R(1'b0));
   (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT5 #(

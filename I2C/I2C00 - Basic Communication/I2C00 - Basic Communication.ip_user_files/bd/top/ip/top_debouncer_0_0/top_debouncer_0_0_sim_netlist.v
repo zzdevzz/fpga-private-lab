@@ -4,8 +4,8 @@
 // Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
 // Date        : Tue Jul 29 20:33:56 2025
 // Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim {e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 -
-//               Basic Communication.gen/sources_1/bd/top/ip/top_debouncer_0_0/top_debouncer_0_0_sim_netlist.v}
+// Command     : write_verilog -force -mode funcsim -rename_top top_debouncer_0_0 -prefix
+//               top_debouncer_0_0_ top_debouncer_0_0_sim_netlist.v
 // Design      : top_debouncer_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -13,28 +13,6 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CHECK_LICENSE_TYPE = "top_debouncer_0_0,debouncer,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* ip_definition_source = "module_ref" *) 
-(* x_core_info = "debouncer,Vivado 2023.2" *) 
-(* NotValidForBitStream *)
-module top_debouncer_0_0
-   (clk,
-    switch,
-    switch_debounced);
-  (* x_interface_info = "xilinx.com:signal:clock:1.0 clk CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, INSERT_VIP 0" *) input clk;
-  input switch;
-  output switch_debounced;
-
-  wire clk;
-  wire switch;
-  wire switch_debounced;
-
-  top_debouncer_0_0_debouncer U0
-       (.clk(clk),
-        .switch(switch),
-        .switch_debounced(switch_debounced));
-endmodule
-
-(* ORIG_REF_NAME = "debouncer" *) 
 module top_debouncer_0_0_debouncer
    (switch_debounced,
     switch,
@@ -55,6 +33,27 @@ module top_debouncer_0_0_debouncer
         .D(switch),
         .Q(switch_debounced),
         .R(1'b0));
+endmodule
+
+(* CHECK_LICENSE_TYPE = "top_debouncer_0_0,debouncer,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* ip_definition_source = "module_ref" *) 
+(* x_core_info = "debouncer,Vivado 2023.2" *) 
+(* NotValidForBitStream *)
+module top_debouncer_0_0
+   (clk,
+    switch,
+    switch_debounced);
+  (* x_interface_info = "xilinx.com:signal:clock:1.0 clk CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, INSERT_VIP 0" *) input clk;
+  input switch;
+  output switch_debounced;
+
+  wire clk;
+  wire switch;
+  wire switch_debounced;
+
+  top_debouncer_0_0_debouncer U0
+       (.clk(clk),
+        .switch(switch),
+        .switch_debounced(switch_debounced));
 endmodule
 `ifndef GLBL
 `define GLBL

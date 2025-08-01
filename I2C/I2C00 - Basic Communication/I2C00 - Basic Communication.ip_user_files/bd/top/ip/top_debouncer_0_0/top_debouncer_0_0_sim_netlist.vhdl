@@ -4,8 +4,8 @@
 -- Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
 -- Date        : Tue Jul 29 20:33:56 2025
 -- Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim {e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic
---               Communication.gen/sources_1/bd/top/ip/top_debouncer_0_0/top_debouncer_0_0_sim_netlist.vhdl}
+-- Command     : write_vhdl -force -mode funcsim -rename_top top_debouncer_0_0 -prefix
+--               top_debouncer_0_0_ top_debouncer_0_0_sim_netlist.vhdl
 -- Design      : top_debouncer_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -21,8 +21,6 @@ entity top_debouncer_0_0_debouncer is
     switch : in STD_LOGIC;
     clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of top_debouncer_0_0_debouncer : entity is "debouncer";
 end top_debouncer_0_0_debouncer;
 
 architecture STRUCTURE of top_debouncer_0_0_debouncer is

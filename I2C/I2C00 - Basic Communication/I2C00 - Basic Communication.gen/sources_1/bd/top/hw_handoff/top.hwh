@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Jul 31 19:00:14 2025" VIVADOVERSION="2023.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Aug  1 16:38:46 2025" VIVADOVERSION="2023.2">
 
   <SYSTEMINFO ARCH="artix7" BOARD="digilentinc.com:basys3:part0:1.2" DEVICE="7a35t" NAME="top" PACKAGE="cpg236" SPEEDGRADE="-1"/>
 
@@ -12,11 +12,6 @@
     <PORT DIR="O" NAME="ov7670_SCL" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_ov7670_SCL">
       <CONNECTIONS>
         <CONNECTION INSTANCE="I2C_OV7670_Master_0" PORT="ov7670_SCL"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="IO" NAME="ov7670_SDA" SIGIS="undef" SIGNAME="External_Ports_ov7670_SDA">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="I2C_OV7670_Master_0" PORT="ov7670_SDA"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="O" NAME="ov7670_pwdn" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_ov7670_pwdn">
@@ -39,19 +34,20 @@
         <CONNECTION INSTANCE="clk_wiz_0" PORT="reset"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" NAME="sda_in_debug" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_sda_in_debug">
+    <PORT DIR="I" NAME="sda_in" SIGIS="undef" SIGNAME="External_Ports_sda_in">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="I2C_OV7670_Master_0" PORT="sda_in_debug"/>
+        <CONNECTION INSTANCE="I2C_OV7670_Master_0" PORT="sda_in"/>
+        <CONNECTION INSTANCE="ila_0" PORT="probe3"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" NAME="sda_oe_debug" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_sda_oe_debug">
+    <PORT DIR="O" NAME="sda_oe" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_sda_oe">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="I2C_OV7670_Master_0" PORT="sda_oe_debug"/>
+        <CONNECTION INSTANCE="I2C_OV7670_Master_0" PORT="sda_oe"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" NAME="sda_out_debug_0" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_sda_out_debug">
+    <PORT DIR="O" NAME="sda_out" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_sda_out">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="I2C_OV7670_Master_0" PORT="sda_out_debug"/>
+        <CONNECTION INSTANCE="I2C_OV7670_Master_0" PORT="sda_out"/>
       </CONNECTIONS>
     </PORT>
     <PORT CLKFREQUENCY="100000000" DIR="I" NAME="sys_clock" SIGIS="clk" SIGNAME="External_Ports_sys_clock">
@@ -98,11 +94,6 @@
             <CONNECTION INSTANCE="ila_0" PORT="probe0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="IO" NAME="ov7670_SDA" SIGIS="undef" SIGNAME="External_Ports_ov7670_SDA">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="ov7670_SDA"/>
-          </CONNECTIONS>
-        </PORT>
         <PORT DIR="O" NAME="ov7670_pwdn" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_ov7670_pwdn">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="ov7670_pwdn"/>
@@ -118,21 +109,20 @@
             <CONNECTION INSTANCE="debouncer_0" PORT="switch_debounced"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="sda_in_debug" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_sda_in_debug">
+        <PORT DIR="I" NAME="sda_in" SIGIS="undef" SIGNAME="External_Ports_sda_in">
           <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="sda_in"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="sda_oe" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_sda_oe">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="sda_oe"/>
             <CONNECTION INSTANCE="ila_0" PORT="probe2"/>
-            <CONNECTION INSTANCE="External_Ports" PORT="sda_in_debug"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="sda_oe_debug" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_sda_oe_debug">
+        <PORT DIR="O" NAME="sda_out" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_sda_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="ila_0" PORT="probe3"/>
-            <CONNECTION INSTANCE="External_Ports" PORT="sda_oe_debug"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="sda_out_debug" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_sda_out_debug">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="sda_out_debug_0"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="sda_out"/>
             <CONNECTION INSTANCE="ila_0" PORT="probe1"/>
           </CONNECTIONS>
         </PORT>
@@ -3967,19 +3957,19 @@
             <CONNECTION INSTANCE="I2C_OV7670_Master_0" PORT="ov7670_SCL"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="probe1" RIGHT="0" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_sda_out_debug">
+        <PORT DIR="I" LEFT="0" NAME="probe1" RIGHT="0" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_sda_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="I2C_OV7670_Master_0" PORT="sda_out_debug"/>
+            <CONNECTION INSTANCE="I2C_OV7670_Master_0" PORT="sda_out"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="probe2" RIGHT="0" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_sda_in_debug">
+        <PORT DIR="I" LEFT="0" NAME="probe2" RIGHT="0" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_sda_oe">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="I2C_OV7670_Master_0" PORT="sda_in_debug"/>
+            <CONNECTION INSTANCE="I2C_OV7670_Master_0" PORT="sda_oe"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="probe3" RIGHT="0" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_sda_oe_debug">
+        <PORT DIR="I" LEFT="0" NAME="probe3" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_sda_in">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="I2C_OV7670_Master_0" PORT="sda_oe_debug"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="sda_in"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="7" NAME="probe4" RIGHT="0" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_shift_reg_debug">

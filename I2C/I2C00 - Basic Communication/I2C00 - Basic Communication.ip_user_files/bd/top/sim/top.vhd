@@ -2,7 +2,7 @@
 --Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
---Date        : Thu Jul 31 16:28:50 2025
+--Date        : Fri Aug  1 12:04:30 2025
 --Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 --Command     : generate_target top.bd
 --Design      : top
@@ -115,7 +115,7 @@ architecture STRUCTURE of top is
   attribute X_INTERFACE_PARAMETER : string;
   attribute X_INTERFACE_PARAMETER of ov7670_reset : signal is "XIL_INTERFACENAME RST.OV7670_RESET, INSERT_VIP 0, POLARITY ACTIVE_LOW";
   attribute X_INTERFACE_INFO of ov7670_xclk : signal is "xilinx.com:signal:clock:1.0 CLK.OV7670_XCLK CLK";
-  attribute X_INTERFACE_PARAMETER of ov7670_xclk : signal is "XIL_INTERFACENAME CLK.OV7670_XCLK, CLK_DOMAIN /clk_wiz_0_clk_out1, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.0";
+  attribute X_INTERFACE_PARAMETER of ov7670_xclk : signal is "XIL_INTERFACENAME CLK.OV7670_XCLK, CLK_DOMAIN /clk_wiz_0_clk_out1, FREQ_HZ 25000000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.0";
   attribute X_INTERFACE_INFO of reset : signal is "xilinx.com:signal:reset:1.0 RST.RESET RST";
   attribute X_INTERFACE_PARAMETER of reset : signal is "XIL_INTERFACENAME RST.RESET, INSERT_VIP 0, POLARITY ACTIVE_HIGH";
   attribute X_INTERFACE_INFO of sys_clock : signal is "xilinx.com:signal:clock:1.0 CLK.SYS_CLOCK CLK";
