@@ -32,12 +32,54 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity host is
---  Port ( );
+  Port (
+    ov7670_SDA: inout STD_LOGIC;
+    BTNL : in STD_LOGIC;
+    ov7670_SCL : out STD_LOGIC;   
+    ov7670_pwdn : out STD_LOGIC;
+    ov7670_reset : out STD_LOGIC;
+    ov7670_xclk : out STD_LOGIC;
+    reset : in STD_LOGIC;
+    sys_clock : in STD_LOGIC
+   );
 end host;
 
 architecture Behavioral of host is
 
+component top_wrapper is
+  port (
+   BTNL : in STD_LOGIC;
+    ov7670_SCL : out STD_LOGIC;
+    ov7670_pwdn : out STD_LOGIC;
+    ov7670_reset : out STD_LOGIC;
+    ov7670_xclk : out STD_LOGIC;
+    reset : in STD_LOGIC;
+    sda_in : in STD_LOGIC;
+    sda_oe : out STD_LOGIC;
+    sda_out : out STD_LOGIC;
+    sys_clock : in STD_LOGIC
+  );
+end component;
+
+signal sda_oe_s : std_logic;
+signal sda_out_s : std_logic;
+
 begin
 
+--sda_in <= ov7670_SDA;
+ov7670_SDA <= '0' when (sda_oe_s = '1' and sda_out_s = '0') else 'Z'; --unless we pull it low actively, it's Z which defaults to '1' value.
 
+top_i: component top_wrapper
+     port map (
+      BTNL => BTNL,
+      ov7670_SCL => ov7670_SCL,
+      ov7670_pwdn => ov7670_pwdn,
+      ov7670_reset => ov7670_reset,
+      ov7670_xclk => ov7670_xclk,
+      reset => reset,
+      sda_in => ov7670_SDA,
+      sda_oe => sda_oe_s,
+      sda_out => sda_out_s,
+      sys_clock => sys_clock
+    );
 end Behavioral;

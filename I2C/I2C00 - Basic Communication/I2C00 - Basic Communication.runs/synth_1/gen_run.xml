@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1754064099" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/top_wrapper.dcp">
-  <File Type="PA-TCL" Name="top_wrapper.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="top_wrapper_drc_synth.rpt"/>
-  <File Type="REPORTS-TCL" Name="top_wrapper_reports.tcl"/>
-  <File Type="RDS-RDS" Name="top_wrapper.vds"/>
-  <File Type="RDS-UTIL" Name="top_wrapper_utilization_synth.rpt"/>
-  <File Type="RDS-UTIL-PB" Name="top_wrapper_utilization_synth.pb"/>
-  <File Type="RDS-DCP" Name="top_wrapper.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="top_wrapper_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="top_wrapper_timing_summary_synth.pb"/>
+<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1754317885" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/top_wrapper.dcp">
+  <File Type="PA-TCL" Name="host.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="host_drc_synth.rpt"/>
+  <File Type="REPORTS-TCL" Name="host_reports.tcl"/>
+  <File Type="RDS-RDS" Name="host.vds"/>
+  <File Type="RDS-UTIL" Name="host_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="host_utilization_synth.pb"/>
+  <File Type="RDS-DCP" Name="host.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="host_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="host_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/new/debouncer.vhd">
@@ -42,6 +42,12 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PSRCDIR/sources_1/new/host.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PSRCDIR/sources_1/new/I2C_OV7670_Master_BU.vhd">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
@@ -50,13 +56,6 @@
       </FileInfo>
     </File>
     <File Path="$PSRCDIR/sources_1/new/IOBUF.vhd">
-      <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/new/host.vhd">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -72,7 +71,7 @@
     </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
-      <Option Name="TopModule" Val="top_wrapper"/>
+      <Option Name="TopModule" Val="host"/>
       <Option Name="TopAutoSet" Val="TRUE"/>
     </Config>
   </FileSet>
@@ -109,5 +108,6 @@
     <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023"/>
     <Step Id="synth_design"/>
   </Strategy>
+  <BlockFileSet Type="BlockSrcs" Name="top_ila_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="top_I2C_OV7670_Master_0_0"/>
 </GenRun>

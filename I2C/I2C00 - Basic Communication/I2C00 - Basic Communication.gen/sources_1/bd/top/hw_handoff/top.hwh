@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Aug  1 16:38:46 2025" VIVADOVERSION="2023.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Mon Aug  4 15:31:22 2025" VIVADOVERSION="2023.2">
 
   <SYSTEMINFO ARCH="artix7" BOARD="digilentinc.com:basys3:part0:1.2" DEVICE="7a35t" NAME="top" PACKAGE="cpg236" SPEEDGRADE="-1"/>
 
@@ -36,8 +36,8 @@
     </PORT>
     <PORT DIR="I" NAME="sda_in" SIGIS="undef" SIGNAME="External_Ports_sda_in">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="I2C_OV7670_Master_0" PORT="sda_in"/>
         <CONNECTION INSTANCE="ila_0" PORT="probe3"/>
+        <CONNECTION INSTANCE="I2C_OV7670_Master_0" PORT="sda_in"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="O" NAME="sda_oe" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_sda_oe">
@@ -97,11 +97,13 @@
         <PORT DIR="O" NAME="ov7670_pwdn" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_ov7670_pwdn">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="ov7670_pwdn"/>
+            <CONNECTION INSTANCE="ila_0" PORT="probe10"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="ov7670_reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="I2C_OV7670_Master_0_ov7670_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="ov7670_reset"/>
+            <CONNECTION INSTANCE="ila_0" PORT="probe11"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="debouncer_0_switch_debounced">
@@ -131,7 +133,16 @@
             <CONNECTION INSTANCE="ila_0" PORT="probe4"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="3" NAME="simple_state_debug" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="7" NAME="shift_reg_full_debug" RIGHT="0" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_shift_reg_full_debug">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ila_0" PORT="probe12"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="3" NAME="simple_state_debug" RIGHT="0" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_simple_state_debug">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ila_0" PORT="probe9"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="I" LEFT="7" NAME="slave_reg_addr" RIGHT="0" SIGIS="undef" SIGNAME="I2C_OV7670_config_0_reg_addr">
           <CONNECTIONS>
             <CONNECTION INSTANCE="I2C_OV7670_config_0" PORT="reg_addr"/>
@@ -763,6 +774,7 @@
         <PORT CLKFREQUENCY="25000000" DIR="O" NAME="clk_out25" SIGIS="clk" SIGNAME="clk_wiz_0_clk_out25">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="ov7670_xclk"/>
+            <CONNECTION INSTANCE="ila_0" PORT="probe13"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="100000000" DIR="O" NAME="clk_out100" SIGIS="clk" SIGNAME="clk_wiz_0_clk_out100">
@@ -839,7 +851,7 @@
         <PARAMETER NAME="C_MU_TYPE" VALUE="0"/>
         <PARAMETER NAME="C_NEXT_SLAVE" VALUE="0"/>
         <PARAMETER NAME="C_NUM_MONITOR_SLOTS" VALUE="1"/>
-        <PARAMETER NAME="C_NUM_OF_PROBES" VALUE="9"/>
+        <PARAMETER NAME="C_NUM_OF_PROBES" VALUE="14"/>
         <PARAMETER NAME="C_PIPE_IFACE" VALUE="1"/>
         <PARAMETER NAME="C_PROBE0_MU_CNT" VALUE="1"/>
         <PARAMETER NAME="C_PROBE0_TYPE" VALUE="0"/>
@@ -1014,7 +1026,7 @@
         <PARAMETER NAME="C_PROBE129_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE12_MU_CNT" VALUE="1"/>
         <PARAMETER NAME="C_PROBE12_TYPE" VALUE="0"/>
-        <PARAMETER NAME="C_PROBE12_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_PROBE12_WIDTH" VALUE="8"/>
         <PARAMETER NAME="C_PROBE130_MU_CNT" VALUE="1"/>
         <PARAMETER NAME="C_PROBE130_TYPE" VALUE="0"/>
         <PARAMETER NAME="C_PROBE130_WIDTH" VALUE="1"/>
@@ -3912,7 +3924,7 @@
         <PARAMETER NAME="C_PROBE99_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE9_MU_CNT" VALUE="1"/>
         <PARAMETER NAME="C_PROBE9_TYPE" VALUE="0"/>
-        <PARAMETER NAME="C_PROBE9_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_PROBE9_WIDTH" VALUE="4"/>
         <PARAMETER NAME="C_RAM_STYLE" VALUE="SUBCORE"/>
         <PARAMETER NAME="C_SLOT_0_AXIS_TDEST_WIDTH" VALUE="2"/>
         <PARAMETER NAME="C_SLOT_0_AXIS_TID_WIDTH" VALUE="3"/>
@@ -3995,6 +4007,31 @@
         <PORT DIR="I" LEFT="2" NAME="probe8" RIGHT="0" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_state_debug">
           <CONNECTIONS>
             <CONNECTION INSTANCE="I2C_OV7670_Master_0" PORT="state_debug"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="probe9" RIGHT="0" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_simple_state_debug">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="I2C_OV7670_Master_0" PORT="simple_state_debug"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="probe10" RIGHT="0" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_ov7670_pwdn">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="I2C_OV7670_Master_0" PORT="ov7670_pwdn"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="probe11" POLARITY="ACTIVE_LOW" RIGHT="0" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_ov7670_reset">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="I2C_OV7670_Master_0" PORT="ov7670_reset"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="probe12" RIGHT="0" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_shift_reg_full_debug">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="I2C_OV7670_Master_0" PORT="shift_reg_full_debug"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="probe13" RIGHT="0" SIGIS="undef" SIGNAME="clk_wiz_0_clk_out25">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="clk_wiz_0" PORT="clk_out25"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>

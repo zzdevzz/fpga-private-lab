@@ -8,16 +8,16 @@
 
 # Clock signal
 #Bank = 34, Pin name = ,					Sch name = CLK100MHZ
-set_property PACKAGE_PIN W5 [get_ports CLK]
-set_property IOSTANDARD LVCMOS33 [get_ports CLK]
-create_clock -period 10.000 -name sys_clk_pin -waveform {0.000 5.000} -add [get_ports CLK]
+set_property PACKAGE_PIN W5 [get_ports sys_clk]
+set_property IOSTANDARD LVCMOS33 [get_ports sys_clk]
+create_clock -period 10.000 -name sys_clk_pin -waveform {0.000 5.000} -add [get_ports sys_clk]
 
 # Switches
 #set_property PACKAGE_PIN V17 [get_ports {SW[0]}]
 #set_property IOSTANDARD LVCMOS33 [get_ports {SW[0]}]
 
-set_property PACKAGE_PIN V17 [get_ports {Switch0}]
-set_property IOSTANDARD LVCMOS33 [get_ports {Switch0}]
+#set_property PACKAGE_PIN V17 [get_ports {Switch0}]
+#set_property IOSTANDARD LVCMOS33 [get_ports {Switch0}]
 
 #set_property PACKAGE_PIN V16 [get_ports {SW[1]}]
 #set_property IOSTANDARD LVCMOS33 [get_ports {SW[1]}]
@@ -157,8 +157,8 @@ set_property IOSTANDARD LVCMOS33 [get_ports {BTN[3]}]
 ## OV7670 Camera header pins
 ##Pmod Header JB
 ##Sch name = JB1
-set_property PACKAGE_PIN A14 [get_ports {ov7670_pwdn}]
-set_property IOSTANDARD LVCMOS33 [get_ports {ov7670_pwdn}]
+set_property PACKAGE_PIN A14 [get_ports ov7670_pwdn]
+set_property IOSTANDARD LVCMOS33 [get_ports ov7670_pwdn]
 ##Sch name = JB2
 set_property PACKAGE_PIN A16 [get_ports {ov7670_data[0]}]
 set_property IOSTANDARD LVCMOS33 [get_ports {ov7670_data[0]}]
@@ -169,8 +169,8 @@ set_property IOSTANDARD LVCMOS33 [get_ports {ov7670_data[2]}]
 set_property PACKAGE_PIN B16 [get_ports {ov7670_data[4]}]
 set_property IOSTANDARD LVCMOS33 [get_ports {ov7670_data[4]}]
 ##Sch name = JB7
-set_property PACKAGE_PIN A15 [get_ports {ov7670_reset}]
-set_property IOSTANDARD LVCMOS33 [get_ports {ov7670_reset}]
+set_property PACKAGE_PIN A15 [get_ports ov7670_reset]
+set_property IOSTANDARD LVCMOS33 [get_ports ov7670_reset]
 ##Sch name = JB8
 set_property PACKAGE_PIN A17 [get_ports {ov7670_data[1]}]
 set_property IOSTANDARD LVCMOS33 [get_ports {ov7670_data[1]}]
@@ -207,6 +207,7 @@ set_property IOSTANDARD LVCMOS33 [get_ports ov7670_vsync]
 ##Sch name = JC10
 set_property PACKAGE_PIN R18 [get_ports ov7670_SCL]
 set_property IOSTANDARD LVCMOS33 [get_ports ov7670_SCL]
+#set_property PULLTYPE PULLUP [get_ports ov7670_SCL]
 ##Pmod Header JA
 ##Bank = 15, Pin name = IO_L1N_T0_AD0N_15,					Sch name = JA1
 #set_property PACKAGE_PIN B13 [get_ports {JA[0]}]
@@ -399,3 +400,9 @@ set_property CFGBVS VCCO [current_design]
 
 
 
+
+set_property PULLTYPE PULLUP [get_ports ov7670_SCL]
+set_property C_CLK_INPUT_FREQ_HZ 300000000 [get_debug_cores dbg_hub]
+set_property C_ENABLE_CLK_DIVIDER false [get_debug_cores dbg_hub]
+set_property C_USER_SCAN_CHAIN 1 [get_debug_cores dbg_hub]
+connect_debug_port dbg_hub/clk [get_nets clk]

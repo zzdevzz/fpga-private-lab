@@ -1,0 +1,371 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Mon Aug  4 15:32:04 2025
+# Process ID: 33084
+# Current directory: E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.runs/synth_1
+# Command line: vivado.exe -log host.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source host.tcl
+# Log file: E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.runs/synth_1/host.vds
+# Journal file: E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.runs/synth_1\vivado.jou
+# Running On: DESKTOP-EFRMAI2, OS: Windows, CPU Frequency: 3700 MHz, CPU Physical cores: 24, Host memory: 34281 MB
+#-----------------------------------------------------------
+source host.tcl -notrace
+create_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 509.969 ; gain = 216.777
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'j:/Xilinx/Vivado/vivado-library-master'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'J:/Xilinx/Vivado/2023.2/data/ip'.
+WARNING: [IP_Flow 19-4995] The host OS only allows 260 characters in a normal path. The IP cache path is more than 80 characters. If you experience issues with IP caching, please consider changing the IP cache to a location with a shorter path. Alternately consider using the OS subst command to map part of the path to a drive letter. 
+Current IP cache path is e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.cache/ip 
+Command: read_checkpoint -auto_incremental -incremental {E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/utils_1/imports/synth_1/top_wrapper.dcp}
+INFO: [Vivado 12-5825] Read reference checkpoint from E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/utils_1/imports/synth_1/top_wrapper.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
+Command: synth_design -top host -part xc7a35tcpg236-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 15196
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1389.988 ; gain = 440.145
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'host' [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/sources_1/new/host.vhd:47]
+INFO: [Synth 8-3491] module 'top_wrapper' declared at 'e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/hdl/top_wrapper.vhd:15' bound to instance 'top_i' of component 'top_wrapper' [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/sources_1/new/host.vhd:72]
+INFO: [Synth 8-638] synthesizing module 'top_wrapper' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/hdl/top_wrapper.vhd:30]
+INFO: [Synth 8-3491] module 'top' declared at 'e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/synth/top.vhd:15' bound to instance 'top_i' of component 'top' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/hdl/top_wrapper.vhd:46]
+INFO: [Synth 8-638] synthesizing module 'top' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/synth/top.vhd:34]
+INFO: [Synth 8-3491] module 'top_I2C_OV7670_Master_0_0' declared at 'E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.runs/synth_1/.Xil/Vivado-33084-DESKTOP-EFRMAI2/realtime/top_I2C_OV7670_Master_0_0_stub.vhdl:6' bound to instance 'I2C_OV7670_Master_0' of component 'top_I2C_OV7670_Master_0_0' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/synth/top.vhd:141]
+INFO: [Synth 8-638] synthesizing module 'top_I2C_OV7670_Master_0_0' [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.runs/synth_1/.Xil/Vivado-33084-DESKTOP-EFRMAI2/realtime/top_I2C_OV7670_Master_0_0_stub.vhdl:29]
+INFO: [Synth 8-3491] module 'top_I2C_OV7670_config_0_0' declared at 'E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.runs/synth_1/.Xil/Vivado-33084-DESKTOP-EFRMAI2/realtime/top_I2C_OV7670_config_0_0_stub.vhdl:6' bound to instance 'I2C_OV7670_config_0' of component 'top_I2C_OV7670_config_0_0' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/synth/top.vhd:161]
+INFO: [Synth 8-638] synthesizing module 'top_I2C_OV7670_config_0_0' [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.runs/synth_1/.Xil/Vivado-33084-DESKTOP-EFRMAI2/realtime/top_I2C_OV7670_config_0_0_stub.vhdl:15]
+INFO: [Synth 8-3491] module 'top_clk_wiz_0_0' declared at 'E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.runs/synth_1/.Xil/Vivado-33084-DESKTOP-EFRMAI2/realtime/top_clk_wiz_0_0_stub.vhdl:6' bound to instance 'clk_wiz_0' of component 'top_clk_wiz_0_0' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/synth/top.vhd:167]
+INFO: [Synth 8-638] synthesizing module 'top_clk_wiz_0_0' [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.runs/synth_1/.Xil/Vivado-33084-DESKTOP-EFRMAI2/realtime/top_clk_wiz_0_0_stub.vhdl:17]
+INFO: [Synth 8-3491] module 'top_debouncer_0_0' declared at 'E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.runs/synth_1/.Xil/Vivado-33084-DESKTOP-EFRMAI2/realtime/top_debouncer_0_0_stub.vhdl:6' bound to instance 'debouncer_0' of component 'top_debouncer_0_0' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/synth/top.vhd:175]
+INFO: [Synth 8-638] synthesizing module 'top_debouncer_0_0' [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.runs/synth_1/.Xil/Vivado-33084-DESKTOP-EFRMAI2/realtime/top_debouncer_0_0_stub.vhdl:15]
+INFO: [Synth 8-3491] module 'top_ila_0_0' declared at 'E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.runs/synth_1/.Xil/Vivado-33084-DESKTOP-EFRMAI2/realtime/top_ila_0_0_stub.vhdl:6' bound to instance 'ila_0' of component 'top_ila_0_0' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/synth/top.vhd:181]
+INFO: [Synth 8-638] synthesizing module 'top_ila_0_0' [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.runs/synth_1/.Xil/Vivado-33084-DESKTOP-EFRMAI2/realtime/top_ila_0_0_stub.vhdl:27]
+INFO: [Synth 8-256] done synthesizing module 'top' (0#1) [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/synth/top.vhd:34]
+INFO: [Synth 8-256] done synthesizing module 'top_wrapper' (0#1) [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/hdl/top_wrapper.vhd:30]
+INFO: [Synth 8-256] done synthesizing module 'host' (0#1) [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/sources_1/new/host.vhd:47]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'top_i'. This will prevent further optimization [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/hdl/top_wrapper.vhd:46]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1501.785 ; gain = 551.941
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1501.785 ; gain = 551.941
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1501.785 ; gain = 551.941
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1501.785 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/ip/top_clk_wiz_0_0/top_clk_wiz_0_0/top_clk_wiz_0_0_in_context.xdc] for cell 'top_i/top_i/clk_wiz_0'
+Finished Parsing XDC File [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/ip/top_clk_wiz_0_0/top_clk_wiz_0_0/top_clk_wiz_0_0_in_context.xdc] for cell 'top_i/top_i/clk_wiz_0'
+Parsing XDC File [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/ip/top_debouncer_0_0/top_debouncer_0_0/top_debouncer_0_0_in_context.xdc] for cell 'top_i/top_i/debouncer_0'
+Finished Parsing XDC File [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/ip/top_debouncer_0_0/top_debouncer_0_0/top_debouncer_0_0_in_context.xdc] for cell 'top_i/top_i/debouncer_0'
+Parsing XDC File [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/ip/top_I2C_OV7670_Master_0_0/top_I2C_OV7670_Master_0_0/top_I2C_OV7670_Master_0_0_in_context.xdc] for cell 'top_i/top_i/I2C_OV7670_Master_0'
+Finished Parsing XDC File [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/ip/top_I2C_OV7670_Master_0_0/top_I2C_OV7670_Master_0_0/top_I2C_OV7670_Master_0_0_in_context.xdc] for cell 'top_i/top_i/I2C_OV7670_Master_0'
+Parsing XDC File [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/ip/top_ila_0_0/top_ila_0_0/top_ila_0_0_in_context.xdc] for cell 'top_i/top_i/ila_0'
+Finished Parsing XDC File [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/ip/top_ila_0_0/top_ila_0_0/top_ila_0_0_in_context.xdc] for cell 'top_i/top_i/ila_0'
+Parsing XDC File [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/ip/top_I2C_OV7670_config_0_0/top_I2C_OV7670_config_0_0/top_I2C_OV7670_config_0_0_in_context.xdc] for cell 'top_i/top_i/I2C_OV7670_config_0'
+Finished Parsing XDC File [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/ip/top_I2C_OV7670_config_0_0/top_I2C_OV7670_config_0_0/top_I2C_OV7670_config_0_0_in_context.xdc] for cell 'top_i/top_i/I2C_OV7670_config_0'
+Parsing XDC File [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc]
+WARNING: [Vivado 12-584] No ports matched 'sys_clk'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:11]
+WARNING: [Vivado 12-584] No ports matched 'sys_clk'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:12]
+WARNING: [Vivado 12-584] No ports matched 'sys_clk'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:13]
+WARNING: [Vivado 12-584] No ports matched 'Switch1'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:25]
+WARNING: [Vivado 12-584] No ports matched 'Switch1'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:26]
+WARNING: [Vivado 12-584] No ports matched 'SW[2]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:27]
+WARNING: [Vivado 12-584] No ports matched 'SW[2]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:28]
+WARNING: [Vivado 12-584] No ports matched 'SW[3]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:29]
+WARNING: [Vivado 12-584] No ports matched 'SW[3]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:30]
+WARNING: [Vivado 12-584] No ports matched 'SW[4]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:31]
+WARNING: [Vivado 12-584] No ports matched 'SW[4]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:32]
+WARNING: [Vivado 12-584] No ports matched 'SW[5]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:33]
+WARNING: [Vivado 12-584] No ports matched 'SW[5]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:34]
+WARNING: [Vivado 12-584] No ports matched 'SW[6]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:35]
+WARNING: [Vivado 12-584] No ports matched 'SW[6]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:36]
+WARNING: [Vivado 12-584] No ports matched 'SW[7]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:37]
+WARNING: [Vivado 12-584] No ports matched 'SW[7]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:38]
+WARNING: [Vivado 12-584] No ports matched 'SW[8]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:39]
+WARNING: [Vivado 12-584] No ports matched 'SW[8]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:40]
+WARNING: [Vivado 12-584] No ports matched 'SW[9]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:41]
+WARNING: [Vivado 12-584] No ports matched 'SW[9]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:42]
+WARNING: [Vivado 12-584] No ports matched 'SW[10]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:43]
+WARNING: [Vivado 12-584] No ports matched 'SW[10]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:44]
+WARNING: [Vivado 12-584] No ports matched 'SW[11]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:45]
+WARNING: [Vivado 12-584] No ports matched 'SW[11]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:46]
+WARNING: [Vivado 12-584] No ports matched 'SW[12]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:47]
+WARNING: [Vivado 12-584] No ports matched 'SW[12]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:48]
+WARNING: [Vivado 12-584] No ports matched 'SW[13]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:49]
+WARNING: [Vivado 12-584] No ports matched 'SW[13]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:50]
+WARNING: [Vivado 12-584] No ports matched 'SW[14]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:51]
+WARNING: [Vivado 12-584] No ports matched 'SW[14]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:52]
+WARNING: [Vivado 12-584] No ports matched 'SW[15]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:53]
+WARNING: [Vivado 12-584] No ports matched 'SW[15]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:54]
+WARNING: [Vivado 12-584] No ports matched 'LED[0]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:58]
+WARNING: [Vivado 12-584] No ports matched 'LED[0]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:59]
+WARNING: [Vivado 12-584] No ports matched 'LED[1]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:60]
+WARNING: [Vivado 12-584] No ports matched 'LED[1]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:61]
+WARNING: [Vivado 12-584] No ports matched 'LED[2]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:62]
+WARNING: [Vivado 12-584] No ports matched 'LED[2]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:63]
+WARNING: [Vivado 12-584] No ports matched 'LED[3]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:64]
+WARNING: [Vivado 12-584] No ports matched 'LED[3]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:65]
+WARNING: [Vivado 12-584] No ports matched 'LED[4]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:66]
+WARNING: [Vivado 12-584] No ports matched 'LED[4]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:67]
+WARNING: [Vivado 12-584] No ports matched 'LED[5]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:68]
+WARNING: [Vivado 12-584] No ports matched 'LED[5]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:69]
+WARNING: [Vivado 12-584] No ports matched 'LED[6]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:70]
+WARNING: [Vivado 12-584] No ports matched 'LED[6]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:71]
+WARNING: [Vivado 12-584] No ports matched 'LED[7]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:72]
+WARNING: [Vivado 12-584] No ports matched 'LED[7]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:73]
+WARNING: [Vivado 12-584] No ports matched 'LED[8]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:74]
+WARNING: [Vivado 12-584] No ports matched 'LED[8]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:75]
+WARNING: [Vivado 12-584] No ports matched 'LED[9]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:76]
+WARNING: [Vivado 12-584] No ports matched 'LED[9]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:77]
+WARNING: [Vivado 12-584] No ports matched 'LED[10]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:78]
+WARNING: [Vivado 12-584] No ports matched 'LED[10]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:79]
+WARNING: [Vivado 12-584] No ports matched 'LED[11]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:80]
+WARNING: [Vivado 12-584] No ports matched 'LED[11]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:81]
+WARNING: [Vivado 12-584] No ports matched 'LED[12]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:82]
+WARNING: [Vivado 12-584] No ports matched 'LED[12]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:83]
+WARNING: [Vivado 12-584] No ports matched 'LED[13]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:84]
+WARNING: [Vivado 12-584] No ports matched 'LED[13]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:85]
+WARNING: [Vivado 12-584] No ports matched 'LED[14]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:86]
+WARNING: [Vivado 12-584] No ports matched 'LED[14]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:87]
+WARNING: [Vivado 12-584] No ports matched 'LED[15]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:88]
+WARNING: [Vivado 12-584] No ports matched 'LED[15]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:89]
+WARNING: [Vivado 12-584] No ports matched 'SSEG_CA[0]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:94]
+WARNING: [Vivado 12-584] No ports matched 'SSEG_CA[0]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:95]
+WARNING: [Vivado 12-584] No ports matched 'SSEG_CA[1]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:97]
+WARNING: [Vivado 12-584] No ports matched 'SSEG_CA[1]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:98]
+WARNING: [Vivado 12-584] No ports matched 'SSEG_CA[2]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:100]
+WARNING: [Vivado 12-584] No ports matched 'SSEG_CA[2]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:101]
+WARNING: [Vivado 12-584] No ports matched 'SSEG_CA[3]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:103]
+WARNING: [Vivado 12-584] No ports matched 'SSEG_CA[3]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:104]
+WARNING: [Vivado 12-584] No ports matched 'SSEG_CA[4]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:106]
+WARNING: [Vivado 12-584] No ports matched 'SSEG_CA[4]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:107]
+WARNING: [Vivado 12-584] No ports matched 'SSEG_CA[5]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:109]
+WARNING: [Vivado 12-584] No ports matched 'SSEG_CA[5]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:110]
+WARNING: [Vivado 12-584] No ports matched 'SSEG_CA[6]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:112]
+WARNING: [Vivado 12-584] No ports matched 'SSEG_CA[6]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:113]
+WARNING: [Vivado 12-584] No ports matched 'SSEG_CA[7]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:116]
+WARNING: [Vivado 12-584] No ports matched 'SSEG_CA[7]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:117]
+WARNING: [Vivado 12-584] No ports matched 'SSEG_AN[0]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:120]
+WARNING: [Vivado 12-584] No ports matched 'SSEG_AN[0]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:121]
+WARNING: [Vivado 12-584] No ports matched 'SSEG_AN[1]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:123]
+WARNING: [Vivado 12-584] No ports matched 'SSEG_AN[1]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:124]
+WARNING: [Vivado 12-584] No ports matched 'SSEG_AN[2]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:126]
+WARNING: [Vivado 12-584] No ports matched 'SSEG_AN[2]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:127]
+WARNING: [Vivado 12-584] No ports matched 'SSEG_AN[3]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:129]
+WARNING: [Vivado 12-584] No ports matched 'SSEG_AN[3]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:130]
+WARNING: [Vivado 12-584] No ports matched 'BTN[4]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:135]
+WARNING: [Vivado 12-584] No ports matched 'BTN[4]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:136]
+WARNING: [Vivado 12-584] No ports matched 'BTN[0]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:138]
+WARNING: [Vivado 12-584] No ports matched 'BTN[0]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:139]
+WARNING: [Vivado 12-584] No ports matched 'BTN[2]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:148]
+WARNING: [Vivado 12-584] No ports matched 'BTN[2]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:149]
+WARNING: [Vivado 12-584] No ports matched 'BTN[3]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:151]
+WARNING: [Vivado 12-584] No ports matched 'BTN[3]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:152]
+WARNING: [Vivado 12-584] No ports matched 'ov7670_data[0]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:163]
+WARNING: [Vivado 12-584] No ports matched 'ov7670_data[0]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:164]
+WARNING: [Vivado 12-584] No ports matched 'ov7670_data[2]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:166]
+INFO: [Common 17-14] Message 'Vivado 12-584' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:166]
+WARNING: [Vivado 12-507] No nets matched 'ov7670_pclk_IBUF'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:203]
+Finished Parsing XDC File [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc]
+WARNING: [Project 1-498] One or more constraints failed evaluation while reading constraint file [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc] and the design contains unresolved black boxes. These constraints will be read post-synthesis (as long as their source constraint file is marked as used_in_implementation) and should be applied correctly then. You should review the constraints listed in the file [.Xil/host_propImpl.xdc] and check the run log file to verify that these constraints were correctly applied.
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/constrs_1/new/Basys3_Master_OV7670.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/host_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/host_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Parsing XDC File [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.runs/synth_1/dont_touch.xdc]
+Finished Parsing XDC File [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.runs/synth_1/dont_touch.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1525.293 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1525.293 ; gain = 0.000
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1525.293 ; gain = 575.449
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35tcpg236-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1525.293 ; gain = 575.449
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property IO_BUFFER_TYPE = NONE for sys_clock. (constraint file  {e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/ip/top_clk_wiz_0_0/top_clk_wiz_0_0/top_clk_wiz_0_0_in_context.xdc}, line 4).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for sys_clock. (constraint file  {e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/ip/top_clk_wiz_0_0/top_clk_wiz_0_0/top_clk_wiz_0_0_in_context.xdc}, line 5).
+Applied set_property KEEP_HIERARCHY = SOFT for top_i/top_i. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for top_i/top_i/clk_wiz_0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for top_i/top_i/debouncer_0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for top_i/top_i/I2C_OV7670_Master_0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for top_i/top_i/ila_0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for top_i/top_i/I2C_OV7670_config_0. (constraint file  auto generated constraint).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1525.293 ; gain = 575.449
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1525.293 ; gain = 575.449
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 1525.293 ; gain = 575.449
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1525.293 ; gain = 575.449
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1525.293 ; gain = 575.449
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1525.293 ; gain = 575.449
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1525.293 ; gain = 575.449
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1525.293 ; gain = 575.449
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1525.293 ; gain = 575.449
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1525.293 ; gain = 575.449
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1525.293 ; gain = 575.449
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1525.293 ; gain = 575.449
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+--------------------------+----------+
+|      |BlackBox name             |Instances |
++------+--------------------------+----------+
+|1     |top_I2C_OV7670_Master_0_0 |         1|
+|2     |top_I2C_OV7670_config_0_0 |         1|
+|3     |top_clk_wiz_0_0           |         1|
+|4     |top_debouncer_0_0         |         1|
+|5     |top_ila_0_0               |         1|
++------+--------------------------+----------+
+
+Report Cell Usage: 
++------+-------------------------------+------+
+|      |Cell                           |Count |
++------+-------------------------------+------+
+|1     |top_I2C_OV7670_Master_0_0_bbox |     1|
+|2     |top_I2C_OV7670_config_0_0_bbox |     1|
+|3     |top_clk_wiz_0_0_bbox           |     1|
+|4     |top_debouncer_0_0_bbox         |     1|
+|5     |top_ila_0_0_bbox               |     1|
+|6     |LUT2                           |     1|
+|7     |IBUF                           |     2|
+|8     |IOBUF                          |     1|
+|9     |OBUF                           |     4|
++------+-------------------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1525.293 ; gain = 575.449
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:13 ; elapsed = 00:00:19 . Memory (MB): peak = 1525.293 ; gain = 551.941
+Synthesis Optimization Complete : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1525.293 ; gain = 575.449
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1525.293 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 1 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1525.293 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 1 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 1 instance 
+
+Synth Design complete | Checksum: 4f5785d4
+INFO: [Common 17-83] Releasing license: Synthesis
+44 Infos, 104 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:24 ; elapsed = 00:00:24 . Memory (MB): peak = 1525.293 ; gain = 958.402
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1525.293 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.runs/synth_1/host.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file host_utilization_synth.rpt -pb host_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Mon Aug  4 15:32:38 2025...

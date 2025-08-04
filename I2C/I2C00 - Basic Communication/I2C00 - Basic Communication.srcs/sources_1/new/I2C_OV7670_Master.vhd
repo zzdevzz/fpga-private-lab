@@ -55,20 +55,22 @@ entity I2C_OV7670_Master is
     slave_reg_data: in std_logic_vector(7 downto 0);
 
     ov7670_SCL: out std_logic;
---    ov7670_SDA: inout std_logic;
 
-    --debugging
+    --SDA is used in host file, inout tri-state can only live in top level.
     sda_out: out std_logic;
     sda_in: in std_logic;
     sda_oe: out std_logic;
+    
 --    sda_ie_debug: out std_logic;
     shift_reg_debug: out std_logic_vector(7 downto 0);
     byte_counter_debug: out std_logic_vector(1 downto 0);
     bit_counter_debug: out std_logic_vector(3 downto 0);
+    shift_reg_full_debug: out std_logic_vector(7 downto 0);
 
     i2c_data_read: out std_logic_vector(1 downto 0);  -- index to feed external LUT
     state_debug: out std_logic_vector(2 downto 0);
     simple_state_debug: out std_logic_vector(3 downto 0); 
+    
     --0V7670 Specific
     ov7670_pwdn : out std_logic := '0';
     ov7670_reset : out std_logic
@@ -117,39 +119,20 @@ architecture Behavioral of I2C_OV7670_Master is
   signal prev_reset: std_logic := '0';
 
   signal temp_debug : integer range 0 to 10 := 0;
+  signal ack_sample_counter : integer range 0 to 2 := 0;
 
 begin
 
---    IOBUF_inst : IOBUF
---        generic map (
---           DRIVE => 12,
---           IOSTANDARD => "DEFAULT",
---           SLEW => "SLOW")
---        port map (
---           O => sda_out,     -- Buffer output
---           IO => ov7670_SDA,   -- Buffer inout port (connect directly to top-level port)
---           I => sda_in,     -- Buffer input
---           T => sda_ie      -- 3-state enable input, high=input, low=output
---        );
 
-  -- Output drivers
---  ov7670_SDA <= '0' when (sda_oe = '1' and sda_out = '0') else 'Z'; --unless we pull it low actively, it's Z which defaults to '1' value.
   ov7670_SCL <= scl;
+--    ov7670_SCL <= '0' when scl = '0' else 'Z';
 
-  -- Debug
---  sda_in_debug <= sda_in;
---  sda_out_debug <= sda_out;
---  sda_oe_debug <= sda_oe;
---  sda_ie <= not sda_oe;
---  sda_ie_debug <= not sda_oe;
 
   shift_reg_debug <= shift_reg;
   byte_counter_debug <= std_logic_vector(TO_UNSIGNED(byte_counter,2));
   bit_counter_debug <= std_logic_vector(TO_UNSIGNED(bit_counter,4));
+  shift_reg_full_debug <= shift_reg_full;
 
-
-  -- Read SDA line
---  ov7670_SDA <= sda_in;
 
   -- I2C data index for external LUT
   i2c_data_read <= std_logic_vector(to_unsigned(current_index, 2));
@@ -175,9 +158,9 @@ begin
         end if;
 
         if start_counter = reset_counter then --first we reset all registers before setting them again.
-            ov7670_reset_s <= '1';
-        else 
             ov7670_reset_s <= '0';
+        else 
+            ov7670_reset_s <= '1';
         end if;
 
         if start_counter < finish_setup_counter and reset_activated = '1' then --add counter till we're at the last setup counter and we resetted previous..
@@ -274,17 +257,30 @@ begin
             end if;
           end if;
 
+--        when READ_ACK =>
+--          simple_state_debug <= "0101";
+--          if scl_rise = '1' then
+--            if sda_in = '0' then --active low
+--              state <= NEXT_BYTE;
+--            else
+--              state <= IDLE; -- NACK handling
+--              sending <= '0';
+--            end if;
+--          end if;
+        
         when READ_ACK =>
-          simple_state_debug <= "0101";
-          if scl_rise = '1' then
-            if sda_in = '0' then --active low
-              state <= NEXT_BYTE;
-            else
-              state <= IDLE; -- NACK handling
-              sending <= '0';
+          if scl = '1' then  -- Wait for stable high
+            ack_sample_counter <= ack_sample_counter + 1;
+            if ack_sample_counter = 10 then  -- small delay into SCL high
+              if sda_in = '0' then
+                state <= NEXT_BYTE;
+              else
+                state <= IDLE;
+              end if;
+              ack_sample_counter <= 0;
             end if;
           end if;
-
+  
         when NEXT_BYTE =>
           simple_state_debug <= "0110";
           if byte_counter < 2 then

@@ -47,6 +47,7 @@
         "shift_reg_debug": [ { "direction": "out", "size_left": "7", "size_right": "0" } ],
         "byte_counter_debug": [ { "direction": "out", "size_left": "1", "size_right": "0" } ],
         "bit_counter_debug": [ { "direction": "out", "size_left": "3", "size_right": "0" } ],
+        "shift_reg_full_debug": [ { "direction": "out", "size_left": "7", "size_right": "0" } ],
         "i2c_data_read": [ { "direction": "out", "size_left": "1", "size_right": "0" } ],
         "state_debug": [ { "direction": "out", "size_left": "2", "size_right": "0" } ],
         "simple_state_debug": [ { "direction": "out", "size_left": "3", "size_right": "0" } ],

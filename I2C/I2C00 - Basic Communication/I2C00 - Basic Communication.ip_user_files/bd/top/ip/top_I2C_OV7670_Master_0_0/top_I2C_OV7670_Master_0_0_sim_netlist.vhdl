@@ -2,7 +2,7 @@
 -- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
--- Date        : Thu Jul 31 15:02:42 2025
+-- Date        : Fri Aug  1 16:39:38 2025
 -- Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim {e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic
 --               Communication.gen/sources_1/bd/top/ip/top_I2C_OV7670_Master_0_0/top_I2C_OV7670_Master_0_0_sim_netlist.vhdl}
@@ -26,11 +26,11 @@ entity top_I2C_OV7670_Master_0_0_I2C_OV7670_Master is
     \current_index_reg[1]_0\ : out STD_LOGIC;
     shift_reg_debug : out STD_LOGIC_VECTOR ( 6 downto 0 );
     simple_state_debug : out STD_LOGIC_VECTOR ( 2 downto 0 );
-    sda_oe_debug : out STD_LOGIC;
-    sda_out_debug : out STD_LOGIC;
+    sda_out : out STD_LOGIC;
+    sda_oe : out STD_LOGIC;
     ov7670_reset : out STD_LOGIC;
-    ov7670_SDA : inout STD_LOGIC;
     reset : in STD_LOGIC;
+    sda_in : in STD_LOGIC;
     clk_100 : in STD_LOGIC;
     slave_reg_data : in STD_LOGIC_VECTOR ( 7 downto 0 );
     slave_reg_addr : in STD_LOGIC_VECTOR ( 7 downto 0 )
@@ -56,7 +56,6 @@ architecture STRUCTURE of top_I2C_OV7670_Master_0_0_I2C_OV7670_Master is
   signal \^current_index_reg[0]_0\ : STD_LOGIC;
   signal \^current_index_reg[1]_0\ : STD_LOGIC;
   signal current_reset : STD_LOGIC;
-  signal ov7670_SDA_reg0 : STD_LOGIC;
   signal ov7670_reset_s_i_1_n_0 : STD_LOGIC;
   signal ov7670_reset_s_i_2_n_0 : STD_LOGIC;
   signal ov7670_reset_s_i_3_n_0 : STD_LOGIC;
@@ -100,11 +99,11 @@ architecture STRUCTURE of top_I2C_OV7670_Master_0_0_I2C_OV7670_Master is
   signal \^scl_reg_0\ : STD_LOGIC;
   signal scl_rise : STD_LOGIC;
   signal scl_rise0 : STD_LOGIC;
+  signal \^sda_oe\ : STD_LOGIC;
   signal sda_oe1_out : STD_LOGIC;
-  signal \^sda_oe_debug\ : STD_LOGIC;
   signal sda_oe_i_1_n_0 : STD_LOGIC;
+  signal \^sda_out\ : STD_LOGIC;
   signal sda_out2_out : STD_LOGIC;
-  signal \^sda_out_debug\ : STD_LOGIC;
   signal sda_out_i_1_n_0 : STD_LOGIC;
   signal sda_out_i_2_n_0 : STD_LOGIC;
   signal shift_reg : STD_LOGIC;
@@ -211,8 +210,8 @@ begin
   \current_index_reg[0]_0\ <= \^current_index_reg[0]_0\;
   \current_index_reg[1]_0\ <= \^current_index_reg[1]_0\;
   scl_reg_0 <= \^scl_reg_0\;
-  sda_oe_debug <= \^sda_oe_debug\;
-  sda_out_debug <= \^sda_out_debug\;
+  sda_oe <= \^sda_oe\;
+  sda_out <= \^sda_out\;
   shift_reg_debug(6 downto 0) <= \^shift_reg_debug\(6 downto 0);
 \FSM_sequential_state[0]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -240,11 +239,11 @@ begin
     );
 \FSM_sequential_state[2]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0F00FFFF4F400000"
+      INIT => X"0F00FFFF2F200000"
     )
         port map (
-      I0 => ov7670_SDA,
-      I1 => state(1),
+      I0 => state(1),
+      I1 => sda_in,
       I2 => state(0),
       I3 => \FSM_sequential_state[2]_i_2_n_0\,
       I4 => \FSM_sequential_state[2]_i_3_n_0\,
@@ -511,28 +510,6 @@ current_reset_reg: unisim.vcomponents.FDRE
       D => reset,
       Q => current_reset,
       R => '0'
-    );
-ov7670_SDA_INST_0: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFF888F888F888"
-    )
-        port map (
-      I0 => '0',
-      I1 => ov7670_SDA_reg0,
-      I2 => '0',
-      I3 => '0',
-      I4 => '0',
-      I5 => '0',
-      O => ov7670_SDA
-    );
-ov7670_SDA_INST_0_i_1: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => \^sda_oe_debug\,
-      I1 => \^sda_out_debug\,
-      O => ov7670_SDA_reg0
     );
 ov7670_reset_s_i_1: unisim.vcomponents.LUT6
     generic map(
@@ -1042,7 +1019,7 @@ sda_oe_i_1: unisim.vcomponents.LUT6
       I2 => state(0),
       I3 => \^byte_counter_reg[1]_0\,
       I4 => state(1),
-      I5 => \^sda_oe_debug\,
+      I5 => \^sda_oe\,
       O => sda_oe_i_1_n_0
     );
 sda_oe_i_2: unisim.vcomponents.LUT2
@@ -1055,14 +1032,11 @@ sda_oe_i_2: unisim.vcomponents.LUT2
       O => sda_oe1_out
     );
 sda_oe_reg: unisim.vcomponents.FDRE
-    generic map(
-      INIT => '0'
-    )
-        port map (
+     port map (
       C => clk_100,
       CE => '1',
       D => sda_oe_i_1_n_0,
-      Q => \^sda_oe_debug\,
+      Q => \^sda_oe\,
       R => '0'
     );
 sda_out_i_1: unisim.vcomponents.LUT6
@@ -1075,7 +1049,7 @@ sda_out_i_1: unisim.vcomponents.LUT6
       I2 => sda_out2_out,
       I3 => state(1),
       I4 => state(0),
-      I5 => \^sda_out_debug\,
+      I5 => \^sda_out\,
       O => sda_out_i_1_n_0
     );
 sda_out_i_2: unisim.vcomponents.LUT6
@@ -1105,7 +1079,7 @@ sda_out_reg: unisim.vcomponents.FDRE
       C => clk_100,
       CE => '1',
       D => sda_out_i_1_n_0,
-      Q => \^sda_out_debug\,
+      Q => \^sda_out\,
       R => '0'
     );
 \shift_reg[1]_i_1\: unisim.vcomponents.LUT5
@@ -1875,10 +1849,9 @@ entity top_I2C_OV7670_Master_0_0 is
     slave_reg_addr : in STD_LOGIC_VECTOR ( 7 downto 0 );
     slave_reg_data : in STD_LOGIC_VECTOR ( 7 downto 0 );
     ov7670_SCL : out STD_LOGIC;
-    ov7670_SDA : inout STD_LOGIC;
-    sda_out_debug : out STD_LOGIC;
-    sda_in_debug : out STD_LOGIC;
-    sda_oe_debug : out STD_LOGIC;
+    sda_out : out STD_LOGIC;
+    sda_in : in STD_LOGIC;
+    sda_oe : out STD_LOGIC;
     shift_reg_debug : out STD_LOGIC_VECTOR ( 7 downto 0 );
     byte_counter_debug : out STD_LOGIC_VECTOR ( 1 downto 0 );
     bit_counter_debug : out STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -1902,7 +1875,6 @@ end top_I2C_OV7670_Master_0_0;
 
 architecture STRUCTURE of top_I2C_OV7670_Master_0_0 is
   signal \<const0>\ : STD_LOGIC;
-  signal \^ov7670_sda\ : STD_LOGIC;
   signal \^shift_reg_debug\ : STD_LOGIC_VECTOR ( 7 downto 1 );
   signal \^simple_state_debug\ : STD_LOGIC_VECTOR ( 2 downto 0 );
   attribute x_interface_info : string;
@@ -1929,12 +1901,12 @@ U0: entity work.top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
       clk_100 => clk_100,
       \current_index_reg[0]_0\ => i2c_data_read(0),
       \current_index_reg[1]_0\ => i2c_data_read(1),
-      ov7670_SDA => \^ov7670_sda\,
       ov7670_reset => ov7670_reset,
       reset => reset,
       scl_reg_0 => ov7670_SCL,
-      sda_oe_debug => sda_oe_debug,
-      sda_out_debug => sda_out_debug,
+      sda_in => sda_in,
+      sda_oe => sda_oe,
+      sda_out => sda_out,
       shift_reg_debug(6 downto 0) => \^shift_reg_debug\(7 downto 1),
       simple_state_debug(2 downto 0) => \^simple_state_debug\(2 downto 0),
       slave_reg_addr(7 downto 0) => slave_reg_addr(7 downto 0),
