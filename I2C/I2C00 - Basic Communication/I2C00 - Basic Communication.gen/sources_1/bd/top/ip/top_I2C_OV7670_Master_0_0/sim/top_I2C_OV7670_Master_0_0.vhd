@@ -65,8 +65,10 @@ ENTITY top_I2C_OV7670_Master_0_0 IS
     sda_oe : OUT STD_LOGIC;
     shift_reg_debug : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
     byte_counter_debug : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
-    bit_counter_debug : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
+    bit_counter_debug : OUT STD_LOGIC_VECTOR(4 DOWNTO 0);
     shift_reg_full_debug : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+    current_index_bebug : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
+    scl_en_debug : OUT STD_LOGIC;
     i2c_data_read : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
     state_debug : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
     simple_state_debug : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
@@ -90,8 +92,10 @@ ARCHITECTURE top_I2C_OV7670_Master_0_0_arch OF top_I2C_OV7670_Master_0_0 IS
       sda_oe : OUT STD_LOGIC;
       shift_reg_debug : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
       byte_counter_debug : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
-      bit_counter_debug : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
+      bit_counter_debug : OUT STD_LOGIC_VECTOR(4 DOWNTO 0);
       shift_reg_full_debug : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+      current_index_bebug : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
+      scl_en_debug : OUT STD_LOGIC;
       i2c_data_read : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
       state_debug : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
       simple_state_debug : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
@@ -120,6 +124,8 @@ BEGIN
       byte_counter_debug => byte_counter_debug,
       bit_counter_debug => bit_counter_debug,
       shift_reg_full_debug => shift_reg_full_debug,
+      current_index_bebug => current_index_bebug,
+      scl_en_debug => scl_en_debug,
       i2c_data_read => i2c_data_read,
       state_debug => state_debug,
       simple_state_debug => simple_state_debug,

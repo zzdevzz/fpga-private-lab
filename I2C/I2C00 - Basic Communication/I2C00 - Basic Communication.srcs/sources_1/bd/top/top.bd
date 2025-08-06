@@ -304,13 +304,21 @@
           },
           "bit_counter_debug": {
             "direction": "O",
-            "left": "3",
+            "left": "4",
             "right": "0"
           },
           "shift_reg_full_debug": {
             "direction": "O",
             "left": "7",
             "right": "0"
+          },
+          "current_index_bebug": {
+            "direction": "O",
+            "left": "2",
+            "right": "0"
+          },
+          "scl_en_debug": {
+            "direction": "O"
           },
           "i2c_data_read": {
             "direction": "O",
@@ -350,10 +358,13 @@
             "value": "Native"
           },
           "C_NUM_OF_PROBES": {
-            "value": "14"
+            "value": "15"
           },
           "C_PROBE12_WIDTH": {
             "value": "8"
+          },
+          "C_PROBE14_WIDTH": {
+            "value": "3"
           },
           "C_PROBE4_WIDTH": {
             "value": "8"
@@ -362,7 +373,7 @@
             "value": "2"
           },
           "C_PROBE6_WIDTH": {
-            "value": "4"
+            "value": "5"
           },
           "C_PROBE7_WIDTH": {
             "value": "2"
@@ -424,6 +435,12 @@
           "ila_0/probe5"
         ]
       },
+      "I2C_OV7670_Master_0_current_index_bebug": {
+        "ports": [
+          "I2C_OV7670_Master_0/current_index_bebug",
+          "ila_0/probe14"
+        ]
+      },
       "I2C_OV7670_Master_0_i2c_data_read": {
         "ports": [
           "I2C_OV7670_Master_0/i2c_data_read",
@@ -450,6 +467,12 @@
           "I2C_OV7670_Master_0/ov7670_reset",
           "ov7670_reset",
           "ila_0/probe11"
+        ]
+      },
+      "I2C_OV7670_Master_0_scl_en_debug": {
+        "ports": [
+          "I2C_OV7670_Master_0/scl_en_debug",
+          "ila_0/probe13"
         ]
       },
       "I2C_OV7670_Master_0_sda_oe": {
@@ -505,8 +528,7 @@
       "clk_wiz_0_clk_out25": {
         "ports": [
           "clk_wiz_0/clk_out25",
-          "ov7670_xclk",
-          "ila_0/probe13"
+          "ov7670_xclk"
         ]
       },
       "clk_wiz_0_clk_out100": {

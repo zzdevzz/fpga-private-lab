@@ -1,6 +1,6 @@
 -------------------------------------
 | Tool Version : Vivado v.2023.2
-| Date         : Mon Aug  4 15:34:29 2025
+| Date         : Wed Aug  6 19:31:53 2025
 | Host         : DESKTOP-EFRMAI2
 | Design       : design_1
 | Device       : xc7a35t-cpg236-1--
