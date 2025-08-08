@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Wed Aug  6 22:00:49 2025
+| Date         : Thu Aug  7 16:54:20 2025
 | Host         : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 | Command      : report_utilization -file host_utilization_synth.rpt -pb host_utilization_synth.pb
 | Design       : host
@@ -92,7 +92,7 @@ Warning! LUT value is adjusted to account for LUT combining.
 +-----------------------------+------+-------+------------+-----------+-------+
 |          Site Type          | Used | Fixed | Prohibited | Available | Util% |
 +-----------------------------+------+-------+------------+-----------+-------+
-| Bonded IOB                  |   40 |     0 |          0 |       106 | 37.74 |
+| Bonded IOB                  |   41 |     0 |          0 |       106 | 38.68 |
 | Bonded IPADs                |    0 |     0 |          0 |        10 |  0.00 |
 | Bonded OPADs                |    0 |     0 |          0 |         4 |  0.00 |
 | PHY_CONTROL                 |    0 |     0 |          0 |         5 |  0.00 |
@@ -152,7 +152,7 @@ Warning! LUT value is adjusted to account for LUT combining.
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
 | OBUF     |   26 |                  IO |
-| IBUF     |   14 |                  IO |
+| IBUF     |   15 |                  IO |
 | OBUFT    |    1 |                  IO |
 | LUT2     |    1 |                 LUT |
 +----------+------+---------------------+

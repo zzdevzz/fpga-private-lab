@@ -81,8 +81,16 @@ architecture Behavioral of I2C_OV7670_Master is
   constant slave_write_addr: std_logic_vector(7 downto 0) := x"42"; --this is the address we will always write too for OV7670.
 --  constant slave_write_addr: std_logic_vector(7 downto 0) := x"99"; --this is the address we will always write too for OV7670.
 
-  type state_type is (IDLE, START_CONDITION, WAIT_AFTER_START, SEND_BYTE, READ_ACK, NEXT_BYTE, STOP_CONDITION);
+  type state_type is (IDLE, START_CONDITION, WAIT_AFTER_START, SEND_BYTE, READ_ACK, WAIT_ACK, NEXT_BYTE, STOP_CONDITION);
   signal state : state_type := IDLE;
+  signal state_acknowledged: std_logic;
+  
+  -- IDLE: 0
+  -- START_CONDITION: 1
+  -- WAIT_AFTER_START: 2
+  -- SEND_BYTE: 3
+  -- READ_ACK: 4
+  -- NEXT_BYTE: 5
 
   -- used to debug SDA whether its in out stage and each value, ILA cant pick up inout pins.
 --  signal sda_out : std_logic := '1';
@@ -98,6 +106,7 @@ architecture Behavioral of I2C_OV7670_Master is
   signal scl_prev: std_logic := '0'; --used to get scl rising and falling edge.
   signal scl_rise: std_logic := '0';
   signal scl_fall: std_logic := '0';
+  signal scl_data_change: std_logic := '0';
 
   signal byte_counter : integer range 0 to 2 := 0; --used to determine what stage communicating is at, r.e device address, register address, register value.
 
@@ -124,6 +133,7 @@ architecture Behavioral of I2C_OV7670_Master is
 
   signal rising_edge_counter : integer := 0;
   signal falling_edge_counter : integer := 0;
+  signal sampling_edge_counter : integer := 0;
   signal data_sda_sampled : std_logic;
 
 
@@ -194,7 +204,8 @@ begin
         -- Default: one-cycle pulses for edge flags
         scl_rise <= '0';
         scl_fall <= '0';
-
+        scl_data_change <= '0';
+        
         if scl_en = '1' then
           -- Counter update
           if scl_cnt < i2c_clock_max - 1 then
@@ -212,9 +223,12 @@ begin
 
           -- Edge detection flags (occur 1 cycle BEFORE actual transition)
 --          if scl_cnt = (i2c_clock_max / 2) - 1 then
-          if scl_cnt = (i2c_clock_max / 2) + 100 then --gives a delay for sampling.
+          if scl_cnt = (i2c_clock_max / 2) - 1 then --gives a delay for sampling.
             scl_fall <= '1';
             falling_edge_counter <= falling_edge_counter + 1;
+          elsif scl_cnt = (i2c_clock_max / 2) + 100 then
+            scl_data_change <= '1';
+            sampling_edge_counter <= sampling_edge_counter + 1;
           elsif scl_cnt = i2c_clock_max - 1 then
             scl_rise <= '1';
             rising_edge_counter <= rising_edge_counter + 1;
@@ -225,6 +239,7 @@ begin
           scl       <= '1'; -- default idle state
           rising_edge_counter <= 0;
           falling_edge_counter <= 0;
+          sampling_edge_counter <= 0;
         end if;
       end if;
     end process;
@@ -272,7 +287,7 @@ begin
            simple_state_debug <= "0011";
 
           --check if the shift_reg is changing every clock cycle, vs SCL cycle.
-          if scl_fall = '1' then
+          if scl_data_change = '1' then --this is offset so its roughly halfway of SCL being low, safe to change data.
             temp_debug <= 1;
             if bit_counter < 1 then
                 sda_out <= shift_reg_full(7);
@@ -293,23 +308,41 @@ begin
             else --this is the 9th bit, used for acknowledgement.
               sda_oe <= '0'; --makes it so its immediately available for ack.
 
-            end if;
-          elsif scl_rise = '1' and bit_counter = 9 then
+            end if;    
+                 
+          elsif scl_rise = '1' and bit_counter = 9 then --9th bit on rising edge, we are in acknowledge terrority.   
             bit_counter <= 0;
             state <= READ_ACK; 
             temp_debug <= 4;
             simple_state_debug <= "0100";
+          elsif bit_counter = 9 then
+            sda_oe <= '0';
           end if;          
-
-        when READ_ACK =>
+        
+        when READ_ACK => -- we are now in the 9th bit, AFTER the rising edge.
           simple_state_debug <= "0101";
-          if scl_rise = '1' then
-            if sda_in /= '0' then --active low
-              state <= STOP_CONDITION;-- NACK handling
-            else
-              state <= NEXT_BYTE;
+--          if scl_rise = '1' then
+--            if sda_in /= '0' then --active low
+--              state <= STOP_CONDITION;-- NACK handling
+--            else
+--              state <= NEXT_BYTE;
+--            end if;
+--          end if;
+          if scl = '1' then
+            if sda_in = '0' then
+                state <= NEXT_BYTE;
             end if;
+          else 
+            state <= STOP_CONDITION;
           end if;
+          
+        when WAIT_ACK =>
+            if state_acknowledged = '1' then
+                state_acknowledged <= '0';
+                state <= NEXT_BYTE;
+            else
+                state <= STOP_CONDITION;
+            end if; 
 
         when NEXT_BYTE =>
           simple_state_debug <= "0110";
@@ -339,8 +372,7 @@ begin
 
   state_debug <= std_logic_vector(to_unsigned(state_type'pos(state), 3));
   ov7670_reset <= ov7670_reset_s;
---  sda_out <= sda_out_s;
-current_index_bebug <= std_logic_vector(to_unsigned(current_index, 3));
-scl_en_debug <= scl_en; 
+    --  sda_out <= sda_out_s;
+  current_index_bebug <= std_logic_vector(to_unsigned(current_index, 3));
+  scl_en_debug <= scl_en; 
 end Behavioral;
-  

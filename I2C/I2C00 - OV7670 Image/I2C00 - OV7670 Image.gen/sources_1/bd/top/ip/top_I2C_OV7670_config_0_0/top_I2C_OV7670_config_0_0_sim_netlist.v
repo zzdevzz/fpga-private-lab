@@ -2,7 +2,7 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-// Date        : Wed Aug  6 20:57:14 2025
+// Date        : Thu Aug  7 16:52:34 2025
 // Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim {e:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670
 //               Image.gen/sources_1/bd/top/ip/top_I2C_OV7670_config_0_0/top_I2C_OV7670_config_0_0_sim_netlist.v}
@@ -26,42 +26,40 @@ module top_I2C_OV7670_config_0_0
 
   wire \<const0> ;
   wire [1:0]index;
-  wire [4:1]\^reg_addr ;
-  wire [7:0]\^reg_data ;
+  wire [6:1]\^reg_addr ;
+  wire [7:4]\^reg_data ;
 
-  assign reg_addr[7] = \<const0> ;
-  assign reg_addr[6] = \^reg_data [1];
-  assign reg_addr[5] = \^reg_data [1];
-  assign reg_addr[4] = \^reg_addr [4];
-  assign reg_addr[3] = \^reg_data [1];
-  assign reg_addr[2] = \<const0> ;
-  assign reg_addr[1] = \^reg_addr [1];
-  assign reg_addr[0] = index[1];
+  assign reg_addr[7] = \^reg_addr [2];
+  assign reg_addr[6:4] = \^reg_addr [6:4];
+  assign reg_addr[3] = \^reg_addr [2];
+  assign reg_addr[2:1] = \^reg_addr [2:1];
+  assign reg_addr[0] = \<const0> ;
   assign reg_data[7] = \^reg_data [7];
-  assign reg_data[6] = index[0];
+  assign reg_data[6] = \^reg_data [7];
   assign reg_data[5] = \<const0> ;
-  assign reg_data[4] = \<const0> ;
-  assign reg_data[3] = \^reg_data [1];
-  assign reg_data[2] = \<const0> ;
-  assign reg_data[1:0] = \^reg_data [1:0];
+  assign reg_data[4] = \^reg_data [4];
+  assign reg_data[3] = \<const0> ;
+  assign reg_data[2] = \^reg_addr [1];
+  assign reg_data[1] = \<const0> ;
+  assign reg_data[0] = \<const0> ;
   GND GND
        (.G(\<const0> ));
   top_I2C_OV7670_config_0_0_I2C_OV7670_config U0
        (.index(index),
-        .reg_addr(\^reg_addr [1]),
-        .reg_data({\^reg_data [7],\^reg_data [0]}));
-  LUT2 #(
-    .INIT(4'h7)) 
-    \reg_addr[4]_INST_0 
-       (.I0(index[1]),
-        .I1(index[0]),
-        .O(\^reg_addr [4]));
+        .reg_addr(\^reg_addr [6:4]),
+        .reg_data({\^reg_data [7],\^reg_addr [1]}));
   LUT2 #(
     .INIT(4'h8)) 
-    \reg_data[1]_INST_0 
+    \reg_addr[2]_INST_0 
        (.I0(index[0]),
         .I1(index[1]),
-        .O(\^reg_data [1]));
+        .O(\^reg_addr [2]));
+  LUT2 #(
+    .INIT(4'h7)) 
+    \reg_data[4]_INST_0 
+       (.I0(index[1]),
+        .I1(index[0]),
+        .O(\^reg_data [4]));
 endmodule
 
 (* ORIG_REF_NAME = "I2C_OV7670_config" *) 
@@ -70,30 +68,42 @@ module top_I2C_OV7670_config_0_0_I2C_OV7670_config
     reg_addr,
     index);
   output [1:0]reg_data;
-  output [0:0]reg_addr;
+  output [2:0]reg_addr;
   input [1:0]index;
 
   wire [1:0]index;
-  wire [0:0]reg_addr;
+  wire [2:0]reg_addr;
   wire [1:0]reg_data;
 
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  LUT1 #(
+    .INIT(2'h1)) 
+    \reg_addr[4]_INST_0 
+       (.I0(index[1]),
+        .O(reg_addr[0]));
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
   LUT2 #(
-    .INIT(4'hB)) 
-    \reg_addr[1]_INST_0 
+    .INIT(4'h1)) 
+    \reg_addr[5]_INST_0 
+       (.I0(index[1]),
+        .I1(index[0]),
+        .O(reg_addr[1]));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \reg_addr[6]_INST_0 
        (.I0(index[0]),
-        .I1(index[1]),
-        .O(reg_addr));
+        .O(reg_addr[2]));
   (* SOFT_HLUTNM = "soft_lutpair0" *) 
   LUT2 #(
     .INIT(4'h2)) 
-    \reg_data[0]_INST_0 
-       (.I0(index[1]),
-        .I1(index[0]),
+    \reg_data[2]_INST_0 
+       (.I0(index[0]),
+        .I1(index[1]),
         .O(reg_data[0]));
   (* SOFT_HLUTNM = "soft_lutpair0" *) 
   LUT2 #(
-    .INIT(4'h1)) 
-    \reg_data[7]_INST_0 
+    .INIT(4'h2)) 
+    \reg_data[6]_INST_0 
        (.I0(index[1]),
         .I1(index[0]),
         .O(reg_data[1]));

@@ -3,8 +3,8 @@
 # SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Wed Aug  6 22:00:16 2025
-# Process ID: 24852
+# Start of session at: Thu Aug  7 16:53:47 2025
+# Process ID: 37176
 # Current directory: E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.runs/synth_1
 # Command line: vivado.exe -log host.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source host.tcl
 # Log file: E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.runs/synth_1/host.vds
@@ -12,7 +12,7 @@
 # Running On: DESKTOP-EFRMAI2, OS: Windows, CPU Frequency: 3700 MHz, CPU Physical cores: 24, Host memory: 34281 MB
 #-----------------------------------------------------------
 source host.tcl -notrace
-create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 510.617 ; gain = 215.953
+create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 512.297 ; gain = 219.781
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1700] Loaded user IP repository 'j:/Xilinx/Vivado/vivado-library-master'.
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'J:/Xilinx/Vivado/2023.2/data/ip'.
@@ -29,62 +29,61 @@ INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
 WARNING: [Common 17-1361] You have specified a new message control rule that is equivalent to an existing rule with attributes ' -id {17-179}  -suppress '. The existing rule will be replaced.
-INFO: [Synth 8-7075] Helper process launched with PID 31496
+INFO: [Synth 8-7075] Helper process launched with PID 38700
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1392.055 ; gain = 441.973
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1391.309 ; gain = 439.617
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-638] synthesizing module 'host' [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.srcs/sources_1/new/host.vhd:29]
-WARNING: [Synth 8-5640] Port 'btnr' is missing in component declaration [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.srcs/sources_1/new/host.vhd:31]
-WARNING: [Synth 8-5640] Port 'switch0' is missing in component declaration [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.srcs/sources_1/new/host.vhd:31]
-WARNING: [Synth 8-5640] Port 'switch1' is missing in component declaration [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.srcs/sources_1/new/host.vhd:31]
-INFO: [Synth 8-3491] module 'top_wrapper' declared at 'E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.gen/sources_1/bd/top/hdl/top_wrapper.vhd:15' bound to instance 'top_i' of component 'top_wrapper' [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.srcs/sources_1/new/host.vhd:65]
+INFO: [Synth 8-638] synthesizing module 'host' [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.srcs/sources_1/new/host.vhd:30]
+WARNING: [Synth 8-5640] Port 'switch0' is missing in component declaration [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.srcs/sources_1/new/host.vhd:32]
+WARNING: [Synth 8-5640] Port 'switch1' is missing in component declaration [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.srcs/sources_1/new/host.vhd:32]
+INFO: [Synth 8-3491] module 'top_wrapper' declared at 'E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.gen/sources_1/bd/top/hdl/top_wrapper.vhd:15' bound to instance 'top_i' of component 'top_wrapper' [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.srcs/sources_1/new/host.vhd:67]
 INFO: [Synth 8-638] synthesizing module 'top_wrapper' [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.gen/sources_1/bd/top/hdl/top_wrapper.vhd:43]
 INFO: [Synth 8-3491] module 'top' declared at 'e:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.gen/sources_1/bd/top/synth/top.vhd:15' bound to instance 'top_i' of component 'top' [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.gen/sources_1/bd/top/hdl/top_wrapper.vhd:72]
 INFO: [Synth 8-638] synthesizing module 'top' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.gen/sources_1/bd/top/synth/top.vhd:47]
-INFO: [Synth 8-3491] module 'top_BRAM_FIFO_Limit_0_0' declared at 'E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.runs/synth_1/.Xil/Vivado-24852-DESKTOP-EFRMAI2/realtime/top_BRAM_FIFO_Limit_0_0_stub.vhdl:6' bound to instance 'BRAM_FIFO_Limit_0' of component 'top_BRAM_FIFO_Limit_0_0' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.gen/sources_1/bd/top/synth/top.vhd:273]
-INFO: [Synth 8-638] synthesizing module 'top_BRAM_FIFO_Limit_0_0' [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.runs/synth_1/.Xil/Vivado-24852-DESKTOP-EFRMAI2/realtime/top_BRAM_FIFO_Limit_0_0_stub.vhdl:20]
-INFO: [Synth 8-3491] module 'top_BRAM_reader_0_0' declared at 'E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.runs/synth_1/.Xil/Vivado-24852-DESKTOP-EFRMAI2/realtime/top_BRAM_reader_0_0_stub.vhdl:6' bound to instance 'BRAM_reader_0' of component 'top_BRAM_reader_0_0' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.gen/sources_1/bd/top/synth/top.vhd:284]
-INFO: [Synth 8-638] synthesizing module 'top_BRAM_reader_0_0' [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.runs/synth_1/.Xil/Vivado-24852-DESKTOP-EFRMAI2/realtime/top_BRAM_reader_0_0_stub.vhdl:17]
-INFO: [Synth 8-3491] module 'top_I2C_OV7670_Master_0_0' declared at 'E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.runs/synth_1/.Xil/Vivado-24852-DESKTOP-EFRMAI2/realtime/top_I2C_OV7670_Master_0_0_stub.vhdl:6' bound to instance 'I2C_OV7670_Master_0' of component 'top_I2C_OV7670_Master_0_0' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.gen/sources_1/bd/top/synth/top.vhd:292]
-INFO: [Synth 8-638] synthesizing module 'top_I2C_OV7670_Master_0_0' [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.runs/synth_1/.Xil/Vivado-24852-DESKTOP-EFRMAI2/realtime/top_I2C_OV7670_Master_0_0_stub.vhdl:31]
-INFO: [Synth 8-3491] module 'top_I2C_OV7670_config_0_0' declared at 'E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.runs/synth_1/.Xil/Vivado-24852-DESKTOP-EFRMAI2/realtime/top_I2C_OV7670_config_0_0_stub.vhdl:6' bound to instance 'I2C_OV7670_config_0' of component 'top_I2C_OV7670_config_0_0' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.gen/sources_1/bd/top/synth/top.vhd:314]
-INFO: [Synth 8-638] synthesizing module 'top_I2C_OV7670_config_0_0' [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.runs/synth_1/.Xil/Vivado-24852-DESKTOP-EFRMAI2/realtime/top_I2C_OV7670_config_0_0_stub.vhdl:15]
-INFO: [Synth 8-3491] module 'top_OutputFrame_Colour_0_0' declared at 'E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.runs/synth_1/.Xil/Vivado-24852-DESKTOP-EFRMAI2/realtime/top_OutputFrame_Colour_0_0_stub.vhdl:6' bound to instance 'OutputFrame_Colour_0' of component 'top_OutputFrame_Colour_0_0' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.gen/sources_1/bd/top/synth/top.vhd:320]
-INFO: [Synth 8-638] synthesizing module 'top_OutputFrame_Colour_0_0' [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.runs/synth_1/.Xil/Vivado-24852-DESKTOP-EFRMAI2/realtime/top_OutputFrame_Colour_0_0_stub.vhdl:23]
-INFO: [Synth 8-3491] module 'top_Pixel_Capture_0_0' declared at 'E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.runs/synth_1/.Xil/Vivado-24852-DESKTOP-EFRMAI2/realtime/top_Pixel_Capture_0_0_stub.vhdl:6' bound to instance 'Pixel_Capture_0' of component 'top_Pixel_Capture_0_0' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.gen/sources_1/bd/top/synth/top.vhd:334]
-INFO: [Synth 8-638] synthesizing module 'top_Pixel_Capture_0_0' [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.runs/synth_1/.Xil/Vivado-24852-DESKTOP-EFRMAI2/realtime/top_Pixel_Capture_0_0_stub.vhdl:24]
-INFO: [Synth 8-3491] module 'top_blk_mem_gen_0_0' declared at 'E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.runs/synth_1/.Xil/Vivado-24852-DESKTOP-EFRMAI2/realtime/top_blk_mem_gen_0_0_stub.vhdl:6' bound to instance 'blk_mem_gen_0' of component 'top_blk_mem_gen_0_0' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.gen/sources_1/bd/top/synth/top.vhd:349]
-INFO: [Synth 8-638] synthesizing module 'top_blk_mem_gen_0_0' [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.runs/synth_1/.Xil/Vivado-24852-DESKTOP-EFRMAI2/realtime/top_blk_mem_gen_0_0_stub.vhdl:24]
-INFO: [Synth 8-3491] module 'top_clk_wiz_0_0' declared at 'E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.runs/synth_1/.Xil/Vivado-24852-DESKTOP-EFRMAI2/realtime/top_clk_wiz_0_0_stub.vhdl:6' bound to instance 'clk_wiz_0' of component 'top_clk_wiz_0_0' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.gen/sources_1/bd/top/synth/top.vhd:364]
-INFO: [Synth 8-638] synthesizing module 'top_clk_wiz_0_0' [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.runs/synth_1/.Xil/Vivado-24852-DESKTOP-EFRMAI2/realtime/top_clk_wiz_0_0_stub.vhdl:17]
-INFO: [Synth 8-3491] module 'top_debouncer_0_0' declared at 'E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.runs/synth_1/.Xil/Vivado-24852-DESKTOP-EFRMAI2/realtime/top_debouncer_0_0_stub.vhdl:6' bound to instance 'debouncer_0' of component 'top_debouncer_0_0' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.gen/sources_1/bd/top/synth/top.vhd:372]
-INFO: [Synth 8-638] synthesizing module 'top_debouncer_0_0' [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.runs/synth_1/.Xil/Vivado-24852-DESKTOP-EFRMAI2/realtime/top_debouncer_0_0_stub.vhdl:15]
-INFO: [Synth 8-3491] module 'top_debouncer_0_1' declared at 'E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.runs/synth_1/.Xil/Vivado-24852-DESKTOP-EFRMAI2/realtime/top_debouncer_0_1_stub.vhdl:6' bound to instance 'debouncer_1' of component 'top_debouncer_0_1' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.gen/sources_1/bd/top/synth/top.vhd:378]
-INFO: [Synth 8-638] synthesizing module 'top_debouncer_0_1' [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.runs/synth_1/.Xil/Vivado-24852-DESKTOP-EFRMAI2/realtime/top_debouncer_0_1_stub.vhdl:15]
-INFO: [Synth 8-3491] module 'top_ila_0_0' declared at 'E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.runs/synth_1/.Xil/Vivado-24852-DESKTOP-EFRMAI2/realtime/top_ila_0_0_stub.vhdl:6' bound to instance 'ila_0' of component 'top_ila_0_0' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.gen/sources_1/bd/top/synth/top.vhd:384]
-INFO: [Synth 8-638] synthesizing module 'top_ila_0_0' [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.runs/synth_1/.Xil/Vivado-24852-DESKTOP-EFRMAI2/realtime/top_ila_0_0_stub.vhdl:21]
-INFO: [Synth 8-3491] module 'top_xlconstant_0_0' declared at 'e:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.gen/sources_1/bd/top/ip/top_xlconstant_0_0/synth/top_xlconstant_0_0.v:53' bound to instance 'xlconstant_0' of component 'top_xlconstant_0_0' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.gen/sources_1/bd/top/synth/top.vhd:396]
+INFO: [Synth 8-3491] module 'top_BRAM_FIFO_Limit_0_0' declared at 'E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.runs/synth_1/.Xil/Vivado-37176-DESKTOP-EFRMAI2/realtime/top_BRAM_FIFO_Limit_0_0_stub.vhdl:6' bound to instance 'BRAM_FIFO_Limit_0' of component 'top_BRAM_FIFO_Limit_0_0' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.gen/sources_1/bd/top/synth/top.vhd:278]
+INFO: [Synth 8-638] synthesizing module 'top_BRAM_FIFO_Limit_0_0' [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.runs/synth_1/.Xil/Vivado-37176-DESKTOP-EFRMAI2/realtime/top_BRAM_FIFO_Limit_0_0_stub.vhdl:20]
+INFO: [Synth 8-3491] module 'top_BRAM_reader_0_0' declared at 'E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.runs/synth_1/.Xil/Vivado-37176-DESKTOP-EFRMAI2/realtime/top_BRAM_reader_0_0_stub.vhdl:6' bound to instance 'BRAM_reader_0' of component 'top_BRAM_reader_0_0' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.gen/sources_1/bd/top/synth/top.vhd:289]
+INFO: [Synth 8-638] synthesizing module 'top_BRAM_reader_0_0' [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.runs/synth_1/.Xil/Vivado-37176-DESKTOP-EFRMAI2/realtime/top_BRAM_reader_0_0_stub.vhdl:17]
+INFO: [Synth 8-3491] module 'top_I2C_OV7670_Master_0_0' declared at 'E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.runs/synth_1/.Xil/Vivado-37176-DESKTOP-EFRMAI2/realtime/top_I2C_OV7670_Master_0_0_stub.vhdl:6' bound to instance 'I2C_OV7670_Master_0' of component 'top_I2C_OV7670_Master_0_0' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.gen/sources_1/bd/top/synth/top.vhd:297]
+INFO: [Synth 8-638] synthesizing module 'top_I2C_OV7670_Master_0_0' [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.runs/synth_1/.Xil/Vivado-37176-DESKTOP-EFRMAI2/realtime/top_I2C_OV7670_Master_0_0_stub.vhdl:31]
+INFO: [Synth 8-3491] module 'top_I2C_OV7670_config_0_0' declared at 'E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.runs/synth_1/.Xil/Vivado-37176-DESKTOP-EFRMAI2/realtime/top_I2C_OV7670_config_0_0_stub.vhdl:6' bound to instance 'I2C_OV7670_config_0' of component 'top_I2C_OV7670_config_0_0' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.gen/sources_1/bd/top/synth/top.vhd:319]
+INFO: [Synth 8-638] synthesizing module 'top_I2C_OV7670_config_0_0' [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.runs/synth_1/.Xil/Vivado-37176-DESKTOP-EFRMAI2/realtime/top_I2C_OV7670_config_0_0_stub.vhdl:15]
+INFO: [Synth 8-3491] module 'top_OutputFrame_Colour_0_0' declared at 'E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.runs/synth_1/.Xil/Vivado-37176-DESKTOP-EFRMAI2/realtime/top_OutputFrame_Colour_0_0_stub.vhdl:6' bound to instance 'OutputFrame_Colour_0' of component 'top_OutputFrame_Colour_0_0' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.gen/sources_1/bd/top/synth/top.vhd:325]
+INFO: [Synth 8-638] synthesizing module 'top_OutputFrame_Colour_0_0' [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.runs/synth_1/.Xil/Vivado-37176-DESKTOP-EFRMAI2/realtime/top_OutputFrame_Colour_0_0_stub.vhdl:23]
+INFO: [Synth 8-3491] module 'top_Pixel_Capture_0_0' declared at 'E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.runs/synth_1/.Xil/Vivado-37176-DESKTOP-EFRMAI2/realtime/top_Pixel_Capture_0_0_stub.vhdl:6' bound to instance 'Pixel_Capture_0' of component 'top_Pixel_Capture_0_0' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.gen/sources_1/bd/top/synth/top.vhd:339]
+INFO: [Synth 8-638] synthesizing module 'top_Pixel_Capture_0_0' [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.runs/synth_1/.Xil/Vivado-37176-DESKTOP-EFRMAI2/realtime/top_Pixel_Capture_0_0_stub.vhdl:24]
+INFO: [Synth 8-3491] module 'top_blk_mem_gen_0_0' declared at 'E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.runs/synth_1/.Xil/Vivado-37176-DESKTOP-EFRMAI2/realtime/top_blk_mem_gen_0_0_stub.vhdl:6' bound to instance 'blk_mem_gen_0' of component 'top_blk_mem_gen_0_0' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.gen/sources_1/bd/top/synth/top.vhd:354]
+INFO: [Synth 8-638] synthesizing module 'top_blk_mem_gen_0_0' [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.runs/synth_1/.Xil/Vivado-37176-DESKTOP-EFRMAI2/realtime/top_blk_mem_gen_0_0_stub.vhdl:24]
+INFO: [Synth 8-3491] module 'top_clk_wiz_0_0' declared at 'E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.runs/synth_1/.Xil/Vivado-37176-DESKTOP-EFRMAI2/realtime/top_clk_wiz_0_0_stub.vhdl:6' bound to instance 'clk_wiz_0' of component 'top_clk_wiz_0_0' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.gen/sources_1/bd/top/synth/top.vhd:369]
+INFO: [Synth 8-638] synthesizing module 'top_clk_wiz_0_0' [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.runs/synth_1/.Xil/Vivado-37176-DESKTOP-EFRMAI2/realtime/top_clk_wiz_0_0_stub.vhdl:17]
+INFO: [Synth 8-3491] module 'top_debouncer_0_0' declared at 'E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.runs/synth_1/.Xil/Vivado-37176-DESKTOP-EFRMAI2/realtime/top_debouncer_0_0_stub.vhdl:6' bound to instance 'debouncer_0' of component 'top_debouncer_0_0' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.gen/sources_1/bd/top/synth/top.vhd:377]
+INFO: [Synth 8-638] synthesizing module 'top_debouncer_0_0' [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.runs/synth_1/.Xil/Vivado-37176-DESKTOP-EFRMAI2/realtime/top_debouncer_0_0_stub.vhdl:15]
+INFO: [Synth 8-3491] module 'top_debouncer_0_1' declared at 'E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.runs/synth_1/.Xil/Vivado-37176-DESKTOP-EFRMAI2/realtime/top_debouncer_0_1_stub.vhdl:6' bound to instance 'debouncer_1' of component 'top_debouncer_0_1' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.gen/sources_1/bd/top/synth/top.vhd:383]
+INFO: [Synth 8-638] synthesizing module 'top_debouncer_0_1' [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.runs/synth_1/.Xil/Vivado-37176-DESKTOP-EFRMAI2/realtime/top_debouncer_0_1_stub.vhdl:15]
+INFO: [Synth 8-3491] module 'top_ila_0_0' declared at 'E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.runs/synth_1/.Xil/Vivado-37176-DESKTOP-EFRMAI2/realtime/top_ila_0_0_stub.vhdl:6' bound to instance 'ila_0' of component 'top_ila_0_0' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.gen/sources_1/bd/top/synth/top.vhd:389]
+INFO: [Synth 8-638] synthesizing module 'top_ila_0_0' [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.runs/synth_1/.Xil/Vivado-37176-DESKTOP-EFRMAI2/realtime/top_ila_0_0_stub.vhdl:26]
+INFO: [Synth 8-3491] module 'top_xlconstant_0_0' declared at 'e:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.gen/sources_1/bd/top/ip/top_xlconstant_0_0/synth/top_xlconstant_0_0.v:53' bound to instance 'xlconstant_0' of component 'top_xlconstant_0_0' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.gen/sources_1/bd/top/synth/top.vhd:406]
 INFO: [Synth 8-6157] synthesizing module 'top_xlconstant_0_0' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.gen/sources_1/bd/top/ip/top_xlconstant_0_0/synth/top_xlconstant_0_0.v:53]
 INFO: [Synth 8-6157] synthesizing module 'xlconstant_v1_1_8_xlconstant' [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.gen/sources_1/bd/top/ipshared/d390/hdl/xlconstant_v1_1_vl_rfs.v:68]
 INFO: [Synth 8-6155] done synthesizing module 'xlconstant_v1_1_8_xlconstant' (0#1) [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.gen/sources_1/bd/top/ipshared/d390/hdl/xlconstant_v1_1_vl_rfs.v:68]
 INFO: [Synth 8-6155] done synthesizing module 'top_xlconstant_0_0' (0#1) [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.gen/sources_1/bd/top/ip/top_xlconstant_0_0/synth/top_xlconstant_0_0.v:53]
 INFO: [Synth 8-256] done synthesizing module 'top' (0#1) [e:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.gen/sources_1/bd/top/synth/top.vhd:47]
 INFO: [Synth 8-256] done synthesizing module 'top_wrapper' (0#1) [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.gen/sources_1/bd/top/hdl/top_wrapper.vhd:43]
-INFO: [Synth 8-256] done synthesizing module 'host' (0#1) [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.srcs/sources_1/new/host.vhd:29]
+INFO: [Synth 8-256] done synthesizing module 'host' (0#1) [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.srcs/sources_1/new/host.vhd:30]
 INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'top_i'. This will prevent further optimization [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.gen/sources_1/bd/top/hdl/top_wrapper.vhd:72]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1504.320 ; gain = 554.238
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1504.094 ; gain = 552.402
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1504.320 ; gain = 554.238
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1504.094 ; gain = 552.402
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1504.320 ; gain = 554.238
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1504.094 ; gain = 552.402
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1504.320 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1504.094 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -191,7 +190,6 @@ WARNING: [Vivado 12-584] No ports matched 'BTN[4]'. [E:/FPGA/VHDL/Lab Training/I
 WARNING: [Vivado 12-584] No ports matched 'BTN[4]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:136]
 WARNING: [Vivado 12-584] No ports matched 'BTN[0]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:138]
 WARNING: [Vivado 12-584] No ports matched 'BTN[0]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:139]
-WARNING: [Vivado 12-584] No ports matched 'BTNR'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:152]
 WARNING: [Vivado 12-584] No ports matched 'BTNR}'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:153]
 WARNING: [Vivado 12-584] No ports matched 'BTN[3]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:155]
 WARNING: [Vivado 12-584] No ports matched 'BTN[3]'. [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.srcs/constrs_1/new/Basys3_Master_OV7670.xdc:156]
@@ -212,22 +210,22 @@ Parsing XDC File [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7
 Finished Parsing XDC File [E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.runs/synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1539.477 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1504.094 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1539.477 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1504.094 ; gain = 0.000
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1539.477 ; gain = 589.395
+Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 1504.094 ; gain = 552.402
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1539.477 ; gain = 589.395
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 1504.094 ; gain = 552.402
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -248,10 +246,10 @@ Applied set_property KEEP_HIERARCHY = SOFT for top_i/top_i/BRAM_reader_0. (const
 Applied set_property KEEP_HIERARCHY = SOFT for top_i/top_i/OutputFrame_Colour_0. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for top_i/top_i/debouncer_1. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1539.477 ; gain = 589.395
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 1504.094 ; gain = 552.402
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1539.477 ; gain = 589.395
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1504.094 ; gain = 552.402
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -274,25 +272,25 @@ Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1539.477 ; gain = 589.395
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 1504.094 ; gain = 552.402
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1539.477 ; gain = 589.395
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1504.094 ; gain = 552.402
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1539.477 ; gain = 589.395
+Finished Timing Optimization : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1504.094 ; gain = 552.402
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1539.477 ; gain = 589.395
+Finished Technology Mapping : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1504.094 ; gain = 552.402
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -310,37 +308,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1539.477 ; gain = 589.395
+Finished IO Insertion : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1504.094 ; gain = 552.402
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1539.477 ; gain = 589.395
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1504.094 ; gain = 552.402
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1539.477 ; gain = 589.395
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1504.094 ; gain = 552.402
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1539.477 ; gain = 589.395
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1504.094 ; gain = 552.402
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1539.477 ; gain = 589.395
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1504.094 ; gain = 552.402
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1539.477 ; gain = 589.395
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1504.094 ; gain = 552.402
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -379,33 +377,33 @@ Report Cell Usage:
 |10    |top_debouncer_0_1_bbox          |     1|
 |11    |top_ila_0_0_bbox                |     1|
 |12    |LUT2                            |     1|
-|13    |IBUF                            |    13|
+|13    |IBUF                            |    14|
 |14    |IOBUF                           |     1|
 |15    |OBUF                            |    26|
 +------+--------------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1539.477 ; gain = 589.395
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1504.094 ; gain = 552.402
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:13 ; elapsed = 00:00:19 . Memory (MB): peak = 1539.477 ; gain = 554.238
-Synthesis Optimization Complete : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1539.477 ; gain = 589.395
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:13 ; elapsed = 00:00:19 . Memory (MB): peak = 1504.094 ; gain = 552.402
+Synthesis Optimization Complete : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1504.094 ; gain = 552.402
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1539.477 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1512.918 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 1 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1539.477 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1517.523 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 1 instances were transformed.
   IOBUF => IOBUF (IBUF, OBUFT): 1 instance 
 
-Synth Design complete | Checksum: 5891b558
+Synth Design complete | Checksum: e15067f
 INFO: [Common 17-83] Releasing license: Synthesis
-60 Infos, 98 Warnings, 0 Critical Warnings and 0 Errors encountered.
+60 Infos, 96 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 1539.477 ; gain = 972.086
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1539.477 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 1517.523 ; gain = 948.824
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1517.523 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'E:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.runs/synth_1/host.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file host_utilization_synth.rpt -pb host_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Wed Aug  6 22:00:49 2025...
+INFO: [Common 17-206] Exiting Vivado at Thu Aug  7 16:54:20 2025...

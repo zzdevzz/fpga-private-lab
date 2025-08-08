@@ -2,7 +2,7 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-// Date        : Wed Aug  6 22:00:11 2025
+// Date        : Thu Aug  7 15:32:24 2025
 // Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub {e:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670
 //               Image.gen/sources_1/bd/top/ip/top_ila_0_0/top_ila_0_0_stub.v}
@@ -16,8 +16,8 @@
 // Please paste the declaration into a Verilog source file or add the file as an additional source.
 (* x_core_info = "ila,Vivado 2023.2" *)
 module top_ila_0_0(clk, probe0, probe1, probe2, probe3, probe4, probe5, 
-  probe6, probe7)
-/* synthesis syn_black_box black_box_pad_pin="probe0[0:0],probe1[0:0],probe2[0:0],probe3[0:0],probe4[0:0],probe5[0:0],probe6[0:0],probe7[7:0]" */
+  probe6, probe7, probe8, probe9, probe10, probe11, probe12)
+/* synthesis syn_black_box black_box_pad_pin="probe0[0:0],probe1[0:0],probe2[0:0],probe3[0:0],probe4[0:0],probe5[0:0],probe6[0:0],probe7[7:0],probe8[0:0],probe9[0:0],probe10[0:0],probe11[3:0],probe12[0:0]" */
 /* synthesis syn_force_seq_prim="clk" */;
   input clk /* synthesis syn_isclock = 1 */;
   input [0:0]probe0;
@@ -28,4 +28,9 @@ module top_ila_0_0(clk, probe0, probe1, probe2, probe3, probe4, probe5,
   input [0:0]probe5;
   input [0:0]probe6;
   input [7:0]probe7;
+  input [0:0]probe8;
+  input [0:0]probe9;
+  input [0:0]probe10;
+  input [3:0]probe11;
+  input [0:0]probe12;
 endmodule

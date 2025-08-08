@@ -257,21 +257,7 @@
         },
         "ports": {
           "clk_100": {
-            "direction": "I",
-            "parameters": {
-              "FREQ_HZ": {
-                "value": "100000000",
-                "value_src": "ip_prop"
-              },
-              "PHASE": {
-                "value": "0.0",
-                "value_src": "ip_prop"
-              },
-              "CLK_DOMAIN": {
-                "value": "/clk_wiz_0_clk_out1",
-                "value_src": "ip_prop"
-              }
-            }
+            "direction": "I"
           },
           "reset": {
             "type": "rst",
@@ -394,7 +380,10 @@
             "value": "Native"
           },
           "C_NUM_OF_PROBES": {
-            "value": "8"
+            "value": "13"
+          },
+          "C_PROBE11_WIDTH": {
+            "value": "4"
           }
         }
       },
@@ -876,13 +865,21 @@
       "Pixel_Capture_0_current_i": {
         "ports": [
           "Pixel_Capture_0/current_i",
-          "BRAM_FIFO_Limit_0/current_pix"
+          "BRAM_FIFO_Limit_0/current_pix",
+          "ila_0/probe10"
         ]
       },
       "Pixel_Capture_0_start_capture": {
         "ports": [
           "Pixel_Capture_0/start_capture",
-          "BRAM_FIFO_Limit_0/start_capture"
+          "BRAM_FIFO_Limit_0/start_capture",
+          "ila_0/probe8"
+        ]
+      },
+      "Pixel_Capture_0_state_out": {
+        "ports": [
+          "Pixel_Capture_0/state_out",
+          "ila_0/probe11"
         ]
       },
       "Switch0_1": {
@@ -919,9 +916,9 @@
         "ports": [
           "clk_wiz_0/clk_out100",
           "debouncer_0/clk",
-          "I2C_OV7670_Master_0/clk_100",
           "ila_0/clk",
-          "debouncer_1/clk"
+          "debouncer_1/clk",
+          "I2C_OV7670_Master_0/clk_100"
         ]
       },
       "debouncer_0_switch_debounced": {
@@ -933,7 +930,8 @@
       "debouncer_1_switch_debounced": {
         "ports": [
           "debouncer_1/switch_debounced",
-          "Pixel_Capture_0/capture_frame"
+          "Pixel_Capture_0/capture_frame",
+          "ila_0/probe9"
         ]
       },
       "ov7670_data_1": {
@@ -960,7 +958,8 @@
       "ov7670_vsync_1": {
         "ports": [
           "ov7670_vsync",
-          "Pixel_Capture_0/vsync"
+          "Pixel_Capture_0/vsync",
+          "ila_0/probe12"
         ]
       },
       "reset_1": {
@@ -972,8 +971,8 @@
       "sda_in_1": {
         "ports": [
           "sda_in",
-          "I2C_OV7670_Master_0/sda_in",
-          "ila_0/probe3"
+          "ila_0/probe3",
+          "I2C_OV7670_Master_0/sda_in"
         ]
       },
       "sys_clock_1": {

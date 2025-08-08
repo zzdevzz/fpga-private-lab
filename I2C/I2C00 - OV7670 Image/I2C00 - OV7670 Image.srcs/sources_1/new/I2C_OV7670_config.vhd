@@ -49,16 +49,26 @@ end I2C_OV7670_config;
 
 architecture Behavioral of I2C_OV7670_config is
 
-  -- ROM of register address/value pairs:
+--  -- ROM of register address/value pairs:
+--  type config_array is array (0 to 3) of std_logic_vector(15 downto 0);
+--  constant CONFIG : config_array := (
+--    0 => x"1280", -- COM7 reset
+----    1 => x"1204", -- COM7 VGA RGB
+--    1 => x"1240", -- COM7 QVGA RGB
+--    2 => x"1101", -- CLKRC prescaler
+--    3 => x"6B4A", -- DBLV enable PLL
+--    others => x"0000"  -- pad unused slots
+--  );
+
+      -- ROM of register address/value pairs:
   type config_array is array (0 to 3) of std_logic_vector(15 downto 0);
   constant CONFIG : config_array := (
-    0 => x"1280", -- COM7 reset
---    1 => x"1204", -- COM7 VGA RGB
-    1 => x"1240", -- COM7 QVGA RGB
-    2 => x"1101", -- CLKRC prescaler
-    3 => x"6B4A", -- DBLV enable PLL
-    others => x"0000"  -- pad unused slots
-  );
+      0 => x"7010",  -- 0x70 = 0x00: Disable color bar (test pattern)
+      1 => x"1214",  -- 0x12 = 0x14: COM7 - QVGA, RGB (no reset)
+      2 => x"40D0",  -- 0x40 = 0xD0: COM15 - RGB565, full range
+      3 => x"8C00",  -- 0x8C = 0x00: Disable RGB444
+      others => x"0000"
+    );
     
     signal index_int : integer range 0 to 3;
 begin

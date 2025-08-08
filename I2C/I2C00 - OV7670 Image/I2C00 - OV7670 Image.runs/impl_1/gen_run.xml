@@ -1,70 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1754513935">
+<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1754582024">
   <File Type="ROUTE-PWR" Name="host_power_routed.rpt"/>
   <File Type="PA-TCL" Name="host.tcl"/>
   <File Type="ROUTE-PWR-SUM" Name="host_power_summary_routed.pb"/>
   <File Type="REPORTS-TCL" Name="host_reports.tcl"/>
-  <File Type="OPT-RQA-PB" Name="host_rqa_opted.pb"/>
+  <File Type="BITSTR-MSK" Name="host.msk"/>
+  <File Type="ROUTE-CLK" Name="host_clock_utilization_routed.rpt"/>
+  <File Type="RDI-RDI" Name="host.vdi"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="host_bus_skew_postroute_physopted.pb"/>
+  <File Type="BG-BIT" Name="host.bit"/>
+  <File Type="BG-DRC" Name="host.drc"/>
+  <File Type="BG-BGN" Name="host.bgn"/>
+  <File Type="BG-BIN" Name="host.bin"/>
+  <File Type="BITSTR-RBT" Name="host.rbt"/>
+  <File Type="BITSTR-NKY" Name="host.nky"/>
+  <File Type="BITSTR-BMM" Name="host_bd.bmm"/>
   <File Type="BITSTR-MMI" Name="host.mmi"/>
-  <File Type="OPT-METHODOLOGY-DRC" Name="host_methodology_drc_opted.rpt"/>
-  <File Type="INIT-TIMING" Name="host_timing_summary_init.rpt"/>
-  <File Type="OPT-TIMING" Name="host_timing_summary_opted.rpt"/>
-  <File Type="OPT-DCP" Name="host_opt.dcp"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="host_methodology_drc_routed.rpt"/>
+  <File Type="BITSTR-SYSDEF" Name="host.sysdef"/>
+  <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
+  <File Type="BITSTR-LTX" Name="host.ltx"/>
+  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
   <File Type="OPT-DRC" Name="host_drc_opted.rpt"/>
   <File Type="OPT-HWDEF" Name="host.hwdef"/>
-  <File Type="PWROPT-DCP" Name="host_pwropt.dcp"/>
-  <File Type="PWROPT-DRC" Name="host_drc_pwropted.rpt"/>
-  <File Type="PWROPT-TIMING" Name="host_timing_summary_pwropted.rpt"/>
-  <File Type="PLACE-DCP" Name="host_placed.dcp"/>
   <File Type="PLACE-IO" Name="host_io_placed.rpt"/>
-  <File Type="PLACE-CLK" Name="host_clock_utilization_placed.rpt"/>
   <File Type="PLACE-UTIL" Name="host_utilization_placed.rpt"/>
   <File Type="PLACE-UTIL-PB" Name="host_utilization_placed.pb"/>
   <File Type="PLACE-CTRL" Name="host_control_sets_placed.rpt"/>
-  <File Type="PLACE-SIMILARITY" Name="host_incremental_reuse_placed.rpt"/>
   <File Type="PLACE-PRE-SIMILARITY" Name="host_incremental_reuse_pre_placed.rpt"/>
-  <File Type="BG-BIN" Name="host.bin"/>
-  <File Type="PLACE-TIMING" Name="host_timing_summary_placed.rpt"/>
-  <File Type="ROUTE-PWR-RPX" Name="host_power_routed.rpx"/>
-  <File Type="PLACE-RQA-PB" Name="host_rqa_placed.pb"/>
-  <File Type="POSTPLACE-PWROPT-DCP" Name="host_postplace_pwropt.dcp"/>
-  <File Type="BITSTR-MSK" Name="host.msk"/>
-  <File Type="POSTPLACE-PWROPT-TIMING" Name="host_timing_summary_postplace_pwropted.rpt"/>
-  <File Type="PHYSOPT-DCP" Name="host_physopt.dcp"/>
-  <File Type="PHYSOPT-DRC" Name="host_drc_physopted.rpt"/>
-  <File Type="BITSTR-RBT" Name="host.rbt"/>
-  <File Type="PHYSOPT-TIMING" Name="host_timing_summary_physopted.rpt"/>
-  <File Type="ROUTE-ERROR-DCP" Name="host_routed_error.dcp"/>
-  <File Type="ROUTE-DCP" Name="host_routed.dcp"/>
-  <File Type="ROUTE-BLACKBOX-DCP" Name="host_routed_bb.dcp"/>
   <File Type="ROUTE-DRC" Name="host_drc_routed.rpt"/>
   <File Type="ROUTE-DRC-PB" Name="host_drc_routed.pb"/>
-  <File Type="ROUTE-DRC-RPX" Name="host_drc_routed.rpx"/>
-  <File Type="ROUTE-METHODOLOGY-DRC" Name="host_methodology_drc_routed.rpt"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="host_methodology_drc_routed.rpx"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="host_methodology_drc_routed.pb"/>
-  <File Type="ROUTE-RQS-PB" Name="host_rqs_routed.pb"/>
+  <File Type="ROUTE-PWR-RPX" Name="host_power_routed.rpx"/>
   <File Type="ROUTE-STATUS" Name="host_route_status.rpt"/>
   <File Type="ROUTE-STATUS-PB" Name="host_route_status.pb"/>
+  <File Type="ROUTE-DCP" Name="host_routed.dcp"/>
+  <File Type="ROUTE-ERROR-DCP" Name="host_routed_error.dcp"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="host_routed_bb.dcp"/>
   <File Type="ROUTE-TIMINGSUMMARY" Name="host_timing_summary_routed.rpt"/>
   <File Type="ROUTE-TIMING-PB" Name="host_timing_summary_routed.pb"/>
   <File Type="ROUTE-TIMING-RPX" Name="host_timing_summary_routed.rpx"/>
   <File Type="ROUTE-SIMILARITY" Name="host_incremental_reuse_routed.rpt"/>
-  <File Type="ROUTE-CLK" Name="host_clock_utilization_routed.rpt"/>
   <File Type="ROUTE-BUS-SKEW" Name="host_bus_skew_routed.rpt"/>
   <File Type="ROUTE-BUS-SKEW-PB" Name="host_bus_skew_routed.pb"/>
   <File Type="ROUTE-BUS-SKEW-RPX" Name="host_bus_skew_routed.rpx"/>
+  <File Type="OPT-DCP" Name="host_opt.dcp"/>
+  <File Type="PLACE-DCP" Name="host_placed.dcp"/>
+  <File Type="PWROPT-DCP" Name="host_pwropt.dcp"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="host_postplace_pwropt.dcp"/>
+  <File Type="PHYSOPT-DCP" Name="host_physopt.dcp"/>
   <File Type="POSTROUTE-PHYSOPT-DCP" Name="host_postroute_physopt.dcp"/>
   <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="host_postroute_physopt_bb.dcp"/>
   <File Type="POSTROUTE-PHYSOPT-TIMING" Name="host_timing_summary_postroute_physopted.rpt"/>
   <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="host_timing_summary_postroute_physopted.pb"/>
   <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="host_timing_summary_postroute_physopted.rpx"/>
   <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="host_bus_skew_postroute_physopted.rpt"/>
-  <File Type="BG-BIT" Name="host.bit"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="host_bus_skew_postroute_physopted.pb"/>
   <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="host_bus_skew_postroute_physopted.rpx"/>
-  <File Type="BITSTR-NKY" Name="host.nky"/>
-  <File Type="BITSTR-BMM" Name="host_bd.bmm"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="host_methodology_drc_routed.pb"/>
+  <File Type="ROUTE-DRC-RPX" Name="host_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="host_methodology_drc_routed.rpx"/>
   <File Type="PDI-FILE" Name="host.pdi"/>
   <File Type="BOOT-PDI-FILE" Name="host_boot.pdi"/>
   <File Type="PL-PDI-FILE" Name="host_pld.pdi"/>
@@ -73,13 +66,6 @@
   <File Type="RNPI_FILE" Name="host.rnpi"/>
   <File Type="NPI_FILE" Name="host.npi"/>
   <File Type="RBD_FILE" Name="host.rbd"/>
-  <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
-  <File Type="BITSTR-LTX" Name="host.ltx"/>
-  <File Type="BITSTR-SYSDEF" Name="host.sysdef"/>
-  <File Type="BG-BGN" Name="host.bgn"/>
-  <File Type="BG-DRC" Name="host.drc"/>
-  <File Type="RDI-RDI" Name="host.vdi"/>
-  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
   <File Type="ROUTE-RQS" Name="host_routed.rqs"/>
   <File Type="POSTROUTE-PHYSOPT-RQS" Name="host_postroute_physopted.rqs"/>
   <File Type="ROUTE-RQS-RPT" Name="route_report_qor_suggestions_0.rpt"/>
@@ -147,6 +133,13 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PSRCDIR/sources_1/new/I2C_OV7670_new_config.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
       <Option Name="TopModule" Val="host"/>
@@ -162,6 +155,7 @@
       </FileInfo>
     </File>
     <Config>
+      <Option Name="TargetConstrsFile" Val="$PSRCDIR/constrs_1/new/Basys3_Master_OV7670.xdc"/>
       <Option Name="ConstrsType" Val="XDC"/>
     </Config>
   </FileSet>
@@ -190,15 +184,16 @@
     <Step Id="route_design"/>
     <Step Id="post_route_phys_opt_design"/>
     <Step Id="write_bitstream"/>
+    <Step Id="write_device_image"/>
   </Strategy>
-  <BlockFileSet Type="BlockSrcs" Name="top_I2C_OV7670_config_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="top_I2C_OV7670_Master_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="top_Pixel_Capture_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="top_I2C_OV7670_Master_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="top_blk_mem_gen_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="top_OutputFrame_Colour_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="top_BRAM_FIFO_Limit_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="top_clk_wiz_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="top_OutputFrame_Colour_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="top_BRAM_reader_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="top_debouncer_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="top_ila_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="top_debouncer_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="top_I2C_OV7670_config_0_0"/>
 </GenRun>
