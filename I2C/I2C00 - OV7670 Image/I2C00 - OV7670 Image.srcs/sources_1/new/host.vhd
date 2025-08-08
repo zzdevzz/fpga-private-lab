@@ -5,7 +5,9 @@ entity host is
   Port (
     ov7670_SDA     : inout STD_LOGIC;
     BTNL           : in STD_LOGIC;
-    BTNR          : in STD_LOGIC;
+    BTNR           : in STD_LOGIC;
+    Switch0        : in STD_LOGIC;
+    Switch1        : in STD_LOGIC;
     ov7670_SCL     : out STD_LOGIC;
     ov7670_pwdn    : out STD_LOGIC;
     ov7670_reset   : out STD_LOGIC;
@@ -33,6 +35,8 @@ architecture Behavioral of host is
     port (
       BTNL           : in  STD_LOGIC;
       BTNR           : in  STD_LOGIC;
+      Switch0        : in STD_LOGIC;
+      Switch1        : in STD_LOGIC;
       Hsync          : out STD_LOGIC;
       LED            : out STD_LOGIC_VECTOR (7 downto 0);
       OV7670_xclk    : out STD_LOGIC;
@@ -68,6 +72,8 @@ begin
     port map (
       BTNL           => BTNL,
       BTNR           => BTNR,
+      Switch0        => Switch0,
+      Switch1        => Switch1,
       Hsync          => Hsync,
       LED            => LED,
       OV7670_xclk    => ov7670_xclk,

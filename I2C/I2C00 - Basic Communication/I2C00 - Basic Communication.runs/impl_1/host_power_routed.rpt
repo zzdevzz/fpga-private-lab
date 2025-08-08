@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date             : Wed Aug  6 19:32:23 2025
+| Date             : Fri Aug  8 20:28:43 2025
 | Host             : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 | Command          : report_power -file host_power_routed.rpt -pb host_power_summary_routed.pb -rpx host_power_routed.rpx
 | Design           : host
@@ -53,15 +53,15 @@ Table of Contents
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
 | Clocks                   |     0.012 |        7 |       --- |             --- |
-| Slice Logic              |     0.002 |     5428 |       --- |             --- |
-|   LUT as Logic           |     0.001 |     1629 |     20800 |            7.83 |
-|   Register               |    <0.001 |     2699 |     41600 |            6.49 |
+| Slice Logic              |     0.002 |     5434 |       --- |             --- |
+|   LUT as Logic           |     0.001 |     1635 |     20800 |            7.86 |
+|   Register               |    <0.001 |     2701 |     41600 |            6.49 |
 |   CARRY4                 |    <0.001 |       71 |      8150 |            0.87 |
 |   LUT as Shift Register  |    <0.001 |      156 |      9600 |            1.63 |
 |   LUT as Distributed RAM |    <0.001 |       24 |      9600 |            0.25 |
 |   F7/F8 Muxes            |    <0.001 |        4 |     32600 |            0.01 |
 |   Others                 |     0.000 |      416 |       --- |             --- |
-| Signals                  |     0.002 |     3862 |       --- |             --- |
+| Signals                  |     0.002 |     3867 |       --- |             --- |
 | Block RAM                |     0.005 |     19.5 |        50 |           39.00 |
 | PLL                      |     0.100 |        1 |         5 |           20.00 |
 | I/O                      |     0.003 |        8 |       106 |            7.55 |
@@ -156,7 +156,7 @@ Table of Contents
 |   top_i                  |     0.118 |
 |     top_i                |     0.118 |
 |       clk_wiz_0          |     0.101 |
-|       ila_0              |     0.016 |
+|       ila_0              |     0.017 |
 +--------------------------+-----------+
 
 

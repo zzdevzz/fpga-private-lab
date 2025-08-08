@@ -26,7 +26,7 @@
     </Object>
     <Object name="top_i/top_i/ila_0" gui_info="">
       <Properties Property="CONTROL.TRIGGER_CONDITION" value="AND"/>
-      <Properties Property="CONTROL.TRIGGER_POSITION" value="8192"/>
+      <Properties Property="CONTROL.TRIGGER_POSITION" value="14000"/>
       <Properties Property="CORE_REFRESH_RATE_MS" value="500"/>
     </Object>
   </ObjectList>
@@ -677,6 +677,14 @@
         <Option Id="SOURCE" value="netlist"/>
         <Option Id="TRIGGER_COMPARE_VALUE" value="eq3&apos;hX"/>
         <Option Id="WAVEFORM_STYLE" value="Digital"/>
+        <Option Id="ENUM.idle" value="eq3&apos;b000"/>
+        <Option Id="ENUM.next_byte" value="eq3&apos;b110"/>
+        <Option Id="ENUM.read_ack" value="eq3&apos;b100"/>
+        <Option Id="ENUM.send_byte" value="eq3&apos;b011"/>
+        <Option Id="ENUM.start_condition" value="eq3&apos;b001"/>
+        <Option Id="ENUM.stop_condition" value="eq3&apos;b111"/>
+        <Option Id="ENUM.wait_ack" value="eq3&apos;b101"/>
+        <Option Id="ENUM.wait_after_start" value="eq3&apos;b010"/>
       </probeOptions>
       <nets>
         <net name="top_i/top_i/I2C_OV7670_Master_0_state_debug[2]"/>

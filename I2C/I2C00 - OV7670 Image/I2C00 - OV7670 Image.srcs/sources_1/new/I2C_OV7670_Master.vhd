@@ -83,7 +83,7 @@ architecture Behavioral of I2C_OV7670_Master is
 
   type state_type is (IDLE, START_CONDITION, WAIT_AFTER_START, SEND_BYTE, READ_ACK, WAIT_ACK, NEXT_BYTE, STOP_CONDITION);
   signal state : state_type := IDLE;
-  signal state_acknowledged: std_logic;
+  signal state_pre_ack: std_logic; --we get the acknowledge immediately but need to hold it before changing state
   
   -- IDLE: 0
   -- START_CONDITION: 1
@@ -106,7 +106,8 @@ architecture Behavioral of I2C_OV7670_Master is
   signal scl_prev: std_logic := '0'; --used to get scl rising and falling edge.
   signal scl_rise: std_logic := '0';
   signal scl_fall: std_logic := '0';
-  signal scl_data_change: std_logic := '0';
+  signal scl_safe_change: std_logic := '0';
+  signal scl_safe_sample: std_logic := '0';
 
   signal byte_counter : integer range 0 to 2 := 0; --used to determine what stage communicating is at, r.e device address, register address, register value.
 
@@ -134,7 +135,9 @@ architecture Behavioral of I2C_OV7670_Master is
   signal rising_edge_counter : integer := 0;
   signal falling_edge_counter : integer := 0;
   signal sampling_edge_counter : integer := 0;
-  signal data_sda_sampled : std_logic;
+  signal changing_edge_counter : integer := 0;
+  
+  signal data_sda_sampled : std_logic := '0';
 
 
   signal debug_bit_counter_real  : integer range -1 to 8 := -1;
@@ -204,7 +207,8 @@ begin
         -- Default: one-cycle pulses for edge flags
         scl_rise <= '0';
         scl_fall <= '0';
-        scl_data_change <= '0';
+        scl_safe_change <= '0';
+        scl_safe_sample <= '0';
         
         if scl_en = '1' then
           -- Counter update
@@ -220,6 +224,12 @@ begin
           else
             scl <= '0';
           end if;
+          
+          --SCL
+          -- ---------
+          --          |
+          --           --------
+          -- high then low.
 
           -- Edge detection flags (occur 1 cycle BEFORE actual transition)
 --          if scl_cnt = (i2c_clock_max / 2) - 1 then
@@ -227,8 +237,11 @@ begin
             scl_fall <= '1';
             falling_edge_counter <= falling_edge_counter + 1;
           elsif scl_cnt = (i2c_clock_max / 2) + 100 then
-            scl_data_change <= '1';
-            sampling_edge_counter <= sampling_edge_counter + 1;
+            scl_safe_change <= '1';
+            changing_edge_counter <= changing_edge_counter + 1;
+          elsif scl_cnt = 100 then
+            scl_safe_sample <= '1';
+            sampling_edge_counter <= sampling_edge_counter + 1;  
           elsif scl_cnt = i2c_clock_max - 1 then
             scl_rise <= '1';
             rising_edge_counter <= rising_edge_counter + 1;
@@ -287,7 +300,7 @@ begin
            simple_state_debug <= "0011";
 
           --check if the shift_reg is changing every clock cycle, vs SCL cycle.
-          if scl_data_change = '1' then --this is offset so its roughly halfway of SCL being low, safe to change data.
+          if scl_safe_change = '1' then --this is offset so its roughly halfway of SCL being low, safe to change data.
             temp_debug <= 1;
             if bit_counter < 1 then
                 sda_out <= shift_reg_full(7);
@@ -319,7 +332,7 @@ begin
             sda_oe <= '0';
           end if;          
         
-        when READ_ACK => -- we are now in the 9th bit, AFTER the rising edge.
+        when READ_ACK => -- we are now in the 9th bit, AFTER the rising edge
           simple_state_debug <= "0101";
 --          if scl_rise = '1' then
 --            if sda_in /= '0' then --active low
@@ -328,20 +341,25 @@ begin
 --              state <= NEXT_BYTE;
 --            end if;
 --          end if;
-          if scl = '1' then
+          if scl_safe_sample = '1' then
             if sda_in = '0' then
-                state <= NEXT_BYTE;
+                state_pre_ack <= '1';
+            else 
+                state_pre_ack <= '0';
             end if;
-          else 
-            state <= STOP_CONDITION;
+            state <= WAIT_ACK;
+          elsif scl_safe_change = '1' then
+            state <= STOP_CONDITION;  
           end if;
           
         when WAIT_ACK =>
-            if state_acknowledged = '1' then
-                state_acknowledged <= '0';
-                state <= NEXT_BYTE;
-            else
-                state <= STOP_CONDITION;
+            if scl = '0' then
+                if state_pre_ack = '1' then
+                    state_pre_ack <= '0';
+                    state <= NEXT_BYTE;
+                else
+                    state <= STOP_CONDITION;
+                end if;
             end if; 
 
         when NEXT_BYTE =>
@@ -362,10 +380,12 @@ begin
 
         when STOP_CONDITION =>
           simple_state_debug <= "0111";
-          scl_en <= '0';
-          sda_oe <= '0';
-          sending <= '0';
-          state <= IDLE;
+          if scl = '1' then
+              scl_en <= '0';
+              sda_oe <= '0';
+              sending <= '0';
+              state <= IDLE;
+          end if;
       end case;
     end if;
   end process;

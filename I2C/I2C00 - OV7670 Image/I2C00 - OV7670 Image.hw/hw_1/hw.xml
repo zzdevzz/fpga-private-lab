@@ -77,7 +77,7 @@
     <probe type="ila" busType="net" source="netlist" spec="ILA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="CAPTURE_COMPARE_VALUE" value="eq1&apos;bX"/>
-        <Option Id="COMPARE_VALUE.0" value="eq1&apos;bR"/>
+        <Option Id="COMPARE_VALUE.0" value="eq1&apos;bF"/>
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
@@ -88,7 +88,7 @@
         <Option Id="NAME.CUSTOM" value=""/>
         <Option Id="NAME.SELECT" value="Long"/>
         <Option Id="SOURCE" value="netlist"/>
-        <Option Id="TRIGGER_COMPARE_VALUE" value="eq1&apos;bR"/>
+        <Option Id="TRIGGER_COMPARE_VALUE" value="eq1&apos;bF"/>
         <Option Id="WAVEFORM_STYLE" value="Digital"/>
       </probeOptions>
       <nets>
@@ -135,6 +135,37 @@
       </probeOptions>
       <nets>
         <net name="top_i/top_i/I2C_OV7670_Master_0_sda_out"/>
+      </nets>
+    </probe>
+    <probe type="ila" busType="bus" source="netlist" spec="ILA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="CAPTURE_COMPARE_VALUE" value="eq3&apos;hX"/>
+        <Option Id="COMPARE_VALUE.0" value="eq3&apos;hX"/>
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe13[2:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="TRIGGER_COMPARE_VALUE" value="eq3&apos;hX"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+        <Option Id="ENUM.idle" value="eq3&apos;b000"/>
+        <Option Id="ENUM.next_byte" value="eq3&apos;b110"/>
+        <Option Id="ENUM.read_ack" value="eq3&apos;b100"/>
+        <Option Id="ENUM.send_byte" value="eq3&apos;b011"/>
+        <Option Id="ENUM.start_condition" value="eq3&apos;b001"/>
+        <Option Id="ENUM.stop_condition" value="eq3&apos;b111"/>
+        <Option Id="ENUM.wait_ack" value="eq3&apos;b101"/>
+        <Option Id="ENUM.wait_after_start" value="eq3&apos;b010"/>
+      </probeOptions>
+      <nets>
+        <net name="top_i/top_i/I2C_OV7670_Master_0_state_debug[2]"/>
+        <net name="top_i/top_i/I2C_OV7670_Master_0_state_debug[1]"/>
+        <net name="top_i/top_i/I2C_OV7670_Master_0_state_debug[0]"/>
       </nets>
     </probe>
     <probe type="ila" busType="net" source="netlist" spec="ILA_V2_RT">

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Aug  6 21:58:53 2025" VIVADOVERSION="2023.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Aug  8 21:23:30 2025" VIVADOVERSION="2023.2">
 
   <SYSTEMINFO ARCH="artix7" BOARD="digilentinc.com:basys3:part0:1.2" DEVICE="7a35t" NAME="top" PACKAGE="cpg236" SPEEDGRADE="-1"/>
 
@@ -80,6 +80,7 @@
     <PORT DIR="I" NAME="ov7670_vsync" SIGIS="undef" SIGNAME="External_Ports_ov7670_vsync">
       <CONNECTIONS>
         <CONNECTION INSTANCE="Pixel_Capture_0" PORT="vsync"/>
+        <CONNECTION INSTANCE="ila_0" PORT="probe12"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" NAME="reset" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="External_Ports_reset">
@@ -89,8 +90,8 @@
     </PORT>
     <PORT DIR="I" NAME="sda_in" SIGIS="undef" SIGNAME="External_Ports_sda_in">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="I2C_OV7670_Master_0" PORT="sda_in"/>
         <CONNECTION INSTANCE="ila_0" PORT="probe3"/>
+        <CONNECTION INSTANCE="I2C_OV7670_Master_0" PORT="sda_in"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="O" NAME="sda_oe" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_sda_oe">
@@ -293,7 +294,11 @@
             <CONNECTION INSTANCE="I2C_OV7670_config_0" PORT="reg_data"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="2" NAME="state_debug" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="2" NAME="state_debug" RIGHT="0" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_state_debug">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ila_0" PORT="probe13"/>
+          </CONNECTIONS>
+        </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
@@ -418,6 +423,7 @@
         <PORT DIR="O" NAME="current_i" SIGIS="undef" SIGNAME="Pixel_Capture_0_current_i">
           <CONNECTIONS>
             <CONNECTION INSTANCE="BRAM_FIFO_Limit_0" PORT="current_pix"/>
+            <CONNECTION INSTANCE="ila_0" PORT="probe10"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="href" SIGIS="undef" SIGNAME="External_Ports_ov7670_href">
@@ -438,9 +444,14 @@
         <PORT DIR="O" NAME="start_capture" SIGIS="undef" SIGNAME="Pixel_Capture_0_start_capture">
           <CONNECTIONS>
             <CONNECTION INSTANCE="BRAM_FIFO_Limit_0" PORT="start_capture"/>
+            <CONNECTION INSTANCE="ila_0" PORT="probe8"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="3" NAME="state_out" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="3" NAME="state_out" RIGHT="0" SIGIS="undef" SIGNAME="Pixel_Capture_0_state_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ila_0" PORT="probe11"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="I" NAME="vsync" SIGIS="undef" SIGNAME="External_Ports_ov7670_vsync">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="ov7670_vsync"/>
@@ -1287,9 +1298,9 @@
         <PORT CLKFREQUENCY="100000000" DIR="O" NAME="clk_out100" SIGIS="clk" SIGNAME="clk_wiz_0_clk_out100">
           <CONNECTIONS>
             <CONNECTION INSTANCE="debouncer_0" PORT="clk"/>
-            <CONNECTION INSTANCE="I2C_OV7670_Master_0" PORT="clk_100"/>
             <CONNECTION INSTANCE="ila_0" PORT="clk"/>
             <CONNECTION INSTANCE="debouncer_1" PORT="clk"/>
+            <CONNECTION INSTANCE="I2C_OV7670_Master_0" PORT="clk_100"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="locked" SIGIS="undef"/>
@@ -1348,6 +1359,7 @@
         <PORT DIR="O" NAME="switch_debounced" SIGIS="undef" SIGNAME="debouncer_1_switch_debounced">
           <CONNECTIONS>
             <CONNECTION INSTANCE="Pixel_Capture_0" PORT="capture_frame"/>
+            <CONNECTION INSTANCE="ila_0" PORT="probe9"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -1371,7 +1383,7 @@
         <PARAMETER NAME="C_CORE_MINOR_VER" VALUE="0"/>
         <PARAMETER NAME="C_CORE_TYPE" VALUE="1"/>
         <PARAMETER NAME="C_CSE_DRV_VER" VALUE="2"/>
-        <PARAMETER NAME="C_DATA_DEPTH" VALUE="8192"/>
+        <PARAMETER NAME="C_DATA_DEPTH" VALUE="16384"/>
         <PARAMETER NAME="C_DDR_CLK_GEN" VALUE="0"/>
         <PARAMETER NAME="C_DIVCLK_DIVIDE" VALUE="3"/>
         <PARAMETER NAME="C_ENABLE_ILA_AXI_MON" VALUE="0"/>
@@ -1385,7 +1397,7 @@
         <PARAMETER NAME="C_MU_TYPE" VALUE="0"/>
         <PARAMETER NAME="C_NEXT_SLAVE" VALUE="0"/>
         <PARAMETER NAME="C_NUM_MONITOR_SLOTS" VALUE="1"/>
-        <PARAMETER NAME="C_NUM_OF_PROBES" VALUE="8"/>
+        <PARAMETER NAME="C_NUM_OF_PROBES" VALUE="14"/>
         <PARAMETER NAME="C_PIPE_IFACE" VALUE="1"/>
         <PARAMETER NAME="C_PROBE0_MU_CNT" VALUE="1"/>
         <PARAMETER NAME="C_PROBE0_TYPE" VALUE="0"/>
@@ -1527,7 +1539,7 @@
         <PARAMETER NAME="C_PROBE119_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE11_MU_CNT" VALUE="1"/>
         <PARAMETER NAME="C_PROBE11_TYPE" VALUE="0"/>
-        <PARAMETER NAME="C_PROBE11_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_PROBE11_WIDTH" VALUE="4"/>
         <PARAMETER NAME="C_PROBE120_MU_CNT" VALUE="1"/>
         <PARAMETER NAME="C_PROBE120_TYPE" VALUE="0"/>
         <PARAMETER NAME="C_PROBE120_WIDTH" VALUE="1"/>
@@ -1593,7 +1605,7 @@
         <PARAMETER NAME="C_PROBE139_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE13_MU_CNT" VALUE="1"/>
         <PARAMETER NAME="C_PROBE13_TYPE" VALUE="0"/>
-        <PARAMETER NAME="C_PROBE13_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_PROBE13_WIDTH" VALUE="3"/>
         <PARAMETER NAME="C_PROBE140_MU_CNT" VALUE="1"/>
         <PARAMETER NAME="C_PROBE140_TYPE" VALUE="0"/>
         <PARAMETER NAME="C_PROBE140_WIDTH" VALUE="1"/>
@@ -4536,6 +4548,36 @@
         <PORT DIR="I" LEFT="7" NAME="probe7" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_ov7670_data">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="ov7670_data"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="probe8" RIGHT="0" SIGIS="undef" SIGNAME="Pixel_Capture_0_start_capture">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Pixel_Capture_0" PORT="start_capture"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="probe9" RIGHT="0" SIGIS="undef" SIGNAME="debouncer_1_switch_debounced">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="debouncer_1" PORT="switch_debounced"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="probe10" RIGHT="0" SIGIS="undef" SIGNAME="Pixel_Capture_0_current_i">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Pixel_Capture_0" PORT="current_i"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="probe11" RIGHT="0" SIGIS="undef" SIGNAME="Pixel_Capture_0_state_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Pixel_Capture_0" PORT="state_out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="probe12" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_ov7670_vsync">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="ov7670_vsync"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="2" NAME="probe13" RIGHT="0" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_state_debug">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="I2C_OV7670_Master_0" PORT="state_debug"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>

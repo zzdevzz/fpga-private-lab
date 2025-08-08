@@ -227,13 +227,16 @@
                                         "isBus": true,
                                         "subnets": [
                                             {
-                                                "name": "top_i/top_i/I2C_OV7670_Master_0_state_debug[2]"
+                                                "name": "top_i/top_i/I2C_OV7670_Master_0_state_debug[2]",
+                                                "parentNetId": 20
                                             },
                                             {
-                                                "name": "top_i/top_i/I2C_OV7670_Master_0_state_debug[1]"
+                                                "name": "top_i/top_i/I2C_OV7670_Master_0_state_debug[1]",
+                                                "parentNetId": 21
                                             },
                                             {
-                                                "name": "top_i/top_i/I2C_OV7670_Master_0_state_debug[0]"
+                                                "name": "top_i/top_i/I2C_OV7670_Master_0_state_debug[0]",
+                                                "parentNetId": 22
                                             }
                                         ]
                                     }
@@ -383,6 +386,137 @@
                                                 "name": "top_i/top_i/I2C_OV7670_Master_0_current_index_bebug[0]"
                                             }
                                         ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "parent_nets": [
+                    {
+                        "id": 20,
+                        "name": "top_i/top_i/I2C_OV7670_Master_0/U0/FSM_sequential_state_reg[2]_0",
+                        "state_reg": [
+                            {
+                                "name": "top_i/top_i/I2C_OV7670_Master_0/U0/FSM_sequential_state_reg[2]",
+                                "states": [
+                                    {
+                                        "name": "wait_after_start",
+                                        "val": "010"
+                                    },
+                                    {
+                                        "name": "read_ack",
+                                        "val": "100"
+                                    },
+                                    {
+                                        "name": "wait_ack",
+                                        "val": "101"
+                                    },
+                                    {
+                                        "name": "idle",
+                                        "val": "000"
+                                    },
+                                    {
+                                        "name": "next_byte",
+                                        "val": "110"
+                                    },
+                                    {
+                                        "name": "send_byte",
+                                        "val": "011"
+                                    },
+                                    {
+                                        "name": "stop_condition",
+                                        "val": "111"
+                                    },
+                                    {
+                                        "name": "start_condition",
+                                        "val": "001"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": 21,
+                        "name": "top_i/top_i/I2C_OV7670_Master_0/U0/FSM_sequential_state_reg[1]_0",
+                        "state_reg": [
+                            {
+                                "name": "top_i/top_i/I2C_OV7670_Master_0/U0/FSM_sequential_state_reg[1]",
+                                "states": [
+                                    {
+                                        "name": "wait_after_start",
+                                        "val": "010"
+                                    },
+                                    {
+                                        "name": "read_ack",
+                                        "val": "100"
+                                    },
+                                    {
+                                        "name": "wait_ack",
+                                        "val": "101"
+                                    },
+                                    {
+                                        "name": "idle",
+                                        "val": "000"
+                                    },
+                                    {
+                                        "name": "next_byte",
+                                        "val": "110"
+                                    },
+                                    {
+                                        "name": "send_byte",
+                                        "val": "011"
+                                    },
+                                    {
+                                        "name": "stop_condition",
+                                        "val": "111"
+                                    },
+                                    {
+                                        "name": "start_condition",
+                                        "val": "001"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": 22,
+                        "name": "top_i/top_i/I2C_OV7670_Master_0/U0/FSM_sequential_state_reg[0]_0",
+                        "state_reg": [
+                            {
+                                "name": "top_i/top_i/I2C_OV7670_Master_0/U0/FSM_sequential_state_reg[0]",
+                                "states": [
+                                    {
+                                        "name": "wait_after_start",
+                                        "val": "010"
+                                    },
+                                    {
+                                        "name": "read_ack",
+                                        "val": "100"
+                                    },
+                                    {
+                                        "name": "wait_ack",
+                                        "val": "101"
+                                    },
+                                    {
+                                        "name": "idle",
+                                        "val": "000"
+                                    },
+                                    {
+                                        "name": "next_byte",
+                                        "val": "110"
+                                    },
+                                    {
+                                        "name": "send_byte",
+                                        "val": "011"
+                                    },
+                                    {
+                                        "name": "stop_condition",
+                                        "val": "111"
+                                    },
+                                    {
+                                        "name": "start_condition",
+                                        "val": "001"
                                     }
                                 ]
                             }

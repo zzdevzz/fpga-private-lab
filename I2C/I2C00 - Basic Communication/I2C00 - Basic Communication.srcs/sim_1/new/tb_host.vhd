@@ -106,7 +106,7 @@ begin
 
     stim_proc : process
     begin
-        wait for 500 us;
+        wait for 200 us;
         tb_BTNL <= '1';
         wait for 50 us;
         tb_BTNL <= '0';
