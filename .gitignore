@@ -22,8 +22,6 @@ impl/
 synth/
 
 # Vivado project files
-*.xpr
-*.xpr.user
 *.xsd
 *.xise
 *.dmp
