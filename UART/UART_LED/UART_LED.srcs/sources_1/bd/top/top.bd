@@ -1,0 +1,268 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0xB8D17996EE4704B2",
+      "device": "xc7a35tcpg236-1",
+      "gen_directory": "../../../../UART_LED.gen/sources_1/bd/top",
+      "name": "top",
+      "rev_ctrl_bd_flag": "RevCtrlBdOff",
+      "synth_flow_mode": "Hierarchical",
+      "tool_version": "2023.2",
+      "validated": "true"
+    },
+    "design_tree": {
+      "clk_wiz_0": "",
+      "LED_Toggle_0": "",
+      "UART_TX_0": "",
+      "UART_TX_Model_0": ""
+    },
+    "ports": {
+      "sys_clock": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "top_sys_clock",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0"
+          }
+        }
+      },
+      "reset": {
+        "type": "rst",
+        "direction": "I",
+        "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "POLARITY": {
+            "value": "ACTIVE_HIGH"
+          }
+        }
+      },
+      "led": {
+        "direction": "O",
+        "left": "15",
+        "right": "0"
+      },
+      "RsTx": {
+        "direction": "O"
+      }
+    },
+    "components": {
+      "clk_wiz_0": {
+        "vlnv": "xilinx.com:ip:clk_wiz:6.0",
+        "ip_revision": "13",
+        "xci_name": "top_clk_wiz_0_0",
+        "xci_path": "ip\\top_clk_wiz_0_0\\top_clk_wiz_0_0.xci",
+        "inst_hier_path": "clk_wiz_0",
+        "parameters": {
+          "CLK_IN1_BOARD_INTERFACE": {
+            "value": "sys_clock"
+          },
+          "RESET_BOARD_INTERFACE": {
+            "value": "reset"
+          },
+          "USE_BOARD_FLOW": {
+            "value": "true"
+          }
+        }
+      },
+      "LED_Toggle_0": {
+        "vlnv": "xilinx.com:module_ref:LED_Toggle:1.0",
+        "ip_revision": "1",
+        "xci_name": "top_LED_Toggle_0_0",
+        "xci_path": "ip\\top_LED_Toggle_0_0\\top_LED_Toggle_0_0.xci",
+        "inst_hier_path": "LED_Toggle_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "LED_Toggle",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clock_100": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "100000000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "/clk_wiz_0_clk_out1",
+                "value_src": "ip_prop"
+              }
+            }
+          },
+          "led": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          }
+        }
+      },
+      "UART_TX_0": {
+        "vlnv": "xilinx.com:module_ref:UART_TX:1.0",
+        "ip_revision": "1",
+        "xci_name": "top_UART_TX_0_0",
+        "xci_path": "ip\\top_UART_TX_0_0\\top_UART_TX_0_0.xci",
+        "inst_hier_path": "UART_TX_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "UART_TX",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "100000000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "/clk_wiz_0_clk_out1",
+                "value_src": "ip_prop"
+              }
+            }
+          },
+          "data_in": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "start": {
+            "direction": "I"
+          },
+          "ready": {
+            "direction": "O"
+          },
+          "busy": {
+            "direction": "O"
+          },
+          "RsTx": {
+            "direction": "O"
+          }
+        }
+      },
+      "UART_TX_Model_0": {
+        "vlnv": "xilinx.com:module_ref:UART_TX_Model:1.0",
+        "ip_revision": "1",
+        "xci_name": "top_UART_TX_Model_0_0",
+        "xci_path": "ip\\top_UART_TX_Model_0_0\\top_UART_TX_Model_0_0.xci",
+        "inst_hier_path": "UART_TX_Model_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "UART_TX_Model",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "100000000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "/clk_wiz_0_clk_out1",
+                "value_src": "ip_prop"
+              }
+            }
+          },
+          "ready": {
+            "direction": "I"
+          },
+          "data_out": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "start": {
+            "direction": "O"
+          }
+        }
+      }
+    },
+    "nets": {
+      "LED_Toggle_0_led": {
+        "ports": [
+          "LED_Toggle_0/led",
+          "led"
+        ]
+      },
+      "UART_TX_0_RsTx": {
+        "ports": [
+          "UART_TX_0/RsTx",
+          "RsTx"
+        ]
+      },
+      "UART_TX_0_ready": {
+        "ports": [
+          "UART_TX_0/ready",
+          "UART_TX_Model_0/ready"
+        ]
+      },
+      "UART_TX_Model_0_data_out": {
+        "ports": [
+          "UART_TX_Model_0/data_out",
+          "UART_TX_0/data_in"
+        ]
+      },
+      "UART_TX_Model_0_start": {
+        "ports": [
+          "UART_TX_Model_0/start",
+          "UART_TX_0/start"
+        ]
+      },
+      "clk_wiz_0_clk_out1": {
+        "ports": [
+          "clk_wiz_0/clk_out1",
+          "LED_Toggle_0/clock_100",
+          "UART_TX_Model_0/clk",
+          "UART_TX_0/clk"
+        ]
+      },
+      "reset_1": {
+        "ports": [
+          "reset",
+          "clk_wiz_0/reset"
+        ]
+      },
+      "sys_clock_1": {
+        "ports": [
+          "sys_clock",
+          "clk_wiz_0/clk_in1"
+        ]
+      }
+    }
+  }
+}
