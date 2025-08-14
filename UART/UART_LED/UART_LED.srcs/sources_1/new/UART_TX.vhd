@@ -1,6 +1,6 @@
 ----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
+-- Company: zzdevzz
+-- Engineer: Dev
 -- 
 -- Create Date: 12.08.2025 10:21:37
 -- Design Name: 
@@ -12,9 +12,9 @@
 -- 
 -- Dependencies: 
 -- 
--- Revision:
+-- Revision: v0
 -- Revision 0.01 - File Created
--- Additional Comments:
+-- Additional Comments: this version has baud rate internal. next one should have it with baud rate pulses external and shared.
 -- 
 ----------------------------------------------------------------------------------
 
@@ -52,12 +52,12 @@ entity UART_TX is
   );
   Port (
     clk : in std_logic;
-    data_in : in std_logic_vector(7 downto 0);
-    start : in std_logic := '0';
-    ready : out std_logic := '1';
+    tx_byte : in std_logic_vector(7 downto 0);
+    tx_byte_ready : in std_logic := '0';
+    tx_ready : out std_logic := '1';
     busy : out std_logic := '0';
     
-    RsTx: out std_logic
+    tx_serial: out std_logic
   );
 end UART_TX;
 
@@ -69,7 +69,7 @@ architecture Behavioral of UART_TX is
     signal baud_tick : std_logic := '0'; -- each time a bit time has passed this will send a pulse.
     
     --this is reversed, should start with low and end with high, but counter is set to drop rather than increase.
-    signal full_frame : std_logic_vector(9 downto 0) := '1' & data_in & '0'; -- full frame unedited till its done, pull low for start, data in, then high.
+    signal full_frame : std_logic_vector(9 downto 0) := '1' & tx_byte & '0'; -- full frame unedited till its done, pull low for start, data in, then high.
     signal current_index : integer range 0 to 10 := 0;
 
     signal uart_tx_out : std_logic := '1';
@@ -111,8 +111,8 @@ begin
             s_ready <= '1';
             s_busy <= '0';
             
-            if start = '1' then
-                full_frame <= '1' & data_in & '0'; -- full frame unedited till its done, pull low for start, data in, then high.
+            if tx_byte_ready = '1' then
+                full_frame <= '1' & tx_byte & '0'; -- full frame unedited till its done, pull low for start, data in, then high.
                 state <= SEND_DATA;
             end if;
         when SEND_DATA =>
@@ -136,7 +136,7 @@ begin
     end if;
     end process;
     
-    RsTx <= uart_tx_out;
+    tx_serial <= uart_tx_out;
     busy <= s_busy;
-    ready <= s_ready;
+    tx_ready <= s_ready;
 end Behavioral;

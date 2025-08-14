@@ -46,57 +46,60 @@
 -- 
 -- DO NOT MODIFY THIS FILE.
 
--- IP VLNV: xilinx.com:module_ref:UART_TX:1.0
+-- IP VLNV: xilinx.com:module_ref:UART_RX:1.0
 -- IP Revision: 1
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
 
-ENTITY top_UART_TX_0_0 IS
+ENTITY top_UART_RX_0_0 IS
   PORT (
     clk : IN STD_LOGIC;
-    tx_byte : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
-    tx_byte_ready : IN STD_LOGIC;
-    tx_ready : OUT STD_LOGIC;
-    busy : OUT STD_LOGIC;
-    tx_serial : OUT STD_LOGIC
+    rx_serial : IN STD_LOGIC;
+    rx_byte : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+    rx_byte_ready : OUT STD_LOGIC;
+    rx_byte_valid : OUT STD_LOGIC;
+    rx_ready : OUT STD_LOGIC;
+    rx_busy : OUT STD_LOGIC
   );
-END top_UART_TX_0_0;
+END top_UART_RX_0_0;
 
-ARCHITECTURE top_UART_TX_0_0_arch OF top_UART_TX_0_0 IS
+ARCHITECTURE top_UART_RX_0_0_arch OF top_UART_RX_0_0 IS
   ATTRIBUTE DowngradeIPIdentifiedWarnings : STRING;
-  ATTRIBUTE DowngradeIPIdentifiedWarnings OF top_UART_TX_0_0_arch: ARCHITECTURE IS "yes";
-  COMPONENT UART_TX IS
+  ATTRIBUTE DowngradeIPIdentifiedWarnings OF top_UART_RX_0_0_arch: ARCHITECTURE IS "yes";
+  COMPONENT UART_RX IS
     GENERIC (
       baud_rate : INTEGER;
       clock_rate : INTEGER
     );
     PORT (
       clk : IN STD_LOGIC;
-      tx_byte : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
-      tx_byte_ready : IN STD_LOGIC;
-      tx_ready : OUT STD_LOGIC;
-      busy : OUT STD_LOGIC;
-      tx_serial : OUT STD_LOGIC
+      rx_serial : IN STD_LOGIC;
+      rx_byte : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+      rx_byte_ready : OUT STD_LOGIC;
+      rx_byte_valid : OUT STD_LOGIC;
+      rx_ready : OUT STD_LOGIC;
+      rx_busy : OUT STD_LOGIC
     );
-  END COMPONENT UART_TX;
+  END COMPONENT UART_RX;
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER OF clk: SIGNAL IS "XIL_INTERFACENAME clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF clk: SIGNAL IS "xilinx.com:signal:clock:1.0 clk CLK";
 BEGIN
-  U0 : UART_TX
+  U0 : UART_RX
     GENERIC MAP (
       baud_rate => 9600,
       clock_rate => 100000000
     )
     PORT MAP (
       clk => clk,
-      tx_byte => tx_byte,
-      tx_byte_ready => tx_byte_ready,
-      tx_ready => tx_ready,
-      busy => busy,
-      tx_serial => tx_serial
+      rx_serial => rx_serial,
+      rx_byte => rx_byte,
+      rx_byte_ready => rx_byte_ready,
+      rx_byte_valid => rx_byte_valid,
+      rx_ready => rx_ready,
+      rx_busy => rx_busy
     );
-END top_UART_TX_0_0_arch;
+END top_UART_RX_0_0_arch;

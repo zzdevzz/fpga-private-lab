@@ -56,11 +56,11 @@ USE ieee.numeric_std.ALL;
 ENTITY top_UART_TX_0_0 IS
   PORT (
     clk : IN STD_LOGIC;
-    data_in : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
-    start : IN STD_LOGIC;
-    ready : OUT STD_LOGIC;
+    tx_byte : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+    tx_byte_ready : IN STD_LOGIC;
+    tx_ready : OUT STD_LOGIC;
     busy : OUT STD_LOGIC;
-    RsTx : OUT STD_LOGIC
+    tx_serial : OUT STD_LOGIC
   );
 END top_UART_TX_0_0;
 
@@ -74,11 +74,11 @@ ARCHITECTURE top_UART_TX_0_0_arch OF top_UART_TX_0_0 IS
     );
     PORT (
       clk : IN STD_LOGIC;
-      data_in : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
-      start : IN STD_LOGIC;
-      ready : OUT STD_LOGIC;
+      tx_byte : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+      tx_byte_ready : IN STD_LOGIC;
+      tx_ready : OUT STD_LOGIC;
       busy : OUT STD_LOGIC;
-      RsTx : OUT STD_LOGIC
+      tx_serial : OUT STD_LOGIC
     );
   END COMPONENT UART_TX;
   ATTRIBUTE X_INTERFACE_INFO : STRING;
@@ -93,10 +93,10 @@ BEGIN
     )
     PORT MAP (
       clk => clk,
-      data_in => data_in,
-      start => start,
-      ready => ready,
+      tx_byte => tx_byte,
+      tx_byte_ready => tx_byte_ready,
+      tx_ready => tx_ready,
       busy => busy,
-      RsTx => RsTx
+      tx_serial => tx_serial
     );
 END top_UART_TX_0_0_arch;

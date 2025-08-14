@@ -1,16 +1,16 @@
 {
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
-    "xci_name": "top_UART_TX_0_0",
-    "cell_name": "UART_TX_0",
-    "component_reference": "xilinx.com:module_ref:UART_TX:1.0",
+    "xci_name": "top_UART_RX_0_0",
+    "cell_name": "UART_RX_0",
+    "component_reference": "xilinx.com:module_ref:UART_RX:1.0",
     "ip_revision": "1",
-    "gen_directory": "../../../../../../UART_LED.gen/sources_1/bd/top/ip/top_UART_TX_0_0",
+    "gen_directory": "../../../../../../UART_LED.gen/sources_1/bd/top/ip/top_UART_RX_0_0",
     "parameters": {
       "component_parameters": {
         "baud_rate": [ { "value": "9600", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "clock_rate": [ { "value": "100000000", "resolve_type": "user", "format": "long", "usage": "all" } ],
-        "Component_Name": [ { "value": "top_UART_TX_0_0", "resolve_type": "user", "usage": "all" } ]
+        "Component_Name": [ { "value": "top_UART_RX_0_0", "resolve_type": "user", "usage": "all" } ]
       },
       "model_parameters": {
         "baud_rate": [ { "value": "9600", "resolve_type": "generated", "format": "long", "usage": "all" } ],
@@ -33,7 +33,7 @@
         "IPCONTEXT": [ { "value": "IP_Integrator" } ],
         "IPREVISION": [ { "value": "1" } ],
         "MANAGED": [ { "value": "TRUE" } ],
-        "OUTPUTDIR": [ { "value": "../../../../../../UART_LED.gen/sources_1/bd/top/ip/top_UART_TX_0_0" } ],
+        "OUTPUTDIR": [ { "value": "../../../../../../UART_LED.gen/sources_1/bd/top/ip/top_UART_RX_0_0" } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],
         "SHAREDDIR": [ { "value": "../../ipshared" } ],
         "SWVERSION": [ { "value": "2023.2" } ],
@@ -43,11 +43,12 @@
     "boundary": {
       "ports": {
         "clk": [ { "direction": "in" } ],
-        "tx_byte": [ { "direction": "in", "size_left": "7", "size_right": "0" } ],
-        "tx_byte_ready": [ { "direction": "in", "driver_value": "0x0" } ],
-        "tx_ready": [ { "direction": "out", "driver_value": "0x1" } ],
-        "busy": [ { "direction": "out", "driver_value": "0x0" } ],
-        "tx_serial": [ { "direction": "out" } ]
+        "rx_serial": [ { "direction": "in" } ],
+        "rx_byte": [ { "direction": "out", "size_left": "7", "size_right": "0" } ],
+        "rx_byte_ready": [ { "direction": "out", "driver_value": "0x0" } ],
+        "rx_byte_valid": [ { "direction": "out", "driver_value": "0x0" } ],
+        "rx_ready": [ { "direction": "out", "driver_value": "0x1" } ],
+        "rx_busy": [ { "direction": "out", "driver_value": "0x0" } ]
       },
       "interfaces": {
         "clk": {

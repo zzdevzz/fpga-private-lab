@@ -3,9 +3,11 @@ vhdl xil_defaultlib  \
 "../../../../UART_LED.srcs/sources_1/new/LED_Toggle.vhd" \
 "../../../../UART_LED.srcs/sources_1/new/UART_TX.vhd" \
 "../../../../UART_LED.srcs/sources_1/new/UART_TX_Model.vhd" \
+"../../../../UART_LED.srcs/sources_1/new/UART_RX.vhd" \
 "../../../../UART_LED.ip_user_files/bd/top/ip/top_LED_Toggle_0_0/sim/top_LED_Toggle_0_0.vhd" \
 "../../../../UART_LED.ip_user_files/bd/top/ip/top_UART_TX_0_0/sim/top_UART_TX_0_0.vhd" \
 "../../../../UART_LED.ip_user_files/bd/top/ip/top_UART_TX_Model_0_0/sim/top_UART_TX_Model_0_0.vhd" \
+"../../../../UART_LED.ip_user_files/bd/top/ip/top_UART_RX_0_0/sim/top_UART_RX_0_0.vhd" \
 "../../../../UART_LED.ip_user_files/bd/top/sim/top.vhd" \
 "../../../../UART_LED.gen/sources_1/bd/top/hdl/top_wrapper.vhd" \
 "../../../../UART_LED.srcs/sim_1/new/tb_top_wrapper.vhd" \
