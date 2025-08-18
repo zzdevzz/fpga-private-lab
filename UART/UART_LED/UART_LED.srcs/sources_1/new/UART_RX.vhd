@@ -19,7 +19,7 @@
 ----------------------------------------------------------------------------------
 
 
--- UART TX module.
+-- UART RX module.
 -- UART Protocol Summary
 
 -- Only between 2 devices. Both share the line. Can be simplex (only one control), half duplex (both talk, but seperately), full duplex (both talk same time).
@@ -59,6 +59,7 @@ entity UART_RX is
     rx_byte: out std_logic_vector(7 downto 0); --the byte thats assembled after serial protocol.
     rx_byte_ready : out std_logic := '0'; -- tells us the byte is ready and can be sampled.
     rx_byte_valid : out std_logic := '0'; --checks if last bit ended as it should.
+    rx_byte_error: out std_logic := '0';
     rx_ready : out std_logic := '1'; -- says whether  rx module is ready to recieve or busy.
     rx_busy : out std_logic := '0'
   );
@@ -76,17 +77,15 @@ architecture Behavioral of UART_RX is
     --this is reversed, should start with low and end with high, but counter is set to drop rather than increase.
     signal rx_byte_full : std_logic_vector(7 downto 0); 
     signal s_rx_byte_ready : std_logic := '0';
-    signal full_frame : std_logic_vector(9 downto 0) := '1' & rx_byte_full & '0'; -- full frame unedited till its done, pull low for start, data in, then high.
     signal current_index : integer range 0 to 8 := 0;
 
     signal uart_rx_byte_out : std_logic := '1';
     
-    signal rx_serial_prev : std_logic := rx_serial;
     
     type state_type is (
         IDLE,
         START_BIT,
-        RECIEVE_DATA,
+        RECEIVE_DATA,
         STOP_BIT
     );
     
@@ -126,13 +125,15 @@ begin
     if rising_edge(clk) then
         case state is
         when IDLE =>
+            rx_byte_error <= '0';
+            last_bit_sampled <= '0';
             rx_byte_valid <= '0';
             s_ready <= '1';
             s_busy <= '0';
             current_index <= 0;
             s_rx_byte_ready <= '0';
             
-            if rx_serial = '0' then
+            if rx_serial = '0' and baud_data_sample = '1' then
                 state <= START_BIT;
                 s_busy <= '1';
                 s_ready <= '0';
@@ -143,10 +144,10 @@ begin
 --            end if;
         when START_BIT =>
             if baud_tick = '1' then
-                state <= RECIEVE_DATA; --by this point  we should be in first bit.
+                state <= RECEIVE_DATA; --by this point  we should be in first bit.
             end if;
                
-        when RECIEVE_DATA =>    
+        when RECEIVE_DATA =>    
             --needs to loop through all 10 bits (start,data,end) in unedited frame.
             if current_index < 8 then                
                 --midway through baud rate for stable sample data
@@ -162,15 +163,16 @@ begin
             if baud_data_sample = '1' then   
                 if rx_serial = '1' then --data valid and stopped.
                     rx_byte_valid <= '1';
-                    s_rx_byte_ready <= '1';
                 else
                     rx_byte_valid <= '0';
+                    rx_byte_error <= '1';
                 end if;
                 
                 last_bit_sampled <= '1'; --we have last bit sampled otherwise we would be leaving State early halfway on baud cause of sample.
                 
             elsif baud_tick = '1' and last_bit_sampled = '1' then
                 state <= IDLE;
+                s_rx_byte_ready <= '1'; --regardless if valid or not, they can see what the read was here. if its bad, they can retry it.        
             end if;
         end case;
     end if;

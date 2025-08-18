@@ -1,7 +1,7 @@
 {
    "ActiveEmotionalView":"Default View",
    "Default View_ScaleFactor":"1.04192",
-   "Default View_TopLeft":"343,-174",
+   "Default View_TopLeft":"343,-178",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.5.8 2022-09-21 7111 VDI=41 GEI=38 GUI=JA:10.0
 #  -string -flagsOSRD
@@ -16,14 +16,14 @@ preplace inst UART_TX_Model_0 -pg 1 -lvl 1 -x 240 -y -60 -defaultsOSRD
 preplace inst UART_RX_0 -pg 1 -lvl 3 -x 790 -y 170 -defaultsOSRD
 preplace netloc LED_Toggle_0_led 1 2 2 N -270 920
 preplace netloc UART_TX_0_ready 1 0 3 120 10 N 10 640
+preplace netloc UART_TX_0_tx_serial 1 2 2 660 -100 N
 preplace netloc UART_TX_Model_0_data_out 1 1 1 370J -70n
 preplace netloc UART_TX_Model_0_start 1 1 1 360J -50n
 preplace netloc clk_wiz_0_clk_out1 1 0 3 110 20 380 0 650
 preplace netloc reset_1 1 0 1 -80J -270n
 preplace netloc sys_clock_1 1 0 1 -70J -250n
-preplace netloc UART_TX_0_tx_serial 1 2 2 660 -100 N
 levelinfo -pg 1 -100 240 510 790 1080
-pagesize -pg 1 -db -bbox -sgen -220 -490 1190 270
+pagesize -pg 1 -db -bbox -sgen -220 -490 1200 280
 "
 }
 {

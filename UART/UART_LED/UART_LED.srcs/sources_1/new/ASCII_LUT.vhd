@@ -22,14 +22,10 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
+-- purpose of this is that when we type in the terminal, we convert each ascii characters into something we can use.
+-- determine if its a space/linebreak/carriage return(so we know how to process data).
+--  get the binary/hex and output a byte equivelent of hex data.
 
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
 
 entity ASCII_LUT is
 --  Port ( );

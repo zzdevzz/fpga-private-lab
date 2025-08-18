@@ -124,9 +124,6 @@
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
-        <CompFileExtendedInfo CompFileName="top.bd" FileRelPathName="ip/top_LED_Toggle_0_0/top_LED_Toggle_0_0.xci">
-          <Proxy FileSetName="top_LED_Toggle_0_0"/>
-        </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="top.bd" FileRelPathName="ip/top_UART_TX_Model_0_0/top_UART_TX_Model_0_0.xci">
           <Proxy FileSetName="top_UART_TX_Model_0_0"/>
         </CompFileExtendedInfo>
@@ -141,6 +138,13 @@
         </FileInfo>
       </File>
       <File Path="$PSRCDIR/sources_1/new/ASCII_LUT.vhd">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/new/LED_Toggle_Simple.vhd">
         <FileInfo>
           <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -214,12 +218,6 @@
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
-    <FileSet Name="top_LED_Toggle_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/top_LED_Toggle_0_0" RelGenDir="$PGENDIR/top_LED_Toggle_0_0">
-      <Config>
-        <Option Name="TopModule" Val="top_LED_Toggle_0_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
     <FileSet Name="top_UART_TX_Model_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/top_UART_TX_Model_0_0" RelGenDir="$PGENDIR/top_UART_TX_Model_0_0">
       <Config>
         <Option Name="TopModule" Val="top_UART_TX_Model_0_0"/>
@@ -266,16 +264,6 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="top_LED_Toggle_0_0_synth_1" Type="Ft3:Synth" SrcSet="top_LED_Toggle_0_0" Part="xc7a35tcpg236-1" ConstrsSet="top_LED_Toggle_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/top_LED_Toggle_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/top_LED_Toggle_0_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/top_LED_Toggle_0_0_synth_1">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2023"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-      <RQSFiles/>
-    </Run>
     <Run Id="top_UART_TX_Model_0_0_synth_1" Type="Ft3:Synth" SrcSet="top_UART_TX_Model_0_0" Part="xc7a35tcpg236-1" ConstrsSet="top_UART_TX_Model_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/top_UART_TX_Model_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/top_UART_TX_Model_0_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/top_UART_TX_Model_0_0_synth_1">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023"/>
@@ -305,23 +293,6 @@
       <RQSFiles/>
     </Run>
     <Run Id="top_clk_wiz_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a35tcpg236-1" ConstrsSet="top_clk_wiz_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="top_clk_wiz_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/top_clk_wiz_0_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/top_clk_wiz_0_0_impl_1">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2023"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-      <RQSFiles/>
-    </Run>
-    <Run Id="top_LED_Toggle_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a35tcpg236-1" ConstrsSet="top_LED_Toggle_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="top_LED_Toggle_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/top_LED_Toggle_0_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/top_LED_Toggle_0_0_impl_1">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023"/>
         <Step Id="init_design"/>

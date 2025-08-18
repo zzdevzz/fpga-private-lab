@@ -31,15 +31,15 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity LED_Toggle is
+entity LED_Toggle_Simple is
   Port ( 
     clock_100 : in std_logic;
     multiplier : in std_logic_vector(7 downto 0);
     led : out std_logic_vector(15 downto 0)  
   );
-end LED_Toggle;
+end LED_Toggle_Simple;
 
-architecture Behavioral of LED_Toggle is
+architecture Behavioral of LED_Toggle_Simple is
     
     signal multiplier_stored : std_logic_vector(7 downto 0);
     signal counter_max : integer := 10_000_000;
