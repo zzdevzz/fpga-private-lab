@@ -1,31 +1,56 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"1.04192",
-   "Default View_TopLeft":"343,-178",
+   "Default View_ScaleFactor":"0.609492",
+   "Default View_TopLeft":"-121,-361",
    "ExpandedHierarchyInLayout":"",
+   "comment_0":"1. Data Recieved from
+ terminal in raw form.",
+   "comment_1":"2. converts ASCII character
+to numerical value / read / write character",
+   "comment_2":"3. Takes format of
+W/R ADDR VALUE i.e
+W 0001 0012
+
+and assigns to register.",
+   "commentid":"comment_0|comment_1|comment_2|",
+   "font_comment_0":"17",
+   "font_comment_1":"17",
+   "font_comment_2":"17",
    "guistr":"# # String gsaved with Nlview 7.5.8 2022-09-21 7111 VDI=41 GEI=38 GUI=JA:10.0
 #  -string -flagsOSRD
-preplace port port-id_sys_clock -pg 1 -lvl 0 -x -100 -y -130 -defaultsOSRD
-preplace port port-id_reset -pg 1 -lvl 0 -x -100 -y -150 -defaultsOSRD
-preplace port port-id_RsTx -pg 1 -lvl 4 -x 1080 -y -100 -defaultsOSRD
-preplace portBus led -pg 1 -lvl 4 -x 1080 -y -280 -defaultsOSRD
-preplace inst clk_wiz_0 -pg 1 -lvl 1 -x 240 -y -260 -defaultsOSRD
-preplace inst LED_Toggle_0 -pg 1 -lvl 2 -x 510 -y -270 -defaultsOSRD
-preplace inst UART_TX_0 -pg 1 -lvl 2 -x 510 -y 90 -defaultsOSRD
-preplace inst UART_TX_Model_0 -pg 1 -lvl 1 -x 240 -y -60 -defaultsOSRD
-preplace inst UART_RX_0 -pg 1 -lvl 3 -x 790 -y 170 -defaultsOSRD
-preplace netloc LED_Toggle_0_led 1 2 2 N -270 920
-preplace netloc UART_TX_0_ready 1 0 3 120 10 N 10 640
-preplace netloc UART_TX_0_tx_serial 1 2 2 660 -100 N
-preplace netloc UART_TX_Model_0_data_out 1 1 1 370J -70n
-preplace netloc UART_TX_Model_0_start 1 1 1 360J -50n
-preplace netloc clk_wiz_0_clk_out1 1 0 3 110 20 380 0 650
-preplace netloc reset_1 1 0 1 -80J -270n
-preplace netloc sys_clock_1 1 0 1 -70J -250n
-levelinfo -pg 1 -100 240 510 790 1080
-pagesize -pg 1 -db -bbox -sgen -220 -490 1200 280
+preplace port port-id_sys_clock -pg 1 -lvl 0 -x -10 -y 250 -defaultsOSRD
+preplace port port-id_reset -pg 1 -lvl 0 -x -10 -y 190 -defaultsOSRD
+preplace port port-id_RsRx -pg 1 -lvl 0 -x -10 -y 170 -defaultsOSRD
+preplace port port-id_RsTx -pg 1 -lvl 5 -x 1270 -y 130 -defaultsOSRD
+preplace inst clk_wiz_0 -pg 1 -lvl 1 -x 110 -y 240 -defaultsOSRD
+preplace inst ASCII_LUT_0 -pg 1 -lvl 3 -x 670 -y 120 -defaultsOSRD
+preplace inst UART_RX_0 -pg 1 -lvl 2 -x 340 -y 160 -defaultsOSRD
+preplace inst UART_CONTROLLER_0 -pg 1 -lvl 4 -x 1070 -y 90 -defaultsOSRD
+preplace inst UART_TX_0 -pg 1 -lvl 4 -x 1070 -y 240 -defaultsOSRD
+preplace netloc ASCII_LUT_0_ASCII_TYPE 1 3 1 880 120n
+preplace netloc ASCII_LUT_0_RX_BYTE_OUT 1 3 1 N 80
+preplace netloc ASCII_LUT_0_RX_BYTE_OUT_READY 1 3 1 N 100
+preplace netloc ASCII_LUT_0_TX_BYTE_OUT 1 3 1 870 120n
+preplace netloc ASCII_LUT_0_TX_BYTE_OUT_READY 1 3 1 860 140n
+preplace netloc RsRx_1 1 0 2 NJ 170 NJ
+preplace netloc UART_RX_0_rx_byte 1 2 1 N 110
+preplace netloc UART_RX_0_rx_byte_ready 1 2 1 N 130
+preplace netloc clk_wiz_0_clk_out1 1 1 3 210 50 480 10 890
+preplace netloc reset_1 1 0 3 20 40 NJ 40 470
+preplace netloc sys_clock_1 1 0 1 NJ 250
+preplace netloc UART_TX_0_tx_serial 1 4 1 1250 130n
+preplace cgraphic comment_2 place top 966 -156 textcolor 4 linecolor 3 linewidth 2
+preplace cgraphic comment_1 place top 486 -89 textcolor 4 linecolor 3 linewidth 2
+preplace cgraphic comment_0 place top 148 -87 textcolor 4 linecolor 3 linewidth 2
+levelinfo -pg 1 -10 110 340 670 1070 1270
+pagesize -pg 1 -db -bbox -sgen -130 -20 1380 480
 "
 }
 {
-   "da_board_cnt":"2"
+   ""da_board_cnt"":"2"
+}
+{
+   "/comment_0":"comment_0",
+   "/comment_1":"comment_1",
+   "/comment_2":"comment_2"
 }

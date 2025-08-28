@@ -1,28 +1,41 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0xB8D17996EE4704B2",
+      "boundary_crc": "0xC5EA93719278E9F",
       "device": "xc7a35tcpg236-1",
       "gen_directory": "../../../../UART_LED.gen/sources_1/bd/top",
       "name": "top",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
       "synth_flow_mode": "Hierarchical",
-      "tool_version": "2023.2"
+      "tool_version": "2023.2",
+      "validated": "true"
     },
     "design_tree": {
       "clk_wiz_0": "",
-      "LED_Toggle_0": "",
-      "UART_TX_0": "",
-      "UART_TX_Model_0": "",
-      "UART_RX_0": ""
+      "ASCII_LUT_0": "",
+      "UART_RX_0": "",
+      "UART_CONTROLLER_0": "",
+      "UART_TX_0": ""
     },
     "ports": {
       "sys_clock": {
         "type": "clk",
         "direction": "I",
         "parameters": {
+          "CLK_DOMAIN": {
+            "value": "top_sys_clock",
+            "value_src": "default"
+          },
           "FREQ_HZ": {
             "value": "100000000"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
           },
           "PHASE": {
             "value": "0.0"
@@ -33,15 +46,17 @@
         "type": "rst",
         "direction": "I",
         "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
           "POLARITY": {
             "value": "ACTIVE_HIGH"
           }
         }
       },
-      "led": {
-        "direction": "O",
-        "left": "15",
-        "right": "0"
+      "RsRx": {
+        "direction": "I"
       },
       "RsTx": {
         "direction": "O"
@@ -66,39 +81,202 @@
           }
         }
       },
-      "LED_Toggle_0": {
-        "vlnv": "xilinx.com:module_ref:LED_Toggle:1.0",
+      "ASCII_LUT_0": {
+        "vlnv": "xilinx.com:module_ref:ASCII_LUT:1.0",
         "ip_revision": "1",
-        "xci_name": "top_LED_Toggle_0_0",
-        "xci_path": "ip\\top_LED_Toggle_0_0\\top_LED_Toggle_0_0.xci",
-        "inst_hier_path": "LED_Toggle_0",
+        "xci_name": "top_ASCII_LUT_0_0",
+        "xci_path": "ip\\top_ASCII_LUT_0_0\\top_ASCII_LUT_0_0.xci",
+        "inst_hier_path": "ASCII_LUT_0",
         "reference_info": {
           "ref_type": "hdl",
-          "ref_name": "LED_Toggle",
+          "ref_name": "ASCII_LUT",
           "boundary_crc": "0x0"
         },
         "ports": {
-          "clock_100": {
+          "clk": {
             "type": "clk",
-            "direction": "I"
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "reset",
+                "value_src": "constant"
+              },
+              "FREQ_HZ": {
+                "value": "100000000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "/clk_wiz_0_clk_out1",
+                "value_src": "ip_prop"
+              }
+            }
           },
-          "multiplier": {
+          "reset": {
+            "type": "rst",
+            "direction": "I",
+            "parameters": {
+              "POLARITY": {
+                "value": "ACTIVE_HIGH",
+                "value_src": "user_prop"
+              }
+            }
+          },
+          "RX_BYTE": {
             "direction": "I",
             "left": "7",
             "right": "0"
           },
-          "led": {
-            "direction": "O",
-            "left": "15",
+          "RX_BYTE_READY": {
+            "direction": "I"
+          },
+          "TX_BYTE": {
+            "direction": "I",
+            "left": "7",
             "right": "0"
+          },
+          "TX_BYTE_READY": {
+            "direction": "I"
+          },
+          "RX_BYTE_OUT": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "RX_BYTE_OUT_READY": {
+            "direction": "O"
+          },
+          "TX_BYTE_OUT": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "TX_BYTE_OUT_READY": {
+            "direction": "O"
+          },
+          "ASCII_TYPE": {
+            "direction": "O",
+            "left": "2",
+            "right": "0"
+          }
+        }
+      },
+      "UART_RX_0": {
+        "vlnv": "xilinx.com:module_ref:UART_RX:1.0",
+        "ip_revision": "1",
+        "xci_name": "top_UART_RX_0_1",
+        "xci_path": "ip\\top_UART_RX_0_1\\top_UART_RX_0_1.xci",
+        "inst_hier_path": "UART_RX_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "UART_RX",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "100000000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "/clk_wiz_0_clk_out1",
+                "value_src": "ip_prop"
+              }
+            }
+          },
+          "rx_serial": {
+            "direction": "I"
+          },
+          "rx_byte": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "rx_byte_ready": {
+            "direction": "O"
+          },
+          "rx_byte_valid": {
+            "direction": "O"
+          },
+          "rx_byte_error": {
+            "direction": "O"
+          },
+          "rx_ready": {
+            "direction": "O"
+          },
+          "rx_busy": {
+            "direction": "O"
+          }
+        }
+      },
+      "UART_CONTROLLER_0": {
+        "vlnv": "xilinx.com:module_ref:UART_CONTROLLER:1.0",
+        "ip_revision": "1",
+        "xci_name": "top_UART_CONTROLLER_0_0",
+        "xci_path": "ip\\top_UART_CONTROLLER_0_0\\top_UART_CONTROLLER_0_0.xci",
+        "inst_hier_path": "UART_CONTROLLER_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "UART_CONTROLLER",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "100000000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "/clk_wiz_0_clk_out1",
+                "value_src": "ip_prop"
+              }
+            }
+          },
+          "RX_BYTE": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "RX_BYTE_READY": {
+            "direction": "I"
+          },
+          "ASCII_TYPE": {
+            "direction": "I",
+            "left": "2",
+            "right": "0"
+          },
+          "RX_DATA_FULL": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "WE": {
+            "direction": "O"
           }
         }
       },
       "UART_TX_0": {
         "vlnv": "xilinx.com:module_ref:UART_TX:1.0",
         "ip_revision": "1",
-        "xci_name": "top_UART_TX_0_0",
-        "xci_path": "ip\\top_UART_TX_0_0\\top_UART_TX_0_0.xci",
+        "xci_name": "top_UART_TX_0_1",
+        "xci_path": "ip\\top_UART_TX_0_1\\top_UART_TX_0_1.xci",
         "inst_hier_path": "UART_TX_0",
         "reference_info": {
           "ref_type": "hdl",
@@ -132,147 +310,87 @@
           "tx_byte_ready": {
             "direction": "I"
           },
+          "tx_serial": {
+            "direction": "O"
+          },
           "tx_ready": {
             "direction": "O"
           },
           "busy": {
-            "direction": "O"
-          },
-          "tx_serial": {
-            "direction": "O"
-          }
-        }
-      },
-      "UART_TX_Model_0": {
-        "vlnv": "xilinx.com:module_ref:UART_TX_Model:1.0",
-        "ip_revision": "1",
-        "xci_name": "top_UART_TX_Model_0_0",
-        "xci_path": "ip\\top_UART_TX_Model_0_0\\top_UART_TX_Model_0_0.xci",
-        "inst_hier_path": "UART_TX_Model_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "UART_TX_Model",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "clk": {
-            "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "FREQ_HZ": {
-                "value": "100000000",
-                "value_src": "ip_prop"
-              },
-              "PHASE": {
-                "value": "0.0",
-                "value_src": "ip_prop"
-              },
-              "CLK_DOMAIN": {
-                "value": "/clk_wiz_0_clk_out1",
-                "value_src": "ip_prop"
-              }
-            }
-          },
-          "ready": {
-            "direction": "I"
-          },
-          "data_out": {
-            "direction": "O",
-            "left": "7",
-            "right": "0"
-          },
-          "start": {
-            "direction": "O"
-          }
-        }
-      },
-      "UART_RX_0": {
-        "vlnv": "xilinx.com:module_ref:UART_RX:1.0",
-        "ip_revision": "1",
-        "xci_name": "top_UART_RX_0_0",
-        "xci_path": "ip\\top_UART_RX_0_0\\top_UART_RX_0_0.xci",
-        "inst_hier_path": "UART_RX_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "UART_RX",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "clk": {
-            "type": "clk",
-            "direction": "I"
-          },
-          "rx_serial": {
-            "direction": "I"
-          },
-          "rx_byte": {
-            "direction": "O",
-            "left": "7",
-            "right": "0"
-          },
-          "rx_byte_ready": {
-            "direction": "O"
-          },
-          "rx_byte_valid": {
-            "direction": "O"
-          },
-          "rx_byte_error": {
-            "direction": "O"
-          },
-          "rx_ready": {
-            "direction": "O"
-          },
-          "rx_busy": {
             "direction": "O"
           }
         }
       }
     },
     "nets": {
-      "LED_Toggle_0_led": {
+      "ASCII_LUT_0_ASCII_TYPE": {
         "ports": [
-          "LED_Toggle_0/led",
-          "led"
+          "ASCII_LUT_0/ASCII_TYPE",
+          "UART_CONTROLLER_0/ASCII_TYPE"
         ]
       },
-      "UART_TX_0_ready": {
+      "ASCII_LUT_0_RX_BYTE_OUT": {
         "ports": [
-          "UART_TX_0/tx_ready",
-          "UART_TX_Model_0/ready"
+          "ASCII_LUT_0/RX_BYTE_OUT",
+          "UART_CONTROLLER_0/RX_BYTE"
+        ]
+      },
+      "ASCII_LUT_0_RX_BYTE_OUT_READY": {
+        "ports": [
+          "ASCII_LUT_0/RX_BYTE_OUT_READY",
+          "UART_CONTROLLER_0/RX_BYTE_READY"
+        ]
+      },
+      "ASCII_LUT_0_TX_BYTE_OUT": {
+        "ports": [
+          "ASCII_LUT_0/TX_BYTE_OUT",
+          "UART_TX_0/tx_byte"
+        ]
+      },
+      "ASCII_LUT_0_TX_BYTE_OUT_READY": {
+        "ports": [
+          "ASCII_LUT_0/TX_BYTE_OUT_READY",
+          "UART_TX_0/tx_byte_ready"
+        ]
+      },
+      "RsRx_1": {
+        "ports": [
+          "RsRx",
+          "UART_RX_0/rx_serial"
+        ]
+      },
+      "UART_RX_0_rx_byte": {
+        "ports": [
+          "UART_RX_0/rx_byte",
+          "ASCII_LUT_0/RX_BYTE"
+        ]
+      },
+      "UART_RX_0_rx_byte_ready": {
+        "ports": [
+          "UART_RX_0/rx_byte_ready",
+          "ASCII_LUT_0/RX_BYTE_READY"
         ]
       },
       "UART_TX_0_tx_serial": {
         "ports": [
           "UART_TX_0/tx_serial",
-          "RsTx",
-          "UART_RX_0/rx_serial"
-        ]
-      },
-      "UART_TX_Model_0_data_out": {
-        "ports": [
-          "UART_TX_Model_0/data_out",
-          "UART_TX_0/tx_byte"
-        ]
-      },
-      "UART_TX_Model_0_start": {
-        "ports": [
-          "UART_TX_Model_0/start",
-          "UART_TX_0/tx_byte_ready"
+          "RsTx"
         ]
       },
       "clk_wiz_0_clk_out1": {
         "ports": [
           "clk_wiz_0/clk_out1",
-          "UART_TX_Model_0/clk",
-          "UART_TX_0/clk",
-          "LED_Toggle_0/clock_100",
-          "UART_RX_0/clk"
+          "ASCII_LUT_0/clk",
+          "UART_RX_0/clk",
+          "UART_CONTROLLER_0/clk",
+          "UART_TX_0/clk"
         ]
       },
       "reset_1": {
         "ports": [
           "reset",
-          "clk_wiz_0/reset"
+          "clk_wiz_0/reset",
+          "ASCII_LUT_0/reset"
         ]
       },
       "sys_clock_1": {
@@ -280,6 +398,13 @@
           "sys_clock",
           "clk_wiz_0/clk_in1"
         ]
+      }
+    },
+    "comments": {
+      "/": {
+        "comment_0": "1. Data Recieved from\n terminal in raw form.",
+        "comment_1": "2. converts ASCII character\nto numerical value / read / write character",
+        "comment_2": "3. Takes format of\nW/R ADDR VALUE i.e\nW 0001 0012\n\nand assigns to register."
       }
     }
   }

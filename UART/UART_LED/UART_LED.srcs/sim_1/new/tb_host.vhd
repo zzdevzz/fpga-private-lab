@@ -39,9 +39,9 @@ architecture Behavioral of tb_host is
     component top_wrapper is
         port (
             reset : in STD_LOGIC;
-            rx_serial : in STD_LOGIC;
+            RsRx : in STD_LOGIC;
             sys_clock : in STD_LOGIC;
-            tx_serial : out STD_LOGIC
+            RsTx : out STD_LOGIC
         );
     end component;
 
@@ -77,9 +77,9 @@ begin
     DUT: top_wrapper
     port map(
             reset => tb_reset,
-            rx_serial => tb_tx_serial,
+            RsRx => tb_tx_serial,
             sys_clock => tb_clock,
-            tx_serial => open
+            RsTx => open
     );
 
     RX_DATA: UART_RX_MODEL

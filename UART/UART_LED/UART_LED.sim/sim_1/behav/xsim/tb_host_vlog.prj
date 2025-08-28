@@ -1,0 +1,10 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../UART_LED.gen/sources_1/bd/top/ipshared/c2c6" \
+"../../../../UART_LED.ip_user_files/bd/top/ip/top_clk_wiz_0_0/top_clk_wiz_0_0_clk_wiz.v" \
+"../../../../UART_LED.ip_user_files/bd/top/ip/top_clk_wiz_0_0/top_clk_wiz_0_0.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

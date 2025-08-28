@@ -1,22 +1,23 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Aug 14 21:14:57 2025" VIVADOVERSION="2023.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Aug 28 23:25:24 2025" VIVADOVERSION="2023.2">
 
   <SYSTEMINFO ARCH="artix7" BOARD="digilentinc.com:basys3:part0:1.2" DEVICE="7a35t" NAME="top" PACKAGE="cpg236" SPEEDGRADE="-1"/>
 
   <EXTERNALPORTS>
+    <PORT DIR="I" NAME="RsRx" SIGIS="undef" SIGNAME="External_Ports_RsRx">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="UART_RX_0" PORT="rx_serial"/>
+      </CONNECTIONS>
+    </PORT>
     <PORT DIR="O" NAME="RsTx" SIGIS="undef" SIGNAME="UART_TX_0_tx_serial">
       <CONNECTIONS>
         <CONNECTION INSTANCE="UART_TX_0" PORT="tx_serial"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" LEFT="15" NAME="led" RIGHT="0" SIGIS="undef" SIGNAME="LED_Toggle_0_led">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="LED_Toggle_0" PORT="led"/>
-      </CONNECTIONS>
-    </PORT>
     <PORT DIR="I" NAME="reset" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="External_Ports_reset">
       <CONNECTIONS>
         <CONNECTION INSTANCE="clk_wiz_0" PORT="reset"/>
+        <CONNECTION INSTANCE="ASCII_LUT_0" PORT="reset"/>
       </CONNECTIONS>
     </PORT>
     <PORT CLKFREQUENCY="100000000" DIR="I" NAME="sys_clock" SIGIS="clk" SIGNAME="External_Ports_sys_clock">
@@ -29,21 +30,90 @@
   <EXTERNALINTERFACES/>
 
   <MODULES>
-    <MODULE COREREVISION="1" FULLNAME="/LED_Toggle_0" HWVERSION="1.0" INSTANCE="LED_Toggle_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="LED_Toggle" VLNV="xilinx.com:module_ref:LED_Toggle:1.0">
+    <MODULE COREREVISION="1" FULLNAME="/ASCII_LUT_0" HWVERSION="1.0" INSTANCE="ASCII_LUT_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="ASCII_LUT" VLNV="xilinx.com:module_ref:ASCII_LUT:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
-        <PARAMETER NAME="Component_Name" VALUE="top_LED_Toggle_0_0"/>
+        <PARAMETER NAME="Component_Name" VALUE="top_ASCII_LUT_0_0"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clock_100" SIGIS="clk" SIGNAME="clk_wiz_0_clk_out1">
+        <PORT DIR="O" LEFT="2" NAME="ASCII_TYPE" RIGHT="0" SIGIS="undef" SIGNAME="ASCII_LUT_0_ASCII_TYPE">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="UART_CONTROLLER_0" PORT="ASCII_TYPE"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="RX_BYTE" RIGHT="0" SIGIS="undef" SIGNAME="UART_RX_0_rx_byte">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="UART_RX_0" PORT="rx_byte"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="RX_BYTE_OUT" RIGHT="0" SIGIS="undef" SIGNAME="ASCII_LUT_0_RX_BYTE_OUT">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="UART_CONTROLLER_0" PORT="RX_BYTE"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="RX_BYTE_OUT_READY" SIGIS="undef" SIGNAME="ASCII_LUT_0_RX_BYTE_OUT_READY">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="UART_CONTROLLER_0" PORT="RX_BYTE_READY"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="RX_BYTE_READY" SIGIS="undef" SIGNAME="UART_RX_0_rx_byte_ready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="UART_RX_0" PORT="rx_byte_ready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="TX_BYTE" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="7" NAME="TX_BYTE_OUT" RIGHT="0" SIGIS="undef" SIGNAME="ASCII_LUT_0_TX_BYTE_OUT">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="UART_TX_0" PORT="tx_byte"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="TX_BYTE_OUT_READY" SIGIS="undef" SIGNAME="ASCII_LUT_0_TX_BYTE_OUT_READY">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="UART_TX_0" PORT="tx_byte_ready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="TX_BYTE_READY" SIGIS="undef"/>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="clk_wiz_0_clk_out1">
           <CONNECTIONS>
             <CONNECTION INSTANCE="clk_wiz_0" PORT="clk_out1"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="15" NAME="led" RIGHT="0" SIGIS="undef" SIGNAME="LED_Toggle_0_led">
+        <PORT DIR="I" NAME="reset" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="External_Ports_reset">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="led"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="reset"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/UART_CONTROLLER_0" HWVERSION="1.0" INSTANCE="UART_CONTROLLER_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="UART_CONTROLLER" VLNV="xilinx.com:module_ref:UART_CONTROLLER:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="top_UART_CONTROLLER_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="2" NAME="ASCII_TYPE" RIGHT="0" SIGIS="undef" SIGNAME="ASCII_LUT_0_ASCII_TYPE">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ASCII_LUT_0" PORT="ASCII_TYPE"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="RX_BYTE" RIGHT="0" SIGIS="undef" SIGNAME="ASCII_LUT_0_RX_BYTE_OUT">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ASCII_LUT_0" PORT="RX_BYTE_OUT"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="RX_BYTE_READY" SIGIS="undef" SIGNAME="ASCII_LUT_0_RX_BYTE_OUT_READY">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ASCII_LUT_0" PORT="RX_BYTE_OUT_READY"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="RX_DATA_FULL" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" NAME="WE" SIGIS="undef"/>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="clk_wiz_0_clk_out1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="clk_wiz_0" PORT="clk_out1"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -54,7 +124,7 @@
       <PARAMETERS>
         <PARAMETER NAME="baud_rate" VALUE="9600"/>
         <PARAMETER NAME="clock_rate" VALUE="100000000"/>
-        <PARAMETER NAME="Component_Name" VALUE="top_UART_RX_0_0"/>
+        <PARAMETER NAME="Component_Name" VALUE="top_UART_RX_0_1"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
@@ -64,13 +134,22 @@
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="rx_busy" SIGIS="undef"/>
-        <PORT DIR="O" LEFT="7" NAME="rx_byte" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="O" NAME="rx_byte_ready" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="7" NAME="rx_byte" RIGHT="0" SIGIS="undef" SIGNAME="UART_RX_0_rx_byte">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ASCII_LUT_0" PORT="RX_BYTE"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="rx_byte_error" SIGIS="undef"/>
+        <PORT DIR="O" NAME="rx_byte_ready" SIGIS="undef" SIGNAME="UART_RX_0_rx_byte_ready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ASCII_LUT_0" PORT="RX_BYTE_READY"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="O" NAME="rx_byte_valid" SIGIS="undef"/>
         <PORT DIR="O" NAME="rx_ready" SIGIS="undef"/>
-        <PORT DIR="I" NAME="rx_serial" SIGIS="undef" SIGNAME="UART_TX_0_tx_serial">
+        <PORT DIR="I" NAME="rx_serial" SIGIS="undef" SIGNAME="External_Ports_RsRx">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="UART_TX_0" PORT="tx_serial"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="RsRx"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -81,7 +160,7 @@
       <PARAMETERS>
         <PARAMETER NAME="baud_rate" VALUE="9600"/>
         <PARAMETER NAME="clock_rate" VALUE="100000000"/>
-        <PARAMETER NAME="Component_Name" VALUE="top_UART_TX_0_0"/>
+        <PARAMETER NAME="Component_Name" VALUE="top_UART_TX_0_1"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
@@ -91,55 +170,20 @@
             <CONNECTION INSTANCE="clk_wiz_0" PORT="clk_out1"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="7" NAME="tx_byte" RIGHT="0" SIGIS="undef" SIGNAME="UART_TX_Model_0_data_out">
+        <PORT DIR="I" LEFT="7" NAME="tx_byte" RIGHT="0" SIGIS="undef" SIGNAME="ASCII_LUT_0_TX_BYTE_OUT">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="UART_TX_Model_0" PORT="data_out"/>
+            <CONNECTION INSTANCE="ASCII_LUT_0" PORT="TX_BYTE_OUT"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="tx_byte_ready" SIGIS="undef" SIGNAME="UART_TX_Model_0_start">
+        <PORT DIR="I" NAME="tx_byte_ready" SIGIS="undef" SIGNAME="ASCII_LUT_0_TX_BYTE_OUT_READY">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="UART_TX_Model_0" PORT="start"/>
+            <CONNECTION INSTANCE="ASCII_LUT_0" PORT="TX_BYTE_OUT_READY"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="tx_ready" SIGIS="undef" SIGNAME="UART_TX_0_tx_ready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="UART_TX_Model_0" PORT="ready"/>
-          </CONNECTIONS>
-        </PORT>
+        <PORT DIR="O" NAME="tx_ready" SIGIS="undef"/>
         <PORT DIR="O" NAME="tx_serial" SIGIS="undef" SIGNAME="UART_TX_0_tx_serial">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="RsTx"/>
-            <CONNECTION INSTANCE="UART_RX_0" PORT="rx_serial"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
-    </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/UART_TX_Model_0" HWVERSION="1.0" INSTANCE="UART_TX_Model_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="UART_TX_Model" VLNV="xilinx.com:module_ref:UART_TX_Model:1.0">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="Component_Name" VALUE="top_UART_TX_Model_0_0"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="clk_wiz_0_clk_out1">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="clk_wiz_0" PORT="clk_out1"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="7" NAME="data_out" RIGHT="0" SIGIS="undef" SIGNAME="UART_TX_Model_0_data_out">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="UART_TX_0" PORT="tx_byte"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="ready" SIGIS="undef" SIGNAME="UART_TX_0_tx_ready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="UART_TX_0" PORT="tx_ready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="start" SIGIS="undef" SIGNAME="UART_TX_Model_0_start">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="UART_TX_0" PORT="tx_byte_ready"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -732,10 +776,10 @@
         </PORT>
         <PORT CLKFREQUENCY="100000000" DIR="O" NAME="clk_out1" SIGIS="clk" SIGNAME="clk_wiz_0_clk_out1">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="LED_Toggle_0" PORT="clock_100"/>
-            <CONNECTION INSTANCE="UART_TX_Model_0" PORT="clk"/>
-            <CONNECTION INSTANCE="UART_TX_0" PORT="clk"/>
+            <CONNECTION INSTANCE="ASCII_LUT_0" PORT="clk"/>
             <CONNECTION INSTANCE="UART_RX_0" PORT="clk"/>
+            <CONNECTION INSTANCE="UART_CONTROLLER_0" PORT="clk"/>
+            <CONNECTION INSTANCE="UART_TX_0" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="locked" SIGIS="undef"/>
