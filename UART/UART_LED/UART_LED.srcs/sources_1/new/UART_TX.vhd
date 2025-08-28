@@ -53,21 +53,20 @@ entity UART_TX is
   Port (
     clk : in std_logic;
     tx_byte : in std_logic_vector(7 downto 0);
-    tx_byte_ready : in std_logic := '0';
+    tx_byte_ready : in std_logic := '0';    
+    tx_serial: out std_logic;
     tx_ready : out std_logic := '1';
-    busy : out std_logic := '0';
-    
-    tx_serial: out std_logic
+    busy : out std_logic := '0'
   );
 end UART_TX;
 
 architecture Behavioral of UART_TX is
-    
+
     --BAUD RATE
     constant bit_time_max_count : natural := ( clock_rate / baud_rate - 1 ); --time each bit needs to be held at constant value for baud rate.
     signal bit_time_counter : integer range 0 to bit_time_max_count := 0;
     signal baud_tick : std_logic := '0'; -- each time a bit time has passed this will send a pulse.
-    
+
     --this is reversed, should start with low and end with high, but counter is set to drop rather than increase.
     signal full_frame : std_logic_vector(9 downto 0) := '1' & tx_byte & '0'; -- full frame unedited till its done, pull low for start, data in, then high.
     signal current_index : integer range 0 to 10 := 0;
@@ -77,13 +76,13 @@ architecture Behavioral of UART_TX is
         IDLE,
         SEND_DATA
     );
-    
+
     -- Module busy
     signal s_busy : std_logic := '0';
     signal s_ready : std_logic := '1';
-    
+
     signal state : state_type := IDLE;
-    
+
 begin
 
     baud_rate_pulse: process(clk)
@@ -101,16 +100,17 @@ begin
             end if;
         end if;
     end process;
-    
+
     state_machine:process(clk)
     begin
     if rising_edge(clk) then
         case state is
         when IDLE =>
+            current_index <= 0;
             uart_tx_out <= '1';
             s_ready <= '1';
             s_busy <= '0';
-            
+
             if tx_byte_ready = '1' then
                 full_frame <= '1' & tx_byte & '0'; -- full frame unedited till its done, pull low for start, data in, then high.
                 state <= SEND_DATA;
@@ -118,14 +118,14 @@ begin
         when SEND_DATA =>
             s_ready <= '0';
             s_busy <= '1';
-            
+
             --needs to loop through all 10 bits (start,data,end) in unedited frame.
             if current_index < 10 then
-                
+
                 if baud_tick = '1' then
                     current_index <= current_index + 1; --only increase based on baud rate.
                 end if;
-                
+
                 --hold it there until we get a new puls
                 uart_tx_out <= full_frame(current_index); --holding data
                 --need to loop through everything in the full data. one by one.
@@ -135,7 +135,7 @@ begin
         end case;
     end if;
     end process;
-    
+
     tx_serial <= uart_tx_out;
     busy <= s_busy;
     tx_ready <= s_ready;

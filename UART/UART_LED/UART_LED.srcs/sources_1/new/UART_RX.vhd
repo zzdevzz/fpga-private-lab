@@ -18,6 +18,7 @@
 -- 
 ----------------------------------------------------------------------------------
 
+-- TO DO: LOOK AT OVER SAMPLING AND WHY ITS GOOD.
 
 -- UART RX module.
 -- UART Protocol Summary
@@ -29,7 +30,7 @@
 -- It's not like I2C where its clock synced.  both devices need the same BAUD rate so it knows when to sample bits.
 
 
--- UART starts when line goes from 0 to 1. after 1 bit  time has passed as low. we start.
+-- UART starts when line goes from 1 to 0. after 1 bit  time has passed as low. we start.
 -- Next 8 bits are the data, active high. LSB is sent first. from right to left.
 -- At the end of the 9th bit time, we make it go high for 1 of the bits so make it signal a stop.
 
@@ -66,35 +67,35 @@ entity UART_RX is
 end UART_RX;
 
 architecture Behavioral of UART_RX is
-    
+
     --BAUD RATE
     constant bit_time_max_count : natural := ( clock_rate / baud_rate - 1 ); --time each bit needs to be held at constant value for baud rate.
     signal bit_time_counter : integer range 0 to bit_time_max_count := 0;
     signal baud_tick : std_logic := '0'; -- each time a bit time has passed this will send a pulse.
-    signal baud_data_sample: std_logic := '0';
-    signal last_bit_sampled: std_logic := '0';
-    
+    signal baud_data_sample: std_logic := '0'; --each time we sample the data (midway) this will send a pulse.
+    signal last_bit_sampled: std_logic := '0'; --we have last bit sampled otherwise we would be leaving State early halfway on baud cause of sample
+
     --this is reversed, should start with low and end with high, but counter is set to drop rather than increase.
     signal rx_byte_full : std_logic_vector(7 downto 0); 
     signal s_rx_byte_ready : std_logic := '0';
     signal current_index : integer range 0 to 8 := 0;
 
     signal uart_rx_byte_out : std_logic := '1';
-    
-    
+
+
     type state_type is (
         IDLE,
         START_BIT,
         RECEIVE_DATA,
         STOP_BIT
     );
-    
+
     -- Module busy
     signal s_busy : std_logic := '0';
     signal s_ready : std_logic := '1';
-    
+
     signal state : state_type := IDLE;
-    
+
 begin
 
     baud_rate_pulse: process(clk)
@@ -119,7 +120,7 @@ begin
             end if;
         end if;
     end process;
-    
+
     state_machine:process(clk)
     begin
     if rising_edge(clk) then
@@ -132,12 +133,17 @@ begin
             s_busy <= '0';
             current_index <= 0;
             s_rx_byte_ready <= '0';
-            
-            if rx_serial = '0' and baud_data_sample = '1' then
+
+            if rx_serial = '0' then
                 state <= START_BIT;
                 s_busy <= '1';
                 s_ready <= '0';
             end if;
+--            if rx_serial = '0' and baud_data_sample = '1' then
+--                state <= START_BIT;
+--                s_busy <= '1';
+--                s_ready <= '0';
+--            end if;
 --            if rx_serial = '0' and rx_serial_prev = '1' then
 --                full_frame <= '1' & tx_byte & '0'; -- full frame unedited till its done, pull low for start, data in, then high.
 --                state <= RECIEVE_DATA;
@@ -146,7 +152,7 @@ begin
             if baud_tick = '1' then
                 state <= RECEIVE_DATA; --by this point  we should be in first bit.
             end if;
-               
+
         when RECEIVE_DATA =>    
             --needs to loop through all 10 bits (start,data,end) in unedited frame.
             if current_index < 8 then                
@@ -158,7 +164,7 @@ begin
             else
                 state <= STOP_BIT;
             end if;
-            
+
         when STOP_BIT =>
             if baud_data_sample = '1' then   
                 if rx_serial = '1' then --data valid and stopped.
@@ -167,9 +173,9 @@ begin
                     rx_byte_valid <= '0';
                     rx_byte_error <= '1';
                 end if;
-                
+
                 last_bit_sampled <= '1'; --we have last bit sampled otherwise we would be leaving State early halfway on baud cause of sample.
-                
+
             elsif baud_tick = '1' and last_bit_sampled = '1' then
                 state <= IDLE;
                 s_rx_byte_ready <= '1'; --regardless if valid or not, they can see what the read was here. if its bad, they can retry it.        
@@ -177,9 +183,10 @@ begin
         end case;
     end if;
     end process;
-    
+
     rx_byte <= rx_byte_full;
     rx_busy <= s_busy;
     rx_ready <= s_ready;
     rx_byte_ready <= s_rx_byte_ready;
 end Behavioral;
+ 
