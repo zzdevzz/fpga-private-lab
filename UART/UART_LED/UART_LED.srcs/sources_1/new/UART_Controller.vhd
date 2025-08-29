@@ -33,11 +33,12 @@ use ieee.numeric_std.all;
 entity UART_CONTROLLER is
     Port (
         clk : in std_logic;
-        RX_BYTE : in std_logic_vector(7 downto 0);
-        RX_BYTE_READY: in std_logic;
-        ASCII_TYPE : in std_logic_vector(2 downto 0);
-        RX_DATA_FULL: out std_logic_vector(31 downto 0);
-        WE: out std_logic
+        RX_BYTE : in std_logic_vector(7 downto 0); --the byte from the ascii lut
+        RX_BYTE_READY: in std_logic; --letting us know when to recieve ascii byte.
+        ASCII_TYPE : in std_logic_vector(2 downto 0); --used to filter if data (numbers), read/write, space or enter.
+        RX_DATA_FULL: out std_logic_vector(31 downto 0); --full 32 bit data containts 16 bits addr, and 16 bit data ie [ADDRDATA]
+        RX_DATA_READY: out std_logic := '0';
+        WE: out std_logic --whether command was a read or write.
     );
 end UART_CONTROLLER;
 
@@ -87,6 +88,7 @@ begin
         if rising_edge(clk) then
             case state is
                 when S_IDLE =>
+                    RX_DATA_READY <= '0';
                     D_ACK <= '0';
                     TX_enable <= '0';
                     byte_counter <= 0;
@@ -164,6 +166,7 @@ begin
                             RX_address <= data_buildup(31 downto 16);
                             RX_data <= data_buildup(15 downto 0);
                             D_ACK <= '1';
+                            RX_DATA_READY <= '1';
                             state <= S_IDLE;
                         else
                             state <= S_STOP;
@@ -173,6 +176,8 @@ begin
                     state <= S_IDLE;
                     TX_data <= "11111111";
                     TX_enable <= '1';
+                    RX_DATA_READY <= '1';
+
             end case;
 
         end if;
