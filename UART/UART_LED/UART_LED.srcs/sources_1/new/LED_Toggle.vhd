@@ -38,20 +38,20 @@ entity LED_Toggle is
     RX_data: in std_logic_vector(31 downto 0);
     RX_data_ready: in std_logic := '0';
     WE: in std_logic := '0';
-    led : out std_logic_vector(15 downto 0)  
+    led : out std_logic_vector(7 downto 0)  
   );
 end LED_Toggle;
 
 architecture Behavioral of LED_Toggle is
 
-    signal multiplier_stored : std_logic_vector(7 downto 0) := "00000001";
+    signal multiplier_stored : std_logic_vector(15 downto 0) := "0000000000000001";
     signal counter_base : integer := 10_000_000;
     signal counter_max : integer := counter_base * to_integer(unsigned(multiplier_stored));
     signal counter : integer := 0;
     signal LED_ON: std_logic := '0';
 
-    signal led_enable : std_logic_vector(7 downto 0); -- which LEDs are on/off
-    signal led_pwm    : std_logic_vector(7 downto 0); -- brightness or speed
+    signal led_enable : std_logic_vector(15 downto 0); -- which LEDs are on/off
+    signal led_pwm    : std_logic_vector(15 downto 0); -- brightness or speed
 
     signal data_out : std_logic_vector(7 downto 0);
 
@@ -89,12 +89,16 @@ begin
                   case rx_addr is
                     when x"0001" => multiplier_stored <= rx_value;
                     when x"0002" => led_pwm    <= rx_value;
+                    when others => 
+                        multiplier_stored <= multiplier_stored;
                   end case;
-                elsif WE = '0' then
-                  case rx_addr is
-                    when "00" => data_out <= led_enable;
-                    when "01" => data_out <= led_pwm;
-                  end case;
+--                elsif WE = '0' then
+--                  case rx_addr is
+--                    when "00" => data_out <= led_enable;
+--                    when "01" => data_out <= led_pwm;
+--                    when others => 
+--                        multiplier_stored <= multiplier_stored;
+--                  end case;
                 end if;
              end if;
         end if;

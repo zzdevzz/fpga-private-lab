@@ -2,7 +2,7 @@
 --Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
---Date        : Thu Aug 28 23:25:24 2025
+--Date        : Sat Aug 30 14:40:53 2025
 --Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 --Command     : generate_target top_wrapper.bd
 --Design      : top_wrapper
@@ -16,6 +16,7 @@ entity top_wrapper is
   port (
     RsRx : in STD_LOGIC;
     RsTx : out STD_LOGIC;
+    led : out STD_LOGIC_VECTOR ( 7 downto 0 );
     reset : in STD_LOGIC;
     sys_clock : in STD_LOGIC
   );
@@ -27,7 +28,8 @@ architecture STRUCTURE of top_wrapper is
     sys_clock : in STD_LOGIC;
     reset : in STD_LOGIC;
     RsRx : in STD_LOGIC;
-    RsTx : out STD_LOGIC
+    RsTx : out STD_LOGIC;
+    led : out STD_LOGIC_VECTOR ( 7 downto 0 )
   );
   end component top;
 begin
@@ -35,6 +37,7 @@ top_i: component top
      port map (
       RsRx => RsRx,
       RsTx => RsTx,
+      led(7 downto 0) => led(7 downto 0),
       reset => reset,
       sys_clock => sys_clock
     );

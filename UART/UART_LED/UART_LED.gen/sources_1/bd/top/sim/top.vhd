@@ -2,7 +2,7 @@
 --Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
---Date        : Thu Aug 28 23:25:24 2025
+--Date        : Sat Aug 30 14:40:53 2025
 --Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 --Command     : generate_target top.bd
 --Design      : top
@@ -24,11 +24,12 @@ use UNISIM.VCOMPONENTS.ALL;
   port (
     RsRx : in STD_LOGIC;
     RsTx : out STD_LOGIC;
+    led : out STD_LOGIC_VECTOR ( 7 downto 0 );
     reset : in STD_LOGIC;
     sys_clock : in STD_LOGIC
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of top : entity is "top,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=top,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=5,numReposBlks=5,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=4,numPkgbdBlks=0,bdsource=USER,""da_board_cnt""=2,synth_mode=Hierarchical}";
+  attribute CORE_GENERATION_INFO of top : entity is "top,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=top,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=6,numReposBlks=6,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=5,numPkgbdBlks=0,bdsource=USER,""""da_board_cnt""""=2,synth_mode=Hierarchical}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of top : entity is "top.hwdef";
 end top;
@@ -76,6 +77,7 @@ architecture STRUCTURE of top is
     RX_BYTE_READY : in STD_LOGIC;
     ASCII_TYPE : in STD_LOGIC_VECTOR ( 2 downto 0 );
     RX_DATA_FULL : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    RX_DATA_READY : out STD_LOGIC;
     WE : out STD_LOGIC
   );
   end component top_UART_CONTROLLER_0_0;
@@ -89,20 +91,31 @@ architecture STRUCTURE of top is
     busy : out STD_LOGIC
   );
   end component top_UART_TX_0_1;
+  component top_LED_Toggle_0_0 is
+  port (
+    clock_100 : in STD_LOGIC;
+    RX_data : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    RX_data_ready : in STD_LOGIC;
+    WE : in STD_LOGIC;
+    led : out STD_LOGIC_VECTOR ( 7 downto 0 )
+  );
+  end component top_LED_Toggle_0_0;
   signal ASCII_LUT_0_ASCII_TYPE : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal ASCII_LUT_0_RX_BYTE_OUT : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal ASCII_LUT_0_RX_BYTE_OUT_READY : STD_LOGIC;
   signal ASCII_LUT_0_TX_BYTE_OUT : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal ASCII_LUT_0_TX_BYTE_OUT_READY : STD_LOGIC;
+  signal LED_Toggle_0_led : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal RsRx_1 : STD_LOGIC;
+  signal UART_CONTROLLER_0_RX_DATA_FULL : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal UART_CONTROLLER_0_RX_DATA_READY : STD_LOGIC;
+  signal UART_CONTROLLER_0_WE : STD_LOGIC;
   signal UART_RX_0_rx_byte : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal UART_RX_0_rx_byte_ready : STD_LOGIC;
   signal UART_TX_0_tx_serial : STD_LOGIC;
   signal clk_wiz_0_clk_out1 : STD_LOGIC;
   signal reset_1 : STD_LOGIC;
   signal sys_clock_1 : STD_LOGIC;
-  signal NLW_UART_CONTROLLER_0_WE_UNCONNECTED : STD_LOGIC;
-  signal NLW_UART_CONTROLLER_0_RX_DATA_FULL_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal NLW_UART_RX_0_rx_busy_UNCONNECTED : STD_LOGIC;
   signal NLW_UART_RX_0_rx_byte_error_UNCONNECTED : STD_LOGIC;
   signal NLW_UART_RX_0_rx_byte_valid_UNCONNECTED : STD_LOGIC;
@@ -119,6 +132,7 @@ architecture STRUCTURE of top is
 begin
   RsRx_1 <= RsRx;
   RsTx <= UART_TX_0_tx_serial;
+  led(7 downto 0) <= LED_Toggle_0_led(7 downto 0);
   reset_1 <= reset;
   sys_clock_1 <= sys_clock;
 ASCII_LUT_0: component top_ASCII_LUT_0_0
@@ -135,13 +149,22 @@ ASCII_LUT_0: component top_ASCII_LUT_0_0
       clk => clk_wiz_0_clk_out1,
       reset => reset_1
     );
+LED_Toggle_0: component top_LED_Toggle_0_0
+     port map (
+      RX_data(31 downto 0) => UART_CONTROLLER_0_RX_DATA_FULL(31 downto 0),
+      RX_data_ready => UART_CONTROLLER_0_RX_DATA_READY,
+      WE => UART_CONTROLLER_0_WE,
+      clock_100 => clk_wiz_0_clk_out1,
+      led(7 downto 0) => LED_Toggle_0_led(7 downto 0)
+    );
 UART_CONTROLLER_0: component top_UART_CONTROLLER_0_0
      port map (
       ASCII_TYPE(2 downto 0) => ASCII_LUT_0_ASCII_TYPE(2 downto 0),
       RX_BYTE(7 downto 0) => ASCII_LUT_0_RX_BYTE_OUT(7 downto 0),
       RX_BYTE_READY => ASCII_LUT_0_RX_BYTE_OUT_READY,
-      RX_DATA_FULL(31 downto 0) => NLW_UART_CONTROLLER_0_RX_DATA_FULL_UNCONNECTED(31 downto 0),
-      WE => NLW_UART_CONTROLLER_0_WE_UNCONNECTED,
+      RX_DATA_FULL(31 downto 0) => UART_CONTROLLER_0_RX_DATA_FULL(31 downto 0),
+      RX_DATA_READY => UART_CONTROLLER_0_RX_DATA_READY,
+      WE => UART_CONTROLLER_0_WE,
       clk => clk_wiz_0_clk_out1
     );
 UART_RX_0: component top_UART_RX_0_1

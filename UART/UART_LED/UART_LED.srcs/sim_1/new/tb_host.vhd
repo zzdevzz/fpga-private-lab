@@ -41,6 +41,7 @@ architecture Behavioral of tb_host is
             reset : in STD_LOGIC;
             RsRx : in STD_LOGIC;
             sys_clock : in STD_LOGIC;
+            led : out STD_LOGIC_VECTOR ( 7 downto 0 );
             RsTx : out STD_LOGIC
         );
     end component;
@@ -79,6 +80,7 @@ begin
             reset => tb_reset,
             RsRx => tb_tx_serial,
             sys_clock => tb_clock,
+            led => open,
             RsTx => open
     );
 

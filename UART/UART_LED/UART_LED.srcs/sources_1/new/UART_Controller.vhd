@@ -122,7 +122,6 @@ begin
                                 byte_counter <= byte_counter + 1;
                             elsif byte_counter = 3 then
                                 data_buildup <= data_buildup(27 downto 0) & RX_BYTE(3 downto 0); -- SHIFT REGISTER
-                                byte_counter <= byte_counter + 1;
                                 state <= S_SPACE_2;
                             else
                                 state <= S_IDLE;
@@ -150,7 +149,6 @@ begin
                                 byte_counter <= byte_counter + 1;
                                 data_buildup(15 downto 0) <= data_buildup(11 downto 0) & RX_BYTE(3 downto 0); -- SHIFT REGISTER
                             elsif byte_counter = 3 then
-                                byte_counter <= byte_counter + 1;
                                 data_buildup(15 downto 0) <= data_buildup(11 downto 0) & RX_BYTE(3 downto 0); -- SHIFT REGISTER
                                 state <= S_SET_DATA;
                             else

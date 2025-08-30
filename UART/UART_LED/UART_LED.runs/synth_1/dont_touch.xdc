@@ -9,13 +9,19 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==top || ORIG
 # IP: bd/top/ip/top_clk_wiz_0_0/top_clk_wiz_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==top_clk_wiz_0_0 || ORIG_REF_NAME==top_clk_wiz_0_0} -quiet] -quiet
 
+# IP: bd/top/ip/top_ASCII_LUT_0_0/top_ASCII_LUT_0_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==top_ASCII_LUT_0_0 || ORIG_REF_NAME==top_ASCII_LUT_0_0} -quiet] -quiet
+
+# IP: bd/top/ip/top_UART_RX_0_1/top_UART_RX_0_1.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==top_UART_RX_0_1 || ORIG_REF_NAME==top_UART_RX_0_1} -quiet] -quiet
+
+# IP: bd/top/ip/top_UART_CONTROLLER_0_0/top_UART_CONTROLLER_0_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==top_UART_CONTROLLER_0_0 || ORIG_REF_NAME==top_UART_CONTROLLER_0_0} -quiet] -quiet
+
+# IP: bd/top/ip/top_UART_TX_0_1/top_UART_TX_0_1.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==top_UART_TX_0_1 || ORIG_REF_NAME==top_UART_TX_0_1} -quiet] -quiet
+
 # IP: bd/top/ip/top_LED_Toggle_0_0/top_LED_Toggle_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==top_LED_Toggle_0_0 || ORIG_REF_NAME==top_LED_Toggle_0_0} -quiet] -quiet
-
-# IP: bd/top/ip/top_UART_TX_0_0/top_UART_TX_0_0.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==top_UART_TX_0_0 || ORIG_REF_NAME==top_UART_TX_0_0} -quiet] -quiet
-
-# IP: bd/top/ip/top_UART_TX_Model_0_0/top_UART_TX_Model_0_0.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==top_UART_TX_Model_0_0 || ORIG_REF_NAME==top_UART_TX_Model_0_0} -quiet] -quiet
 
 # XDC: e:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.gen/sources_1/bd/top/top_ooc.xdc

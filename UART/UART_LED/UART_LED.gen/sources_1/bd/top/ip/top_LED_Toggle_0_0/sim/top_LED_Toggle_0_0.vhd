@@ -56,7 +56,10 @@ USE ieee.numeric_std.ALL;
 ENTITY top_LED_Toggle_0_0 IS
   PORT (
     clock_100 : IN STD_LOGIC;
-    led : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
+    RX_data : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+    RX_data_ready : IN STD_LOGIC;
+    WE : IN STD_LOGIC;
+    led : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
   );
 END top_LED_Toggle_0_0;
 
@@ -66,7 +69,10 @@ ARCHITECTURE top_LED_Toggle_0_0_arch OF top_LED_Toggle_0_0 IS
   COMPONENT LED_Toggle IS
     PORT (
       clock_100 : IN STD_LOGIC;
-      led : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
+      RX_data : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+      RX_data_ready : IN STD_LOGIC;
+      WE : IN STD_LOGIC;
+      led : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
     );
   END COMPONENT LED_Toggle;
   ATTRIBUTE X_INTERFACE_INFO : STRING;
@@ -77,6 +83,9 @@ BEGIN
   U0 : LED_Toggle
     PORT MAP (
       clock_100 => clock_100,
+      RX_data => RX_data,
+      RX_data_ready => RX_data_ready,
+      WE => WE,
       led => led
     );
 END top_LED_Toggle_0_0_arch;
