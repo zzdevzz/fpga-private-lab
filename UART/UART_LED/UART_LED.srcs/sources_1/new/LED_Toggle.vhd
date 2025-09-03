@@ -38,6 +38,8 @@ entity LED_Toggle is
     RX_data: in std_logic_vector(31 downto 0);
     RX_data_ready: in std_logic := '0';
     WE: in std_logic := '0';
+    READ_DATA_OUT: out std_logic_vector(31 downto 0);
+    READ_DATA_READY: out std_logic := '0';
     led : out std_logic_vector(7 downto 0)  
   );
 end LED_Toggle;
@@ -85,26 +87,35 @@ begin
                 rx_addr := RX_data(31 downto 16);
                 rx_value := RX_data(15 downto 0);
 
-                if WE = '1' then
+                if WE = '1' then --write enabled
                   case rx_addr is
                     when x"0001" => multiplier_stored <= rx_value;
                     when x"0002" => led_pwm    <= rx_value;
                     when others => 
                         multiplier_stored <= multiplier_stored;
                   end case;
---                elsif WE = '0' then
---                  case rx_addr is
---                    when "00" => data_out <= led_enable;
---                    when "01" => data_out <= led_pwm;
---                    when others => 
---                        multiplier_stored <= multiplier_stored;
---                  end case;
+                elsif WE = '0' then
+                  case rx_addr is
+                    when "00" => data_out <= 
+                        rx_addr & led_enable;
+                        READ_DATA_READY <= '1';
+                    when "01" => data_out <= 
+                        rx_addr & led_pwm;
+                        READ_DATA_READY <= '1';
+                    when others => 
+                        multiplier_stored <= multiplier_stored;
+                  end case;
+                  
                 end if;
+             else
+                READ_DATA_READY <= '0';
              end if;
+             
         end if;
     end process;
 
 led <= (others => LED_ON);
+READ_DATA_OUT <= data_out;
 
 end Behavioral;
  

@@ -33,12 +33,23 @@ use ieee.numeric_std.all;
 entity UART_CONTROLLER is
     Port (
         clk : in std_logic;
+        -- =======RX BYTE========
         RX_BYTE : in std_logic_vector(7 downto 0); --the byte from the ascii lut
         RX_BYTE_READY: in std_logic; --letting us know when to recieve ascii byte.
         ASCII_TYPE : in std_logic_vector(2 downto 0); --used to filter if data (numbers), read/write, space or enter.
         RX_DATA_FULL: out std_logic_vector(31 downto 0); --full 32 bit data containts 16 bits addr, and 16 bit data ie [ADDRDATA]
         RX_DATA_READY: out std_logic := '0';
-        WE: out std_logic --whether command was a read or write.
+        WE: out std_logic; --whether command was a read or write.
+        -- =========================
+        
+        -- =======TX BYTE=========
+        TX_DATA : in std_logic_vector(7 downto 0); --the full data to transmit back from the read.
+        TX_DATA_READY: in std_logic; --letting us know when to send data.
+        TX_BYTE: out std_logic_vector(31 downto 0); --full 32 bit data containts 16 bits addr, and 16 bit data ie [ADDRDATA]
+        TX_BYTE_READY: out std_logic := '0'
+        
+        -- =======================
+        
     );
 end UART_CONTROLLER;
 
