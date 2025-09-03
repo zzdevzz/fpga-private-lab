@@ -2,10 +2,10 @@
 -- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
--- Date        : Wed Sep  3 13:37:40 2025
+-- Date        : Wed Sep  3 13:37:39 2025
 -- Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim {e:/FPGA/VHDL/Lab
---               Training/UART/UART_LED/UART_LED.gen/sources_1/bd/top/ip/top_UART_CONTROLLER_0_0/top_UART_CONTROLLER_0_0_sim_netlist.vhdl}
+-- Command     : write_vhdl -force -mode funcsim -rename_top decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix -prefix
+--               decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_ top_UART_CONTROLLER_0_0_sim_netlist.vhdl
 -- Design      : top_UART_CONTROLLER_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -15,7 +15,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity top_UART_CONTROLLER_0_0_UART_CONTROLLER is
+entity decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_UART_CONTROLLER is
   port (
     RX_DATA_FULL : out STD_LOGIC_VECTOR ( 31 downto 0 );
     RX_DATA_READY : out STD_LOGIC;
@@ -25,11 +25,9 @@ entity top_UART_CONTROLLER_0_0_UART_CONTROLLER is
     RX_BYTE_READY : in STD_LOGIC;
     ASCII_TYPE : in STD_LOGIC_VECTOR ( 2 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of top_UART_CONTROLLER_0_0_UART_CONTROLLER : entity is "UART_CONTROLLER";
-end top_UART_CONTROLLER_0_0_UART_CONTROLLER;
+end decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_UART_CONTROLLER;
 
-architecture STRUCTURE of top_UART_CONTROLLER_0_0_UART_CONTROLLER is
+architecture STRUCTURE of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_UART_CONTROLLER is
   signal \FSM_sequential_state[0]_i_1_n_0\ : STD_LOGIC;
   signal \FSM_sequential_state[1]_i_1_n_0\ : STD_LOGIC;
   signal \FSM_sequential_state[1]_i_2_n_0\ : STD_LOGIC;
@@ -1200,7 +1198,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity top_UART_CONTROLLER_0_0 is
+entity decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix is
   port (
     clk : in STD_LOGIC;
     RX_BYTE : in STD_LOGIC_VECTOR ( 7 downto 0 );
@@ -1211,24 +1209,24 @@ entity top_UART_CONTROLLER_0_0 is
     WE : out STD_LOGIC
   );
   attribute NotValidForBitStream : boolean;
-  attribute NotValidForBitStream of top_UART_CONTROLLER_0_0 : entity is true;
+  attribute NotValidForBitStream of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix : entity is true;
   attribute CHECK_LICENSE_TYPE : string;
-  attribute CHECK_LICENSE_TYPE of top_UART_CONTROLLER_0_0 : entity is "top_UART_CONTROLLER_0_0,UART_CONTROLLER,{}";
+  attribute CHECK_LICENSE_TYPE of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix : entity is "top_UART_CONTROLLER_0_0,UART_CONTROLLER,{}";
   attribute downgradeipidentifiedwarnings : string;
-  attribute downgradeipidentifiedwarnings of top_UART_CONTROLLER_0_0 : entity is "yes";
+  attribute downgradeipidentifiedwarnings of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix : entity is "yes";
   attribute ip_definition_source : string;
-  attribute ip_definition_source of top_UART_CONTROLLER_0_0 : entity is "module_ref";
+  attribute ip_definition_source of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix : entity is "module_ref";
   attribute x_core_info : string;
-  attribute x_core_info of top_UART_CONTROLLER_0_0 : entity is "UART_CONTROLLER,Vivado 2023.2";
-end top_UART_CONTROLLER_0_0;
+  attribute x_core_info of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix : entity is "UART_CONTROLLER,Vivado 2023.2";
+end decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix;
 
-architecture STRUCTURE of top_UART_CONTROLLER_0_0 is
+architecture STRUCTURE of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix is
   attribute x_interface_info : string;
   attribute x_interface_info of clk : signal is "xilinx.com:signal:clock:1.0 clk CLK";
   attribute x_interface_parameter : string;
   attribute x_interface_parameter of clk : signal is "XIL_INTERFACENAME clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, INSERT_VIP 0";
 begin
-U0: entity work.top_UART_CONTROLLER_0_0_UART_CONTROLLER
+U0: entity work.decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_UART_CONTROLLER
      port map (
       ASCII_TYPE(2 downto 0) => ASCII_TYPE(2 downto 0),
       RX_BYTE(3 downto 0) => RX_BYTE(3 downto 0),

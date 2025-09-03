@@ -2,10 +2,10 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-// Date        : Wed Sep  3 13:37:40 2025
+// Date        : Wed Sep  3 13:37:39 2025
 // Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim {e:/FPGA/VHDL/Lab
-//               Training/UART/UART_LED/UART_LED.gen/sources_1/bd/top/ip/top_UART_CONTROLLER_0_0/top_UART_CONTROLLER_0_0_sim_netlist.v}
+// Command     : write_verilog -force -mode funcsim -rename_top decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix -prefix
+//               decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_ top_UART_CONTROLLER_0_0_sim_netlist.v
 // Design      : top_UART_CONTROLLER_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -13,45 +13,7 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CHECK_LICENSE_TYPE = "top_UART_CONTROLLER_0_0,UART_CONTROLLER,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* ip_definition_source = "module_ref" *) 
-(* x_core_info = "UART_CONTROLLER,Vivado 2023.2" *) 
-(* NotValidForBitStream *)
-module top_UART_CONTROLLER_0_0
-   (clk,
-    RX_BYTE,
-    RX_BYTE_READY,
-    ASCII_TYPE,
-    RX_DATA_FULL,
-    RX_DATA_READY,
-    WE);
-  (* x_interface_info = "xilinx.com:signal:clock:1.0 clk CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, INSERT_VIP 0" *) input clk;
-  input [7:0]RX_BYTE;
-  input RX_BYTE_READY;
-  input [2:0]ASCII_TYPE;
-  output [31:0]RX_DATA_FULL;
-  output RX_DATA_READY;
-  output WE;
-
-  wire [2:0]ASCII_TYPE;
-  wire [7:0]RX_BYTE;
-  wire RX_BYTE_READY;
-  wire [31:0]RX_DATA_FULL;
-  wire RX_DATA_READY;
-  wire WE;
-  wire clk;
-
-  top_UART_CONTROLLER_0_0_UART_CONTROLLER U0
-       (.ASCII_TYPE(ASCII_TYPE),
-        .RX_BYTE(RX_BYTE[3:0]),
-        .RX_BYTE_READY(RX_BYTE_READY),
-        .RX_DATA_FULL(RX_DATA_FULL),
-        .RX_DATA_READY(RX_DATA_READY),
-        .WE(WE),
-        .clk(clk));
-endmodule
-
-(* ORIG_REF_NAME = "UART_CONTROLLER" *) 
-module top_UART_CONTROLLER_0_0_UART_CONTROLLER
+module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_UART_CONTROLLER
    (RX_DATA_FULL,
     RX_DATA_READY,
     WE,
@@ -958,6 +920,43 @@ module top_UART_CONTROLLER_0_0_UART_CONTROLLER
         .D(write_enabled_i_1_n_0),
         .Q(WE),
         .R(1'b0));
+endmodule
+
+(* CHECK_LICENSE_TYPE = "top_UART_CONTROLLER_0_0,UART_CONTROLLER,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* ip_definition_source = "module_ref" *) 
+(* x_core_info = "UART_CONTROLLER,Vivado 2023.2" *) 
+(* NotValidForBitStream *)
+module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix
+   (clk,
+    RX_BYTE,
+    RX_BYTE_READY,
+    ASCII_TYPE,
+    RX_DATA_FULL,
+    RX_DATA_READY,
+    WE);
+  (* x_interface_info = "xilinx.com:signal:clock:1.0 clk CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, INSERT_VIP 0" *) input clk;
+  input [7:0]RX_BYTE;
+  input RX_BYTE_READY;
+  input [2:0]ASCII_TYPE;
+  output [31:0]RX_DATA_FULL;
+  output RX_DATA_READY;
+  output WE;
+
+  wire [2:0]ASCII_TYPE;
+  wire [7:0]RX_BYTE;
+  wire RX_BYTE_READY;
+  wire [31:0]RX_DATA_FULL;
+  wire RX_DATA_READY;
+  wire WE;
+  wire clk;
+
+  decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_UART_CONTROLLER U0
+       (.ASCII_TYPE(ASCII_TYPE),
+        .RX_BYTE(RX_BYTE[3:0]),
+        .RX_BYTE_READY(RX_BYTE_READY),
+        .RX_DATA_FULL(RX_DATA_FULL),
+        .RX_DATA_READY(RX_DATA_READY),
+        .WE(WE),
+        .clk(clk));
 endmodule
 `ifndef GLBL
 `define GLBL

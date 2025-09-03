@@ -64,7 +64,7 @@ architecture Behavioral of UART_CONTROLLER is
     signal data_buildup : std_logic_vector(31 downto 0); -- 2 hex characters address, 2 hex characters value.
     signal write_enabled : std_logic := '0';
 
-    signal byte_counter : integer range 0 to 3 := 0;
+    signal byte_counter : integer range 0 to 4 := 0;
     signal RX_nibble : std_logic_vector(3 downto 0);
     signal RX_address : std_logic_vector(15 downto 0);
     signal RX_data : std_logic_vector(15 downto 0);
@@ -122,6 +122,7 @@ begin
                                 byte_counter <= byte_counter + 1;
                             elsif byte_counter = 3 then
                                 data_buildup <= data_buildup(27 downto 0) & RX_BYTE(3 downto 0); -- SHIFT REGISTER
+                                byte_counter <= byte_counter + 1;
                                 state <= S_SPACE_2;
                             else
                                 state <= S_IDLE;
@@ -133,6 +134,7 @@ begin
                         end if;
                     end if;
                 when S_SPACE_2 =>
+                    data_buildup(31 downto 16) <= data_buildup(15 downto 0); --setup so it shifts the end data to beginning.
                     byte_counter <= 0;
                     if RX_BYTE_READY = '1' then
                         if ASCII_TYPE = SPACE then
@@ -149,6 +151,7 @@ begin
                                 byte_counter <= byte_counter + 1;
                                 data_buildup(15 downto 0) <= data_buildup(11 downto 0) & RX_BYTE(3 downto 0); -- SHIFT REGISTER
                             elsif byte_counter = 3 then
+                                byte_counter <= byte_counter + 1;
                                 data_buildup(15 downto 0) <= data_buildup(11 downto 0) & RX_BYTE(3 downto 0); -- SHIFT REGISTER
                                 state <= S_SET_DATA;
                             else
@@ -165,6 +168,7 @@ begin
                             RX_data <= data_buildup(15 downto 0);
                             D_ACK <= '1';
                             RX_DATA_READY <= '1';
+                            RX_DATA_FULL <= data_buildup;
                             state <= S_IDLE;
                         else
                             state <= S_STOP;

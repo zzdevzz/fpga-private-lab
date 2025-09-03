@@ -464,8 +464,8 @@
           "ASCII_LUT_0/clk",
           "UART_RX_0/clk",
           "UART_TX_0/clk",
-          "UART_CONTROLLER_0/clk",
-          "LED_Toggle_0/clock_100"
+          "LED_Toggle_0/clock_100",
+          "UART_CONTROLLER_0/clk"
         ]
       },
       "reset_1": {
