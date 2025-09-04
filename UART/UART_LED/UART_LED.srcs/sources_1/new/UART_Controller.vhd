@@ -18,7 +18,6 @@
 -- 
 ----------------------------------------------------------------------------------
 
-
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use ieee.numeric_std.all;
@@ -41,15 +40,16 @@ entity UART_CONTROLLER is
         RX_DATA_READY: out std_logic := '0';
         WE: out std_logic; --whether command was a read or write.
         -- =========================
-        
+
         -- =======TX BYTE=========
-        TX_DATA : in std_logic_vector(7 downto 0); --the full data to transmit back from the read.
+        TX_DATA_FULL : in std_logic_vector(31 downto 0); --the full data to transmit back from the read.
         TX_DATA_READY: in std_logic; --letting us know when to send data.
-        TX_BYTE: out std_logic_vector(31 downto 0); --full 32 bit data containts 16 bits addr, and 16 bit data ie [ADDRDATA]
+        TX_BYTE_SEND: in std_logic := '0'; --lets us know when the tx byte is done sending and we can output the next one.
+        TX_BYTE: out std_logic_vector(7 downto 0); --full 32 bit data containts 16 bits addr, and 16 bit data ie [ADDRDATA]
         TX_BYTE_READY: out std_logic := '0'
-        
+
         -- =======================
-        
+
     );
 end UART_CONTROLLER;
 
@@ -61,6 +61,8 @@ architecture Behavioral of UART_CONTROLLER is
         S_SPACE_2, --second space between data.
         S_DATA,
         S_SET_DATA,
+        S_LOAD_TX_DATA,
+        S_SEND_TX_DATA,
         S_STOP
     );
 
@@ -75,14 +77,16 @@ architecture Behavioral of UART_CONTROLLER is
     signal data_buildup : std_logic_vector(31 downto 0); -- 2 hex characters address, 2 hex characters value.
     signal write_enabled : std_logic := '0';
 
-    signal byte_counter : integer range 0 to 4 := 0;
+    signal byte_counter : integer range 0 to 8 := 0;
     signal RX_nibble : std_logic_vector(3 downto 0);
     signal RX_address : std_logic_vector(15 downto 0);
     signal RX_data : std_logic_vector(15 downto 0);
 
     signal D_ACK: std_logic := '0';
 
-    signal TX_data: std_logic_vector( 7 downto 0);
+    signal TX_BYTE_OUT: std_logic_vector( 7 downto 0);
+    signal TX_DATA_HOLD: std_logic_vector (31 downto 0); -- holding changing data.
+    signal TX_DATA_LATCH: std_logic_vector (31 downto 0); -- holding data so its stable from input.
     signal TX_enable : std_logic := '0';
     --data format.
 
@@ -180,14 +184,50 @@ begin
                             D_ACK <= '1';
                             RX_DATA_READY <= '1';
                             RX_DATA_FULL <= data_buildup;
-                            state <= S_IDLE;
+
+                            if write_enabled = '0' then
+                                state <= S_LOAD_TX_DATA;
+                                byte_counter <= 0;
+                            else
+                                state <= S_IDLE;
+                            end if;
                         else
                             state <= S_STOP;
                         end if;
                     end if;
+                when S_LOAD_TX_DATA => --we need this here to start the "send data loop". otherwise tx_ready is always 1 from uart tx.
+                    if TX_DATA_READY = '1' then
+                        TX_Data_HOLD <= TX_DATA_FULL;
+                        Tx_Data_LATCH <= TX_DATA_FULL;
+                        TX_enable <= '1';
+                        TX_BYTE_OUT <= "00001010"; --returns a LF (line feed) - new line.
+                        byte_counter <= 0;
+                        state <= S_SEND_TX_DATA;
+                    else
+                        TX_enable <= '0';
+                    end if;
+                when S_SEND_TX_DATA =>
+                    if TX_BYTE_SEND = '1' then
+                        TX_enable <= '1';
+                        if byte_counter < 7 then
+                            TX_BYTE_OUT <= "0000" & TX_DATA_HOLD(3 downto 0); -- SHIFT REGISTER send lowest
+                            TX_DATA_HOLD <= "0000" & TX_DATA_HOLD(31 downto 4);
+                            byte_counter <= byte_counter + 1;
+                        elsif byte_counter = 7 then
+                            TX_BYTE_OUT <= "0000" & TX_DATA_HOLD(3 downto 0); -- SHIFT REGISTER
+                            TX_DATA_HOLD <= "0000" & TX_DATA_HOLD(31 downto 4);
+                            byte_counter <= byte_counter + 1;
+                            state <= S_IDLE;
+                        else
+                            state <= S_IDLE;
+                        end if;
+                    else
+                        TX_enable <= '0';
+                    end if;
+
                 when S_STOP =>
                     state <= S_IDLE;
-                    TX_data <= "11111111";
+                    TX_BYTE_OUT <= "00101010"; --*
                     TX_enable <= '1';
                     RX_DATA_READY <= '1';
 
@@ -197,6 +237,7 @@ begin
     end process;
 
     WE <= write_enabled;
+    TX_BYTE_READY <= TX_enable;
+    TX_BYTE <= TX_BYTE_OUT;
 end Behavioral;
-
  

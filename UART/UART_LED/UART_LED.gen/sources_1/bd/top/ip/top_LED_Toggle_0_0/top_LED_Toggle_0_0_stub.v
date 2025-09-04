@@ -2,7 +2,7 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-// Date        : Sat Aug 30 14:41:34 2025
+// Date        : Thu Sep  4 21:33:48 2025
 // Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub {e:/FPGA/VHDL/Lab
 //               Training/UART/UART_LED/UART_LED.gen/sources_1/bd/top/ip/top_LED_Toggle_0_0/top_LED_Toggle_0_0_stub.v}
@@ -15,12 +15,15 @@
 // The synthesis directives are for Synopsys Synplify support to prevent IO buffer insertion.
 // Please paste the declaration into a Verilog source file or add the file as an additional source.
 (* x_core_info = "LED_Toggle,Vivado 2023.2" *)
-module top_LED_Toggle_0_0(clock_100, RX_data, RX_data_ready, WE, led)
-/* synthesis syn_black_box black_box_pad_pin="RX_data[31:0],RX_data_ready,WE,led[7:0]" */
+module top_LED_Toggle_0_0(clock_100, RX_data, RX_data_ready, WE, 
+  READ_DATA_OUT, READ_DATA_READY, led)
+/* synthesis syn_black_box black_box_pad_pin="RX_data[31:0],RX_data_ready,WE,READ_DATA_OUT[31:0],READ_DATA_READY,led[7:0]" */
 /* synthesis syn_force_seq_prim="clock_100" */;
   input clock_100 /* synthesis syn_isclock = 1 */;
   input [31:0]RX_data;
   input RX_data_ready;
   input WE;
+  output [31:0]READ_DATA_OUT;
+  output READ_DATA_READY;
   output [7:0]led;
 endmodule

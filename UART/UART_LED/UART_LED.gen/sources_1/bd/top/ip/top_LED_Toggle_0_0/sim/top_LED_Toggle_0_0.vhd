@@ -59,6 +59,8 @@ ENTITY top_LED_Toggle_0_0 IS
     RX_data : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
     RX_data_ready : IN STD_LOGIC;
     WE : IN STD_LOGIC;
+    READ_DATA_OUT : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+    READ_DATA_READY : OUT STD_LOGIC;
     led : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
   );
 END top_LED_Toggle_0_0;
@@ -72,6 +74,8 @@ ARCHITECTURE top_LED_Toggle_0_0_arch OF top_LED_Toggle_0_0 IS
       RX_data : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
       RX_data_ready : IN STD_LOGIC;
       WE : IN STD_LOGIC;
+      READ_DATA_OUT : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+      READ_DATA_READY : OUT STD_LOGIC;
       led : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
     );
   END COMPONENT LED_Toggle;
@@ -86,6 +90,8 @@ BEGIN
       RX_data => RX_data,
       RX_data_ready => RX_data_ready,
       WE => WE,
+      READ_DATA_OUT => READ_DATA_OUT,
+      READ_DATA_READY => READ_DATA_READY,
       led => led
     );
 END top_LED_Toggle_0_0_arch;

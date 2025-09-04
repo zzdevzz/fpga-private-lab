@@ -34,7 +34,8 @@ begin
     -- Simulate sending: W 0001 0015\n
 
     -- 'W'
-    TX_DATA <= x"57";  -- 'W'
+    TX_DATA <= x"52"; -- 'R'
+--    TX_DATA <= x"57";  -- 'W'
     TX_STROBE <= '1';
     wait for STROBE_WIDTH_NS;
     TX_STROBE <= '0';

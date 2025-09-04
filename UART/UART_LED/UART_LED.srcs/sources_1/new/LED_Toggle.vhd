@@ -55,7 +55,8 @@ architecture Behavioral of LED_Toggle is
     signal led_enable : std_logic_vector(15 downto 0); -- which LEDs are on/off
     signal led_pwm    : std_logic_vector(15 downto 0); -- brightness or speed
 
-    signal data_out : std_logic_vector(7 downto 0);
+    signal data_out : std_logic_vector(31 downto 0);
+    constant error_message : std_logic_vector(31 downto 0) := (others => '1');
 
 --    signal write_enable : std_logic;
 --    signal read_emable : std_logic;
@@ -96,21 +97,22 @@ begin
                   end case;
                 elsif WE = '0' then
                   case rx_addr is
-                    when "00" => data_out <= 
-                        rx_addr & led_enable;
+                    when x"0001" => data_out <= 
+                        rx_addr & multiplier_stored;
                         READ_DATA_READY <= '1';
-                    when "01" => data_out <= 
+                    when x"0002" => data_out <= 
                         rx_addr & led_pwm;
                         READ_DATA_READY <= '1';
                     when others => 
-                        multiplier_stored <= multiplier_stored;
+                        data_out <= error_message;
+                        READ_DATA_READY <= '1';
                   end case;
-                  
+
                 end if;
              else
                 READ_DATA_READY <= '0';
              end if;
-             
+
         end if;
     end process;
 
@@ -118,4 +120,5 @@ led <= (others => LED_ON);
 READ_DATA_OUT <= data_out;
 
 end Behavioral;
+
  

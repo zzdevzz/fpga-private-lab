@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date             : Wed Sep  3 13:39:32 2025
+| Date             : Thu Sep  4 23:14:41 2025
 | Host             : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 | Command          : report_power -file top_wrapper_power_routed.rpt -pb top_wrapper_power_summary_routed.pb -rpx top_wrapper_power_routed.rpx
 | Design           : top_wrapper
@@ -36,8 +36,8 @@ Table of Contents
 | Dynamic (W)              | 0.138        |
 | Device Static (W)        | 0.072        |
 | Effective TJA (C/W)      | 5.0          |
-| Max Ambient (C)          | 84.0         |
-| Junction Temperature (C) | 26.0         |
+| Max Ambient (C)          | 83.9         |
+| Junction Temperature (C) | 26.1         |
 | Confidence Level         | Medium       |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -53,12 +53,12 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |     0.002 |        5 |       --- |             --- |
-| Slice Logic    |    <0.001 |      362 |       --- |             --- |
-|   LUT as Logic |    <0.001 |      103 |     20800 |            0.50 |
+| Slice Logic    |    <0.001 |      543 |       --- |             --- |
+|   LUT as Logic |    <0.001 |      171 |     20800 |            0.82 |
 |   CARRY4       |    <0.001 |       21 |      8150 |            0.26 |
-|   Register     |    <0.001 |      184 |     41600 |            0.44 |
-|   Others       |     0.000 |       14 |       --- |             --- |
-| Signals        |    <0.001 |      288 |       --- |             --- |
+|   Register     |    <0.001 |      272 |     41600 |            0.65 |
+|   Others       |     0.000 |       17 |       --- |             --- |
+| Signals        |    <0.001 |      415 |       --- |             --- |
 | MMCM           |     0.106 |        1 |         5 |           20.00 |
 | DSPs           |     0.000 |        1 |        90 |            1.11 |
 | I/O            |     0.029 |       12 |       106 |           11.32 |

@@ -3,8 +3,8 @@
 # SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Wed Sep  3 13:37:44 2025
-# Process ID: 8384
+# Start of session at: Thu Sep  4 23:13:17 2025
+# Process ID: 46260
 # Current directory: E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.runs/synth_1
 # Command line: vivado.exe -log top_wrapper.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top_wrapper.tcl
 # Log file: E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.runs/synth_1/top_wrapper.vds
@@ -12,7 +12,7 @@
 # Running On: DESKTOP-EFRMAI2, OS: Windows, CPU Frequency: 3700 MHz, CPU Physical cores: 24, Host memory: 34281 MB
 #-----------------------------------------------------------
 source top_wrapper.tcl -notrace
-create_project: Time (s): cpu = 00:00:09 ; elapsed = 00:00:08 . Memory (MB): peak = 511.602 ; gain = 217.215
+create_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 511.770 ; gain = 221.254
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1700] Loaded user IP repository 'j:/Xilinx/Vivado/vivado-library-master'.
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'J:/Xilinx/Vivado/2023.2/data/ip'.
@@ -29,40 +29,42 @@ INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
 WARNING: [Common 17-1361] You have specified a new message control rule that is equivalent to an existing rule with attributes ' -id {17-179}  -suppress '. The existing rule will be replaced.
-INFO: [Synth 8-7075] Helper process launched with PID 35604
+INFO: [Synth 8-7075] Helper process launched with PID 36896
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1369.207 ; gain = 440.871
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1368.141 ; gain = 440.273
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'top_wrapper' [e:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.gen/sources_1/bd/top/hdl/top_wrapper.vhd:25]
 INFO: [Synth 8-3491] module 'top' declared at 'e:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.gen/sources_1/bd/top/synth/top.vhd:23' bound to instance 'top_i' of component 'top' [e:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.gen/sources_1/bd/top/hdl/top_wrapper.vhd:36]
 INFO: [Synth 8-638] synthesizing module 'top' [e:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.gen/sources_1/bd/top/synth/top.vhd:37]
-INFO: [Synth 8-3491] module 'top_ASCII_LUT_0_0' declared at 'E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.runs/synth_1/.Xil/Vivado-8384-DESKTOP-EFRMAI2/realtime/top_ASCII_LUT_0_0_stub.vhdl:6' bound to instance 'ASCII_LUT_0' of component 'top_ASCII_LUT_0_0' [e:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.gen/sources_1/bd/top/synth/top.vhd:138]
-INFO: [Synth 8-638] synthesizing module 'top_ASCII_LUT_0_0' [E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.runs/synth_1/.Xil/Vivado-8384-DESKTOP-EFRMAI2/realtime/top_ASCII_LUT_0_0_stub.vhdl:23]
-INFO: [Synth 8-3491] module 'top_LED_Toggle_0_0' declared at 'E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.runs/synth_1/.Xil/Vivado-8384-DESKTOP-EFRMAI2/realtime/top_LED_Toggle_0_0_stub.vhdl:6' bound to instance 'LED_Toggle_0' of component 'top_LED_Toggle_0_0' [e:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.gen/sources_1/bd/top/synth/top.vhd:152]
-INFO: [Synth 8-638] synthesizing module 'top_LED_Toggle_0_0' [E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.runs/synth_1/.Xil/Vivado-8384-DESKTOP-EFRMAI2/realtime/top_LED_Toggle_0_0_stub.vhdl:17]
-INFO: [Synth 8-3491] module 'top_UART_CONTROLLER_0_0' declared at 'E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.runs/synth_1/.Xil/Vivado-8384-DESKTOP-EFRMAI2/realtime/top_UART_CONTROLLER_0_0_stub.vhdl:6' bound to instance 'UART_CONTROLLER_0' of component 'top_UART_CONTROLLER_0_0' [e:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.gen/sources_1/bd/top/synth/top.vhd:160]
-INFO: [Synth 8-638] synthesizing module 'top_UART_CONTROLLER_0_0' [E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.runs/synth_1/.Xil/Vivado-8384-DESKTOP-EFRMAI2/realtime/top_UART_CONTROLLER_0_0_stub.vhdl:19]
-INFO: [Synth 8-3491] module 'top_UART_RX_0_1' declared at 'E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.runs/synth_1/.Xil/Vivado-8384-DESKTOP-EFRMAI2/realtime/top_UART_RX_0_1_stub.vhdl:6' bound to instance 'UART_RX_0' of component 'top_UART_RX_0_1' [e:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.gen/sources_1/bd/top/synth/top.vhd:170]
-INFO: [Synth 8-638] synthesizing module 'top_UART_RX_0_1' [E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.runs/synth_1/.Xil/Vivado-8384-DESKTOP-EFRMAI2/realtime/top_UART_RX_0_1_stub.vhdl:20]
-INFO: [Synth 8-3491] module 'top_UART_TX_0_1' declared at 'E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.runs/synth_1/.Xil/Vivado-8384-DESKTOP-EFRMAI2/realtime/top_UART_TX_0_1_stub.vhdl:6' bound to instance 'UART_TX_0' of component 'top_UART_TX_0_1' [e:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.gen/sources_1/bd/top/synth/top.vhd:181]
-INFO: [Synth 8-638] synthesizing module 'top_UART_TX_0_1' [E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.runs/synth_1/.Xil/Vivado-8384-DESKTOP-EFRMAI2/realtime/top_UART_TX_0_1_stub.vhdl:18]
-INFO: [Synth 8-3491] module 'top_clk_wiz_0_0' declared at 'E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.runs/synth_1/.Xil/Vivado-8384-DESKTOP-EFRMAI2/realtime/top_clk_wiz_0_0_stub.vhdl:6' bound to instance 'clk_wiz_0' of component 'top_clk_wiz_0_0' [e:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.gen/sources_1/bd/top/synth/top.vhd:190]
-INFO: [Synth 8-638] synthesizing module 'top_clk_wiz_0_0' [E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.runs/synth_1/.Xil/Vivado-8384-DESKTOP-EFRMAI2/realtime/top_clk_wiz_0_0_stub.vhdl:16]
+INFO: [Synth 8-3491] module 'top_ASCII_LUT_0_0' declared at 'E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.runs/synth_1/.Xil/Vivado-46260-DESKTOP-EFRMAI2/realtime/top_ASCII_LUT_0_0_stub.vhdl:6' bound to instance 'ASCII_LUT_0' of component 'top_ASCII_LUT_0_0' [e:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.gen/sources_1/bd/top/synth/top.vhd:159]
+INFO: [Synth 8-638] synthesizing module 'top_ASCII_LUT_0_0' [E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.runs/synth_1/.Xil/Vivado-46260-DESKTOP-EFRMAI2/realtime/top_ASCII_LUT_0_0_stub.vhdl:23]
+INFO: [Synth 8-3491] module 'top_LED_Toggle_0_0' declared at 'E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.runs/synth_1/.Xil/Vivado-46260-DESKTOP-EFRMAI2/realtime/top_LED_Toggle_0_0_stub.vhdl:6' bound to instance 'LED_Toggle_0' of component 'top_LED_Toggle_0_0' [e:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.gen/sources_1/bd/top/synth/top.vhd:173]
+INFO: [Synth 8-638] synthesizing module 'top_LED_Toggle_0_0' [E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.runs/synth_1/.Xil/Vivado-46260-DESKTOP-EFRMAI2/realtime/top_LED_Toggle_0_0_stub.vhdl:19]
+INFO: [Synth 8-3491] module 'top_Pulse_Edges_0_0' declared at 'E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.runs/synth_1/.Xil/Vivado-46260-DESKTOP-EFRMAI2/realtime/top_Pulse_Edges_0_0_stub.vhdl:6' bound to instance 'Pulse_Edges_0' of component 'top_Pulse_Edges_0_0' [e:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.gen/sources_1/bd/top/synth/top.vhd:183]
+INFO: [Synth 8-638] synthesizing module 'top_Pulse_Edges_0_0' [E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.runs/synth_1/.Xil/Vivado-46260-DESKTOP-EFRMAI2/realtime/top_Pulse_Edges_0_0_stub.vhdl:16]
+INFO: [Synth 8-3491] module 'top_UART_CONTROLLER_0_0' declared at 'E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.runs/synth_1/.Xil/Vivado-46260-DESKTOP-EFRMAI2/realtime/top_UART_CONTROLLER_0_0_stub.vhdl:6' bound to instance 'UART_CONTROLLER_0' of component 'top_UART_CONTROLLER_0_0' [e:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.gen/sources_1/bd/top/synth/top.vhd:190]
+INFO: [Synth 8-638] synthesizing module 'top_UART_CONTROLLER_0_0' [E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.runs/synth_1/.Xil/Vivado-46260-DESKTOP-EFRMAI2/realtime/top_UART_CONTROLLER_0_0_stub.vhdl:24]
+INFO: [Synth 8-3491] module 'top_UART_RX_0_1' declared at 'E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.runs/synth_1/.Xil/Vivado-46260-DESKTOP-EFRMAI2/realtime/top_UART_RX_0_1_stub.vhdl:6' bound to instance 'UART_RX_0' of component 'top_UART_RX_0_1' [e:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.gen/sources_1/bd/top/synth/top.vhd:205]
+INFO: [Synth 8-638] synthesizing module 'top_UART_RX_0_1' [E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.runs/synth_1/.Xil/Vivado-46260-DESKTOP-EFRMAI2/realtime/top_UART_RX_0_1_stub.vhdl:20]
+INFO: [Synth 8-3491] module 'top_UART_TX_0_1' declared at 'E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.runs/synth_1/.Xil/Vivado-46260-DESKTOP-EFRMAI2/realtime/top_UART_TX_0_1_stub.vhdl:6' bound to instance 'UART_TX_0' of component 'top_UART_TX_0_1' [e:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.gen/sources_1/bd/top/synth/top.vhd:216]
+INFO: [Synth 8-638] synthesizing module 'top_UART_TX_0_1' [E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.runs/synth_1/.Xil/Vivado-46260-DESKTOP-EFRMAI2/realtime/top_UART_TX_0_1_stub.vhdl:18]
+INFO: [Synth 8-3491] module 'top_clk_wiz_0_0' declared at 'E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.runs/synth_1/.Xil/Vivado-46260-DESKTOP-EFRMAI2/realtime/top_clk_wiz_0_0_stub.vhdl:6' bound to instance 'clk_wiz_0' of component 'top_clk_wiz_0_0' [e:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.gen/sources_1/bd/top/synth/top.vhd:225]
+INFO: [Synth 8-638] synthesizing module 'top_clk_wiz_0_0' [E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.runs/synth_1/.Xil/Vivado-46260-DESKTOP-EFRMAI2/realtime/top_clk_wiz_0_0_stub.vhdl:16]
 INFO: [Synth 8-256] done synthesizing module 'top' (0#1) [e:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.gen/sources_1/bd/top/synth/top.vhd:37]
 INFO: [Synth 8-256] done synthesizing module 'top_wrapper' (0#1) [e:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.gen/sources_1/bd/top/hdl/top_wrapper.vhd:25]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1477.426 ; gain = 549.090
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1477.137 ; gain = 549.270
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1477.426 ; gain = 549.090
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1477.137 ; gain = 549.270
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1477.426 ; gain = 549.090
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1477.137 ; gain = 549.270
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1477.426 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1477.137 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -79,6 +81,8 @@ Parsing XDC File [e:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.gen/sources_1
 Finished Parsing XDC File [e:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.gen/sources_1/bd/top/ip/top_UART_TX_0_1/top_UART_TX_0_1/top_UART_TX_0_1_in_context.xdc] for cell 'top_i/UART_TX_0'
 Parsing XDC File [e:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.gen/sources_1/bd/top/ip/top_LED_Toggle_0_0/top_LED_Toggle_0_0/top_LED_Toggle_0_0_in_context.xdc] for cell 'top_i/LED_Toggle_0'
 Finished Parsing XDC File [e:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.gen/sources_1/bd/top/ip/top_LED_Toggle_0_0/top_LED_Toggle_0_0/top_LED_Toggle_0_0_in_context.xdc] for cell 'top_i/LED_Toggle_0'
+Parsing XDC File [e:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.gen/sources_1/bd/top/ip/top_Pulse_Edges_0_0/top_Pulse_Edges_0_0/top_Pulse_Edges_0_0_in_context.xdc] for cell 'top_i/Pulse_Edges_0'
+Finished Parsing XDC File [e:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.gen/sources_1/bd/top/ip/top_Pulse_Edges_0_0/top_Pulse_Edges_0_0/top_Pulse_Edges_0_0_in_context.xdc] for cell 'top_i/Pulse_Edges_0'
 Parsing XDC File [E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.srcs/constrs_1/new/Basys-3-Master.xdc]
 WARNING: [Vivado 12-584] No ports matched 'clk'. [E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.srcs/constrs_1/new/Basys-3-Master.xdc:7]
 WARNING: [Vivado 12-584] No ports matched 'clk'. [E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.srcs/constrs_1/new/Basys-3-Master.xdc:8]
@@ -112,22 +116,22 @@ Parsing XDC File [E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.runs/synth_1/
 Finished Parsing XDC File [E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.runs/synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1477.426 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1477.137 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1477.426 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1477.137 ; gain = 0.000
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1477.426 ; gain = 549.090
+Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1477.137 ; gain = 549.270
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1477.426 ; gain = 549.090
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1477.137 ; gain = 549.270
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -141,11 +145,12 @@ Applied set_property KEEP_HIERARCHY = SOFT for top_i/UART_RX_0. (constraint file
 Applied set_property KEEP_HIERARCHY = SOFT for top_i/UART_CONTROLLER_0. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for top_i/UART_TX_0. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for top_i/LED_Toggle_0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for top_i/Pulse_Edges_0. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1477.426 ; gain = 549.090
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1477.137 ; gain = 549.270
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1477.426 ; gain = 549.090
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1477.137 ; gain = 549.270
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -168,25 +173,25 @@ Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 1477.426 ; gain = 549.090
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 1477.137 ; gain = 549.270
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:22 ; elapsed = 00:00:23 . Memory (MB): peak = 1477.426 ; gain = 549.090
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1477.137 ; gain = 549.270
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:22 ; elapsed = 00:00:23 . Memory (MB): peak = 1477.426 ; gain = 549.090
+Finished Timing Optimization : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1477.137 ; gain = 549.270
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:22 ; elapsed = 00:00:23 . Memory (MB): peak = 1477.426 ; gain = 549.090
+Finished Technology Mapping : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1477.137 ; gain = 549.270
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -204,37 +209,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:26 ; elapsed = 00:00:27 . Memory (MB): peak = 1477.426 ; gain = 549.090
+Finished IO Insertion : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1477.137 ; gain = 549.270
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:26 ; elapsed = 00:00:27 . Memory (MB): peak = 1477.426 ; gain = 549.090
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1477.137 ; gain = 549.270
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:26 ; elapsed = 00:00:27 . Memory (MB): peak = 1477.426 ; gain = 549.090
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1477.137 ; gain = 549.270
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:26 ; elapsed = 00:00:27 . Memory (MB): peak = 1477.426 ; gain = 549.090
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1477.137 ; gain = 549.270
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:26 ; elapsed = 00:00:27 . Memory (MB): peak = 1477.426 ; gain = 549.090
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1477.137 ; gain = 549.270
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:26 ; elapsed = 00:00:27 . Memory (MB): peak = 1477.426 ; gain = 549.090
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1477.137 ; gain = 549.270
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -246,10 +251,11 @@ Report BlackBoxes:
 +------+------------------------+----------+
 |1     |top_ASCII_LUT_0_0       |         1|
 |2     |top_LED_Toggle_0_0      |         1|
-|3     |top_UART_CONTROLLER_0_0 |         1|
-|4     |top_UART_RX_0_1         |         1|
-|5     |top_UART_TX_0_1         |         1|
-|6     |top_clk_wiz_0_0         |         1|
+|3     |top_Pulse_Edges_0_0     |         1|
+|4     |top_UART_CONTROLLER_0_0 |         1|
+|5     |top_UART_RX_0_1         |         1|
+|6     |top_UART_TX_0_1         |         1|
+|7     |top_clk_wiz_0_0         |         1|
 +------+------------------------+----------+
 
 Report Cell Usage: 
@@ -258,33 +264,34 @@ Report Cell Usage:
 +------+-----------------------------+------+
 |1     |top_ASCII_LUT_0_0_bbox       |     1|
 |2     |top_LED_Toggle_0_0_bbox      |     1|
-|3     |top_UART_CONTROLLER_0_0_bbox |     1|
-|4     |top_UART_RX_0_1_bbox         |     1|
-|5     |top_UART_TX_0_1_bbox         |     1|
-|6     |top_clk_wiz_0_0_bbox         |     1|
-|7     |IBUF                         |     2|
-|8     |OBUF                         |     9|
+|3     |top_Pulse_Edges_0_0_bbox     |     1|
+|4     |top_UART_CONTROLLER_0_0_bbox |     1|
+|5     |top_UART_RX_0_1_bbox         |     1|
+|6     |top_UART_TX_0_1_bbox         |     1|
+|7     |top_clk_wiz_0_0_bbox         |     1|
+|8     |IBUF                         |     2|
+|9     |OBUF                         |     9|
 +------+-----------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:26 ; elapsed = 00:00:27 . Memory (MB): peak = 1477.426 ; gain = 549.090
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1477.137 ; gain = 549.270
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:17 ; elapsed = 00:00:25 . Memory (MB): peak = 1477.426 ; gain = 549.090
-Synthesis Optimization Complete : Time (s): cpu = 00:00:26 ; elapsed = 00:00:27 . Memory (MB): peak = 1477.426 ; gain = 549.090
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:13 ; elapsed = 00:00:19 . Memory (MB): peak = 1477.137 ; gain = 549.270
+Synthesis Optimization Complete : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1477.137 ; gain = 549.270
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1477.426 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1477.137 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1478.430 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1477.148 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Synth Design complete | Checksum: 5e74e305
+Synth Design complete | Checksum: 194289af
 INFO: [Common 17-83] Releasing license: Synthesis
-39 Infos, 27 Warnings, 0 Critical Warnings and 0 Errors encountered.
+41 Infos, 27 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:30 ; elapsed = 00:00:32 . Memory (MB): peak = 1478.430 ; gain = 941.992
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1478.430 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 1477.148 ; gain = 940.887
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1477.148 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.runs/synth_1/top_wrapper.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file top_wrapper_utilization_synth.rpt -pb top_wrapper_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Wed Sep  3 13:38:29 2025...
+INFO: [Common 17-206] Exiting Vivado at Thu Sep  4 23:13:50 2025...

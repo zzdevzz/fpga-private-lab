@@ -25,7 +25,8 @@ use ieee.numeric_std.all;
 
 -- Whole point of this is when we type 0 on keyboard, or enter. we know exactly whats pressed and can map it to its correct decimal value.
 
---https://www.eso.org/~ndelmott/ascii.html
+-- https://www.eso.org/~ndelmott/ascii.html
+-- Even though Max bit output needed is 4, it's kept at 8 bits for future updated incase characters are introduced.
 
 entity ASCII_LUT is
   Port (
@@ -57,8 +58,10 @@ architecture Behavioral of ASCII_LUT is
     constant CARRIAGE_RETURN : std_logic_vector (2 downto 0) := std_logic_vector(to_unsigned(5,3)); --enter
 
     signal S_RX_BYTE_OUT : std_logic_vector(7 downto 0) := (others => '0');
-begin
-    process(clk)
+    signal S_TX_BYTE_OUT : std_logic_vector(7 downto 0) := (others => '0');
+
+    begin
+    RX_DATA_CONV:process(clk)
 
     variable data_int : integer;
 
@@ -137,6 +140,57 @@ begin
             end if;
         end if;
 
+
+
+    RX_BYTE_OUT <= S_RX_BYTE_OUT;
+    end process;
+
+    TX_DATA_CONV:process(clk)
+
+    variable data_hex : integer;
+
+    begin
+        if rising_edge(clk) then
+            if TX_BYTE_READY = '1' then
+                TX_BYTE_OUT_READY <= '1';
+                data_hex := to_integer(unsigned(TX_BYTE)); --split this from below so we can see value as debug.
+                case data_hex is --converts binary to decimal values.
+                    -- map the ascii character to the "actual" number represenatitive on the keyboard.
+
+                    --MISC CHARACTERS
+                    when 42 =>
+                        S_TX_BYTE_OUT <= "00101010"; --*
+                    when 48 => 
+                        S_TX_BYTE_OUT <= "00110000"; --0
+                    when 49 => 
+                        S_TX_BYTE_OUT <= "00110001"; --1
+                    when 50 => 
+                        S_TX_BYTE_OUT <= "00110010"; --2
+                    when 51 => 
+                        S_TX_BYTE_OUT <= "00110011"; --3
+                    when 52 => 
+                        S_TX_BYTE_OUT <= "00110100"; --4
+                    when 53 => 
+                        S_TX_BYTE_OUT <= "00110101"; --5
+                    when 54 => 
+                        S_TX_BYTE_OUT <= "00110110"; --6
+                    when 55 => 
+                        S_TX_BYTE_OUT <= "00110111"; --7
+                    when 56 => 
+                        S_TX_BYTE_OUT <= "00111000"; --8
+                    when 57 => 
+                        S_TX_BYTE_OUT <= "00111001"; --9
+                    when others =>
+                        S_TX_BYTE_OUT <= "00100110"; --&
+                end case;    
+            else
+                TX_BYTE_OUT_READY <= '0';
+                S_TX_BYTE_OUT <= "00100100"; --$
+            end if;
+        end if;
+
+
+    TX_BYTE_OUT <= S_TX_BYTE_OUT;
     RX_BYTE_OUT <= S_RX_BYTE_OUT;
     end process;
 

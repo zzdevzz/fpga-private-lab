@@ -24,4 +24,7 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==top_UART_TX
 # IP: bd/top/ip/top_LED_Toggle_0_0/top_LED_Toggle_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==top_LED_Toggle_0_0 || ORIG_REF_NAME==top_LED_Toggle_0_0} -quiet] -quiet
 
+# IP: bd/top/ip/top_Pulse_Edges_0_0/top_Pulse_Edges_0_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==top_Pulse_Edges_0_0 || ORIG_REF_NAME==top_Pulse_Edges_0_0} -quiet] -quiet
+
 # XDC: e:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.gen/sources_1/bd/top/top_ooc.xdc

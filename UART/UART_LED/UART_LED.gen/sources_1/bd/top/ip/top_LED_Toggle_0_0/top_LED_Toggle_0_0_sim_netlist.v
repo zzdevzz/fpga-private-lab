@@ -2,7 +2,7 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-// Date        : Sat Aug 30 14:41:34 2025
+// Date        : Thu Sep  4 21:33:48 2025
 // Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim {e:/FPGA/VHDL/Lab
 //               Training/UART/UART_LED/UART_LED.gen/sources_1/bd/top/ip/top_LED_Toggle_0_0/top_LED_Toggle_0_0_sim_netlist.v}
@@ -21,19 +21,40 @@ module top_LED_Toggle_0_0
     RX_data,
     RX_data_ready,
     WE,
+    READ_DATA_OUT,
+    READ_DATA_READY,
     led);
   (* x_interface_info = "xilinx.com:signal:clock:1.0 clock_100 CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME clock_100, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, INSERT_VIP 0" *) input clock_100;
   input [31:0]RX_data;
   input RX_data_ready;
   input WE;
+  output [31:0]READ_DATA_OUT;
+  output READ_DATA_READY;
   output [7:0]led;
 
+  wire [30:0]\^READ_DATA_OUT ;
+  wire READ_DATA_READY;
   wire [31:0]RX_data;
   wire RX_data_ready;
   wire WE;
   wire clock_100;
   wire [7:7]\^led ;
 
+  assign READ_DATA_OUT[31] = \^READ_DATA_OUT [30];
+  assign READ_DATA_OUT[30] = \^READ_DATA_OUT [30];
+  assign READ_DATA_OUT[29] = \^READ_DATA_OUT [30];
+  assign READ_DATA_OUT[28] = \^READ_DATA_OUT [30];
+  assign READ_DATA_OUT[27] = \^READ_DATA_OUT [30];
+  assign READ_DATA_OUT[26] = \^READ_DATA_OUT [30];
+  assign READ_DATA_OUT[25] = \^READ_DATA_OUT [30];
+  assign READ_DATA_OUT[24] = \^READ_DATA_OUT [30];
+  assign READ_DATA_OUT[23] = \^READ_DATA_OUT [30];
+  assign READ_DATA_OUT[22] = \^READ_DATA_OUT [30];
+  assign READ_DATA_OUT[21] = \^READ_DATA_OUT [30];
+  assign READ_DATA_OUT[20] = \^READ_DATA_OUT [30];
+  assign READ_DATA_OUT[19] = \^READ_DATA_OUT [30];
+  assign READ_DATA_OUT[18] = \^READ_DATA_OUT [30];
+  assign READ_DATA_OUT[17:0] = \^READ_DATA_OUT [17:0];
   assign led[7] = \^led [7];
   assign led[6] = \^led [7];
   assign led[5] = \^led [7];
@@ -43,7 +64,9 @@ module top_LED_Toggle_0_0
   assign led[1] = \^led [7];
   assign led[0] = \^led [7];
   top_LED_Toggle_0_0_LED_Toggle U0
-       (.RX_data(RX_data),
+       (.READ_DATA_OUT({\^READ_DATA_OUT [30],\^READ_DATA_OUT [17:0]}),
+        .READ_DATA_READY(READ_DATA_READY),
+        .RX_data(RX_data),
         .RX_data_ready(RX_data_ready),
         .WE(WE),
         .clock_100(clock_100),
@@ -52,18 +75,25 @@ endmodule
 
 (* ORIG_REF_NAME = "LED_Toggle" *) 
 module top_LED_Toggle_0_0_LED_Toggle
-   (led,
+   (READ_DATA_OUT,
+    READ_DATA_READY,
+    led,
     RX_data,
     clock_100,
-    RX_data_ready,
-    WE);
+    WE,
+    RX_data_ready);
+  output [18:0]READ_DATA_OUT;
+  output READ_DATA_READY;
   output [0:0]led;
   input [31:0]RX_data;
   input clock_100;
-  input RX_data_ready;
   input WE;
+  input RX_data_ready;
 
   wire LED_ON_i_1_n_0;
+  wire [18:0]READ_DATA_OUT;
+  wire READ_DATA_READY;
+  wire READ_DATA_READY_i_1_n_0;
   wire [31:0]RX_data;
   wire RX_data_ready;
   wire WE;
@@ -224,12 +254,35 @@ module top_LED_Toggle_0_0_LED_Toggle
   wire \counter_reg[8]_i_1_n_5 ;
   wire \counter_reg[8]_i_1_n_6 ;
   wire \counter_reg[8]_i_1_n_7 ;
+  wire data_out;
+  wire \data_out[0]_i_1_n_0 ;
+  wire \data_out[10]_i_1_n_0 ;
+  wire \data_out[11]_i_1_n_0 ;
+  wire \data_out[12]_i_1_n_0 ;
+  wire \data_out[13]_i_1_n_0 ;
+  wire \data_out[14]_i_1_n_0 ;
+  wire \data_out[15]_i_1_n_0 ;
+  wire \data_out[15]_i_3_n_0 ;
+  wire \data_out[16]_i_1_n_0 ;
+  wire \data_out[17]_i_1_n_0 ;
+  wire \data_out[1]_i_1_n_0 ;
+  wire \data_out[2]_i_1_n_0 ;
+  wire \data_out[31]_i_1_n_0 ;
+  wire \data_out[31]_i_2_n_0 ;
+  wire \data_out[31]_i_3_n_0 ;
+  wire \data_out[31]_i_4_n_0 ;
+  wire \data_out[3]_i_1_n_0 ;
+  wire \data_out[4]_i_1_n_0 ;
+  wire \data_out[5]_i_1_n_0 ;
+  wire \data_out[6]_i_1_n_0 ;
+  wire \data_out[7]_i_1_n_0 ;
+  wire \data_out[8]_i_1_n_0 ;
+  wire \data_out[9]_i_1_n_0 ;
   wire [0:0]led;
+  wire [15:0]led_pwm;
+  wire led_pwm_0;
   wire [15:0]multiplier_stored;
-  wire \multiplier_stored[15]_i_2_n_0 ;
-  wire \multiplier_stored[15]_i_3_n_0 ;
-  wire \multiplier_stored[15]_i_4_n_0 ;
-  wire multiplier_stored_0;
+  wire multiplier_stored_1;
   wire [3:0]NLW_counter1_carry_O_UNCONNECTED;
   wire [3:0]NLW_counter1_carry__0_O_UNCONNECTED;
   wire [3:0]NLW_counter1_carry__1_O_UNCONNECTED;
@@ -262,6 +315,21 @@ module top_LED_Toggle_0_0_LED_Toggle
         .CE(1'b1),
         .D(LED_ON_i_1_n_0),
         .Q(led),
+        .R(1'b0));
+  LUT3 #(
+    .INIT(8'hB0)) 
+    READ_DATA_READY_i_1
+       (.I0(READ_DATA_READY),
+        .I1(WE),
+        .I2(RX_data_ready),
+        .O(READ_DATA_READY_i_1_n_0));
+  FDRE #(
+    .INIT(1'b0)) 
+    READ_DATA_READY_reg
+       (.C(clock_100),
+        .CE(1'b1),
+        .D(READ_DATA_READY_i_1_n_0),
+        .Q(READ_DATA_READY),
         .R(1'b0));
   CARRY4 counter1_carry
        (.CI(1'b0),
@@ -956,49 +1024,439 @@ module top_LED_Toggle_0_0_LED_Toggle
         .D(\counter_reg[8]_i_1_n_6 ),
         .Q(counter_reg[9]),
         .R(clear));
+  LUT4 #(
+    .INIT(16'hFCAF)) 
+    \data_out[0]_i_1 
+       (.I0(multiplier_stored[0]),
+        .I1(led_pwm[0]),
+        .I2(RX_data[16]),
+        .I3(RX_data[17]),
+        .O(\data_out[0]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFCAF)) 
+    \data_out[10]_i_1 
+       (.I0(multiplier_stored[10]),
+        .I1(led_pwm[10]),
+        .I2(RX_data[16]),
+        .I3(RX_data[17]),
+        .O(\data_out[10]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFCAF)) 
+    \data_out[11]_i_1 
+       (.I0(multiplier_stored[11]),
+        .I1(led_pwm[11]),
+        .I2(RX_data[16]),
+        .I3(RX_data[17]),
+        .O(\data_out[11]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFCAF)) 
+    \data_out[12]_i_1 
+       (.I0(multiplier_stored[12]),
+        .I1(led_pwm[12]),
+        .I2(RX_data[16]),
+        .I3(RX_data[17]),
+        .O(\data_out[12]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFCAF)) 
+    \data_out[13]_i_1 
+       (.I0(multiplier_stored[13]),
+        .I1(led_pwm[13]),
+        .I2(RX_data[16]),
+        .I3(RX_data[17]),
+        .O(\data_out[13]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFCAF)) 
+    \data_out[14]_i_1 
+       (.I0(multiplier_stored[14]),
+        .I1(led_pwm[14]),
+        .I2(RX_data[16]),
+        .I3(RX_data[17]),
+        .O(\data_out[14]_i_1_n_0 ));
   LUT3 #(
-    .INIT(8'h80)) 
-    \multiplier_stored[15]_i_1 
-       (.I0(\multiplier_stored[15]_i_2_n_0 ),
-        .I1(\multiplier_stored[15]_i_3_n_0 ),
-        .I2(\multiplier_stored[15]_i_4_n_0 ),
-        .O(multiplier_stored_0));
-  LUT6 #(
-    .INIT(64'h0000000000000001)) 
-    \multiplier_stored[15]_i_2 
-       (.I0(RX_data[22]),
-        .I1(RX_data[23]),
-        .I2(RX_data[20]),
-        .I3(RX_data[21]),
-        .I4(RX_data[25]),
-        .I5(RX_data[24]),
-        .O(\multiplier_stored[15]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h0000000000000001)) 
-    \multiplier_stored[15]_i_3 
-       (.I0(RX_data[28]),
-        .I1(RX_data[29]),
-        .I2(RX_data[26]),
-        .I3(RX_data[27]),
-        .I4(RX_data[31]),
-        .I5(RX_data[30]),
-        .O(\multiplier_stored[15]_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'h0000000000002000)) 
-    \multiplier_stored[15]_i_4 
-       (.I0(RX_data[16]),
-        .I1(RX_data[17]),
+    .INIT(8'h20)) 
+    \data_out[15]_i_1 
+       (.I0(\data_out[31]_i_2_n_0 ),
+        .I1(WE),
         .I2(RX_data_ready),
-        .I3(WE),
-        .I4(RX_data[19]),
-        .I5(RX_data[18]),
-        .O(\multiplier_stored[15]_i_4_n_0 ));
+        .O(\data_out[15]_i_1_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \data_out[15]_i_2 
+       (.I0(RX_data_ready),
+        .I1(WE),
+        .O(data_out));
+  LUT4 #(
+    .INIT(16'hFCAF)) 
+    \data_out[15]_i_3 
+       (.I0(multiplier_stored[15]),
+        .I1(led_pwm[15]),
+        .I2(RX_data[16]),
+        .I3(RX_data[17]),
+        .O(\data_out[15]_i_3_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFFBFF0000FB00)) 
+    \data_out[16]_i_1 
+       (.I0(\data_out[31]_i_2_n_0 ),
+        .I1(RX_data[17]),
+        .I2(RX_data[16]),
+        .I3(RX_data_ready),
+        .I4(WE),
+        .I5(READ_DATA_OUT[16]),
+        .O(\data_out[16]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFFBFF0000FB00)) 
+    \data_out[17]_i_1 
+       (.I0(\data_out[31]_i_2_n_0 ),
+        .I1(RX_data[16]),
+        .I2(RX_data[17]),
+        .I3(RX_data_ready),
+        .I4(WE),
+        .I5(READ_DATA_OUT[17]),
+        .O(\data_out[17]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFCAF)) 
+    \data_out[1]_i_1 
+       (.I0(multiplier_stored[1]),
+        .I1(led_pwm[1]),
+        .I2(RX_data[16]),
+        .I3(RX_data[17]),
+        .O(\data_out[1]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFCAF)) 
+    \data_out[2]_i_1 
+       (.I0(multiplier_stored[2]),
+        .I1(led_pwm[2]),
+        .I2(RX_data[16]),
+        .I3(RX_data[17]),
+        .O(\data_out[2]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFF9FF0000F900)) 
+    \data_out[31]_i_1 
+       (.I0(RX_data[17]),
+        .I1(RX_data[16]),
+        .I2(\data_out[31]_i_2_n_0 ),
+        .I3(RX_data_ready),
+        .I4(WE),
+        .I5(READ_DATA_OUT[18]),
+        .O(\data_out[31]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFFFFFE)) 
+    \data_out[31]_i_2 
+       (.I0(\data_out[31]_i_3_n_0 ),
+        .I1(\data_out[31]_i_4_n_0 ),
+        .I2(RX_data[30]),
+        .I3(RX_data[19]),
+        .I4(RX_data[27]),
+        .I5(RX_data[20]),
+        .O(\data_out[31]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFFFFFE)) 
+    \data_out[31]_i_3 
+       (.I0(RX_data[31]),
+        .I1(RX_data[21]),
+        .I2(RX_data[18]),
+        .I3(RX_data[29]),
+        .I4(RX_data[25]),
+        .I5(RX_data[28]),
+        .O(\data_out[31]_i_3_n_0 ));
+  LUT4 #(
+    .INIT(16'hFFFE)) 
+    \data_out[31]_i_4 
+       (.I0(RX_data[23]),
+        .I1(RX_data[22]),
+        .I2(RX_data[26]),
+        .I3(RX_data[24]),
+        .O(\data_out[31]_i_4_n_0 ));
+  LUT4 #(
+    .INIT(16'hFCAF)) 
+    \data_out[3]_i_1 
+       (.I0(multiplier_stored[3]),
+        .I1(led_pwm[3]),
+        .I2(RX_data[16]),
+        .I3(RX_data[17]),
+        .O(\data_out[3]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFCAF)) 
+    \data_out[4]_i_1 
+       (.I0(multiplier_stored[4]),
+        .I1(led_pwm[4]),
+        .I2(RX_data[16]),
+        .I3(RX_data[17]),
+        .O(\data_out[4]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFCAF)) 
+    \data_out[5]_i_1 
+       (.I0(multiplier_stored[5]),
+        .I1(led_pwm[5]),
+        .I2(RX_data[16]),
+        .I3(RX_data[17]),
+        .O(\data_out[5]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFCAF)) 
+    \data_out[6]_i_1 
+       (.I0(multiplier_stored[6]),
+        .I1(led_pwm[6]),
+        .I2(RX_data[16]),
+        .I3(RX_data[17]),
+        .O(\data_out[6]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFCAF)) 
+    \data_out[7]_i_1 
+       (.I0(multiplier_stored[7]),
+        .I1(led_pwm[7]),
+        .I2(RX_data[16]),
+        .I3(RX_data[17]),
+        .O(\data_out[7]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFCAF)) 
+    \data_out[8]_i_1 
+       (.I0(multiplier_stored[8]),
+        .I1(led_pwm[8]),
+        .I2(RX_data[16]),
+        .I3(RX_data[17]),
+        .O(\data_out[8]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hFCAF)) 
+    \data_out[9]_i_1 
+       (.I0(multiplier_stored[9]),
+        .I1(led_pwm[9]),
+        .I2(RX_data[16]),
+        .I3(RX_data[17]),
+        .O(\data_out[9]_i_1_n_0 ));
+  FDSE \data_out_reg[0] 
+       (.C(clock_100),
+        .CE(data_out),
+        .D(\data_out[0]_i_1_n_0 ),
+        .Q(READ_DATA_OUT[0]),
+        .S(\data_out[15]_i_1_n_0 ));
+  FDSE \data_out_reg[10] 
+       (.C(clock_100),
+        .CE(data_out),
+        .D(\data_out[10]_i_1_n_0 ),
+        .Q(READ_DATA_OUT[10]),
+        .S(\data_out[15]_i_1_n_0 ));
+  FDSE \data_out_reg[11] 
+       (.C(clock_100),
+        .CE(data_out),
+        .D(\data_out[11]_i_1_n_0 ),
+        .Q(READ_DATA_OUT[11]),
+        .S(\data_out[15]_i_1_n_0 ));
+  FDSE \data_out_reg[12] 
+       (.C(clock_100),
+        .CE(data_out),
+        .D(\data_out[12]_i_1_n_0 ),
+        .Q(READ_DATA_OUT[12]),
+        .S(\data_out[15]_i_1_n_0 ));
+  FDSE \data_out_reg[13] 
+       (.C(clock_100),
+        .CE(data_out),
+        .D(\data_out[13]_i_1_n_0 ),
+        .Q(READ_DATA_OUT[13]),
+        .S(\data_out[15]_i_1_n_0 ));
+  FDSE \data_out_reg[14] 
+       (.C(clock_100),
+        .CE(data_out),
+        .D(\data_out[14]_i_1_n_0 ),
+        .Q(READ_DATA_OUT[14]),
+        .S(\data_out[15]_i_1_n_0 ));
+  FDSE \data_out_reg[15] 
+       (.C(clock_100),
+        .CE(data_out),
+        .D(\data_out[15]_i_3_n_0 ),
+        .Q(READ_DATA_OUT[15]),
+        .S(\data_out[15]_i_1_n_0 ));
+  FDRE \data_out_reg[16] 
+       (.C(clock_100),
+        .CE(1'b1),
+        .D(\data_out[16]_i_1_n_0 ),
+        .Q(READ_DATA_OUT[16]),
+        .R(1'b0));
+  FDRE \data_out_reg[17] 
+       (.C(clock_100),
+        .CE(1'b1),
+        .D(\data_out[17]_i_1_n_0 ),
+        .Q(READ_DATA_OUT[17]),
+        .R(1'b0));
+  FDSE \data_out_reg[1] 
+       (.C(clock_100),
+        .CE(data_out),
+        .D(\data_out[1]_i_1_n_0 ),
+        .Q(READ_DATA_OUT[1]),
+        .S(\data_out[15]_i_1_n_0 ));
+  FDSE \data_out_reg[2] 
+       (.C(clock_100),
+        .CE(data_out),
+        .D(\data_out[2]_i_1_n_0 ),
+        .Q(READ_DATA_OUT[2]),
+        .S(\data_out[15]_i_1_n_0 ));
+  FDRE \data_out_reg[31] 
+       (.C(clock_100),
+        .CE(1'b1),
+        .D(\data_out[31]_i_1_n_0 ),
+        .Q(READ_DATA_OUT[18]),
+        .R(1'b0));
+  FDSE \data_out_reg[3] 
+       (.C(clock_100),
+        .CE(data_out),
+        .D(\data_out[3]_i_1_n_0 ),
+        .Q(READ_DATA_OUT[3]),
+        .S(\data_out[15]_i_1_n_0 ));
+  FDSE \data_out_reg[4] 
+       (.C(clock_100),
+        .CE(data_out),
+        .D(\data_out[4]_i_1_n_0 ),
+        .Q(READ_DATA_OUT[4]),
+        .S(\data_out[15]_i_1_n_0 ));
+  FDSE \data_out_reg[5] 
+       (.C(clock_100),
+        .CE(data_out),
+        .D(\data_out[5]_i_1_n_0 ),
+        .Q(READ_DATA_OUT[5]),
+        .S(\data_out[15]_i_1_n_0 ));
+  FDSE \data_out_reg[6] 
+       (.C(clock_100),
+        .CE(data_out),
+        .D(\data_out[6]_i_1_n_0 ),
+        .Q(READ_DATA_OUT[6]),
+        .S(\data_out[15]_i_1_n_0 ));
+  FDSE \data_out_reg[7] 
+       (.C(clock_100),
+        .CE(data_out),
+        .D(\data_out[7]_i_1_n_0 ),
+        .Q(READ_DATA_OUT[7]),
+        .S(\data_out[15]_i_1_n_0 ));
+  FDSE \data_out_reg[8] 
+       (.C(clock_100),
+        .CE(data_out),
+        .D(\data_out[8]_i_1_n_0 ),
+        .Q(READ_DATA_OUT[8]),
+        .S(\data_out[15]_i_1_n_0 ));
+  FDSE \data_out_reg[9] 
+       (.C(clock_100),
+        .CE(data_out),
+        .D(\data_out[9]_i_1_n_0 ),
+        .Q(READ_DATA_OUT[9]),
+        .S(\data_out[15]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'h00000800)) 
+    \led_pwm[15]_i_1 
+       (.I0(WE),
+        .I1(RX_data_ready),
+        .I2(RX_data[16]),
+        .I3(RX_data[17]),
+        .I4(\data_out[31]_i_2_n_0 ),
+        .O(led_pwm_0));
+  FDRE \led_pwm_reg[0] 
+       (.C(clock_100),
+        .CE(led_pwm_0),
+        .D(RX_data[0]),
+        .Q(led_pwm[0]),
+        .R(1'b0));
+  FDRE \led_pwm_reg[10] 
+       (.C(clock_100),
+        .CE(led_pwm_0),
+        .D(RX_data[10]),
+        .Q(led_pwm[10]),
+        .R(1'b0));
+  FDRE \led_pwm_reg[11] 
+       (.C(clock_100),
+        .CE(led_pwm_0),
+        .D(RX_data[11]),
+        .Q(led_pwm[11]),
+        .R(1'b0));
+  FDRE \led_pwm_reg[12] 
+       (.C(clock_100),
+        .CE(led_pwm_0),
+        .D(RX_data[12]),
+        .Q(led_pwm[12]),
+        .R(1'b0));
+  FDRE \led_pwm_reg[13] 
+       (.C(clock_100),
+        .CE(led_pwm_0),
+        .D(RX_data[13]),
+        .Q(led_pwm[13]),
+        .R(1'b0));
+  FDRE \led_pwm_reg[14] 
+       (.C(clock_100),
+        .CE(led_pwm_0),
+        .D(RX_data[14]),
+        .Q(led_pwm[14]),
+        .R(1'b0));
+  FDRE \led_pwm_reg[15] 
+       (.C(clock_100),
+        .CE(led_pwm_0),
+        .D(RX_data[15]),
+        .Q(led_pwm[15]),
+        .R(1'b0));
+  FDRE \led_pwm_reg[1] 
+       (.C(clock_100),
+        .CE(led_pwm_0),
+        .D(RX_data[1]),
+        .Q(led_pwm[1]),
+        .R(1'b0));
+  FDRE \led_pwm_reg[2] 
+       (.C(clock_100),
+        .CE(led_pwm_0),
+        .D(RX_data[2]),
+        .Q(led_pwm[2]),
+        .R(1'b0));
+  FDRE \led_pwm_reg[3] 
+       (.C(clock_100),
+        .CE(led_pwm_0),
+        .D(RX_data[3]),
+        .Q(led_pwm[3]),
+        .R(1'b0));
+  FDRE \led_pwm_reg[4] 
+       (.C(clock_100),
+        .CE(led_pwm_0),
+        .D(RX_data[4]),
+        .Q(led_pwm[4]),
+        .R(1'b0));
+  FDRE \led_pwm_reg[5] 
+       (.C(clock_100),
+        .CE(led_pwm_0),
+        .D(RX_data[5]),
+        .Q(led_pwm[5]),
+        .R(1'b0));
+  FDRE \led_pwm_reg[6] 
+       (.C(clock_100),
+        .CE(led_pwm_0),
+        .D(RX_data[6]),
+        .Q(led_pwm[6]),
+        .R(1'b0));
+  FDRE \led_pwm_reg[7] 
+       (.C(clock_100),
+        .CE(led_pwm_0),
+        .D(RX_data[7]),
+        .Q(led_pwm[7]),
+        .R(1'b0));
+  FDRE \led_pwm_reg[8] 
+       (.C(clock_100),
+        .CE(led_pwm_0),
+        .D(RX_data[8]),
+        .Q(led_pwm[8]),
+        .R(1'b0));
+  FDRE \led_pwm_reg[9] 
+       (.C(clock_100),
+        .CE(led_pwm_0),
+        .D(RX_data[9]),
+        .Q(led_pwm[9]),
+        .R(1'b0));
+  LUT5 #(
+    .INIT(32'h00000800)) 
+    \multiplier_stored[15]_i_1 
+       (.I0(WE),
+        .I1(RX_data_ready),
+        .I2(RX_data[17]),
+        .I3(RX_data[16]),
+        .I4(\data_out[31]_i_2_n_0 ),
+        .O(multiplier_stored_1));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-14 {cell *THIS*}}" *) 
   FDRE #(
     .INIT(1'b1)) 
     \multiplier_stored_reg[0] 
        (.C(clock_100),
-        .CE(multiplier_stored_0),
+        .CE(multiplier_stored_1),
         .D(RX_data[0]),
         .Q(multiplier_stored[0]),
         .R(1'b0));
@@ -1006,7 +1464,7 @@ module top_LED_Toggle_0_0_LED_Toggle
     .INIT(1'b0)) 
     \multiplier_stored_reg[10] 
        (.C(clock_100),
-        .CE(multiplier_stored_0),
+        .CE(multiplier_stored_1),
         .D(RX_data[10]),
         .Q(multiplier_stored[10]),
         .R(1'b0));
@@ -1014,7 +1472,7 @@ module top_LED_Toggle_0_0_LED_Toggle
     .INIT(1'b0)) 
     \multiplier_stored_reg[11] 
        (.C(clock_100),
-        .CE(multiplier_stored_0),
+        .CE(multiplier_stored_1),
         .D(RX_data[11]),
         .Q(multiplier_stored[11]),
         .R(1'b0));
@@ -1022,7 +1480,7 @@ module top_LED_Toggle_0_0_LED_Toggle
     .INIT(1'b0)) 
     \multiplier_stored_reg[12] 
        (.C(clock_100),
-        .CE(multiplier_stored_0),
+        .CE(multiplier_stored_1),
         .D(RX_data[12]),
         .Q(multiplier_stored[12]),
         .R(1'b0));
@@ -1030,7 +1488,7 @@ module top_LED_Toggle_0_0_LED_Toggle
     .INIT(1'b0)) 
     \multiplier_stored_reg[13] 
        (.C(clock_100),
-        .CE(multiplier_stored_0),
+        .CE(multiplier_stored_1),
         .D(RX_data[13]),
         .Q(multiplier_stored[13]),
         .R(1'b0));
@@ -1038,7 +1496,7 @@ module top_LED_Toggle_0_0_LED_Toggle
     .INIT(1'b0)) 
     \multiplier_stored_reg[14] 
        (.C(clock_100),
-        .CE(multiplier_stored_0),
+        .CE(multiplier_stored_1),
         .D(RX_data[14]),
         .Q(multiplier_stored[14]),
         .R(1'b0));
@@ -1046,7 +1504,7 @@ module top_LED_Toggle_0_0_LED_Toggle
     .INIT(1'b0)) 
     \multiplier_stored_reg[15] 
        (.C(clock_100),
-        .CE(multiplier_stored_0),
+        .CE(multiplier_stored_1),
         .D(RX_data[15]),
         .Q(multiplier_stored[15]),
         .R(1'b0));
@@ -1054,7 +1512,7 @@ module top_LED_Toggle_0_0_LED_Toggle
     .INIT(1'b0)) 
     \multiplier_stored_reg[1] 
        (.C(clock_100),
-        .CE(multiplier_stored_0),
+        .CE(multiplier_stored_1),
         .D(RX_data[1]),
         .Q(multiplier_stored[1]),
         .R(1'b0));
@@ -1062,7 +1520,7 @@ module top_LED_Toggle_0_0_LED_Toggle
     .INIT(1'b0)) 
     \multiplier_stored_reg[2] 
        (.C(clock_100),
-        .CE(multiplier_stored_0),
+        .CE(multiplier_stored_1),
         .D(RX_data[2]),
         .Q(multiplier_stored[2]),
         .R(1'b0));
@@ -1070,7 +1528,7 @@ module top_LED_Toggle_0_0_LED_Toggle
     .INIT(1'b0)) 
     \multiplier_stored_reg[3] 
        (.C(clock_100),
-        .CE(multiplier_stored_0),
+        .CE(multiplier_stored_1),
         .D(RX_data[3]),
         .Q(multiplier_stored[3]),
         .R(1'b0));
@@ -1078,7 +1536,7 @@ module top_LED_Toggle_0_0_LED_Toggle
     .INIT(1'b0)) 
     \multiplier_stored_reg[4] 
        (.C(clock_100),
-        .CE(multiplier_stored_0),
+        .CE(multiplier_stored_1),
         .D(RX_data[4]),
         .Q(multiplier_stored[4]),
         .R(1'b0));
@@ -1086,7 +1544,7 @@ module top_LED_Toggle_0_0_LED_Toggle
     .INIT(1'b0)) 
     \multiplier_stored_reg[5] 
        (.C(clock_100),
-        .CE(multiplier_stored_0),
+        .CE(multiplier_stored_1),
         .D(RX_data[5]),
         .Q(multiplier_stored[5]),
         .R(1'b0));
@@ -1094,7 +1552,7 @@ module top_LED_Toggle_0_0_LED_Toggle
     .INIT(1'b0)) 
     \multiplier_stored_reg[6] 
        (.C(clock_100),
-        .CE(multiplier_stored_0),
+        .CE(multiplier_stored_1),
         .D(RX_data[6]),
         .Q(multiplier_stored[6]),
         .R(1'b0));
@@ -1102,7 +1560,7 @@ module top_LED_Toggle_0_0_LED_Toggle
     .INIT(1'b0)) 
     \multiplier_stored_reg[7] 
        (.C(clock_100),
-        .CE(multiplier_stored_0),
+        .CE(multiplier_stored_1),
         .D(RX_data[7]),
         .Q(multiplier_stored[7]),
         .R(1'b0));
@@ -1110,7 +1568,7 @@ module top_LED_Toggle_0_0_LED_Toggle
     .INIT(1'b0)) 
     \multiplier_stored_reg[8] 
        (.C(clock_100),
-        .CE(multiplier_stored_0),
+        .CE(multiplier_stored_1),
         .D(RX_data[8]),
         .Q(multiplier_stored[8]),
         .R(1'b0));
@@ -1118,7 +1576,7 @@ module top_LED_Toggle_0_0_LED_Toggle
     .INIT(1'b0)) 
     \multiplier_stored_reg[9] 
        (.C(clock_100),
-        .CE(multiplier_stored_0),
+        .CE(multiplier_stored_1),
         .D(RX_data[9]),
         .Q(multiplier_stored[9]),
         .R(1'b0));
