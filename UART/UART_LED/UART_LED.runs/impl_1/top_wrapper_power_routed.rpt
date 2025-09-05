@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date             : Fri Sep  5 15:16:26 2025
+| Date             : Fri Sep  5 16:29:08 2025
 | Host             : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 | Command          : report_power -file top_wrapper_power_routed.rpt -pb top_wrapper_power_summary_routed.pb -rpx top_wrapper_power_routed.rpx
 | Design           : top_wrapper
@@ -36,8 +36,8 @@ Table of Contents
 | Dynamic (W)              | 0.138        |
 | Device Static (W)        | 0.072        |
 | Effective TJA (C/W)      | 5.0          |
-| Max Ambient (C)          | 83.9         |
-| Junction Temperature (C) | 26.1         |
+| Max Ambient (C)          | 84.0         |
+| Junction Temperature (C) | 26.0         |
 | Confidence Level         | Medium       |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -53,12 +53,12 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |     0.002 |        5 |       --- |             --- |
-| Slice Logic    |    <0.001 |      550 |       --- |             --- |
-|   LUT as Logic |    <0.001 |      174 |     20800 |            0.84 |
+| Slice Logic    |    <0.001 |      555 |       --- |             --- |
+|   LUT as Logic |    <0.001 |      180 |     20800 |            0.87 |
 |   CARRY4       |    <0.001 |       21 |      8150 |            0.26 |
-|   Register     |    <0.001 |      276 |     41600 |            0.66 |
+|   Register     |    <0.001 |      277 |     41600 |            0.67 |
 |   Others       |     0.000 |       16 |       --- |             --- |
-| Signals        |    <0.001 |      419 |       --- |             --- |
+| Signals        |    <0.001 |      420 |       --- |             --- |
 | MMCM           |     0.106 |        1 |         5 |           20.00 |
 | DSPs           |     0.000 |        1 |        90 |            1.11 |
 | I/O            |     0.029 |       12 |       106 |           11.32 |
@@ -145,7 +145,7 @@ Table of Contents
 | Name          | Power (W) |
 +---------------+-----------+
 | top_wrapper   |     0.138 |
-|   top_i       |     0.109 |
+|   top_i       |     0.108 |
 |     clk_wiz_0 |     0.106 |
 |       inst    |     0.106 |
 +---------------+-----------+

@@ -2,7 +2,7 @@
 -- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
--- Date        : Thu Sep  4 21:33:45 2025
+-- Date        : Fri Sep  5 16:21:18 2025
 -- Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim {e:/FPGA/VHDL/Lab
 --               Training/UART/UART_LED/UART_LED.gen/sources_1/bd/top/ip/top_ASCII_LUT_0_0/top_ASCII_LUT_0_0_sim_netlist.vhdl}
@@ -50,22 +50,30 @@ architecture STRUCTURE of top_ASCII_LUT_0_0_ASCII_LUT is
   signal \S_RX_BYTE_OUT[3]_i_3_n_0\ : STD_LOGIC;
   signal \S_TX_BYTE_OUT[0]_i_1_n_0\ : STD_LOGIC;
   signal \S_TX_BYTE_OUT[1]_i_1_n_0\ : STD_LOGIC;
+  signal \S_TX_BYTE_OUT[1]_i_2_n_0\ : STD_LOGIC;
   signal \S_TX_BYTE_OUT[2]_i_1_n_0\ : STD_LOGIC;
+  signal \S_TX_BYTE_OUT[2]_i_2_n_0\ : STD_LOGIC;
   signal \S_TX_BYTE_OUT[3]_i_1_n_0\ : STD_LOGIC;
+  signal \S_TX_BYTE_OUT[3]_i_2_n_0\ : STD_LOGIC;
   signal \S_TX_BYTE_OUT[4]_i_1_n_0\ : STD_LOGIC;
   signal \S_TX_BYTE_OUT[4]_i_2_n_0\ : STD_LOGIC;
+  signal \S_TX_BYTE_OUT[5]_i_2_n_0\ : STD_LOGIC;
+  signal \S_TX_BYTE_OUT[5]_i_3_n_0\ : STD_LOGIC;
+  signal \S_TX_BYTE_OUT[5]_i_4_n_0\ : STD_LOGIC;
   signal p_0_in : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \ASCII_TYPE[0]_i_2\ : label is "soft_lutpair4";
-  attribute SOFT_HLUTNM of \ASCII_TYPE[1]_i_1\ : label is "soft_lutpair1";
-  attribute SOFT_HLUTNM of \ASCII_TYPE[2]_i_2\ : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of \S_RX_BYTE_OUT[0]_i_2\ : label is "soft_lutpair3";
-  attribute SOFT_HLUTNM of \S_RX_BYTE_OUT[1]_i_1\ : label is "soft_lutpair1";
-  attribute SOFT_HLUTNM of \S_RX_BYTE_OUT[1]_i_2\ : label is "soft_lutpair3";
-  attribute SOFT_HLUTNM of \S_RX_BYTE_OUT[2]_i_2\ : label is "soft_lutpair4";
-  attribute SOFT_HLUTNM of \S_RX_BYTE_OUT[3]_i_3\ : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of \S_TX_BYTE_OUT[1]_i_1\ : label is "soft_lutpair0";
-  attribute SOFT_HLUTNM of \S_TX_BYTE_OUT[4]_i_1\ : label is "soft_lutpair0";
+  attribute SOFT_HLUTNM of \ASCII_TYPE[0]_i_2\ : label is "soft_lutpair3";
+  attribute SOFT_HLUTNM of \ASCII_TYPE[1]_i_1\ : label is "soft_lutpair0";
+  attribute SOFT_HLUTNM of \ASCII_TYPE[2]_i_2\ : label is "soft_lutpair1";
+  attribute SOFT_HLUTNM of \S_RX_BYTE_OUT[0]_i_2\ : label is "soft_lutpair2";
+  attribute SOFT_HLUTNM of \S_RX_BYTE_OUT[1]_i_1\ : label is "soft_lutpair0";
+  attribute SOFT_HLUTNM of \S_RX_BYTE_OUT[1]_i_2\ : label is "soft_lutpair2";
+  attribute SOFT_HLUTNM of \S_RX_BYTE_OUT[2]_i_2\ : label is "soft_lutpair3";
+  attribute SOFT_HLUTNM of \S_RX_BYTE_OUT[3]_i_3\ : label is "soft_lutpair1";
+  attribute SOFT_HLUTNM of \S_TX_BYTE_OUT[1]_i_1\ : label is "soft_lutpair5";
+  attribute SOFT_HLUTNM of \S_TX_BYTE_OUT[3]_i_1\ : label is "soft_lutpair4";
+  attribute SOFT_HLUTNM of \S_TX_BYTE_OUT[4]_i_1\ : label is "soft_lutpair4";
+  attribute SOFT_HLUTNM of \S_TX_BYTE_OUT[5]_i_3\ : label is "soft_lutpair5";
 begin
 \ASCII_TYPE[0]_i_1\: unisim.vcomponents.LUT6
     generic map(
@@ -318,75 +326,107 @@ RX_BYTE_OUT_READY_reg: unisim.vcomponents.FDRE
     );
 \S_TX_BYTE_OUT[0]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0000000002AA0000"
+      INIT => X"0000000000000070"
+    )
+        port map (
+      I0 => TX_BYTE(3),
+      I1 => TX_BYTE(1),
+      I2 => TX_BYTE(0),
+      I3 => TX_BYTE(4),
+      I4 => TX_BYTE(5),
+      I5 => \S_TX_BYTE_OUT[5]_i_3_n_0\,
+      O => \S_TX_BYTE_OUT[0]_i_1_n_0\
+    );
+\S_TX_BYTE_OUT[1]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"FE"
+    )
+        port map (
+      I0 => TX_BYTE(6),
+      I1 => TX_BYTE(7),
+      I2 => \S_TX_BYTE_OUT[1]_i_2_n_0\,
+      O => \S_TX_BYTE_OUT[1]_i_1_n_0\
+    );
+\S_TX_BYTE_OUT[1]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFEEFFEEFFFEFEEE"
     )
         port map (
       I0 => TX_BYTE(4),
       I1 => TX_BYTE(1),
       I2 => TX_BYTE(2),
-      I3 => TX_BYTE(3),
-      I4 => TX_BYTE(0),
-      I5 => \S_TX_BYTE_OUT[4]_i_2_n_0\,
-      O => \S_TX_BYTE_OUT[0]_i_1_n_0\
-    );
-\S_TX_BYTE_OUT[1]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FEEEFFFF"
-    )
-        port map (
-      I0 => \S_TX_BYTE_OUT[4]_i_2_n_0\,
-      I1 => TX_BYTE(1),
-      I2 => TX_BYTE(3),
-      I3 => TX_BYTE(2),
-      I4 => TX_BYTE(4),
-      O => \S_TX_BYTE_OUT[1]_i_1_n_0\
-    );
-\S_TX_BYTE_OUT[2]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFEAFFFFFFEABF"
-    )
-        port map (
-      I0 => \S_TX_BYTE_OUT[4]_i_2_n_0\,
-      I1 => TX_BYTE(3),
-      I2 => TX_BYTE(1),
-      I3 => TX_BYTE(4),
-      I4 => TX_BYTE(2),
+      I3 => TX_BYTE(5),
+      I4 => TX_BYTE(3),
       I5 => TX_BYTE(0),
+      O => \S_TX_BYTE_OUT[1]_i_2_n_0\
+    );
+\S_TX_BYTE_OUT[2]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"FE"
+    )
+        port map (
+      I0 => TX_BYTE(6),
+      I1 => TX_BYTE(7),
+      I2 => \S_TX_BYTE_OUT[2]_i_2_n_0\,
       O => \S_TX_BYTE_OUT[2]_i_1_n_0\
     );
-\S_TX_BYTE_OUT[3]_i_1\: unisim.vcomponents.LUT6
+\S_TX_BYTE_OUT[2]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0000000000003400"
+      INIT => X"FFFFFFFFFFFFCAA8"
     )
         port map (
-      I0 => TX_BYTE(0),
-      I1 => TX_BYTE(1),
-      I2 => TX_BYTE(4),
-      I3 => TX_BYTE(3),
+      I0 => TX_BYTE(5),
+      I1 => TX_BYTE(0),
+      I2 => TX_BYTE(3),
+      I3 => TX_BYTE(1),
       I4 => TX_BYTE(2),
-      I5 => \S_TX_BYTE_OUT[4]_i_2_n_0\,
+      I5 => TX_BYTE(4),
+      O => \S_TX_BYTE_OUT[2]_i_2_n_0\
+    );
+\S_TX_BYTE_OUT[3]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"02"
+    )
+        port map (
+      I0 => \S_TX_BYTE_OUT[3]_i_2_n_0\,
+      I1 => TX_BYTE(6),
+      I2 => TX_BYTE(7),
       O => \S_TX_BYTE_OUT[3]_i_1_n_0\
     );
-\S_TX_BYTE_OUT[4]_i_1\: unisim.vcomponents.LUT5
+\S_TX_BYTE_OUT[3]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"00005700"
+      INIT => X"00008000020200A2"
     )
         port map (
       I0 => TX_BYTE(3),
-      I1 => TX_BYTE(2),
+      I1 => TX_BYTE(5),
       I2 => TX_BYTE(1),
-      I3 => TX_BYTE(4),
-      I4 => \S_TX_BYTE_OUT[4]_i_2_n_0\,
-      O => \S_TX_BYTE_OUT[4]_i_1_n_0\
+      I3 => TX_BYTE(2),
+      I4 => TX_BYTE(0),
+      I5 => TX_BYTE(4),
+      O => \S_TX_BYTE_OUT[3]_i_2_n_0\
     );
-\S_TX_BYTE_OUT[4]_i_2\: unisim.vcomponents.LUT3
+\S_TX_BYTE_OUT[4]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"FB"
+      INIT => X"02"
     )
         port map (
-      I0 => TX_BYTE(7),
-      I1 => TX_BYTE(5),
-      I2 => TX_BYTE(6),
+      I0 => \S_TX_BYTE_OUT[4]_i_2_n_0\,
+      I1 => TX_BYTE(6),
+      I2 => TX_BYTE(7),
+      O => \S_TX_BYTE_OUT[4]_i_1_n_0\
+    );
+\S_TX_BYTE_OUT[4]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"4000000303030303"
+    )
+        port map (
+      I0 => TX_BYTE(0),
+      I1 => TX_BYTE(4),
+      I2 => TX_BYTE(5),
+      I3 => TX_BYTE(1),
+      I4 => TX_BYTE(2),
+      I5 => TX_BYTE(3),
       O => \S_TX_BYTE_OUT[4]_i_2_n_0\
     );
 \S_TX_BYTE_OUT[5]_i_1\: unisim.vcomponents.LUT1
@@ -396,6 +436,37 @@ RX_BYTE_OUT_READY_reg: unisim.vcomponents.FDRE
         port map (
       I0 => TX_BYTE_READY,
       O => p_0_in
+    );
+\S_TX_BYTE_OUT[5]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFEFFEFFFFFFFFFF"
+    )
+        port map (
+      I0 => \S_TX_BYTE_OUT[5]_i_3_n_0\,
+      I1 => \S_TX_BYTE_OUT[5]_i_4_n_0\,
+      I2 => TX_BYTE(0),
+      I3 => TX_BYTE(1),
+      I4 => TX_BYTE(2),
+      I5 => TX_BYTE(3),
+      O => \S_TX_BYTE_OUT[5]_i_2_n_0\
+    );
+\S_TX_BYTE_OUT[5]_i_3\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"E"
+    )
+        port map (
+      I0 => TX_BYTE(7),
+      I1 => TX_BYTE(6),
+      O => \S_TX_BYTE_OUT[5]_i_3_n_0\
+    );
+\S_TX_BYTE_OUT[5]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"E"
+    )
+        port map (
+      I0 => TX_BYTE(4),
+      I1 => TX_BYTE(5),
+      O => \S_TX_BYTE_OUT[5]_i_4_n_0\
     );
 \S_TX_BYTE_OUT_reg[0]\: unisim.vcomponents.FDRE
     generic map(
@@ -459,7 +530,7 @@ RX_BYTE_OUT_READY_reg: unisim.vcomponents.FDRE
         port map (
       C => clk,
       CE => '1',
-      D => '1',
+      D => \S_TX_BYTE_OUT[5]_i_2_n_0\,
       Q => TX_BYTE_OUT(5),
       S => p_0_in
     );

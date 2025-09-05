@@ -160,10 +160,14 @@ architecture Behavioral of ASCII_LUT is
                     --MISC CHARACTERS
                     when 10 =>
                         S_TX_BYTE_OUT <= "00001010"; -- LF (new line)
+                    when 13 =>
+                        S_TX_BYTE_OUT <= "00001101"; -- CR (carriage return)
+                    when 32 =>
+                        S_TX_BYTE_OUT <= "00100000"; -- SPACE
                     when 42 =>
                         S_TX_BYTE_OUT <= "00101010"; --*
-                    when 47 =>
-                        S_TX_BYTE_OUT <= "00101111"; --/
+                    when 62 =>
+                        S_TX_BYTE_OUT <= "00111110"; --/
                         
                         
                     -- NUMBERS

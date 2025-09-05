@@ -77,7 +77,7 @@ architecture Behavioral of UART_CONTROLLER is
     signal data_buildup : std_logic_vector(31 downto 0); -- 2 hex characters address, 2 hex characters value.
     signal write_enabled : std_logic := '0';
 
-    signal byte_counter : integer range 0 to 8 := 0;
+    signal byte_counter : integer range 0 to 12 := 0;
     signal RX_nibble : std_logic_vector(3 downto 0);
     signal RX_address : std_logic_vector(15 downto 0);
     signal RX_data : std_logic_vector(15 downto 0);
@@ -200,7 +200,7 @@ begin
                         TX_Data_HOLD <= TX_DATA_FULL;
                         Tx_Data_LATCH <= TX_DATA_FULL;
                         TX_enable <= '1';
-                        TX_BYTE_OUT <= x"2F"; --returns a "/"
+                        TX_BYTE_OUT <= x"3E"; --returns a ">"
                         byte_counter <= 0;
                         state <= S_SEND_TX_DATA;
                     else
@@ -209,13 +209,22 @@ begin
                 when S_SEND_TX_DATA =>
                     if TX_BYTE_SEND = '1' then
                         TX_enable <= '1';
-                        if byte_counter < 7 then
+                        if byte_counter = 0 or byte_counter = 5 then
+                            TX_BYTE_OUT <= x"20"; -- SEND A SPACE BETWEEN.
+                            byte_counter <= byte_counter + 1;
+                        elsif byte_counter < 9 then
                             TX_BYTE_OUT <= "0000" & TX_DATA_HOLD(31 downto 28); -- SHIFT REGISTER send highest first
                             TX_DATA_HOLD <= TX_DATA_HOLD(27 downto 0) & "0000";
                             byte_counter <= byte_counter + 1;
-                        elsif byte_counter = 7 then
+                        elsif byte_counter = 9 then
                             TX_BYTE_OUT <= "0000" & TX_DATA_HOLD(31 downto 28); -- SHIFT REGISTER send highest first
                             TX_DATA_HOLD <= TX_DATA_HOLD(27 downto 0) & "0000";
+                            byte_counter <= byte_counter + 1;
+                        elsif byte_counter = 10 then
+                            TX_BYTE_OUT <= x"0D"; -- SEND A CR (send to begining of line).
+                            byte_counter <= byte_counter + 1;
+                        elsif byte_counter = 11 then
+                            TX_BYTE_OUT <= x"0A"; -- SEND A LF (move to new line).
                             byte_counter <= byte_counter + 1;
                             state <= S_IDLE;
                         else
