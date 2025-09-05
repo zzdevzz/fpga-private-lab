@@ -94,7 +94,7 @@ set_property ip_output_repo {e:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.ca
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-read_vhdl -library xil_defaultlib {{e:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.gen/sources_1/bd/top/hdl/top_wrapper.vhd}}
+read_vhdl -library xil_defaultlib {{E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.gen/sources_1/bd/top/hdl/top_wrapper.vhd}}
 add_files {{E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.srcs/sources_1/bd/top/top.bd}}
 set_property used_in_implementation false [get_files -all {{e:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.gen/sources_1/bd/top/ip/top_clk_wiz_0_0/top_clk_wiz_0_0_board.xdc}}]
 set_property used_in_implementation false [get_files -all {{e:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.gen/sources_1/bd/top/ip/top_clk_wiz_0_0/top_clk_wiz_0_0.xdc}}]

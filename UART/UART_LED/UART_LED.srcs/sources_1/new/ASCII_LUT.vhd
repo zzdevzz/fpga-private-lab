@@ -158,27 +158,34 @@ architecture Behavioral of ASCII_LUT is
                     -- map the ascii character to the "actual" number represenatitive on the keyboard.
 
                     --MISC CHARACTERS
+                    when 10 =>
+                        S_TX_BYTE_OUT <= "00001010"; -- LF (new line)
                     when 42 =>
                         S_TX_BYTE_OUT <= "00101010"; --*
-                    when 48 => 
+                    when 47 =>
+                        S_TX_BYTE_OUT <= "00101111"; --/
+                        
+                        
+                    -- NUMBERS
+                    when 0 => 
                         S_TX_BYTE_OUT <= "00110000"; --0
-                    when 49 => 
+                    when 1 => 
                         S_TX_BYTE_OUT <= "00110001"; --1
-                    when 50 => 
+                    when 2 => 
                         S_TX_BYTE_OUT <= "00110010"; --2
-                    when 51 => 
+                    when 3 => 
                         S_TX_BYTE_OUT <= "00110011"; --3
-                    when 52 => 
+                    when 4 => 
                         S_TX_BYTE_OUT <= "00110100"; --4
-                    when 53 => 
+                    when 5 => 
                         S_TX_BYTE_OUT <= "00110101"; --5
-                    when 54 => 
+                    when 6 => 
                         S_TX_BYTE_OUT <= "00110110"; --6
-                    when 55 => 
+                    when 7 => 
                         S_TX_BYTE_OUT <= "00110111"; --7
-                    when 56 => 
+                    when 8 => 
                         S_TX_BYTE_OUT <= "00111000"; --8
-                    when 57 => 
+                    when 9 => 
                         S_TX_BYTE_OUT <= "00111001"; --9
                     when others =>
                         S_TX_BYTE_OUT <= "00100110"; --&

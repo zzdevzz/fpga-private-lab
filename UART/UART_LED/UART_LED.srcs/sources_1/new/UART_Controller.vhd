@@ -200,7 +200,7 @@ begin
                         TX_Data_HOLD <= TX_DATA_FULL;
                         Tx_Data_LATCH <= TX_DATA_FULL;
                         TX_enable <= '1';
-                        TX_BYTE_OUT <= "00001010"; --returns a LF (line feed) - new line.
+                        TX_BYTE_OUT <= x"2F"; --returns a "/"
                         byte_counter <= 0;
                         state <= S_SEND_TX_DATA;
                     else
@@ -210,12 +210,12 @@ begin
                     if TX_BYTE_SEND = '1' then
                         TX_enable <= '1';
                         if byte_counter < 7 then
-                            TX_BYTE_OUT <= "0000" & TX_DATA_HOLD(3 downto 0); -- SHIFT REGISTER send lowest
-                            TX_DATA_HOLD <= "0000" & TX_DATA_HOLD(31 downto 4);
+                            TX_BYTE_OUT <= "0000" & TX_DATA_HOLD(31 downto 28); -- SHIFT REGISTER send highest first
+                            TX_DATA_HOLD <= TX_DATA_HOLD(27 downto 0) & "0000";
                             byte_counter <= byte_counter + 1;
                         elsif byte_counter = 7 then
-                            TX_BYTE_OUT <= "0000" & TX_DATA_HOLD(3 downto 0); -- SHIFT REGISTER
-                            TX_DATA_HOLD <= "0000" & TX_DATA_HOLD(31 downto 4);
+                            TX_BYTE_OUT <= "0000" & TX_DATA_HOLD(31 downto 28); -- SHIFT REGISTER send highest first
+                            TX_DATA_HOLD <= TX_DATA_HOLD(27 downto 0) & "0000";
                             byte_counter <= byte_counter + 1;
                             state <= S_IDLE;
                         else
