@@ -45,16 +45,19 @@ entity LED_Toggle is
 end LED_Toggle;
 
 architecture Behavioral of LED_Toggle is
-
-    signal multiplier_stored : std_logic_vector(15 downto 0) := "0000000000000001";
+    
     signal counter_base : integer := 10_000_000;
-    signal counter_max : integer := counter_base * to_integer(unsigned(multiplier_stored));
+    signal multiplier_stored : std_logic_vector(15 downto 0) := "0000000000000001"; --actual value stored in register.
+    signal counter_max : integer := counter_base * to_integer(unsigned(multiplier_stored)); --value above in integer form for calculation.
+
+    
+    signal led_pwm_stored    : std_logic_vector(15 downto 0); --actual value stored in register.
+    signal led_pwm_percent : integer := to_integer(unsigned(led_pwm_stored)); --value above in integer form for calculation.
+    
     signal counter : integer := 0;
     signal LED_ON: std_logic := '0';
 
     signal led_enable : std_logic_vector(15 downto 0); -- which LEDs are on/off
-    signal led_pwm    : std_logic_vector(15 downto 0); -- brightness or speed
-
     signal data_out : std_logic_vector(31 downto 0);
     constant error_message : std_logic_vector(31 downto 0) := (others => '1');
 
@@ -66,11 +69,14 @@ begin
     led_blink_basic:process(clock_100)
     begin
         if rising_edge(clock_100) then
-            if counter < counter_max then
+            if counter < counter_max * led_pwm_percent then
                 counter <= counter + 1;
+                LED_ON <= '1';
+            elsif counter < counter_max then --for one full cycle.
+                counter <= counter + 1;
+                LED_ON <= '0';
             else
                 counter <= 0;
-                LED_ON <= not LED_ON;
             end if;
         end if;
     end process;
