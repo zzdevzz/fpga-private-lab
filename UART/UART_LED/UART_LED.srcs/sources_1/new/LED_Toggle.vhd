@@ -1,22 +1,5 @@
-----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date: 12.08.2025 10:12:22
--- Design Name: 
--- Module Name: LED_Toggle - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
--- Description: 
--- 
--- Dependencies: 
--- 
--- Revision:
--- Revision 0.01 - File Created
--- Additional Comments:
--- 
-----------------------------------------------------------------------------------
+-- module allows to change frequency and pwm.
+-- controlled via registers.
 
 
 library IEEE;
@@ -46,12 +29,13 @@ end LED_Toggle;
 
 architecture Behavioral of LED_Toggle is
     
-    signal counter_base : integer := 10_000_000;
+    --frequency
+    signal counter_base : integer := 100_000; 
     signal multiplier_stored : std_logic_vector(15 downto 0) := "0000000000000001"; --actual value stored in register.
     signal counter_max : integer := counter_base * to_integer(unsigned(multiplier_stored)); --value above in integer form for calculation.
 
-    
-    signal led_pwm_stored    : std_logic_vector(15 downto 0); --actual value stored in register.
+    --duty cycle activity.
+    signal led_pwm_stored    : std_logic_vector(15 downto 0) := "0000000000110010"; --base 50% pwm
     signal led_pwm_percent : integer := to_integer(unsigned(led_pwm_stored)); --value above in integer form for calculation.
     
     signal counter : integer := 0;
@@ -69,7 +53,7 @@ begin
     led_blink_basic:process(clock_100)
     begin
         if rising_edge(clock_100) then
-            if counter < counter_max * led_pwm_percent then
+            if counter < (( counter_max * led_pwm_percent ) / 100) ) then
                 counter <= counter + 1;
                 LED_ON <= '1';
             elsif counter < counter_max then --for one full cycle.
@@ -97,7 +81,13 @@ begin
                 if WE = '1' then --write enabled
                   case rx_addr is
                     when x"0001" => multiplier_stored <= rx_value;
-                    when x"0002" => led_pwm    <= rx_value;
+                    when x"0002" => 
+                        -- if the value is above 100 on input, cap it at 100.
+                        if to_integer(unsigned(rx_value)) > 100 then
+                            led_pwm_stored <= "0000000001100100"; 
+                        else
+                            led_pwm_stored  <= rx_value;
+                        end if;
                     when others => 
                         multiplier_stored <= multiplier_stored;
                   end case;
@@ -107,7 +97,7 @@ begin
                         rx_addr & multiplier_stored;
                         READ_DATA_READY <= '1';
                     when x"0002" => data_out <= 
-                        rx_addr & led_pwm;
+                        rx_addr & led_pwm_stored;
                         READ_DATA_READY <= '1';
                     when others => 
                         data_out <= error_message;

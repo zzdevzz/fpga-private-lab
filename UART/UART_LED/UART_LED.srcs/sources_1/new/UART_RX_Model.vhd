@@ -116,7 +116,94 @@ begin
     TX_STROBE <= '1';
     wait for STROBE_WIDTH_NS;
     TX_STROBE <= '0';
-    wait;
+    
+    
+    
+    -- SEND PWM PROCESS
+    
+    -- 'W'
+--    TX_DATA <= x"52"; -- 'R'
+    TX_DATA <= x"57";  -- 'W'
+    TX_STROBE <= '1';
+    wait for STROBE_WIDTH_NS;
+    TX_STROBE <= '0';
+    wait for INTER_BYTE_DELAY;
+
+    -- ' '
+    TX_DATA <= x"20";
+    TX_STROBE <= '1';
+    wait for STROBE_WIDTH_NS;
+    TX_STROBE <= '0';
+    wait for INTER_BYTE_DELAY;
+
+    -- '0'
+    TX_DATA <= x"30";
+    TX_STROBE <= '1';
+    wait for STROBE_WIDTH_NS;
+    TX_STROBE <= '0';
+    wait for INTER_BYTE_DELAY;
+
+    -- '0'
+    TX_DATA <= x"30";
+    TX_STROBE <= '1';
+    wait for STROBE_WIDTH_NS;
+    TX_STROBE <= '0';
+    wait for INTER_BYTE_DELAY;
+
+    -- '0'
+    TX_DATA <= x"30";
+    TX_STROBE <= '1';
+    wait for STROBE_WIDTH_NS;
+    TX_STROBE <= '0';
+    wait for INTER_BYTE_DELAY;
+
+    -- '2'
+    TX_DATA <= x"32";
+    TX_STROBE <= '1';
+    wait for STROBE_WIDTH_NS;
+    TX_STROBE <= '0';
+    wait for INTER_BYTE_DELAY;
+
+    -- ' '
+    TX_DATA <= x"20";
+    TX_STROBE <= '1';
+    wait for STROBE_WIDTH_NS;
+    TX_STROBE <= '0';
+    wait for INTER_BYTE_DELAY;
+
+     -- '1'
+    TX_DATA <= x"31";
+    TX_STROBE <= '1';
+    wait for STROBE_WIDTH_NS;
+    TX_STROBE <= '0';
+    wait for INTER_BYTE_DELAY;
+
+     -- '1'
+    TX_DATA <= x"31";
+    TX_STROBE <= '1';
+    wait for STROBE_WIDTH_NS;
+    TX_STROBE <= '0';
+    wait for INTER_BYTE_DELAY;
+
+    -- '1'
+    TX_DATA <= x"31";
+    TX_STROBE <= '1';
+    wait for STROBE_WIDTH_NS;
+    TX_STROBE <= '0';
+    wait for INTER_BYTE_DELAY;
+
+    -- '5'
+    TX_DATA <= x"35";
+    TX_STROBE <= '1';
+    wait for STROBE_WIDTH_NS;
+    TX_STROBE <= '0';
+    wait for INTER_BYTE_DELAY;
+
+    -- '\n'
+    TX_DATA <= x"0D"; -- Carriage Return (Enter key)
+    TX_STROBE <= '1';
+    wait for STROBE_WIDTH_NS;
+    TX_STROBE <= '0';
 
   end process;
 
