@@ -2,7 +2,7 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-// Date        : Mon Sep  8 14:09:43 2025
+// Date        : Wed Sep 10 11:05:34 2025
 // Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub {e:/FPGA/VHDL/Lab
 //               Training/UART/UART_LED/UART_LED.gen/sources_1/bd/top/ip/top_LED_Toggle_0_0/top_LED_Toggle_0_0_stub.v}

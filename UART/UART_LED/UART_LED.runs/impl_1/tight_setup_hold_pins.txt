@@ -1,0 +1,9 @@
++==========================+==========================+==================================================+
+| Launch Setup Clock       | Launch Hold Clock        | Pin                                              |
++==========================+==========================+==================================================+
+| clk_out1_top_clk_wiz_0_0 | clk_out1_top_clk_wiz_0_0 | top_i/LED_Toggle_0/U0/led_pwm_stored_reg[5]/D    |
+| clk_out1_top_clk_wiz_0_0 | clk_out1_top_clk_wiz_0_0 | top_i/LED_Toggle_0/U0/led_pwm_stored_reg[2]/D    |
+| clk_out1_top_clk_wiz_0_0 | clk_out1_top_clk_wiz_0_0 | top_i/LED_Toggle_0/U0/led_pwm_stored_reg[6]/D    |
+| clk_out1_top_clk_wiz_0_0 | clk_out1_top_clk_wiz_0_0 | top_i/LED_Toggle_0/U0/multiplier_stored_reg[3]/D |
+| clk_out1_top_clk_wiz_0_0 | clk_out1_top_clk_wiz_0_0 | top_i/LED_Toggle_0/U0/multiplier_stored_reg[0]/D |
++--------------------------+--------------------------+--------------------------------------------------+

@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Mon Sep  8 16:11:06 2025
+| Date         : Wed Sep 10 11:46:19 2025
 | Host         : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file top_wrapper_control_sets_placed.rpt
 | Design       : top_wrapper
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |    21 |
-|    Minimum number of control sets                        |    21 |
+| Total control sets                                       |    23 |
+|    Minimum number of control sets                        |    23 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    52 |
+| Unused register locations in slices containing registers |    60 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,15 +39,15 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |    21 |
+| Total control sets |    23 |
 | >= 0 to < 4        |     0 |
 | >= 4 to < 6        |     7 |
 | >= 6 to < 8        |     4 |
-| >= 8 to < 10       |     1 |
-| >= 10 to < 12      |     0 |
+| >= 8 to < 10       |     2 |
+| >= 10 to < 12      |     1 |
 | >= 12 to < 14      |     0 |
-| >= 14 to < 16      |     1 |
-| >= 16              |     8 |
+| >= 14 to < 16      |     2 |
+| >= 16              |     7 |
 +--------------------+-------+
 * Control sets can be remapped at either synth_design or opt_design
 
@@ -58,12 +58,12 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              32 |           14 |
+| No           | No                    | No                     |              32 |           16 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |              73 |           23 |
-| Yes          | No                    | No                     |             112 |           32 |
+| No           | Yes                   | No                     |              73 |           25 |
+| Yes          | No                    | No                     |             147 |           43 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |              51 |           13 |
+| Yes          | Yes                   | No                     |              40 |           13 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -73,27 +73,29 @@ Table of Contents
 +--------------------------------+------------------------------------------------------------+-----------------------------------------------------+------------------+----------------+--------------+
 |          Clock Signal          |                        Enable Signal                       |                   Set/Reset Signal                  | Slice Load Count | Bel Load Count | Bels / Slice |
 +--------------------------------+------------------------------------------------------------+-----------------------------------------------------+------------------+----------------+--------------+
-|  top_i/clk_wiz_0/inst/clk_out1 | top_i/LED_Toggle_0/U0/led_pwm_stored_0                     | top_i/LED_Toggle_0/U0/led_pwm_stored[4]_i_1_n_0     |                3 |              4 |         1.33 |
-|  top_i/clk_wiz_0/inst/clk_out1 | top_i/UART_RX_0/U0/current_index                           | top_i/UART_RX_0/U0/rx_byte_error0                   |                2 |              4 |         2.00 |
 |  top_i/clk_wiz_0/inst/clk_out1 | top_i/UART_TX_0/U0/current_index                           | top_i/UART_TX_0/U0/s_ready                          |                1 |              4 |         4.00 |
-|  top_i/clk_wiz_0/inst/clk_out1 | top_i/UART_CONTROLLER_0/U0/FSM_sequential_state[3]_i_1_n_0 |                                                     |                1 |              4 |         4.00 |
-|  top_i/clk_wiz_0/inst/clk_out1 | top_i/UART_CONTROLLER_0/U0/TX_DATA_HOLD_0                  | top_i/UART_CONTROLLER_0/U0/TX_DATA_HOLD[3]_i_1_n_0  |                1 |              4 |         4.00 |
+|  top_i/clk_wiz_0/inst/clk_out1 | top_i/UART_RX_0/U0/current_index                           | top_i/UART_RX_0/U0/rx_byte_error0                   |                1 |              4 |         4.00 |
+|  top_i/clk_wiz_0/inst/clk_out1 | top_i/LED_Toggle_0/U0/led_pwm_stored_0                     | top_i/LED_Toggle_0/U0/led_pwm_stored[4]_i_1_n_0     |                3 |              4 |         1.33 |
+|  top_i/clk_wiz_0/inst/clk_out1 | top_i/UART_CONTROLLER_0/U0/FSM_sequential_state[3]_i_1_n_0 |                                                     |                2 |              4 |         2.00 |
+|  top_i/clk_wiz_0/inst/clk_out1 | top_i/UART_CONTROLLER_0/U0/TX_DATA_HOLD_0                  | top_i/UART_CONTROLLER_0/U0/TX_DATA_HOLD[3]_i_1_n_0  |                2 |              4 |         2.00 |
 |  top_i/clk_wiz_0/inst/clk_out1 | top_i/UART_CONTROLLER_0/U0/byte_counter                    |                                                     |                2 |              4 |         2.00 |
-|  top_i/clk_wiz_0/inst/clk_out1 |                                                            | top_i/UART_RX_0/U0/baud_data_sample0                |                2 |              5 |         2.50 |
+|  top_i/clk_wiz_0/inst/clk_out1 |                                                            | top_i/UART_RX_0/U0/baud_data_sample0                |                3 |              5 |         1.67 |
 |  top_i/clk_wiz_0/inst/clk_out1 |                                                            | top_i/ASCII_LUT_0/U0/p_0_in                         |                2 |              6 |         3.00 |
 |  top_i/clk_wiz_0/inst/clk_out1 | top_i/UART_TX_0/U0/full_frame[8]_i_1_n_0                   |                                                     |                2 |              6 |         3.00 |
-|  top_i/clk_wiz_0/inst/clk_out1 | top_i/UART_CONTROLLER_0/U0/TX_BYTE_OUT_1                   |                                                     |                3 |              6 |         2.00 |
-|  top_i/clk_wiz_0/inst/clk_out1 |                                                            | top_i/ASCII_LUT_0/U0/S_RX_BYTE_OUT[3]_i_1_n_0       |                2 |              7 |         3.50 |
+|  top_i/clk_wiz_0/inst/clk_out1 | top_i/UART_CONTROLLER_0/U0/TX_BYTE_OUT_1                   |                                                     |                2 |              6 |         3.00 |
+|  top_i/clk_wiz_0/inst/clk_out1 |                                                            | top_i/ASCII_LUT_0/U0/S_RX_BYTE_OUT[3]_i_1_n_0       |                3 |              7 |         2.33 |
+|  top_i/clk_wiz_0/inst/clk_out1 | top_i/LED_Toggle_0/U0/data_out                             | top_i/LED_Toggle_0/U0/data_out[14]_i_1_n_0          |                2 |              8 |         4.00 |
 |  top_i/clk_wiz_0/inst/clk_out1 |                                                            | top_i/UART_RX_0/U0/bit_time_counter[13]_i_1_n_0     |                5 |              9 |         1.80 |
+|  top_i/clk_wiz_0/inst/clk_out1 | top_i/LED_Toggle_0/U0/data_out                             |                                                     |                3 |             10 |         3.33 |
 |  top_i/clk_wiz_0/inst/clk_out1 |                                                            | top_i/UART_TX_0/U0/clear                            |                4 |             14 |         3.50 |
-|  top_i/clk_wiz_0/inst/clk_out1 | top_i/LED_Toggle_0/U0/multiplier_stored_1                  |                                                     |                8 |             16 |         2.00 |
-|  top_i/clk_wiz_0/inst/clk_out1 | top_i/UART_CONTROLLER_0/U0/data_buildup[31]                |                                                     |                5 |             16 |         3.20 |
-|  top_i/clk_wiz_0/inst/clk_out1 | top_i/UART_CONTROLLER_0/U0/data_buildup[15]                | top_i/UART_CONTROLLER_0/U0/data_buildup[15]_i_1_n_0 |                3 |             16 |         5.33 |
-|  top_i/clk_wiz_0/inst/clk_out1 | top_i/LED_Toggle_0/U0/data_out[31]_i_2_n_0                 | top_i/LED_Toggle_0/U0/data_out[31]_i_1_n_0          |                3 |             19 |         6.33 |
-|  top_i/clk_wiz_0/inst/clk_out1 | top_i/UART_CONTROLLER_0/U0/TX_DATA_HOLD_0                  |                                                     |                5 |             28 |         5.60 |
-|  top_i/clk_wiz_0/inst/clk_out1 |                                                            |                                                     |               14 |             32 |         2.29 |
+|  top_i/clk_wiz_0/inst/clk_out1 | top_i/LED_Toggle_0/U0/multiplier_stored_2                  |                                                     |                4 |             15 |         3.75 |
+|  top_i/clk_wiz_0/inst/clk_out1 | top_i/UART_CONTROLLER_0/U0/data_buildup[15]                | top_i/UART_CONTROLLER_0/U0/data_buildup[15]_i_1_n_0 |                4 |             16 |         4.00 |
+|  top_i/clk_wiz_0/inst/clk_out1 | top_i/UART_CONTROLLER_0/U0/data_buildup[31]                |                                                     |                3 |             16 |         5.33 |
+|  top_i/clk_wiz_0/inst/clk_out1 | top_i/LED_Toggle_0/U0/led_pwm_duty_1                       |                                                     |               13 |             26 |         2.00 |
+|  top_i/clk_wiz_0/inst/clk_out1 | top_i/UART_CONTROLLER_0/U0/TX_DATA_HOLD_0                  |                                                     |                4 |             28 |         7.00 |
+|  top_i/clk_wiz_0/inst/clk_out1 |                                                            |                                                     |               16 |             32 |         2.00 |
 |  top_i/clk_wiz_0/inst/clk_out1 |                                                            | top_i/LED_Toggle_0/U0/counter                       |                8 |             32 |         4.00 |
-|  top_i/clk_wiz_0/inst/clk_out1 | top_i/UART_CONTROLLER_0/U0/RX_DATA_FULL[31]_i_1_n_0        |                                                     |                6 |             32 |         5.33 |
+|  top_i/clk_wiz_0/inst/clk_out1 | top_i/UART_CONTROLLER_0/U0/RX_DATA_FULL[31]_i_1_n_0        |                                                     |                8 |             32 |         4.00 |
 +--------------------------------+------------------------------------------------------------+-----------------------------------------------------+------------------+----------------+--------------+
 
 

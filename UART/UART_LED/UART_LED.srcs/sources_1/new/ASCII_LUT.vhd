@@ -1,30 +1,13 @@
-----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date: 08/19/2025 10:21:05 AM
--- Design Name: 
--- Module Name: ASCII_LUT - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
--- Description: 
--- 
--- Dependencies: 
--- 
--- Revision:
--- Revision 0.01 - File Created
--- Additional Comments:
--- 
-----------------------------------------------------------------------------------
-
+-- used to convert ascii numbers to their decimal equilevent and other keyboard characters.
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use ieee.numeric_std.all;
 
 -- Whole point of this is when we type 0 on keyboard, or enter. we know exactly whats pressed and can map it to its correct decimal value.
-
+-- this will take in both rx data and tx data when complete. when ready its sends a signal pulse.
+-- this pulse will go through a LUT. and then output what we need to send back to the terminal. and a pulse when ready.
+    
 -- https://www.eso.org/~ndelmott/ascii.html
 -- Even though Max bit output needed is 4, it's kept at 8 bits for future updated incase characters are introduced.
 
@@ -45,11 +28,7 @@ entity ASCII_LUT is
 end ASCII_LUT;
 
 architecture Behavioral of ASCII_LUT is
-    -- rough logic.
-    -- this will take in both rx data and tx data when complete. when ready its sends a signal pulse.
-    -- this pulse will go through a LUT. and then output what we need to send back to the terminal. and a pulse when ready.
 
-    --to_unsigned, lets us convert decimal to bits, but we need to specify bit width after.
     constant NO_CHAR : std_logic_vector (2 downto 0) := std_logic_vector(to_unsigned(0,3)); --when we press reset/nothing to be givne
     constant DATA : std_logic_vector (2 downto 0) := std_logic_vector(to_unsigned(1,3)); --when they press a valid number
     constant READ : std_logic_vector (2 downto 0) := std_logic_vector(to_unsigned(2,3)); --either R or r
@@ -71,7 +50,7 @@ architecture Behavioral of ASCII_LUT is
                 RX_BYTE_OUT_READY <= '1';
                 data_int :=to_integer(unsigned(RX_BYTE)); --split this from below so we can see value as debug.
                 case data_int is --converts binary to decimal values.
-                    -- map the ascii character to the "actual" number represenatitive on the keyboard.
+
 
                     --MISC CHARACTERS
 

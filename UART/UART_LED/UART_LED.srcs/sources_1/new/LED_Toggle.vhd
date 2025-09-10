@@ -15,6 +15,8 @@ entity LED_Toggle is
         WE: in std_logic := '0';
         READ_DATA_OUT: out std_logic_vector(31 downto 0);
         READ_DATA_READY: out std_logic := '0';
+        
+        -- debug
         led : out std_logic_vector(7 downto 0)
     );
 end LED_Toggle;
@@ -22,14 +24,15 @@ end LED_Toggle;
 architecture Behavioral of LED_Toggle is
 
     --frequency
-    signal counter_base : integer := 100_000;
-    signal multiplier_stored : std_logic_vector(15 downto 0) := "0000000000000001"; --actual value stored in register.
+    signal counter_base : integer := 1_000_000;
+    signal multiplier_stored : std_logic_vector(15 downto 0) := "0000000001100100"; --actual value stored in register.
     signal counter_max : integer := counter_base * to_integer(unsigned(multiplier_stored)); --value above in integer form for calculation.
 
     --duty cycle activity.
     signal led_pwm_stored    : std_logic_vector(15 downto 0) := "0000000000110010"; --base 50% pwm
     signal led_pwm_percent : integer := to_integer(unsigned(led_pwm_stored)); --value above in integer form for calculation.
-
+    signal led_pwm_duty: integer:= (( counter_max * led_pwm_percent ) / 100);
+    
     signal counter : integer := 0;
     signal LED_ON: std_logic := '0';
 
@@ -66,7 +69,7 @@ begin
     begin
         if rising_edge(clock_100) then
             count_int <= (( counter_max * led_pwm_percent ) / 100);
-            if counter < (( counter_max * led_pwm_percent ) / 100) then
+            if counter < led_pwm_duty then
                 counter <= counter + 1;
                 LED_ON <= '1';
             elsif counter < counter_max then --for one full cycle.
@@ -89,7 +92,7 @@ begin
             if RX_data_ready = '1' then
                 rx_addr := RX_data(31 downto 16);
                 rx_value := HexToDec(RX_data(15 downto 0));
-
+                
                 if WE = '1' then --write enabled
                     case rx_addr is
                         when x"0001" =>
@@ -103,6 +106,7 @@ begin
                             else
                                 led_pwm_stored  <= rx_value;
                                 led_pwm_percent <= to_integer(unsigned(rx_value));
+                                led_pwm_duty <= ( counter_max * ( to_integer(unsigned(rx_value))) ) / 100;
                             end if;
 
                             temp_counter_debug_bits <= rx_value;

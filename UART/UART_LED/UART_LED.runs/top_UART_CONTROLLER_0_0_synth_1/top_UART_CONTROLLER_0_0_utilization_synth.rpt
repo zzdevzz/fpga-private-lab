@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Fri Sep  5 16:27:41 2025
+| Date         : Wed Sep 10 11:44:53 2025
 | Host         : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 | Command      : report_utilization -file top_UART_CONTROLLER_0_0_utilization_synth.rpt -pb top_UART_CONTROLLER_0_0_utilization_synth.pb
 | Design       : top_UART_CONTROLLER_0_0

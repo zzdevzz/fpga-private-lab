@@ -142,8 +142,6 @@ begin
                             else
                                 state <= S_IDLE;
                             end if;
-                        --                        elsif ASCII_TYPE = SPACE then
-                        --                            state <= S_SPACE_2;
                         else
                             state <= S_IDLE;
                         end if;

@@ -3,8 +3,8 @@
 # SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Fri Sep  5 16:27:07 2025
-# Process ID: 9752
+# Start of session at: Wed Sep 10 11:44:18 2025
+# Process ID: 18148
 # Current directory: E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.runs/top_UART_CONTROLLER_0_0_synth_1
 # Command line: vivado.exe -log top_UART_CONTROLLER_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top_UART_CONTROLLER_0_0.tcl
 # Log file: E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.runs/top_UART_CONTROLLER_0_0_synth_1/top_UART_CONTROLLER_0_0.vds
@@ -12,7 +12,7 @@
 # Running On: DESKTOP-EFRMAI2, OS: Windows, CPU Frequency: 3700 MHz, CPU Physical cores: 24, Host memory: 34281 MB
 #-----------------------------------------------------------
 source top_UART_CONTROLLER_0_0.tcl -notrace
-create_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 512.297 ; gain = 219.934
+create_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 511.457 ; gain = 218.230
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1700] Loaded user IP repository 'j:/Xilinx/Vivado/vivado-library-master'.
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'J:/Xilinx/Vivado/2023.2/data/ip'.
@@ -25,9 +25,9 @@ INFO: [Device 21-403] Loading part xc7a35tcpg236-1
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
 WARNING: [Common 17-1361] You have specified a new message control rule that is equivalent to an existing rule with attributes ' -id {17-179}  -suppress '. The existing rule will be replaced.
-INFO: [Synth 8-7075] Helper process launched with PID 40464
+INFO: [Synth 8-7075] Helper process launched with PID 35500
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1365.641 ; gain = 440.828
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1365.180 ; gain = 439.152
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'top_UART_CONTROLLER_0_0' [e:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.gen/sources_1/bd/top/ip/top_UART_CONTROLLER_0_0/synth/top_UART_CONTROLLER_0_0.vhd:73]
 INFO: [Synth 8-3491] module 'UART_CONTROLLER' declared at 'E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.srcs/sources_1/new/UART_Controller.vhd:32' bound to instance 'U0' of component 'UART_CONTROLLER' [e:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.gen/sources_1/bd/top/ip/top_UART_CONTROLLER_0_0/synth/top_UART_CONTROLLER_0_0.vhd:105]
@@ -35,53 +35,53 @@ INFO: [Synth 8-638] synthesizing module 'UART_CONTROLLER' [E:/FPGA/VHDL/Lab Trai
 INFO: [Synth 8-256] done synthesizing module 'UART_CONTROLLER' (0#1) [E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.srcs/sources_1/new/UART_Controller.vhd:56]
 INFO: [Synth 8-256] done synthesizing module 'top_UART_CONTROLLER_0_0' (0#1) [e:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.gen/sources_1/bd/top/ip/top_UART_CONTROLLER_0_0/synth/top_UART_CONTROLLER_0_0.vhd:73]
 WARNING: [Synth 8-6014] Unused sequential element D_ACK_reg was removed.  [E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.srcs/sources_1/new/UART_Controller.vhd:107]
-WARNING: [Synth 8-6014] Unused sequential element RX_address_reg was removed.  [E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.srcs/sources_1/new/UART_Controller.vhd:182]
-WARNING: [Synth 8-6014] Unused sequential element RX_data_reg was removed.  [E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.srcs/sources_1/new/UART_Controller.vhd:183]
-WARNING: [Synth 8-6014] Unused sequential element TX_DATA_LATCH_reg was removed.  [E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.srcs/sources_1/new/UART_Controller.vhd:201]
+WARNING: [Synth 8-6014] Unused sequential element RX_address_reg was removed.  [E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.srcs/sources_1/new/UART_Controller.vhd:180]
+WARNING: [Synth 8-6014] Unused sequential element RX_data_reg was removed.  [E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.srcs/sources_1/new/UART_Controller.vhd:181]
+WARNING: [Synth 8-6014] Unused sequential element TX_DATA_LATCH_reg was removed.  [E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.srcs/sources_1/new/UART_Controller.vhd:199]
 WARNING: [Synth 8-7129] Port RX_BYTE[7] in module UART_CONTROLLER is either unconnected or has no load
 WARNING: [Synth 8-7129] Port RX_BYTE[6] in module UART_CONTROLLER is either unconnected or has no load
 WARNING: [Synth 8-7129] Port RX_BYTE[5] in module UART_CONTROLLER is either unconnected or has no load
 WARNING: [Synth 8-7129] Port RX_BYTE[4] in module UART_CONTROLLER is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1475.102 ; gain = 550.289
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1475.961 ; gain = 549.934
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1475.102 ; gain = 550.289
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1475.961 ; gain = 549.934
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1475.102 ; gain = 550.289
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1475.961 ; gain = 549.934
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 1475.102 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.006 . Memory (MB): peak = 1475.961 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1549.738 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1570.488 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.014 . Memory (MB): peak = 1549.785 ; gain = 0.047
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.014 . Memory (MB): peak = 1570.504 ; gain = 0.016
 INFO: [Designutils 20-5008] Incremental synthesis strategy off
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1549.785 ; gain = 624.973
+Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1570.504 ; gain = 644.477
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1549.785 ; gain = 624.973
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1570.504 ; gain = 644.477
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1549.785 ; gain = 624.973
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1570.504 ; gain = 644.477
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'UART_CONTROLLER'
 ---------------------------------------------------------------------------------------------------
@@ -99,7 +99,7 @@ INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'UART_
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'UART_CONTROLLER'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1549.785 ; gain = 624.973
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1570.504 ; gain = 644.477
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -147,25 +147,25 @@ WARNING: [Synth 8-7129] Port RX_BYTE[6] in module top_UART_CONTROLLER_0_0 is eit
 WARNING: [Synth 8-7129] Port RX_BYTE[5] in module top_UART_CONTROLLER_0_0 is either unconnected or has no load
 WARNING: [Synth 8-7129] Port RX_BYTE[4] in module top_UART_CONTROLLER_0_0 is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 1549.785 ; gain = 624.973
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 1570.504 ; gain = 644.477
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 1549.785 ; gain = 624.973
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 1570.504 ; gain = 644.477
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 1549.785 ; gain = 624.973
+Finished Timing Optimization : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 1570.504 ; gain = 644.477
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 1549.785 ; gain = 624.973
+Finished Technology Mapping : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 1570.504 ; gain = 644.477
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -183,37 +183,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:21 ; elapsed = 00:00:21 . Memory (MB): peak = 1549.785 ; gain = 624.973
+Finished IO Insertion : Time (s): cpu = 00:00:21 ; elapsed = 00:00:21 . Memory (MB): peak = 1570.504 ; gain = 644.477
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:21 ; elapsed = 00:00:21 . Memory (MB): peak = 1549.785 ; gain = 624.973
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:21 ; elapsed = 00:00:21 . Memory (MB): peak = 1570.504 ; gain = 644.477
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:21 ; elapsed = 00:00:21 . Memory (MB): peak = 1549.785 ; gain = 624.973
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:21 ; elapsed = 00:00:21 . Memory (MB): peak = 1570.504 ; gain = 644.477
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:21 ; elapsed = 00:00:21 . Memory (MB): peak = 1549.785 ; gain = 624.973
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:21 ; elapsed = 00:00:21 . Memory (MB): peak = 1570.504 ; gain = 644.477
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:21 ; elapsed = 00:00:21 . Memory (MB): peak = 1549.785 ; gain = 624.973
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:21 ; elapsed = 00:00:21 . Memory (MB): peak = 1570.504 ; gain = 644.477
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:21 ; elapsed = 00:00:21 . Memory (MB): peak = 1549.785 ; gain = 624.973
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:21 ; elapsed = 00:00:21 . Memory (MB): peak = 1570.504 ; gain = 644.477
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -237,16 +237,16 @@ Report Cell Usage:
 |6     |FDRE |   113|
 +------+-----+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:21 ; elapsed = 00:00:21 . Memory (MB): peak = 1549.785 ; gain = 624.973
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:21 ; elapsed = 00:00:21 . Memory (MB): peak = 1570.504 ; gain = 644.477
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 5 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:14 ; elapsed = 00:00:20 . Memory (MB): peak = 1549.785 ; gain = 550.289
-Synthesis Optimization Complete : Time (s): cpu = 00:00:21 ; elapsed = 00:00:21 . Memory (MB): peak = 1549.785 ; gain = 624.973
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:14 ; elapsed = 00:00:20 . Memory (MB): peak = 1570.504 ; gain = 549.934
+Synthesis Optimization Complete : Time (s): cpu = 00:00:21 ; elapsed = 00:00:21 . Memory (MB): peak = 1570.504 ; gain = 644.477
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1549.785 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1570.504 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1549.785 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1570.504 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
@@ -254,11 +254,11 @@ Synth Design complete | Checksum: fbb94cdc
 INFO: [Common 17-83] Releasing license: Synthesis
 26 Infos, 14 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 1549.785 ; gain = 1013.086
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1549.785 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 1570.504 ; gain = 1035.305
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1570.504 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.runs/top_UART_CONTROLLER_0_0_synth_1/top_UART_CONTROLLER_0_0.dcp' has been generated.
-INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP top_UART_CONTROLLER_0_0, cache-ID = 9ea8bedd63aebee7
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1549.785 ; gain = 0.000
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP top_UART_CONTROLLER_0_0, cache-ID = 7e9fb4e128ab2735
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1570.504 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'E:/FPGA/VHDL/Lab Training/UART/UART_LED/UART_LED.runs/top_UART_CONTROLLER_0_0_synth_1/top_UART_CONTROLLER_0_0.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file top_UART_CONTROLLER_0_0_utilization_synth.rpt -pb top_UART_CONTROLLER_0_0_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Fri Sep  5 16:27:41 2025...
+INFO: [Common 17-206] Exiting Vivado at Wed Sep 10 11:44:53 2025...
