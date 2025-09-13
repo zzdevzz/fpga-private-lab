@@ -115,6 +115,7 @@ proc step_failed { step } {
 OPTRACE "impl_1" END { }
 }
 
+set_msg_config -id {Common 17-41} -limit 10000000
 set_msg_config  -id {XSIM 43-3225}  -string {{ERROR: [XSIM 43-3225] Cannot find design unit xil_defaultlib.task_1_2_tb in library work located at xsim.dir/work.}}  -suppress 
 
 OPTRACE "impl_1" START { ROLLUP_1 }
@@ -124,6 +125,7 @@ set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
   set_param tcl.collectionResultDisplayLimit 0
+  set_param tcl.statsThreshold 360
   set_param chipscope.maxJobs 6
   set_param xicom.use_bs_reader 1
   set_param runs.launchOptions { -jobs 12  }

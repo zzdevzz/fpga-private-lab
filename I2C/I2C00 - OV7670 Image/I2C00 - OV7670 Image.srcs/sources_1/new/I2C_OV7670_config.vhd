@@ -40,7 +40,7 @@ use IEEE.NUMERIC_STD.ALL;
 --...
 
 entity I2C_OV7670_config is
-  Port ( 
+  Port (
     index : in std_logic_vector(1 downto 0);  -- 2 bits for 0..3
     reg_addr : out std_logic_vector(7 downto 0);
     reg_data : out std_logic_vector(7 downto 0)

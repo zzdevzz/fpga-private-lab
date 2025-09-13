@@ -2,7 +2,7 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-// Date        : Fri Aug  8 21:24:27 2025
+// Date        : Sat Aug  9 15:24:47 2025
 // Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim {e:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670
 //               Image.gen/sources_1/bd/top/ip/top_I2C_OV7670_Master_0_0/top_I2C_OV7670_Master_0_0_sim_netlist.v}
@@ -50,7 +50,7 @@ module top_I2C_OV7670_Master_0_0
   output [7:0]shift_reg_full_debug;
   output [2:0]current_index_bebug;
   output scl_en_debug;
-  output [1:0]i2c_data_read;
+  output [3:0]i2c_data_read;
   output [2:0]state_debug;
   output [3:0]simple_state_debug;
   output ov7670_pwdn;
@@ -79,6 +79,8 @@ module top_I2C_OV7670_Master_0_0
   assign bit_counter_debug[3:0] = \^bit_counter_debug [3:0];
   assign current_index_bebug[2] = \<const0> ;
   assign current_index_bebug[1:0] = \^current_index_bebug [1:0];
+  assign i2c_data_read[3] = \<const0> ;
+  assign i2c_data_read[2] = \<const0> ;
   assign i2c_data_read[1:0] = \^current_index_bebug [1:0];
   assign ov7670_pwdn = \<const0> ;
   assign shift_reg_debug[7:1] = \^shift_reg_debug [7:1];
@@ -91,15 +93,11 @@ module top_I2C_OV7670_Master_0_0
        (.\FSM_sequential_state_reg[0]_0 (state_debug[0]),
         .\FSM_sequential_state_reg[1]_0 (state_debug[1]),
         .\FSM_sequential_state_reg[2]_0 (state_debug[2]),
-        .\bit_counter_reg[0]_0 (\^bit_counter_debug [0]),
-        .\bit_counter_reg[1]_0 (\^bit_counter_debug [1]),
-        .\bit_counter_reg[2]_0 (\^bit_counter_debug [2]),
-        .\bit_counter_reg[3]_0 (\^bit_counter_debug [3]),
+        .Q(\^bit_counter_debug ),
         .\byte_counter_reg[0]_0 (byte_counter_debug[0]),
         .\byte_counter_reg[1]_0 (byte_counter_debug[1]),
         .clk_100(clk_100),
-        .\current_index_reg[0]_0 (\^current_index_bebug [0]),
-        .\current_index_reg[1]_0 (\^current_index_bebug [1]),
+        .current_index_bebug(\^current_index_bebug ),
         .ov7670_reset(ov7670_reset),
         .reset(reset),
         .scl_en_reg_0(scl_en_debug),
@@ -119,19 +117,15 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
    (\FSM_sequential_state_reg[1]_0 ,
     \FSM_sequential_state_reg[0]_0 ,
     \FSM_sequential_state_reg[2]_0 ,
-    \byte_counter_reg[1]_0 ,
     \byte_counter_reg[0]_0 ,
-    scl_reg_0,
-    \bit_counter_reg[2]_0 ,
-    \bit_counter_reg[1]_0 ,
-    \bit_counter_reg[0]_0 ,
-    \bit_counter_reg[3]_0 ,
-    \current_index_reg[1]_0 ,
-    \current_index_reg[0]_0 ,
+    \byte_counter_reg[1]_0 ,
+    Q,
     shift_reg_full_debug,
     shift_reg_debug,
+    current_index_bebug,
     simple_state_debug,
     sda_out,
+    scl_reg_0,
     scl_en_reg_0,
     sda_oe,
     ov7670_reset,
@@ -143,19 +137,15 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
   output \FSM_sequential_state_reg[1]_0 ;
   output \FSM_sequential_state_reg[0]_0 ;
   output \FSM_sequential_state_reg[2]_0 ;
-  output \byte_counter_reg[1]_0 ;
   output \byte_counter_reg[0]_0 ;
-  output scl_reg_0;
-  output \bit_counter_reg[2]_0 ;
-  output \bit_counter_reg[1]_0 ;
-  output \bit_counter_reg[0]_0 ;
-  output \bit_counter_reg[3]_0 ;
-  output \current_index_reg[1]_0 ;
-  output \current_index_reg[0]_0 ;
+  output \byte_counter_reg[1]_0 ;
+  output [3:0]Q;
   output [7:0]shift_reg_full_debug;
   output [6:0]shift_reg_debug;
+  output [1:0]current_index_bebug;
   output [2:0]simple_state_debug;
   output sda_out;
+  output scl_reg_0;
   output scl_en_reg_0;
   output sda_oe;
   output ov7670_reset;
@@ -168,29 +158,19 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
   wire \FSM_sequential_state[0]_i_1_n_0 ;
   wire \FSM_sequential_state[0]_i_2_n_0 ;
   wire \FSM_sequential_state[1]_i_1_n_0 ;
-  wire \FSM_sequential_state[1]_i_2_n_0 ;
-  wire \FSM_sequential_state[1]_i_3_n_0 ;
-  wire \FSM_sequential_state[1]_i_4_n_0 ;
   wire \FSM_sequential_state[2]_i_1_n_0 ;
   wire \FSM_sequential_state[2]_i_2_n_0 ;
   wire \FSM_sequential_state[2]_i_3_n_0 ;
-  wire \FSM_sequential_state[2]_i_4_n_0 ;
-  wire \FSM_sequential_state[2]_i_5_n_0 ;
   wire \FSM_sequential_state_reg[0]_0 ;
   wire \FSM_sequential_state_reg[1]_0 ;
   wire \FSM_sequential_state_reg[2]_0 ;
+  wire [3:0]Q;
   wire bit_counter;
   wire \bit_counter[0]_i_1_n_0 ;
   wire \bit_counter[1]_i_1_n_0 ;
   wire \bit_counter[2]_i_1_n_0 ;
-  wire \bit_counter[3]_i_1_n_0 ;
+  wire \bit_counter[3]_i_2_n_0 ;
   wire \bit_counter[3]_i_3_n_0 ;
-  wire \bit_counter[3]_i_4_n_0 ;
-  wire \bit_counter[3]_i_5_n_0 ;
-  wire \bit_counter_reg[0]_0 ;
-  wire \bit_counter_reg[1]_0 ;
-  wire \bit_counter_reg[2]_0 ;
-  wire \bit_counter_reg[3]_0 ;
   wire \byte_counter[0]_i_1_n_0 ;
   wire \byte_counter[1]_i_1_n_0 ;
   wire \byte_counter_reg[0]_0 ;
@@ -198,14 +178,13 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
   wire clk_100;
   wire \current_index[0]_i_1_n_0 ;
   wire \current_index[1]_i_1_n_0 ;
-  wire \current_index_reg[0]_0 ;
-  wire \current_index_reg[1]_0 ;
+  wire [1:0]current_index_bebug;
   wire current_reset;
   wire ov7670_reset;
   wire ov7670_reset_s_i_1_n_0;
   wire ov7670_reset_s_i_2_n_0;
   wire ov7670_reset_s_i_3_n_0;
-  wire [8:1]p_0_in;
+  wire [8:0]p_0_in;
   wire prev_reset;
   wire reset;
   wire reset_activated122_out;
@@ -224,9 +203,6 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
   wire reset_activated_i_1_n_0;
   wire reset_activated_i_2_n_0;
   wire reset_activated_reg_n_0;
-  wire \scl_cnt[0]_i_1_n_0 ;
-  wire \scl_cnt[6]_i_2_n_0 ;
-  wire \scl_cnt[7]_i_2_n_0 ;
   wire \scl_cnt[8]_i_1_n_0 ;
   wire \scl_cnt[8]_i_3_n_0 ;
   wire [8:0]scl_cnt_reg;
@@ -236,7 +212,6 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
   wire scl_i_2_n_0;
   wire scl_reg_0;
   wire scl_rise_i_1_n_0;
-  wire scl_rise_i_2_n_0;
   wire scl_rise_reg_n_0;
   wire scl_safe_change_i_1_n_0;
   wire scl_safe_change_i_2_n_0;
@@ -249,9 +224,13 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
   wire sda_oe_i_1_n_0;
   wire sda_oe_i_2_n_0;
   wire sda_oe_i_3_n_0;
+  wire sda_oe_i_4_n_0;
+  wire sda_oe_i_5_n_0;
+  wire sda_oe_i_6_n_0;
   wire sda_out;
   wire sda_out_i_1_n_0;
   wire sda_out_i_2_n_0;
+  wire sda_out_i_3_n_0;
   wire \shift_reg[1]_i_1_n_0 ;
   wire \shift_reg[2]_i_1_n_0 ;
   wire \shift_reg[3]_i_1_n_0 ;
@@ -262,6 +241,7 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
   wire \shift_reg[7]_i_2_n_0 ;
   wire \shift_reg[7]_i_3_n_0 ;
   wire [6:0]shift_reg_debug;
+  wire shift_reg_full;
   wire \shift_reg_full[0]_i_1_n_0 ;
   wire \shift_reg_full[1]_i_1_n_0 ;
   wire \shift_reg_full[2]_i_1_n_0 ;
@@ -269,14 +249,12 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
   wire \shift_reg_full[4]_i_1_n_0 ;
   wire \shift_reg_full[5]_i_1_n_0 ;
   wire \shift_reg_full[6]_i_1_n_0 ;
-  wire \shift_reg_full[7]_i_1_n_0 ;
   wire \shift_reg_full[7]_i_2_n_0 ;
   wire [7:0]shift_reg_full_debug;
   wire [2:0]simple_state_debug;
   wire \simple_state_debug[0]_i_1_n_0 ;
   wire \simple_state_debug[1]_i_1_n_0 ;
   wire \simple_state_debug[2]_i_1_n_0 ;
-  wire \simple_state_debug[2]_i_2_n_0 ;
   wire [7:0]slave_reg_addr;
   wire [7:0]slave_reg_data;
   wire start_counter;
@@ -311,6 +289,7 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
   wire \start_counter_reg[8]_i_1_n_7 ;
   wire start_setup_i_1_n_0;
   wire start_setup_reg_n_0;
+  wire [1:1]state;
   wire state_pre_ack_i_1_n_0;
   wire state_pre_ack_reg_n_0;
   wire [3:0]NLW_reset_activated2_carry_O_UNCONNECTED;
@@ -318,104 +297,69 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
   wire [3:2]\NLW_start_counter_reg[12]_i_1_O_UNCONNECTED ;
 
   LUT6 #(
-    .INIT(64'h00F0FFFFEFEF0000)) 
+    .INIT(64'h0055FFFFFFFC0000)) 
     \FSM_sequential_state[0]_i_1 
-       (.I0(scl_safe_sample_reg_n_0),
+       (.I0(state_pre_ack_reg_n_0),
         .I1(scl_safe_change_reg_n_0),
-        .I2(\FSM_sequential_state[0]_i_2_n_0 ),
-        .I3(state_pre_ack_reg_n_0),
-        .I4(\FSM_sequential_state[2]_i_4_n_0 ),
+        .I2(scl_safe_sample_reg_n_0),
+        .I3(\FSM_sequential_state[0]_i_2_n_0 ),
+        .I4(\FSM_sequential_state[2]_i_2_n_0 ),
         .I5(\FSM_sequential_state_reg[0]_0 ),
         .O(\FSM_sequential_state[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT2 #(
-    .INIT(4'h2)) 
+    .INIT(4'hB)) 
     \FSM_sequential_state[0]_i_2 
-       (.I0(\FSM_sequential_state_reg[2]_0 ),
-        .I1(\FSM_sequential_state_reg[1]_0 ),
-        .O(\FSM_sequential_state[0]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'hFF45FFFFFF000000)) 
-    \FSM_sequential_state[1]_i_1 
-       (.I0(\FSM_sequential_state_reg[0]_0 ),
-        .I1(\FSM_sequential_state[1]_i_2_n_0 ),
-        .I2(\FSM_sequential_state[1]_i_3_n_0 ),
-        .I3(\FSM_sequential_state[1]_i_4_n_0 ),
-        .I4(\FSM_sequential_state[2]_i_4_n_0 ),
-        .I5(\FSM_sequential_state_reg[1]_0 ),
-        .O(\FSM_sequential_state[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair7" *) 
-  LUT2 #(
-    .INIT(4'h7)) 
-    \FSM_sequential_state[1]_i_2 
-       (.I0(\byte_counter_reg[1]_0 ),
+       (.I0(\FSM_sequential_state_reg[1]_0 ),
         .I1(\FSM_sequential_state_reg[2]_0 ),
-        .O(\FSM_sequential_state[1]_i_2_n_0 ));
-  LUT2 #(
-    .INIT(4'h7)) 
-    \FSM_sequential_state[1]_i_3 
-       (.I0(\current_index_reg[0]_0 ),
-        .I1(\current_index_reg[1]_0 ),
-        .O(\FSM_sequential_state[1]_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
-  LUT5 #(
-    .INIT(32'h0000BAAA)) 
-    \FSM_sequential_state[1]_i_4 
+        .O(\FSM_sequential_state[0]_i_2_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \FSM_sequential_state[1]_i_1 
+       (.I0(state),
+        .I1(\FSM_sequential_state[2]_i_2_n_0 ),
+        .I2(\FSM_sequential_state_reg[1]_0 ),
+        .O(\FSM_sequential_state[1]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h0F040FF40FF00FF0)) 
+    \FSM_sequential_state[1]_i_2 
+       (.I0(scl_safe_sample_reg_n_0),
+        .I1(scl_safe_change_reg_n_0),
+        .I2(\FSM_sequential_state_reg[1]_0 ),
+        .I3(\FSM_sequential_state_reg[0]_0 ),
+        .I4(\byte_counter_reg[1]_0 ),
+        .I5(\FSM_sequential_state_reg[2]_0 ),
+        .O(state));
+  LUT6 #(
+    .INIT(64'h0F0EFFFFF0000000)) 
+    \FSM_sequential_state[2]_i_1 
+       (.I0(scl_safe_change_reg_n_0),
+        .I1(scl_safe_sample_reg_n_0),
+        .I2(\FSM_sequential_state_reg[1]_0 ),
+        .I3(\FSM_sequential_state_reg[0]_0 ),
+        .I4(\FSM_sequential_state[2]_i_2_n_0 ),
+        .I5(\FSM_sequential_state_reg[2]_0 ),
+        .O(\FSM_sequential_state[2]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFFFFFF05A7A7A)) 
+    \FSM_sequential_state[2]_i_2 
        (.I0(\FSM_sequential_state_reg[0]_0 ),
+        .I1(\bit_counter[3]_i_3_n_0 ),
+        .I2(\FSM_sequential_state_reg[1]_0 ),
+        .I3(scl_reg_0),
+        .I4(\FSM_sequential_state_reg[2]_0 ),
+        .I5(\FSM_sequential_state[2]_i_3_n_0 ),
+        .O(\FSM_sequential_state[2]_i_2_n_0 ));
+  LUT5 #(
+    .INIT(32'h0000FCAA)) 
+    \FSM_sequential_state[2]_i_3 
+       (.I0(start_setup_reg_n_0),
         .I1(scl_safe_sample_reg_n_0),
         .I2(scl_safe_change_reg_n_0),
         .I3(\FSM_sequential_state_reg[2]_0 ),
-        .I4(\FSM_sequential_state_reg[1]_0 ),
-        .O(\FSM_sequential_state[1]_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair7" *) 
-  LUT4 #(
-    .INIT(16'hEFC0)) 
-    \FSM_sequential_state[2]_i_1 
-       (.I0(\FSM_sequential_state[2]_i_2_n_0 ),
-        .I1(\FSM_sequential_state[2]_i_3_n_0 ),
-        .I2(\FSM_sequential_state[2]_i_4_n_0 ),
-        .I3(\FSM_sequential_state_reg[2]_0 ),
-        .O(\FSM_sequential_state[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
-  LUT4 #(
-    .INIT(16'h5554)) 
-    \FSM_sequential_state[2]_i_2 
-       (.I0(\FSM_sequential_state_reg[1]_0 ),
-        .I1(scl_safe_change_reg_n_0),
-        .I2(scl_safe_sample_reg_n_0),
-        .I3(\FSM_sequential_state_reg[0]_0 ),
-        .O(\FSM_sequential_state[2]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h0A800A000A000A00)) 
-    \FSM_sequential_state[2]_i_3 
-       (.I0(\FSM_sequential_state_reg[1]_0 ),
-        .I1(\byte_counter_reg[1]_0 ),
-        .I2(\FSM_sequential_state_reg[2]_0 ),
-        .I3(\FSM_sequential_state_reg[0]_0 ),
-        .I4(\current_index_reg[0]_0 ),
-        .I5(\current_index_reg[1]_0 ),
-        .O(\FSM_sequential_state[2]_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'h8AAAAAAA8AAAAA88)) 
-    \FSM_sequential_state[2]_i_4 
-       (.I0(\FSM_sequential_state[2]_i_5_n_0 ),
-        .I1(\FSM_sequential_state_reg[2]_0 ),
-        .I2(\simple_state_debug[2]_i_2_n_0 ),
-        .I3(\FSM_sequential_state_reg[1]_0 ),
         .I4(\FSM_sequential_state_reg[0]_0 ),
-        .I5(start_setup_reg_n_0),
-        .O(\FSM_sequential_state[2]_i_4_n_0 ));
-  LUT6 #(
-    .INIT(64'hFF0F0FFFFFEFFFEF)) 
-    \FSM_sequential_state[2]_i_5 
-       (.I0(scl_safe_change_reg_n_0),
-        .I1(scl_safe_sample_reg_n_0),
-        .I2(\FSM_sequential_state_reg[2]_0 ),
-        .I3(\FSM_sequential_state_reg[1]_0 ),
-        .I4(scl_reg_0),
-        .I5(\FSM_sequential_state_reg[0]_0 ),
-        .O(\FSM_sequential_state[2]_i_5_n_0 ));
-  (* FSM_ENCODED_STATES = "wait_after_start:010,read_ack:100,wait_ack:101,idle:000,next_byte:110,send_byte:011,stop_condition:111,start_condition:001" *) 
+        .O(\FSM_sequential_state[2]_i_3_n_0 ));
+  (* FSM_ENCODED_STATES = "wait_after_start:010,read_ack:100,wait_ack:101,idle:000,stop_condition:111,next_byte:110,start_condition:001,send_byte:011" *) 
   FDRE #(
     .INIT(1'b0)) 
     \FSM_sequential_state_reg[0] 
@@ -424,7 +368,7 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
         .D(\FSM_sequential_state[0]_i_1_n_0 ),
         .Q(\FSM_sequential_state_reg[0]_0 ),
         .R(1'b0));
-  (* FSM_ENCODED_STATES = "wait_after_start:010,read_ack:100,wait_ack:101,idle:000,next_byte:110,send_byte:011,stop_condition:111,start_condition:001" *) 
+  (* FSM_ENCODED_STATES = "wait_after_start:010,read_ack:100,wait_ack:101,idle:000,stop_condition:111,next_byte:110,start_condition:001,send_byte:011" *) 
   FDRE #(
     .INIT(1'b0)) 
     \FSM_sequential_state_reg[1] 
@@ -433,7 +377,7 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
         .D(\FSM_sequential_state[1]_i_1_n_0 ),
         .Q(\FSM_sequential_state_reg[1]_0 ),
         .R(1'b0));
-  (* FSM_ENCODED_STATES = "wait_after_start:010,read_ack:100,wait_ack:101,idle:000,next_byte:110,send_byte:011,stop_condition:111,start_condition:001" *) 
+  (* FSM_ENCODED_STATES = "wait_after_start:010,read_ack:100,wait_ack:101,idle:000,stop_condition:111,next_byte:110,start_condition:001,send_byte:011" *) 
   FDRE #(
     .INIT(1'b0)) 
     \FSM_sequential_state_reg[2] 
@@ -442,122 +386,112 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
         .D(\FSM_sequential_state[2]_i_1_n_0 ),
         .Q(\FSM_sequential_state_reg[2]_0 ),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair10" *) 
-  LUT2 #(
-    .INIT(4'hB)) 
-    \bit_counter[0]_i_1 
-       (.I0(\bit_counter_reg[3]_0 ),
-        .I1(\bit_counter_reg[0]_0 ),
-        .O(\bit_counter[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair10" *) 
+  (* SOFT_HLUTNM = "soft_lutpair11" *) 
   LUT3 #(
-    .INIT(8'h06)) 
-    \bit_counter[1]_i_1 
-       (.I0(\bit_counter_reg[0]_0 ),
-        .I1(\bit_counter_reg[1]_0 ),
-        .I2(\bit_counter_reg[3]_0 ),
-        .O(\bit_counter[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+    .INIT(8'hC4)) 
+    \bit_counter[0]_i_1 
+       (.I0(Q[0]),
+        .I1(scl_safe_change_reg_n_0),
+        .I2(Q[3]),
+        .O(\bit_counter[0]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair11" *) 
   LUT4 #(
-    .INIT(16'h1540)) 
+    .INIT(16'h0220)) 
+    \bit_counter[1]_i_1 
+       (.I0(scl_safe_change_reg_n_0),
+        .I1(Q[3]),
+        .I2(Q[0]),
+        .I3(Q[1]),
+        .O(\bit_counter[1]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair9" *) 
+  LUT5 #(
+    .INIT(32'h02222000)) 
     \bit_counter[2]_i_1 
-       (.I0(\bit_counter_reg[3]_0 ),
-        .I1(\bit_counter_reg[1]_0 ),
-        .I2(\bit_counter_reg[0]_0 ),
-        .I3(\bit_counter_reg[2]_0 ),
+       (.I0(scl_safe_change_reg_n_0),
+        .I1(Q[3]),
+        .I2(Q[1]),
+        .I3(Q[0]),
+        .I4(Q[2]),
         .O(\bit_counter[2]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'h0000FF08)) 
+    .INIT(32'hAAAABAAA)) 
     \bit_counter[3]_i_1 
-       (.I0(\FSM_sequential_state_reg[1]_0 ),
-        .I1(\FSM_sequential_state_reg[0]_0 ),
-        .I2(\bit_counter[3]_i_4_n_0 ),
-        .I3(\shift_reg[7]_i_1_n_0 ),
-        .I4(scl_safe_change_reg_n_0),
-        .O(\bit_counter[3]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hBAAA)) 
-    \bit_counter[3]_i_2 
        (.I0(\shift_reg[7]_i_1_n_0 ),
-        .I1(\bit_counter[3]_i_4_n_0 ),
-        .I2(\FSM_sequential_state_reg[0]_0 ),
-        .I3(\FSM_sequential_state_reg[1]_0 ),
+        .I1(\bit_counter[3]_i_3_n_0 ),
+        .I2(\FSM_sequential_state_reg[1]_0 ),
+        .I3(\FSM_sequential_state_reg[0]_0 ),
+        .I4(\FSM_sequential_state_reg[2]_0 ),
         .O(bit_counter));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
-  LUT4 #(
-    .INIT(16'hEAAA)) 
-    \bit_counter[3]_i_3 
-       (.I0(\bit_counter_reg[3]_0 ),
-        .I1(\bit_counter_reg[2]_0 ),
-        .I2(\bit_counter_reg[1]_0 ),
-        .I3(\bit_counter_reg[0]_0 ),
-        .O(\bit_counter[3]_i_3_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair9" *) 
+  LUT5 #(
+    .INIT(32'hFF008000)) 
+    \bit_counter[3]_i_2 
+       (.I0(Q[0]),
+        .I1(Q[1]),
+        .I2(Q[2]),
+        .I3(scl_safe_change_reg_n_0),
+        .I4(Q[3]),
+        .O(\bit_counter[3]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hFFEFFFFFFFFFFFFF)) 
-    \bit_counter[3]_i_4 
-       (.I0(\FSM_sequential_state_reg[2]_0 ),
+    .INIT(64'hFFFDFFFFFFFFFFFF)) 
+    \bit_counter[3]_i_3 
+       (.I0(scl_rise_reg_n_0),
         .I1(scl_safe_change_reg_n_0),
-        .I2(scl_rise_reg_n_0),
-        .I3(\bit_counter[3]_i_5_n_0 ),
-        .I4(\bit_counter_reg[0]_0 ),
-        .I5(\bit_counter_reg[3]_0 ),
-        .O(\bit_counter[3]_i_4_n_0 ));
-  LUT2 #(
-    .INIT(4'hE)) 
-    \bit_counter[3]_i_5 
-       (.I0(\bit_counter_reg[2]_0 ),
-        .I1(\bit_counter_reg[1]_0 ),
-        .O(\bit_counter[3]_i_5_n_0 ));
+        .I2(Q[1]),
+        .I3(Q[2]),
+        .I4(Q[0]),
+        .I5(Q[3]),
+        .O(\bit_counter[3]_i_3_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
     \bit_counter_reg[0] 
        (.C(clk_100),
         .CE(bit_counter),
         .D(\bit_counter[0]_i_1_n_0 ),
-        .Q(\bit_counter_reg[0]_0 ),
-        .R(\bit_counter[3]_i_1_n_0 ));
+        .Q(Q[0]),
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \bit_counter_reg[1] 
        (.C(clk_100),
         .CE(bit_counter),
         .D(\bit_counter[1]_i_1_n_0 ),
-        .Q(\bit_counter_reg[1]_0 ),
-        .R(\bit_counter[3]_i_1_n_0 ));
+        .Q(Q[1]),
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \bit_counter_reg[2] 
        (.C(clk_100),
         .CE(bit_counter),
         .D(\bit_counter[2]_i_1_n_0 ),
-        .Q(\bit_counter_reg[2]_0 ),
-        .R(\bit_counter[3]_i_1_n_0 ));
+        .Q(Q[2]),
+        .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
     \bit_counter_reg[3] 
        (.C(clk_100),
         .CE(bit_counter),
-        .D(\bit_counter[3]_i_3_n_0 ),
-        .Q(\bit_counter_reg[3]_0 ),
-        .R(\bit_counter[3]_i_1_n_0 ));
+        .D(\bit_counter[3]_i_2_n_0 ),
+        .Q(Q[3]),
+        .R(1'b0));
   LUT6 #(
-    .INIT(64'hFF33FFCF00440000)) 
+    .INIT(64'hCFCFFCFF10100000)) 
     \byte_counter[0]_i_1 
        (.I0(\byte_counter_reg[1]_0 ),
-        .I1(\FSM_sequential_state_reg[2]_0 ),
-        .I2(start_setup_reg_n_0),
-        .I3(\FSM_sequential_state_reg[0]_0 ),
-        .I4(\FSM_sequential_state_reg[1]_0 ),
+        .I1(\FSM_sequential_state_reg[0]_0 ),
+        .I2(\FSM_sequential_state_reg[1]_0 ),
+        .I3(start_setup_reg_n_0),
+        .I4(\FSM_sequential_state_reg[2]_0 ),
         .I5(\byte_counter_reg[0]_0 ),
         .O(\byte_counter[0]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFF33FFCF00880000)) 
+    .INIT(64'hCFCFFCFF20200000)) 
     \byte_counter[1]_i_1 
        (.I0(\byte_counter_reg[0]_0 ),
-        .I1(\FSM_sequential_state_reg[2]_0 ),
-        .I2(start_setup_reg_n_0),
-        .I3(\FSM_sequential_state_reg[0]_0 ),
-        .I4(\FSM_sequential_state_reg[1]_0 ),
+        .I1(\FSM_sequential_state_reg[0]_0 ),
+        .I2(\FSM_sequential_state_reg[1]_0 ),
+        .I3(start_setup_reg_n_0),
+        .I4(\FSM_sequential_state_reg[2]_0 ),
         .I5(\byte_counter_reg[1]_0 ),
         .O(\byte_counter[1]_i_1_n_0 ));
   FDRE #(
@@ -576,25 +510,25 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
         .D(\byte_counter[1]_i_1_n_0 ),
         .Q(\byte_counter_reg[1]_0 ),
         .R(1'b0));
-  LUT6 #(
-    .INIT(64'hFFFFFF7F00800080)) 
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  LUT5 #(
+    .INIT(32'hFF7F0080)) 
     \current_index[0]_i_1 
-       (.I0(\FSM_sequential_state_reg[1]_0 ),
-        .I1(\byte_counter_reg[1]_0 ),
-        .I2(\FSM_sequential_state_reg[2]_0 ),
+       (.I0(\byte_counter_reg[1]_0 ),
+        .I1(\FSM_sequential_state_reg[2]_0 ),
+        .I2(\FSM_sequential_state_reg[1]_0 ),
         .I3(\FSM_sequential_state_reg[0]_0 ),
-        .I4(\current_index_reg[1]_0 ),
-        .I5(\current_index_reg[0]_0 ),
+        .I4(current_index_bebug[0]),
         .O(\current_index[0]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hAEAAAAAAAAAAAAAA)) 
+    .INIT(64'hDFFFFFFF20000000)) 
     \current_index[1]_i_1 
-       (.I0(\current_index_reg[1]_0 ),
-        .I1(\current_index_reg[0]_0 ),
-        .I2(\FSM_sequential_state_reg[0]_0 ),
+       (.I0(current_index_bebug[0]),
+        .I1(\FSM_sequential_state_reg[0]_0 ),
+        .I2(\FSM_sequential_state_reg[1]_0 ),
         .I3(\FSM_sequential_state_reg[2]_0 ),
         .I4(\byte_counter_reg[1]_0 ),
-        .I5(\FSM_sequential_state_reg[1]_0 ),
+        .I5(current_index_bebug[1]),
         .O(\current_index[1]_i_1_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
@@ -602,7 +536,7 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
        (.C(clk_100),
         .CE(1'b1),
         .D(\current_index[0]_i_1_n_0 ),
-        .Q(\current_index_reg[0]_0 ),
+        .Q(current_index_bebug[0]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -610,7 +544,7 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
        (.C(clk_100),
         .CE(1'b1),
         .D(\current_index[1]_i_1_n_0 ),
-        .Q(\current_index_reg[1]_0 ),
+        .Q(current_index_bebug[1]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
@@ -621,32 +555,32 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
         .Q(current_reset),
         .R(1'b0));
   LUT6 #(
-    .INIT(64'hFFFFFFFFFFFEFFFF)) 
+    .INIT(64'hFFFFFFFFEFFFFFFF)) 
     ov7670_reset_s_i_1
-       (.I0(ov7670_reset_s_i_2_n_0),
-        .I1(ov7670_reset_s_i_3_n_0),
-        .I2(start_counter_reg[5]),
-        .I3(start_counter_reg[6]),
-        .I4(start_counter_reg[3]),
-        .I5(start_counter_reg[0]),
+       (.I0(start_counter_reg[0]),
+        .I1(ov7670_reset_s_i_2_n_0),
+        .I2(start_counter_reg[7]),
+        .I3(start_counter_reg[8]),
+        .I4(start_counter_reg[9]),
+        .I5(ov7670_reset_s_i_3_n_0),
         .O(ov7670_reset_s_i_1_n_0));
-  LUT6 #(
-    .INIT(64'hFEFFFFFFFFFFFFFF)) 
+  LUT4 #(
+    .INIT(16'hFFEF)) 
     ov7670_reset_s_i_2
        (.I0(start_counter_reg[11]),
-        .I1(start_counter_reg[4]),
-        .I2(start_counter_reg[13]),
-        .I3(start_counter_reg[12]),
-        .I4(start_counter_reg[8]),
-        .I5(start_counter_reg[9]),
+        .I1(start_counter_reg[10]),
+        .I2(start_counter_reg[12]),
+        .I3(start_counter_reg[13]),
         .O(ov7670_reset_s_i_2_n_0));
-  LUT4 #(
-    .INIT(16'hFFFD)) 
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFFFEFF)) 
     ov7670_reset_s_i_3
-       (.I0(start_counter_reg[7]),
-        .I1(start_counter_reg[1]),
-        .I2(start_counter_reg[2]),
-        .I3(start_counter_reg[10]),
+       (.I0(start_counter_reg[5]),
+        .I1(start_counter_reg[6]),
+        .I2(start_counter_reg[4]),
+        .I3(start_counter_reg[3]),
+        .I4(start_counter_reg[2]),
+        .I5(start_counter_reg[1]),
         .O(ov7670_reset_s_i_3_n_0));
   FDRE #(
     .INIT(1'b0)) 
@@ -681,8 +615,8 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
   LUT2 #(
     .INIT(4'h7)) 
     reset_activated2_carry_i_2
-       (.I0(start_counter_reg[11]),
-        .I1(start_counter_reg[10]),
+       (.I0(start_counter_reg[10]),
+        .I1(start_counter_reg[11]),
         .O(reset_activated2_carry_i_2_n_0));
   LUT2 #(
     .INIT(4'h7)) 
@@ -720,22 +654,22 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
        (.I0(start_counter_reg[6]),
         .I1(start_counter_reg[7]),
         .O(reset_activated2_carry_i_8_n_0));
-  LUT6 #(
-    .INIT(64'hFFFF4044F0FF4044)) 
+  LUT5 #(
+    .INIT(32'hFF44F000)) 
     reset_activated_i_1
        (.I0(current_reset),
         .I1(prev_reset),
-        .I2(reset_activated_i_2_n_0),
-        .I3(\FSM_sequential_state_reg[2]_0 ),
-        .I4(reset_activated_reg_n_0),
-        .I5(reset_activated2),
+        .I2(reset_activated2),
+        .I3(reset_activated_reg_n_0),
+        .I4(reset_activated_i_2_n_0),
         .O(reset_activated_i_1_n_0));
   (* SOFT_HLUTNM = "soft_lutpair1" *) 
-  LUT2 #(
-    .INIT(4'h7)) 
+  LUT3 #(
+    .INIT(8'h7F)) 
     reset_activated_i_2
-       (.I0(\FSM_sequential_state_reg[0]_0 ),
-        .I1(\FSM_sequential_state_reg[1]_0 ),
+       (.I0(\FSM_sequential_state_reg[1]_0 ),
+        .I1(\FSM_sequential_state_reg[0]_0 ),
+        .I2(\FSM_sequential_state_reg[2]_0 ),
         .O(reset_activated_i_2_n_0));
   FDRE #(
     .INIT(1'b0)) 
@@ -745,28 +679,27 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
         .D(reset_activated_i_1_n_0),
         .Q(reset_activated_reg_n_0),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair11" *) 
   LUT1 #(
     .INIT(2'h1)) 
     \scl_cnt[0]_i_1 
        (.I0(scl_cnt_reg[0]),
-        .O(\scl_cnt[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair11" *) 
+        .O(p_0_in[0]));
+  (* SOFT_HLUTNM = "soft_lutpair12" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \scl_cnt[1]_i_1 
+       (.I0(scl_cnt_reg[0]),
+        .I1(scl_cnt_reg[1]),
+        .O(p_0_in[1]));
+  (* SOFT_HLUTNM = "soft_lutpair12" *) 
+  LUT3 #(
+    .INIT(8'h78)) 
+    \scl_cnt[2]_i_1 
        (.I0(scl_cnt_reg[1]),
         .I1(scl_cnt_reg[0]),
-        .O(p_0_in[1]));
-  (* SOFT_HLUTNM = "soft_lutpair9" *) 
-  LUT3 #(
-    .INIT(8'h6A)) 
-    \scl_cnt[2]_i_1 
-       (.I0(scl_cnt_reg[2]),
-        .I1(scl_cnt_reg[0]),
-        .I2(scl_cnt_reg[1]),
+        .I2(scl_cnt_reg[2]),
         .O(p_0_in[2]));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \scl_cnt[3]_i_1 
@@ -775,97 +708,80 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
         .I2(scl_cnt_reg[1]),
         .I3(scl_cnt_reg[3]),
         .O(p_0_in[3]));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
   LUT5 #(
-    .INIT(32'h6AAAAAAA)) 
+    .INIT(32'h7FFF8000)) 
     \scl_cnt[4]_i_1 
+       (.I0(scl_cnt_reg[3]),
+        .I1(scl_cnt_reg[1]),
+        .I2(scl_cnt_reg[0]),
+        .I3(scl_cnt_reg[2]),
+        .I4(scl_cnt_reg[4]),
+        .O(p_0_in[4]));
+  LUT6 #(
+    .INIT(64'h7FFFFFFF80000000)) 
+    \scl_cnt[5]_i_1 
        (.I0(scl_cnt_reg[4]),
         .I1(scl_cnt_reg[2]),
         .I2(scl_cnt_reg[0]),
         .I3(scl_cnt_reg[1]),
         .I4(scl_cnt_reg[3]),
-        .O(p_0_in[4]));
-  LUT6 #(
-    .INIT(64'h6AAAAAAAAAAAAAAA)) 
-    \scl_cnt[5]_i_1 
-       (.I0(scl_cnt_reg[5]),
-        .I1(scl_cnt_reg[3]),
-        .I2(scl_cnt_reg[1]),
-        .I3(scl_cnt_reg[0]),
-        .I4(scl_cnt_reg[2]),
-        .I5(scl_cnt_reg[4]),
+        .I5(scl_cnt_reg[5]),
         .O(p_0_in[5]));
-  (* SOFT_HLUTNM = "soft_lutpair8" *) 
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
   LUT4 #(
-    .INIT(16'h6AAA)) 
+    .INIT(16'hDF20)) 
     \scl_cnt[6]_i_1 
+       (.I0(scl_cnt_reg[5]),
+        .I1(\scl_cnt[8]_i_3_n_0 ),
+        .I2(scl_cnt_reg[4]),
+        .I3(scl_cnt_reg[6]),
+        .O(p_0_in[6]));
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
+  LUT5 #(
+    .INIT(32'hF7FF0800)) 
+    \scl_cnt[7]_i_1 
        (.I0(scl_cnt_reg[6]),
         .I1(scl_cnt_reg[4]),
-        .I2(scl_cnt_reg[5]),
-        .I3(\scl_cnt[6]_i_2_n_0 ),
-        .O(p_0_in[6]));
-  (* SOFT_HLUTNM = "soft_lutpair9" *) 
-  LUT4 #(
-    .INIT(16'h8000)) 
-    \scl_cnt[6]_i_2 
-       (.I0(scl_cnt_reg[3]),
-        .I1(scl_cnt_reg[1]),
-        .I2(scl_cnt_reg[0]),
-        .I3(scl_cnt_reg[2]),
-        .O(\scl_cnt[6]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h9AAAAAAAAAAAAAAA)) 
-    \scl_cnt[7]_i_1 
-       (.I0(scl_cnt_reg[7]),
-        .I1(\scl_cnt[7]_i_2_n_0 ),
-        .I2(scl_cnt_reg[5]),
-        .I3(scl_cnt_reg[4]),
-        .I4(scl_cnt_reg[6]),
-        .I5(scl_cnt_reg[3]),
+        .I2(\scl_cnt[8]_i_3_n_0 ),
+        .I3(scl_cnt_reg[5]),
+        .I4(scl_cnt_reg[7]),
         .O(p_0_in[7]));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
-  LUT3 #(
-    .INIT(8'h7F)) 
-    \scl_cnt[7]_i_2 
+  LUT6 #(
+    .INIT(64'hFDFF555555555555)) 
+    \scl_cnt[8]_i_1 
+       (.I0(scl_en_reg_0),
+        .I1(scl_cnt_reg[6]),
+        .I2(scl_i_2_n_0),
+        .I3(\scl_cnt[8]_i_3_n_0 ),
+        .I4(scl_cnt_reg[8]),
+        .I5(scl_cnt_reg[7]),
+        .O(\scl_cnt[8]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hDFFFFFFF20000000)) 
+    \scl_cnt[8]_i_2 
+       (.I0(scl_cnt_reg[4]),
+        .I1(\scl_cnt[8]_i_3_n_0 ),
+        .I2(scl_cnt_reg[5]),
+        .I3(scl_cnt_reg[6]),
+        .I4(scl_cnt_reg[7]),
+        .I5(scl_cnt_reg[8]),
+        .O(p_0_in[8]));
+  (* SOFT_HLUTNM = "soft_lutpair8" *) 
+  LUT4 #(
+    .INIT(16'h7FFF)) 
+    \scl_cnt[8]_i_3 
        (.I0(scl_cnt_reg[2]),
         .I1(scl_cnt_reg[0]),
         .I2(scl_cnt_reg[1]),
-        .O(\scl_cnt[7]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h55555555FFFFFFD5)) 
-    \scl_cnt[8]_i_1 
-       (.I0(scl_en_reg_0),
-        .I1(scl_cnt_reg[0]),
-        .I2(scl_cnt_reg[1]),
         .I3(scl_cnt_reg[3]),
-        .I4(scl_cnt_reg[2]),
-        .I5(\scl_cnt[8]_i_3_n_0 ),
-        .O(\scl_cnt[8]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h6AAAAAAAAAAAAAAA)) 
-    \scl_cnt[8]_i_2 
-       (.I0(scl_cnt_reg[8]),
-        .I1(scl_i_2_n_0),
-        .I2(scl_cnt_reg[1]),
-        .I3(scl_cnt_reg[0]),
-        .I4(scl_cnt_reg[2]),
-        .I5(scl_cnt_reg[7]),
-        .O(p_0_in[8]));
-  LUT5 #(
-    .INIT(32'h7FFFFFFF)) 
-    \scl_cnt[8]_i_3 
-       (.I0(scl_cnt_reg[7]),
-        .I1(scl_cnt_reg[5]),
-        .I2(scl_cnt_reg[6]),
-        .I3(scl_cnt_reg[8]),
-        .I4(scl_cnt_reg[4]),
         .O(\scl_cnt[8]_i_3_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
     \scl_cnt_reg[0] 
        (.C(clk_100),
         .CE(1'b1),
-        .D(\scl_cnt[0]_i_1_n_0 ),
+        .D(p_0_in[0]),
         .Q(scl_cnt_reg[0]),
         .R(\scl_cnt[8]_i_1_n_0 ));
   FDRE #(
@@ -933,12 +849,12 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
         .Q(scl_cnt_reg[8]),
         .R(\scl_cnt[8]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'h7EFE0202)) 
+    .INIT(32'h7FFA000A)) 
     scl_en_i_1
        (.I0(\FSM_sequential_state_reg[1]_0 ),
-        .I1(\FSM_sequential_state_reg[0]_0 ),
+        .I1(scl_reg_0),
         .I2(\FSM_sequential_state_reg[2]_0 ),
-        .I3(scl_reg_0),
+        .I3(\FSM_sequential_state_reg[0]_0 ),
         .I4(scl_en_reg_0),
         .O(scl_en_i_1_n_0));
   FDRE #(
@@ -950,23 +866,20 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
         .Q(scl_en_reg_0),
         .R(1'b0));
   LUT6 #(
-    .INIT(64'h0155FFFF5555FFFF)) 
+    .INIT(64'h55557F7F55557FFF)) 
     scl_i_1
-       (.I0(scl_cnt_reg[8]),
-        .I1(scl_cnt_reg[2]),
-        .I2(scl_cnt_reg[1]),
-        .I3(scl_cnt_reg[7]),
-        .I4(scl_en_reg_0),
-        .I5(scl_i_2_n_0),
-        .O(scl_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair8" *) 
-  LUT4 #(
-    .INIT(16'h8000)) 
-    scl_i_2
-       (.I0(scl_cnt_reg[5]),
-        .I1(scl_cnt_reg[4]),
+       (.I0(scl_en_reg_0),
+        .I1(scl_cnt_reg[7]),
         .I2(scl_cnt_reg[6]),
-        .I3(scl_cnt_reg[3]),
+        .I3(scl_i_2_n_0),
+        .I4(scl_cnt_reg[8]),
+        .I5(scl_cnt_reg[3]),
+        .O(scl_i_1_n_0));
+  LUT2 #(
+    .INIT(4'hE)) 
+    scl_i_2
+       (.I0(scl_cnt_reg[4]),
+        .I1(scl_cnt_reg[5]),
         .O(scl_i_2_n_0));
   FDRE #(
     .INIT(1'b1)) 
@@ -976,26 +889,16 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
         .D(scl_i_1_n_0),
         .Q(scl_reg_0),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
-  LUT5 #(
-    .INIT(32'h00004000)) 
-    scl_rise_i_1
-       (.I0(scl_cnt_reg[2]),
-        .I1(scl_cnt_reg[8]),
-        .I2(scl_cnt_reg[1]),
-        .I3(scl_cnt_reg[0]),
-        .I4(scl_rise_i_2_n_0),
-        .O(scl_rise_i_1_n_0));
   LUT6 #(
-    .INIT(64'hF7FFFFFFFFFFFFFF)) 
-    scl_rise_i_2
-       (.I0(scl_cnt_reg[7]),
-        .I1(scl_en_reg_0),
-        .I2(scl_cnt_reg[3]),
-        .I3(scl_cnt_reg[6]),
-        .I4(scl_cnt_reg[4]),
-        .I5(scl_cnt_reg[5]),
-        .O(scl_rise_i_2_n_0));
+    .INIT(64'h0000000010000000)) 
+    scl_rise_i_1
+       (.I0(scl_i_2_n_0),
+        .I1(scl_cnt_reg[6]),
+        .I2(scl_cnt_reg[7]),
+        .I3(scl_en_reg_0),
+        .I4(scl_cnt_reg[8]),
+        .I5(\scl_cnt[8]_i_3_n_0 ),
+        .O(scl_rise_i_1_n_0));
   FDRE #(
     .INIT(1'b0)) 
     scl_rise_reg
@@ -1005,23 +908,23 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
         .Q(scl_rise_reg_n_0),
         .R(1'b0));
   LUT5 #(
-    .INIT(32'h00000040)) 
+    .INIT(32'h00080000)) 
     scl_safe_change_i_1
-       (.I0(scl_cnt_reg[5]),
-        .I1(scl_en_reg_0),
-        .I2(scl_cnt_reg[1]),
-        .I3(scl_cnt_reg[0]),
+       (.I0(scl_cnt_reg[2]),
+        .I1(scl_cnt_reg[3]),
+        .I2(scl_cnt_reg[0]),
+        .I3(scl_cnt_reg[1]),
         .I4(scl_safe_change_i_2_n_0),
         .O(scl_safe_change_i_1_n_0));
   LUT6 #(
-    .INIT(64'hF7FFFFFFFFFFFFFF)) 
+    .INIT(64'h0010000000000000)) 
     scl_safe_change_i_2
-       (.I0(scl_cnt_reg[8]),
-        .I1(scl_cnt_reg[4]),
-        .I2(scl_cnt_reg[7]),
-        .I3(scl_cnt_reg[2]),
-        .I4(scl_cnt_reg[3]),
-        .I5(scl_cnt_reg[6]),
+       (.I0(scl_cnt_reg[6]),
+        .I1(scl_cnt_reg[7]),
+        .I2(scl_cnt_reg[5]),
+        .I3(scl_cnt_reg[4]),
+        .I4(scl_en_reg_0),
+        .I5(scl_cnt_reg[8]),
         .O(scl_safe_change_i_2_n_0));
   FDRE #(
     .INIT(1'b0)) 
@@ -1031,24 +934,25 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
         .D(scl_safe_change_i_1_n_0),
         .Q(scl_safe_change_reg_n_0),
         .R(1'b0));
+  (* SOFT_HLUTNM = "soft_lutpair8" *) 
   LUT5 #(
-    .INIT(32'h00000008)) 
+    .INIT(32'h00020000)) 
     scl_safe_sample_i_1
-       (.I0(scl_en_reg_0),
-        .I1(scl_cnt_reg[5]),
-        .I2(scl_cnt_reg[4]),
-        .I3(scl_cnt_reg[8]),
+       (.I0(scl_cnt_reg[2]),
+        .I1(scl_cnt_reg[3]),
+        .I2(scl_cnt_reg[0]),
+        .I3(scl_cnt_reg[1]),
         .I4(scl_safe_sample_i_2_n_0),
         .O(scl_safe_sample_i_1_n_0));
   LUT6 #(
-    .INIT(64'hFFFFFEFFFFFFFFFF)) 
+    .INIT(64'h0000002000000000)) 
     scl_safe_sample_i_2
-       (.I0(scl_cnt_reg[0]),
-        .I1(scl_cnt_reg[1]),
-        .I2(scl_cnt_reg[3]),
-        .I3(scl_cnt_reg[6]),
-        .I4(scl_cnt_reg[7]),
-        .I5(scl_cnt_reg[2]),
+       (.I0(scl_cnt_reg[6]),
+        .I1(scl_cnt_reg[7]),
+        .I2(scl_cnt_reg[5]),
+        .I3(scl_cnt_reg[4]),
+        .I4(scl_cnt_reg[8]),
+        .I5(scl_en_reg_0),
         .O(scl_safe_sample_i_2_n_0));
   FDRE #(
     .INIT(1'b0)) 
@@ -1059,35 +963,60 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
         .Q(scl_safe_sample_reg_n_0),
         .R(1'b0));
   LUT6 #(
-    .INIT(64'h4474FFFF44740000)) 
+    .INIT(64'h0F44FFFF0F440000)) 
     sda_oe_i_1
-       (.I0(\FSM_sequential_state_reg[1]_0 ),
-        .I1(\FSM_sequential_state_reg[0]_0 ),
-        .I2(\FSM_sequential_state_reg[2]_0 ),
-        .I3(\byte_counter_reg[1]_0 ),
+       (.I0(\byte_counter_reg[1]_0 ),
+        .I1(\FSM_sequential_state_reg[2]_0 ),
+        .I2(\FSM_sequential_state_reg[1]_0 ),
+        .I3(\FSM_sequential_state_reg[0]_0 ),
         .I4(sda_oe_i_2_n_0),
         .I5(sda_oe),
         .O(sda_oe_i_1_n_0));
   LUT6 #(
-    .INIT(64'h88330C3388FF0C33)) 
+    .INIT(64'hAABAAABAAABABBBB)) 
     sda_oe_i_2
-       (.I0(scl_reg_0),
-        .I1(\FSM_sequential_state_reg[1]_0 ),
-        .I2(\byte_counter_reg[1]_0 ),
-        .I3(\FSM_sequential_state_reg[2]_0 ),
-        .I4(\FSM_sequential_state_reg[0]_0 ),
-        .I5(sda_oe_i_3_n_0),
+       (.I0(sda_oe_i_3_n_0),
+        .I1(sda_oe_i_4_n_0),
+        .I2(scl_safe_change_reg_n_0),
+        .I3(sda_oe_i_5_n_0),
+        .I4(scl_rise_reg_n_0),
+        .I5(sda_oe_i_6_n_0),
         .O(sda_oe_i_2_n_0));
-  LUT6 #(
-    .INIT(64'h5F5F5F5F5F5F4FFF)) 
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  LUT5 #(
+    .INIT(32'hC4330433)) 
     sda_oe_i_3
-       (.I0(scl_safe_change_reg_n_0),
-        .I1(scl_rise_reg_n_0),
-        .I2(\bit_counter_reg[3]_0 ),
-        .I3(\bit_counter_reg[0]_0 ),
-        .I4(\bit_counter_reg[2]_0 ),
-        .I5(\bit_counter_reg[1]_0 ),
+       (.I0(\byte_counter_reg[1]_0 ),
+        .I1(\FSM_sequential_state_reg[1]_0 ),
+        .I2(\FSM_sequential_state_reg[0]_0 ),
+        .I3(\FSM_sequential_state_reg[2]_0 ),
+        .I4(scl_reg_0),
         .O(sda_oe_i_3_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  LUT2 #(
+    .INIT(4'hB)) 
+    sda_oe_i_4
+       (.I0(\FSM_sequential_state_reg[2]_0 ),
+        .I1(\FSM_sequential_state_reg[0]_0 ),
+        .O(sda_oe_i_4_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair10" *) 
+  LUT4 #(
+    .INIT(16'h01FF)) 
+    sda_oe_i_5
+       (.I0(Q[0]),
+        .I1(Q[1]),
+        .I2(Q[2]),
+        .I3(Q[3]),
+        .O(sda_oe_i_5_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  LUT4 #(
+    .INIT(16'hFFF7)) 
+    sda_oe_i_6
+       (.I0(Q[3]),
+        .I1(Q[0]),
+        .I2(Q[2]),
+        .I3(Q[1]),
+        .O(sda_oe_i_6_n_0));
   FDRE sda_oe_reg
        (.C(clk_100),
         .CE(1'b1),
@@ -1095,198 +1024,205 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
         .Q(sda_oe),
         .R(1'b0));
   LUT6 #(
-    .INIT(64'hE2E2E2E2E200E2E2)) 
+    .INIT(64'hA8A8A8080808A808)) 
     sda_out_i_1
-       (.I0(sda_out),
-        .I1(\shift_reg[7]_i_1_n_0 ),
-        .I2(sda_out_i_2_n_0),
-        .I3(\FSM_sequential_state_reg[2]_0 ),
-        .I4(\FSM_sequential_state_reg[0]_0 ),
-        .I5(\FSM_sequential_state_reg[1]_0 ),
+       (.I0(sda_out_i_2_n_0),
+        .I1(sda_out),
+        .I2(\shift_reg[7]_i_1_n_0 ),
+        .I3(shift_reg_full_debug[7]),
+        .I4(sda_out_i_3_n_0),
+        .I5(shift_reg_debug[6]),
         .O(sda_out_i_1_n_0));
-  LUT6 #(
-    .INIT(64'hAAAAAAABAAAAAAA8)) 
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+  LUT3 #(
+    .INIT(8'hFD)) 
     sda_out_i_2
-       (.I0(shift_reg_debug[6]),
-        .I1(\bit_counter_reg[3]_0 ),
-        .I2(\bit_counter_reg[2]_0 ),
-        .I3(\bit_counter_reg[1]_0 ),
-        .I4(\bit_counter_reg[0]_0 ),
-        .I5(shift_reg_full_debug[7]),
+       (.I0(\FSM_sequential_state_reg[0]_0 ),
+        .I1(\FSM_sequential_state_reg[2]_0 ),
+        .I2(\FSM_sequential_state_reg[1]_0 ),
         .O(sda_out_i_2_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair10" *) 
+  LUT4 #(
+    .INIT(16'hFFFE)) 
+    sda_out_i_3
+       (.I0(Q[0]),
+        .I1(Q[1]),
+        .I2(Q[2]),
+        .I3(Q[3]),
+        .O(sda_out_i_3_n_0));
   FDRE sda_out_reg
        (.C(clk_100),
         .CE(1'b1),
         .D(sda_out_i_1_n_0),
         .Q(sda_out),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT5 #(
     .INIT(32'h00000002)) 
     \shift_reg[1]_i_1 
        (.I0(shift_reg_full_debug[0]),
-        .I1(\bit_counter_reg[0]_0 ),
-        .I2(\bit_counter_reg[1]_0 ),
-        .I3(\bit_counter_reg[2]_0 ),
-        .I4(\bit_counter_reg[3]_0 ),
+        .I1(Q[3]),
+        .I2(Q[2]),
+        .I3(Q[1]),
+        .I4(Q[0]),
         .O(\shift_reg[1]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hAAAAAAABAAAAAAA8)) 
     \shift_reg[2]_i_1 
        (.I0(shift_reg_debug[0]),
-        .I1(\bit_counter_reg[3]_0 ),
-        .I2(\bit_counter_reg[2]_0 ),
-        .I3(\bit_counter_reg[1]_0 ),
-        .I4(\bit_counter_reg[0]_0 ),
+        .I1(Q[0]),
+        .I2(Q[1]),
+        .I3(Q[2]),
+        .I4(Q[3]),
         .I5(shift_reg_full_debug[1]),
         .O(\shift_reg[2]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hAAAAAAABAAAAAAA8)) 
     \shift_reg[3]_i_1 
        (.I0(shift_reg_debug[1]),
-        .I1(\bit_counter_reg[3]_0 ),
-        .I2(\bit_counter_reg[2]_0 ),
-        .I3(\bit_counter_reg[1]_0 ),
-        .I4(\bit_counter_reg[0]_0 ),
+        .I1(Q[0]),
+        .I2(Q[1]),
+        .I3(Q[2]),
+        .I4(Q[3]),
         .I5(shift_reg_full_debug[2]),
         .O(\shift_reg[3]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hAAAAAAABAAAAAAA8)) 
     \shift_reg[4]_i_1 
        (.I0(shift_reg_debug[2]),
-        .I1(\bit_counter_reg[3]_0 ),
-        .I2(\bit_counter_reg[2]_0 ),
-        .I3(\bit_counter_reg[1]_0 ),
-        .I4(\bit_counter_reg[0]_0 ),
+        .I1(Q[0]),
+        .I2(Q[1]),
+        .I3(Q[2]),
+        .I4(Q[3]),
         .I5(shift_reg_full_debug[3]),
         .O(\shift_reg[4]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hAAAAAAABAAAAAAA8)) 
     \shift_reg[5]_i_1 
        (.I0(shift_reg_debug[3]),
-        .I1(\bit_counter_reg[3]_0 ),
-        .I2(\bit_counter_reg[2]_0 ),
-        .I3(\bit_counter_reg[1]_0 ),
-        .I4(\bit_counter_reg[0]_0 ),
+        .I1(Q[0]),
+        .I2(Q[1]),
+        .I3(Q[2]),
+        .I4(Q[3]),
         .I5(shift_reg_full_debug[4]),
         .O(\shift_reg[5]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hAAAAAAABAAAAAAA8)) 
     \shift_reg[6]_i_1 
        (.I0(shift_reg_debug[4]),
-        .I1(\bit_counter_reg[3]_0 ),
-        .I2(\bit_counter_reg[2]_0 ),
-        .I3(\bit_counter_reg[1]_0 ),
-        .I4(\bit_counter_reg[0]_0 ),
+        .I1(Q[0]),
+        .I2(Q[1]),
+        .I3(Q[2]),
+        .I4(Q[3]),
         .I5(shift_reg_full_debug[5]),
         .O(\shift_reg[6]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'h00008000)) 
+  LUT6 #(
+    .INIT(64'h0808080808080888)) 
     \shift_reg[7]_i_1 
-       (.I0(\shift_reg[7]_i_3_n_0 ),
-        .I1(scl_safe_change_reg_n_0),
-        .I2(\FSM_sequential_state_reg[0]_0 ),
-        .I3(\FSM_sequential_state_reg[1]_0 ),
-        .I4(\FSM_sequential_state_reg[2]_0 ),
+       (.I0(scl_safe_change_reg_n_0),
+        .I1(\shift_reg[7]_i_3_n_0 ),
+        .I2(Q[3]),
+        .I3(Q[2]),
+        .I4(Q[1]),
+        .I5(Q[0]),
         .O(\shift_reg[7]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hAAAAAAABAAAAAAA8)) 
     \shift_reg[7]_i_2 
        (.I0(shift_reg_debug[5]),
-        .I1(\bit_counter_reg[3]_0 ),
-        .I2(\bit_counter_reg[2]_0 ),
-        .I3(\bit_counter_reg[1]_0 ),
-        .I4(\bit_counter_reg[0]_0 ),
+        .I1(Q[0]),
+        .I2(Q[1]),
+        .I3(Q[2]),
+        .I4(Q[3]),
         .I5(shift_reg_full_debug[6]),
         .O(\shift_reg[7]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
-  LUT4 #(
-    .INIT(16'h01FF)) 
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  LUT3 #(
+    .INIT(8'h08)) 
     \shift_reg[7]_i_3 
-       (.I0(\bit_counter_reg[2]_0 ),
-        .I1(\bit_counter_reg[1]_0 ),
-        .I2(\bit_counter_reg[0]_0 ),
-        .I3(\bit_counter_reg[3]_0 ),
+       (.I0(\FSM_sequential_state_reg[1]_0 ),
+        .I1(\FSM_sequential_state_reg[0]_0 ),
+        .I2(\FSM_sequential_state_reg[2]_0 ),
         .O(\shift_reg[7]_i_3_n_0 ));
   LUT4 #(
-    .INIT(16'hB888)) 
+    .INIT(16'hAAC0)) 
     \shift_reg_full[0]_i_1 
        (.I0(slave_reg_data[0]),
-        .I1(\byte_counter_reg[1]_0 ),
+        .I1(slave_reg_addr[0]),
         .I2(\byte_counter_reg[0]_0 ),
-        .I3(slave_reg_addr[0]),
+        .I3(\byte_counter_reg[1]_0 ),
         .O(\shift_reg_full[0]_i_1_n_0 ));
   LUT4 #(
-    .INIT(16'hB8BB)) 
+    .INIT(16'hFD0D)) 
     \shift_reg_full[1]_i_1 
-       (.I0(slave_reg_data[1]),
-        .I1(\byte_counter_reg[1]_0 ),
-        .I2(slave_reg_addr[1]),
-        .I3(\byte_counter_reg[0]_0 ),
+       (.I0(\byte_counter_reg[0]_0 ),
+        .I1(slave_reg_addr[1]),
+        .I2(\byte_counter_reg[1]_0 ),
+        .I3(slave_reg_data[1]),
         .O(\shift_reg_full[1]_i_1_n_0 ));
   LUT4 #(
-    .INIT(16'hB888)) 
+    .INIT(16'hAAC0)) 
     \shift_reg_full[2]_i_1 
        (.I0(slave_reg_data[2]),
-        .I1(\byte_counter_reg[1]_0 ),
+        .I1(slave_reg_addr[2]),
         .I2(\byte_counter_reg[0]_0 ),
-        .I3(slave_reg_addr[2]),
+        .I3(\byte_counter_reg[1]_0 ),
         .O(\shift_reg_full[2]_i_1_n_0 ));
   LUT4 #(
-    .INIT(16'hB888)) 
+    .INIT(16'hAAC0)) 
     \shift_reg_full[3]_i_1 
        (.I0(slave_reg_data[3]),
-        .I1(\byte_counter_reg[1]_0 ),
+        .I1(slave_reg_addr[3]),
         .I2(\byte_counter_reg[0]_0 ),
-        .I3(slave_reg_addr[3]),
+        .I3(\byte_counter_reg[1]_0 ),
         .O(\shift_reg_full[3]_i_1_n_0 ));
   LUT4 #(
-    .INIT(16'hB888)) 
+    .INIT(16'hAAC0)) 
     \shift_reg_full[4]_i_1 
        (.I0(slave_reg_data[4]),
-        .I1(\byte_counter_reg[1]_0 ),
+        .I1(slave_reg_addr[4]),
         .I2(\byte_counter_reg[0]_0 ),
-        .I3(slave_reg_addr[4]),
+        .I3(\byte_counter_reg[1]_0 ),
         .O(\shift_reg_full[4]_i_1_n_0 ));
   LUT4 #(
-    .INIT(16'hB888)) 
+    .INIT(16'hAAC0)) 
     \shift_reg_full[5]_i_1 
        (.I0(slave_reg_data[5]),
-        .I1(\byte_counter_reg[1]_0 ),
+        .I1(slave_reg_addr[5]),
         .I2(\byte_counter_reg[0]_0 ),
-        .I3(slave_reg_addr[5]),
+        .I3(\byte_counter_reg[1]_0 ),
         .O(\shift_reg_full[5]_i_1_n_0 ));
   LUT4 #(
-    .INIT(16'hB8BB)) 
+    .INIT(16'hFD0D)) 
     \shift_reg_full[6]_i_1 
-       (.I0(slave_reg_data[6]),
-        .I1(\byte_counter_reg[1]_0 ),
-        .I2(slave_reg_addr[6]),
-        .I3(\byte_counter_reg[0]_0 ),
+       (.I0(\byte_counter_reg[0]_0 ),
+        .I1(slave_reg_addr[6]),
+        .I2(\byte_counter_reg[1]_0 ),
+        .I3(slave_reg_data[6]),
         .O(\shift_reg_full[6]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h0000000002220000)) 
+    .INIT(64'h0015000000000000)) 
     \shift_reg_full[7]_i_1 
-       (.I0(\FSM_sequential_state_reg[1]_0 ),
-        .I1(\FSM_sequential_state_reg[2]_0 ),
+       (.I0(scl_reg_0),
+        .I1(\byte_counter_reg[0]_0 ),
         .I2(\byte_counter_reg[1]_0 ),
-        .I3(\byte_counter_reg[0]_0 ),
+        .I3(\FSM_sequential_state_reg[2]_0 ),
         .I4(\FSM_sequential_state_reg[0]_0 ),
-        .I5(scl_reg_0),
-        .O(\shift_reg_full[7]_i_1_n_0 ));
+        .I5(\FSM_sequential_state_reg[1]_0 ),
+        .O(shift_reg_full));
   LUT4 #(
-    .INIT(16'hB888)) 
+    .INIT(16'hAAC0)) 
     \shift_reg_full[7]_i_2 
        (.I0(slave_reg_data[7]),
-        .I1(\byte_counter_reg[1]_0 ),
+        .I1(slave_reg_addr[7]),
         .I2(\byte_counter_reg[0]_0 ),
-        .I3(slave_reg_addr[7]),
+        .I3(\byte_counter_reg[1]_0 ),
         .O(\shift_reg_full[7]_i_2_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
     \shift_reg_full_reg[0] 
        (.C(clk_100),
-        .CE(\shift_reg_full[7]_i_1_n_0 ),
+        .CE(shift_reg_full),
         .D(\shift_reg_full[0]_i_1_n_0 ),
         .Q(shift_reg_full_debug[0]),
         .R(1'b0));
@@ -1294,7 +1230,7 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
     .INIT(1'b0)) 
     \shift_reg_full_reg[1] 
        (.C(clk_100),
-        .CE(\shift_reg_full[7]_i_1_n_0 ),
+        .CE(shift_reg_full),
         .D(\shift_reg_full[1]_i_1_n_0 ),
         .Q(shift_reg_full_debug[1]),
         .R(1'b0));
@@ -1302,7 +1238,7 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
     .INIT(1'b0)) 
     \shift_reg_full_reg[2] 
        (.C(clk_100),
-        .CE(\shift_reg_full[7]_i_1_n_0 ),
+        .CE(shift_reg_full),
         .D(\shift_reg_full[2]_i_1_n_0 ),
         .Q(shift_reg_full_debug[2]),
         .R(1'b0));
@@ -1310,7 +1246,7 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
     .INIT(1'b0)) 
     \shift_reg_full_reg[3] 
        (.C(clk_100),
-        .CE(\shift_reg_full[7]_i_1_n_0 ),
+        .CE(shift_reg_full),
         .D(\shift_reg_full[3]_i_1_n_0 ),
         .Q(shift_reg_full_debug[3]),
         .R(1'b0));
@@ -1318,7 +1254,7 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
     .INIT(1'b0)) 
     \shift_reg_full_reg[4] 
        (.C(clk_100),
-        .CE(\shift_reg_full[7]_i_1_n_0 ),
+        .CE(shift_reg_full),
         .D(\shift_reg_full[4]_i_1_n_0 ),
         .Q(shift_reg_full_debug[4]),
         .R(1'b0));
@@ -1326,7 +1262,7 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
     .INIT(1'b0)) 
     \shift_reg_full_reg[5] 
        (.C(clk_100),
-        .CE(\shift_reg_full[7]_i_1_n_0 ),
+        .CE(shift_reg_full),
         .D(\shift_reg_full[5]_i_1_n_0 ),
         .Q(shift_reg_full_debug[5]),
         .R(1'b0));
@@ -1334,7 +1270,7 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
     .INIT(1'b0)) 
     \shift_reg_full_reg[6] 
        (.C(clk_100),
-        .CE(\shift_reg_full[7]_i_1_n_0 ),
+        .CE(shift_reg_full),
         .D(\shift_reg_full[6]_i_1_n_0 ),
         .Q(shift_reg_full_debug[6]),
         .R(1'b0));
@@ -1342,7 +1278,7 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
     .INIT(1'b0)) 
     \shift_reg_full_reg[7] 
        (.C(clk_100),
-        .CE(\shift_reg_full[7]_i_1_n_0 ),
+        .CE(shift_reg_full),
         .D(\shift_reg_full[7]_i_2_n_0 ),
         .Q(shift_reg_full_debug[7]),
         .R(1'b0));
@@ -1402,45 +1338,36 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
         .D(\shift_reg[7]_i_2_n_0 ),
         .Q(shift_reg_debug[6]),
         .R(1'b0));
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
   LUT5 #(
-    .INIT(32'hAC38A008)) 
+    .INIT(32'hCBF0C830)) 
     \simple_state_debug[0]_i_1 
-       (.I0(\bit_counter[3]_i_4_n_0 ),
-        .I1(\FSM_sequential_state_reg[2]_0 ),
-        .I2(\FSM_sequential_state_reg[1]_0 ),
-        .I3(\FSM_sequential_state_reg[0]_0 ),
+       (.I0(\bit_counter[3]_i_3_n_0 ),
+        .I1(\FSM_sequential_state_reg[0]_0 ),
+        .I2(\FSM_sequential_state_reg[2]_0 ),
+        .I3(\FSM_sequential_state_reg[1]_0 ),
         .I4(simple_state_debug[0]),
         .O(\simple_state_debug[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
   LUT5 #(
-    .INIT(32'hAFB0A380)) 
+    .INIT(32'hFBCCF80C)) 
     \simple_state_debug[1]_i_1 
-       (.I0(\bit_counter[3]_i_4_n_0 ),
-        .I1(\FSM_sequential_state_reg[2]_0 ),
-        .I2(\FSM_sequential_state_reg[1]_0 ),
-        .I3(\FSM_sequential_state_reg[0]_0 ),
+       (.I0(\bit_counter[3]_i_3_n_0 ),
+        .I1(\FSM_sequential_state_reg[0]_0 ),
+        .I2(\FSM_sequential_state_reg[2]_0 ),
+        .I3(\FSM_sequential_state_reg[1]_0 ),
         .I4(simple_state_debug[1]),
         .O(\simple_state_debug[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
   LUT5 #(
-    .INIT(32'hDCFCD0CC)) 
+    .INIT(32'hF7F0F430)) 
     \simple_state_debug[2]_i_1 
-       (.I0(\simple_state_debug[2]_i_2_n_0 ),
-        .I1(\FSM_sequential_state_reg[2]_0 ),
-        .I2(\FSM_sequential_state_reg[1]_0 ),
-        .I3(\FSM_sequential_state_reg[0]_0 ),
+       (.I0(\bit_counter[3]_i_3_n_0 ),
+        .I1(\FSM_sequential_state_reg[0]_0 ),
+        .I2(\FSM_sequential_state_reg[2]_0 ),
+        .I3(\FSM_sequential_state_reg[1]_0 ),
         .I4(simple_state_debug[2]),
         .O(\simple_state_debug[2]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFFFFFFFFFF7FFFF)) 
-    \simple_state_debug[2]_i_2 
-       (.I0(\bit_counter_reg[3]_0 ),
-        .I1(\bit_counter_reg[0]_0 ),
-        .I2(\bit_counter_reg[2]_0 ),
-        .I3(\bit_counter_reg[1]_0 ),
-        .I4(scl_rise_reg_n_0),
-        .I5(scl_safe_change_reg_n_0),
-        .O(\simple_state_debug[2]_i_2_n_0 ));
   FDRE \simple_state_debug_reg[0] 
        (.C(clk_100),
         .CE(1'b1),
@@ -1460,11 +1387,11 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
         .Q(simple_state_debug[2]),
         .R(1'b0));
   LUT3 #(
-    .INIT(8'h2A)) 
+    .INIT(8'h70)) 
     \start_counter[0]_i_1 
-       (.I0(reset),
+       (.I0(reset_activated_reg_n_0),
         .I1(reset_activated2),
-        .I2(reset_activated_reg_n_0),
+        .I2(reset),
         .O(start_counter));
   LUT2 #(
     .INIT(4'h8)) 
@@ -1621,15 +1548,14 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
         .D(\start_counter_reg[8]_i_1_n_6 ),
         .Q(start_counter_reg[9]),
         .R(start_counter));
-  LUT6 #(
-    .INIT(64'h00B0FBBB00B000B0)) 
+  LUT5 #(
+    .INIT(32'h75403000)) 
     start_setup_i_1
-       (.I0(reset_activated_i_2_n_0),
-        .I1(\FSM_sequential_state_reg[2]_0 ),
+       (.I0(reset),
+        .I1(reset_activated2),
         .I2(reset_activated_reg_n_0),
-        .I3(reset_activated2),
-        .I4(reset),
-        .I5(start_setup_reg_n_0),
+        .I3(reset_activated_i_2_n_0),
+        .I4(start_setup_reg_n_0),
         .O(start_setup_i_1_n_0));
   FDRE #(
     .INIT(1'b0)) 
@@ -1640,14 +1566,14 @@ module top_I2C_OV7670_Master_0_0_I2C_OV7670_Master
         .Q(start_setup_reg_n_0),
         .R(1'b0));
   LUT6 #(
-    .INIT(64'hF7070404FFFF0000)) 
+    .INIT(64'hFFF00000F7F70404)) 
     state_pre_ack_i_1
        (.I0(sda_in),
         .I1(scl_safe_sample_reg_n_0),
-        .I2(\FSM_sequential_state_reg[0]_0 ),
+        .I2(\FSM_sequential_state[0]_i_2_n_0 ),
         .I3(scl_reg_0),
         .I4(state_pre_ack_reg_n_0),
-        .I5(\FSM_sequential_state[0]_i_2_n_0 ),
+        .I5(\FSM_sequential_state_reg[0]_0 ),
         .O(state_pre_ack_i_1_n_0));
   FDRE state_pre_ack_reg
        (.C(clk_100),

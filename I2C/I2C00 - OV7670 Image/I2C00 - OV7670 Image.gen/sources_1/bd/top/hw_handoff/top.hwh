@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Aug  8 21:23:30 2025" VIVADOVERSION="2023.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sat Aug  9 15:37:39 2025" VIVADOVERSION="2023.2">
 
   <SYSTEMINFO ARCH="artix7" BOARD="digilentinc.com:basys3:part0:1.2" DEVICE="7a35t" NAME="top" PACKAGE="cpg236" SPEEDGRADE="-1"/>
 
@@ -203,6 +203,7 @@
         <PORT DIR="O" LEFT="16" NAME="bram_read_addr" RIGHT="0" SIGIS="undef" SIGNAME="BRAM_reader_0_bram_read_addr">
           <CONNECTIONS>
             <CONNECTION INSTANCE="blk_mem_gen_0" PORT="addrb"/>
+            <CONNECTION INSTANCE="ila_0" PORT="probe14"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="25000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="clk_wiz_0_clk_out25">
@@ -221,6 +222,7 @@
     <MODULE COREREVISION="1" FULLNAME="/I2C_OV7670_Master_0" HWVERSION="1.0" INSTANCE="I2C_OV7670_Master_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="I2C_OV7670_Master" VLNV="xilinx.com:module_ref:I2C_OV7670_Master:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
+        <PARAMETER NAME="CONFIG_LEN" VALUE="9"/>
         <PARAMETER NAME="Component_Name" VALUE="top_I2C_OV7670_Master_0_0"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
@@ -233,9 +235,9 @@
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="2" NAME="current_index_bebug" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="O" LEFT="1" NAME="i2c_data_read" RIGHT="0" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_i2c_data_read">
+        <PORT DIR="O" LEFT="3" NAME="i2c_data_read" RIGHT="0" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_i2c_data_read">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="I2C_OV7670_config_0" PORT="index"/>
+            <CONNECTION INSTANCE="I2C_OV7670_new_config_0" PORT="index"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="ov7670_SCL" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_ov7670_SCL">
@@ -284,14 +286,14 @@
         <PORT DIR="O" LEFT="7" NAME="shift_reg_debug" RIGHT="0" SIGIS="undef"/>
         <PORT DIR="O" LEFT="7" NAME="shift_reg_full_debug" RIGHT="0" SIGIS="undef"/>
         <PORT DIR="O" LEFT="3" NAME="simple_state_debug" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="I" LEFT="7" NAME="slave_reg_addr" RIGHT="0" SIGIS="undef" SIGNAME="I2C_OV7670_config_0_reg_addr">
+        <PORT DIR="I" LEFT="7" NAME="slave_reg_addr" RIGHT="0" SIGIS="undef" SIGNAME="I2C_OV7670_new_config_0_reg_addr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="I2C_OV7670_config_0" PORT="reg_addr"/>
+            <CONNECTION INSTANCE="I2C_OV7670_new_config_0" PORT="reg_addr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="7" NAME="slave_reg_data" RIGHT="0" SIGIS="undef" SIGNAME="I2C_OV7670_config_0_reg_data">
+        <PORT DIR="I" LEFT="7" NAME="slave_reg_data" RIGHT="0" SIGIS="undef" SIGNAME="I2C_OV7670_new_config_0_reg_data">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="I2C_OV7670_config_0" PORT="reg_data"/>
+            <CONNECTION INSTANCE="I2C_OV7670_new_config_0" PORT="reg_data"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="2" NAME="state_debug" RIGHT="0" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_state_debug">
@@ -302,24 +304,25 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/I2C_OV7670_config_0" HWVERSION="1.0" INSTANCE="I2C_OV7670_config_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="I2C_OV7670_config" VLNV="xilinx.com:module_ref:I2C_OV7670_config:1.0">
+    <MODULE COREREVISION="1" FULLNAME="/I2C_OV7670_new_config_0" HWVERSION="1.0" INSTANCE="I2C_OV7670_new_config_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="I2C_OV7670_new_config" VLNV="xilinx.com:module_ref:I2C_OV7670_new_config:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
-        <PARAMETER NAME="Component_Name" VALUE="top_I2C_OV7670_config_0_0"/>
+        <PARAMETER NAME="CONFIG_LEN" VALUE="9"/>
+        <PARAMETER NAME="Component_Name" VALUE="top_I2C_OV7670_new_config_0_0"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="1" NAME="index" RIGHT="0" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_i2c_data_read">
+        <PORT DIR="I" LEFT="3" NAME="index" RIGHT="0" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_i2c_data_read">
           <CONNECTIONS>
             <CONNECTION INSTANCE="I2C_OV7670_Master_0" PORT="i2c_data_read"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="7" NAME="reg_addr" RIGHT="0" SIGIS="undef" SIGNAME="I2C_OV7670_config_0_reg_addr">
+        <PORT DIR="O" LEFT="7" NAME="reg_addr" RIGHT="0" SIGIS="undef" SIGNAME="I2C_OV7670_new_config_0_reg_addr">
           <CONNECTIONS>
             <CONNECTION INSTANCE="I2C_OV7670_Master_0" PORT="slave_reg_addr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="7" NAME="reg_data" RIGHT="0" SIGIS="undef" SIGNAME="I2C_OV7670_config_0_reg_data">
+        <PORT DIR="O" LEFT="7" NAME="reg_data" RIGHT="0" SIGIS="undef" SIGNAME="I2C_OV7670_new_config_0_reg_data">
           <CONNECTIONS>
             <CONNECTION INSTANCE="I2C_OV7670_Master_0" PORT="slave_reg_data"/>
           </CONNECTIONS>
@@ -645,6 +648,7 @@
         <PORT DIR="O" LEFT="15" NAME="doutb" RIGHT="0" SIGIS="undef" SIGNAME="blk_mem_gen_0_doutb">
           <CONNECTIONS>
             <CONNECTION INSTANCE="OutputFrame_Colour_0" PORT="bram_data"/>
+            <CONNECTION INSTANCE="ila_0" PORT="probe15"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="ena" SIGIS="undef" SIGNAME="xlconstant_0_dout">
@@ -1383,7 +1387,7 @@
         <PARAMETER NAME="C_CORE_MINOR_VER" VALUE="0"/>
         <PARAMETER NAME="C_CORE_TYPE" VALUE="1"/>
         <PARAMETER NAME="C_CSE_DRV_VER" VALUE="2"/>
-        <PARAMETER NAME="C_DATA_DEPTH" VALUE="16384"/>
+        <PARAMETER NAME="C_DATA_DEPTH" VALUE="8192"/>
         <PARAMETER NAME="C_DDR_CLK_GEN" VALUE="0"/>
         <PARAMETER NAME="C_DIVCLK_DIVIDE" VALUE="3"/>
         <PARAMETER NAME="C_ENABLE_ILA_AXI_MON" VALUE="0"/>
@@ -1397,7 +1401,7 @@
         <PARAMETER NAME="C_MU_TYPE" VALUE="0"/>
         <PARAMETER NAME="C_NEXT_SLAVE" VALUE="0"/>
         <PARAMETER NAME="C_NUM_MONITOR_SLOTS" VALUE="1"/>
-        <PARAMETER NAME="C_NUM_OF_PROBES" VALUE="14"/>
+        <PARAMETER NAME="C_NUM_OF_PROBES" VALUE="16"/>
         <PARAMETER NAME="C_PIPE_IFACE" VALUE="1"/>
         <PARAMETER NAME="C_PROBE0_MU_CNT" VALUE="1"/>
         <PARAMETER NAME="C_PROBE0_TYPE" VALUE="0"/>
@@ -1638,7 +1642,7 @@
         <PARAMETER NAME="C_PROBE149_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE14_MU_CNT" VALUE="1"/>
         <PARAMETER NAME="C_PROBE14_TYPE" VALUE="0"/>
-        <PARAMETER NAME="C_PROBE14_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_PROBE14_WIDTH" VALUE="17"/>
         <PARAMETER NAME="C_PROBE150_MU_CNT" VALUE="1"/>
         <PARAMETER NAME="C_PROBE150_TYPE" VALUE="0"/>
         <PARAMETER NAME="C_PROBE150_WIDTH" VALUE="1"/>
@@ -1671,7 +1675,7 @@
         <PARAMETER NAME="C_PROBE159_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE15_MU_CNT" VALUE="1"/>
         <PARAMETER NAME="C_PROBE15_TYPE" VALUE="0"/>
-        <PARAMETER NAME="C_PROBE15_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_PROBE15_WIDTH" VALUE="16"/>
         <PARAMETER NAME="C_PROBE160_MU_CNT" VALUE="1"/>
         <PARAMETER NAME="C_PROBE160_TYPE" VALUE="0"/>
         <PARAMETER NAME="C_PROBE160_WIDTH" VALUE="1"/>
@@ -4578,6 +4582,16 @@
         <PORT DIR="I" LEFT="2" NAME="probe13" RIGHT="0" SIGIS="undef" SIGNAME="I2C_OV7670_Master_0_state_debug">
           <CONNECTIONS>
             <CONNECTION INSTANCE="I2C_OV7670_Master_0" PORT="state_debug"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="16" NAME="probe14" RIGHT="0" SIGIS="undef" SIGNAME="BRAM_reader_0_bram_read_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="BRAM_reader_0" PORT="bram_read_addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="probe15" RIGHT="0" SIGIS="undef" SIGNAME="blk_mem_gen_0_doutb">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="blk_mem_gen_0" PORT="doutb"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>

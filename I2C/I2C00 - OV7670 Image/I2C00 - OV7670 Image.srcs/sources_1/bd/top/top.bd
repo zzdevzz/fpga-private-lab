@@ -14,7 +14,6 @@
       "clk_wiz_0": "",
       "debouncer_0": "",
       "I2C_OV7670_Master_0": "",
-      "I2C_OV7670_config_0": "",
       "ila_0": "",
       "Pixel_Capture_0": "",
       "BRAM_FIFO_Limit_0": "",
@@ -22,7 +21,8 @@
       "xlconstant_0": "",
       "BRAM_reader_0": "",
       "OutputFrame_Colour_0": "",
-      "debouncer_1": ""
+      "debouncer_1": "",
+      "I2C_OV7670_new_config_0": ""
     },
     "ports": {
       "sys_clock": {
@@ -378,7 +378,7 @@
           },
           "i2c_data_read": {
             "direction": "O",
-            "left": "1",
+            "left": "3",
             "right": "0"
           },
           "state_debug": {
@@ -400,35 +400,6 @@
           }
         }
       },
-      "I2C_OV7670_config_0": {
-        "vlnv": "xilinx.com:module_ref:I2C_OV7670_config:1.0",
-        "ip_revision": "1",
-        "xci_name": "top_I2C_OV7670_config_0_0",
-        "xci_path": "ip\\top_I2C_OV7670_config_0_0\\top_I2C_OV7670_config_0_0.xci",
-        "inst_hier_path": "I2C_OV7670_config_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "I2C_OV7670_config",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "index": {
-            "direction": "I",
-            "left": "1",
-            "right": "0"
-          },
-          "reg_addr": {
-            "direction": "O",
-            "left": "7",
-            "right": "0"
-          },
-          "reg_data": {
-            "direction": "O",
-            "left": "7",
-            "right": "0"
-          }
-        }
-      },
       "ila_0": {
         "vlnv": "xilinx.com:ip:ila:6.2",
         "ip_revision": "14",
@@ -437,19 +408,25 @@
         "inst_hier_path": "ila_0",
         "parameters": {
           "C_DATA_DEPTH": {
-            "value": "16384"
+            "value": "8192"
           },
           "C_MONITOR_TYPE": {
             "value": "Native"
           },
           "C_NUM_OF_PROBES": {
-            "value": "14"
+            "value": "16"
           },
           "C_PROBE11_WIDTH": {
             "value": "4"
           },
           "C_PROBE13_WIDTH": {
             "value": "3"
+          },
+          "C_PROBE14_WIDTH": {
+            "value": "17"
+          },
+          "C_PROBE15_WIDTH": {
+            "value": "16"
           }
         }
       },
@@ -777,6 +754,35 @@
             "direction": "O"
           }
         }
+      },
+      "I2C_OV7670_new_config_0": {
+        "vlnv": "xilinx.com:module_ref:I2C_OV7670_new_config:1.0",
+        "ip_revision": "1",
+        "xci_name": "top_I2C_OV7670_new_config_0_0",
+        "xci_path": "ip\\top_I2C_OV7670_new_config_0_0\\top_I2C_OV7670_new_config_0_0.xci",
+        "inst_hier_path": "I2C_OV7670_new_config_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "I2C_OV7670_new_config",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "index": {
+            "direction": "I",
+            "left": "3",
+            "right": "0"
+          },
+          "reg_addr": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "reg_data": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          }
+        }
       }
     },
     "nets": {
@@ -802,7 +808,8 @@
       "BRAM_reader_0_bram_read_addr": {
         "ports": [
           "BRAM_reader_0/bram_read_addr",
-          "blk_mem_gen_0/addrb"
+          "blk_mem_gen_0/addrb",
+          "ila_0/probe14"
         ]
       },
       "BTNL_1": {
@@ -820,7 +827,7 @@
       "I2C_OV7670_Master_0_i2c_data_read": {
         "ports": [
           "I2C_OV7670_Master_0/i2c_data_read",
-          "I2C_OV7670_config_0/index"
+          "I2C_OV7670_new_config_0/index"
         ]
       },
       "I2C_OV7670_Master_0_ov7670_SCL": {
@@ -868,15 +875,15 @@
           "ila_0/probe13"
         ]
       },
-      "I2C_OV7670_config_0_reg_addr": {
+      "I2C_OV7670_new_config_0_reg_addr": {
         "ports": [
-          "I2C_OV7670_config_0/reg_addr",
+          "I2C_OV7670_new_config_0/reg_addr",
           "I2C_OV7670_Master_0/slave_reg_addr"
         ]
       },
-      "I2C_OV7670_config_0_reg_data": {
+      "I2C_OV7670_new_config_0_reg_data": {
         "ports": [
-          "I2C_OV7670_config_0/reg_data",
+          "I2C_OV7670_new_config_0/reg_data",
           "I2C_OV7670_Master_0/slave_reg_data"
         ]
       },
@@ -969,7 +976,8 @@
       "blk_mem_gen_0_doutb": {
         "ports": [
           "blk_mem_gen_0/doutb",
-          "OutputFrame_Colour_0/bram_data"
+          "OutputFrame_Colour_0/bram_data",
+          "ila_0/probe15"
         ]
       },
       "clk_wiz_0_clk_out25": {

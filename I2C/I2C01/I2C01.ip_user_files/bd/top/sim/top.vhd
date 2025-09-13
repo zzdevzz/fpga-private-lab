@@ -2,7 +2,7 @@
 --Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
---Date        : Thu Jul 17 23:06:00 2025
+--Date        : Sat Jul 19 00:21:29 2025
 --Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 --Command     : generate_target top.bd
 --Design      : top
@@ -19,6 +19,7 @@ use UNISIM.VCOMPONENTS.ALL;
   -- Module feeds the initial I2C module setup, and lets us get camera input setup.
   entity top is
   port (
+    BTNL : in STD_LOGIC;
     Hsync : out STD_LOGIC;
     LED : out STD_LOGIC_VECTOR ( 7 downto 0 );
     Vsync : out STD_LOGIC;
@@ -38,7 +39,7 @@ use UNISIM.VCOMPONENTS.ALL;
     vgaRed : out STD_LOGIC_VECTOR ( 3 downto 0 )
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of top : entity is "top,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=top,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=12,numReposBlks=12,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=7,numPkgbdBlks=0,bdsource=USER,""""""""""""""""""""""""""""""""""""""""""""""""""""""da_board_cnt""""""""""""""""""""""""""""""""""""""""""""""""""""""=2,synth_mode=Hierarchical}";
+  attribute CORE_GENERATION_INFO of top : entity is "top,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=top,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=13,numReposBlks=13,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=8,numPkgbdBlks=0,bdsource=USER,""""""""""""""""""""""""""""""""""""""""""""""""""""""""da_board_cnt""""""""""""""""""""""""""""""""""""""""""""""""""""""""=2,synth_mode=Hierarchical}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of top : entity is "top.hwdef";
 end top;
@@ -90,6 +91,7 @@ architecture STRUCTURE of top is
     href : in STD_LOGIC;
     vsync : in STD_LOGIC;
     current_i : out STD_LOGIC;
+    capture_frame : in STD_LOGIC;
     state_out : out STD_LOGIC_VECTOR ( 3 downto 0 )
   );
   end component top_Pixel_Capture_0_0;
@@ -142,11 +144,7 @@ architecture STRUCTURE of top is
     clk : in STD_LOGIC;
     probe0 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe1 : in STD_LOGIC_VECTOR ( 16 downto 0 );
-    probe2 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe3 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe4 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe5 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe6 : in STD_LOGIC_VECTOR ( 3 downto 0 )
+    probe2 : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component top_ila_0_2;
   component top_OV7670_QVGA_SIM_0_0 is
@@ -180,6 +178,13 @@ architecture STRUCTURE of top is
     bram_read_addr : out STD_LOGIC_VECTOR ( 16 downto 0 )
   );
   end component top_BRAM_reader_0_0;
+  component top_debouncer_0_0 is
+  port (
+    clk : in STD_LOGIC;
+    switch : in STD_LOGIC;
+    switch_debounced : out STD_LOGIC
+  );
+  end component top_debouncer_0_0;
   signal BRAM_FIFO_Limit_0_bram_addr_out : STD_LOGIC_VECTOR ( 16 downto 0 );
   signal BRAM_FIFO_Limit_0_bram_data_out : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal BRAM_FIFO_Limit_0_bram_loaded : STD_LOGIC;
@@ -192,13 +197,8 @@ architecture STRUCTURE of top is
   signal I2C_camera_0_reg_addr : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal I2C_camera_0_reg_data : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal Net : STD_LOGIC;
-  signal OV7670_QVGA_SIM_0_data_out : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal OV7670_QVGA_SIM_0_href : STD_LOGIC;
-  signal OV7670_QVGA_SIM_0_pclk : STD_LOGIC;
-  signal OV7670_QVGA_SIM_0_vsync : STD_LOGIC;
   signal Pixel_Capture_0_bram_addr : STD_LOGIC_VECTOR ( 16 downto 0 );
   signal Pixel_Capture_0_bram_data : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal Pixel_Capture_0_bram_we : STD_LOGIC;
   signal Pixel_Capture_0_current_i : STD_LOGIC;
   signal Pixel_Capture_0_start_capture : STD_LOGIC;
   signal Pixel_Capture_0_state_out : STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -210,8 +210,10 @@ architecture STRUCTURE of top is
   signal VGA_OutputFrame_Colo_0_vgaGreen : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal VGA_OutputFrame_Colo_0_vgaRed : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal blk_mem_gen_1_doutb : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal btnl_1 : STD_LOGIC;
   signal clk_wiz_0_clk_out1 : STD_LOGIC;
   signal clk_wiz_0_clk_out25 : STD_LOGIC;
+  signal debouncer_0_switch_debounced : STD_LOGIC;
   signal ov7670_data_1 : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal ov7670_href_1 : STD_LOGIC;
   signal ov7670_pclk_1 : STD_LOGIC;
@@ -220,6 +222,11 @@ architecture STRUCTURE of top is
   signal sys_clock_1 : STD_LOGIC;
   signal xlconstant_1_dout : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_I2C_OV7670_MasterCon_0_i2c_data_out_UNCONNECTED : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal NLW_OV7670_QVGA_SIM_0_href_UNCONNECTED : STD_LOGIC;
+  signal NLW_OV7670_QVGA_SIM_0_pclk_UNCONNECTED : STD_LOGIC;
+  signal NLW_OV7670_QVGA_SIM_0_vsync_UNCONNECTED : STD_LOGIC;
+  signal NLW_OV7670_QVGA_SIM_0_data_out_UNCONNECTED : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal NLW_Pixel_Capture_0_bram_we_UNCONNECTED : STD_LOGIC;
   signal NLW_blk_mem_gen_1_douta_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal NLW_clk_wiz_0_locked_UNCONNECTED : STD_LOGIC;
   attribute X_INTERFACE_INFO : string;
@@ -236,6 +243,7 @@ begin
   Hsync <= VGA_OutputFrame_Colo_0_Hsync;
   LED(7 downto 0) <= I2C_OV7670_MasterCon_0_LED(7 downto 0);
   Vsync <= VGA_OutputFrame_Colo_0_Vsync;
+  btnl_1 <= BTNL;
   ov7670_SCL <= I2C_OV7670_MasterCon_0_ov7670_SCL;
   ov7670_data_1(7 downto 0) <= ov7670_data(7 downto 0);
   ov7670_href_1 <= ov7670_href;
@@ -294,24 +302,25 @@ I2C_camera_0: component top_I2C_camera_0_0
 OV7670_QVGA_SIM_0: component top_OV7670_QVGA_SIM_0_0
      port map (
       clk => clk_wiz_0_clk_out1,
-      data_out(7 downto 0) => OV7670_QVGA_SIM_0_data_out(7 downto 0),
-      href => OV7670_QVGA_SIM_0_href,
-      pclk => OV7670_QVGA_SIM_0_pclk,
-      vsync => OV7670_QVGA_SIM_0_vsync
+      data_out(7 downto 0) => NLW_OV7670_QVGA_SIM_0_data_out_UNCONNECTED(7 downto 0),
+      href => NLW_OV7670_QVGA_SIM_0_href_UNCONNECTED,
+      pclk => NLW_OV7670_QVGA_SIM_0_pclk_UNCONNECTED,
+      vsync => NLW_OV7670_QVGA_SIM_0_vsync_UNCONNECTED
     );
 Pixel_Capture_0: component top_Pixel_Capture_0_0
      port map (
       bram_addr(16 downto 0) => Pixel_Capture_0_bram_addr(16 downto 0),
       bram_data(15 downto 0) => Pixel_Capture_0_bram_data(15 downto 0),
-      bram_we => Pixel_Capture_0_bram_we,
+      bram_we => NLW_Pixel_Capture_0_bram_we_UNCONNECTED,
+      capture_frame => debouncer_0_switch_debounced,
       clk => clk_wiz_0_clk_out25,
       current_i => Pixel_Capture_0_current_i,
-      href => OV7670_QVGA_SIM_0_href,
-      pclk => OV7670_QVGA_SIM_0_pclk,
-      pixel_data_in(7 downto 0) => OV7670_QVGA_SIM_0_data_out(7 downto 0),
+      href => ov7670_href_1,
+      pclk => ov7670_pclk_1,
+      pixel_data_in(7 downto 0) => ov7670_data_1(7 downto 0),
       start_capture => Pixel_Capture_0_start_capture,
       state_out(3 downto 0) => Pixel_Capture_0_state_out(3 downto 0),
-      vsync => OV7670_QVGA_SIM_0_vsync
+      vsync => ov7670_vsync_1
     );
 VGA_OutputFrame_Colo_0: component top_VGA_OutputFrame_Colo_0_0
      port map (
@@ -348,6 +357,12 @@ clk_wiz_0: component top_clk_wiz_0_0
       locked => NLW_clk_wiz_0_locked_UNCONNECTED,
       reset => reset_1
     );
+debouncer_0: component top_debouncer_0_0
+     port map (
+      clk => clk_wiz_0_clk_out25,
+      switch => btnl_1,
+      switch_debounced => debouncer_0_switch_debounced
+    );
 input_ila: component top_ila_0_1
      port map (
       clk => clk_wiz_0_clk_out1,
@@ -363,11 +378,7 @@ pixel_capture_ila: component top_ila_0_2
       clk => clk_wiz_0_clk_out1,
       probe0(0) => Pixel_Capture_0_start_capture,
       probe1(16 downto 0) => Pixel_Capture_0_bram_addr(16 downto 0),
-      probe2(15 downto 0) => Pixel_Capture_0_bram_data(15 downto 0),
-      probe3(0) => Pixel_Capture_0_bram_we,
-      probe4(0) => clk_wiz_0_clk_out25,
-      probe5(0) => Pixel_Capture_0_current_i,
-      probe6(3 downto 0) => Pixel_Capture_0_state_out(3 downto 0)
+      probe2(15 downto 0) => Pixel_Capture_0_bram_data(15 downto 0)
     );
 xlconstant_1: component top_xlconstant_1_0
      port map (

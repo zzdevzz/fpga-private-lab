@@ -15,9 +15,6 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==top_debounc
 # IP: bd/top/ip/top_I2C_OV7670_Master_0_0/top_I2C_OV7670_Master_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==top_I2C_OV7670_Master_0_0 || ORIG_REF_NAME==top_I2C_OV7670_Master_0_0} -quiet] -quiet
 
-# IP: bd/top/ip/top_I2C_OV7670_config_0_0/top_I2C_OV7670_config_0_0.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==top_I2C_OV7670_config_0_0 || ORIG_REF_NAME==top_I2C_OV7670_config_0_0} -quiet] -quiet
-
 # IP: bd/top/ip/top_ila_0_0/top_ila_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==top_ila_0_0 || ORIG_REF_NAME==top_ila_0_0} -quiet] -quiet
 
@@ -41,5 +38,8 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==top_OutputF
 
 # IP: bd/top/ip/top_debouncer_0_1/top_debouncer_0_1.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==top_debouncer_0_1 || ORIG_REF_NAME==top_debouncer_0_1} -quiet] -quiet
+
+# IP: bd/top/ip/top_I2C_OV7670_new_config_0_0/top_I2C_OV7670_new_config_0_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==top_I2C_OV7670_new_config_0_0 || ORIG_REF_NAME==top_I2C_OV7670_new_config_0_0} -quiet] -quiet
 
 # XDC: e:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670 Image.gen/sources_1/bd/top/top_ooc.xdc

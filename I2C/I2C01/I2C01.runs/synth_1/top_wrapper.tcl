@@ -71,8 +71,10 @@ proc create_report { reportName command } {
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
 set_param tcl.collectionResultDisplayLimit 0
+set_param tcl.statsThreshold 360
 set_param chipscope.maxJobs 6
 set_param xicom.use_bs_reader 1
+set_msg_config -id {Common 17-41} -limit 10000000
 set_msg_config  -id {XSIM 43-3225}  -string {{ERROR: [XSIM 43-3225] Cannot find design unit xil_defaultlib.task_1_2_tb in library work located at xsim.dir/work.}}  -suppress 
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a35tcpg236-1
@@ -101,14 +103,10 @@ set_property used_in_implementation false [get_files -all {{e:/FPGA/VHDL/Lab Tra
 set_property used_in_implementation false [get_files -all {{e:/FPGA/VHDL/Lab Training/I2C/I2C01/I2C01.gen/sources_1/bd/top/ip/top_clk_wiz_0_0/top_clk_wiz_0_0.xdc}}]
 set_property used_in_implementation false [get_files -all {{e:/FPGA/VHDL/Lab Training/I2C/I2C01/I2C01.gen/sources_1/bd/top/ip/top_clk_wiz_0_0/top_clk_wiz_0_0_ooc.xdc}}]
 set_property used_in_implementation false [get_files -all {{e:/FPGA/VHDL/Lab Training/I2C/I2C01/I2C01.gen/sources_1/bd/top/ip/top_blk_mem_gen_1_0/top_blk_mem_gen_1_0_ooc.xdc}}]
-set_property used_in_synthesis false [get_files -all {{e:/FPGA/VHDL/Lab Training/I2C/I2C01/I2C01.gen/sources_1/bd/top/ip/top_ila_0_1/ila_v6_2/constraints/ila_impl.xdc}}]
-set_property used_in_implementation false [get_files -all {{e:/FPGA/VHDL/Lab Training/I2C/I2C01/I2C01.gen/sources_1/bd/top/ip/top_ila_0_1/ila_v6_2/constraints/ila_impl.xdc}}]
-set_property used_in_implementation false [get_files -all {{e:/FPGA/VHDL/Lab Training/I2C/I2C01/I2C01.gen/sources_1/bd/top/ip/top_ila_0_1/ila_v6_2/constraints/ila.xdc}}]
-set_property used_in_implementation false [get_files -all {{e:/FPGA/VHDL/Lab Training/I2C/I2C01/I2C01.gen/sources_1/bd/top/ip/top_ila_0_1/top_ila_0_1_ooc.xdc}}]
-set_property used_in_synthesis false [get_files -all {{e:/FPGA/VHDL/Lab Training/I2C/I2C01/I2C01.gen/sources_1/bd/top/ip/top_ila_0_2/ila_v6_2/constraints/ila_impl.xdc}}]
-set_property used_in_implementation false [get_files -all {{e:/FPGA/VHDL/Lab Training/I2C/I2C01/I2C01.gen/sources_1/bd/top/ip/top_ila_0_2/ila_v6_2/constraints/ila_impl.xdc}}]
-set_property used_in_implementation false [get_files -all {{e:/FPGA/VHDL/Lab Training/I2C/I2C01/I2C01.gen/sources_1/bd/top/ip/top_ila_0_2/ila_v6_2/constraints/ila.xdc}}]
-set_property used_in_implementation false [get_files -all {{e:/FPGA/VHDL/Lab Training/I2C/I2C01/I2C01.gen/sources_1/bd/top/ip/top_ila_0_2/top_ila_0_2_ooc.xdc}}]
+set_property used_in_synthesis false [get_files -all {{e:/FPGA/VHDL/Lab Training/I2C/I2C01/I2C01.gen/sources_1/bd/top/ip/top_ila_0_3/ila_v6_2/constraints/ila_impl.xdc}}]
+set_property used_in_implementation false [get_files -all {{e:/FPGA/VHDL/Lab Training/I2C/I2C01/I2C01.gen/sources_1/bd/top/ip/top_ila_0_3/ila_v6_2/constraints/ila_impl.xdc}}]
+set_property used_in_implementation false [get_files -all {{e:/FPGA/VHDL/Lab Training/I2C/I2C01/I2C01.gen/sources_1/bd/top/ip/top_ila_0_3/ila_v6_2/constraints/ila.xdc}}]
+set_property used_in_implementation false [get_files -all {{e:/FPGA/VHDL/Lab Training/I2C/I2C01/I2C01.gen/sources_1/bd/top/ip/top_ila_0_3/top_ila_0_3_ooc.xdc}}]
 set_property used_in_implementation false [get_files -all {{e:/FPGA/VHDL/Lab Training/I2C/I2C01/I2C01.gen/sources_1/bd/top/top_ooc.xdc}}]
 
 OPTRACE "Adding files" END { }

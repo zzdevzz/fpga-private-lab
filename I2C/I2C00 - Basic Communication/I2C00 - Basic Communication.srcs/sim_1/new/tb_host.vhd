@@ -103,6 +103,15 @@ begin
             wait for 20 ns;
         end loop;
     end process;
+    
+    reset_proc : process
+    begin
+        wait for 2 ms;
+        tb_reset <= '1';
+        wait for 20 ns;
+        tb_reset <= '0';
+        wait; -- ends the process
+    end process;
 
     stim_proc : process
     begin
@@ -113,14 +122,7 @@ begin
         wait;
     end process;
 
-    reset_proc : process
-    begin
-        wait for 20 ms;
-        tb_reset <= '1';
-        wait for 20 ns;
-        tb_reset <= '0';
-        wait; -- ends the process
-    end process;
+    
 
 
     -- Example href and vsync toggles could be added here too.

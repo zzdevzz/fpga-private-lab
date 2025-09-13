@@ -5,7 +5,8 @@ entity tb_top_wrapper is
 end tb_top_wrapper;
 
 architecture Behavioral of tb_top_wrapper is
-
+    
+    signal tb_BTNL: std_logic := '0';
     signal tb_clock     : std_logic := '0';
     signal tb_reset     : std_logic := '0';
 
@@ -32,6 +33,7 @@ architecture Behavioral of tb_top_wrapper is
 
     component top_wrapper
         port (
+            BTNL : in STD_LOGIC;
             Hsync           : out STD_LOGIC;
             LED             : out STD_LOGIC_VECTOR (7 downto 0);
             Vsync           : out STD_LOGIC;
@@ -56,6 +58,7 @@ begin
 
     DUT: top_wrapper
     port map (
+        BTNL => tb_BTNL,
         Hsync           => tb_Hsync,
         LED             => tb_LED,
         Vsync           => tb_Vsync,
@@ -95,6 +98,15 @@ begin
             tb_ov7670_pclk <= '1';
             wait for 20 ns;
         end loop;
+    end process;
+    
+    stim_proc : process
+    begin
+        wait for 10 ms;
+        tb_BTNL <= '1';
+        wait for 1 ms;
+        tb_BTNL <= '0';
+        wait;
     end process;
 
     -- Example href and vsync toggles could be added here too.

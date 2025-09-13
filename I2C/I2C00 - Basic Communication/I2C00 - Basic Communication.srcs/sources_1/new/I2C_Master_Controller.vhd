@@ -58,6 +58,7 @@ entity I2C_Master_Controller is
 
     --Data we want I2C  to send..
     slave_signal_sent: in std_logic;   
+    slave_model_addr: in std_logic_vector(7 downto 0); --device address we sending too
     slave_reg_addr: in std_logic_vector(7 downto 0);
     slave_reg_data: in std_logic_vector(7 downto 0);
 
@@ -67,6 +68,11 @@ entity I2C_Master_Controller is
     sda_out: out std_logic;
     sda_in: in std_logic;
     sda_oe: out std_logic;
+    
+    read_register_sample: out std_logic;
+    read_data : out std_logic_vector(7 downto 0);
+    write_register_nack:  out std_logic;
+    write_register_pulse: out std_logic;
 
 --    sda_ie_debug: out std_logic;
     shift_reg_debug: out std_logic_vector(7 downto 0);
@@ -77,7 +83,7 @@ entity I2C_Master_Controller is
     scl_en_debug : out std_logic;
 
     i2c_data_read: out std_logic_vector(1 downto 0);  -- index to feed external LUT
-    state_debug: out std_logic_vector(2 downto 0);
+    state_debug: out std_logic_vector(3 downto 0);
     simple_state_debug: out std_logic_vector(3 downto 0); 
 
     --0V7670 Specific
@@ -106,7 +112,7 @@ architecture Behavioral of I2C_Master_Controller is
   signal state : state_type := IDLE;
 
 
-  signal sda_out_s: std_logic := '1';
+  
 
   signal scl     : std_logic := '1';
   signal scl_en  : std_logic := '0'; -- decides if clock is enabled/running.
@@ -116,16 +122,20 @@ architecture Behavioral of I2C_Master_Controller is
   signal scl_fall: std_logic := '0';
 
   signal byte_counter : integer range 0 to 2 := 0; --used to determine what stage communicating is at, r.e device address, register address, register value.
-  signal read_enable : std_logic;
-  signal read_phase : std_logic := '0'; -- 0 when on write phase, 1 when on read phase.
+  signal read_enable : std_logic; --extracts last bit from address, shows if its a read command.
+  signal read_phase : std_logic := '0'; -- protocol for read, needs a write first, then read. 0 when on write phase, 1 when on read phase.
 
-
+  signal sda_out_s: std_logic := '1';
+  signal sending : std_logic := '0';
+  
   signal shift_reg_full : std_logic_vector(7 downto 0) := (others => '0'); --full data locked before we start sending data.
   signal shift_reg    : std_logic_vector(7 downto 0) := (others => '0');
   signal bit_counter  : integer range 0 to 9 := 0;
-
-  signal sending      : std_logic := '0';
-
+  
+  signal repeated_start_phase : std_logic := '0'; --used to count clock cycles to help repeated start condition.
+  signal read_shift_reg : std_logic_vector(7 downto 0) := (others => '0'); --registers used to store data from the read byte.
+  signal read_register_sample_s : std_logic := '0'; --lets us know when the read register is done.
+  
   signal current_index : integer range 0 to 3 := 0;
   signal ov7670_reset_s : std_logic := '0';
 
@@ -137,8 +147,6 @@ architecture Behavioral of I2C_Master_Controller is
   signal start_setup: std_logic := '0';
 
   signal reset_activated: std_logic := '0';
-  signal current_reset: std_logic := '0';
-  signal prev_reset: std_logic := '0';
 
   signal temp_debug : integer range 0 to 10 := 0;
   signal ack_sample_counter : integer range 0 to 2 := 0;
@@ -173,21 +181,16 @@ begin
 
   -- only triggers SDA when reset is pressed, to help with ILA debugging.
   -- start counter will reset things first, then when at max will enable scl to start.
+  
   init_setup: process(clk_100)
   begin
     if rising_edge(clk_100) then
 
-        --used to get falling edge of reset trigger release.
-        prev_reset <= current_reset;
-        current_reset <= reset;
-
-        if current_reset = '0' and prev_reset = '1' then
-            reset_activated <= '1'; -- checks for falling edge of a debounced reset.
-        end if;
 
         if reset = '1' then
             start_counter <= 0;
             start_setup <= '0';
+            reset_activated <= '1';
         end if;
 
         if start_counter = reset_counter then --first we reset all registers before setting them again.
@@ -200,7 +203,6 @@ begin
             start_counter <= start_counter + 1;
         elsif state = STOP_CONDITION then
             reset_activated <= '0'; --resets so when back to idle after stop condition, it doesn't loop.
-            start_setup <= '0';
         elsif reset_activated = '1' then --give signal that if start counter reaches the setup, we can start setting up i2c.
             start_setup <= '1'; --this can be left high. in order to restart it, reset button must be pressed.
         end if;
@@ -255,10 +257,13 @@ begin
     if rising_edge(clk_100) then
       case state is
         when IDLE =>
+          write_register_pulse <= '0';
           scl_en <= '0';
           sda_oe <= '0';
           read_phase <= '0';
-          if slave_signal_sent = '1' then
+          read_register_sample_s <= '0';
+          repeated_start_phase <= '0';
+          if slave_signal_sent = '1' and start_setup = '1' then
             state <= START_CONDITION;
             byte_counter <= 0;
             simple_state_debug <= "0001";
@@ -269,14 +274,14 @@ begin
         when START_CONDITION =>
           --drop SDA low first.
           sda_oe <= '1'; 
-          sda_out <= '0';
+          sda_out_s <= '0';
           state <= WAIT_AFTER_START;
           simple_state_debug <= "0010";
 
 
         when WAIT_AFTER_START => 
             scl_en <= '1'; --After SDA is low, we can start dropping the clock (or enabling it to start).
-            state <= SEND_BYTE;
+            state <= CONFIGURE_BYTE;
 
         -- ======================================================
         -- We can have lots of things being sent. 
@@ -284,23 +289,25 @@ begin
         -- This checks what stage it's at.
         -- ======================================================
         when CONFIGURE_BYTE =>
+        
           if scl = '0' then -- can only change data when low.
 
             --check whether its a read or write address.
             -- check if its read, what stage we're in.
 
-            if byte_counter = 0 then
-              shift_reg_full <= slave_write_addr;
-              read_enable <= slave_write_addr(7); --checks whether 1 or 0 at end.
+            if byte_counter = 0 then --first thing device address.
+              shift_reg_full <= slave_model_addr;
+              read_enable <= slave_model_addr(0); --checks whether 1 or 0 at end.
 
               -- if its a read, for the first time we must write to the address first, changing the last bit
-              if slave_write_addr(7) = '1' and read_phase = '0' then 
-                shift_reg_full(7) <= '0';
+              -- if its a read, for the second time, read_phase will be 1, so we can use the original bit.
+              if slave_model_addr(0) = '1' and read_phase = '0' then 
+                shift_reg_full(0) <= '0';
               end if;
 
-            elsif byte_counter = 1 then
+            elsif byte_counter = 1 then --second thing register address.
               shift_reg_full <= slave_reg_addr;
-            elsif byte_counter = 2 then
+            elsif byte_counter = 2 then --third thing register data.
               shift_reg_full <= slave_reg_data;
             end if;
             state <= SEND_BYTE;
@@ -309,88 +316,135 @@ begin
 
 
         when SEND_BYTE =>
-          --check if the shift_reg is changing every clock cycle, vs SCL cycle.
+          -- Make is so data is only changed every I2C SCL cycle, not internalclock cycle..
           if scl_fall = '1' then
             temp_debug <= 1;
-            if bit_counter < 1 then
-                sda_out <= shift_reg_full(7);
+            if bit_counter = 0 then
+                sda_out_s <= shift_reg_full(7);
                 shift_reg <= shift_reg_full(6 downto 0) & '0';
                 bit_counter <= bit_counter + 1; --increasing  by 1 every cycle.
                 temp_debug <= 2;
-            elsif bit_counter <= 8 then
-                sda_out <= shift_reg(7);
+            elsif bit_counter < 8 then
+                sda_out_s <= shift_reg(7);
                 shift_reg <= shift_reg(6 downto 0) & '0'; --shifting down every 1 ccycle, not every SCL cycle. 
                 bit_counter <= bit_counter + 1; --increasing  by 1 every cycle.
                 temp_debug <= 3;
-            else --this is the 9th bit, used for acknowledgement.
+            elsif bit_counter = 8 then --this is the 9th bit, used for acknowledgement.
               sda_oe <= '0'; --makes it so its immediately available for ack.
-
+              bit_counter <= bit_counter + 1; --increasing  by 1 every cycle.
             end if;
+            
           elsif scl_rise = '1' and bit_counter = 9 then
             bit_counter <= 0;
+            sda_oe <= '0'; --makes it so its immediately available for ack.
             state <= READ_ACK; 
             temp_debug <= 4;
             simple_state_debug <= "0100";
           end if;          
 
+--        when READ_ACK =>
+--          simple_state_debug <= "0101";
+--          if scl_fall = '1' then
+--            if sda_in /= '0' then --active low
+--              state <= STOP_CONDITION;-- NACK handling
+--            else
+--              state <= NEXT_BYTE;
+--            end if;
+--          end if;
+
         when READ_ACK =>
           simple_state_debug <= "0101";
+          if scl = '1' then
+            if sda_in = '0' then --active low
+              state <= NEXT_BYTE;-- ACK handling
+              write_register_nack <= '0';
+              write_register_pulse <= '1';
+            end if;
+          end if;
+          
           if scl_rise = '1' then
-            if sda_in /= '0' then --active low
-              state <= STOP_CONDITION;-- NACK handling
+            if sda_in = '1' then
+              state <= STOP_CONDITION; --NACK Handling
+              write_register_nack <= '1';
+              write_register_pulse <= '1';
             else
-              state <= NEXT_BYTE;
+              state <= NEXT_BYTE;-- ACK handling
+              write_register_nack <= '0';
+              write_register_pulse <= '1';
             end if;
           end if;
 
         when NEXT_BYTE =>
           simple_state_debug <= "0110";
-
+          write_register_pulse <= '0'; 
+          
           if read_enable = '1' then
-            if byte_counter < 1 then
-                byte_counter <= byte_counter + 1; -- then go to state where we want to write the register we want to read from..
+            if read_phase = '0' then
+              -- write phase of random read: addr|W then reg
+              if byte_counter = 0 then
+                byte_counter <= 1;              -- next: send register address
                 state <= CONFIGURE_BYTE;
-            elsif byte_counter = 1 and read_phase = '0' then --this is state where we wrote to the register and need a repeated start.
+              else  -- byte_counter = 1 (reg just ACKed)
                 byte_counter <= 0;
                 state <= REPEATED_START_CONDITION;
-            elsif byte_counter = 1 and read_phase = '1' then
-                state <= READ_BYTE;
-            end if;
-          elsif read_enable = '0' then
-              if byte_counter < 2 then
-                byte_counter <= byte_counter + 1;
-                sda_oe <= '1';
-                state <= CONFIGURE_BYTE;
-              else
-                byte_counter <= 0;
-                if current_index < 3 then
-                  current_index <= current_index + 1;
-                  state <= START_CONDITION;
-                else
-                  state <= STOP_CONDITION;
-                end if;
               end if;
+        
+            else
+              -- read phase: addr|R just ACKed ? read a data byte (no matter what byte_counter is)
+              bit_counter <= 0;
+              state <= READ_BYTE;
+              sda_oe <= '0'; --release so slave can drive
+            end if;
+        
+          else
+            -- pure write flow
+            if byte_counter < 2 then
+              byte_counter <= byte_counter + 1;
+              sda_oe <= '1';
+              state <= CONFIGURE_BYTE;
+            else
+              byte_counter <= 0;
+              state <= STOP_CONDITION;
+            end if;
           end if;
 
         when REPEATED_START_CONDITION =>
             --a repeated start is dropping sda high to low, while clock is high. this needs to happen without a stop.
 
             --make sda high again while clock is low.
-            if scl_fall = '1' then 
-                sda_out <= '1';
-                sda_oe <= '1';
+            if scl_fall = '1' and repeated_start_phase = '0' then 
+                sda_oe <= '0'; --open drain makes it high.
+                repeated_start_phase <= '1';
             end if;
 
-            if scl_rise = '1' and sda_out = '1' then
-                sda_out <= '0';
+            if scl_rise = '1' and repeated_start_phase = '1' then
+                repeated_start_phase <= '0';
+                sda_oe <= '1';
+                sda_out_s <= '0';
                 read_phase <= '1';
+                byte_counter <= 0;
                 state <= CONFIGURE_BYTE;
             end if;
 
         when READ_BYTE =>
+            simple_state_debug <= "1111";
+            sda_oe <= '0'; --release so slave can drive.
+            
+            if scl_rise = '1' then
+                if bit_counter < 8 then
+                    read_shift_reg <= sda_in & read_shift_reg(7 downto 1);
+                    bit_counter    <= bit_counter + 1;
+                elsif bit_counter = 8 then
+                    read_register_sample_s <= '1';
+                    state <= STOP_CONDITION;
+                    bit_counter <= 0;
+                end if;
+            end if;
          --READ BYTE LOGIC.
 
         when STOP_CONDITION =>
+          write_register_pulse <= '0';
+          write_register_nack <= '0';
           simple_state_debug <= "0111";
           scl_en <= '0';
           sda_oe <= '0';
@@ -400,11 +454,14 @@ begin
     end if;
   end process;
 
-  state_debug <= std_logic_vector(to_unsigned(state_type'pos(state), 3));
-  ov7670_reset <= ov7670_reset_s;
---  sda_out <= sda_out_s;
-current_index_bebug <= std_logic_vector(to_unsigned(current_index, 3));
-scl_en_debug <= scl_en; 
+    state_debug <= std_logic_vector(to_unsigned(state_type'pos(state), 4));
+    ov7670_reset <= ov7670_reset_s;
+    sda_out <= sda_out_s;
+    current_index_bebug <= std_logic_vector(to_unsigned(current_index, 3));
+    scl_en_debug <= scl_en; 
+    read_register_sample <= read_register_sample_s;
+    read_data <=  read_shift_reg;
+    
 end Behavioral;       
 
  

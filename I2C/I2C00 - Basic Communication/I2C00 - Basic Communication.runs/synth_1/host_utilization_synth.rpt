@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Fri Aug  8 20:26:22 2025
+| Date         : Sat Sep 13 21:06:25 2025
 | Host         : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 | Command      : report_utilization -file host_utilization_synth.rpt -pb host_utilization_synth.pb
 | Design       : host
@@ -161,15 +161,18 @@ Warning! LUT value is adjusted to account for LUT combining.
 8. Black Boxes
 --------------
 
-+---------------------------+------+
-|          Ref Name         | Used |
-+---------------------------+------+
-| top_ila_0_0               |    1 |
-| top_debouncer_0_0         |    1 |
-| top_clk_wiz_0_0           |    1 |
-| top_I2C_OV7670_config_0_0 |    1 |
-| top_I2C_OV7670_Master_0_0 |    1 |
-+---------------------------+------+
++-------------------------------+------+
+|            Ref Name           | Used |
++-------------------------------+------+
+| top_ila_0_0                   |    1 |
+| top_debouncer_0_1             |    1 |
+| top_debouncer_0_0             |    1 |
+| top_clk_wiz_0_0               |    1 |
+| top_Pulse_Edges_0_1           |    1 |
+| top_Pulse_Edges_0_0           |    1 |
+| top_I2C_OV7670_Basic_0_0      |    1 |
+| top_I2C_Master_Controller_0_0 |    1 |
++-------------------------------+------+
 
 
 9. Instantiated Netlists

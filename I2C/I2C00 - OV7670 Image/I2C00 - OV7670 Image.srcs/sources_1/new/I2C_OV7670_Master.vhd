@@ -42,6 +42,9 @@ use UNISIM.vcomponents.all;
 
 
 entity I2C_OV7670_Master is
+   generic(
+    CONFIG_LEN : integer := 9
+  );
   Port ( 
     clk_100: in std_logic;
     reset: in std_logic;
@@ -65,7 +68,7 @@ entity I2C_OV7670_Master is
     current_index_bebug: out std_logic_vector(2 downto 0);
     scl_en_debug : out std_logic;
 
-    i2c_data_read: out std_logic_vector(1 downto 0);  -- index to feed external LUT
+    i2c_data_read: out std_logic_vector(3 downto 0);  -- index to feed external LUT
     state_debug: out std_logic_vector(2 downto 0);
     simple_state_debug: out std_logic_vector(3 downto 0); 
 
@@ -77,7 +80,7 @@ entity I2C_OV7670_Master is
 end I2C_OV7670_Master;
 
 architecture Behavioral of I2C_OV7670_Master is
-  constant i2c_clock_max : integer := 500; -- 100Mhz / 500 = 200 Khz, in the i2c range.
+  constant i2c_clock_max : integer := 400; -- 100Mhz / 500 = 200 Khz, in the i2c range.
   constant slave_write_addr: std_logic_vector(7 downto 0) := x"42"; --this is the address we will always write too for OV7670.
 --  constant slave_write_addr: std_logic_vector(7 downto 0) := x"99"; --this is the address we will always write too for OV7670.
 
@@ -154,7 +157,7 @@ begin
 
 
   -- I2C data index for external LUT
-  i2c_data_read <= std_logic_vector(to_unsigned(current_index, 2));
+  i2c_data_read <= std_logic_vector(to_unsigned(current_index, 4));
 
   i2c_sample_read: process(scl)
   begin
@@ -370,7 +373,7 @@ begin
             state <= SEND_BYTE;
           else
             byte_counter <= 0;
-            if current_index < 3 then
+            if current_index < CONFIG_LEN then
               current_index <= current_index + 1;
               state <= START_CONDITION;
             else

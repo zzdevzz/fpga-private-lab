@@ -69,7 +69,7 @@ ENTITY top_I2C_OV7670_Master_0_0 IS
     shift_reg_full_debug : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
     current_index_bebug : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
     scl_en_debug : OUT STD_LOGIC;
-    i2c_data_read : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
+    i2c_data_read : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
     state_debug : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
     simple_state_debug : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
     ov7670_pwdn : OUT STD_LOGIC;
@@ -81,6 +81,9 @@ ARCHITECTURE top_I2C_OV7670_Master_0_0_arch OF top_I2C_OV7670_Master_0_0 IS
   ATTRIBUTE DowngradeIPIdentifiedWarnings : STRING;
   ATTRIBUTE DowngradeIPIdentifiedWarnings OF top_I2C_OV7670_Master_0_0_arch: ARCHITECTURE IS "yes";
   COMPONENT I2C_OV7670_Master IS
+    GENERIC (
+      CONFIG_LEN : INTEGER
+    );
     PORT (
       clk_100 : IN STD_LOGIC;
       reset : IN STD_LOGIC;
@@ -96,7 +99,7 @@ ARCHITECTURE top_I2C_OV7670_Master_0_0_arch OF top_I2C_OV7670_Master_0_0 IS
       shift_reg_full_debug : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
       current_index_bebug : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
       scl_en_debug : OUT STD_LOGIC;
-      i2c_data_read : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
+      i2c_data_read : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
       state_debug : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
       simple_state_debug : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
       ov7670_pwdn : OUT STD_LOGIC;
@@ -111,6 +114,9 @@ ARCHITECTURE top_I2C_OV7670_Master_0_0_arch OF top_I2C_OV7670_Master_0_0 IS
   ATTRIBUTE X_INTERFACE_INFO OF reset: SIGNAL IS "xilinx.com:signal:reset:1.0 reset RST";
 BEGIN
   U0 : I2C_OV7670_Master
+    GENERIC MAP (
+      CONFIG_LEN => 9
+    )
     PORT MAP (
       clk_100 => clk_100,
       reset => reset,

@@ -7,25 +7,38 @@
       "name": "top",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
       "synth_flow_mode": "Hierarchical",
-      "tool_version": "2023.2"
+      "tool_version": "2023.2",
+      "validated": "true"
     },
     "design_tree": {
       "clk_wiz_0": "",
       "debouncer_0": "",
-      "I2C_OV7670_Master_0": "",
       "ila_0": "",
-      "I2C_OV7670_config_0": "",
       "Pulse_Edges_0": "",
       "I2C_Master_Controller_0": "",
-      "I2C_OV7670_Basic_0": ""
+      "I2C_OV7670_Basic_0": "",
+      "Pulse_Edges_1": "",
+      "debouncer_1": ""
     },
     "ports": {
       "sys_clock": {
         "type": "clk",
         "direction": "I",
         "parameters": {
+          "CLK_DOMAIN": {
+            "value": "top_sys_clock",
+            "value_src": "default"
+          },
           "FREQ_HZ": {
             "value": "100000000"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
           },
           "PHASE": {
             "value": "0.0"
@@ -36,6 +49,10 @@
         "type": "rst",
         "direction": "I",
         "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
           "POLARITY": {
             "value": "ACTIVE_HIGH"
           }
@@ -52,11 +69,43 @@
       },
       "ov7670_reset": {
         "type": "rst",
-        "direction": "O"
+        "direction": "O",
+        "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "POLARITY": {
+            "value": "ACTIVE_LOW",
+            "value_src": "default"
+          }
+        }
       },
       "ov7670_xclk": {
         "type": "clk",
-        "direction": "O"
+        "direction": "O",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "/clk_wiz_0_clk_out1",
+            "value_src": "ip_prop"
+          },
+          "FREQ_HZ": {
+            "value": "25000000",
+            "value_src": "ip_prop"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "ip_prop"
+          }
+        }
       },
       "sda_in": {
         "direction": "I"
@@ -187,114 +236,13 @@
             "direction": "I"
           },
           "switch_debounced": {
-            "direction": "O"
-          }
-        }
-      },
-      "I2C_OV7670_Master_0": {
-        "vlnv": "xilinx.com:module_ref:I2C_OV7670_Master:1.0",
-        "ip_revision": "1",
-        "xci_name": "top_I2C_OV7670_Master_0_0",
-        "xci_path": "ip\\top_I2C_OV7670_Master_0_0\\top_I2C_OV7670_Master_0_0.xci",
-        "inst_hier_path": "I2C_OV7670_Master_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "I2C_OV7670_Master",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "clk_100": {
-            "direction": "I",
+            "direction": "O",
             "parameters": {
-              "FREQ_HZ": {
-                "value": "100000000",
-                "value_src": "ip_prop"
-              },
-              "PHASE": {
-                "value": "0.0",
-                "value_src": "ip_prop"
-              },
-              "CLK_DOMAIN": {
-                "value": "/clk_wiz_0_clk_out1",
-                "value_src": "ip_prop"
+              "POLARITY": {
+                "value": "ACTIVE_HIGH",
+                "value_src": "user_prop"
               }
             }
-          },
-          "reset": {
-            "type": "rst",
-            "direction": "I"
-          },
-          "slave_reg_addr": {
-            "direction": "I",
-            "left": "7",
-            "right": "0"
-          },
-          "slave_reg_data": {
-            "direction": "I",
-            "left": "7",
-            "right": "0"
-          },
-          "ov7670_SCL": {
-            "direction": "O"
-          },
-          "sda_out": {
-            "direction": "O"
-          },
-          "sda_in": {
-            "direction": "I"
-          },
-          "sda_oe": {
-            "direction": "O"
-          },
-          "shift_reg_debug": {
-            "direction": "O",
-            "left": "7",
-            "right": "0"
-          },
-          "byte_counter_debug": {
-            "direction": "O",
-            "left": "1",
-            "right": "0"
-          },
-          "bit_counter_debug": {
-            "direction": "O",
-            "left": "4",
-            "right": "0"
-          },
-          "shift_reg_full_debug": {
-            "direction": "O",
-            "left": "7",
-            "right": "0"
-          },
-          "current_index_bebug": {
-            "direction": "O",
-            "left": "2",
-            "right": "0"
-          },
-          "scl_en_debug": {
-            "direction": "O"
-          },
-          "i2c_data_read": {
-            "direction": "O",
-            "left": "1",
-            "right": "0"
-          },
-          "state_debug": {
-            "direction": "O",
-            "left": "2",
-            "right": "0"
-          },
-          "simple_state_debug": {
-            "direction": "O",
-            "left": "3",
-            "right": "0"
-          },
-          "ov7670_pwdn": {
-            "direction": "O"
-          },
-          "ov7670_reset": {
-            "type": "rst",
-            "direction": "O"
           }
         }
       },
@@ -306,66 +254,37 @@
         "inst_hier_path": "ila_0",
         "parameters": {
           "C_DATA_DEPTH": {
-            "value": "16384"
+            "value": "32768"
           },
           "C_MONITOR_TYPE": {
             "value": "Native"
           },
           "C_NUM_OF_PROBES": {
-            "value": "15"
+            "value": "13"
           },
           "C_PROBE12_WIDTH": {
             "value": "8"
           },
           "C_PROBE14_WIDTH": {
-            "value": "3"
+            "value": "1"
           },
           "C_PROBE4_WIDTH": {
             "value": "8"
           },
           "C_PROBE5_WIDTH": {
-            "value": "2"
+            "value": "1"
           },
           "C_PROBE6_WIDTH": {
-            "value": "5"
+            "value": "4"
           },
           "C_PROBE7_WIDTH": {
-            "value": "2"
+            "value": "1"
           },
           "C_PROBE8_WIDTH": {
-            "value": "3"
+            "value": "5"
           },
           "C_PROBE9_WIDTH": {
             "value": "4"
-          }
-        }
-      },
-      "I2C_OV7670_config_0": {
-        "vlnv": "xilinx.com:module_ref:I2C_OV7670_config:1.0",
-        "ip_revision": "1",
-        "xci_name": "top_I2C_OV7670_config_0_0",
-        "xci_path": "ip\\top_I2C_OV7670_config_0_0\\top_I2C_OV7670_config_0_0.xci",
-        "inst_hier_path": "I2C_OV7670_config_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "I2C_OV7670_config",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "index": {
-            "direction": "I",
-            "left": "1",
-            "right": "0"
-          },
-          "reg_addr": {
-            "direction": "O",
-            "left": "7",
-            "right": "0"
-          },
-          "reg_data": {
-            "direction": "O",
-            "left": "7",
-            "right": "0"
           }
         }
       },
@@ -400,7 +319,13 @@
             }
           },
           "source": {
-            "direction": "I"
+            "direction": "I",
+            "parameters": {
+              "POLARITY": {
+                "value": "ACTIVE_HIGH",
+                "value_src": "user_prop"
+              }
+            }
           },
           "edge_rising": {
             "direction": "O"
@@ -446,6 +371,11 @@
           "slave_signal_sent": {
             "direction": "I"
           },
+          "slave_model_addr": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
           "slave_reg_addr": {
             "direction": "I",
             "left": "7",
@@ -466,6 +396,20 @@
             "direction": "I"
           },
           "sda_oe": {
+            "direction": "O"
+          },
+          "read_register_sample": {
+            "direction": "O"
+          },
+          "read_data": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "write_register_nack": {
+            "direction": "O"
+          },
+          "write_register_pulse": {
             "direction": "O"
           },
           "shift_reg_debug": {
@@ -503,7 +447,7 @@
           },
           "state_debug": {
             "direction": "O",
-            "left": "2",
+            "left": "3",
             "right": "0"
           },
           "simple_state_debug": {
@@ -532,9 +476,35 @@
           "boundary_crc": "0x0"
         },
         "ports": {
-          "index": {
+          "clk": {
+            "type": "clk",
             "direction": "I",
-            "left": "1",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "reset",
+                "value_src": "constant"
+              },
+              "FREQ_HZ": {
+                "value": "100000000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "/clk_wiz_0_clk_out1",
+                "value_src": "ip_prop"
+              }
+            }
+          },
+          "reset": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "model_addr": {
+            "direction": "O",
+            "left": "7",
             "right": "0"
           },
           "reg_addr": {
@@ -546,6 +516,106 @@
             "direction": "O",
             "left": "7",
             "right": "0"
+          },
+          "data_ready": {
+            "direction": "O"
+          }
+        }
+      },
+      "Pulse_Edges_1": {
+        "vlnv": "xilinx.com:module_ref:Pulse_Edges:1.0",
+        "ip_revision": "1",
+        "xci_name": "top_Pulse_Edges_0_1",
+        "xci_path": "ip\\top_Pulse_Edges_0_1\\top_Pulse_Edges_0_1.xci",
+        "inst_hier_path": "Pulse_Edges_1",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "Pulse_Edges",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "100000000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "/clk_wiz_0_clk_out1",
+                "value_src": "ip_prop"
+              }
+            }
+          },
+          "source": {
+            "direction": "I",
+            "parameters": {
+              "POLARITY": {
+                "value": "ACTIVE_HIGH",
+                "value_src": "user_prop"
+              }
+            }
+          },
+          "edge_rising": {
+            "direction": "O"
+          },
+          "edge_falling": {
+            "direction": "O"
+          }
+        }
+      },
+      "debouncer_1": {
+        "vlnv": "xilinx.com:module_ref:debouncer:1.0",
+        "ip_revision": "1",
+        "xci_name": "top_debouncer_0_1",
+        "xci_path": "ip\\top_debouncer_0_1\\top_debouncer_0_1.xci",
+        "inst_hier_path": "debouncer_1",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "debouncer",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "100000000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "/clk_wiz_0_clk_out1",
+                "value_src": "ip_prop"
+              }
+            }
+          },
+          "switch": {
+            "direction": "I",
+            "parameters": {
+              "POLARITY": {
+                "value": "ACTIVE_HIGH",
+                "value_src": "user_prop"
+              }
+            }
+          },
+          "switch_debounced": {
+            "direction": "O",
+            "parameters": {
+              "POLARITY": {
+                "value": "ACTIVE_HIGH",
+                "value_src": "user_prop"
+              }
+            }
           }
         }
       }
@@ -557,10 +627,69 @@
           "debouncer_0/switch"
         ]
       },
+      "I2C_Master_Controller_0_bit_counter_debug": {
+        "ports": [
+          "I2C_Master_Controller_0/bit_counter_debug",
+          "ila_0/probe8"
+        ]
+      },
       "I2C_Master_Controller_0_i2c_data_read": {
         "ports": [
-          "I2C_Master_Controller_0/i2c_data_read",
-          "I2C_OV7670_Basic_0/index"
+          "I2C_Master_Controller_0/i2c_data_read"
+        ]
+      },
+      "I2C_Master_Controller_0_read_data": {
+        "ports": [
+          "I2C_Master_Controller_0/read_data",
+          "ila_0/probe12"
+        ]
+      },
+      "I2C_Master_Controller_0_read_register_sample": {
+        "ports": [
+          "I2C_Master_Controller_0/read_register_sample",
+          "ila_0/probe5"
+        ]
+      },
+      "I2C_Master_Controller_0_shift_reg_debug": {
+        "ports": [
+          "I2C_Master_Controller_0/shift_reg_debug",
+          "ila_0/probe4"
+        ]
+      },
+      "I2C_Master_Controller_0_simple_state_debug": {
+        "ports": [
+          "I2C_Master_Controller_0/simple_state_debug",
+          "ila_0/probe6"
+        ]
+      },
+      "I2C_Master_Controller_0_state_debug": {
+        "ports": [
+          "I2C_Master_Controller_0/state_debug",
+          "ila_0/probe9"
+        ]
+      },
+      "I2C_Master_Controller_0_write_register_nack": {
+        "ports": [
+          "I2C_Master_Controller_0/write_register_nack",
+          "ila_0/probe10"
+        ]
+      },
+      "I2C_Master_Controller_0_write_register_pulse": {
+        "ports": [
+          "I2C_Master_Controller_0/write_register_pulse",
+          "ila_0/probe11"
+        ]
+      },
+      "I2C_OV7670_Basic_0_data_ready": {
+        "ports": [
+          "I2C_OV7670_Basic_0/data_ready",
+          "I2C_Master_Controller_0/slave_signal_sent"
+        ]
+      },
+      "I2C_OV7670_Basic_0_model_addr": {
+        "ports": [
+          "I2C_OV7670_Basic_0/model_addr",
+          "I2C_Master_Controller_0/slave_model_addr"
         ]
       },
       "I2C_OV7670_Basic_0_reg_addr": {
@@ -575,31 +704,6 @@
           "I2C_Master_Controller_0/slave_reg_data"
         ]
       },
-      "I2C_OV7670_Master_0_bit_counter_debug": {
-        "ports": [
-          "I2C_OV7670_Master_0/bit_counter_debug",
-          "ila_0/probe6"
-        ]
-      },
-      "I2C_OV7670_Master_0_byte_counter_debug": {
-        "ports": [
-          "I2C_OV7670_Master_0/byte_counter_debug",
-          "ila_0/probe5"
-        ]
-      },
-      "I2C_OV7670_Master_0_current_index_bebug": {
-        "ports": [
-          "I2C_OV7670_Master_0/current_index_bebug",
-          "ila_0/probe14"
-        ]
-      },
-      "I2C_OV7670_Master_0_i2c_data_read": {
-        "ports": [
-          "I2C_OV7670_Master_0/i2c_data_read",
-          "I2C_OV7670_config_0/index",
-          "ila_0/probe7"
-        ]
-      },
       "I2C_OV7670_Master_0_ov7670_SCL": {
         "ports": [
           "I2C_Master_Controller_0/ov7670_SCL",
@@ -610,21 +714,13 @@
       "I2C_OV7670_Master_0_ov7670_pwdn": {
         "ports": [
           "I2C_Master_Controller_0/ov7670_pwdn",
-          "ov7670_pwdn",
-          "ila_0/probe10"
+          "ov7670_pwdn"
         ]
       },
       "I2C_OV7670_Master_0_ov7670_reset": {
         "ports": [
           "I2C_Master_Controller_0/ov7670_reset",
-          "ov7670_reset",
-          "ila_0/probe11"
-        ]
-      },
-      "I2C_OV7670_Master_0_scl_en_debug": {
-        "ports": [
-          "I2C_OV7670_Master_0/scl_en_debug",
-          "ila_0/probe13"
+          "ov7670_reset"
         ]
       },
       "I2C_OV7670_Master_0_sda_oe": {
@@ -641,46 +737,11 @@
           "ila_0/probe1"
         ]
       },
-      "I2C_OV7670_Master_0_shift_reg_debug": {
-        "ports": [
-          "I2C_OV7670_Master_0/shift_reg_debug",
-          "ila_0/probe4"
-        ]
-      },
-      "I2C_OV7670_Master_0_shift_reg_full_debug": {
-        "ports": [
-          "I2C_OV7670_Master_0/shift_reg_full_debug",
-          "ila_0/probe12"
-        ]
-      },
-      "I2C_OV7670_Master_0_simple_state_debug": {
-        "ports": [
-          "I2C_OV7670_Master_0/simple_state_debug",
-          "ila_0/probe9"
-        ]
-      },
-      "I2C_OV7670_Master_0_state_debug": {
-        "ports": [
-          "I2C_OV7670_Master_0/state_debug",
-          "ila_0/probe8"
-        ]
-      },
-      "I2C_OV7670_config_0_reg_addr": {
-        "ports": [
-          "I2C_OV7670_config_0/reg_addr",
-          "I2C_OV7670_Master_0/slave_reg_addr"
-        ]
-      },
-      "I2C_OV7670_config_0_reg_data": {
-        "ports": [
-          "I2C_OV7670_config_0/reg_data",
-          "I2C_OV7670_Master_0/slave_reg_data"
-        ]
-      },
       "Pulse_Edges_0_edge_rising": {
         "ports": [
           "Pulse_Edges_0/edge_rising",
-          "I2C_OV7670_Master_0/reset",
+          "ila_0/probe7",
+          "I2C_OV7670_Basic_0/reset",
           "I2C_Master_Controller_0/reset"
         ]
       },
@@ -695,28 +756,31 @@
           "clk_wiz_0/clk_out100",
           "debouncer_0/clk",
           "ila_0/clk",
-          "I2C_OV7670_Master_0/clk_100",
           "Pulse_Edges_0/clk",
+          "Pulse_Edges_1/clk",
+          "I2C_OV7670_Basic_0/clk",
+          "debouncer_1/clk",
           "I2C_Master_Controller_0/clk_100"
         ]
       },
       "debouncer_0_switch_debounced": {
         "ports": [
           "debouncer_0/switch_debounced",
-          "Pulse_Edges_0/source"
+          "Pulse_Edges_0/source",
+          "Pulse_Edges_1/source"
         ]
       },
       "reset_1": {
         "ports": [
           "reset",
-          "clk_wiz_0/reset"
+          "clk_wiz_0/reset",
+          "debouncer_1/switch"
         ]
       },
       "sda_in_1": {
         "ports": [
           "sda_in",
           "ila_0/probe3",
-          "I2C_OV7670_Master_0/sda_in",
           "I2C_Master_Controller_0/sda_in"
         ]
       },

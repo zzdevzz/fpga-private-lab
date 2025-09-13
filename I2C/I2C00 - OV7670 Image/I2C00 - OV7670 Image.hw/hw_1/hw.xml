@@ -21,7 +21,7 @@
     </Object>
     <Object name="top_i/top_i/ila_0" gui_info="">
       <Properties Property="CONTROL.TRIGGER_CONDITION" value="AND"/>
-      <Properties Property="CONTROL.TRIGGER_POSITION" value="1024"/>
+      <Properties Property="CONTROL.TRIGGER_POSITION" value="8192"/>
       <Properties Property="CORE_REFRESH_RATE_MS" value="500"/>
     </Object>
   </ObjectList>
@@ -53,6 +53,43 @@
         <net name="top_i/top_i/BRAM_FIFO_Limit_0_bram_loaded"/>
       </nets>
     </probe>
+    <probe type="ila" busType="bus" source="netlist" spec="ILA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="CAPTURE_COMPARE_VALUE" value="eq17&apos;hX_XXXX"/>
+        <Option Id="COMPARE_VALUE.0" value="eq17&apos;hX_XXXX"/>
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe14[16:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="TRIGGER_COMPARE_VALUE" value="eq17&apos;hX_XXXX"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="top_i/top_i/BRAM_reader_0_bram_read_addr[16]"/>
+        <net name="top_i/top_i/BRAM_reader_0_bram_read_addr[15]"/>
+        <net name="top_i/top_i/BRAM_reader_0_bram_read_addr[14]"/>
+        <net name="top_i/top_i/BRAM_reader_0_bram_read_addr[13]"/>
+        <net name="top_i/top_i/BRAM_reader_0_bram_read_addr[12]"/>
+        <net name="top_i/top_i/BRAM_reader_0_bram_read_addr[11]"/>
+        <net name="top_i/top_i/BRAM_reader_0_bram_read_addr[10]"/>
+        <net name="top_i/top_i/BRAM_reader_0_bram_read_addr[9]"/>
+        <net name="top_i/top_i/BRAM_reader_0_bram_read_addr[8]"/>
+        <net name="top_i/top_i/BRAM_reader_0_bram_read_addr[7]"/>
+        <net name="top_i/top_i/BRAM_reader_0_bram_read_addr[6]"/>
+        <net name="top_i/top_i/BRAM_reader_0_bram_read_addr[5]"/>
+        <net name="top_i/top_i/BRAM_reader_0_bram_read_addr[4]"/>
+        <net name="top_i/top_i/BRAM_reader_0_bram_read_addr[3]"/>
+        <net name="top_i/top_i/BRAM_reader_0_bram_read_addr[2]"/>
+        <net name="top_i/top_i/BRAM_reader_0_bram_read_addr[1]"/>
+        <net name="top_i/top_i/BRAM_reader_0_bram_read_addr[0]"/>
+      </nets>
+    </probe>
     <probe type="ila" busType="net" source="netlist" spec="ILA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="CAPTURE_COMPARE_VALUE" value="eq1&apos;bX"/>
@@ -77,7 +114,7 @@
     <probe type="ila" busType="net" source="netlist" spec="ILA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="CAPTURE_COMPARE_VALUE" value="eq1&apos;bX"/>
-        <Option Id="COMPARE_VALUE.0" value="eq1&apos;bF"/>
+        <Option Id="COMPARE_VALUE.0" value="eq1&apos;bR"/>
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_RADIX" value="HEX"/>
@@ -88,7 +125,7 @@
         <Option Id="NAME.CUSTOM" value=""/>
         <Option Id="NAME.SELECT" value="Long"/>
         <Option Id="SOURCE" value="netlist"/>
-        <Option Id="TRIGGER_COMPARE_VALUE" value="eq1&apos;bF"/>
+        <Option Id="TRIGGER_COMPARE_VALUE" value="eq1&apos;bR"/>
         <Option Id="WAVEFORM_STYLE" value="Digital"/>
       </probeOptions>
       <nets>
@@ -232,6 +269,42 @@
         <net name="top_i/top_i/Pixel_Capture_0_state_out[2]"/>
         <net name="top_i/top_i/Pixel_Capture_0_state_out[1]"/>
         <net name="top_i/top_i/Pixel_Capture_0_state_out[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila" busType="bus" source="netlist" spec="ILA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="CAPTURE_COMPARE_VALUE" value="eq16&apos;hXXXX"/>
+        <Option Id="COMPARE_VALUE.0" value="eq16&apos;hXXXX"/>
+        <Option Id="DISPLAY_AS_ENUM" value="1"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_RADIX" value="HEX"/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_ILA" value="hw_ila_1"/>
+        <Option Id="LINK_TO_WAVEFORM" value="1"/>
+        <Option Id="MAP" value="probe15[15:0]"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+        <Option Id="TRIGGER_COMPARE_VALUE" value="eq16&apos;hXXXX"/>
+        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+      </probeOptions>
+      <nets>
+        <net name="top_i/top_i/blk_mem_gen_0_doutb[15]"/>
+        <net name="top_i/top_i/blk_mem_gen_0_doutb[14]"/>
+        <net name="top_i/top_i/blk_mem_gen_0_doutb[13]"/>
+        <net name="top_i/top_i/blk_mem_gen_0_doutb[12]"/>
+        <net name="top_i/top_i/blk_mem_gen_0_doutb[11]"/>
+        <net name="top_i/top_i/blk_mem_gen_0_doutb[10]"/>
+        <net name="top_i/top_i/blk_mem_gen_0_doutb[9]"/>
+        <net name="top_i/top_i/blk_mem_gen_0_doutb[8]"/>
+        <net name="top_i/top_i/blk_mem_gen_0_doutb[7]"/>
+        <net name="top_i/top_i/blk_mem_gen_0_doutb[6]"/>
+        <net name="top_i/top_i/blk_mem_gen_0_doutb[5]"/>
+        <net name="top_i/top_i/blk_mem_gen_0_doutb[4]"/>
+        <net name="top_i/top_i/blk_mem_gen_0_doutb[3]"/>
+        <net name="top_i/top_i/blk_mem_gen_0_doutb[2]"/>
+        <net name="top_i/top_i/blk_mem_gen_0_doutb[1]"/>
+        <net name="top_i/top_i/blk_mem_gen_0_doutb[0]"/>
       </nets>
     </probe>
     <probe type="ila" busType="net" source="netlist" spec="ILA_V2_RT">

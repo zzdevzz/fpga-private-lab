@@ -17,13 +17,12 @@
       "Pixel_Capture_0": "",
       "xlconstant_1": "",
       "blk_mem_gen_1": "",
-      "input_ila": "",
       "BRAM_FIFO_Limit_0": "",
-      "pixel_capture_ila": "",
       "OV7670_QVGA_SIM_0": "",
       "VGA_OutputFrame_Colo_0": "",
       "BRAM_reader_0": "",
-      "debouncer_0": ""
+      "debouncer_0": "",
+      "ila_0": ""
     },
     "interface_ports": {
       "push_buttons_4bits": {
@@ -252,7 +251,7 @@
         "xci_path": "ip\\top_I2C_camera_0_0\\top_I2C_camera_0_0.xci",
         "inst_hier_path": "I2C_camera_0",
         "reference_info": {
-          "ref_type": "hdl",
+          "ref_type": "unknown",
           "ref_name": "I2C_camera",
           "boundary_crc": "0x0"
         },
@@ -281,7 +280,7 @@
         "xci_path": "ip\\top_I2C_OV7670_MasterCon_0_0\\top_I2C_OV7670_MasterCon_0_0.xci",
         "inst_hier_path": "I2C_OV7670_MasterCon_0",
         "reference_info": {
-          "ref_type": "hdl",
+          "ref_type": "unknown",
           "ref_name": "I2C_OV7670_MasterController",
           "boundary_crc": "0x0"
         },
@@ -364,7 +363,7 @@
         "xci_path": "ip\\top_Pixel_Capture_0_0\\top_Pixel_Capture_0_0.xci",
         "inst_hier_path": "Pixel_Capture_0",
         "reference_info": {
-          "ref_type": "hdl",
+          "ref_type": "unknown",
           "ref_name": "Pixel_Capture",
           "boundary_crc": "0x0"
         },
@@ -458,30 +457,6 @@
           }
         }
       },
-      "input_ila": {
-        "vlnv": "xilinx.com:ip:ila:6.2",
-        "ip_revision": "14",
-        "xci_name": "top_ila_0_1",
-        "xci_path": "ip\\top_ila_0_1\\top_ila_0_1.xci",
-        "inst_hier_path": "input_ila",
-        "parameters": {
-          "C_DATA_DEPTH": {
-            "value": "8192"
-          },
-          "C_MONITOR_TYPE": {
-            "value": "Native"
-          },
-          "C_NUM_OF_PROBES": {
-            "value": "6"
-          },
-          "C_PROBE4_WIDTH": {
-            "value": "8"
-          },
-          "C_PROBE5_WIDTH": {
-            "value": "4"
-          }
-        }
-      },
       "BRAM_FIFO_Limit_0": {
         "vlnv": "xilinx.com:module_ref:BRAM_FIFO_Limit:1.0",
         "ip_revision": "1",
@@ -489,7 +464,7 @@
         "xci_path": "ip\\top_BRAM_FIFO_Limit_0_0\\top_BRAM_FIFO_Limit_0_0.xci",
         "inst_hier_path": "BRAM_FIFO_Limit_0",
         "reference_info": {
-          "ref_type": "hdl",
+          "ref_type": "unknown",
           "ref_name": "BRAM_FIFO_Limit",
           "boundary_crc": "0x0"
         },
@@ -543,33 +518,6 @@
           }
         }
       },
-      "pixel_capture_ila": {
-        "vlnv": "xilinx.com:ip:ila:6.2",
-        "ip_revision": "14",
-        "xci_name": "top_ila_0_2",
-        "xci_path": "ip\\top_ila_0_2\\top_ila_0_2.xci",
-        "inst_hier_path": "pixel_capture_ila",
-        "parameters": {
-          "C_DATA_DEPTH": {
-            "value": "8192"
-          },
-          "C_MONITOR_TYPE": {
-            "value": "Native"
-          },
-          "C_NUM_OF_PROBES": {
-            "value": "3"
-          },
-          "C_PROBE1_WIDTH": {
-            "value": "17"
-          },
-          "C_PROBE2_WIDTH": {
-            "value": "16"
-          },
-          "C_PROBE6_WIDTH": {
-            "value": "1"
-          }
-        }
-      },
       "OV7670_QVGA_SIM_0": {
         "vlnv": "xilinx.com:module_ref:OV7670_QVGA_SIM:1.0",
         "ip_revision": "1",
@@ -577,7 +525,7 @@
         "xci_path": "ip\\top_OV7670_QVGA_SIM_0_0\\top_OV7670_QVGA_SIM_0_0.xci",
         "inst_hier_path": "OV7670_QVGA_SIM_0",
         "reference_info": {
-          "ref_type": "hdl",
+          "ref_type": "unknown",
           "ref_name": "OV7670_QVGA_SIM",
           "boundary_crc": "0x0"
         },
@@ -623,7 +571,7 @@
         "xci_path": "ip\\top_VGA_OutputFrame_Colo_0_0\\top_VGA_OutputFrame_Colo_0_0.xci",
         "inst_hier_path": "VGA_OutputFrame_Colo_0",
         "reference_info": {
-          "ref_type": "hdl",
+          "ref_type": "unknown",
           "ref_name": "VGA_OutputFrame_Colour",
           "boundary_crc": "0x0"
         },
@@ -687,7 +635,7 @@
         "xci_path": "ip\\top_BRAM_reader_0_0\\top_BRAM_reader_0_0.xci",
         "inst_hier_path": "BRAM_reader_0",
         "reference_info": {
-          "ref_type": "hdl",
+          "ref_type": "unknown",
           "ref_name": "BRAM_reader",
           "boundary_crc": "0x0"
         },
@@ -733,7 +681,7 @@
         "xci_path": "ip\\top_debouncer_0_0\\top_debouncer_0_0.xci",
         "inst_hier_path": "debouncer_0",
         "reference_info": {
-          "ref_type": "hdl",
+          "ref_type": "unknown",
           "ref_name": "debouncer",
           "boundary_crc": "0x0"
         },
@@ -763,6 +711,48 @@
             "direction": "O"
           }
         }
+      },
+      "ila_0": {
+        "vlnv": "xilinx.com:ip:ila:6.2",
+        "ip_revision": "14",
+        "xci_name": "top_ila_0_3",
+        "xci_path": "ip\\top_ila_0_3\\top_ila_0_3.xci",
+        "inst_hier_path": "ila_0",
+        "parameters": {
+          "C_DATA_DEPTH": {
+            "value": "4096"
+          },
+          "C_MONITOR_TYPE": {
+            "value": "Native"
+          },
+          "C_NUM_OF_PROBES": {
+            "value": "12"
+          },
+          "C_PROBE10_WIDTH": {
+            "value": "16"
+          },
+          "C_PROBE11_WIDTH": {
+            "value": "16"
+          },
+          "C_PROBE2_WIDTH": {
+            "value": "8"
+          },
+          "C_PROBE5_WIDTH": {
+            "value": "17"
+          },
+          "C_PROBE6_WIDTH": {
+            "value": "16"
+          },
+          "C_PROBE7_WIDTH": {
+            "value": "4"
+          },
+          "C_PROBE8_WIDTH": {
+            "value": "4"
+          },
+          "C_PROBE9_WIDTH": {
+            "value": "4"
+          }
+        }
       }
     },
     "nets": {
@@ -775,7 +765,8 @@
       "BRAM_FIFO_Limit_0_bram_data_out": {
         "ports": [
           "BRAM_FIFO_Limit_0/bram_data_out",
-          "blk_mem_gen_1/dina"
+          "blk_mem_gen_1/dina",
+          "ila_0/probe11"
         ]
       },
       "BRAM_FIFO_Limit_0_bram_loaded": {
@@ -787,7 +778,8 @@
       "BRAM_reader_0_bram_read_addr": {
         "ports": [
           "BRAM_reader_0/bram_read_addr",
-          "blk_mem_gen_1/addrb"
+          "blk_mem_gen_1/addrb",
+          "ila_0/probe5"
         ]
       },
       "I2C_OV7670_MasterCon_0_LED": {
@@ -841,15 +833,14 @@
       "Pixel_Capture_0_bram_addr": {
         "ports": [
           "Pixel_Capture_0/bram_addr",
-          "pixel_capture_ila/probe1",
           "BRAM_FIFO_Limit_0/bram_addr_in"
         ]
       },
       "Pixel_Capture_0_bram_data": {
         "ports": [
           "Pixel_Capture_0/bram_data",
-          "pixel_capture_ila/probe2",
-          "BRAM_FIFO_Limit_0/bram_data_in"
+          "BRAM_FIFO_Limit_0/bram_data_in",
+          "ila_0/probe10"
         ]
       },
       "Pixel_Capture_0_current_i": {
@@ -861,14 +852,7 @@
       "Pixel_Capture_0_start_capture": {
         "ports": [
           "Pixel_Capture_0/start_capture",
-          "pixel_capture_ila/probe0",
           "BRAM_FIFO_Limit_0/start_capture"
-        ]
-      },
-      "Pixel_Capture_0_state_out": {
-        "ports": [
-          "Pixel_Capture_0/state_out",
-          "input_ila/probe5"
         ]
       },
       "VGA_OutputFrame_Colo_0_Hsync": {
@@ -898,25 +882,29 @@
       "VGA_OutputFrame_Colo_0_vgaBlue": {
         "ports": [
           "VGA_OutputFrame_Colo_0/vgaBlue",
-          "vgaBlue"
+          "vgaBlue",
+          "ila_0/probe9"
         ]
       },
       "VGA_OutputFrame_Colo_0_vgaGreen": {
         "ports": [
           "VGA_OutputFrame_Colo_0/vgaGreen",
-          "vgaGreen"
+          "vgaGreen",
+          "ila_0/probe8"
         ]
       },
       "VGA_OutputFrame_Colo_0_vgaRed": {
         "ports": [
           "VGA_OutputFrame_Colo_0/vgaRed",
-          "vgaRed"
+          "vgaRed",
+          "ila_0/probe7"
         ]
       },
       "blk_mem_gen_1_doutb": {
         "ports": [
           "blk_mem_gen_1/doutb",
-          "VGA_OutputFrame_Colo_0/bram_data"
+          "VGA_OutputFrame_Colo_0/bram_data",
+          "ila_0/probe6"
         ]
       },
       "btnl_1": {
@@ -929,8 +917,6 @@
         "ports": [
           "clk_wiz_0/clk_out1",
           "I2C_OV7670_MasterCon_0/clk_100",
-          "input_ila/clk",
-          "pixel_capture_ila/clk",
           "OV7670_QVGA_SIM_0/clk"
         ]
       },
@@ -944,52 +930,53 @@
           "BRAM_reader_0/clk",
           "Pixel_Capture_0/clk",
           "debouncer_0/clk",
-          "VGA_OutputFrame_Colo_0/clk"
+          "VGA_OutputFrame_Colo_0/clk",
+          "ila_0/clk"
         ]
       },
       "debouncer_0_switch_debounced": {
         "ports": [
           "debouncer_0/switch_debounced",
-          "Pixel_Capture_0/capture_frame"
+          "Pixel_Capture_0/capture_frame",
+          "ila_0/probe0"
         ]
       },
       "ov7670_data_1": {
         "ports": [
           "ov7670_data",
           "I2C_OV7670_MasterCon_0/ov7670_data",
-          "input_ila/probe4",
-          "Pixel_Capture_0/pixel_data_in"
+          "Pixel_Capture_0/pixel_data_in",
+          "ila_0/probe2"
         ]
       },
       "ov7670_href_1": {
         "ports": [
           "ov7670_href",
           "I2C_OV7670_MasterCon_0/ov7670_href",
-          "input_ila/probe2",
-          "Pixel_Capture_0/href"
+          "Pixel_Capture_0/href",
+          "ila_0/probe4"
         ]
       },
       "ov7670_pclk_1": {
         "ports": [
           "ov7670_pclk",
           "I2C_OV7670_MasterCon_0/ov7670_pclk",
-          "input_ila/probe0",
-          "Pixel_Capture_0/pclk"
+          "Pixel_Capture_0/pclk",
+          "ila_0/probe1"
         ]
       },
       "ov7670_vsync_1": {
         "ports": [
           "ov7670_vsync",
           "I2C_OV7670_MasterCon_0/ov7670_vsync",
-          "input_ila/probe1",
-          "Pixel_Capture_0/vsync"
+          "Pixel_Capture_0/vsync",
+          "ila_0/probe3"
         ]
       },
       "reset_1": {
         "ports": [
           "reset",
-          "clk_wiz_0/reset",
-          "input_ila/probe3"
+          "clk_wiz_0/reset"
         ]
       },
       "sys_clock_1": {

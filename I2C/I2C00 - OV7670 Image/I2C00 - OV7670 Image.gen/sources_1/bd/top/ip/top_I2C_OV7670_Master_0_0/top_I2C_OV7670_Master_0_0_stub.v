@@ -2,7 +2,7 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-// Date        : Fri Aug  8 21:24:27 2025
+// Date        : Sat Aug  9 15:24:47 2025
 // Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub {e:/FPGA/VHDL/Lab Training/I2C/I2C00 - OV7670 Image/I2C00 - OV7670
 //               Image.gen/sources_1/bd/top/ip/top_I2C_OV7670_Master_0_0/top_I2C_OV7670_Master_0_0_stub.v}
@@ -19,7 +19,7 @@ module top_I2C_OV7670_Master_0_0(clk_100, reset, slave_reg_addr, slave_reg_data,
   ov7670_SCL, sda_out, sda_in, sda_oe, shift_reg_debug, byte_counter_debug, bit_counter_debug, 
   shift_reg_full_debug, current_index_bebug, scl_en_debug, i2c_data_read, state_debug, 
   simple_state_debug, ov7670_pwdn, ov7670_reset)
-/* synthesis syn_black_box black_box_pad_pin="reset,slave_reg_addr[7:0],slave_reg_data[7:0],ov7670_SCL,sda_out,sda_in,sda_oe,shift_reg_debug[7:0],byte_counter_debug[1:0],bit_counter_debug[4:0],shift_reg_full_debug[7:0],current_index_bebug[2:0],scl_en_debug,i2c_data_read[1:0],state_debug[2:0],simple_state_debug[3:0],ov7670_pwdn,ov7670_reset" */
+/* synthesis syn_black_box black_box_pad_pin="reset,slave_reg_addr[7:0],slave_reg_data[7:0],ov7670_SCL,sda_out,sda_in,sda_oe,shift_reg_debug[7:0],byte_counter_debug[1:0],bit_counter_debug[4:0],shift_reg_full_debug[7:0],current_index_bebug[2:0],scl_en_debug,i2c_data_read[3:0],state_debug[2:0],simple_state_debug[3:0],ov7670_pwdn,ov7670_reset" */
 /* synthesis syn_force_seq_prim="clk_100" */;
   input clk_100 /* synthesis syn_isclock = 1 */;
   input reset;
@@ -35,7 +35,7 @@ module top_I2C_OV7670_Master_0_0(clk_100, reset, slave_reg_addr, slave_reg_data,
   output [7:0]shift_reg_full_debug;
   output [2:0]current_index_bebug;
   output scl_en_debug;
-  output [1:0]i2c_data_read;
+  output [3:0]i2c_data_read;
   output [2:0]state_debug;
   output [3:0]simple_state_debug;
   output ov7670_pwdn;

@@ -65,6 +65,7 @@ ENTITY top_Pixel_Capture_0_0 IS
     href : IN STD_LOGIC;
     vsync : IN STD_LOGIC;
     current_i : OUT STD_LOGIC;
+    capture_frame : IN STD_LOGIC;
     state_out : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
   );
 END top_Pixel_Capture_0_0;
@@ -84,6 +85,7 @@ ARCHITECTURE top_Pixel_Capture_0_0_arch OF top_Pixel_Capture_0_0 IS
       href : IN STD_LOGIC;
       vsync : IN STD_LOGIC;
       current_i : OUT STD_LOGIC;
+      capture_frame : IN STD_LOGIC;
       state_out : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
     );
   END COMPONENT Pixel_Capture;
@@ -104,6 +106,7 @@ BEGIN
       href => href,
       vsync => vsync,
       current_i => current_i,
+      capture_frame => capture_frame,
       state_out => state_out
     );
 END top_Pixel_Capture_0_0_arch;

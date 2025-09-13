@@ -24,14 +24,8 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==top_xlconst
 # IP: bd/top/ip/top_blk_mem_gen_1_0/top_blk_mem_gen_1_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==top_blk_mem_gen_1_0 || ORIG_REF_NAME==top_blk_mem_gen_1_0} -quiet] -quiet
 
-# IP: bd/top/ip/top_ila_0_1/top_ila_0_1.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==top_ila_0_1 || ORIG_REF_NAME==top_ila_0_1} -quiet] -quiet
-
 # IP: bd/top/ip/top_BRAM_FIFO_Limit_0_0/top_BRAM_FIFO_Limit_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==top_BRAM_FIFO_Limit_0_0 || ORIG_REF_NAME==top_BRAM_FIFO_Limit_0_0} -quiet] -quiet
-
-# IP: bd/top/ip/top_ila_0_2/top_ila_0_2.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==top_ila_0_2 || ORIG_REF_NAME==top_ila_0_2} -quiet] -quiet
 
 # IP: bd/top/ip/top_OV7670_QVGA_SIM_0_0/top_OV7670_QVGA_SIM_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==top_OV7670_QVGA_SIM_0_0 || ORIG_REF_NAME==top_OV7670_QVGA_SIM_0_0} -quiet] -quiet
@@ -44,5 +38,8 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==top_BRAM_re
 
 # IP: bd/top/ip/top_debouncer_0_0/top_debouncer_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==top_debouncer_0_0 || ORIG_REF_NAME==top_debouncer_0_0} -quiet] -quiet
+
+# IP: bd/top/ip/top_ila_0_3/top_ila_0_3.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==top_ila_0_3 || ORIG_REF_NAME==top_ila_0_3} -quiet] -quiet
 
 # XDC: e:/FPGA/VHDL/Lab Training/I2C/I2C01/I2C01.gen/sources_1/bd/top/top_ooc.xdc
