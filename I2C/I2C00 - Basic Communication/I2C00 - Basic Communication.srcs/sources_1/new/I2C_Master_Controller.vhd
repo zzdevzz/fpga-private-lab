@@ -63,7 +63,11 @@ entity I2C_Master_Controller is
     slave_reg_data: in std_logic_vector(7 downto 0);
 
     ov7670_SCL: out std_logic;
-
+    SCL_RISE_EDGE: out std_logic;
+    SCL_FALL_EDGE: out std_logic;
+    SCL_LOW_SAFE_PULSE: out std_logic;
+    SCL_HIGH_SAFE_PULSE: out std_logic;
+    
     --SDA is used in host file, inout tri-state can only live in top level.
     sda_out: out std_logic;
     sda_in: in std_logic;
@@ -110,7 +114,7 @@ architecture Behavioral of I2C_Master_Controller is
       STOP_CONDITION
   );
   signal state : state_type := IDLE;
-
+  signal state_hold : integer range 0 to 5 := 0;
 
   
 
@@ -118,8 +122,11 @@ architecture Behavioral of I2C_Master_Controller is
   signal scl_en  : std_logic := '0'; -- decides if clock is enabled/running.
   signal scl_cnt : integer range 0 to i2c_clock_max := 0; --used as counter to get 200Khz clock.
   signal scl_prev: std_logic := '0'; --used to get scl rising and falling edge.
-  signal scl_rise: std_logic := '0';
-  signal scl_fall: std_logic := '0';
+  
+  signal scl_rise: std_logic := '0'; --when SCL goes from 0 to 1.
+  signal scl_fall: std_logic := '0'; --when SCL goes from 1 to 0.
+  signal scl_high_safe_sample: std_logic := '0'; --middle of SCL being 1, where its safe to read.
+  signal scl_low_safe_sample: std_logic := '0'; --middle of SCL being 0, where its safe to read.
 
   signal byte_counter : integer range 0 to 2 := 0; --used to determine what stage communicating is at, r.e device address, register address, register value.
   signal read_enable : std_logic; --extracts last bit from address, shows if its a read command.
@@ -215,7 +222,9 @@ begin
       if rising_edge(clk_100) then
         -- Default: one-cycle pulses for edge flags
         scl_rise <= '0';
-        scl_fall <= '0';
+        scl_low_safe_sample <= '0';
+        scl_high_safe_sample <= '0';
+		scl_fall <= '0';
 
         if scl_en = '1' then
           -- Counter update
@@ -225,20 +234,26 @@ begin
             scl_cnt <= 0;
           end if;
 
-          -- Set SCL level: High for first half, Low for second half
-          if scl_cnt < (i2c_clock_max / 2) then
+          -- High and Low pulse of clock.
+          if scl_cnt < (i2c_clock_max / 2) - 1 then
             scl <= '1';
           else
             scl <= '0';
           end if;
 
 
-          if scl_cnt = (i2c_clock_max / 2) + 100 then --gives a delay for sampling.
-            scl_fall <= '1';
+          if scl_cnt = (i2c_clock_max / 2) + 125 then --gives a delay for sampling.
+            scl_low_safe_sample <= '1';
             falling_edge_counter <= falling_edge_counter + 1;
+          elsif scl_cnt = (i2c_clock_max / 2) - 125 then
+            scl_high_safe_sample <= '1';
+--          elsif scl_cnt = i2c_clock_max - 1 then
           elsif scl_cnt = i2c_clock_max - 1 then
             scl_rise <= '1';
             rising_edge_counter <= rising_edge_counter + 1;
+		  elsif scl_cnt = (i2c_clock_max / 2) - 1 then
+            scl_fall <= '1';
+            -- rising_edge_counter <= rising_edge_counter + 1;
           end if;
 
         else
@@ -317,7 +332,7 @@ begin
 
         when SEND_BYTE =>
           -- Make is so data is only changed every I2C SCL cycle, not internalclock cycle..
-          if scl_fall = '1' then
+          if scl_low_safe_sample = '1' then
             temp_debug <= 1;
             if bit_counter = 0 then
                 sda_out_s <= shift_reg_full(7);
@@ -344,7 +359,7 @@ begin
 
 --        when READ_ACK =>
 --          simple_state_debug <= "0101";
---          if scl_fall = '1' then
+--          if scl_low_safe_sample = '1' then
 --            if sda_in /= '0' then --active low
 --              state <= STOP_CONDITION;-- NACK handling
 --            else
@@ -353,26 +368,51 @@ begin
 --          end if;
 
         when READ_ACK =>
-          simple_state_debug <= "0101";
-          if scl = '1' then
+          simple_state_debug <= "0000";
+          if scl_rise = '1' then
             if sda_in = '0' then --active low
-              state <= NEXT_BYTE;-- ACK handling
-              write_register_nack <= '0';
-              write_register_pulse <= '1';
+              simple_state_debug <= "0001";
+              state_hold <= 1;-- ACK handling
+            else
+              simple_state_debug <= "0010";
+              state_hold <= 0;  
             end if;
           end if;
           
-          if scl_rise = '1' then
-            if sda_in = '1' then
-              state <= STOP_CONDITION; --NACK Handling
-              write_register_nack <= '1';
-              write_register_pulse <= '1';
+          if scl_low_safe_sample = '1' then
+            if state_hold = 1 then
+                simple_state_debug <= "0011";
+                state <= NEXT_BYTE; --ack handling
+                if read_enable = '1' then 
+                  write_register_nack <= '0';
+                  write_register_pulse <= '1';
+                end if;
             else
-              state <= NEXT_BYTE;-- ACK handling
-              write_register_nack <= '0';
-              write_register_pulse <= '1';
+                simple_state_debug <= "0100";
+                state <= STOP_CONDITION;
+                if read_enable = '1' then
+                     write_register_nack <= '1';
+                     write_register_pulse <= '1';
+                end if;
             end if;
-          end if;
+         end if;
+          
+          
+--          if scl_rise = '1' then
+--            if sda_in = '1' then
+--              state <= STOP_CONDITION; --NACK Handling
+--              if read_enable = '1' then
+--                  write_register_nack <= '1';
+--                  write_register_pulse <= '1';
+--              end if;
+--            else
+--              state <= NEXT_BYTE;-- ACK handling
+--              if read_enable = '1' then
+--                  write_register_nack <= '0';
+--                  write_register_pulse <= '1';
+--              end if;
+--            end if;
+--          end if;
 
         when NEXT_BYTE =>
           simple_state_debug <= "0110";
@@ -412,12 +452,12 @@ begin
             --a repeated start is dropping sda high to low, while clock is high. this needs to happen without a stop.
 
             --make sda high again while clock is low.
-            if scl_fall = '1' and repeated_start_phase = '0' then 
+            if scl_low_safe_sample = '1' and repeated_start_phase = '0' then 
                 sda_oe <= '0'; --open drain makes it high.
                 repeated_start_phase <= '1';
             end if;
 
-            if scl_rise = '1' and repeated_start_phase = '1' then
+            if scl_high_safe_sample = '1' and repeated_start_phase = '1' and sda_in = '1' then
                 repeated_start_phase <= '0';
                 sda_oe <= '1';
                 sda_out_s <= '0';
@@ -455,12 +495,19 @@ begin
   end process;
 
     state_debug <= std_logic_vector(to_unsigned(state_type'pos(state), 4));
+    
+    
     ov7670_reset <= ov7670_reset_s;
     sda_out <= sda_out_s;
     current_index_bebug <= std_logic_vector(to_unsigned(current_index, 3));
     scl_en_debug <= scl_en; 
     read_register_sample <= read_register_sample_s;
     read_data <=  read_shift_reg;
+    SCL_FALL_EDGE <= scl_fall ;
+    SCL_RISE_EDGE <= scl_rise ;
+    SCL_LOW_SAFE_PULSE <= scl_low_safe_sample;
+    SCL_HIGH_SAFE_PULSE <= scl_high_safe_sample;
+    shift_reg_full_debug <= shift_reg_full;
     
 end Behavioral;       
 

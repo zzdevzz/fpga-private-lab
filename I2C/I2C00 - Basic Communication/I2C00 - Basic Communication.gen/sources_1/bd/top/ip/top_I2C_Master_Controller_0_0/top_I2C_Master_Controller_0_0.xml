@@ -88,7 +88,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:95a8d1a2</spirit:value>
+            <spirit:value>9:bc3f5bb1</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -100,7 +100,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:89a20c06</spirit:value>
+            <spirit:value>9:3a93b1cb</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -114,11 +114,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sat Sep 13 20:05:44 UTC 2025</spirit:value>
+            <spirit:value>Sun Sep 14 13:26:44 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:89a20c06</spirit:value>
+            <spirit:value>9:3a93b1cb</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -129,7 +129,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:89a20c06</spirit:value>
+            <spirit:value>9:3a93b1cb</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -145,11 +145,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sat Sep 13 20:04:47 UTC 2025</spirit:value>
+            <spirit:value>Sun Sep 14 13:25:50 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:95a8d1a2</spirit:value>
+            <spirit:value>9:bc3f5bb1</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -165,11 +165,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sat Sep 13 20:04:47 UTC 2025</spirit:value>
+            <spirit:value>Sun Sep 14 13:25:50 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:89a20c06</spirit:value>
+            <spirit:value>9:3a93b1cb</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -267,6 +267,58 @@
       </spirit:port>
       <spirit:port>
         <spirit:name>ov7670_SCL</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>SCL_RISE_EDGE</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>SCL_FALL_EDGE</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>SCL_LOW_SAFE_PULSE</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>SCL_HIGH_SAFE_PULSE</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:wireTypeDefs>

@@ -62,6 +62,10 @@ ENTITY top_I2C_Master_Controller_0_0 IS
     slave_reg_addr : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
     slave_reg_data : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
     ov7670_SCL : OUT STD_LOGIC;
+    SCL_RISE_EDGE : OUT STD_LOGIC;
+    SCL_FALL_EDGE : OUT STD_LOGIC;
+    SCL_LOW_SAFE_PULSE : OUT STD_LOGIC;
+    SCL_HIGH_SAFE_PULSE : OUT STD_LOGIC;
     sda_out : OUT STD_LOGIC;
     sda_in : IN STD_LOGIC;
     sda_oe : OUT STD_LOGIC;
@@ -95,6 +99,10 @@ ARCHITECTURE top_I2C_Master_Controller_0_0_arch OF top_I2C_Master_Controller_0_0
       slave_reg_addr : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
       slave_reg_data : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
       ov7670_SCL : OUT STD_LOGIC;
+      SCL_RISE_EDGE : OUT STD_LOGIC;
+      SCL_FALL_EDGE : OUT STD_LOGIC;
+      SCL_LOW_SAFE_PULSE : OUT STD_LOGIC;
+      SCL_HIGH_SAFE_PULSE : OUT STD_LOGIC;
       sda_out : OUT STD_LOGIC;
       sda_in : IN STD_LOGIC;
       sda_oe : OUT STD_LOGIC;
@@ -131,6 +139,10 @@ BEGIN
       slave_reg_addr => slave_reg_addr,
       slave_reg_data => slave_reg_data,
       ov7670_SCL => ov7670_SCL,
+      SCL_RISE_EDGE => SCL_RISE_EDGE,
+      SCL_FALL_EDGE => SCL_FALL_EDGE,
+      SCL_LOW_SAFE_PULSE => SCL_LOW_SAFE_PULSE,
+      SCL_HIGH_SAFE_PULSE => SCL_HIGH_SAFE_PULSE,
       sda_out => sda_out,
       sda_in => sda_in,
       sda_oe => sda_oe,

@@ -2,7 +2,7 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-// Date        : Sat Sep 13 21:05:44 2025
+// Date        : Sun Sep 14 14:26:44 2025
 // Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim {e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 -
 //               Basic
@@ -25,6 +25,10 @@ module top_I2C_Master_Controller_0_0
     slave_reg_addr,
     slave_reg_data,
     ov7670_SCL,
+    SCL_RISE_EDGE,
+    SCL_FALL_EDGE,
+    SCL_LOW_SAFE_PULSE,
+    SCL_HIGH_SAFE_PULSE,
     sda_out,
     sda_in,
     sda_oe,
@@ -50,6 +54,10 @@ module top_I2C_Master_Controller_0_0
   input [7:0]slave_reg_addr;
   input [7:0]slave_reg_data;
   output ov7670_SCL;
+  output SCL_RISE_EDGE;
+  output SCL_FALL_EDGE;
+  output SCL_LOW_SAFE_PULSE;
+  output SCL_HIGH_SAFE_PULSE;
   output sda_out;
   input sda_in;
   output sda_oe;
@@ -70,6 +78,10 @@ module top_I2C_Master_Controller_0_0
   (* x_interface_info = "xilinx.com:signal:reset:1.0 ov7670_reset RST" *) (* x_interface_parameter = "XIL_INTERFACENAME ov7670_reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) output ov7670_reset;
 
   wire \<const0> ;
+  wire SCL_FALL_EDGE;
+  wire SCL_HIGH_SAFE_PULSE;
+  wire SCL_LOW_SAFE_PULSE;
+  wire SCL_RISE_EDGE;
   wire [3:0]\^bit_counter_debug ;
   wire [1:0]byte_counter_debug;
   wire clk_100;
@@ -107,6 +119,7 @@ module top_I2C_Master_Controller_0_0
        (.G(\<const0> ));
   top_I2C_Master_Controller_0_0_I2C_Master_Controller U0
        (.Q(\^bit_counter_debug ),
+        .SCL_FALL_EDGE(SCL_FALL_EDGE),
         .\byte_counter_reg[0]_0 (byte_counter_debug[0]),
         .\byte_counter_reg[1]_0 (byte_counter_debug[1]),
         .clk_100(clk_100),
@@ -115,7 +128,10 @@ module top_I2C_Master_Controller_0_0
         .read_register_sample(read_register_sample),
         .reset(reset),
         .scl_en_reg_0(scl_en_debug),
+        .scl_high_safe_sample_reg_0(SCL_HIGH_SAFE_PULSE),
+        .scl_low_safe_sample_reg_0(SCL_LOW_SAFE_PULSE),
         .scl_reg_0(ov7670_SCL),
+        .scl_rise_reg_0(SCL_RISE_EDGE),
         .sda_in(sda_in),
         .sda_oe(sda_oe),
         .sda_out(sda_out),
@@ -133,52 +149,60 @@ endmodule
 
 (* ORIG_REF_NAME = "I2C_Master_Controller" *) 
 module top_I2C_Master_Controller_0_0_I2C_Master_Controller
-   (Q,
+   (scl_en_reg_0,
+    shift_reg_full_debug,
+    Q,
     \byte_counter_reg[0]_0 ,
     \byte_counter_reg[1]_0 ,
-    shift_reg_full_debug,
     shift_reg_debug,
     read_data,
     simple_state_debug,
-    scl_en_reg_0,
+    scl_rise_reg_0,
+    scl_low_safe_sample_reg_0,
     scl_reg_0,
+    scl_high_safe_sample_reg_0,
     state_debug,
     sda_out,
     sda_oe,
     read_register_sample,
     write_register_nack,
     write_register_pulse,
+    SCL_FALL_EDGE,
     ov7670_reset,
     clk_100,
     sda_in,
     reset,
-    slave_model_addr,
-    slave_reg_addr,
+    slave_signal_sent,
     slave_reg_data,
-    slave_signal_sent);
+    slave_reg_addr,
+    slave_model_addr);
+  output scl_en_reg_0;
+  output [7:0]shift_reg_full_debug;
   output [3:0]Q;
   output \byte_counter_reg[0]_0 ;
   output \byte_counter_reg[1]_0 ;
-  output [7:0]shift_reg_full_debug;
   output [6:0]shift_reg_debug;
   output [7:0]read_data;
   output [3:0]simple_state_debug;
-  output scl_en_reg_0;
+  output scl_rise_reg_0;
+  output scl_low_safe_sample_reg_0;
   output scl_reg_0;
+  output scl_high_safe_sample_reg_0;
   output [3:0]state_debug;
   output sda_out;
   output sda_oe;
   output read_register_sample;
   output write_register_nack;
   output write_register_pulse;
+  output SCL_FALL_EDGE;
   output ov7670_reset;
   input clk_100;
   input sda_in;
   input reset;
-  input [7:0]slave_model_addr;
-  input [7:0]slave_reg_addr;
-  input [7:0]slave_reg_data;
   input slave_signal_sent;
+  input [7:0]slave_reg_data;
+  input [7:0]slave_reg_addr;
+  input [7:0]slave_model_addr;
 
   wire \FSM_onehot_state[3]_i_1_n_0 ;
   wire \FSM_onehot_state[3]_i_2_n_0 ;
@@ -188,10 +212,6 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
   wire \FSM_onehot_state[9]_i_1_n_0 ;
   wire \FSM_onehot_state[9]_i_2_n_0 ;
   wire \FSM_onehot_state[9]_i_3_n_0 ;
-  wire \FSM_onehot_state[9]_i_4_n_0 ;
-  wire \FSM_onehot_state[9]_i_5_n_0 ;
-  wire \FSM_onehot_state[9]_i_6_n_0 ;
-  wire \FSM_onehot_state[9]_i_7_n_0 ;
   wire \FSM_onehot_state_reg_n_0_[0] ;
   wire \FSM_onehot_state_reg_n_0_[1] ;
   wire \FSM_onehot_state_reg_n_0_[2] ;
@@ -203,6 +223,7 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
   wire \FSM_onehot_state_reg_n_0_[8] ;
   wire \FSM_onehot_state_reg_n_0_[9] ;
   wire [3:0]Q;
+  wire SCL_FALL_EDGE;
   wire bit_counter;
   wire \bit_counter[0]_i_1_n_0 ;
   wire \bit_counter[1]_i_1_n_0 ;
@@ -210,11 +231,9 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
   wire \bit_counter[3]_i_2_n_0 ;
   wire \bit_counter[3]_i_3_n_0 ;
   wire \bit_counter[3]_i_4_n_0 ;
-  wire \bit_counter[3]_i_5_n_0 ;
-  wire byte_counter;
   wire \byte_counter[0]_i_1_n_0 ;
   wire \byte_counter[1]_i_1_n_0 ;
-  wire \byte_counter[1]_i_3_n_0 ;
+  wire \byte_counter[1]_i_2_n_0 ;
   wire \byte_counter_reg[0]_0 ;
   wire \byte_counter_reg[1]_0 ;
   wire clk_100;
@@ -222,8 +241,7 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
   wire ov7670_reset_s_i_1_n_0;
   wire ov7670_reset_s_i_2_n_0;
   wire ov7670_reset_s_i_3_n_0;
-  wire [7:0]p_0_in;
-  wire [8:1]p_0_in__0;
+  wire [8:0]p_0_in;
   wire [7:0]read_data;
   wire read_enable_i_1_n_0;
   wire read_enable_reg_n_0;
@@ -238,22 +256,29 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
   wire reset;
   wire reset_activated_i_1_n_0;
   wire reset_activated_reg_n_0;
-  wire \scl_cnt[0]_i_1_n_0 ;
+  wire \scl_cnt[3]_i_1_n_0 ;
+  wire \scl_cnt[7]_i_2_n_0 ;
   wire \scl_cnt[8]_i_1_n_0 ;
-  wire \scl_cnt[8]_i_3_n_0 ;
-  wire \scl_cnt[8]_i_4_n_0 ;
   wire [8:0]scl_cnt_reg;
   wire scl_en_i_1_n_0;
   wire scl_en_reg_0;
-  wire scl_fall;
+  wire scl_fall_i_1_n_0;
   wire scl_fall_i_2_n_0;
+  wire scl_fall_i_3_n_0;
+  wire scl_high_safe_sample_i_1_n_0;
+  wire scl_high_safe_sample_i_2_n_0;
+  wire scl_high_safe_sample_reg_0;
   wire scl_i_1_n_0;
   wire scl_i_2_n_0;
+  wire scl_low_safe_sample18_out;
+  wire scl_low_safe_sample_i_2_n_0;
+  wire scl_low_safe_sample_i_3_n_0;
+  wire scl_low_safe_sample_reg_0;
   wire scl_reg_0;
-  wire scl_rise16_out;
   wire scl_rise_i_1_n_0;
   wire scl_rise_i_2_n_0;
-  wire scl_rise_reg_n_0;
+  wire scl_rise_i_3_n_0;
+  wire scl_rise_reg_0;
   wire sda_in;
   wire sda_oe;
   wire sda_oe_i_1_n_0;
@@ -277,15 +302,24 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
   wire \shift_reg[7]_i_2_n_0 ;
   wire [6:0]shift_reg_debug;
   wire shift_reg_full;
+  wire \shift_reg_full[0]_i_1_n_0 ;
+  wire \shift_reg_full[1]_i_1_n_0 ;
+  wire \shift_reg_full[2]_i_1_n_0 ;
+  wire \shift_reg_full[3]_i_1_n_0 ;
+  wire \shift_reg_full[4]_i_1_n_0 ;
+  wire \shift_reg_full[5]_i_1_n_0 ;
+  wire \shift_reg_full[6]_i_1_n_0 ;
+  wire \shift_reg_full[7]_i_2_n_0 ;
   wire [7:0]shift_reg_full_debug;
   wire [3:0]simple_state_debug;
   wire \simple_state_debug[0]_i_1_n_0 ;
+  wire \simple_state_debug[0]_i_2_n_0 ;
   wire \simple_state_debug[1]_i_1_n_0 ;
+  wire \simple_state_debug[1]_i_2_n_0 ;
   wire \simple_state_debug[2]_i_1_n_0 ;
+  wire \simple_state_debug[2]_i_2_n_0 ;
   wire \simple_state_debug[3]_i_1_n_0 ;
   wire \simple_state_debug[3]_i_2_n_0 ;
-  wire \simple_state_debug[3]_i_3_n_0 ;
-  wire \simple_state_debug[3]_i_4_n_0 ;
   wire [7:0]slave_model_addr;
   wire [7:0]slave_reg_addr;
   wire [7:0]slave_reg_data;
@@ -336,6 +370,8 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
   wire start_setup_i_1_n_0;
   wire start_setup_reg_n_0;
   wire [3:0]state_debug;
+  wire \state_hold[0]_i_1_n_0 ;
+  wire \state_hold_reg_n_0_[0] ;
   wire write_register_nack;
   wire write_register_nack_i_1_n_0;
   wire write_register_pulse;
@@ -346,112 +382,77 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
   wire [3:2]\NLW_start_counter_reg[12]_i_1_O_UNCONNECTED ;
 
   LUT6 #(
-    .INIT(64'hFFFFFFFFFFFFAABA)) 
+    .INIT(64'hF0F1F0F0F0FFF0F0)) 
     \FSM_onehot_state[3]_i_1 
-       (.I0(sda_oe_i_3_n_0),
-        .I1(read_phase_reg_n_0),
-        .I2(\FSM_onehot_state_reg_n_0_[6] ),
-        .I3(\FSM_onehot_state[3]_i_2_n_0 ),
-        .I4(\FSM_onehot_state_reg_n_0_[7] ),
-        .I5(\FSM_onehot_state_reg_n_0_[2] ),
+       (.I0(read_phase_reg_n_0),
+        .I1(\byte_counter_reg[0]_0 ),
+        .I2(\FSM_onehot_state[3]_i_2_n_0 ),
+        .I3(\byte_counter_reg[1]_0 ),
+        .I4(\FSM_onehot_state_reg_n_0_[6] ),
+        .I5(read_enable_reg_n_0),
         .O(\FSM_onehot_state[3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  (* SOFT_HLUTNM = "soft_lutpair15" *) 
   LUT2 #(
     .INIT(4'hE)) 
     \FSM_onehot_state[3]_i_2 
+       (.I0(\FSM_onehot_state_reg_n_0_[7] ),
+        .I1(\FSM_onehot_state_reg_n_0_[2] ),
+        .O(\FSM_onehot_state[3]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair16" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \FSM_onehot_state[6]_i_1 
+       (.I0(\FSM_onehot_state_reg_n_0_[5] ),
+        .I1(\state_hold_reg_n_0_[0] ),
+        .O(\FSM_onehot_state[6]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  LUT5 #(
+    .INIT(32'h0000E000)) 
+    \FSM_onehot_state[7]_i_1 
        (.I0(\byte_counter_reg[1]_0 ),
         .I1(\byte_counter_reg[0]_0 ),
-        .O(\FSM_onehot_state[3]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair17" *) 
-  LUT3 #(
-    .INIT(8'h70)) 
-    \FSM_onehot_state[6]_i_1 
-       (.I0(scl_rise_reg_n_0),
-        .I1(sda_in),
-        .I2(\FSM_onehot_state_reg_n_0_[5] ),
-        .O(\FSM_onehot_state[6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
-  LUT5 #(
-    .INIT(32'h08080800)) 
-    \FSM_onehot_state[7]_i_1 
-       (.I0(\FSM_onehot_state_reg_n_0_[6] ),
-        .I1(read_enable_reg_n_0),
-        .I2(read_phase_reg_n_0),
-        .I3(\byte_counter_reg[0]_0 ),
-        .I4(\byte_counter_reg[1]_0 ),
+        .I2(read_enable_reg_n_0),
+        .I3(\FSM_onehot_state_reg_n_0_[6] ),
+        .I4(read_phase_reg_n_0),
         .O(\FSM_onehot_state[7]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
   LUT3 #(
     .INIT(8'h80)) 
     \FSM_onehot_state[8]_i_1 
-       (.I0(read_phase_reg_n_0),
-        .I1(read_enable_reg_n_0),
-        .I2(\FSM_onehot_state_reg_n_0_[6] ),
+       (.I0(\FSM_onehot_state_reg_n_0_[6] ),
+        .I1(read_phase_reg_n_0),
+        .I2(read_enable_reg_n_0),
         .O(\FSM_onehot_state[8]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFFFFFFFFFFFFFE)) 
+    .INIT(64'hFFFFFFFFEEEEFEEE)) 
     \FSM_onehot_state[9]_i_1 
        (.I0(\FSM_onehot_state[9]_i_3_n_0 ),
-        .I1(\simple_state_debug[3]_i_3_n_0 ),
-        .I2(\FSM_onehot_state_reg_n_0_[9] ),
-        .I3(\FSM_onehot_state_reg_n_0_[6] ),
-        .I4(\FSM_onehot_state[9]_i_4_n_0 ),
-        .I5(\FSM_onehot_state[9]_i_5_n_0 ),
+        .I1(sda_oe_i_2_n_0),
+        .I2(\FSM_onehot_state_reg_n_0_[8] ),
+        .I3(scl_rise_reg_0),
+        .I4(read_register_sample_s_i_2_n_0),
+        .I5(\byte_counter[1]_i_2_n_0 ),
         .O(\FSM_onehot_state[9]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFEAEAEAEAEAEAEA)) 
+    .INIT(64'hFFFFFFFF40FF4040)) 
     \FSM_onehot_state[9]_i_2 
-       (.I0(\FSM_onehot_state_reg_n_0_[8] ),
-        .I1(\FSM_onehot_state[9]_i_6_n_0 ),
+       (.I0(read_enable_reg_n_0),
+        .I1(\FSM_onehot_state_reg_n_0_[6] ),
         .I2(\byte_counter_reg[1]_0 ),
-        .I3(sda_in),
-        .I4(scl_rise_reg_n_0),
-        .I5(\FSM_onehot_state_reg_n_0_[5] ),
+        .I3(\state_hold_reg_n_0_[0] ),
+        .I4(\FSM_onehot_state_reg_n_0_[5] ),
+        .I5(\FSM_onehot_state_reg_n_0_[8] ),
         .O(\FSM_onehot_state[9]_i_2_n_0 ));
-  LUT3 #(
-    .INIT(8'h80)) 
+  LUT5 #(
+    .INIT(32'hFFFFFFEA)) 
     \FSM_onehot_state[9]_i_3 
-       (.I0(start_setup_reg_n_0),
-        .I1(slave_signal_sent),
-        .I2(\FSM_onehot_state_reg_n_0_[0] ),
+       (.I0(\simple_state_debug[3]_i_2_n_0 ),
+        .I1(scl_low_safe_sample_reg_0),
+        .I2(\FSM_onehot_state_reg_n_0_[5] ),
+        .I3(\FSM_onehot_state_reg_n_0_[1] ),
+        .I4(\FSM_onehot_state_reg_n_0_[2] ),
         .O(\FSM_onehot_state[9]_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair17" *) 
-  LUT4 #(
-    .INIT(16'hF200)) 
-    \FSM_onehot_state[9]_i_4 
-       (.I0(scl_reg_0),
-        .I1(sda_in),
-        .I2(scl_rise_reg_n_0),
-        .I3(\FSM_onehot_state_reg_n_0_[5] ),
-        .O(\FSM_onehot_state[9]_i_4_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFFEFFFEFFFFFFFE)) 
-    \FSM_onehot_state[9]_i_5 
-       (.I0(\byte_counter[1]_i_3_n_0 ),
-        .I1(\FSM_onehot_state_reg_n_0_[1] ),
-        .I2(\FSM_onehot_state[9]_i_7_n_0 ),
-        .I3(\FSM_onehot_state_reg_n_0_[2] ),
-        .I4(\FSM_onehot_state_reg_n_0_[3] ),
-        .I5(scl_reg_0),
-        .O(\FSM_onehot_state[9]_i_5_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \FSM_onehot_state[9]_i_6 
-       (.I0(\FSM_onehot_state_reg_n_0_[6] ),
-        .I1(read_enable_reg_n_0),
-        .O(\FSM_onehot_state[9]_i_6_n_0 ));
-  LUT6 #(
-    .INIT(64'h0000000000080000)) 
-    \FSM_onehot_state[9]_i_7 
-       (.I0(\FSM_onehot_state_reg_n_0_[8] ),
-        .I1(scl_rise_reg_n_0),
-        .I2(Q[2]),
-        .I3(Q[1]),
-        .I4(Q[3]),
-        .I5(Q[0]),
-        .O(\FSM_onehot_state[9]_i_7_n_0 ));
-  (* FSM_ENCODED_STATES = "configure_byte:0000001000,wait_after_start:0000000100,repeated_start_condition:0010000000,start_condition:0000000010,idle:0000000001,stop_condition:1000000000,next_byte:0001000000,read_ack:0000100000,read_byte:0100000000,send_byte:0000010000" *) 
+  (* FSM_ENCODED_STATES = "configure_byte:0000001000,wait_after_start:0000000100,repeated_start_condition:0010000000,start_condition:0000000010,idle:0000000001,next_byte:0001000000,stop_condition:1000000000,read_ack:0000100000,read_byte:0100000000,send_byte:0000010000" *) 
   FDRE #(
     .INIT(1'b1)) 
     \FSM_onehot_state_reg[0] 
@@ -460,7 +461,7 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
         .D(\FSM_onehot_state_reg_n_0_[9] ),
         .Q(\FSM_onehot_state_reg_n_0_[0] ),
         .R(1'b0));
-  (* FSM_ENCODED_STATES = "configure_byte:0000001000,wait_after_start:0000000100,repeated_start_condition:0010000000,start_condition:0000000010,idle:0000000001,stop_condition:1000000000,next_byte:0001000000,read_ack:0000100000,read_byte:0100000000,send_byte:0000010000" *) 
+  (* FSM_ENCODED_STATES = "configure_byte:0000001000,wait_after_start:0000000100,repeated_start_condition:0010000000,start_condition:0000000010,idle:0000000001,next_byte:0001000000,stop_condition:1000000000,read_ack:0000100000,read_byte:0100000000,send_byte:0000010000" *) 
   FDRE #(
     .INIT(1'b0)) 
     \FSM_onehot_state_reg[1] 
@@ -469,7 +470,7 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
         .D(\FSM_onehot_state_reg_n_0_[0] ),
         .Q(\FSM_onehot_state_reg_n_0_[1] ),
         .R(1'b0));
-  (* FSM_ENCODED_STATES = "configure_byte:0000001000,wait_after_start:0000000100,repeated_start_condition:0010000000,start_condition:0000000010,idle:0000000001,stop_condition:1000000000,next_byte:0001000000,read_ack:0000100000,read_byte:0100000000,send_byte:0000010000" *) 
+  (* FSM_ENCODED_STATES = "configure_byte:0000001000,wait_after_start:0000000100,repeated_start_condition:0010000000,start_condition:0000000010,idle:0000000001,next_byte:0001000000,stop_condition:1000000000,read_ack:0000100000,read_byte:0100000000,send_byte:0000010000" *) 
   FDRE #(
     .INIT(1'b0)) 
     \FSM_onehot_state_reg[2] 
@@ -478,7 +479,7 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
         .D(\FSM_onehot_state_reg_n_0_[1] ),
         .Q(\FSM_onehot_state_reg_n_0_[2] ),
         .R(1'b0));
-  (* FSM_ENCODED_STATES = "configure_byte:0000001000,wait_after_start:0000000100,repeated_start_condition:0010000000,start_condition:0000000010,idle:0000000001,stop_condition:1000000000,next_byte:0001000000,read_ack:0000100000,read_byte:0100000000,send_byte:0000010000" *) 
+  (* FSM_ENCODED_STATES = "configure_byte:0000001000,wait_after_start:0000000100,repeated_start_condition:0010000000,start_condition:0000000010,idle:0000000001,next_byte:0001000000,stop_condition:1000000000,read_ack:0000100000,read_byte:0100000000,send_byte:0000010000" *) 
   FDRE #(
     .INIT(1'b0)) 
     \FSM_onehot_state_reg[3] 
@@ -487,7 +488,7 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
         .D(\FSM_onehot_state[3]_i_1_n_0 ),
         .Q(\FSM_onehot_state_reg_n_0_[3] ),
         .R(1'b0));
-  (* FSM_ENCODED_STATES = "configure_byte:0000001000,wait_after_start:0000000100,repeated_start_condition:0010000000,start_condition:0000000010,idle:0000000001,stop_condition:1000000000,next_byte:0001000000,read_ack:0000100000,read_byte:0100000000,send_byte:0000010000" *) 
+  (* FSM_ENCODED_STATES = "configure_byte:0000001000,wait_after_start:0000000100,repeated_start_condition:0010000000,start_condition:0000000010,idle:0000000001,next_byte:0001000000,stop_condition:1000000000,read_ack:0000100000,read_byte:0100000000,send_byte:0000010000" *) 
   FDRE #(
     .INIT(1'b0)) 
     \FSM_onehot_state_reg[4] 
@@ -496,7 +497,7 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
         .D(\FSM_onehot_state_reg_n_0_[3] ),
         .Q(\FSM_onehot_state_reg_n_0_[4] ),
         .R(1'b0));
-  (* FSM_ENCODED_STATES = "configure_byte:0000001000,wait_after_start:0000000100,repeated_start_condition:0010000000,start_condition:0000000010,idle:0000000001,stop_condition:1000000000,next_byte:0001000000,read_ack:0000100000,read_byte:0100000000,send_byte:0000010000" *) 
+  (* FSM_ENCODED_STATES = "configure_byte:0000001000,wait_after_start:0000000100,repeated_start_condition:0010000000,start_condition:0000000010,idle:0000000001,next_byte:0001000000,stop_condition:1000000000,read_ack:0000100000,read_byte:0100000000,send_byte:0000010000" *) 
   FDRE #(
     .INIT(1'b0)) 
     \FSM_onehot_state_reg[5] 
@@ -505,7 +506,7 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
         .D(\FSM_onehot_state_reg_n_0_[4] ),
         .Q(\FSM_onehot_state_reg_n_0_[5] ),
         .R(1'b0));
-  (* FSM_ENCODED_STATES = "configure_byte:0000001000,wait_after_start:0000000100,repeated_start_condition:0010000000,start_condition:0000000010,idle:0000000001,stop_condition:1000000000,next_byte:0001000000,read_ack:0000100000,read_byte:0100000000,send_byte:0000010000" *) 
+  (* FSM_ENCODED_STATES = "configure_byte:0000001000,wait_after_start:0000000100,repeated_start_condition:0010000000,start_condition:0000000010,idle:0000000001,next_byte:0001000000,stop_condition:1000000000,read_ack:0000100000,read_byte:0100000000,send_byte:0000010000" *) 
   FDRE #(
     .INIT(1'b0)) 
     \FSM_onehot_state_reg[6] 
@@ -514,7 +515,7 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
         .D(\FSM_onehot_state[6]_i_1_n_0 ),
         .Q(\FSM_onehot_state_reg_n_0_[6] ),
         .R(1'b0));
-  (* FSM_ENCODED_STATES = "configure_byte:0000001000,wait_after_start:0000000100,repeated_start_condition:0010000000,start_condition:0000000010,idle:0000000001,stop_condition:1000000000,next_byte:0001000000,read_ack:0000100000,read_byte:0100000000,send_byte:0000010000" *) 
+  (* FSM_ENCODED_STATES = "configure_byte:0000001000,wait_after_start:0000000100,repeated_start_condition:0010000000,start_condition:0000000010,idle:0000000001,next_byte:0001000000,stop_condition:1000000000,read_ack:0000100000,read_byte:0100000000,send_byte:0000010000" *) 
   FDRE #(
     .INIT(1'b0)) 
     \FSM_onehot_state_reg[7] 
@@ -523,7 +524,7 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
         .D(\FSM_onehot_state[7]_i_1_n_0 ),
         .Q(\FSM_onehot_state_reg_n_0_[7] ),
         .R(1'b0));
-  (* FSM_ENCODED_STATES = "configure_byte:0000001000,wait_after_start:0000000100,repeated_start_condition:0010000000,start_condition:0000000010,idle:0000000001,stop_condition:1000000000,next_byte:0001000000,read_ack:0000100000,read_byte:0100000000,send_byte:0000010000" *) 
+  (* FSM_ENCODED_STATES = "configure_byte:0000001000,wait_after_start:0000000100,repeated_start_condition:0010000000,start_condition:0000000010,idle:0000000001,next_byte:0001000000,stop_condition:1000000000,read_ack:0000100000,read_byte:0100000000,send_byte:0000010000" *) 
   FDRE #(
     .INIT(1'b0)) 
     \FSM_onehot_state_reg[8] 
@@ -532,7 +533,7 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
         .D(\FSM_onehot_state[8]_i_1_n_0 ),
         .Q(\FSM_onehot_state_reg_n_0_[8] ),
         .R(1'b0));
-  (* FSM_ENCODED_STATES = "configure_byte:0000001000,wait_after_start:0000000100,repeated_start_condition:0010000000,start_condition:0000000010,idle:0000000001,stop_condition:1000000000,next_byte:0001000000,read_ack:0000100000,read_byte:0100000000,send_byte:0000010000" *) 
+  (* FSM_ENCODED_STATES = "configure_byte:0000001000,wait_after_start:0000000100,repeated_start_condition:0010000000,start_condition:0000000010,idle:0000000001,next_byte:0001000000,stop_condition:1000000000,read_ack:0000100000,read_byte:0100000000,send_byte:0000010000" *) 
   FDRE #(
     .INIT(1'b0)) 
     \FSM_onehot_state_reg[9] 
@@ -541,84 +542,70 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
         .D(\FSM_onehot_state[9]_i_2_n_0 ),
         .Q(\FSM_onehot_state_reg_n_0_[9] ),
         .R(1'b0));
-  LUT6 #(
-    .INIT(64'hFCFF000A000A000A)) 
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  LUT5 #(
+    .INIT(32'hC000C0EA)) 
     \bit_counter[0]_i_1 
        (.I0(\FSM_onehot_state_reg_n_0_[8] ),
-        .I1(sda_out_s_i_2_n_0),
-        .I2(Q[3]),
-        .I3(Q[0]),
-        .I4(scl_fall),
-        .I5(\FSM_onehot_state_reg_n_0_[4] ),
+        .I1(scl_low_safe_sample_reg_0),
+        .I2(\FSM_onehot_state_reg_n_0_[4] ),
+        .I3(Q[3]),
+        .I4(Q[0]),
         .O(\bit_counter[0]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'h000E0E00)) 
+  LUT6 #(
+    .INIT(64'h0000544454440000)) 
     \bit_counter[1]_i_1 
-       (.I0(\FSM_onehot_state_reg_n_0_[8] ),
-        .I1(\bit_counter[3]_i_5_n_0 ),
-        .I2(Q[3]),
-        .I3(Q[0]),
+       (.I0(Q[3]),
+        .I1(\FSM_onehot_state_reg_n_0_[8] ),
+        .I2(\FSM_onehot_state_reg_n_0_[4] ),
+        .I3(scl_low_safe_sample_reg_0),
         .I4(Q[1]),
+        .I5(Q[0]),
         .O(\bit_counter[1]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h000E0E000E000E00)) 
+    .INIT(64'h1444144414440000)) 
     \bit_counter[2]_i_1 
+       (.I0(Q[3]),
+        .I1(Q[2]),
+        .I2(Q[0]),
+        .I3(Q[1]),
+        .I4(\FSM_onehot_state_reg_n_0_[8] ),
+        .I5(\bit_counter[3]_i_4_n_0 ),
+        .O(\bit_counter[2]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFF0EEE)) 
+    \bit_counter[3]_i_1 
+       (.I0(\bit_counter[3]_i_3_n_0 ),
+        .I1(\bit_counter[3]_i_4_n_0 ),
+        .I2(Q[3]),
+        .I3(read_register_sample_s_i_2_n_0),
+        .I4(sda_oe_i_2_n_0),
+        .I5(\FSM_onehot_state[8]_i_1_n_0 ),
+        .O(bit_counter));
+  LUT6 #(
+    .INIT(64'hCEC0C0C0C0C0C0C0)) 
+    \bit_counter[3]_i_2 
        (.I0(\FSM_onehot_state_reg_n_0_[8] ),
-        .I1(\bit_counter[3]_i_5_n_0 ),
+        .I1(\bit_counter[3]_i_4_n_0 ),
         .I2(Q[3]),
         .I3(Q[2]),
         .I4(Q[0]),
         .I5(Q[1]),
-        .O(\bit_counter[2]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFFFEAAAEAAAEAAA)) 
-    \bit_counter[3]_i_1 
-       (.I0(\FSM_onehot_state[8]_i_1_n_0 ),
-        .I1(scl_rise_reg_n_0),
-        .I2(\FSM_onehot_state_reg_n_0_[8] ),
-        .I3(\bit_counter[3]_i_3_n_0 ),
-        .I4(\FSM_onehot_state_reg_n_0_[4] ),
-        .I5(\bit_counter[3]_i_4_n_0 ),
-        .O(bit_counter));
-  LUT6 #(
-    .INIT(64'hFFFFC00000008000)) 
-    \bit_counter[3]_i_2 
-       (.I0(\FSM_onehot_state_reg_n_0_[8] ),
-        .I1(Q[2]),
-        .I2(Q[0]),
-        .I3(Q[1]),
-        .I4(Q[3]),
-        .I5(\bit_counter[3]_i_5_n_0 ),
         .O(\bit_counter[3]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair14" *) 
-  LUT4 #(
-    .INIT(16'h01FF)) 
+  (* SOFT_HLUTNM = "soft_lutpair9" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
     \bit_counter[3]_i_3 
-       (.I0(Q[2]),
-        .I1(Q[1]),
-        .I2(Q[0]),
-        .I3(Q[3]),
+       (.I0(scl_rise_reg_0),
+        .I1(\FSM_onehot_state_reg_n_0_[8] ),
         .O(\bit_counter[3]_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'h0F0F0F3F00000080)) 
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
     \bit_counter[3]_i_4 
-       (.I0(scl_rise_reg_n_0),
-        .I1(Q[0]),
-        .I2(Q[3]),
-        .I3(Q[1]),
-        .I4(Q[2]),
-        .I5(scl_fall),
+       (.I0(scl_low_safe_sample_reg_0),
+        .I1(\FSM_onehot_state_reg_n_0_[4] ),
         .O(\bit_counter[3]_i_4_n_0 ));
-  LUT6 #(
-    .INIT(64'h8888888888888880)) 
-    \bit_counter[3]_i_5 
-       (.I0(\FSM_onehot_state_reg_n_0_[4] ),
-        .I1(scl_fall),
-        .I2(Q[2]),
-        .I3(Q[1]),
-        .I4(Q[0]),
-        .I5(Q[3]),
-        .O(\bit_counter[3]_i_5_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
     \bit_counter_reg[0] 
@@ -651,43 +638,34 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
         .D(\bit_counter[3]_i_2_n_0 ),
         .Q(Q[3]),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
-  LUT4 #(
-    .INIT(16'h0F20)) 
+  LUT6 #(
+    .INIT(64'h3000333345550000)) 
     \byte_counter[0]_i_1 
-       (.I0(\FSM_onehot_state_reg_n_0_[6] ),
-        .I1(\byte_counter_reg[1]_0 ),
-        .I2(byte_counter),
-        .I3(\byte_counter_reg[0]_0 ),
+       (.I0(\byte_counter_reg[1]_0 ),
+        .I1(\byte_counter[1]_i_2_n_0 ),
+        .I2(read_enable_reg_n_0),
+        .I3(read_phase_reg_n_0),
+        .I4(\FSM_onehot_state_reg_n_0_[6] ),
+        .I5(\byte_counter_reg[0]_0 ),
         .O(\byte_counter[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
-  LUT5 #(
-    .INIT(32'h00FF4000)) 
+  LUT6 #(
+    .INIT(64'h300033330A0A0000)) 
     \byte_counter[1]_i_1 
-       (.I0(read_enable_reg_n_0),
-        .I1(\FSM_onehot_state_reg_n_0_[6] ),
-        .I2(\byte_counter_reg[0]_0 ),
-        .I3(byte_counter),
-        .I4(\byte_counter_reg[1]_0 ),
+       (.I0(\byte_counter_reg[0]_0 ),
+        .I1(\byte_counter[1]_i_2_n_0 ),
+        .I2(read_enable_reg_n_0),
+        .I3(read_phase_reg_n_0),
+        .I4(\FSM_onehot_state_reg_n_0_[6] ),
+        .I5(\byte_counter_reg[1]_0 ),
         .O(\byte_counter[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
-  LUT5 #(
-    .INIT(32'hFFFFFF2A)) 
+  LUT4 #(
+    .INIT(16'hEAAA)) 
     \byte_counter[1]_i_2 
-       (.I0(\FSM_onehot_state_reg_n_0_[6] ),
-        .I1(read_enable_reg_n_0),
-        .I2(read_phase_reg_n_0),
-        .I3(\FSM_onehot_state[9]_i_3_n_0 ),
-        .I4(\byte_counter[1]_i_3_n_0 ),
-        .O(byte_counter));
-  (* SOFT_HLUTNM = "soft_lutpair10" *) 
-  LUT3 #(
-    .INIT(8'h80)) 
-    \byte_counter[1]_i_3 
-       (.I0(\FSM_onehot_state_reg_n_0_[7] ),
-        .I1(repeated_start_phase_reg_n_0),
-        .I2(scl_rise_reg_n_0),
-        .O(\byte_counter[1]_i_3_n_0 ));
+       (.I0(sda_oe_i_7_n_0),
+        .I1(slave_signal_sent),
+        .I2(\FSM_onehot_state_reg_n_0_[0] ),
+        .I3(start_setup_reg_n_0),
+        .O(\byte_counter[1]_i_2_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
     \byte_counter_reg[0] 
@@ -705,32 +683,32 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
         .Q(\byte_counter_reg[1]_0 ),
         .R(1'b0));
   LUT6 #(
-    .INIT(64'hFFFFFFFFFFFFFFFB)) 
+    .INIT(64'hFFFFFFFFFFFEFFFF)) 
     ov7670_reset_s_i_1
        (.I0(ov7670_reset_s_i_2_n_0),
-        .I1(start_counter_reg[12]),
-        .I2(start_counter_reg[5]),
-        .I3(start_counter_reg[6]),
-        .I4(start_counter_reg[2]),
-        .I5(ov7670_reset_s_i_3_n_0),
+        .I1(ov7670_reset_s_i_3_n_0),
+        .I2(start_counter_reg[2]),
+        .I3(start_counter_reg[5]),
+        .I4(start_counter_reg[7]),
+        .I5(start_counter_reg[6]),
         .O(ov7670_reset_s_i_1_n_0));
-  LUT4 #(
-    .INIT(16'hFFFE)) 
-    ov7670_reset_s_i_2
-       (.I0(start_counter_reg[1]),
-        .I1(start_counter_reg[0]),
-        .I2(start_counter_reg[10]),
-        .I3(start_counter_reg[11]),
-        .O(ov7670_reset_s_i_2_n_0));
   LUT6 #(
-    .INIT(64'hFFF7FFFFFFFFFFFF)) 
+    .INIT(64'hFFFDFFFFFFFFFFFF)) 
+    ov7670_reset_s_i_2
+       (.I0(start_counter_reg[12]),
+        .I1(start_counter_reg[13]),
+        .I2(start_counter_reg[11]),
+        .I3(start_counter_reg[4]),
+        .I4(start_counter_reg[9]),
+        .I5(start_counter_reg[8]),
+        .O(ov7670_reset_s_i_2_n_0));
+  LUT4 #(
+    .INIT(16'hFFFD)) 
     ov7670_reset_s_i_3
-       (.I0(start_counter_reg[9]),
-        .I1(start_counter_reg[8]),
-        .I2(start_counter_reg[4]),
-        .I3(start_counter_reg[13]),
-        .I4(start_counter_reg[3]),
-        .I5(start_counter_reg[7]),
+       (.I0(start_counter_reg[3]),
+        .I1(start_counter_reg[0]),
+        .I2(start_counter_reg[1]),
+        .I3(start_counter_reg[10]),
         .O(ov7670_reset_s_i_3_n_0));
   FDRE #(
     .INIT(1'b0)) 
@@ -746,8 +724,8 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
        (.I0(slave_model_addr[0]),
         .I1(scl_reg_0),
         .I2(\FSM_onehot_state_reg_n_0_[3] ),
-        .I3(\byte_counter_reg[0]_0 ),
-        .I4(\byte_counter_reg[1]_0 ),
+        .I3(\byte_counter_reg[1]_0 ),
+        .I4(\byte_counter_reg[0]_0 ),
         .I5(read_enable_reg_n_0),
         .O(read_enable_i_1_n_0));
   FDRE read_enable_reg
@@ -756,15 +734,15 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
         .D(read_enable_i_1_n_0),
         .Q(read_enable_reg_n_0),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair10" *) 
-  LUT5 #(
-    .INIT(32'hD555C000)) 
+  LUT6 #(
+    .INIT(64'hD5555555C0000000)) 
     read_phase_i_1
        (.I0(\FSM_onehot_state_reg_n_0_[0] ),
-        .I1(scl_rise_reg_n_0),
-        .I2(repeated_start_phase_reg_n_0),
-        .I3(\FSM_onehot_state_reg_n_0_[7] ),
-        .I4(read_phase_reg_n_0),
+        .I1(sda_in),
+        .I2(scl_high_safe_sample_reg_0),
+        .I3(repeated_start_phase_reg_n_0),
+        .I4(\FSM_onehot_state_reg_n_0_[7] ),
+        .I5(read_phase_reg_n_0),
         .O(read_phase_i_1_n_0));
   FDRE #(
     .INIT(1'b0)) 
@@ -774,24 +752,24 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
         .D(read_phase_i_1_n_0),
         .Q(read_phase_reg_n_0),
         .R(1'b0));
-  LUT6 #(
-    .INIT(64'hF555F555E000A000)) 
+  (* SOFT_HLUTNM = "soft_lutpair9" *) 
+  LUT5 #(
+    .INIT(32'hF555B000)) 
     read_register_sample_s_i_1
        (.I0(\FSM_onehot_state_reg_n_0_[0] ),
         .I1(read_register_sample_s_i_2_n_0),
-        .I2(scl_rise_reg_n_0),
+        .I2(scl_rise_reg_0),
         .I3(\FSM_onehot_state_reg_n_0_[8] ),
-        .I4(Q[3]),
-        .I5(read_register_sample),
+        .I4(read_register_sample),
         .O(read_register_sample_s_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair14" *) 
+  (* SOFT_HLUTNM = "soft_lutpair13" *) 
   LUT4 #(
-    .INIT(16'h0004)) 
+    .INIT(16'hFFFD)) 
     read_register_sample_s_i_2
-       (.I0(Q[0]),
-        .I1(Q[3]),
-        .I2(Q[1]),
-        .I3(Q[2]),
+       (.I0(Q[3]),
+        .I1(Q[2]),
+        .I2(Q[0]),
+        .I3(Q[1]),
         .O(read_register_sample_s_i_2_n_0));
   FDRE #(
     .INIT(1'b0)) 
@@ -804,8 +782,8 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
   LUT3 #(
     .INIT(8'h08)) 
     \read_shift_reg[7]_i_1 
-       (.I0(scl_rise_reg_n_0),
-        .I1(\FSM_onehot_state_reg_n_0_[8] ),
+       (.I0(\FSM_onehot_state_reg_n_0_[8] ),
+        .I1(scl_rise_reg_0),
         .I2(Q[3]),
         .O(read_shift_reg));
   FDRE #(
@@ -872,15 +850,15 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
         .D(sda_in),
         .Q(read_data[7]),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair11" *) 
-  LUT5 #(
-    .INIT(32'h1C5C1050)) 
+  LUT6 #(
+    .INIT(64'h0808080838F8F8F8)) 
     repeated_start_phase_i_1
-       (.I0(\FSM_onehot_state_reg_n_0_[0] ),
+       (.I0(scl_low_safe_sample_reg_0),
         .I1(\FSM_onehot_state_reg_n_0_[7] ),
         .I2(repeated_start_phase_reg_n_0),
-        .I3(scl_rise_reg_n_0),
-        .I4(scl_fall),
+        .I3(scl_high_safe_sample_reg_0),
+        .I4(sda_in),
+        .I5(\FSM_onehot_state_reg_n_0_[0] ),
         .O(repeated_start_phase_i_1_n_0));
   FDRE #(
     .INIT(1'b0)) 
@@ -890,14 +868,14 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
         .D(repeated_start_phase_i_1_n_0),
         .Q(repeated_start_phase_reg_n_0),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair12" *) 
+  (* SOFT_HLUTNM = "soft_lutpair8" *) 
   LUT4 #(
-    .INIT(16'hF322)) 
+    .INIT(16'hC0EE)) 
     reset_activated_i_1
        (.I0(reset),
-        .I1(\FSM_onehot_state_reg_n_0_[9] ),
+        .I1(reset_activated_reg_n_0),
         .I2(start_counter1),
-        .I3(reset_activated_reg_n_0),
+        .I3(\FSM_onehot_state_reg_n_0_[9] ),
         .O(reset_activated_i_1_n_0));
   FDRE #(
     .INIT(1'b0)) 
@@ -907,114 +885,110 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
         .D(reset_activated_i_1_n_0),
         .Q(reset_activated_reg_n_0),
         .R(1'b0));
+  (* SOFT_HLUTNM = "soft_lutpair19" *) 
   LUT1 #(
     .INIT(2'h1)) 
     \scl_cnt[0]_i_1 
        (.I0(scl_cnt_reg[0]),
-        .O(\scl_cnt[0]_i_1_n_0 ));
+        .O(p_0_in[0]));
   (* SOFT_HLUTNM = "soft_lutpair19" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \scl_cnt[1]_i_1 
        (.I0(scl_cnt_reg[0]),
         .I1(scl_cnt_reg[1]),
-        .O(p_0_in__0[1]));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+        .O(p_0_in[1]));
+  (* SOFT_HLUTNM = "soft_lutpair10" *) 
   LUT3 #(
     .INIT(8'h6A)) 
     \scl_cnt[2]_i_1 
        (.I0(scl_cnt_reg[2]),
-        .I1(scl_cnt_reg[0]),
-        .I2(scl_cnt_reg[1]),
-        .O(p_0_in__0[2]));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
-  LUT4 #(
-    .INIT(16'h7F80)) 
-    \scl_cnt[3]_i_1 
-       (.I0(scl_cnt_reg[1]),
-        .I1(scl_cnt_reg[0]),
-        .I2(scl_cnt_reg[2]),
-        .I3(scl_cnt_reg[3]),
-        .O(p_0_in__0[3]));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
-  LUT5 #(
-    .INIT(32'h7FFF8000)) 
-    \scl_cnt[4]_i_1 
-       (.I0(scl_cnt_reg[2]),
-        .I1(scl_cnt_reg[0]),
-        .I2(scl_cnt_reg[1]),
-        .I3(scl_cnt_reg[3]),
-        .I4(scl_cnt_reg[4]),
-        .O(p_0_in__0[4]));
-  LUT6 #(
-    .INIT(64'h7FFFFFFF80000000)) 
-    \scl_cnt[5]_i_1 
-       (.I0(scl_cnt_reg[3]),
         .I1(scl_cnt_reg[1]),
         .I2(scl_cnt_reg[0]),
+        .O(p_0_in[2]));
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  LUT4 #(
+    .INIT(16'h6AAA)) 
+    \scl_cnt[3]_i_1 
+       (.I0(scl_cnt_reg[3]),
+        .I1(scl_cnt_reg[0]),
+        .I2(scl_cnt_reg[1]),
         .I3(scl_cnt_reg[2]),
-        .I4(scl_cnt_reg[4]),
-        .I5(scl_cnt_reg[5]),
-        .O(p_0_in__0[5]));
-  LUT6 #(
-    .INIT(64'hF7FFFFFF08000000)) 
-    \scl_cnt[6]_i_1 
+        .O(\scl_cnt[3]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  LUT5 #(
+    .INIT(32'h6AAAAAAA)) 
+    \scl_cnt[4]_i_1 
        (.I0(scl_cnt_reg[4]),
         .I1(scl_cnt_reg[2]),
-        .I2(\scl_cnt[8]_i_3_n_0 ),
-        .I3(scl_cnt_reg[3]),
-        .I4(scl_cnt_reg[5]),
-        .I5(scl_cnt_reg[6]),
-        .O(p_0_in__0[6]));
-  (* SOFT_HLUTNM = "soft_lutpair13" *) 
-  LUT3 #(
-    .INIT(8'h78)) 
-    \scl_cnt[7]_i_1 
-       (.I0(\scl_cnt[8]_i_4_n_0 ),
-        .I1(scl_cnt_reg[6]),
-        .I2(scl_cnt_reg[7]),
-        .O(p_0_in__0[7]));
-  LUT6 #(
-    .INIT(64'h0000EF00FFFFFFFF)) 
-    \scl_cnt[8]_i_1 
-       (.I0(scl_cnt_reg[3]),
-        .I1(scl_cnt_reg[2]),
-        .I2(\scl_cnt[8]_i_3_n_0 ),
-        .I3(scl_cnt_reg[8]),
-        .I4(scl_i_2_n_0),
-        .I5(scl_en_reg_0),
-        .O(\scl_cnt[8]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'h7F80)) 
-    \scl_cnt[8]_i_2 
-       (.I0(scl_cnt_reg[6]),
-        .I1(\scl_cnt[8]_i_4_n_0 ),
-        .I2(scl_cnt_reg[7]),
-        .I3(scl_cnt_reg[8]),
-        .O(p_0_in__0[8]));
-  (* SOFT_HLUTNM = "soft_lutpair19" *) 
-  LUT2 #(
-    .INIT(4'h7)) 
-    \scl_cnt[8]_i_3 
-       (.I0(scl_cnt_reg[1]),
-        .I1(scl_cnt_reg[0]),
-        .O(\scl_cnt[8]_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'h8000000000000000)) 
-    \scl_cnt[8]_i_4 
-       (.I0(scl_cnt_reg[5]),
-        .I1(scl_cnt_reg[3]),
         .I2(scl_cnt_reg[1]),
         .I3(scl_cnt_reg[0]),
+        .I4(scl_cnt_reg[3]),
+        .O(p_0_in[4]));
+  LUT6 #(
+    .INIT(64'h6AAAAAAAAAAAAAAA)) 
+    \scl_cnt[5]_i_1 
+       (.I0(scl_cnt_reg[5]),
+        .I1(scl_cnt_reg[3]),
+        .I2(scl_cnt_reg[0]),
+        .I3(scl_cnt_reg[1]),
         .I4(scl_cnt_reg[2]),
         .I5(scl_cnt_reg[4]),
-        .O(\scl_cnt[8]_i_4_n_0 ));
+        .O(p_0_in[5]));
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+  LUT4 #(
+    .INIT(16'h6AAA)) 
+    \scl_cnt[6]_i_1 
+       (.I0(scl_cnt_reg[6]),
+        .I1(scl_cnt_reg[4]),
+        .I2(scl_cnt_reg[5]),
+        .I3(\scl_cnt[7]_i_2_n_0 ),
+        .O(p_0_in[6]));
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+  LUT5 #(
+    .INIT(32'h6AAAAAAA)) 
+    \scl_cnt[7]_i_1 
+       (.I0(scl_cnt_reg[7]),
+        .I1(\scl_cnt[7]_i_2_n_0 ),
+        .I2(scl_cnt_reg[5]),
+        .I3(scl_cnt_reg[4]),
+        .I4(scl_cnt_reg[6]),
+        .O(p_0_in[7]));
+  (* SOFT_HLUTNM = "soft_lutpair10" *) 
+  LUT4 #(
+    .INIT(16'h8000)) 
+    \scl_cnt[7]_i_2 
+       (.I0(scl_cnt_reg[3]),
+        .I1(scl_cnt_reg[0]),
+        .I2(scl_cnt_reg[1]),
+        .I3(scl_cnt_reg[2]),
+        .O(\scl_cnt[7]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'h44444440FFFFFFFF)) 
+    \scl_cnt[8]_i_1 
+       (.I0(scl_rise_i_3_n_0),
+        .I1(scl_cnt_reg[8]),
+        .I2(scl_rise_i_2_n_0),
+        .I3(scl_cnt_reg[3]),
+        .I4(scl_cnt_reg[2]),
+        .I5(scl_en_reg_0),
+        .O(\scl_cnt[8]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h9AAAAAAAAAAAAAAA)) 
+    \scl_cnt[8]_i_2 
+       (.I0(scl_cnt_reg[8]),
+        .I1(scl_rise_i_3_n_0),
+        .I2(scl_cnt_reg[3]),
+        .I3(scl_cnt_reg[0]),
+        .I4(scl_cnt_reg[1]),
+        .I5(scl_cnt_reg[2]),
+        .O(p_0_in[8]));
   FDRE #(
     .INIT(1'b0)) 
     \scl_cnt_reg[0] 
        (.C(clk_100),
         .CE(1'b1),
-        .D(\scl_cnt[0]_i_1_n_0 ),
+        .D(p_0_in[0]),
         .Q(scl_cnt_reg[0]),
         .R(\scl_cnt[8]_i_1_n_0 ));
   FDRE #(
@@ -1022,7 +996,7 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
     \scl_cnt_reg[1] 
        (.C(clk_100),
         .CE(1'b1),
-        .D(p_0_in__0[1]),
+        .D(p_0_in[1]),
         .Q(scl_cnt_reg[1]),
         .R(\scl_cnt[8]_i_1_n_0 ));
   FDRE #(
@@ -1030,7 +1004,7 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
     \scl_cnt_reg[2] 
        (.C(clk_100),
         .CE(1'b1),
-        .D(p_0_in__0[2]),
+        .D(p_0_in[2]),
         .Q(scl_cnt_reg[2]),
         .R(\scl_cnt[8]_i_1_n_0 ));
   FDRE #(
@@ -1038,7 +1012,7 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
     \scl_cnt_reg[3] 
        (.C(clk_100),
         .CE(1'b1),
-        .D(p_0_in__0[3]),
+        .D(\scl_cnt[3]_i_1_n_0 ),
         .Q(scl_cnt_reg[3]),
         .R(\scl_cnt[8]_i_1_n_0 ));
   FDRE #(
@@ -1046,7 +1020,7 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
     \scl_cnt_reg[4] 
        (.C(clk_100),
         .CE(1'b1),
-        .D(p_0_in__0[4]),
+        .D(p_0_in[4]),
         .Q(scl_cnt_reg[4]),
         .R(\scl_cnt[8]_i_1_n_0 ));
   FDRE #(
@@ -1054,7 +1028,7 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
     \scl_cnt_reg[5] 
        (.C(clk_100),
         .CE(1'b1),
-        .D(p_0_in__0[5]),
+        .D(p_0_in[5]),
         .Q(scl_cnt_reg[5]),
         .R(\scl_cnt[8]_i_1_n_0 ));
   FDRE #(
@@ -1062,7 +1036,7 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
     \scl_cnt_reg[6] 
        (.C(clk_100),
         .CE(1'b1),
-        .D(p_0_in__0[6]),
+        .D(p_0_in[6]),
         .Q(scl_cnt_reg[6]),
         .R(\scl_cnt[8]_i_1_n_0 ));
   FDRE #(
@@ -1070,7 +1044,7 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
     \scl_cnt_reg[7] 
        (.C(clk_100),
         .CE(1'b1),
-        .D(p_0_in__0[7]),
+        .D(p_0_in[7]),
         .Q(scl_cnt_reg[7]),
         .R(\scl_cnt[8]_i_1_n_0 ));
   FDRE #(
@@ -1078,16 +1052,15 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
     \scl_cnt_reg[8] 
        (.C(clk_100),
         .CE(1'b1),
-        .D(p_0_in__0[8]),
+        .D(p_0_in[8]),
         .Q(scl_cnt_reg[8]),
         .R(\scl_cnt[8]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair18" *) 
   LUT4 #(
-    .INIT(16'hF1F0)) 
+    .INIT(16'hABAA)) 
     scl_en_i_1
-       (.I0(\FSM_onehot_state_reg_n_0_[0] ),
-        .I1(\FSM_onehot_state_reg_n_0_[9] ),
-        .I2(\FSM_onehot_state_reg_n_0_[2] ),
+       (.I0(\FSM_onehot_state_reg_n_0_[2] ),
+        .I1(\FSM_onehot_state_reg_n_0_[0] ),
+        .I2(\FSM_onehot_state_reg_n_0_[9] ),
         .I3(scl_en_reg_0),
         .O(scl_en_i_1_n_0));
   FDRE #(
@@ -1098,53 +1071,117 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
         .D(scl_en_i_1_n_0),
         .Q(scl_en_reg_0),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
-  LUT5 #(
-    .INIT(32'h00008000)) 
+  LUT6 #(
+    .INIT(64'h0400000000000000)) 
     scl_fall_i_1
        (.I0(scl_fall_i_2_n_0),
-        .I1(scl_cnt_reg[2]),
-        .I2(scl_cnt_reg[3]),
-        .I3(scl_cnt_reg[1]),
-        .I4(scl_cnt_reg[0]),
-        .O(scl_rise16_out));
-  LUT6 #(
-    .INIT(64'h1000000000000000)) 
+        .I1(scl_cnt_reg[3]),
+        .I2(scl_fall_i_3_n_0),
+        .I3(scl_cnt_reg[7]),
+        .I4(scl_cnt_reg[6]),
+        .I5(scl_cnt_reg[0]),
+        .O(scl_fall_i_1_n_0));
+  LUT2 #(
+    .INIT(4'h7)) 
     scl_fall_i_2
-       (.I0(scl_cnt_reg[5]),
-        .I1(scl_cnt_reg[7]),
-        .I2(scl_cnt_reg[8]),
-        .I3(scl_en_reg_0),
-        .I4(scl_cnt_reg[4]),
-        .I5(scl_cnt_reg[6]),
+       (.I0(scl_cnt_reg[4]),
+        .I1(scl_cnt_reg[5]),
         .O(scl_fall_i_2_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair11" *) 
+  LUT4 #(
+    .INIT(16'hFFEF)) 
+    scl_fall_i_3
+       (.I0(scl_cnt_reg[8]),
+        .I1(scl_cnt_reg[1]),
+        .I2(scl_en_reg_0),
+        .I3(scl_cnt_reg[2]),
+        .O(scl_fall_i_3_n_0));
   FDRE #(
     .INIT(1'b0)) 
     scl_fall_reg
        (.C(clk_100),
         .CE(1'b1),
-        .D(scl_rise16_out),
-        .Q(scl_fall),
+        .D(scl_fall_i_1_n_0),
+        .Q(SCL_FALL_EDGE),
+        .R(1'b0));
+  LUT4 #(
+    .INIT(16'h0100)) 
+    scl_high_safe_sample_i_1
+       (.I0(scl_high_safe_sample_i_2_n_0),
+        .I1(scl_low_safe_sample_i_3_n_0),
+        .I2(scl_fall_i_2_n_0),
+        .I3(scl_cnt_reg[3]),
+        .O(scl_high_safe_sample_i_1_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair11" *) 
+  LUT4 #(
+    .INIT(16'hFFF7)) 
+    scl_high_safe_sample_i_2
+       (.I0(scl_cnt_reg[2]),
+        .I1(scl_cnt_reg[0]),
+        .I2(scl_cnt_reg[8]),
+        .I3(scl_cnt_reg[1]),
+        .O(scl_high_safe_sample_i_2_n_0));
+  FDRE #(
+    .INIT(1'b0)) 
+    scl_high_safe_sample_reg
+       (.C(clk_100),
+        .CE(1'b1),
+        .D(scl_high_safe_sample_i_1_n_0),
+        .Q(scl_high_safe_sample_reg_0),
         .R(1'b0));
   LUT6 #(
-    .INIT(64'h51515155FFFFFFFF)) 
+    .INIT(64'h0000FF01FFFFFFFF)) 
     scl_i_1
-       (.I0(scl_cnt_reg[8]),
-        .I1(scl_cnt_reg[3]),
-        .I2(scl_i_2_n_0),
-        .I3(scl_cnt_reg[2]),
-        .I4(scl_cnt_reg[1]),
+       (.I0(scl_cnt_reg[0]),
+        .I1(scl_cnt_reg[1]),
+        .I2(scl_cnt_reg[2]),
+        .I3(scl_i_2_n_0),
+        .I4(scl_cnt_reg[8]),
         .I5(scl_en_reg_0),
         .O(scl_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair13" *) 
-  LUT4 #(
-    .INIT(16'h7FFF)) 
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  LUT5 #(
+    .INIT(32'h7FFFFFFF)) 
     scl_i_2
-       (.I0(scl_cnt_reg[5]),
+       (.I0(scl_cnt_reg[6]),
         .I1(scl_cnt_reg[7]),
         .I2(scl_cnt_reg[4]),
-        .I3(scl_cnt_reg[6]),
+        .I3(scl_cnt_reg[5]),
+        .I4(scl_cnt_reg[3]),
         .O(scl_i_2_n_0));
+  LUT6 #(
+    .INIT(64'h0000000004000000)) 
+    scl_low_safe_sample_i_1
+       (.I0(scl_low_safe_sample_i_2_n_0),
+        .I1(scl_cnt_reg[8]),
+        .I2(scl_cnt_reg[3]),
+        .I3(scl_cnt_reg[5]),
+        .I4(scl_cnt_reg[4]),
+        .I5(scl_low_safe_sample_i_3_n_0),
+        .O(scl_low_safe_sample18_out));
+  (* SOFT_HLUTNM = "soft_lutpair18" *) 
+  LUT3 #(
+    .INIT(8'h7F)) 
+    scl_low_safe_sample_i_2
+       (.I0(scl_cnt_reg[2]),
+        .I1(scl_cnt_reg[1]),
+        .I2(scl_cnt_reg[0]),
+        .O(scl_low_safe_sample_i_2_n_0));
+  LUT3 #(
+    .INIT(8'hDF)) 
+    scl_low_safe_sample_i_3
+       (.I0(scl_en_reg_0),
+        .I1(scl_cnt_reg[7]),
+        .I2(scl_cnt_reg[6]),
+        .O(scl_low_safe_sample_i_3_n_0));
+  FDRE #(
+    .INIT(1'b0)) 
+    scl_low_safe_sample_reg
+       (.C(clk_100),
+        .CE(1'b1),
+        .D(scl_low_safe_sample18_out),
+        .Q(scl_low_safe_sample_reg_0),
+        .R(1'b0));
   FDRE #(
     .INIT(1'b1)) 
     scl_reg
@@ -1154,94 +1191,100 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
         .Q(scl_reg_0),
         .R(1'b0));
   LUT6 #(
-    .INIT(64'h0000000080000000)) 
+    .INIT(64'h0000000000200000)) 
     scl_rise_i_1
-       (.I0(scl_cnt_reg[5]),
-        .I1(scl_cnt_reg[7]),
-        .I2(scl_cnt_reg[4]),
-        .I3(scl_cnt_reg[6]),
-        .I4(scl_rise_i_2_n_0),
-        .I5(scl_rise16_out),
-        .O(scl_rise_i_1_n_0));
-  LUT6 #(
-    .INIT(64'h0008000000000000)) 
-    scl_rise_i_2
-       (.I0(scl_cnt_reg[8]),
-        .I1(scl_en_reg_0),
-        .I2(scl_cnt_reg[2]),
+       (.I0(scl_en_reg_0),
+        .I1(scl_cnt_reg[2]),
+        .I2(scl_rise_i_2_n_0),
         .I3(scl_cnt_reg[3]),
-        .I4(scl_cnt_reg[0]),
-        .I5(scl_cnt_reg[1]),
+        .I4(scl_cnt_reg[8]),
+        .I5(scl_rise_i_3_n_0),
+        .O(scl_rise_i_1_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair18" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    scl_rise_i_2
+       (.I0(scl_cnt_reg[0]),
+        .I1(scl_cnt_reg[1]),
         .O(scl_rise_i_2_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  LUT4 #(
+    .INIT(16'h7FFF)) 
+    scl_rise_i_3
+       (.I0(scl_cnt_reg[5]),
+        .I1(scl_cnt_reg[4]),
+        .I2(scl_cnt_reg[7]),
+        .I3(scl_cnt_reg[6]),
+        .O(scl_rise_i_3_n_0));
   FDRE #(
     .INIT(1'b0)) 
     scl_rise_reg
        (.C(clk_100),
         .CE(1'b1),
         .D(scl_rise_i_1_n_0),
-        .Q(scl_rise_reg_n_0),
+        .Q(scl_rise_reg_0),
         .R(1'b0));
   LUT6 #(
-    .INIT(64'hEEEEEEEFEEEEEEEC)) 
+    .INIT(64'hFFFFAAABFFFFAAA8)) 
     sda_oe_i_1
-       (.I0(sda_oe_i_2_n_0),
-        .I1(sda_oe_i_3_n_0),
-        .I2(sda_oe_i_4_n_0),
-        .I3(sda_oe_i_5_n_0),
-        .I4(sda_oe_i_6_n_0),
+       (.I0(\FSM_onehot_state_reg_n_0_[1] ),
+        .I1(sda_oe_i_2_n_0),
+        .I2(\FSM_onehot_state[8]_i_1_n_0 ),
+        .I3(sda_oe_i_3_n_0),
+        .I4(sda_oe_i_4_n_0),
         .I5(sda_oe),
         .O(sda_oe_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
-  LUT4 #(
-    .INIT(16'hFF80)) 
+  LUT6 #(
+    .INIT(64'h0000000000400000)) 
     sda_oe_i_2
-       (.I0(scl_rise_reg_n_0),
-        .I1(repeated_start_phase_reg_n_0),
-        .I2(\FSM_onehot_state_reg_n_0_[7] ),
-        .I3(\FSM_onehot_state_reg_n_0_[1] ),
+       (.I0(Q[1]),
+        .I1(Q[0]),
+        .I2(\FSM_onehot_state_reg_n_0_[4] ),
+        .I3(scl_low_safe_sample_reg_0),
+        .I4(scl_rise_reg_0),
+        .I5(sda_oe_i_5_n_0),
         .O(sda_oe_i_2_n_0));
-  LUT3 #(
-    .INIT(8'h04)) 
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFFFFF4)) 
     sda_oe_i_3
-       (.I0(read_enable_reg_n_0),
-        .I1(\FSM_onehot_state_reg_n_0_[6] ),
-        .I2(\byte_counter_reg[1]_0 ),
-        .O(sda_oe_i_3_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair11" *) 
-  LUT4 #(
-    .INIT(16'hCA00)) 
-    sda_oe_i_4
-       (.I0(scl_fall),
-        .I1(scl_rise_reg_n_0),
-        .I2(repeated_start_phase_reg_n_0),
-        .I3(\FSM_onehot_state_reg_n_0_[7] ),
-        .O(sda_oe_i_4_n_0));
-  LUT6 #(
-    .INIT(64'hFFFEFEFEFEFEFEFE)) 
-    sda_oe_i_5
-       (.I0(state_debug[3]),
-        .I1(\FSM_onehot_state_reg_n_0_[0] ),
+       (.I0(read_register_sample_s_i_2_n_0),
+        .I1(\bit_counter[3]_i_4_n_0 ),
         .I2(\FSM_onehot_state_reg_n_0_[1] ),
-        .I3(\FSM_onehot_state_reg_n_0_[6] ),
-        .I4(read_enable_reg_n_0),
-        .I5(read_phase_reg_n_0),
-        .O(sda_oe_i_5_n_0));
-  LUT6 #(
-    .INIT(64'h4400000080000000)) 
-    sda_oe_i_6
-       (.I0(Q[0]),
-        .I1(Q[3]),
-        .I2(scl_rise_reg_n_0),
-        .I3(sda_oe_i_7_n_0),
-        .I4(\FSM_onehot_state_reg_n_0_[4] ),
-        .I5(scl_fall),
-        .O(sda_oe_i_6_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair9" *) 
+        .I3(\FSM_onehot_state_reg_n_0_[8] ),
+        .I4(write_register_pulse_i_2_n_0),
+        .I5(sda_oe_i_6_n_0),
+        .O(sda_oe_i_3_n_0));
+  LUT4 #(
+    .INIT(16'hAABA)) 
+    sda_oe_i_4
+       (.I0(sda_oe_i_7_n_0),
+        .I1(read_enable_reg_n_0),
+        .I2(\FSM_onehot_state_reg_n_0_[6] ),
+        .I3(\byte_counter_reg[1]_0 ),
+        .O(sda_oe_i_4_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair17" *) 
   LUT2 #(
-    .INIT(4'h1)) 
-    sda_oe_i_7
+    .INIT(4'hB)) 
+    sda_oe_i_5
        (.I0(Q[2]),
-        .I1(Q[1]),
+        .I1(Q[3]),
+        .O(sda_oe_i_5_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair14" *) 
+  LUT3 #(
+    .INIT(8'h08)) 
+    sda_oe_i_6
+       (.I0(\FSM_onehot_state_reg_n_0_[7] ),
+        .I1(scl_low_safe_sample_reg_0),
+        .I2(repeated_start_phase_reg_n_0),
+        .O(sda_oe_i_6_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair14" *) 
+  LUT4 #(
+    .INIT(16'h8000)) 
+    sda_oe_i_7
+       (.I0(\FSM_onehot_state_reg_n_0_[7] ),
+        .I1(repeated_start_phase_reg_n_0),
+        .I2(scl_high_safe_sample_reg_0),
+        .I3(sda_in),
         .O(sda_oe_i_7_n_0));
   FDRE sda_oe_reg
        (.C(clk_100),
@@ -1250,33 +1293,33 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
         .Q(sda_oe),
         .R(1'b0));
   LUT6 #(
-    .INIT(64'hB080FFFFB0800000)) 
+    .INIT(64'hA808FFFFA8080000)) 
     sda_out_s_i_1
-       (.I0(shift_reg_full_debug[7]),
-        .I1(sda_out_s_i_2_n_0),
-        .I2(\FSM_onehot_state_reg_n_0_[4] ),
-        .I3(shift_reg_debug[6]),
+       (.I0(\FSM_onehot_state_reg_n_0_[4] ),
+        .I1(shift_reg_debug[6]),
+        .I2(sda_out_s_i_2_n_0),
+        .I3(shift_reg_full_debug[7]),
         .I4(sda_out_s),
         .I5(sda_out),
         .O(sda_out_s_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair15" *) 
+  (* SOFT_HLUTNM = "soft_lutpair13" *) 
   LUT4 #(
     .INIT(16'h0001)) 
     sda_out_s_i_2
-       (.I0(Q[3]),
-        .I1(Q[0]),
-        .I2(Q[1]),
-        .I3(Q[2]),
+       (.I0(Q[0]),
+        .I1(Q[1]),
+        .I2(Q[2]),
+        .I3(Q[3]),
         .O(sda_out_s_i_2_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
-  LUT5 #(
-    .INIT(32'hFFFFEAAA)) 
+  LUT6 #(
+    .INIT(64'hFFFFFFFFEAAAAAAA)) 
     sda_out_s_i_3
-       (.I0(\FSM_onehot_state_reg_n_0_[1] ),
+       (.I0(shift_reg),
         .I1(\FSM_onehot_state_reg_n_0_[7] ),
         .I2(repeated_start_phase_reg_n_0),
-        .I3(scl_rise_reg_n_0),
-        .I4(shift_reg),
+        .I3(scl_high_safe_sample_reg_0),
+        .I4(sda_in),
+        .I5(\FSM_onehot_state_reg_n_0_[1] ),
         .O(sda_out_s));
   FDRE #(
     .INIT(1'b1)) 
@@ -1286,7 +1329,7 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
         .D(sda_out_s_i_1_n_0),
         .Q(sda_out),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair15" *) 
+  (* SOFT_HLUTNM = "soft_lutpair17" *) 
   LUT4 #(
     .INIT(16'h0002)) 
     \shift_reg[1]_i_1 
@@ -1344,10 +1387,9 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
     .INIT(8'h08)) 
     \shift_reg[7]_i_1 
        (.I0(\FSM_onehot_state_reg_n_0_[4] ),
-        .I1(scl_fall),
+        .I1(scl_low_safe_sample_reg_0),
         .I2(Q[3]),
         .O(shift_reg));
-  (* SOFT_HLUTNM = "soft_lutpair9" *) 
   LUT5 #(
     .INIT(32'hFFFE0002)) 
     \shift_reg[7]_i_2 
@@ -1358,93 +1400,92 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
         .I4(shift_reg_debug[5]),
         .O(\shift_reg[7]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFFF8080000F808)) 
+    .INIT(64'hB8BBB888B888B888)) 
     \shift_reg_full[0]_i_1 
-       (.I0(read_phase_reg_n_0),
-        .I1(slave_model_addr[0]),
-        .I2(\byte_counter_reg[0]_0 ),
-        .I3(slave_reg_addr[0]),
-        .I4(\byte_counter_reg[1]_0 ),
-        .I5(slave_reg_data[0]),
-        .O(p_0_in[0]));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+       (.I0(slave_reg_data[0]),
+        .I1(\byte_counter_reg[1]_0 ),
+        .I2(slave_reg_addr[0]),
+        .I3(\byte_counter_reg[0]_0 ),
+        .I4(read_phase_reg_n_0),
+        .I5(slave_model_addr[0]),
+        .O(\shift_reg_full[0]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hFFE200E2)) 
+    .INIT(32'hB8BBB888)) 
     \shift_reg_full[1]_i_1 
-       (.I0(slave_model_addr[1]),
-        .I1(\byte_counter_reg[0]_0 ),
+       (.I0(slave_reg_data[1]),
+        .I1(\byte_counter_reg[1]_0 ),
         .I2(slave_reg_addr[1]),
-        .I3(\byte_counter_reg[1]_0 ),
-        .I4(slave_reg_data[1]),
-        .O(p_0_in[1]));
+        .I3(\byte_counter_reg[0]_0 ),
+        .I4(slave_model_addr[1]),
+        .O(\shift_reg_full[1]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hFFE200E2)) 
+    .INIT(32'hB8BBB888)) 
     \shift_reg_full[2]_i_1 
-       (.I0(slave_model_addr[2]),
-        .I1(\byte_counter_reg[0]_0 ),
+       (.I0(slave_reg_data[2]),
+        .I1(\byte_counter_reg[1]_0 ),
         .I2(slave_reg_addr[2]),
-        .I3(\byte_counter_reg[1]_0 ),
-        .I4(slave_reg_data[2]),
-        .O(p_0_in[2]));
+        .I3(\byte_counter_reg[0]_0 ),
+        .I4(slave_model_addr[2]),
+        .O(\shift_reg_full[2]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hFFE200E2)) 
+    .INIT(32'hB8BBB888)) 
     \shift_reg_full[3]_i_1 
-       (.I0(slave_model_addr[3]),
-        .I1(\byte_counter_reg[0]_0 ),
+       (.I0(slave_reg_data[3]),
+        .I1(\byte_counter_reg[1]_0 ),
         .I2(slave_reg_addr[3]),
-        .I3(\byte_counter_reg[1]_0 ),
-        .I4(slave_reg_data[3]),
-        .O(p_0_in[3]));
+        .I3(\byte_counter_reg[0]_0 ),
+        .I4(slave_model_addr[3]),
+        .O(\shift_reg_full[3]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hFFE200E2)) 
+    .INIT(32'hB8BBB888)) 
     \shift_reg_full[4]_i_1 
-       (.I0(slave_model_addr[4]),
-        .I1(\byte_counter_reg[0]_0 ),
+       (.I0(slave_reg_data[4]),
+        .I1(\byte_counter_reg[1]_0 ),
         .I2(slave_reg_addr[4]),
-        .I3(\byte_counter_reg[1]_0 ),
-        .I4(slave_reg_data[4]),
-        .O(p_0_in[4]));
+        .I3(\byte_counter_reg[0]_0 ),
+        .I4(slave_model_addr[4]),
+        .O(\shift_reg_full[4]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hFFE200E2)) 
+    .INIT(32'hB8BBB888)) 
     \shift_reg_full[5]_i_1 
-       (.I0(slave_model_addr[5]),
-        .I1(\byte_counter_reg[0]_0 ),
+       (.I0(slave_reg_data[5]),
+        .I1(\byte_counter_reg[1]_0 ),
         .I2(slave_reg_addr[5]),
-        .I3(\byte_counter_reg[1]_0 ),
-        .I4(slave_reg_data[5]),
-        .O(p_0_in[5]));
+        .I3(\byte_counter_reg[0]_0 ),
+        .I4(slave_model_addr[5]),
+        .O(\shift_reg_full[5]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hFFE200E2)) 
+    .INIT(32'hB8BBB888)) 
     \shift_reg_full[6]_i_1 
-       (.I0(slave_model_addr[6]),
-        .I1(\byte_counter_reg[0]_0 ),
+       (.I0(slave_reg_data[6]),
+        .I1(\byte_counter_reg[1]_0 ),
         .I2(slave_reg_addr[6]),
-        .I3(\byte_counter_reg[1]_0 ),
-        .I4(slave_reg_data[6]),
-        .O(p_0_in[6]));
+        .I3(\byte_counter_reg[0]_0 ),
+        .I4(slave_model_addr[6]),
+        .O(\shift_reg_full[6]_i_1_n_0 ));
   LUT4 #(
-    .INIT(16'h0070)) 
+    .INIT(16'h0444)) 
     \shift_reg_full[7]_i_1 
-       (.I0(\byte_counter_reg[1]_0 ),
-        .I1(\byte_counter_reg[0]_0 ),
-        .I2(\FSM_onehot_state_reg_n_0_[3] ),
-        .I3(scl_reg_0),
+       (.I0(scl_reg_0),
+        .I1(\FSM_onehot_state_reg_n_0_[3] ),
+        .I2(\byte_counter_reg[1]_0 ),
+        .I3(\byte_counter_reg[0]_0 ),
         .O(shift_reg_full));
   LUT5 #(
-    .INIT(32'hFFE200E2)) 
+    .INIT(32'hB8BBB888)) 
     \shift_reg_full[7]_i_2 
-       (.I0(slave_model_addr[7]),
-        .I1(\byte_counter_reg[0]_0 ),
+       (.I0(slave_reg_data[7]),
+        .I1(\byte_counter_reg[1]_0 ),
         .I2(slave_reg_addr[7]),
-        .I3(\byte_counter_reg[1]_0 ),
-        .I4(slave_reg_data[7]),
-        .O(p_0_in[7]));
+        .I3(\byte_counter_reg[0]_0 ),
+        .I4(slave_model_addr[7]),
+        .O(\shift_reg_full[7]_i_2_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
     \shift_reg_full_reg[0] 
        (.C(clk_100),
         .CE(shift_reg_full),
-        .D(p_0_in[0]),
+        .D(\shift_reg_full[0]_i_1_n_0 ),
         .Q(shift_reg_full_debug[0]),
         .R(1'b0));
   FDRE #(
@@ -1452,7 +1493,7 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
     \shift_reg_full_reg[1] 
        (.C(clk_100),
         .CE(shift_reg_full),
-        .D(p_0_in[1]),
+        .D(\shift_reg_full[1]_i_1_n_0 ),
         .Q(shift_reg_full_debug[1]),
         .R(1'b0));
   FDRE #(
@@ -1460,7 +1501,7 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
     \shift_reg_full_reg[2] 
        (.C(clk_100),
         .CE(shift_reg_full),
-        .D(p_0_in[2]),
+        .D(\shift_reg_full[2]_i_1_n_0 ),
         .Q(shift_reg_full_debug[2]),
         .R(1'b0));
   FDRE #(
@@ -1468,7 +1509,7 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
     \shift_reg_full_reg[3] 
        (.C(clk_100),
         .CE(shift_reg_full),
-        .D(p_0_in[3]),
+        .D(\shift_reg_full[3]_i_1_n_0 ),
         .Q(shift_reg_full_debug[3]),
         .R(1'b0));
   FDRE #(
@@ -1476,7 +1517,7 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
     \shift_reg_full_reg[4] 
        (.C(clk_100),
         .CE(shift_reg_full),
-        .D(p_0_in[4]),
+        .D(\shift_reg_full[4]_i_1_n_0 ),
         .Q(shift_reg_full_debug[4]),
         .R(1'b0));
   FDRE #(
@@ -1484,7 +1525,7 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
     \shift_reg_full_reg[5] 
        (.C(clk_100),
         .CE(shift_reg_full),
-        .D(p_0_in[5]),
+        .D(\shift_reg_full[5]_i_1_n_0 ),
         .Q(shift_reg_full_debug[5]),
         .R(1'b0));
   FDRE #(
@@ -1492,7 +1533,7 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
     \shift_reg_full_reg[6] 
        (.C(clk_100),
         .CE(shift_reg_full),
-        .D(p_0_in[6]),
+        .D(\shift_reg_full[6]_i_1_n_0 ),
         .Q(shift_reg_full_debug[6]),
         .R(1'b0));
   FDRE #(
@@ -1500,7 +1541,7 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
     \shift_reg_full_reg[7] 
        (.C(clk_100),
         .CE(shift_reg_full),
-        .D(p_0_in[7]),
+        .D(\shift_reg_full[7]_i_2_n_0 ),
         .Q(shift_reg_full_debug[7]),
         .R(1'b0));
   FDRE #(
@@ -1559,69 +1600,80 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
         .D(\shift_reg[7]_i_2_n_0 ),
         .Q(shift_reg_debug[6]),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair16" *) 
   LUT4 #(
     .INIT(16'hFFFE)) 
     \simple_state_debug[0]_i_1 
-       (.I0(\FSM_onehot_state_reg_n_0_[3] ),
-        .I1(\FSM_onehot_state_reg_n_0_[5] ),
-        .I2(\FSM_onehot_state_reg_n_0_[9] ),
-        .I3(\FSM_onehot_state_reg_n_0_[8] ),
+       (.I0(\simple_state_debug[0]_i_2_n_0 ),
+        .I1(\FSM_onehot_state_reg_n_0_[9] ),
+        .I2(\FSM_onehot_state_reg_n_0_[8] ),
+        .I3(\FSM_onehot_state_reg_n_0_[3] ),
         .O(\simple_state_debug[0]_i_1_n_0 ));
   (* SOFT_HLUTNM = "soft_lutpair7" *) 
   LUT5 #(
-    .INIT(32'hFFFFFFFE)) 
+    .INIT(32'hAA080008)) 
+    \simple_state_debug[0]_i_2 
+       (.I0(\FSM_onehot_state_reg_n_0_[5] ),
+        .I1(scl_rise_reg_0),
+        .I2(sda_in),
+        .I3(scl_low_safe_sample_reg_0),
+        .I4(\state_hold_reg_n_0_[0] ),
+        .O(\simple_state_debug[0]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFFFFFB8880000)) 
     \simple_state_debug[1]_i_1 
-       (.I0(\FSM_onehot_state_reg_n_0_[6] ),
-        .I1(\FSM_onehot_state_reg_n_0_[9] ),
-        .I2(\FSM_onehot_state_reg_n_0_[8] ),
-        .I3(\FSM_onehot_state_reg_n_0_[1] ),
-        .I4(\FSM_onehot_state_reg_n_0_[3] ),
+       (.I0(\state_hold_reg_n_0_[0] ),
+        .I1(scl_low_safe_sample_reg_0),
+        .I2(scl_rise_reg_0),
+        .I3(sda_in),
+        .I4(\FSM_onehot_state_reg_n_0_[5] ),
+        .I5(\simple_state_debug[1]_i_2_n_0 ),
         .O(\simple_state_debug[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair8" *) 
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
   LUT5 #(
     .INIT(32'hFFFFFFFE)) 
+    \simple_state_debug[1]_i_2 
+       (.I0(\FSM_onehot_state_reg_n_0_[1] ),
+        .I1(\FSM_onehot_state_reg_n_0_[8] ),
+        .I2(\FSM_onehot_state_reg_n_0_[9] ),
+        .I3(\FSM_onehot_state_reg_n_0_[6] ),
+        .I4(\FSM_onehot_state_reg_n_0_[3] ),
+        .O(\simple_state_debug[1]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFFFF40)) 
     \simple_state_debug[2]_i_1 
-       (.I0(\FSM_onehot_state_reg_n_0_[6] ),
-        .I1(\FSM_onehot_state_reg_n_0_[9] ),
-        .I2(\FSM_onehot_state_reg_n_0_[8] ),
-        .I3(\FSM_onehot_state_reg_n_0_[4] ),
-        .I4(\FSM_onehot_state_reg_n_0_[5] ),
+       (.I0(\state_hold_reg_n_0_[0] ),
+        .I1(\FSM_onehot_state_reg_n_0_[5] ),
+        .I2(scl_low_safe_sample_reg_0),
+        .I3(\simple_state_debug[2]_i_2_n_0 ),
+        .I4(\FSM_onehot_state_reg_n_0_[9] ),
+        .I5(\FSM_onehot_state_reg_n_0_[8] ),
         .O(\simple_state_debug[2]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  LUT2 #(
+    .INIT(4'hE)) 
+    \simple_state_debug[2]_i_2 
+       (.I0(\FSM_onehot_state_reg_n_0_[4] ),
+        .I1(\FSM_onehot_state_reg_n_0_[6] ),
+        .O(\simple_state_debug[2]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'hFFFFFFFFFFFFFFFE)) 
     \simple_state_debug[3]_i_1 
-       (.I0(\FSM_onehot_state_reg_n_0_[1] ),
-        .I1(\FSM_onehot_state_reg_n_0_[0] ),
-        .I2(state_debug[3]),
-        .I3(\simple_state_debug[3]_i_2_n_0 ),
-        .I4(\simple_state_debug[3]_i_3_n_0 ),
-        .I5(\simple_state_debug[3]_i_4_n_0 ),
+       (.I0(sda_oe_i_2_n_0),
+        .I1(\simple_state_debug[3]_i_2_n_0 ),
+        .I2(\FSM_onehot_state_reg_n_0_[1] ),
+        .I3(\FSM_onehot_state_reg_n_0_[8] ),
+        .I4(\FSM_onehot_state_reg_n_0_[0] ),
+        .I5(\FSM_onehot_state_reg_n_0_[5] ),
         .O(\simple_state_debug[3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair8" *) 
-  LUT2 #(
-    .INIT(4'hE)) 
+  (* SOFT_HLUTNM = "soft_lutpair12" *) 
+  LUT4 #(
+    .INIT(16'hFFF4)) 
     \simple_state_debug[3]_i_2 
-       (.I0(\FSM_onehot_state_reg_n_0_[6] ),
-        .I1(\FSM_onehot_state_reg_n_0_[5] ),
+       (.I0(scl_reg_0),
+        .I1(\FSM_onehot_state_reg_n_0_[3] ),
+        .I2(\FSM_onehot_state_reg_n_0_[6] ),
+        .I3(\FSM_onehot_state_reg_n_0_[9] ),
         .O(\simple_state_debug[3]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h4000000000000000)) 
-    \simple_state_debug[3]_i_3 
-       (.I0(scl_fall),
-        .I1(\FSM_onehot_state_reg_n_0_[4] ),
-        .I2(sda_oe_i_7_n_0),
-        .I3(scl_rise_reg_n_0),
-        .I4(Q[3]),
-        .I5(Q[0]),
-        .O(\simple_state_debug[3]_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair16" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \simple_state_debug[3]_i_4 
-       (.I0(\FSM_onehot_state_reg_n_0_[3] ),
-        .I1(scl_reg_0),
-        .O(\simple_state_debug[3]_i_4_n_0 ));
   FDRE \simple_state_debug_reg[0] 
        (.C(clk_100),
         .CE(\simple_state_debug[3]_i_1_n_0 ),
@@ -1657,8 +1709,8 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
   LUT2 #(
     .INIT(4'h1)) 
     start_counter1_carry_i_1
-       (.I0(start_counter_reg[13]),
-        .I1(start_counter_reg[12]),
+       (.I0(start_counter_reg[12]),
+        .I1(start_counter_reg[13]),
         .O(start_counter1_carry_i_1_n_0));
   LUT2 #(
     .INIT(4'h7)) 
@@ -1675,8 +1727,8 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
   LUT2 #(
     .INIT(4'h1)) 
     start_counter1_carry_i_4
-       (.I0(start_counter_reg[7]),
-        .I1(start_counter_reg[6]),
+       (.I0(start_counter_reg[6]),
+        .I1(start_counter_reg[7]),
         .O(start_counter1_carry_i_4_n_0));
   LUT2 #(
     .INIT(4'h2)) 
@@ -1706,14 +1758,14 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
     .INIT(8'h2A)) 
     \start_counter[0]_i_1 
        (.I0(reset),
-        .I1(reset_activated_reg_n_0),
-        .I2(start_counter1),
+        .I1(start_counter1),
+        .I2(reset_activated_reg_n_0),
         .O(start_counter));
   LUT2 #(
     .INIT(4'h8)) 
     \start_counter[0]_i_2 
-       (.I0(start_counter1),
-        .I1(reset_activated_reg_n_0),
+       (.I0(reset_activated_reg_n_0),
+        .I1(start_counter1),
         .O(start_counter0));
   LUT1 #(
     .INIT(2'h1)) 
@@ -1864,14 +1916,14 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
         .D(\start_counter_reg[8]_i_1_n_6 ),
         .Q(start_counter_reg[9]),
         .R(start_counter));
-  (* SOFT_HLUTNM = "soft_lutpair12" *) 
+  (* SOFT_HLUTNM = "soft_lutpair8" *) 
   LUT5 #(
-    .INIT(32'h04FF0404)) 
+    .INIT(32'h55750030)) 
     start_setup_i_1
-       (.I0(start_counter1),
-        .I1(reset_activated_reg_n_0),
-        .I2(\FSM_onehot_state_reg_n_0_[9] ),
-        .I3(reset),
+       (.I0(reset),
+        .I1(\FSM_onehot_state_reg_n_0_[9] ),
+        .I2(reset_activated_reg_n_0),
+        .I3(start_counter1),
         .I4(start_setup_reg_n_0),
         .O(start_setup_i_1_n_0));
   FDRE #(
@@ -1882,46 +1934,66 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
         .D(start_setup_i_1_n_0),
         .Q(start_setup_reg_n_0),
         .R(1'b0));
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT5 #(
     .INIT(32'hFFFFFFFE)) 
     \state_debug[0]_INST_0 
-       (.I0(\FSM_onehot_state_reg_n_0_[6] ),
-        .I1(\FSM_onehot_state_reg_n_0_[9] ),
-        .I2(\FSM_onehot_state_reg_n_0_[2] ),
-        .I3(\FSM_onehot_state_reg_n_0_[4] ),
-        .I4(\FSM_onehot_state_reg_n_0_[1] ),
+       (.I0(\FSM_onehot_state_reg_n_0_[2] ),
+        .I1(\FSM_onehot_state_reg_n_0_[1] ),
+        .I2(\FSM_onehot_state_reg_n_0_[4] ),
+        .I3(\FSM_onehot_state_reg_n_0_[6] ),
+        .I4(\FSM_onehot_state_reg_n_0_[9] ),
         .O(state_debug[0]));
+  (* SOFT_HLUTNM = "soft_lutpair15" *) 
   LUT4 #(
     .INIT(16'hFFFE)) 
     \state_debug[1]_INST_0 
-       (.I0(\FSM_onehot_state_reg_n_0_[7] ),
-        .I1(\FSM_onehot_state_reg_n_0_[2] ),
-        .I2(\FSM_onehot_state_reg_n_0_[5] ),
-        .I3(\FSM_onehot_state_reg_n_0_[6] ),
+       (.I0(\FSM_onehot_state_reg_n_0_[2] ),
+        .I1(\FSM_onehot_state_reg_n_0_[7] ),
+        .I2(\FSM_onehot_state_reg_n_0_[6] ),
+        .I3(\FSM_onehot_state_reg_n_0_[5] ),
         .O(state_debug[1]));
+  (* SOFT_HLUTNM = "soft_lutpair16" *) 
   LUT4 #(
     .INIT(16'hFFFE)) 
     \state_debug[2]_INST_0 
        (.I0(\FSM_onehot_state_reg_n_0_[6] ),
-        .I1(\FSM_onehot_state_reg_n_0_[5] ),
+        .I1(\FSM_onehot_state_reg_n_0_[4] ),
         .I2(\FSM_onehot_state_reg_n_0_[3] ),
-        .I3(\FSM_onehot_state_reg_n_0_[4] ),
+        .I3(\FSM_onehot_state_reg_n_0_[5] ),
         .O(state_debug[2]));
-  (* SOFT_HLUTNM = "soft_lutpair7" *) 
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
   LUT2 #(
     .INIT(4'hE)) 
     \state_debug[3]_INST_0 
-       (.I0(\FSM_onehot_state_reg_n_0_[8] ),
-        .I1(\FSM_onehot_state_reg_n_0_[9] ),
-        .O(state_debug[3]));
-  LUT6 #(
-    .INIT(64'hDD11DD15C800C800)) 
-    write_register_nack_i_1
        (.I0(\FSM_onehot_state_reg_n_0_[9] ),
-        .I1(\FSM_onehot_state_reg_n_0_[5] ),
-        .I2(scl_rise_reg_n_0),
-        .I3(sda_in),
-        .I4(scl_reg_0),
+        .I1(\FSM_onehot_state_reg_n_0_[8] ),
+        .O(state_debug[3]));
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
+  LUT4 #(
+    .INIT(16'h7F40)) 
+    \state_hold[0]_i_1 
+       (.I0(sda_in),
+        .I1(scl_rise_reg_0),
+        .I2(\FSM_onehot_state_reg_n_0_[5] ),
+        .I3(\state_hold_reg_n_0_[0] ),
+        .O(\state_hold[0]_i_1_n_0 ));
+  FDRE #(
+    .INIT(1'b0)) 
+    \state_hold_reg[0] 
+       (.C(clk_100),
+        .CE(1'b1),
+        .D(\state_hold[0]_i_1_n_0 ),
+        .Q(\state_hold_reg_n_0_[0] ),
+        .R(1'b0));
+  LUT6 #(
+    .INIT(64'h5333733350004000)) 
+    write_register_nack_i_1
+       (.I0(\state_hold_reg_n_0_[0] ),
+        .I1(\FSM_onehot_state_reg_n_0_[9] ),
+        .I2(read_enable_reg_n_0),
+        .I3(\FSM_onehot_state_reg_n_0_[5] ),
+        .I4(scl_low_safe_sample_reg_0),
         .I5(write_register_nack),
         .O(write_register_nack_i_1_n_0));
   FDRE write_register_nack_reg
@@ -1931,22 +2003,21 @@ module top_I2C_Master_Controller_0_0_I2C_Master_Controller
         .Q(write_register_nack),
         .R(1'b0));
   LUT6 #(
-    .INIT(64'hDDDDD5D5C8CCC0C0)) 
+    .INIT(64'h888888FF88888880)) 
     write_register_pulse_i_1
-       (.I0(write_register_pulse_i_2_n_0),
+       (.I0(read_enable_reg_n_0),
         .I1(\FSM_onehot_state_reg_n_0_[5] ),
-        .I2(scl_rise_reg_n_0),
-        .I3(sda_in),
-        .I4(scl_reg_0),
+        .I2(scl_low_safe_sample_reg_0),
+        .I3(write_register_pulse_i_2_n_0),
+        .I4(\FSM_onehot_state_reg_n_0_[6] ),
         .I5(write_register_pulse),
         .O(write_register_pulse_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair18" *) 
-  LUT3 #(
-    .INIT(8'hFE)) 
+  (* SOFT_HLUTNM = "soft_lutpair12" *) 
+  LUT2 #(
+    .INIT(4'hE)) 
     write_register_pulse_i_2
-       (.I0(\FSM_onehot_state_reg_n_0_[0] ),
-        .I1(\FSM_onehot_state_reg_n_0_[9] ),
-        .I2(\FSM_onehot_state_reg_n_0_[6] ),
+       (.I0(\FSM_onehot_state_reg_n_0_[9] ),
+        .I1(\FSM_onehot_state_reg_n_0_[0] ),
         .O(write_register_pulse_i_2_n_0));
   FDRE write_register_pulse_reg
        (.C(clk_100),

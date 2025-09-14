@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sat Sep 13 21:04:47 2025" VIVADOVERSION="2023.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun Sep 14 14:25:50 2025" VIVADOVERSION="2023.2">
 
   <SYSTEMINFO ARCH="artix7" BOARD="digilentinc.com:basys3:part0:1.2" DEVICE="7a35t" NAME="top" PACKAGE="cpg236" SPEEDGRADE="-1"/>
 
@@ -68,6 +68,26 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
+        <PORT DIR="O" NAME="SCL_FALL_EDGE" SIGIS="undef" SIGNAME="I2C_Master_Controller_0_SCL_FALL_EDGE">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ila_0" PORT="probe14"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="SCL_HIGH_SAFE_PULSE" SIGIS="undef" SIGNAME="I2C_Master_Controller_0_SCL_HIGH_SAFE_PULSE">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ila_0" PORT="probe17"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="SCL_LOW_SAFE_PULSE" SIGIS="undef" SIGNAME="I2C_Master_Controller_0_SCL_LOW_SAFE_PULSE">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ila_0" PORT="probe16"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="SCL_RISE_EDGE" SIGIS="undef" SIGNAME="I2C_Master_Controller_0_SCL_RISE_EDGE">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ila_0" PORT="probe13"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="O" LEFT="4" NAME="bit_counter_debug" RIGHT="0" SIGIS="undef" SIGNAME="I2C_Master_Controller_0_bit_counter_debug">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ila_0" PORT="probe8"/>
@@ -135,7 +155,11 @@
             <CONNECTION INSTANCE="ila_0" PORT="probe4"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="7" NAME="shift_reg_full_debug" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="7" NAME="shift_reg_full_debug" RIGHT="0" SIGIS="undef" SIGNAME="I2C_Master_Controller_0_shift_reg_full_debug">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ila_0" PORT="probe15"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="O" LEFT="3" NAME="simple_state_debug" RIGHT="0" SIGIS="undef" SIGNAME="I2C_Master_Controller_0_simple_state_debug">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ila_0" PORT="probe6"/>
@@ -960,7 +984,7 @@
         <PARAMETER NAME="C_MU_TYPE" VALUE="0"/>
         <PARAMETER NAME="C_NEXT_SLAVE" VALUE="0"/>
         <PARAMETER NAME="C_NUM_MONITOR_SLOTS" VALUE="1"/>
-        <PARAMETER NAME="C_NUM_OF_PROBES" VALUE="13"/>
+        <PARAMETER NAME="C_NUM_OF_PROBES" VALUE="18"/>
         <PARAMETER NAME="C_PIPE_IFACE" VALUE="1"/>
         <PARAMETER NAME="C_PROBE0_MU_CNT" VALUE="1"/>
         <PARAMETER NAME="C_PROBE0_TYPE" VALUE="0"/>
@@ -1234,7 +1258,7 @@
         <PARAMETER NAME="C_PROBE159_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE15_MU_CNT" VALUE="1"/>
         <PARAMETER NAME="C_PROBE15_TYPE" VALUE="0"/>
-        <PARAMETER NAME="C_PROBE15_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_PROBE15_WIDTH" VALUE="8"/>
         <PARAMETER NAME="C_PROBE160_MU_CNT" VALUE="1"/>
         <PARAMETER NAME="C_PROBE160_TYPE" VALUE="0"/>
         <PARAMETER NAME="C_PROBE160_WIDTH" VALUE="1"/>
@@ -4136,6 +4160,31 @@
         <PORT DIR="I" LEFT="7" NAME="probe12" RIGHT="0" SIGIS="undef" SIGNAME="I2C_Master_Controller_0_read_data">
           <CONNECTIONS>
             <CONNECTION INSTANCE="I2C_Master_Controller_0" PORT="read_data"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="probe13" RIGHT="0" SIGIS="undef" SIGNAME="I2C_Master_Controller_0_SCL_RISE_EDGE">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="I2C_Master_Controller_0" PORT="SCL_RISE_EDGE"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="probe14" RIGHT="0" SIGIS="undef" SIGNAME="I2C_Master_Controller_0_SCL_FALL_EDGE">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="I2C_Master_Controller_0" PORT="SCL_FALL_EDGE"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="probe15" RIGHT="0" SIGIS="undef" SIGNAME="I2C_Master_Controller_0_shift_reg_full_debug">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="I2C_Master_Controller_0" PORT="shift_reg_full_debug"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="probe16" RIGHT="0" SIGIS="undef" SIGNAME="I2C_Master_Controller_0_SCL_LOW_SAFE_PULSE">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="I2C_Master_Controller_0" PORT="SCL_LOW_SAFE_PULSE"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="probe17" RIGHT="0" SIGIS="undef" SIGNAME="I2C_Master_Controller_0_SCL_HIGH_SAFE_PULSE">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="I2C_Master_Controller_0" PORT="SCL_HIGH_SAFE_PULSE"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>

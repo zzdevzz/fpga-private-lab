@@ -66,6 +66,7 @@ ENTITY top_I2C_Master_Controller_0_0 IS
     sda_in : IN STD_LOGIC;
     sda_oe : OUT STD_LOGIC;
     read_register_sample : OUT STD_LOGIC;
+    read_data : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
     write_register_nack : OUT STD_LOGIC;
     write_register_pulse : OUT STD_LOGIC;
     shift_reg_debug : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
@@ -98,6 +99,7 @@ ARCHITECTURE top_I2C_Master_Controller_0_0_arch OF top_I2C_Master_Controller_0_0
       sda_in : IN STD_LOGIC;
       sda_oe : OUT STD_LOGIC;
       read_register_sample : OUT STD_LOGIC;
+      read_data : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
       write_register_nack : OUT STD_LOGIC;
       write_register_pulse : OUT STD_LOGIC;
       shift_reg_debug : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
@@ -133,6 +135,7 @@ BEGIN
       sda_in => sda_in,
       sda_oe => sda_oe,
       read_register_sample => read_register_sample,
+      read_data => read_data,
       write_register_nack => write_register_nack,
       write_register_pulse => write_register_pulse,
       shift_reg_debug => shift_reg_debug,

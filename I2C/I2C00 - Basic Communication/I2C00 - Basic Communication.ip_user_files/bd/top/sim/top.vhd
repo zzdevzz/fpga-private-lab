@@ -2,7 +2,7 @@
 --Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
---Date        : Sat Sep 13 19:45:32 2025
+--Date        : Sat Sep 13 21:57:29 2025
 --Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 --Command     : generate_target top.bd
 --Design      : top
@@ -62,7 +62,8 @@ architecture STRUCTURE of top is
     probe8 : in STD_LOGIC_VECTOR ( 4 downto 0 );
     probe9 : in STD_LOGIC_VECTOR ( 3 downto 0 );
     probe10 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe11 : in STD_LOGIC_VECTOR ( 0 to 0 )
+    probe11 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe12 : in STD_LOGIC_VECTOR ( 7 downto 0 )
   );
   end component top_ila_0_0;
   component top_Pulse_Edges_0_0 is
@@ -86,6 +87,7 @@ architecture STRUCTURE of top is
     sda_in : in STD_LOGIC;
     sda_oe : out STD_LOGIC;
     read_register_sample : out STD_LOGIC;
+    read_data : out STD_LOGIC_VECTOR ( 7 downto 0 );
     write_register_nack : out STD_LOGIC;
     write_register_pulse : out STD_LOGIC;
     shift_reg_debug : out STD_LOGIC_VECTOR ( 7 downto 0 );
@@ -129,6 +131,7 @@ architecture STRUCTURE of top is
   signal BTNL_1 : STD_LOGIC;
   signal I2C_Master_Controller_0_bit_counter_debug : STD_LOGIC_VECTOR ( 4 downto 0 );
   signal I2C_Master_Controller_0_i2c_data_read : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal I2C_Master_Controller_0_read_data : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal I2C_Master_Controller_0_read_register_sample : STD_LOGIC;
   signal I2C_Master_Controller_0_shift_reg_debug : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal I2C_Master_Controller_0_simple_state_debug : STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -191,6 +194,7 @@ I2C_Master_Controller_0: component top_I2C_Master_Controller_0_0
       ov7670_SCL => I2C_OV7670_Master_0_ov7670_SCL,
       ov7670_pwdn => I2C_OV7670_Master_0_ov7670_pwdn,
       ov7670_reset => I2C_OV7670_Master_0_ov7670_reset,
+      read_data(7 downto 0) => I2C_Master_Controller_0_read_data(7 downto 0),
       read_register_sample => I2C_Master_Controller_0_read_register_sample,
       reset => Pulse_Edges_0_edge_rising,
       scl_en_debug => NLW_I2C_Master_Controller_0_scl_en_debug_UNCONNECTED,
@@ -258,6 +262,7 @@ ila_0: component top_ila_0_0
       probe1(0) => I2C_OV7670_Master_0_sda_out,
       probe10(0) => I2C_Master_Controller_0_write_register_nack,
       probe11(0) => I2C_Master_Controller_0_write_register_pulse,
+      probe12(7 downto 0) => I2C_Master_Controller_0_read_data(7 downto 0),
       probe2(0) => I2C_OV7670_Master_0_sda_oe,
       probe3(0) => sda_in_1,
       probe4(7 downto 0) => I2C_Master_Controller_0_shift_reg_debug(7 downto 0),

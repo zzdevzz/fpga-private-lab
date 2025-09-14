@@ -260,13 +260,16 @@
             "value": "Native"
           },
           "C_NUM_OF_PROBES": {
-            "value": "13"
+            "value": "18"
           },
           "C_PROBE12_WIDTH": {
             "value": "8"
           },
           "C_PROBE14_WIDTH": {
             "value": "1"
+          },
+          "C_PROBE15_WIDTH": {
+            "value": "8"
           },
           "C_PROBE4_WIDTH": {
             "value": "8"
@@ -387,6 +390,18 @@
             "right": "0"
           },
           "ov7670_SCL": {
+            "direction": "O"
+          },
+          "SCL_RISE_EDGE": {
+            "direction": "O"
+          },
+          "SCL_FALL_EDGE": {
+            "direction": "O"
+          },
+          "SCL_LOW_SAFE_PULSE": {
+            "direction": "O"
+          },
+          "SCL_HIGH_SAFE_PULSE": {
             "direction": "O"
           },
           "sda_out": {
@@ -627,6 +642,30 @@
           "debouncer_0/switch"
         ]
       },
+      "I2C_Master_Controller_0_SCL_FALL_EDGE": {
+        "ports": [
+          "I2C_Master_Controller_0/SCL_FALL_EDGE",
+          "ila_0/probe14"
+        ]
+      },
+      "I2C_Master_Controller_0_SCL_HIGH_SAFE_SAMPLE": {
+        "ports": [
+          "I2C_Master_Controller_0/SCL_HIGH_SAFE_PULSE",
+          "ila_0/probe17"
+        ]
+      },
+      "I2C_Master_Controller_0_SCL_LOW_SAFE_SAMPLE": {
+        "ports": [
+          "I2C_Master_Controller_0/SCL_LOW_SAFE_PULSE",
+          "ila_0/probe16"
+        ]
+      },
+      "I2C_Master_Controller_0_SCL_RISE_EDGE": {
+        "ports": [
+          "I2C_Master_Controller_0/SCL_RISE_EDGE",
+          "ila_0/probe13"
+        ]
+      },
       "I2C_Master_Controller_0_bit_counter_debug": {
         "ports": [
           "I2C_Master_Controller_0/bit_counter_debug",
@@ -654,6 +693,12 @@
         "ports": [
           "I2C_Master_Controller_0/shift_reg_debug",
           "ila_0/probe4"
+        ]
+      },
+      "I2C_Master_Controller_0_shift_reg_full_debug": {
+        "ports": [
+          "I2C_Master_Controller_0/shift_reg_full_debug",
+          "ila_0/probe15"
         ]
       },
       "I2C_Master_Controller_0_simple_state_debug": {
