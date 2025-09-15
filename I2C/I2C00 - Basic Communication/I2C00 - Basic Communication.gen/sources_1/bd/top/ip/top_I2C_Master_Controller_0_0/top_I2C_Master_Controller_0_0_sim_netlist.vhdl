@@ -2,7 +2,7 @@
 -- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
--- Date        : Sun Sep 14 14:26:44 2025
+-- Date        : Mon Sep 15 01:25:52 2025
 -- Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim {e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic
 --               Communication.gen/sources_1/bd/top/ip/top_I2C_Master_Controller_0_0/top_I2C_Master_Controller_0_0_sim_netlist.vhdl}
@@ -25,6 +25,7 @@ entity top_I2C_Master_Controller_0_0_I2C_Master_Controller is
     shift_reg_debug : out STD_LOGIC_VECTOR ( 6 downto 0 );
     read_data : out STD_LOGIC_VECTOR ( 7 downto 0 );
     simple_state_debug : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    data_sent_pulse : out STD_LOGIC;
     scl_rise_reg_0 : out STD_LOGIC;
     scl_low_safe_sample_reg_0 : out STD_LOGIC;
     scl_reg_0 : out STD_LOGIC;
@@ -106,20 +107,19 @@ architecture STRUCTURE of top_I2C_Master_Controller_0_0_I2C_Master_Controller is
   signal \^scl_en_reg_0\ : STD_LOGIC;
   signal scl_fall_i_1_n_0 : STD_LOGIC;
   signal scl_fall_i_2_n_0 : STD_LOGIC;
-  signal scl_fall_i_3_n_0 : STD_LOGIC;
   signal scl_high_safe_sample_i_1_n_0 : STD_LOGIC;
   signal scl_high_safe_sample_i_2_n_0 : STD_LOGIC;
+  signal scl_high_safe_sample_i_3_n_0 : STD_LOGIC;
   signal \^scl_high_safe_sample_reg_0\ : STD_LOGIC;
   signal scl_i_1_n_0 : STD_LOGIC;
   signal scl_i_2_n_0 : STD_LOGIC;
-  signal scl_low_safe_sample18_out : STD_LOGIC;
+  signal scl_low_safe_sample_i_1_n_0 : STD_LOGIC;
   signal scl_low_safe_sample_i_2_n_0 : STD_LOGIC;
   signal scl_low_safe_sample_i_3_n_0 : STD_LOGIC;
   signal \^scl_low_safe_sample_reg_0\ : STD_LOGIC;
   signal \^scl_reg_0\ : STD_LOGIC;
   signal scl_rise_i_1_n_0 : STD_LOGIC;
   signal scl_rise_i_2_n_0 : STD_LOGIC;
-  signal scl_rise_i_3_n_0 : STD_LOGIC;
   signal \^scl_rise_reg_0\ : STD_LOGIC;
   signal \^sda_oe\ : STD_LOGIC;
   signal sda_oe_i_1_n_0 : STD_LOGIC;
@@ -218,8 +218,8 @@ architecture STRUCTURE of top_I2C_Master_Controller_0_0_I2C_Master_Controller is
   attribute SOFT_HLUTNM : string;
   attribute SOFT_HLUTNM of \FSM_onehot_state[3]_i_2\ : label is "soft_lutpair15";
   attribute SOFT_HLUTNM of \FSM_onehot_state[6]_i_1\ : label is "soft_lutpair16";
-  attribute SOFT_HLUTNM of \FSM_onehot_state[7]_i_1\ : label is "soft_lutpair3";
-  attribute SOFT_HLUTNM of \FSM_onehot_state[8]_i_1\ : label is "soft_lutpair3";
+  attribute SOFT_HLUTNM of \FSM_onehot_state[7]_i_1\ : label is "soft_lutpair2";
+  attribute SOFT_HLUTNM of \FSM_onehot_state[8]_i_1\ : label is "soft_lutpair2";
   attribute FSM_ENCODED_STATES : string;
   attribute FSM_ENCODED_STATES of \FSM_onehot_state_reg[0]\ : label is "configure_byte:0000001000,wait_after_start:0000000100,repeated_start_condition:0010000000,start_condition:0000000010,idle:0000000001,next_byte:0001000000,stop_condition:1000000000,read_ack:0000100000,read_byte:0100000000,send_byte:0000010000";
   attribute FSM_ENCODED_STATES of \FSM_onehot_state_reg[1]\ : label is "configure_byte:0000001000,wait_after_start:0000000100,repeated_start_condition:0010000000,start_condition:0000000010,idle:0000000001,next_byte:0001000000,stop_condition:1000000000,read_ack:0000100000,read_byte:0100000000,send_byte:0000010000";
@@ -231,34 +231,34 @@ architecture STRUCTURE of top_I2C_Master_Controller_0_0_I2C_Master_Controller is
   attribute FSM_ENCODED_STATES of \FSM_onehot_state_reg[7]\ : label is "configure_byte:0000001000,wait_after_start:0000000100,repeated_start_condition:0010000000,start_condition:0000000010,idle:0000000001,next_byte:0001000000,stop_condition:1000000000,read_ack:0000100000,read_byte:0100000000,send_byte:0000010000";
   attribute FSM_ENCODED_STATES of \FSM_onehot_state_reg[8]\ : label is "configure_byte:0000001000,wait_after_start:0000000100,repeated_start_condition:0010000000,start_condition:0000000010,idle:0000000001,next_byte:0001000000,stop_condition:1000000000,read_ack:0000100000,read_byte:0100000000,send_byte:0000010000";
   attribute FSM_ENCODED_STATES of \FSM_onehot_state_reg[9]\ : label is "configure_byte:0000001000,wait_after_start:0000000100,repeated_start_condition:0010000000,start_condition:0000000010,idle:0000000001,next_byte:0001000000,stop_condition:1000000000,read_ack:0000100000,read_byte:0100000000,send_byte:0000010000";
-  attribute SOFT_HLUTNM of \bit_counter[0]_i_1\ : label is "soft_lutpair4";
-  attribute SOFT_HLUTNM of \bit_counter[3]_i_3\ : label is "soft_lutpair9";
-  attribute SOFT_HLUTNM of \bit_counter[3]_i_4\ : label is "soft_lutpair4";
-  attribute SOFT_HLUTNM of read_register_sample_s_i_1 : label is "soft_lutpair9";
+  attribute SOFT_HLUTNM of \bit_counter[0]_i_1\ : label is "soft_lutpair3";
+  attribute SOFT_HLUTNM of \bit_counter[3]_i_3\ : label is "soft_lutpair8";
+  attribute SOFT_HLUTNM of \bit_counter[3]_i_4\ : label is "soft_lutpair3";
+  attribute SOFT_HLUTNM of read_register_sample_s_i_1 : label is "soft_lutpair8";
   attribute SOFT_HLUTNM of read_register_sample_s_i_2 : label is "soft_lutpair13";
-  attribute SOFT_HLUTNM of reset_activated_i_1 : label is "soft_lutpair8";
-  attribute SOFT_HLUTNM of \scl_cnt[0]_i_1\ : label is "soft_lutpair19";
+  attribute SOFT_HLUTNM of reset_activated_i_1 : label is "soft_lutpair7";
   attribute SOFT_HLUTNM of \scl_cnt[1]_i_1\ : label is "soft_lutpair19";
-  attribute SOFT_HLUTNM of \scl_cnt[2]_i_1\ : label is "soft_lutpair10";
+  attribute SOFT_HLUTNM of \scl_cnt[2]_i_1\ : label is "soft_lutpair11";
   attribute SOFT_HLUTNM of \scl_cnt[3]_i_1\ : label is "soft_lutpair1";
   attribute SOFT_HLUTNM of \scl_cnt[4]_i_1\ : label is "soft_lutpair1";
-  attribute SOFT_HLUTNM of \scl_cnt[6]_i_1\ : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of \scl_cnt[7]_i_1\ : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of \scl_cnt[7]_i_2\ : label is "soft_lutpair10";
-  attribute SOFT_HLUTNM of scl_fall_i_3 : label is "soft_lutpair11";
-  attribute SOFT_HLUTNM of scl_high_safe_sample_i_2 : label is "soft_lutpair11";
+  attribute SOFT_HLUTNM of \scl_cnt[6]_i_1\ : label is "soft_lutpair10";
+  attribute SOFT_HLUTNM of \scl_cnt[7]_i_1\ : label is "soft_lutpair0";
+  attribute SOFT_HLUTNM of \scl_cnt[7]_i_2\ : label is "soft_lutpair11";
+  attribute SOFT_HLUTNM of scl_fall_i_2 : label is "soft_lutpair19";
+  attribute SOFT_HLUTNM of scl_high_safe_sample_i_1 : label is "soft_lutpair9";
+  attribute SOFT_HLUTNM of scl_high_safe_sample_i_3 : label is "soft_lutpair10";
   attribute SOFT_HLUTNM of scl_i_2 : label is "soft_lutpair0";
   attribute SOFT_HLUTNM of scl_low_safe_sample_i_2 : label is "soft_lutpair18";
+  attribute SOFT_HLUTNM of scl_low_safe_sample_i_3 : label is "soft_lutpair9";
   attribute SOFT_HLUTNM of scl_rise_i_2 : label is "soft_lutpair18";
-  attribute SOFT_HLUTNM of scl_rise_i_3 : label is "soft_lutpair0";
   attribute SOFT_HLUTNM of sda_oe_i_5 : label is "soft_lutpair17";
   attribute SOFT_HLUTNM of sda_oe_i_6 : label is "soft_lutpair14";
   attribute SOFT_HLUTNM of sda_oe_i_7 : label is "soft_lutpair14";
   attribute SOFT_HLUTNM of sda_out_s_i_2 : label is "soft_lutpair13";
   attribute SOFT_HLUTNM of \shift_reg[1]_i_1\ : label is "soft_lutpair17";
-  attribute SOFT_HLUTNM of \simple_state_debug[0]_i_2\ : label is "soft_lutpair7";
-  attribute SOFT_HLUTNM of \simple_state_debug[1]_i_2\ : label is "soft_lutpair6";
-  attribute SOFT_HLUTNM of \simple_state_debug[2]_i_2\ : label is "soft_lutpair5";
+  attribute SOFT_HLUTNM of \simple_state_debug[0]_i_2\ : label is "soft_lutpair6";
+  attribute SOFT_HLUTNM of \simple_state_debug[1]_i_2\ : label is "soft_lutpair5";
+  attribute SOFT_HLUTNM of \simple_state_debug[2]_i_2\ : label is "soft_lutpair4";
   attribute SOFT_HLUTNM of \simple_state_debug[3]_i_2\ : label is "soft_lutpair12";
   attribute COMPARATOR_THRESHOLD : integer;
   attribute COMPARATOR_THRESHOLD of start_counter1_carry : label is 11;
@@ -267,12 +267,12 @@ architecture STRUCTURE of top_I2C_Master_Controller_0_0_I2C_Master_Controller is
   attribute ADDER_THRESHOLD of \start_counter_reg[12]_i_1\ : label is 11;
   attribute ADDER_THRESHOLD of \start_counter_reg[4]_i_1\ : label is 11;
   attribute ADDER_THRESHOLD of \start_counter_reg[8]_i_1\ : label is 11;
-  attribute SOFT_HLUTNM of start_setup_i_1 : label is "soft_lutpair8";
-  attribute SOFT_HLUTNM of \state_debug[0]_INST_0\ : label is "soft_lutpair5";
+  attribute SOFT_HLUTNM of start_setup_i_1 : label is "soft_lutpair7";
+  attribute SOFT_HLUTNM of \state_debug[0]_INST_0\ : label is "soft_lutpair4";
   attribute SOFT_HLUTNM of \state_debug[1]_INST_0\ : label is "soft_lutpair15";
   attribute SOFT_HLUTNM of \state_debug[2]_INST_0\ : label is "soft_lutpair16";
-  attribute SOFT_HLUTNM of \state_debug[3]_INST_0\ : label is "soft_lutpair6";
-  attribute SOFT_HLUTNM of \state_hold[0]_i_1\ : label is "soft_lutpair7";
+  attribute SOFT_HLUTNM of \state_debug[3]_INST_0\ : label is "soft_lutpair5";
+  attribute SOFT_HLUTNM of \state_hold[0]_i_1\ : label is "soft_lutpair6";
   attribute SOFT_HLUTNM of write_register_pulse_i_2 : label is "soft_lutpair12";
 begin
   Q(3 downto 0) <= \^q\(3 downto 0);
@@ -677,6 +677,14 @@ begin
       Q => \^byte_counter_reg[1]_0\,
       R => '0'
     );
+data_sent_pulse_reg: unisim.vcomponents.FDRE
+     port map (
+      C => clk_100,
+      CE => '1',
+      D => shift_reg,
+      Q => data_sent_pulse,
+      R => '0'
+    );
 ov7670_reset_s_i_1: unisim.vcomponents.LUT6
     generic map(
       INIT => X"FFFFFFFFFFFEFFFF"
@@ -1028,10 +1036,10 @@ reset_activated_reg: unisim.vcomponents.FDRE
     )
         port map (
       I0 => scl_cnt_reg(7),
-      I1 => \scl_cnt[7]_i_2_n_0\,
-      I2 => scl_cnt_reg(5),
-      I3 => scl_cnt_reg(4),
-      I4 => scl_cnt_reg(6),
+      I1 => scl_cnt_reg(5),
+      I2 => scl_cnt_reg(4),
+      I3 => scl_cnt_reg(6),
+      I4 => \scl_cnt[7]_i_2_n_0\,
       O => p_0_in(7)
     );
 \scl_cnt[7]_i_2\: unisim.vcomponents.LUT4
@@ -1045,26 +1053,25 @@ reset_activated_reg: unisim.vcomponents.FDRE
       I3 => scl_cnt_reg(2),
       O => \scl_cnt[7]_i_2_n_0\
     );
-\scl_cnt[8]_i_1\: unisim.vcomponents.LUT6
+\scl_cnt[8]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"44444440FFFFFFFF"
+      INIT => X"E000FFFF"
     )
         port map (
-      I0 => scl_rise_i_3_n_0,
-      I1 => scl_cnt_reg(8),
-      I2 => scl_rise_i_2_n_0,
-      I3 => scl_cnt_reg(3),
-      I4 => scl_cnt_reg(2),
-      I5 => \^scl_en_reg_0\,
+      I0 => scl_cnt_reg(3),
+      I1 => scl_cnt_reg(2),
+      I2 => scl_cnt_reg(8),
+      I3 => scl_i_2_n_0,
+      I4 => \^scl_en_reg_0\,
       O => \scl_cnt[8]_i_1_n_0\
     );
 \scl_cnt[8]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"9AAAAAAAAAAAAAAA"
+      INIT => X"6AAAAAAAAAAAAAAA"
     )
         port map (
       I0 => scl_cnt_reg(8),
-      I1 => scl_rise_i_3_n_0,
+      I1 => scl_i_2_n_0,
       I2 => scl_cnt_reg(3),
       I3 => scl_cnt_reg(0),
       I4 => scl_cnt_reg(1),
@@ -1192,38 +1199,27 @@ scl_en_reg: unisim.vcomponents.FDRE
       Q => \^scl_en_reg_0\,
       R => '0'
     );
-scl_fall_i_1: unisim.vcomponents.LUT6
+scl_fall_i_1: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"0400000000000000"
+      INIT => X"00000200"
     )
         port map (
-      I0 => scl_fall_i_2_n_0,
-      I1 => scl_cnt_reg(3),
-      I2 => scl_fall_i_3_n_0,
-      I3 => scl_cnt_reg(7),
-      I4 => scl_cnt_reg(6),
-      I5 => scl_cnt_reg(0),
+      I0 => scl_i_2_n_0,
+      I1 => scl_cnt_reg(2),
+      I2 => scl_cnt_reg(1),
+      I3 => \^scl_en_reg_0\,
+      I4 => scl_fall_i_2_n_0,
       O => scl_fall_i_1_n_0
     );
-scl_fall_i_2: unisim.vcomponents.LUT2
+scl_fall_i_2: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"7"
+      INIT => X"DF"
     )
         port map (
-      I0 => scl_cnt_reg(4),
-      I1 => scl_cnt_reg(5),
+      I0 => scl_cnt_reg(3),
+      I1 => scl_cnt_reg(8),
+      I2 => scl_cnt_reg(0),
       O => scl_fall_i_2_n_0
-    );
-scl_fall_i_3: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"FFEF"
-    )
-        port map (
-      I0 => scl_cnt_reg(8),
-      I1 => scl_cnt_reg(1),
-      I2 => \^scl_en_reg_0\,
-      I3 => scl_cnt_reg(2),
-      O => scl_fall_i_3_n_0
     );
 scl_fall_reg: unisim.vcomponents.FDRE
     generic map(
@@ -1236,27 +1232,39 @@ scl_fall_reg: unisim.vcomponents.FDRE
       Q => SCL_FALL_EDGE,
       R => '0'
     );
-scl_high_safe_sample_i_1: unisim.vcomponents.LUT4
+scl_high_safe_sample_i_1: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"0100"
+      INIT => X"00000040"
     )
         port map (
       I0 => scl_high_safe_sample_i_2_n_0,
-      I1 => scl_low_safe_sample_i_3_n_0,
-      I2 => scl_fall_i_2_n_0,
-      I3 => scl_cnt_reg(3),
+      I1 => scl_cnt_reg(6),
+      I2 => \^scl_en_reg_0\,
+      I3 => scl_cnt_reg(7),
+      I4 => scl_low_safe_sample_i_1_n_0,
       O => scl_high_safe_sample_i_1_n_0
     );
-scl_high_safe_sample_i_2: unisim.vcomponents.LUT4
+scl_high_safe_sample_i_2: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFF7"
+      INIT => X"FFFFFFFFFFDFFFFF"
     )
         port map (
-      I0 => scl_cnt_reg(2),
-      I1 => scl_cnt_reg(0),
-      I2 => scl_cnt_reg(8),
+      I0 => scl_cnt_reg(0),
+      I1 => scl_cnt_reg(8),
+      I2 => scl_cnt_reg(3),
       I3 => scl_cnt_reg(1),
+      I4 => scl_cnt_reg(2),
+      I5 => scl_high_safe_sample_i_3_n_0,
       O => scl_high_safe_sample_i_2_n_0
+    );
+scl_high_safe_sample_i_3: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"7"
+    )
+        port map (
+      I0 => scl_cnt_reg(4),
+      I1 => scl_cnt_reg(5),
+      O => scl_high_safe_sample_i_3_n_0
     );
 scl_high_safe_sample_reg: unisim.vcomponents.FDRE
     generic map(
@@ -1271,41 +1279,40 @@ scl_high_safe_sample_reg: unisim.vcomponents.FDRE
     );
 scl_i_1: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0000FF01FFFFFFFF"
+      INIT => X"000057FFFFFFFFFF"
     )
         port map (
-      I0 => scl_cnt_reg(0),
+      I0 => scl_i_2_n_0,
       I1 => scl_cnt_reg(1),
       I2 => scl_cnt_reg(2),
-      I3 => scl_i_2_n_0,
+      I3 => scl_cnt_reg(3),
       I4 => scl_cnt_reg(8),
       I5 => \^scl_en_reg_0\,
       O => scl_i_1_n_0
     );
-scl_i_2: unisim.vcomponents.LUT5
+scl_i_2: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"7FFFFFFF"
+      INIT => X"8000"
     )
         port map (
-      I0 => scl_cnt_reg(6),
-      I1 => scl_cnt_reg(7),
+      I0 => scl_cnt_reg(7),
+      I1 => scl_cnt_reg(6),
       I2 => scl_cnt_reg(4),
       I3 => scl_cnt_reg(5),
-      I4 => scl_cnt_reg(3),
       O => scl_i_2_n_0
     );
 scl_low_safe_sample_i_1: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0000000004000000"
+      INIT => X"0000400000000000"
     )
         port map (
       I0 => scl_low_safe_sample_i_2_n_0,
-      I1 => scl_cnt_reg(8),
-      I2 => scl_cnt_reg(3),
-      I3 => scl_cnt_reg(5),
-      I4 => scl_cnt_reg(4),
+      I1 => scl_cnt_reg(5),
+      I2 => scl_cnt_reg(4),
+      I3 => scl_cnt_reg(8),
+      I4 => scl_cnt_reg(3),
       I5 => scl_low_safe_sample_i_3_n_0,
-      O => scl_low_safe_sample18_out
+      O => scl_low_safe_sample_i_1_n_0
     );
 scl_low_safe_sample_i_2: unisim.vcomponents.LUT3
     generic map(
@@ -1319,12 +1326,12 @@ scl_low_safe_sample_i_2: unisim.vcomponents.LUT3
     );
 scl_low_safe_sample_i_3: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"DF"
+      INIT => X"08"
     )
         port map (
-      I0 => \^scl_en_reg_0\,
-      I1 => scl_cnt_reg(7),
-      I2 => scl_cnt_reg(6),
+      I0 => scl_cnt_reg(6),
+      I1 => \^scl_en_reg_0\,
+      I2 => scl_cnt_reg(7),
       O => scl_low_safe_sample_i_3_n_0
     );
 scl_low_safe_sample_reg: unisim.vcomponents.FDRE
@@ -1334,7 +1341,7 @@ scl_low_safe_sample_reg: unisim.vcomponents.FDRE
         port map (
       C => clk_100,
       CE => '1',
-      D => scl_low_safe_sample18_out,
+      D => scl_low_safe_sample_i_1_n_0,
       Q => \^scl_low_safe_sample_reg_0\,
       R => '0'
     );
@@ -1351,15 +1358,15 @@ scl_reg: unisim.vcomponents.FDRE
     );
 scl_rise_i_1: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0000000000200000"
+      INIT => X"0000080000000000"
     )
         port map (
-      I0 => \^scl_en_reg_0\,
-      I1 => scl_cnt_reg(2),
-      I2 => scl_rise_i_2_n_0,
-      I3 => scl_cnt_reg(3),
-      I4 => scl_cnt_reg(8),
-      I5 => scl_rise_i_3_n_0,
+      I0 => scl_i_2_n_0,
+      I1 => scl_rise_i_2_n_0,
+      I2 => scl_cnt_reg(2),
+      I3 => \^scl_en_reg_0\,
+      I4 => scl_cnt_reg(3),
+      I5 => scl_cnt_reg(8),
       O => scl_rise_i_1_n_0
     );
 scl_rise_i_2: unisim.vcomponents.LUT2
@@ -1370,17 +1377,6 @@ scl_rise_i_2: unisim.vcomponents.LUT2
       I0 => scl_cnt_reg(0),
       I1 => scl_cnt_reg(1),
       O => scl_rise_i_2_n_0
-    );
-scl_rise_i_3: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"7FFF"
-    )
-        port map (
-      I0 => scl_cnt_reg(5),
-      I1 => scl_cnt_reg(4),
-      I2 => scl_cnt_reg(7),
-      I3 => scl_cnt_reg(6),
-      O => scl_rise_i_3_n_0
     );
 scl_rise_reg: unisim.vcomponents.FDRE
     generic map(
@@ -1412,10 +1408,10 @@ sda_oe_i_2: unisim.vcomponents.LUT6
     )
         port map (
       I0 => \^q\(1),
-      I1 => \^q\(0),
-      I2 => \FSM_onehot_state_reg_n_0_[4]\,
+      I1 => \^scl_rise_reg_0\,
+      I2 => \^q\(0),
       I3 => \^scl_low_safe_sample_reg_0\,
-      I4 => \^scl_rise_reg_0\,
+      I4 => \FSM_onehot_state_reg_n_0_[4]\,
       I5 => sda_oe_i_5_n_0,
       O => sda_oe_i_2_n_0
     );
@@ -1912,7 +1908,7 @@ sda_out_s_reg: unisim.vcomponents.FDRE
     )
         port map (
       I0 => \FSM_onehot_state_reg_n_0_[5]\,
-      I1 => \^scl_rise_reg_0\,
+      I1 => \^scl_reg_0\,
       I2 => sda_in,
       I3 => \^scl_low_safe_sample_reg_0\,
       I4 => \state_hold_reg_n_0_[0]\,
@@ -1925,7 +1921,7 @@ sda_out_s_reg: unisim.vcomponents.FDRE
         port map (
       I0 => \state_hold_reg_n_0_[0]\,
       I1 => \^scl_low_safe_sample_reg_0\,
-      I2 => \^scl_rise_reg_0\,
+      I2 => \^scl_reg_0\,
       I3 => sda_in,
       I4 => \FSM_onehot_state_reg_n_0_[5]\,
       I5 => \simple_state_debug[1]_i_2_n_0\,
@@ -2423,8 +2419,8 @@ start_setup_reg: unisim.vcomponents.FDRE
     )
         port map (
       I0 => sda_in,
-      I1 => \^scl_rise_reg_0\,
-      I2 => \FSM_onehot_state_reg_n_0_[5]\,
+      I1 => \FSM_onehot_state_reg_n_0_[5]\,
+      I2 => \^scl_reg_0\,
       I3 => \state_hold_reg_n_0_[0]\,
       O => \state_hold[0]_i_1_n_0\
     );
@@ -2524,6 +2520,7 @@ entity top_I2C_Master_Controller_0_0 is
     i2c_data_read : out STD_LOGIC_VECTOR ( 1 downto 0 );
     state_debug : out STD_LOGIC_VECTOR ( 3 downto 0 );
     simple_state_debug : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    data_sent_pulse : out STD_LOGIC;
     ov7670_pwdn : out STD_LOGIC;
     ov7670_reset : out STD_LOGIC
   );
@@ -2571,6 +2568,7 @@ U0: entity work.top_I2C_Master_Controller_0_0_I2C_Master_Controller
       \byte_counter_reg[0]_0\ => byte_counter_debug(0),
       \byte_counter_reg[1]_0\ => byte_counter_debug(1),
       clk_100 => clk_100,
+      data_sent_pulse => data_sent_pulse,
       ov7670_reset => ov7670_reset,
       read_data(7 downto 0) => read_data(7 downto 0),
       read_register_sample => read_register_sample,

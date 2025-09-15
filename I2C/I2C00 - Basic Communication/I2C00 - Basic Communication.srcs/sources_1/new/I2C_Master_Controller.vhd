@@ -89,6 +89,7 @@ entity I2C_Master_Controller is
     i2c_data_read: out std_logic_vector(1 downto 0);  -- index to feed external LUT
     state_debug: out std_logic_vector(3 downto 0);
     simple_state_debug: out std_logic_vector(3 downto 0); 
+    data_sent_pulse : out std_logic;
 
     --0V7670 Specific
     ov7670_pwdn : out std_logic := '0';
@@ -228,14 +229,14 @@ begin
 
         if scl_en = '1' then
           -- Counter update
-          if scl_cnt < i2c_clock_max - 1 then
+          if scl_cnt < i2c_clock_max then
             scl_cnt <= scl_cnt + 1;
           else
             scl_cnt <= 0;
           end if;
 
           -- High and Low pulse of clock.
-          if scl_cnt < (i2c_clock_max / 2) - 1 then
+          if scl_cnt < (i2c_clock_max / 2) then
             scl <= '1';
           else
             scl <= '0';
@@ -270,6 +271,7 @@ begin
   process(clk_100)
   begin
     if rising_edge(clk_100) then
+      data_sent_pulse <= '0';
       case state is
         when IDLE =>
           write_register_pulse <= '0';
@@ -331,15 +333,18 @@ begin
 
 
         when SEND_BYTE =>
+          data_sent_pulse <= '0';
           -- Make is so data is only changed every I2C SCL cycle, not internalclock cycle..
           if scl_low_safe_sample = '1' then
             temp_debug <= 1;
             if bit_counter = 0 then
                 sda_out_s <= shift_reg_full(7);
+                data_sent_pulse <= '1';
                 shift_reg <= shift_reg_full(6 downto 0) & '0';
                 bit_counter <= bit_counter + 1; --increasing  by 1 every cycle.
                 temp_debug <= 2;
             elsif bit_counter < 8 then
+                data_sent_pulse <= '1';
                 sda_out_s <= shift_reg(7);
                 shift_reg <= shift_reg(6 downto 0) & '0'; --shifting down every 1 ccycle, not every SCL cycle. 
                 bit_counter <= bit_counter + 1; --increasing  by 1 every cycle.
@@ -369,7 +374,7 @@ begin
 
         when READ_ACK =>
           simple_state_debug <= "0000";
-          if scl_rise = '1' then
+          if scl = '1' then
             if sda_in = '0' then --active low
               simple_state_debug <= "0001";
               state_hold <= 1;-- ACK handling

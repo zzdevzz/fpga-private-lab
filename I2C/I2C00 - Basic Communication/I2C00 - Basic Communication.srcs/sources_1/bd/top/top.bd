@@ -260,7 +260,7 @@
             "value": "Native"
           },
           "C_NUM_OF_PROBES": {
-            "value": "18"
+            "value": "19"
           },
           "C_PROBE12_WIDTH": {
             "value": "8"
@@ -470,6 +470,9 @@
             "left": "3",
             "right": "0"
           },
+          "data_sent_pulse": {
+            "direction": "O"
+          },
           "ov7670_pwdn": {
             "direction": "O"
           },
@@ -670,6 +673,12 @@
         "ports": [
           "I2C_Master_Controller_0/bit_counter_debug",
           "ila_0/probe8"
+        ]
+      },
+      "I2C_Master_Controller_0_data_sent_pulse": {
+        "ports": [
+          "I2C_Master_Controller_0/data_sent_pulse",
+          "ila_0/probe18"
         ]
       },
       "I2C_Master_Controller_0_i2c_data_read": {

@@ -49,7 +49,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>68bc728d</spirit:value>
+            <spirit:value>fd92e9ec</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -62,7 +62,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>68bc728d</spirit:value>
+            <spirit:value>fd92e9ec</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -476,6 +476,19 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
+        <spirit:name>data_sent_pulse</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
         <spirit:name>ov7670_pwdn</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
@@ -539,7 +552,7 @@
         <xilinx:designToolContext>IPI</xilinx:designToolContext>
       </xilinx:designToolContexts>
       <xilinx:coreRevision>1</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2025-09-14T13:24:49Z</xilinx:coreCreationDateTime>
+      <xilinx:coreCreationDateTime>2025-09-15T00:23:12Z</xilinx:coreCreationDateTime>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2023.2</xilinx:xilinxVersion>

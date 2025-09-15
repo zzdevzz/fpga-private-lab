@@ -82,6 +82,7 @@ ENTITY top_I2C_Master_Controller_0_0 IS
     i2c_data_read : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
     state_debug : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
     simple_state_debug : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
+    data_sent_pulse : OUT STD_LOGIC;
     ov7670_pwdn : OUT STD_LOGIC;
     ov7670_reset : OUT STD_LOGIC
   );
@@ -119,6 +120,7 @@ ARCHITECTURE top_I2C_Master_Controller_0_0_arch OF top_I2C_Master_Controller_0_0
       i2c_data_read : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
       state_debug : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
       simple_state_debug : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
+      data_sent_pulse : OUT STD_LOGIC;
       ov7670_pwdn : OUT STD_LOGIC;
       ov7670_reset : OUT STD_LOGIC
     );
@@ -159,6 +161,7 @@ BEGIN
       i2c_data_read => i2c_data_read,
       state_debug => state_debug,
       simple_state_debug => simple_state_debug,
+      data_sent_pulse => data_sent_pulse,
       ov7670_pwdn => ov7670_pwdn,
       ov7670_reset => ov7670_reset
     );
