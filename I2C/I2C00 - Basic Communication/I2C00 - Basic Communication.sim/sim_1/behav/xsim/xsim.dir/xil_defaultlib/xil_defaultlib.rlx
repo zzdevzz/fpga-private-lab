@@ -2,7 +2,7 @@
 2020.2
 Oct 13 2023
 20:47:58
-E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/hdl/top_wrapper.vhd,1757797049,vhdl,,,,top_wrapper,,,,,,,,
+E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/hdl/top_wrapper.vhd,1757971944,vhdl,,,,top_wrapper,,,,,,,,
 E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.ip_user_files/bd/top/ip/top_I2C_Master_Controller_0_0/sim/top_I2C_Master_Controller_0_0.vhd,1757797049,vhdl,,,,top_i2c_master_controller_0_0,,,,,,,,
 E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.ip_user_files/bd/top/ip/top_I2C_OV7670_Basic_0_0/sim/top_I2C_OV7670_Basic_0_0.vhd,1757772682,vhdl,,,,top_i2c_ov7670_basic_0_0,,,,,,,,
 E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.ip_user_files/bd/top/ip/top_Pulse_Edges_0_0/sim/top_Pulse_Edges_0_0.vhd,1757771159,vhdl,,,,top_pulse_edges_0_0,,,,,,,,
@@ -15,7 +15,7 @@ E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communic
 E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.ip_user_files/bd/top/sim/top.vhd,1757797049,vhdl,,,,top,,,,,,,,
 E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.sim/sim_1/behav/xsim/glbl.v,1697210495,verilog,,,,glbl,,,,,,,,
 E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/sim_1/new/tb_host.vhd,1757784730,vhdl,,,,tb_host,,,,,,,,
-E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/sources_1/new/I2C_Master_Controller.vhd,1757797013,vhdl,,,,i2c_master_controller,,,,,,,,
+E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/sources_1/new/I2C_Master_Controller.vhd,1757971891,vhdl,,,,i2c_master_controller,,,,,,,,
 E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/sources_1/new/I2C_OV7670_Basic.vhd,1757772616,vhdl,,,,i2c_ov7670_basic,,,,,,,,
 E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/sources_1/new/Pulse_Edges.vhd,1757710681,vhdl,,,,pulse_edges,,,,,,,,
 E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/sources_1/new/debouncer.vhd,1753615884,vhdl,,,,debouncer,,,,,,,,

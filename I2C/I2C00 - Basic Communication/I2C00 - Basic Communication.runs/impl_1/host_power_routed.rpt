@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date             : Mon Sep 15 20:25:40 2025
+| Date             : Tue Sep 16 21:44:39 2025
 | Host             : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 | Command          : report_power -file host_power_routed.rpt -pb host_power_summary_routed.pb -rpx host_power_routed.rpx
 | Design           : host
@@ -52,16 +52,16 @@ Table of Contents
 +--------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
-| Clocks                   |     0.015 |        7 |       --- |             --- |
-| Slice Logic              |     0.002 |     6316 |       --- |             --- |
-|   LUT as Logic           |     0.002 |     1918 |     20800 |            9.22 |
-|   Register               |    <0.001 |     3004 |     41600 |            7.22 |
+| Clocks                   |     0.014 |        7 |       --- |             --- |
+| Slice Logic              |     0.002 |     6287 |       --- |             --- |
+|   LUT as Logic           |     0.002 |     1907 |     20800 |            9.17 |
+|   Register               |    <0.001 |     2991 |     41600 |            7.19 |
 |   CARRY4                 |    <0.001 |       88 |      8150 |            1.08 |
 |   LUT as Shift Register  |    <0.001 |      184 |      9600 |            1.92 |
 |   LUT as Distributed RAM |    <0.001 |       24 |      9600 |            0.25 |
 |   F7/F8 Muxes            |    <0.001 |       49 |     32600 |            0.15 |
 |   Others                 |     0.000 |      540 |       --- |             --- |
-| Signals                  |     0.003 |     4570 |       --- |             --- |
+| Signals                  |     0.003 |     4547 |       --- |             --- |
 | Block RAM                |     0.007 |       46 |        50 |           92.00 |
 | PLL                      |     0.100 |        1 |         5 |           20.00 |
 | I/O                      |     0.003 |        8 |       106 |            7.55 |
@@ -153,8 +153,8 @@ Table of Contents
 |   dbg_hub                |     0.003 |
 |     inst                 |     0.003 |
 |       BSCANID.u_xsdbm_id |     0.003 |
-|   top_i                  |     0.124 |
-|     top_i                |     0.124 |
+|   top_i                  |     0.123 |
+|     top_i                |     0.123 |
 |       clk_wiz_0          |     0.101 |
 |       ila_0              |     0.021 |
 +--------------------------+-----------+

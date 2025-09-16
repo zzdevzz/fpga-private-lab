@@ -101,7 +101,7 @@ end I2C_Master_Controller;
 architecture Behavioral of I2C_Master_Controller is
   constant i2c_clock_max : integer := 500; -- 100Mhz / 500 = 200 Khz, in the i2c range.
   constant slave_write_addr: std_logic_vector(7 downto 0) := x"42"; --this is the address we will always write too for OV7670.
-  constant repeat_start_counter_max : integer := 2 * i2c_clock_max;
+  constant repeat_start_counter_max : integer := 4 * i2c_clock_max;
 
   type state_type is (
       IDLE, 
@@ -406,22 +406,6 @@ begin
             end if;
          end if;
           
-          
---          if scl_rise = '1' then
---            if sda_in = '1' then
---              state <= STOP_CONDITION; --NACK Handling
---              if read_enable = '1' then
---                  write_register_nack <= '1';
---                  write_register_pulse <= '1';
---              end if;
---            else
---              state <= NEXT_BYTE;-- ACK handling
---              if read_enable = '1' then
---                  write_register_nack <= '0';
---                  write_register_pulse <= '1';
---              end if;
---            end if;
---          end if;
 
         when NEXT_BYTE =>
           simple_state_debug <= "0110";
@@ -435,7 +419,9 @@ begin
                 state <= CONFIGURE_BYTE;
               else  -- byte_counter = 1 (reg just ACKed)
                 byte_counter <= 0;
-                state <= REPEATED_START_CONDITION;
+--                state <= REPEATED_START_CONDITION;
+                read_phase <= '1';
+                state <= CONFIGURE_BYTE;
               end if;
         
             else
@@ -463,7 +449,10 @@ begin
             --make sda high again while clock is low.
             if scl_low_safe_sample = '1' and repeated_start_phase = '0' then 
 --                sda_oe <= '0'; --so SDA can be pulled high by slave. like this anyway
-                repeated_start_phase <= '1';
+                repeated_start_phase <= '1'; 
+            end if;
+            
+            if scl = '1' and repeated_start_phase = '1' then
                 state <= HOLD_CLOCK;
             end if;
 
@@ -478,16 +467,19 @@ begin
         
         when HOLD_CLOCK =>
             
-            if repeat_start_counter < repeat_start_counter_max then
+            if repeat_start_counter < repeat_start_counter_max / 2 then
                 repeat_start_counter <= repeat_start_counter + 1;
                 scl_en <= '0';
-            else
-                scl_en <= '1';  
+            elsif repeat_start_counter < repeat_start_counter_max - 20 then
+                repeat_start_counter <= repeat_start_counter + 1;
                 repeated_start_phase <= '0';
                 sda_oe <= '1';
                 sda_out_s <= '0';
+            else
+                scl_en <= '1';  
                 read_phase <= '1';
                 byte_counter <= 0;
+                repeat_start_counter <= 0;
                 state <= CONFIGURE_BYTE;
             end if;
             
