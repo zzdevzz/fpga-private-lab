@@ -1,13 +1,14 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x696D25A6C16D20FB",
+      "boundary_crc": "0xB00D3059918598CF",
       "device": "xc7a35tcpg236-1",
       "gen_directory": "../../../../I2C00 - Basic Communication.gen/sources_1/bd/top",
       "name": "top",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
       "synth_flow_mode": "Hierarchical",
-      "tool_version": "2023.2"
+      "tool_version": "2023.2",
+      "validated": "true"
     },
     "design_tree": {
       "clk_wiz_0": "",
@@ -17,15 +18,29 @@
       "I2C_Master_Controller_0": "",
       "I2C_OV7670_Basic_0": "",
       "Pulse_Edges_1": "",
-      "debouncer_1": ""
+      "debouncer_1": "",
+      "vio_0": "",
+      "ila_1": ""
     },
     "ports": {
       "sys_clock": {
         "type": "clk",
         "direction": "I",
         "parameters": {
+          "CLK_DOMAIN": {
+            "value": "top_sys_clock",
+            "value_src": "default"
+          },
           "FREQ_HZ": {
             "value": "100000000"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
           },
           "PHASE": {
             "value": "0.0"
@@ -36,6 +51,10 @@
         "type": "rst",
         "direction": "I",
         "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
           "POLARITY": {
             "value": "ACTIVE_HIGH"
           }
@@ -52,11 +71,43 @@
       },
       "ov7670_reset": {
         "type": "rst",
-        "direction": "O"
+        "direction": "O",
+        "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "POLARITY": {
+            "value": "ACTIVE_LOW",
+            "value_src": "default"
+          }
+        }
       },
       "ov7670_xclk": {
         "type": "clk",
-        "direction": "O"
+        "direction": "O",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "/clk_wiz_0_clk_out1",
+            "value_src": "ip_prop"
+          },
+          "FREQ_HZ": {
+            "value": "25000000",
+            "value_src": "ip_prop"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "ip_prop"
+          }
+        }
       },
       "sda_in": {
         "direction": "I"
@@ -66,6 +117,15 @@
       },
       "sda_oe": {
         "direction": "O"
+      },
+      "BTND": {
+        "direction": "I",
+        "parameters": {
+          "POLARITY": {
+            "value": "ACTIVE_HIGH",
+            "value_src": "user_prop"
+          }
+        }
       }
     },
     "components": {
@@ -205,7 +265,7 @@
         "inst_hier_path": "ila_0",
         "parameters": {
           "C_DATA_DEPTH": {
-            "value": "32768"
+            "value": "1024"
           },
           "C_MONITOR_TYPE": {
             "value": "Native"
@@ -302,7 +362,21 @@
         },
         "ports": {
           "clk_100": {
-            "direction": "I"
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "100000000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "/clk_wiz_0_clk_out1",
+                "value_src": "ip_prop"
+              }
+            }
           },
           "reset": {
             "type": "rst",
@@ -573,9 +647,81 @@
             }
           }
         }
+      },
+      "vio_0": {
+        "vlnv": "xilinx.com:ip:vio:3.0",
+        "ip_revision": "24",
+        "xci_name": "top_vio_0_0",
+        "xci_path": "ip\\top_vio_0_0\\top_vio_0_0.xci",
+        "inst_hier_path": "vio_0",
+        "parameters": {
+          "C_NUM_PROBE_IN": {
+            "value": "4"
+          },
+          "C_NUM_PROBE_OUT": {
+            "value": "3"
+          },
+          "C_PROBE_OUT0_INIT_VAL": {
+            "value": "0x43"
+          },
+          "C_PROBE_OUT0_WIDTH": {
+            "value": "8"
+          },
+          "C_PROBE_OUT1_INIT_VAL": {
+            "value": "0x12"
+          },
+          "C_PROBE_OUT1_WIDTH": {
+            "value": "8"
+          },
+          "C_PROBE_OUT2_INIT_VAL": {
+            "value": "0x40"
+          },
+          "C_PROBE_OUT2_WIDTH": {
+            "value": "8"
+          }
+        }
+      },
+      "ila_1": {
+        "vlnv": "xilinx.com:ip:ila:6.2",
+        "ip_revision": "14",
+        "xci_name": "top_ila_1_0",
+        "xci_path": "ip\\top_ila_1_0\\top_ila_1_0.xci",
+        "inst_hier_path": "ila_1",
+        "parameters": {
+          "C_DATA_DEPTH": {
+            "value": "32768"
+          },
+          "C_MONITOR_TYPE": {
+            "value": "Native"
+          },
+          "C_NUM_OF_PROBES": {
+            "value": "15"
+          },
+          "C_PROBE10_WIDTH": {
+            "value": "8"
+          },
+          "C_PROBE11_WIDTH": {
+            "value": "8"
+          },
+          "C_PROBE5_WIDTH": {
+            "value": "8"
+          },
+          "C_PROBE8_WIDTH": {
+            "value": "8"
+          },
+          "C_PROBE9_WIDTH": {
+            "value": "8"
+          }
+        }
       }
     },
     "nets": {
+      "BTND_1": {
+        "ports": [
+          "BTND",
+          "debouncer_1/switch"
+        ]
+      },
       "BTNL_1": {
         "ports": [
           "BTNL",
@@ -626,13 +772,17 @@
       "I2C_Master_Controller_0_read_data": {
         "ports": [
           "I2C_Master_Controller_0/read_data",
-          "ila_0/probe12"
+          "ila_0/probe12",
+          "vio_0/probe_in3",
+          "ila_1/probe5"
         ]
       },
       "I2C_Master_Controller_0_read_register_sample": {
         "ports": [
           "I2C_Master_Controller_0/read_register_sample",
-          "ila_0/probe5"
+          "ila_0/probe5",
+          "vio_0/probe_in2",
+          "ila_1/probe4"
         ]
       },
       "I2C_Master_Controller_0_shift_reg_debug": {
@@ -644,7 +794,8 @@
       "I2C_Master_Controller_0_shift_reg_full_debug": {
         "ports": [
           "I2C_Master_Controller_0/shift_reg_full_debug",
-          "ila_0/probe15"
+          "ila_0/probe15",
+          "ila_1/probe11"
         ]
       },
       "I2C_Master_Controller_0_simple_state_debug": {
@@ -662,70 +813,55 @@
       "I2C_Master_Controller_0_write_register_nack": {
         "ports": [
           "I2C_Master_Controller_0/write_register_nack",
-          "ila_0/probe10"
+          "ila_0/probe10",
+          "vio_0/probe_in0",
+          "ila_1/probe6"
         ]
       },
       "I2C_Master_Controller_0_write_register_pulse": {
         "ports": [
           "I2C_Master_Controller_0/write_register_pulse",
-          "ila_0/probe11"
-        ]
-      },
-      "I2C_OV7670_Basic_0_data_ready": {
-        "ports": [
-          "I2C_OV7670_Basic_0/data_ready",
-          "I2C_Master_Controller_0/slave_signal_sent"
-        ]
-      },
-      "I2C_OV7670_Basic_0_model_addr": {
-        "ports": [
-          "I2C_OV7670_Basic_0/model_addr",
-          "I2C_Master_Controller_0/slave_model_addr"
-        ]
-      },
-      "I2C_OV7670_Basic_0_reg_addr": {
-        "ports": [
-          "I2C_OV7670_Basic_0/reg_addr",
-          "I2C_Master_Controller_0/slave_reg_addr"
-        ]
-      },
-      "I2C_OV7670_Basic_0_reg_data": {
-        "ports": [
-          "I2C_OV7670_Basic_0/reg_data",
-          "I2C_Master_Controller_0/slave_reg_data"
+          "ila_0/probe11",
+          "vio_0/probe_in1",
+          "ila_1/probe7"
         ]
       },
       "I2C_OV7670_Master_0_ov7670_SCL": {
         "ports": [
           "I2C_Master_Controller_0/ov7670_SCL",
           "ov7670_SCL",
-          "ila_0/probe0"
+          "ila_0/probe0",
+          "ila_1/probe0"
         ]
       },
       "I2C_OV7670_Master_0_ov7670_pwdn": {
         "ports": [
           "I2C_Master_Controller_0/ov7670_pwdn",
-          "ov7670_pwdn"
+          "ov7670_pwdn",
+          "ila_1/probe12"
         ]
       },
       "I2C_OV7670_Master_0_ov7670_reset": {
         "ports": [
           "I2C_Master_Controller_0/ov7670_reset",
-          "ov7670_reset"
+          "ov7670_reset",
+          "ila_1/probe13"
         ]
       },
       "I2C_OV7670_Master_0_sda_oe": {
         "ports": [
           "I2C_Master_Controller_0/sda_oe",
           "sda_oe",
-          "ila_0/probe2"
+          "ila_0/probe2",
+          "ila_1/probe2"
         ]
       },
       "I2C_OV7670_Master_0_sda_out": {
         "ports": [
           "I2C_Master_Controller_0/sda_out",
           "sda_out",
-          "ila_0/probe1"
+          "ila_0/probe1",
+          "ila_1/probe1"
         ]
       },
       "Pulse_Edges_0_edge_rising": {
@@ -736,10 +872,17 @@
           "I2C_Master_Controller_0/reset"
         ]
       },
+      "Pulse_Edges_1_edge_rising": {
+        "ports": [
+          "Pulse_Edges_1/edge_rising",
+          "I2C_Master_Controller_0/slave_signal_sent"
+        ]
+      },
       "clk_wiz_0_clk_out25": {
         "ports": [
           "clk_wiz_0/clk_out25",
-          "ov7670_xclk"
+          "ov7670_xclk",
+          "ila_1/probe14"
         ]
       },
       "clk_wiz_0_clk_out100": {
@@ -751,34 +894,62 @@
           "Pulse_Edges_1/clk",
           "I2C_OV7670_Basic_0/clk",
           "debouncer_1/clk",
-          "I2C_Master_Controller_0/clk_100"
+          "vio_0/clk",
+          "I2C_Master_Controller_0/clk_100",
+          "ila_1/clk"
         ]
       },
       "debouncer_0_switch_debounced": {
         "ports": [
           "debouncer_0/switch_debounced",
-          "Pulse_Edges_0/source",
+          "Pulse_Edges_0/source"
+        ]
+      },
+      "debouncer_1_switch_debounced": {
+        "ports": [
+          "debouncer_1/switch_debounced",
           "Pulse_Edges_1/source"
         ]
       },
       "reset_1": {
         "ports": [
           "reset",
-          "clk_wiz_0/reset",
-          "debouncer_1/switch"
+          "clk_wiz_0/reset"
         ]
       },
       "sda_in_1": {
         "ports": [
           "sda_in",
           "ila_0/probe3",
-          "I2C_Master_Controller_0/sda_in"
+          "I2C_Master_Controller_0/sda_in",
+          "ila_1/probe3"
         ]
       },
       "sys_clock_1": {
         "ports": [
           "sys_clock",
           "clk_wiz_0/clk_in1"
+        ]
+      },
+      "vio_0_probe_out0": {
+        "ports": [
+          "vio_0/probe_out0",
+          "I2C_Master_Controller_0/slave_model_addr",
+          "ila_1/probe8"
+        ]
+      },
+      "vio_0_probe_out1": {
+        "ports": [
+          "vio_0/probe_out1",
+          "I2C_Master_Controller_0/slave_reg_addr",
+          "ila_1/probe9"
+        ]
+      },
+      "vio_0_probe_out2": {
+        "ports": [
+          "vio_0/probe_out2",
+          "I2C_Master_Controller_0/slave_reg_data",
+          "ila_1/probe10"
         ]
       }
     }

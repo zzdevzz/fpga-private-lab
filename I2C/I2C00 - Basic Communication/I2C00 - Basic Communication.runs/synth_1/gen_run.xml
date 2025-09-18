@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1758055255" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/top_wrapper.dcp">
+<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1758221283" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/top_wrapper.dcp">
   <File Type="PA-TCL" Name="host.tcl"/>
   <File Type="RDS-PROPCONSTRS" Name="host_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="host_reports.tcl"/>
@@ -68,13 +68,6 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/I2C_OV7670_Master_BU.vhd">
-      <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
     <File Path="$PSRCDIR/sources_1/new/I2C_OV7670_Master_Clean.vhd">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
@@ -97,6 +90,13 @@
       </FileInfo>
     </File>
     <File Path="$PSRCDIR/sources_1/new/i2c_ov7670_slave_sim.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/I2C_Master_Controller_BU.vhd">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -143,8 +143,10 @@
     <Step Id="synth_design"/>
   </Strategy>
   <BlockFileSet Type="BlockSrcs" Name="top_ila_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="top_ila_1_0"/>
   <BlockFileSet Type="BlockSrcs" Name="top_I2C_OV7670_Basic_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="top_Pulse_Edges_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="top_Pulse_Edges_0_1"/>
+  <BlockFileSet Type="BlockSrcs" Name="top_vio_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="top_I2C_Master_Controller_0_0"/>
 </GenRun>

@@ -35,6 +35,7 @@ entity host is
   Port (
     ov7670_SDA: inout STD_LOGIC;
     BTNL : in STD_LOGIC;
+    BTND : in STD_LOGIC;
     ov7670_SCL : out STD_LOGIC;   
     ov7670_pwdn : out STD_LOGIC;
     ov7670_reset : out STD_LOGIC;
@@ -49,6 +50,7 @@ architecture Behavioral of host is
 component top_wrapper is
   port (
    BTNL : in STD_LOGIC;
+   BTND : in STD_LOGIC;
     ov7670_SCL : out STD_LOGIC;
     ov7670_pwdn : out STD_LOGIC;
     ov7670_reset : out STD_LOGIC;
@@ -72,6 +74,7 @@ ov7670_SDA <= '0' when (sda_oe_s = '1' and sda_out_s = '0') else 'Z'; --unless w
 top_i: component top_wrapper
      port map (
       BTNL => BTNL,
+      BTND => BTND,
       ov7670_SCL => ov7670_SCL,
       ov7670_pwdn => ov7670_pwdn,
       ov7670_reset => ov7670_reset,

@@ -284,7 +284,8 @@ begin
           read_phase <= '0';
           read_register_sample_s <= '0';
           repeated_start_phase <= '0';
-          if slave_signal_sent = '1' and start_setup = '1' then
+--          if slave_signal_sent = '1' and start_setup = '1' then
+          if slave_signal_sent = '1' then
             state <= START_CONDITION;
             byte_counter <= 0;
             simple_state_debug <= "0001";

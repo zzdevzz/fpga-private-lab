@@ -73,7 +73,6 @@ OPTRACE "top_I2C_Master_Controller_0_0_synth_1" START { ROLLUP_AUTO }
 set_param tcl.collectionResultDisplayLimit 0
 set_param chipscope.maxJobs 6
 set_param xicom.use_bs_reader 1
-set_msg_config -id {Common 17-41} -limit 10000000
 set_msg_config  -id {XSIM 43-3225}  -string {{ERROR: [XSIM 43-3225] Cannot find design unit xil_defaultlib.task_1_2_tb in library work located at xsim.dir/work.}}  -suppress 
 set_msg_config  -id {17-179}  -suppress 
 set_param project.vivado.isBlockSynthRun true

@@ -1,62 +1,67 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"0.772303",
-   "Default View_TopLeft":"910,-60",
+   "Default View_ScaleFactor":"0.416011",
+   "Default View_TopLeft":"-221,-481",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.5.8 2022-09-21 7111 VDI=41 GEI=38 GUI=JA:10.0
 #  -string -flagsOSRD
-preplace port port-id_sys_clock -pg 1 -lvl 0 -x -80 -y 650 -defaultsOSRD
-preplace port port-id_reset -pg 1 -lvl 0 -x -80 -y 350 -defaultsOSRD
-preplace port port-id_BTNL -pg 1 -lvl 0 -x -80 -y 170 -defaultsOSRD
-preplace port port-id_ov7670_SCL -pg 1 -lvl 6 -x 1610 -y 540 -defaultsOSRD
-preplace port port-id_ov7670_pwdn -pg 1 -lvl 6 -x 1610 -y 600 -defaultsOSRD
-preplace port port-id_ov7670_reset -pg 1 -lvl 6 -x 1610 -y 620 -defaultsOSRD
-preplace port port-id_ov7670_xclk -pg 1 -lvl 6 -x 1610 -y 640 -defaultsOSRD
-preplace port port-id_sda_in -pg 1 -lvl 0 -x -80 -y 260 -defaultsOSRD
-preplace port port-id_sda_out -pg 1 -lvl 6 -x 1610 -y 560 -defaultsOSRD
-preplace port port-id_sda_oe -pg 1 -lvl 6 -x 1610 -y 580 -defaultsOSRD
-preplace inst clk_wiz_0 -pg 1 -lvl 3 -x 640 -y 640 -defaultsOSRD
-preplace inst debouncer_0 -pg 1 -lvl 1 -x 100 -y 160 -defaultsOSRD
+preplace port port-id_sys_clock -pg 1 -lvl 0 -x -110 -y 650 -defaultsOSRD
+preplace port port-id_reset -pg 1 -lvl 0 -x -110 -y 480 -defaultsOSRD
+preplace port port-id_BTNL -pg 1 -lvl 0 -x -110 -y 170 -defaultsOSRD
+preplace port port-id_ov7670_SCL -pg 1 -lvl 7 -x 1800 -y 540 -defaultsOSRD
+preplace port port-id_ov7670_pwdn -pg 1 -lvl 7 -x 1800 -y 600 -defaultsOSRD
+preplace port port-id_ov7670_reset -pg 1 -lvl 7 -x 1800 -y 620 -defaultsOSRD
+preplace port port-id_ov7670_xclk -pg 1 -lvl 7 -x 1800 -y 640 -defaultsOSRD
+preplace port port-id_sda_in -pg 1 -lvl 0 -x -110 -y 260 -defaultsOSRD
+preplace port port-id_sda_out -pg 1 -lvl 7 -x 1800 -y 560 -defaultsOSRD
+preplace port port-id_sda_oe -pg 1 -lvl 7 -x 1800 -y 580 -defaultsOSRD
+preplace port port-id_BTND -pg 1 -lvl 0 -x -110 -y 350 -defaultsOSRD
+preplace inst clk_wiz_0 -pg 1 -lvl 3 -x 610 -y 640 -defaultsOSRD
+preplace inst debouncer_0 -pg 1 -lvl 1 -x 40 -y 160 -defaultsOSRD
 preplace inst ila_0 -pg 1 -lvl 5 -x 1460 -y 220 -defaultsOSRD
-preplace inst Pulse_Edges_0 -pg 1 -lvl 2 -x 370 -y 190 -defaultsOSRD
-preplace inst I2C_Master_Controller_0 -pg 1 -lvl 4 -x 1030 -y 290 -defaultsOSRD
-preplace inst I2C_OV7670_Basic_0 -pg 1 -lvl 3 -x 640 -y 420 -defaultsOSRD
-preplace inst Pulse_Edges_1 -pg 1 -lvl 2 -x 370 -y 330 -defaultsOSRD
-preplace inst debouncer_1 -pg 1 -lvl 1 -x 100 -y 340 -defaultsOSRD
+preplace inst Pulse_Edges_0 -pg 1 -lvl 2 -x 300 -y 190 -defaultsOSRD
+preplace inst I2C_Master_Controller_0 -pg 1 -lvl 4 -x 1020 -y 290 -defaultsOSRD
+preplace inst I2C_OV7670_Basic_0 -pg 1 -lvl 3 -x 610 -y 420 -defaultsOSRD
+preplace inst Pulse_Edges_1 -pg 1 -lvl 2 -x 300 -y 330 -defaultsOSRD
+preplace inst debouncer_1 -pg 1 -lvl 1 -x 40 -y 340 -defaultsOSRD
+preplace inst vio_0 -pg 1 -lvl 3 -x 610 -y -220 -defaultsOSRD
+preplace inst ila_1 -pg 1 -lvl 6 -x 1690 -y -240 -defaultsOSRD
+preplace netloc BTND_1 1 0 1 N 350
 preplace netloc BTNL_1 1 0 1 NJ 170
-preplace netloc I2C_Master_Controller_0_SCL_FALL_EDGE 1 4 1 1330 110n
-preplace netloc I2C_Master_Controller_0_SCL_HIGH_SAFE_SAMPLE 1 4 1 1230 150n
-preplace netloc I2C_Master_Controller_0_SCL_LOW_SAFE_SAMPLE 1 4 1 1290 130n
+preplace netloc I2C_Master_Controller_0_SCL_FALL_EDGE 1 4 1 1290 110n
+preplace netloc I2C_Master_Controller_0_SCL_HIGH_SAFE_SAMPLE 1 4 1 1220 150n
+preplace netloc I2C_Master_Controller_0_SCL_LOW_SAFE_SAMPLE 1 4 1 1260 130n
 preplace netloc I2C_Master_Controller_0_SCL_RISE_EDGE 1 4 1 1240 90n
-preplace netloc I2C_Master_Controller_0_bit_counter_debug 1 4 1 1320 210n
+preplace netloc I2C_Master_Controller_0_bit_counter_debug 1 4 1 1250 210n
 preplace netloc I2C_Master_Controller_0_data_sent_pulse 1 4 1 1370 410n
 preplace netloc I2C_Master_Controller_0_i2c_data_read 1 4 1 N 410
-preplace netloc I2C_Master_Controller_0_read_data 1 4 1 1310 230n
-preplace netloc I2C_Master_Controller_0_read_register_sample 1 4 1 1310 150n
-preplace netloc I2C_Master_Controller_0_shift_reg_debug 1 4 1 1300 130n
-preplace netloc I2C_Master_Controller_0_shift_reg_full_debug 1 4 1 N 350
-preplace netloc I2C_Master_Controller_0_simple_state_debug 1 4 1 1350 170n
-preplace netloc I2C_Master_Controller_0_state_debug 1 4 1 1360 230n
-preplace netloc I2C_Master_Controller_0_write_register_nack 1 4 1 N 250
-preplace netloc I2C_Master_Controller_0_write_register_pulse 1 4 1 N 270
-preplace netloc I2C_OV7670_Basic_0_data_ready 1 3 1 780 270n
-preplace netloc I2C_OV7670_Basic_0_model_addr 1 3 1 770 290n
-preplace netloc I2C_OV7670_Basic_0_reg_addr 1 3 1 790 310n
-preplace netloc I2C_OV7670_Basic_0_reg_data 1 3 1 830 330n
-preplace netloc I2C_OV7670_Master_0_ov7670_SCL 1 4 2 1270 -40 1580
-preplace netloc I2C_OV7670_Master_0_ov7670_pwdn 1 4 2 N 490 1560
-preplace netloc I2C_OV7670_Master_0_ov7670_reset 1 4 2 N 510 1550
-preplace netloc I2C_OV7670_Master_0_sda_oe 1 4 2 1280 -30 1570
-preplace netloc I2C_OV7670_Master_0_sda_out 1 4 2 1340 560 N
-preplace netloc Pulse_Edges_0_edge_rising 1 2 3 520 180 790 0 1360
-preplace netloc clk_wiz_0_clk_out25 1 3 3 NJ 640 N 640 N
-preplace netloc clk_wiz_0_clk_out100 1 0 5 -30 230 250 260 510 260 760 -10 1370
-preplace netloc debouncer_0_switch_debounced 1 1 1 240 160n
-preplace netloc reset_1 1 0 3 -40 630 NJ 630 NJ
-preplace netloc sda_in_1 1 0 5 -60J 90 NJ 90 N 90 820J 10 1350
+preplace netloc I2C_Master_Controller_0_read_data 1 2 4 460 -340 N -340 1340 -270 N
+preplace netloc I2C_Master_Controller_0_read_register_sample 1 2 4 480 -320 N -320 1230 -290 N
+preplace netloc I2C_Master_Controller_0_shift_reg_debug 1 4 1 1310 130n
+preplace netloc I2C_Master_Controller_0_shift_reg_full_debug 1 4 2 1320 -150 N
+preplace netloc I2C_Master_Controller_0_simple_state_debug 1 4 1 1330 170n
+preplace netloc I2C_Master_Controller_0_state_debug 1 4 1 1350 230n
+preplace netloc I2C_Master_Controller_0_write_register_nack 1 2 4 430 -350 N -350 1300 -250 N
+preplace netloc I2C_Master_Controller_0_write_register_pulse 1 2 4 470 -330 N -330 1280 -230 N
+preplace netloc I2C_OV7670_Master_0_ov7670_SCL 1 4 3 1240 -50 1550 540 N
+preplace netloc I2C_OV7670_Master_0_ov7670_pwdn 1 4 3 N 490 1570 600 N
+preplace netloc I2C_OV7670_Master_0_ov7670_reset 1 4 3 N 510 1580 620 N
+preplace netloc I2C_OV7670_Master_0_sda_oe 1 4 3 1270 -30 1600 530 1780
+preplace netloc I2C_OV7670_Master_0_sda_out 1 4 3 1250 -40 1560 560 N
+preplace netloc Pulse_Edges_0_edge_rising 1 2 3 430 250 780 570 1360
+preplace netloc Pulse_Edges_1_edge_rising 1 2 2 440 270 NJ
+preplace netloc clk_wiz_0_clk_out25 1 3 4 NJ 640 N 640 1590 640 N
+preplace netloc clk_wiz_0_clk_out100 1 0 6 -90 230 180 400 450 10 790 10 1360 -390 N
+preplace netloc debouncer_0_switch_debounced 1 1 1 170 160n
+preplace netloc debouncer_1_switch_debounced 1 1 1 N 340
+preplace netloc reset_1 1 0 3 -90 630 NJ 630 NJ
+preplace netloc sda_in_1 1 0 6 NJ 260 NJ 260 N 260 820J 0 1370 -310 N
 preplace netloc sys_clock_1 1 0 3 NJ 650 NJ 650 NJ
-levelinfo -pg 1 -80 100 370 640 1030 1460 1610
-pagesize -pg 1 -db -bbox -sgen -200 -70 1750 720
+preplace netloc vio_0_probe_out0 1 3 3 810 -210 N -210 N
+preplace netloc vio_0_probe_out1 1 3 3 800 -190 N -190 N
+preplace netloc vio_0_probe_out2 1 3 3 770 -170 N -170 N
+levelinfo -pg 1 -110 40 300 610 1020 1460 1690 1800
+pagesize -pg 1 -db -bbox -sgen -230 -450 1940 720
 "
 }
 {

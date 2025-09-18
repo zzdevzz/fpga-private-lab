@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Tue Sep 16 21:44:38 2025
+| Date         : Thu Sep 18 19:52:55 2025
 | Host         : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 | Command      : report_methodology -file host_methodology_drc_routed.rpt -pb host_methodology_drc_routed.pb -rpx host_methodology_drc_routed.rpx
 | Design       : host
@@ -23,12 +23,12 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 9
+             Violations found: 10
 +-----------+----------+-------------------------------+------------+
 | Rule      | Severity | Description                   | Violations |
 +-----------+----------+-------------------------------+------------+
 | LUTAR-1   | Warning  | LUT drives async reset alert  | 4          |
-| TIMING-18 | Warning  | Missing input or output delay | 5          |
+| TIMING-18 | Warning  | Missing input or output delay | 6          |
 +-----------+----------+-------------------------------+------------+
 
 2. REPORT DETAILS
@@ -63,25 +63,30 @@ Related violations: <none>
 
 TIMING-18#1 Warning
 Missing input or output delay  
-An input delay is missing on BTNL relative to the rising and/or falling clock edge(s) of sys_clock.
+An input delay is missing on BTND relative to the rising and/or falling clock edge(s) of sys_clock.
 Related violations: <none>
 
 TIMING-18#2 Warning
 Missing input or output delay  
-An input delay is missing on ov7670_SDA relative to the rising and/or falling clock edge(s) of sys_clock.
+An input delay is missing on BTNL relative to the rising and/or falling clock edge(s) of sys_clock.
 Related violations: <none>
 
 TIMING-18#3 Warning
 Missing input or output delay  
-An output delay is missing on ov7670_SCL relative to the rising and/or falling clock edge(s) of sys_clock.
+An input delay is missing on ov7670_SDA relative to the rising and/or falling clock edge(s) of sys_clock.
 Related violations: <none>
 
 TIMING-18#4 Warning
 Missing input or output delay  
-An output delay is missing on ov7670_SDA relative to the rising and/or falling clock edge(s) of sys_clock.
+An output delay is missing on ov7670_SCL relative to the rising and/or falling clock edge(s) of sys_clock.
 Related violations: <none>
 
 TIMING-18#5 Warning
+Missing input or output delay  
+An output delay is missing on ov7670_SDA relative to the rising and/or falling clock edge(s) of sys_clock.
+Related violations: <none>
+
+TIMING-18#6 Warning
 Missing input or output delay  
 An output delay is missing on ov7670_reset relative to the rising and/or falling clock edge(s) of sys_clock.
 Related violations: <none>
