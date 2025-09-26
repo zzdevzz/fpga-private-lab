@@ -2,7 +2,7 @@
 --Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
---Date        : Thu Sep 18 19:46:56 2025
+--Date        : Fri Sep 26 17:19:00 2025
 --Host        : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 --Command     : generate_target top.bd
 --Design      : top
@@ -24,6 +24,7 @@ entity top is
     sda_in : in STD_LOGIC;
     sda_oe : out STD_LOGIC;
     sda_out : out STD_LOGIC;
+    state_debug : out STD_LOGIC_VECTOR ( 3 downto 0 );
     sys_clock : in STD_LOGIC
   );
   attribute core_generation_info : string;
@@ -237,6 +238,7 @@ begin
   sda_in_1 <= sda_in;
   sda_oe <= I2C_OV7670_Master_0_sda_oe;
   sda_out <= I2C_OV7670_Master_0_sda_out;
+  state_debug(3 downto 0) <= I2C_Master_Controller_0_state_debug(3 downto 0);
   sys_clock_1 <= sys_clock;
 I2C_Master_Controller_0: component top_I2C_Master_Controller_0_0
      port map (

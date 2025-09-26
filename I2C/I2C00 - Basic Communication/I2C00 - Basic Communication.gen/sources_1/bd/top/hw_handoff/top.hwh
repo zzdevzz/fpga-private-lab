@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Sep 18 19:46:57 2025" VIVADOVERSION="2023.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Sep 26 17:19:01 2025" VIVADOVERSION="2023.2">
 
   <SYSTEMINFO ARCH="artix7" BOARD="digilentinc.com:basys3:part0:1.2" DEVICE="7a35t" NAME="top" PACKAGE="cpg236" SPEEDGRADE="-1"/>
 
@@ -54,6 +54,11 @@
     <PORT DIR="O" NAME="sda_out" SIGIS="undef" SIGNAME="I2C_Master_Controller_0_sda_out">
       <CONNECTIONS>
         <CONNECTION INSTANCE="I2C_Master_Controller_0" PORT="sda_out"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="3" NAME="state_debug" RIGHT="0" SIGIS="undef" SIGNAME="I2C_Master_Controller_0_state_debug">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="I2C_Master_Controller_0" PORT="state_debug"/>
       </CONNECTIONS>
     </PORT>
     <PORT CLKFREQUENCY="100000000" DIR="I" NAME="sys_clock" SIGIS="clk" SIGNAME="External_Ports_sys_clock">
@@ -208,6 +213,7 @@
         <PORT DIR="O" LEFT="3" NAME="state_debug" RIGHT="0" SIGIS="undef" SIGNAME="I2C_Master_Controller_0_state_debug">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ila_0" PORT="probe9"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="state_debug"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="write_register_nack" SIGIS="undef" SIGNAME="I2C_Master_Controller_0_write_register_nack">
@@ -4231,7 +4237,7 @@
         <PARAMETER NAME="C_CORE_MINOR_VER" VALUE="0"/>
         <PARAMETER NAME="C_CORE_TYPE" VALUE="1"/>
         <PARAMETER NAME="C_CSE_DRV_VER" VALUE="2"/>
-        <PARAMETER NAME="C_DATA_DEPTH" VALUE="32768"/>
+        <PARAMETER NAME="C_DATA_DEPTH" VALUE="1024"/>
         <PARAMETER NAME="C_DDR_CLK_GEN" VALUE="0"/>
         <PARAMETER NAME="C_DIVCLK_DIVIDE" VALUE="3"/>
         <PARAMETER NAME="C_ENABLE_ILA_AXI_MON" VALUE="0"/>
@@ -7423,7 +7429,7 @@
             <CONNECTION INSTANCE="I2C_Master_Controller_0" PORT="ov7670_pwdn"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="probe13" POLARITY="ACTIVE_LOW" RIGHT="0" SIGIS="undef" SIGNAME="I2C_Master_Controller_0_ov7670_reset">
+        <PORT DIR="I" LEFT="0" NAME="probe13" RIGHT="0" SIGIS="undef" SIGNAME="I2C_Master_Controller_0_ov7670_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="I2C_Master_Controller_0" PORT="ov7670_reset"/>
           </CONNECTIONS>

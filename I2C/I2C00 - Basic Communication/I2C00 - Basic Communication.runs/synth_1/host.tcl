@@ -70,11 +70,8 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param tcl.collectionResultDisplayLimit 0
 set_param chipscope.maxJobs 6
-set_param xicom.use_bs_reader 1
 set_msg_config  -id {XSIM 43-3225}  -string {{ERROR: [XSIM 43-3225] Cannot find design unit xil_defaultlib.task_1_2_tb in library work located at xsim.dir/work.}}  -suppress 
-set_msg_config  -id {17-179}  -suppress 
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a35tcpg236-1
 
@@ -96,7 +93,7 @@ set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_vhdl -library xil_defaultlib {
-  {e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/hdl/top_wrapper.vhd}
+  {E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/hdl/top_wrapper.vhd}
   {E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/sources_1/new/host.vhd}
 }
 add_files {{E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/sources_1/bd/top/top.bd}}
@@ -114,6 +111,12 @@ set_property used_in_implementation false [get_files -all {{e:/FPGA/VHDL/Lab Tra
 set_property used_in_implementation false [get_files -all {{e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/ip/top_ila_1_0/ila_v6_2/constraints/ila.xdc}}]
 set_property used_in_implementation false [get_files -all {{e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/ip/top_ila_1_0/top_ila_1_0_ooc.xdc}}]
 set_property used_in_implementation false [get_files -all {{e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/bd/top/top_ooc.xdc}}]
+
+read_ip -quiet {{E:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.srcs/sources_1/ip/ila_top/ila_top.xci}}
+set_property used_in_synthesis false [get_files -all {{e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/ip/ila_top/ila_v6_2/constraints/ila_impl.xdc}}]
+set_property used_in_implementation false [get_files -all {{e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/ip/ila_top/ila_v6_2/constraints/ila_impl.xdc}}]
+set_property used_in_implementation false [get_files -all {{e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/ip/ila_top/ila_v6_2/constraints/ila.xdc}}]
+set_property used_in_implementation false [get_files -all {{e:/FPGA/VHDL/Lab Training/I2C/I2C00 - Basic Communication/I2C00 - Basic Communication.gen/sources_1/ip/ila_top/ila_top_ooc.xdc}}]
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being

@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0xB00D3059918598CF",
+      "boundary_crc": "0x28F3822DCAA8A570",
       "device": "xc7a35tcpg236-1",
       "gen_directory": "../../../../I2C00 - Basic Communication.gen/sources_1/bd/top",
       "name": "top",
@@ -126,6 +126,11 @@
             "value_src": "user_prop"
           }
         }
+      },
+      "state_debug": {
+        "direction": "O",
+        "left": "3",
+        "right": "0"
       }
     },
     "components": {
@@ -689,7 +694,7 @@
         "inst_hier_path": "ila_1",
         "parameters": {
           "C_DATA_DEPTH": {
-            "value": "32768"
+            "value": "1024"
           },
           "C_MONITOR_TYPE": {
             "value": "Native"
@@ -807,7 +812,8 @@
       "I2C_Master_Controller_0_state_debug": {
         "ports": [
           "I2C_Master_Controller_0/state_debug",
-          "ila_0/probe9"
+          "ila_0/probe9",
+          "state_debug"
         ]
       },
       "I2C_Master_Controller_0_write_register_nack": {

@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Thu Sep 18 19:52:08 2025
+| Date         : Fri Sep 26 18:05:02 2025
 | Host         : DESKTOP-EFRMAI2 running 64-bit major release  (build 9200)
 | Command      : report_drc -file host_drc_opted.rpt -pb host_drc_opted.pb -rpx host_drc_opted.rpx
 | Design       : host
@@ -24,12 +24,18 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max violations: <unlimited>
-             Violations found: 0
-+------+----------+-------------+------------+
-| Rule | Severity | Description | Violations |
-+------+----------+-------------+------------+
-+------+----------+-------------+------------+
+             Violations found: 1
++-----------+----------+--------------------+------------+
+| Rule      | Severity | Description        | Violations |
++-----------+----------+--------------------+------------+
+| REQP-1712 | Error    | Input clock driver | 1          |
++-----------+----------+--------------------+------------+
 
 2. REPORT DETAILS
 -----------------
+REQP-1712#1 Error
+Input clock driver  
+Unsupported PLLE2_ADV connectivity. The signal top_i/top_i/clk_wiz_0/inst/clk_in1 on the top_i/top_i/clk_wiz_0/inst/plle2_adv_inst/CLKIN1 pin of top_i/top_i/clk_wiz_0/inst/plle2_adv_inst with COMPENSATION mode ZHOLD must be driven by a clock capable IO.
+Related violations: <none>
+
 
